@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.venv/
+.venv-build/
+build/
+dist/
+*.spec.bak
+*.session
+*.session-journal
+.telegram_bot_cleaner/
