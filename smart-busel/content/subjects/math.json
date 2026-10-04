@@ -1,0 +1,141 @@
+{
+  "id": "math",
+  "title": "Математика",
+  "language": "ru",
+  "color": "#2f6fed",
+  "icon": "🧮",
+  "sections": [
+    {
+      "id": "math-s1",
+      "title": "Глава 1. Натуральные числа",
+      "topics": [
+        {
+          "id": "math-t01",
+          "title": "Как решать задачу",
+          "status": "planned",
+          "tasks": []
+        },
+        {
+          "id": "math-t02",
+          "title": "Натуральные числа и число нуль. Чтение и запись",
+          "status": "planned",
+          "tasks": []
+        },
+        {
+          "id": "math-t03",
+          "title": "Сравнение натуральных чисел",
+          "status": "planned",
+          "tasks": []
+        },
+        {
+          "id": "math-t04",
+          "title": "Точка, прямая, луч, отрезок, плоскость",
+          "status": "planned",
+          "tasks": []
+        },
+        {
+          "id": "math-t05",
+          "title": "Измерение отрезков. Длина отрезка",
+          "status": "planned",
+          "tasks": []
+        },
+        {
+          "id": "math-t06",
+          "title": "Изображение натуральных чисел на координатном луче",
+          "status": "planned",
+          "tasks": []
+        },
+        {
+          "id": "math-t07",
+          "title": "Округление натуральных чисел",
+          "status": "planned",
+          "tasks": []
+        },
+        {
+          "id": "math-t08",
+          "title": "Сложение и вычитание натуральных чисел",
+          "status": "planned",
+          "tasks": []
+        },
+        {
+          "id": "math-t09",
+          "title": "Умножение и деление натуральных чисел",
+          "status": "planned",
+          "tasks": []
+        },
+        {
+          "id": "math-t10",
+          "title": "Степень числа с натуральным показателем",
+          "status": "planned",
+          "tasks": []
+        },
+        {
+          "id": "math-t11",
+          "title": "Деление с остатком",
+          "status": "planned",
+          "tasks": []
+        },
+        {
+          "id": "math-t12",
+          "title": "Делители и кратные. НОД и НОК",
+          "status": "planned",
+          "tasks": []
+        },
+        {
+          "id": "math-t13",
+          "title": "Признаки делимости",
+          "status": "planned",
+          "tasks": []
+        },
+        {
+          "id": "math-t14",
+          "title": "Простые и составные числа. Разложение на простые множители",
+          "status": "planned",
+          "tasks": []
+        }
+      ]
+    },
+    {
+      "id": "math-s2",
+      "title": "Глава 2. Выражения. Уравнения",
+      "topics": [
+        {
+          "id": "math-t15",
+          "title": "Числовые выражения",
+          "status": "planned",
+          "tasks": []
+        },
+        {
+          "id": "math-t16",
+          "title": "Выражения с переменными",
+          "status": "planned",
+          "tasks": []
+        },
+        {
+          "id": "math-t17",
+          "title": "Уравнение",
+          "status": "planned",
+          "tasks": []
+        },
+        {
+          "id": "math-t18",
+          "title": "Формулы",
+          "status": "planned",
+          "tasks": []
+        },
+        {
+          "id": "math-t19",
+          "title": "Решение задач с помощью уравнений",
+          "status": "planned",
+          "tasks": []
+        },
+        {
+          "id": "math-t20",
+          "title": "Угол. Измерение и построение углов",
+          "status": "planned",
+          "tasks": []
+        }
+      ]
+    }
+  ]
+}

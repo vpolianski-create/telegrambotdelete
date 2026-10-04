@@ -1,0 +1,25 @@
+@import '@fontsource/nunito/cyrillic-400.css';
+@import '@fontsource/nunito/cyrillic-600.css';
+@import '@fontsource/nunito/cyrillic-800.css';
+@import '@fontsource/nunito/latin-400.css';
+@import '@fontsource/nunito/latin-600.css';
+@import '@fontsource/nunito/latin-800.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #f4f7fb; --card: #ffffff; --ink: #1e2a3a; --mute: #55657a;
+  --brand: #2f6fed; --accent: #ff8a3d; --ok: #1f9d55;
+  font-size: calc(16px * var(--font-scale, 1));
+}
+[data-theme='dark'] {
+  --bg: #121a26; --card: #1c2736; --ink: #eef3fa; --mute: #a9b8cc;
+  --brand: #6ea0ff; --accent: #ffa566; --ok: #4cd08a;
+}
+html, body, #root { height: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: Nunito, system-ui, sans-serif; }
+button { min-height: 48px; cursor: pointer; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}

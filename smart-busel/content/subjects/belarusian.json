@@ -1,0 +1,57 @@
+{
+  "id": "belarusian",
+  "title": "Беларуская мова",
+  "language": "be",
+  "color": "#e8590c",
+  "icon": "🌾",
+  "sections": [
+    {
+      "id": "belarusian-s1",
+      "title": "Папярэдні пералік",
+      "topics": [
+        {
+          "id": "belarusian-t01",
+          "title": "Фанетыка і графіка",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        },
+        {
+          "id": "belarusian-t02",
+          "title": "Лексіка",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        },
+        {
+          "id": "belarusian-t03",
+          "title": "Марфалогія. Назоўнік",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        },
+        {
+          "id": "belarusian-t04",
+          "title": "Прыметнік",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        },
+        {
+          "id": "belarusian-t05",
+          "title": "Дзеяслоў",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        },
+        {
+          "id": "belarusian-t06",
+          "title": "Правапіс",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        }
+      ]
+    }
+  ]
+}

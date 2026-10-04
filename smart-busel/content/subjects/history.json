@@ -1,0 +1,242 @@
+{
+  "id": "history",
+  "title": "История Древнего мира",
+  "language": "ru",
+  "color": "#b5651d",
+  "icon": "🏺",
+  "sections": [
+    {
+      "id": "history-s1",
+      "title": "Раздел I. От первобытности к цивилизации",
+      "topics": [
+        {
+          "id": "history-t01",
+          "title": "Мир древней истории",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        },
+        {
+          "id": "history-t02",
+          "title": "Счёт лет в истории",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        },
+        {
+          "id": "history-t03",
+          "title": "Древнейшие люди",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        },
+        {
+          "id": "history-t04",
+          "title": "Первые шаги человека современного вида",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        },
+        {
+          "id": "history-t05",
+          "title": "Возникновение искусства и религии",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        },
+        {
+          "id": "history-t06",
+          "title": "Появление земледелия и животноводства",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        },
+        {
+          "id": "history-t07",
+          "title": "Переход от родовой общины к соседской",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        },
+        {
+          "id": "history-t08",
+          "title": "На пути к цивилизации",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        }
+      ]
+    },
+    {
+      "id": "history-s2",
+      "title": "Раздел II. Цивилизации Древнего Востока и Америки — Древний Египет",
+      "topics": [
+        {
+          "id": "history-t09",
+          "title": "Природа и население Древнего Египта",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        },
+        {
+          "id": "history-t10",
+          "title": "Государство фараонов",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        },
+        {
+          "id": "history-t11",
+          "title": "Превращение Древнего Египта в могущественную державу",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        },
+        {
+          "id": "history-t12",
+          "title": "Быт и повседневная жизнь древних египтян",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        },
+        {
+          "id": "history-t13",
+          "title": "Религия древних египтян",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        },
+        {
+          "id": "history-t14",
+          "title": "Культура древних египтян",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        }
+      ]
+    },
+    {
+      "id": "history-s3",
+      "title": "Передняя Азия в древности",
+      "topics": [
+        {
+          "id": "history-t15",
+          "title": "Древнее Междуречье",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        },
+        {
+          "id": "history-t16",
+          "title": "Становление государства в Месопотамии",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        },
+        {
+          "id": "history-t17",
+          "title": "Государство Хаммурапи",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        },
+        {
+          "id": "history-t18",
+          "title": "Ассирия и Вавилония",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        },
+        {
+          "id": "history-t19",
+          "title": "Культура и религия народов Междуречья",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        },
+        {
+          "id": "history-t20",
+          "title": "Хеттская держава",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        },
+        {
+          "id": "history-t21",
+          "title": "Древний Иран",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        },
+        {
+          "id": "history-t22",
+          "title": "Древняя Финикия",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        },
+        {
+          "id": "history-t23",
+          "title": "Древняя Палестина",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        }
+      ]
+    },
+    {
+      "id": "history-s4",
+      "title": "Индия и Китай в древности",
+      "topics": [
+        {
+          "id": "history-t24",
+          "title": "Древняя Индия",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        },
+        {
+          "id": "history-t25",
+          "title": "Культура Древней Индии",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        },
+        {
+          "id": "history-t26",
+          "title": "Возникновение государства в Китае",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        },
+        {
+          "id": "history-t27",
+          "title": "Общество и культура Древнего Китая",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        }
+      ]
+    },
+    {
+      "id": "history-s5",
+      "title": "Древняя Америка",
+      "topics": [
+        {
+          "id": "history-t28",
+          "title": "Древнейшее население Америки",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        },
+        {
+          "id": "history-t29",
+          "title": "Цивилизация ольмеков",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        }
+      ]
+    }
+  ]
+}

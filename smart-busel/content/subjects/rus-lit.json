@@ -1,0 +1,43 @@
+{
+  "id": "rus-lit",
+  "title": "Русская литература",
+  "language": "ru",
+  "color": "#7048e8",
+  "icon": "📖",
+  "sections": [
+    {
+      "id": "rus-lit-s1",
+      "title": "Предварительный перечень",
+      "topics": [
+        {
+          "id": "rus-lit-t01",
+          "title": "Устное народное творчество",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        },
+        {
+          "id": "rus-lit-t02",
+          "title": "Басни",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        },
+        {
+          "id": "rus-lit-t03",
+          "title": "Стихи о природе",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        },
+        {
+          "id": "rus-lit-t04",
+          "title": "Рассказы и повести",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        }
+      ]
+    }
+  ]
+}

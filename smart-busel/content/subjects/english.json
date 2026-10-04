@@ -1,0 +1,57 @@
+{
+  "id": "english",
+  "title": "Английский язык",
+  "language": "en",
+  "color": "#0c8599",
+  "icon": "🇬🇧",
+  "sections": [
+    {
+      "id": "english-s1",
+      "title": "Preliminary list",
+      "topics": [
+        {
+          "id": "english-t01",
+          "title": "to be",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        },
+        {
+          "id": "english-t02",
+          "title": "have got",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        },
+        {
+          "id": "english-t03",
+          "title": "There is / There are",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        },
+        {
+          "id": "english-t04",
+          "title": "Present Simple",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        },
+        {
+          "id": "english-t05",
+          "title": "Can",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        },
+        {
+          "id": "english-t06",
+          "title": "Plurals and articles",
+          "status": "planned",
+          "needsReview": true,
+          "tasks": []
+        }
+      ]
+    }
+  ]
+}

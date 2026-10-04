@@ -1,0 +1,28 @@
+name: Build Smart Busel installer
+
+on:
+  push:
+    paths: ["smart-busel/**", ".github/workflows/build-busel.yml"]
+  workflow_dispatch: {}
+
+jobs:
+  build:
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: smart-busel
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: smart-busel/package-lock.json
+      - run: npm ci
+      - run: npm run validate-content
+      - run: npm test
+      - run: npm run dist
+      - uses: actions/upload-artifact@v4
+        with:
+          name: umny-busel-installer
+          path: smart-busel/release/*.exe
