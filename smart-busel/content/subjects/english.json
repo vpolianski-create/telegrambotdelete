@@ -12,8 +12,283 @@
         {
           "id": "english-t01",
           "title": "to be",
-          "status": "planned",
-          "needsReview": true
+          "status": "ready",
+          "needsReview": true,
+          "cards": [
+            "Глагол **to be** («быть») — самый частый в английском. В настоящем времени он имеет три формы: **am**, **is**, **are**. Выбор зависит от того, кто выполняет действие.",
+            "**I am** (я есть, я…), **he / she / it is**, **we / you / they are**. Например: I am a pupil. She is my sister. They are at school.",
+            "В русском языке мы пропускаем «есть»: «Я ученик». В английском предложение **без глагола не бывает**: I **am** a pupil.",
+            "Вопрос — глагол ставим **вперёд**: **Are** you ready? Is he at home? Отрицание — добавляем **not**: She **is not** (isn’t) tired."
+          ],
+          "example": {
+            "title": "Вставим am, is или are: «My friends ___ funny».",
+            "steps": [
+              {
+                "text": "Кто «мои друзья»? Это несколько человек, как «they».",
+                "why": "Форма глагола зависит от подлежащего."
+              },
+              {
+                "text": "С they используем are.",
+                "why": "We, you, they — are."
+              },
+              {
+                "text": "Ответ: My friends are funny.",
+                "why": "Читаем получившееся предложение — оно звучит правильно."
+              }
+            ]
+          },
+          "selfCheck": [
+            {
+              "id": "english-t01-sc2",
+              "subject": "english",
+              "topicId": "english-t01",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "I ___ eleven.",
+              "options": [
+                "am",
+                "is",
+                "are"
+              ],
+              "answer": "am",
+              "explanation": [
+                "С местоимением I всегда am."
+              ],
+              "hints": [
+                "Выбери форму для «I»."
+              ]
+            },
+            {
+              "id": "english-t01-sc4",
+              "subject": "english",
+              "topicId": "english-t01",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "She ___ my friend.",
+              "options": [
+                "am",
+                "is",
+                "are"
+              ],
+              "answer": "is",
+              "explanation": [
+                "С he, she, it используем is."
+              ],
+              "hints": [
+                "Выбери форму для «she»."
+              ]
+            }
+          ],
+          "practice": [
+            {
+              "id": "english-t01-p5",
+              "subject": "english",
+              "topicId": "english-t01",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "We ___ friends.",
+              "options": [
+                "am",
+                "is",
+                "are"
+              ],
+              "answer": "are",
+              "explanation": [
+                "We — это are."
+              ],
+              "hints": [
+                "Найди подлежащее и вспомни его форму."
+              ]
+            },
+            {
+              "id": "english-t01-p6",
+              "subject": "english",
+              "topicId": "english-t01",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "He ___ a doctor.",
+              "options": [
+                "am",
+                "is",
+                "are"
+              ],
+              "answer": "is",
+              "explanation": [
+                "He — это is."
+              ],
+              "hints": [
+                "Найди подлежащее и вспомни его форму."
+              ]
+            },
+            {
+              "id": "english-t01-p7",
+              "subject": "english",
+              "topicId": "english-t01",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "They ___ at school.",
+              "options": [
+                "am",
+                "is",
+                "are"
+              ],
+              "answer": "are",
+              "explanation": [
+                "They — это are."
+              ],
+              "hints": [
+                "Найди подлежащее и вспомни его форму."
+              ]
+            },
+            {
+              "id": "english-t01-p8",
+              "subject": "english",
+              "topicId": "english-t01",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "I ___ a pupil.",
+              "options": [
+                "am",
+                "is",
+                "are"
+              ],
+              "answer": "am",
+              "explanation": [
+                "I — это am."
+              ],
+              "hints": [
+                "Найди подлежащее и вспомни его форму."
+              ]
+            },
+            {
+              "id": "english-t01-p9",
+              "subject": "english",
+              "topicId": "english-t01",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "It ___ a big dog.",
+              "options": [
+                "am",
+                "is",
+                "are"
+              ],
+              "answer": "is",
+              "explanation": [
+                "It — это is."
+              ],
+              "hints": [
+                "Найди подлежащее и вспомни его форму."
+              ]
+            },
+            {
+              "id": "english-t01-p10",
+              "subject": "english",
+              "topicId": "english-t01",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "You ___ very kind.",
+              "options": [
+                "am",
+                "is",
+                "are"
+              ],
+              "answer": "are",
+              "explanation": [
+                "You — это are."
+              ],
+              "hints": [
+                "Найди подлежащее и вспомни его форму."
+              ]
+            },
+            {
+              "id": "english-t01-a11",
+              "subject": "english",
+              "topicId": "english-t01",
+              "difficulty": "advanced",
+              "type": "input",
+              "question": "Вставь нужную форму: My brother ___ tall.",
+              "answer": "is",
+              "explanation": [
+                "My brother — это «он» (he), значит, is."
+              ],
+              "hints": [
+                "Замени «my brother» на he."
+              ]
+            },
+            {
+              "id": "english-t01-a12",
+              "subject": "english",
+              "topicId": "english-t01",
+              "difficulty": "advanced",
+              "type": "single",
+              "question": "Как правильно задать вопрос?",
+              "options": [
+                "You are from Belarus?",
+                "Are you from Belarus?",
+                "Is you from Belarus?"
+              ],
+              "answer": "Are you from Belarus?",
+              "explanation": [
+                "В вопросе глагол to be ставим перед подлежащим.",
+                "С you используем are."
+              ],
+              "hints": [
+                "Вопрос начинается с глагола."
+              ]
+            },
+            {
+              "id": "english-t01-a13",
+              "subject": "english",
+              "topicId": "english-t01",
+              "difficulty": "advanced",
+              "type": "truefalse",
+              "question": "Предложение «He are my brother» правильное.",
+              "answer": false,
+              "explanation": [
+                "С he нужно is: He is my brother."
+              ],
+              "hints": [
+                "Какая форма нужна для he?"
+              ]
+            }
+          ],
+          "bonus": [
+            {
+              "id": "english-t01-x14",
+              "subject": "english",
+              "topicId": "english-t01",
+              "difficulty": "bonus",
+              "type": "single",
+              "question": "Выбери верное отрицание: «Мы не дома».",
+              "options": [
+                "We is not at home.",
+                "We are not at home.",
+                "We am not at home."
+              ],
+              "answer": "We are not at home.",
+              "explanation": [
+                "С we используем are, а not ставим после глагола."
+              ],
+              "hints": [
+                "Глагол to be + not."
+              ]
+            },
+            {
+              "id": "english-t01-x15",
+              "subject": "english",
+              "topicId": "english-t01",
+              "difficulty": "bonus",
+              "type": "input",
+              "question": "Вставь am, is или are: My parents ___ at work.",
+              "answer": "are",
+              "explanation": [
+                "My parents — это «они» (they), значит, are."
+              ],
+              "hints": [
+                "Замени «my parents» на they."
+              ]
+            }
+          ]
         },
         {
           "id": "english-t02",

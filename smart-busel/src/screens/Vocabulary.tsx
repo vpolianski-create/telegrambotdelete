@@ -8,17 +8,18 @@ import { hasEnglishVoice, speak } from '../audio/speech';
 import { todayStr, useApp } from '../store/useApp';
 import { Mascot } from '../components/Mascot';
 
-type Mode = 'cards' | 'choose' | 'listen' | 'spell';
+type Mode = 'cards' | 'choose' | 'listen' | 'spell' | 'match';
 const MODES: { id: Mode; icon: string; title: string }[] = [
   { id: 'cards', icon: '🃏', title: 'Карточки' },
   { id: 'choose', icon: '🔤', title: 'Выбери перевод' },
   { id: 'listen', icon: '🎧', title: 'Послушай и выбери' },
   { id: 'spell', icon: '✍️', title: 'Напиши слово' },
+  { id: 'match', icon: '🧩', title: 'Найди пару' },
 ];
 const allWords = wordSets.flatMap((s) => s.words);
 const SESSION = 10;
 
-function wordTask(mode: Exclude<Mode, 'cards'>, w: Word, pool: Word[]): Task {
+function wordTask(mode: Exclude<Mode, 'cards' | 'match'>, w: Word, pool: Word[]): Task {
   const others = shuffle(Math.random, pool.filter((x) => x.id !== w.id));
   const explanation = [`${w.en} ${w.transcription} — ${w.ru}`, w.example];
   const base = { id: `${mode}:${w.id}:${Math.random()}`, subject: 'english', topicId: 'vocab', difficulty: 'basic' as const, explanation };
@@ -31,7 +32,89 @@ function wordTask(mode: Exclude<Mode, 'cards'>, w: Word, pool: Word[]): Task {
   return { ...base, type: 'input', question: `Напиши по-английски: «${w.ru}»`, answer: w.en, hints: [`Первая буква: «${w.en[0]}»`, `Букв в слове: ${w.en.length}`] };
 }
 
+interface MatchCard { key: string; id: string; text: string; lang: 'en' | 'ru' }
+
+/** «Найди пару»: без проигрыша — только время и личный рекорд. */
+function MatchGame({ setId, onExit }: { setId: string; onExit(): void }) {
+  const { leitner, answerWord, recordAnswer, setRecord, records } = useApp();
+  const pool = setId === 'all' ? allWords : wordSets.find((s) => s.id === setId)!.words;
+  const words = useMemo(() => pickSession(shuffle(Math.random, pool), leitner, todayStr(), 6), []);
+  const cards = useMemo<MatchCard[]>(() => shuffle(Math.random, words.flatMap((w) => [
+    { key: w.id + '-en', id: w.id, text: w.en, lang: 'en' as const },
+    { key: w.id + '-ru', id: w.id, text: w.ru, lang: 'ru' as const },
+  ])), [words]);
+  const [open, setOpen] = useState<string[]>([]);
+  const [matched, setMatched] = useState<string[]>([]);
+  const [missed, setMissed] = useState<string[]>([]);
+  const [sec, setSec] = useState(0);
+  const done = matched.length === words.length;
+
+  useEffect(() => {
+    if (done) return;
+    const t = setInterval(() => setSec((x) => x + 1), 1000);
+    return () => clearInterval(t);
+  }, [done]);
+
+  useEffect(() => {
+    if (!done) return;
+    words.forEach((w) => answerWord(w.id, !missed.includes(w.id)));
+    recordAnswer({ subject: 'english', topicId: 'vocab', question: 'Найди пару', correct: true, points: 20 });
+    setRecord('matchBest', sec);
+  }, [done]);
+
+  const pickCard = (c: MatchCard) => {
+    if (matched.includes(c.id) || open.includes(c.key) || open.length >= 2) return;
+    if (c.lang === 'en') speak(c.text);
+    const next = [...open, c.key];
+    setOpen(next);
+    if (next.length < 2) return;
+    const a = cards.find((x) => x.key === next[0])!;
+    if (a.id === c.id && a.lang !== c.lang) {
+      setMatched((m) => [...m, c.id]);
+      setOpen([]);
+    } else {
+      setMissed((m) => [...m, a.id, c.id]);
+      setTimeout(() => setOpen([]), 700);
+    }
+  };
+
+  if (done) {
+    return (
+      <div className="mx-auto flex max-w-xl flex-col items-center gap-4 rounded-xl3 bg-card p-8 text-center shadow">
+        <Mascot size={120} cheer />
+        <h2 className="text-3xl font-extrabold">Все пары найдены!</h2>
+        <p className="text-xl">Время: <b>{sec} с</b>{records.matchBest !== undefined && <> · рекорд: <b>{Math.min(records.matchBest, sec)} с</b></>}</p>
+        <p className="text-mute">+20 баллов</p>
+        <button onClick={onExit} className="rounded-xl2 bg-brand px-8 text-lg font-extrabold text-white">Готово</button>
+      </div>
+    );
+  }
+  return (
+    <div className="flex flex-col items-center gap-4">
+      <p className="text-mute">Найди пары: английское слово и его перевод · {sec} с</p>
+      <div className="grid w-full max-w-3xl grid-cols-3 gap-3 sm:grid-cols-4">
+        {cards.map((c) => {
+          const isOpen = open.includes(c.key);
+          const isDone = matched.includes(c.id);
+          return (
+            <button key={c.key} onClick={() => pickCard(c)} disabled={isDone}
+              className={`min-h-[84px] rounded-xl2 border-2 p-2 text-lg font-extrabold transition-all active:scale-95 ${
+                isDone ? 'border-ok bg-ok/20' : isOpen ? 'border-brand bg-brand/10' : 'border-black/10 bg-card shadow'}`}>
+              {isDone || isOpen ? c.text : '?'}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 function Training({ mode, setId, onExit }: { mode: Mode; setId: string; onExit(): void }) {
+  if (mode === 'match') return <MatchGame setId={setId} onExit={onExit} />;
+  return <WordTraining mode={mode} setId={setId} onExit={onExit} />;
+}
+
+function WordTraining({ mode, setId, onExit }: { mode: Mode; setId: string; onExit(): void }) {
   const { leitner, answerWord, recordAnswer } = useApp();
   const pool = setId === 'all' ? allWords : wordSets.find((s) => s.id === setId)!.words;
   const session = useMemo(() => pickSession(shuffle(Math.random, pool), leitner, todayStr(), SESSION), []);
@@ -40,7 +123,7 @@ function Training({ mode, setId, onExit }: { mode: Mode; setId: string; onExit()
   const [right, setRight] = useState(0);
   const current = session[i];
   const task = useMemo(
-    () => (current && mode !== 'cards' ? wordTask(mode, current, pool) : null),
+    () => (current && mode !== 'cards' && mode !== 'match' ? wordTask(mode, current, pool) : null),
     [i],
   );
 

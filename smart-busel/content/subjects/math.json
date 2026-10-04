@@ -182,7 +182,122 @@
         {
           "id": "math-t10",
           "title": "Степень числа с натуральным показателем",
-          "status": "planned"
+          "status": "ready",
+          "cards": [
+            "Умножать одинаковые числа приходится часто. Например, в квадратной шоколадке 4 ряда по 4 дольки. Чтобы не писать 4 · 4 · 4 · 4, придумали короткую запись — **степень**.",
+            "Запись **5³** читается «пять в третьей степени» и означает 5 · 5 · 5 = 125. Число 5 — это **основание** (повторяющийся множитель), число 3 — **показатель** (сколько раз он повторяется).",
+            "Вторую степень называют **квадратом**: 7² = 7 · 7 = 49 — это площадь квадрата со стороной 7. Третью степень называют **кубом**.",
+            "Осторожно! **2⁴ — это не 2 · 4**, а 2 · 2 · 2 · 2 = 16. Показатель говорит не «на что умножить», а «сколько раз повторить»."
+          ],
+          "example": {
+            "title": "Вычислим 3⁴ и запишем 6 · 6 · 6 в виде степени.",
+            "steps": [
+              {
+                "text": "Показатель равен 4, значит, число 3 берём множителем 4 раза: 3 · 3 · 3 · 3.",
+                "why": "Показатель степени — количество одинаковых множителей."
+              },
+              {
+                "text": "Считаем по порядку: 3 · 3 = 9, 9 · 3 = 27, 27 · 3 = 81.",
+                "why": "Умножаем по два множителя — так проще не ошибиться."
+              },
+              {
+                "text": "Теперь 6 · 6 · 6: множитель 6 повторяется 3 раза, значит, это 6³.",
+                "why": "Основание — повторяющийся множитель, показатель — сколько раз он встречается."
+              }
+            ]
+          },
+          "selfCheck": [
+            {
+              "id": "math-t10-sc2",
+              "subject": "math",
+              "topicId": "math-t10",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Чему равно 2³?",
+              "options": [
+                "6",
+                "8",
+                "9",
+                "5"
+              ],
+              "answer": "8",
+              "explanation": [
+                "2³ = 2 · 2 · 2.",
+                "2 · 2 = 4, 4 · 2 = 8."
+              ],
+              "hints": [
+                "Запиши 2 три раза через умножение."
+              ]
+            },
+            {
+              "id": "math-t10-sc4",
+              "subject": "math",
+              "topicId": "math-t10",
+              "difficulty": "basic",
+              "type": "truefalse",
+              "question": "5² и 5 · 2 — это одно и то же.",
+              "answer": false,
+              "explanation": [
+                "5² = 5 · 5 = 25.",
+                "5 · 2 = 10. Это разные числа."
+              ],
+              "hints": [
+                "Раскрой степень как произведение одинаковых множителей."
+              ]
+            }
+          ],
+          "practice": [
+            {
+              "generator": "math.power.compute",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "math.power.compute",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "math.power.compute",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "math.power.write",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "math.power.write",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "math.power.square",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "math.power.compare",
+              "difficulty": "advanced"
+            },
+            {
+              "generator": "math.power.compare",
+              "difficulty": "advanced"
+            },
+            {
+              "generator": "math.power.compute",
+              "difficulty": "advanced"
+            }
+          ],
+          "bonus": [
+            {
+              "generator": "math.power.compute",
+              "difficulty": "bonus"
+            },
+            {
+              "generator": "math.power.compute",
+              "difficulty": "bonus"
+            },
+            {
+              "generator": "math.power.compare",
+              "difficulty": "bonus"
+            }
+          ]
         },
         {
           "id": "math-t11",
@@ -311,12 +426,252 @@
         {
           "id": "math-t12",
           "title": "Делители и кратные. НОД и НОК",
-          "status": "planned"
+          "status": "ready",
+          "cards": [
+            "**Делитель** числа — это число, на которое оно делится без остатка. У числа 12 делители: 1, 2, 3, 4, 6, 12. А **кратное** числа получается умножением его на 1, 2, 3…: кратные 4 — это 4, 8, 12, 16…",
+            "**Наибольший общий делитель (НОД)** двух чисел — самое большое число, на которое делятся оба. НОД(12, 18) = 6.",
+            "**Наименьшее общее кратное (НОК)** двух чисел — самое маленькое число, которое делится на оба. НОК(4, 6) = 12.",
+            "Где это нужно? НОД помогает поровну разложить вещи по подаркам, а НОК — понять, когда два повторяющихся события совпадут (например, два автобуса отправятся одновременно)."
+          ],
+          "example": {
+            "title": "Найдём НОД(12, 18) и НОК(4, 6).",
+            "steps": [
+              {
+                "text": "Делители 12: 1, 2, 3, 4, 6, 12. Делители 18: 1, 2, 3, 6, 9, 18.",
+                "why": "Выписываем делители каждого числа, чтобы увидеть общие."
+              },
+              {
+                "text": "Общие делители: 1, 2, 3, 6. Наибольший — 6. НОД(12, 18) = 6.",
+                "why": "НОД — самый большой из общих делителей."
+              },
+              {
+                "text": "Кратные 4: 4, 8, 12, 16. Кратные 6: 6, 12, 18.",
+                "why": "Выписываем кратные по порядку, пока не найдём совпадение."
+              },
+              {
+                "text": "Первое общее число — 12. НОК(4, 6) = 12.",
+                "why": "НОК — самое маленькое из общих кратных."
+              }
+            ]
+          },
+          "selfCheck": [
+            {
+              "id": "math-t12-sc2",
+              "subject": "math",
+              "topicId": "math-t12",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Какое число является делителем числа 20?",
+              "options": [
+                "6",
+                "5",
+                "8",
+                "15"
+              ],
+              "answer": "5",
+              "explanation": [
+                "20 : 5 = 4 без остатка.",
+                "Остальные числа не делят 20 нацело."
+              ],
+              "hints": [
+                "Раздели 20 на каждый вариант."
+              ]
+            },
+            {
+              "id": "math-t12-sc4",
+              "subject": "math",
+              "topicId": "math-t12",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Чему равно НОК(2, 3)?",
+              "options": [
+                "1",
+                "5",
+                "6",
+                "23"
+              ],
+              "answer": "6",
+              "explanation": [
+                "Кратные 2: 2, 4, 6. Кратные 3: 3, 6.",
+                "Первое общее — 6."
+              ],
+              "hints": [
+                "Выпиши кратные каждого числа."
+              ]
+            }
+          ],
+          "practice": [
+            {
+              "generator": "math.gcdlcm.divisors",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "math.gcdlcm.divisors",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "math.gcdlcm.gcd",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "math.gcdlcm.gcd",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "math.gcdlcm.lcm",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "math.gcdlcm.lcm",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "math.gcdlcm.gcd",
+              "difficulty": "advanced"
+            },
+            {
+              "generator": "math.gcdlcm.lcm",
+              "difficulty": "advanced"
+            },
+            {
+              "generator": "math.gcdlcm.lcmProblem",
+              "difficulty": "advanced"
+            }
+          ],
+          "bonus": [
+            {
+              "generator": "math.gcdlcm.gcdProblem",
+              "difficulty": "bonus"
+            },
+            {
+              "generator": "math.gcdlcm.gcdProblem",
+              "difficulty": "bonus"
+            },
+            {
+              "generator": "math.gcdlcm.lcmProblem",
+              "difficulty": "bonus"
+            }
+          ]
         },
         {
           "id": "math-t13",
           "title": "Признаки делимости",
-          "status": "planned"
+          "status": "ready",
+          "cards": [
+            "Чтобы узнать, делится ли большое число на 2, 3, 5, 9 или 10, не обязательно делить: есть быстрые **признаки делимости**. Это как секретные подсказки.",
+            "На **2** делятся числа, оканчивающиеся на 0, 2, 4, 6, 8. На **5** — оканчивающиеся на 0 или 5. На **10** — только на 0.",
+            "На **3** делится число, у которого **сумма цифр** делится на 3. Для 4 512: 4 + 5 + 1 + 2 = 12, а 12 делится на 3 — значит, и 4 512 делится на 3.",
+            "На **9** — то же самое: сумма цифр должна делиться на 9. А если число делится и на 2, и на 3, то оно делится и на **6**."
+          ],
+          "example": {
+            "title": "Проверим, делится ли число 2 358 на 3, на 9 и на 2.",
+            "steps": [
+              {
+                "text": "Считаем сумму цифр: 2 + 3 + 5 + 8 = 18.",
+                "why": "Признаки делимости на 3 и на 9 работают с суммой цифр."
+              },
+              {
+                "text": "18 делится на 3 и на 9, значит, 2 358 делится и на 3, и на 9.",
+                "why": "18 : 3 = 6 и 18 : 9 = 2 — остатка нет."
+              },
+              {
+                "text": "Последняя цифра 8 — чётная, значит, число делится и на 2.",
+                "why": "Для делимости на 2 смотрим только на последнюю цифру."
+              }
+            ]
+          },
+          "selfCheck": [
+            {
+              "id": "math-t13-sc2",
+              "subject": "math",
+              "topicId": "math-t13",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Какое число делится на 5?",
+              "options": [
+                "1 243",
+                "1 240",
+                "1 242",
+                "1 246"
+              ],
+              "answer": "1 240",
+              "explanation": [
+                "Число делится на 5, если оканчивается на 0 или 5.",
+                "1 240 оканчивается на 0."
+              ],
+              "hints": [
+                "Смотри на последнюю цифру."
+              ]
+            },
+            {
+              "id": "math-t13-sc4",
+              "subject": "math",
+              "topicId": "math-t13",
+              "difficulty": "basic",
+              "type": "truefalse",
+              "question": "Число 124 делится на 3.",
+              "answer": false,
+              "explanation": [
+                "Сумма цифр: 1 + 2 + 4 = 7.",
+                "7 на 3 не делится, значит, и 124 не делится."
+              ],
+              "hints": [
+                "Сложи цифры."
+              ]
+            }
+          ],
+          "practice": [
+            {
+              "generator": "math.div.can",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "math.div.can",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "math.div.can",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "math.div.choose",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "math.div.choose",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "math.div.can",
+              "difficulty": "advanced"
+            },
+            {
+              "generator": "math.div.can",
+              "difficulty": "advanced"
+            },
+            {
+              "generator": "math.div.choose",
+              "difficulty": "advanced"
+            },
+            {
+              "generator": "math.div.digit",
+              "difficulty": "advanced"
+            }
+          ],
+          "bonus": [
+            {
+              "generator": "math.div.six",
+              "difficulty": "bonus"
+            },
+            {
+              "generator": "math.div.six",
+              "difficulty": "bonus"
+            },
+            {
+              "generator": "math.div.digit",
+              "difficulty": "bonus"
+            }
+          ]
         },
         {
           "id": "math-t14",
@@ -342,7 +697,122 @@
         {
           "id": "math-t17",
           "title": "Уравнение",
-          "status": "planned"
+          "status": "ready",
+          "cards": [
+            "**Уравнение** — это равенство, в котором есть неизвестное число, обозначенное буквой, например x. Например: x + 5 = 12. Нужно найти такое x, чтобы равенство стало верным.",
+            "Число, которое делает равенство верным, называют **корнем уравнения**. Решить уравнение — значит найти все его корни. Здесь корень 7, потому что 7 + 5 = 12.",
+            "Помогают **правила нахождения неизвестного**: слагаемое = сумма − другое слагаемое; уменьшаемое = разность + вычитаемое; множитель = произведение : другой множитель; делимое = частное · делитель.",
+            "Всегда делай **проверку**: подставь найденное число в уравнение. Если равенство верное — ты не ошибся!"
+          ],
+          "example": {
+            "title": "Решим уравнение x − 14 = 25.",
+            "steps": [
+              {
+                "text": "x — уменьшаемое, 14 — вычитаемое, 25 — разность.",
+                "why": "Сначала понимаем, какую роль играет неизвестное."
+              },
+              {
+                "text": "Уменьшаемое = разность + вычитаемое: x = 25 + 14 = 39.",
+                "why": "Чтобы «вернуть» то, что вычли, прибавляем это число."
+              },
+              {
+                "text": "Проверка: 39 − 14 = 25 ✓.",
+                "why": "Подставляем ответ в уравнение — равенство верное."
+              }
+            ]
+          },
+          "selfCheck": [
+            {
+              "id": "math-t17-sc2",
+              "subject": "math",
+              "topicId": "math-t17",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Чему равен корень уравнения x + 6 = 15?",
+              "options": [
+                "9",
+                "21",
+                "11",
+                "8"
+              ],
+              "answer": "9",
+              "explanation": [
+                "x — неизвестное слагаемое: x = 15 − 6 = 9.",
+                "Проверка: 9 + 6 = 15 ✓"
+              ],
+              "hints": [
+                "Из суммы вычти известное слагаемое."
+              ]
+            },
+            {
+              "id": "math-t17-sc4",
+              "subject": "math",
+              "topicId": "math-t17",
+              "difficulty": "basic",
+              "type": "truefalse",
+              "question": "Число 4 — корень уравнения 3 · x = 12.",
+              "answer": true,
+              "explanation": [
+                "3 · 4 = 12 — верное равенство.",
+                "Значит, 4 — корень."
+              ],
+              "hints": [
+                "Подставь 4 вместо x."
+              ]
+            }
+          ],
+          "practice": [
+            {
+              "generator": "math.eq.simple",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "math.eq.simple",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "math.eq.simple",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "math.eq.simple",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "math.eq.simple",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "math.eq.root",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "math.eq.twoStep",
+              "difficulty": "advanced"
+            },
+            {
+              "generator": "math.eq.twoStep",
+              "difficulty": "advanced"
+            },
+            {
+              "generator": "math.eq.word",
+              "difficulty": "advanced"
+            }
+          ],
+          "bonus": [
+            {
+              "generator": "math.eq.word",
+              "difficulty": "bonus"
+            },
+            {
+              "generator": "math.eq.word",
+              "difficulty": "bonus"
+            },
+            {
+              "generator": "math.eq.twoStep",
+              "difficulty": "bonus"
+            }
+          ]
         },
         {
           "id": "math-t18",

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { subjects } from '../content/loader';
 import { addDays } from '../engine/leitner';
 import { hasEnglishVoice } from '../audio/speech';
-import { todayStr, useApp, type Data } from '../store/useApp';
+import { snapshot, todayStr, useApp } from '../store/useApp';
 
 type Tab = 'stats' | 'rewards' | 'settings' | 'backup';
 const TABS: [Tab, string][] = [['stats', 'Статистика'], ['rewards', 'Награды'], ['settings', 'Настройки'], ['backup', 'Копия']];
@@ -149,8 +149,7 @@ function Backup() {
   const store = useApp();
   const [msg, setMsg] = useState('');
   const exportData = () => {
-    const { points, rewards, celebrated, topicResults, daily, subjectStats, mistakes, leitner, badges, settings } = store;
-    const data: Data = { points, rewards, celebrated, topicResults, daily, subjectStats, mistakes, leitner, badges, settings };
+    const data = snapshot();
     const a = document.createElement('a');
     a.href = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' }));
     a.download = `umny-busel-${todayStr()}.json`;

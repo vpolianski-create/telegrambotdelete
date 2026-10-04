@@ -41,3 +41,28 @@ describe('генераторы математики', () => {
     }
   });
 });
+
+import { centuryBC, toRoman } from '../src/generators/history';
+
+describe('история и вспомогательные функции', () => {
+  it('римские числа и век до н. э.', () => {
+    expect([4, 8, 9, 14, 21, 35].map(toRoman)).toEqual(['IV', 'VIII', 'IX', 'XIV', 'XXI', 'XXXV']);
+    expect(centuryBC(753)).toBe(8);
+    expect(centuryBC(100)).toBe(1);
+    expect(centuryBC(101)).toBe(2);
+  });
+  it('НОД/НОК/делимость: ответы совпадают с независимой проверкой', () => {
+    const gcd = (a: number, b: number): number => (b ? gcd(b, a % b) : a);
+    const rng = seeded(11);
+    for (let i = 0; i < 100; i++) {
+      const t = generate({ generator: 'math.gcdlcm.gcd', difficulty: 'advanced' }, { subject: 'm', topicId: 't' }, rng);
+      const [a, b] = [...t.question.matchAll(/\d+/g)].map((m) => Number(m[0]));
+      expect(gcd(a, b)).toBe(t.answer);
+    }
+    for (let i = 0; i < 100; i++) {
+      const t = generate({ generator: 'math.div.digit', difficulty: 'basic' }, { subject: 'm', topicId: 't' }, rng);
+      expect(Number(t.answer)).toBeGreaterThanOrEqual(0);
+      expect(Number(t.answer)).toBeLessThanOrEqual(9);
+    }
+  });
+});

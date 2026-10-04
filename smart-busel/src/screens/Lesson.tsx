@@ -6,6 +6,7 @@ import { Rich } from '../components/Rich';
 import { TaskView, type TaskResult } from '../components/TaskView';
 import { findTopic } from '../content/loader';
 import { isGeneratorRef, type Entry, type GeneratorRef, type Task } from '../content/schema';
+import { ACCESSORIES, type ChestResult } from '../engine/chest';
 import { comboBonus, TOPIC_PASS_PERCENT } from '../engine/points';
 import { generate } from '../generators';
 import { useApp } from '../store/useApp';
@@ -24,7 +25,8 @@ const Btn = ({ children, onClick, ghost }: { children: React.ReactNode; onClick(
 
 export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: string; topicId: string; onExit(): void; onRetry(): void }) {
   const found = findTopic(subjectId, topicId);
-  const { recordAnswer, finishTopic, settings } = useApp();
+  const { recordAnswer, finishTopic, openChest, settings, topicResults, setLastTopic } = useApp();
+  useEffect(() => { setLastTopic(subjectId, topicId); }, [subjectId, topicId]);
   const topic = found!.topic;
   const ctx = { subject: subjectId, topicId };
 
@@ -39,6 +41,8 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
   const [streak, setStreak] = useState(0);
   const [stats, setStats] = useState({ counted: 0, correct: 0, gained: 0, wrong: [] as string[] });
   const [topicBonus, setTopicBonus] = useState(0);
+  const [hintsUsed, setHintsUsed] = useState(0);
+  const [chest, setChest] = useState<ChestResult>();
   const finished = useRef(false);
 
   const selfItems = useMemo(() => build(topic.selfCheck, false), []);
@@ -47,7 +51,7 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
   useEffect(() => {
     if (phase !== 'result' || finished.current) return;
     finished.current = true;
-    setTopicBonus(finishTopic(topic.id, percent));
+    setTopicBonus(finishTopic(topic.id, percent, { noHints: hintsUsed === 0 }));
     if (percent >= TOPIC_PASS_PERCENT && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
     }
@@ -61,8 +65,9 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
     const newStreak = r.correct ? streak + 1 : 0;
     const combo = r.correct ? comboBonus(newStreak) : 0;
     const gained = recordAnswer({
-      subject: subjectId, topicId, question: item.task.question, correct: r.correct, points: r.points + combo,
+      subject: subjectId, topicId, question: item.task.question, correct: r.correct, points: r.points + combo, combo: combo > 0,
     });
+    setHintsUsed((h) => h + r.hints);
     setStreak(newStreak);
     setStats((s) => ({
       counted: s.counted + (item.counted ? 1 : 0),
@@ -172,6 +177,18 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
           <p className="mb-1 font-extrabold">Стоит повторить:</p>
           <ul className="list-disc pl-6">{[...new Set(stats.wrong)].slice(0, 5).map((q) => <li key={q}>{q}</li>)}</ul>
         </div>
+      )}
+      {passed && !chest && topicResults[topic.id]?.done && !topicResults[topic.id]?.chestOpened && (
+        <motion.button whileTap={{ scale: 0.9 }} animate={{ rotate: [0, -6, 6, 0] }} transition={{ repeat: Infinity, duration: 1.4 }}
+          onClick={() => setChest(openChest(topic.id))}
+          className="rounded-xl3 bg-accent px-8 py-4 text-2xl font-extrabold text-white shadow">🎁 Открыть сундук-сюрприз!</motion.button>
+      )}
+      {chest && (
+        <motion.p initial={{ scale: 0.5, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="rounded-xl3 bg-ok/15 px-6 py-3 text-2xl font-extrabold">
+          {chest.kind === 'sticker' && `В сундуке стикер ${chest.id}!`}
+          {chest.kind === 'accessory' && `В сундуке наряд для Бусела: ${ACCESSORIES.find((a) => a.id === chest.id)?.emoji} ${ACCESSORIES.find((a) => a.id === chest.id)?.name}!`}
+          {chest.kind === 'points' && `В сундуке +${chest.amount} баллов!`}
+        </motion.p>
       )}
       <div className="flex gap-3">
         <Btn ghost onClick={onExit}>К темам</Btn>

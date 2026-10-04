@@ -7,31 +7,275 @@
   "sections": [
     {
       "id": "bel-lit-s1",
-      "title": "Папярэдні пералік",
+      "title": "«Мой чароўны беларускі край…»",
       "topics": [
         {
           "id": "bel-lit-t01",
-          "title": "Фальклор",
+          "title": "П. Броўка. «Калі ласка!»",
           "status": "planned",
-          "needsReview": true
+          "needsReview": true,
+          "cards": [],
+          "selfCheck": [],
+          "practice": [],
+          "bonus": []
         },
         {
           "id": "bel-lit-t02",
-          "title": "Казкі",
+          "title": "Я. Янішчыц. «Мова»",
           "status": "planned",
-          "needsReview": true
+          "needsReview": true,
+          "cards": [],
+          "selfCheck": [],
+          "practice": [],
+          "bonus": []
         },
         {
           "id": "bel-lit-t03",
-          "title": "Вершы беларускіх паэтаў",
+          "title": "А. Грачанікаў. «Дрымотна ціснуцца кусты…»",
           "status": "planned",
-          "needsReview": true
+          "needsReview": true,
+          "cards": [],
+          "selfCheck": [],
+          "practice": [],
+          "bonus": []
         },
         {
           "id": "bel-lit-t04",
-          "title": "Апавяданні",
+          "title": "Пра выразнае чытанне літаратурнага твора",
           "status": "planned",
-          "needsReview": true
+          "needsReview": true,
+          "cards": [],
+          "selfCheck": [],
+          "practice": [],
+          "bonus": []
+        },
+        {
+          "id": "bel-lit-t05",
+          "title": "У. Караткевіч. «Бацькаўшчына»",
+          "status": "planned",
+          "needsReview": true,
+          "cards": [],
+          "selfCheck": [],
+          "practice": [],
+          "bonus": []
+        }
+      ]
+    },
+    {
+      "id": "bel-lit-s2",
+      "title": "За смугою стагоддзяў",
+      "topics": [
+        {
+          "id": "bel-lit-t06",
+          "title": "Пра вусную народную творчасць",
+          "status": "planned",
+          "needsReview": true,
+          "cards": [],
+          "selfCheck": [],
+          "practice": [],
+          "bonus": []
+        },
+        {
+          "id": "bel-lit-t07",
+          "title": "Народныя казкі: «Разумная дачка»",
+          "status": "planned",
+          "needsReview": true,
+          "cards": [],
+          "selfCheck": [],
+          "practice": [],
+          "bonus": []
+        },
+        {
+          "id": "bel-lit-t08",
+          "title": "Народныя казкі: «Залатыя птах», «Музыкі»",
+          "status": "planned",
+          "needsReview": true,
+          "cards": [],
+          "selfCheck": [],
+          "practice": [],
+          "bonus": []
+        },
+        {
+          "id": "bel-lit-t09",
+          "title": "Легенды: «Нарач», «Пеструнь»",
+          "status": "planned",
+          "needsReview": true,
+          "cards": [],
+          "selfCheck": [],
+          "practice": [],
+          "bonus": []
+        },
+        {
+          "id": "bel-lit-t10",
+          "title": "Загадкі",
+          "status": "planned",
+          "needsReview": true,
+          "cards": [],
+          "selfCheck": [],
+          "practice": [],
+          "bonus": []
+        },
+        {
+          "id": "bel-lit-t11",
+          "title": "Прыказкі і прымаўкі",
+          "status": "planned",
+          "needsReview": true,
+          "cards": [],
+          "selfCheck": [],
+          "practice": [],
+          "bonus": []
+        },
+        {
+          "id": "bel-lit-t12",
+          "title": "Прыкметы і павер’і",
+          "status": "planned",
+          "needsReview": true,
+          "cards": [],
+          "selfCheck": [],
+          "practice": [],
+          "bonus": []
+        }
+      ]
+    },
+    {
+      "id": "bel-lit-s3",
+      "title": "Казка — у жыцці падказка",
+      "topics": [
+        {
+          "id": "bel-lit-t13",
+          "title": "М. Танк. «Ля вогнішч начлежных» (урывак з паэмы «Нарач»)",
+          "status": "planned",
+          "needsReview": true,
+          "cards": [],
+          "selfCheck": [],
+          "practice": [],
+          "bonus": []
+        },
+        {
+          "id": "bel-lit-t14",
+          "title": "Я. Колас. «Крыніца»",
+          "status": "planned",
+          "needsReview": true,
+          "cards": [],
+          "selfCheck": [],
+          "practice": [],
+          "bonus": []
+        },
+        {
+          "id": "bel-lit-t15",
+          "title": "У. Караткевіч. «Нямогты бацька»",
+          "status": "planned",
+          "needsReview": true,
+          "cards": [],
+          "selfCheck": [],
+          "practice": [],
+          "bonus": []
+        },
+        {
+          "id": "bel-lit-t16",
+          "title": "А. Федарэнка. «Падслуханая казка»",
+          "status": "planned",
+          "needsReview": true,
+          "cards": [],
+          "selfCheck": [],
+          "practice": [],
+          "bonus": []
+        }
+      ]
+    },
+    {
+      "id": "bel-lit-s4",
+      "title": "Прыроды вечная краса",
+      "topics": [
+        {
+          "id": "bel-lit-t17",
+          "title": "М. Багдановіч. «Зімой»",
+          "status": "planned",
+          "needsReview": true,
+          "cards": [],
+          "selfCheck": [],
+          "practice": [],
+          "bonus": []
+        },
+        {
+          "id": "bel-lit-t18",
+          "title": "А. Грачанікаў. «Зоры сляваюць»",
+          "status": "planned",
+          "needsReview": true,
+          "cards": [],
+          "selfCheck": [],
+          "practice": [],
+          "bonus": []
+        },
+        {
+          "id": "bel-lit-t19",
+          "title": "Пра эпітэт",
+          "status": "planned",
+          "needsReview": true,
+          "cards": [],
+          "selfCheck": [],
+          "practice": [],
+          "bonus": []
+        },
+        {
+          "id": "bel-lit-t20",
+          "title": "Я. Колас. «Песня лясного жаваранка»",
+          "status": "planned",
+          "needsReview": true,
+          "cards": [],
+          "selfCheck": [],
+          "practice": [],
+          "bonus": []
+        },
+        {
+          "id": "bel-lit-t21",
+          "title": "Я. Колас. «На рэчцы» (урывак з паэмы «Новая зямля»)",
+          "status": "planned",
+          "needsReview": true,
+          "cards": [],
+          "selfCheck": [],
+          "practice": [],
+          "bonus": []
+        },
+        {
+          "id": "bel-lit-t22",
+          "title": "Пра параўнанне",
+          "status": "planned",
+          "needsReview": true,
+          "cards": [],
+          "selfCheck": [],
+          "practice": [],
+          "bonus": []
+        },
+        {
+          "id": "bel-lit-t23",
+          "title": "У. Караткевіч. «Лісце»",
+          "status": "planned",
+          "needsReview": true,
+          "cards": [],
+          "selfCheck": [],
+          "practice": [],
+          "bonus": []
+        },
+        {
+          "id": "bel-lit-t24",
+          "title": "А. Грачанікаў. «Верасень»",
+          "status": "planned",
+          "needsReview": true,
+          "cards": [],
+          "selfCheck": [],
+          "practice": [],
+          "bonus": []
+        },
+        {
+          "id": "bel-lit-t25",
+          "title": "П. Броўка. «Кропля»",
+          "status": "planned",
+          "needsReview": true,
+          "cards": [],
+          "selfCheck": [],
+          "practice": [],
+          "bonus": []
         }
       ]
     }

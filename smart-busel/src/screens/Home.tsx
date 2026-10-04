@@ -1,20 +1,24 @@
 import { Mascot } from '../components/Mascot';
 import { ProgressBar } from '../components/ProgressBar';
-import { subjects } from '../content/loader';
+import { findTopic, subjects } from '../content/loader';
 import { levelFor } from '../engine/level';
 import { progressToNext } from '../engine/rewards';
+import { currentStreak } from '../engine/streak';
 import { todayStr, useApp } from '../store/useApp';
 
-export function Home({ onSubject, onParent, onTopic }: { onSubject(id: string): void; onParent(): void; onTopic(subjectId: string, topicId: string): void }) {
-  const { settings, points, rewards, topicResults, daily } = useApp();
+export function Home({ onSubject, onParent, onTopic, onCollection }: { onSubject(id: string): void; onParent(): void; onTopic(subjectId: string, topicId: string): void; onCollection(): void }) {
+  const { settings, points, rewards, topicResults, daily, lastTopic } = useApp();
   const p = progressToNext(points, settings.rewardThreshold);
   const lvl = levelFor(points);
   const pending = rewards.filter((r) => r.status === 'pending').length;
   const today = daily[todayStr()];
   const goalDone = today?.tasks ?? 0;
+  const streak = currentStreak((d) => (daily[d]?.tasks ?? 0) > 0, todayStr());
 
   // «Продолжить»: первая готовая тема, которую ещё не прошли
   let next: { subjectId: string; topicId: string; title: string } | undefined;
+  const last = lastTopic ? findTopic(lastTopic.subjectId, lastTopic.topicId) : undefined;
+  if (last && !topicResults[last.topic.id]?.done) next = { subjectId: last.subject.id, topicId: last.topic.id, title: last.topic.title };
   for (const s of subjects)
     for (const sec of s.sections)
       for (const t of sec.topics)
@@ -32,6 +36,12 @@ export function Home({ onSubject, onParent, onTopic }: { onSubject(id: string): 
             <p className="mt-1 text-sm text-mute">До награды осталось {p.left} баллов</p>
           </div>
         </div>
+        {streak.days > 0 && (
+          <span className="rounded-full bg-black/5 px-4 py-2 font-extrabold" title={streak.freezeAvailable ? 'На этой неделе есть бесплатная заморозка серии' : 'Серия дней'}>
+            🔥 {streak.days}{streak.freezeAvailable && ' ❄️'}
+          </span>
+        )}
+        <button onClick={onCollection} aria-label="Моя коллекция" className="rounded-xl2 bg-black/5 px-4 text-2xl">🏅</button>
         {pending > 0 && (
           <span className="rounded-full bg-accent px-4 py-2 font-extrabold text-white" title="Награды ждут">🎁 {pending}</span>
         )}

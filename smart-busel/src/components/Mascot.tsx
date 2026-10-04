@@ -1,7 +1,11 @@
 import { motion } from 'framer-motion';
+import { ACCESSORIES } from '../engine/chest';
+import { useApp } from '../store/useApp';
 
 /** Бусел — оригинальный аист в мягком векторном стиле. */
-export function Mascot({ size = 120, cheer = false }: { size?: number; cheer?: boolean }) {
+export function Mascot({ size = 120, cheer = false, accessory }: { size?: number; cheer?: boolean; accessory?: string }) {
+  const equipped = useApp((s) => s.settings.accessory);
+  const acc = ACCESSORIES.find((a) => a.id === (accessory ?? equipped));
   return (
     <motion.svg
       width={size} height={size} viewBox="0 0 120 120" role="img" aria-label="Бусел"
@@ -16,6 +20,7 @@ export function Mascot({ size = 120, cheer = false }: { size?: number; cheer?: b
       <circle cx="82" cy="24" r="12" fill="#ffffff" stroke="#cfd8e6" strokeWidth="2" />
       <path d="M92 22 L116 28 L92 31z" fill="#e5483f" />
       <circle cx="84" cy="21" r="2.6" fill="#1e2a3a" />
+      {acc && <text x={acc.x} y={acc.y} fontSize={acc.size} textAnchor="middle">{acc.emoji}</text>}
     </motion.svg>
   );
 }

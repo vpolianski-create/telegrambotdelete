@@ -7,31 +7,195 @@
   "sections": [
     {
       "id": "rus-lit-s1",
-      "title": "Предварительный перечень",
+      "title": "Устное народное творчество и литература: об эпических произведениях",
       "topics": [
         {
           "id": "rus-lit-t01",
-          "title": "Устное народное творчество",
+          "title": "От народной сказки — к литературной: «Царевна-лягушка»",
           "status": "planned",
-          "needsReview": true
+          "needsReview": true,
+          "cards": [],
+          "selfCheck": [],
+          "practice": [],
+          "bonus": []
         },
         {
           "id": "rus-lit-t02",
-          "title": "Басни",
+          "title": "В мастерской художника слова: литературный герой",
           "status": "planned",
-          "needsReview": true
+          "needsReview": true,
+          "cards": [],
+          "selfCheck": [],
+          "practice": [],
+          "bonus": []
         },
         {
           "id": "rus-lit-t03",
-          "title": "Стихи о природе",
+          "title": "А. С. Пушкин. «Сказка о мёртвой царевне и о семи богатырях»",
           "status": "planned",
-          "needsReview": true
+          "needsReview": true,
+          "cards": [],
+          "selfCheck": [],
+          "practice": [],
+          "bonus": []
         },
         {
           "id": "rus-lit-t04",
-          "title": "Рассказы и повести",
+          "title": "В мастерской художника слова: ритм, рифма, интонация",
           "status": "planned",
-          "needsReview": true
+          "needsReview": true,
+          "cards": [],
+          "selfCheck": [],
+          "practice": [],
+          "bonus": []
+        },
+        {
+          "id": "rus-lit-t05",
+          "title": "Х. К. Андерсен. «Снежная королева»",
+          "status": "planned",
+          "needsReview": true,
+          "cards": [],
+          "selfCheck": [],
+          "practice": [],
+          "bonus": []
+        },
+        {
+          "id": "rus-lit-t06",
+          "title": "О мифах: древнегреческие мифы о богах («Олимп»)",
+          "status": "planned",
+          "needsReview": true,
+          "cards": [],
+          "selfCheck": [],
+          "practice": [],
+          "bonus": []
+        },
+        {
+          "id": "rus-lit-t07",
+          "title": "Древнегреческие мифы о героях: подвиги Геракла",
+          "status": "planned",
+          "needsReview": true,
+          "cards": [],
+          "selfCheck": [],
+          "practice": [],
+          "bonus": []
+        }
+      ]
+    },
+    {
+      "id": "rus-lit-s2",
+      "title": "О лирических произведениях",
+      "topics": [
+        {
+          "id": "rus-lit-t08",
+          "title": "А. Н. Майков. «Колыбельная песня»",
+          "status": "planned",
+          "needsReview": true,
+          "cards": [],
+          "selfCheck": [],
+          "practice": [],
+          "bonus": []
+        },
+        {
+          "id": "rus-lit-t09",
+          "title": "А. В. Кольцов. «Косарь»",
+          "status": "planned",
+          "needsReview": true,
+          "cards": [],
+          "selfCheck": [],
+          "practice": [],
+          "bonus": []
+        },
+        {
+          "id": "rus-lit-t10",
+          "title": "И. С. Никитин. «Ярко звёзд мерцанье…»",
+          "status": "planned",
+          "needsReview": true,
+          "cards": [],
+          "selfCheck": [],
+          "practice": [],
+          "bonus": []
+        },
+        {
+          "id": "rus-lit-t11",
+          "title": "В мастерской художника слова: эпитет",
+          "status": "planned",
+          "needsReview": true,
+          "cards": [],
+          "selfCheck": [],
+          "practice": [],
+          "bonus": []
+        }
+      ]
+    },
+    {
+      "id": "rus-lit-s3",
+      "title": "О драматических произведениях",
+      "topics": [
+        {
+          "id": "rus-lit-t12",
+          "title": "Как появился театр",
+          "status": "planned",
+          "needsReview": true,
+          "cards": [],
+          "selfCheck": [],
+          "practice": [],
+          "bonus": []
+        },
+        {
+          "id": "rus-lit-t13",
+          "title": "С. Я. Маршак. «Двенадцать месяцев»",
+          "status": "planned",
+          "needsReview": true,
+          "cards": [],
+          "selfCheck": [],
+          "practice": [],
+          "bonus": []
+        }
+      ]
+    },
+    {
+      "id": "rus-lit-s4",
+      "title": "«И вижу я себя ребёнком…»",
+      "topics": [
+        {
+          "id": "rus-lit-t14",
+          "title": "Н. А. Некрасов. «Крестьянские дети»",
+          "status": "planned",
+          "needsReview": true,
+          "cards": [],
+          "selfCheck": [],
+          "practice": [],
+          "bonus": []
+        },
+        {
+          "id": "rus-lit-t15",
+          "title": "В мастерской художника слова: сравнение",
+          "status": "planned",
+          "needsReview": true,
+          "cards": [],
+          "selfCheck": [],
+          "practice": [],
+          "bonus": []
+        },
+        {
+          "id": "rus-lit-t16",
+          "title": "В. Г. Короленко. «Дети подземелья»",
+          "status": "planned",
+          "needsReview": true,
+          "cards": [],
+          "selfCheck": [],
+          "practice": [],
+          "bonus": []
+        },
+        {
+          "id": "rus-lit-t17",
+          "title": "В мастерской художника слова: портрет литературного героя",
+          "status": "planned",
+          "needsReview": true,
+          "cards": [],
+          "selfCheck": [],
+          "practice": [],
+          "bonus": []
         }
       ]
     }

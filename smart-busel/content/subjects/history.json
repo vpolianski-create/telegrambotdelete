@@ -18,8 +18,121 @@
         {
           "id": "history-t02",
           "title": "Счёт лет в истории",
-          "status": "planned",
-          "needsReview": true
+          "status": "ready",
+          "needsReview": true,
+          "cards": [
+            "Как историки узнают, когда произошло событие? Люди придумали **летоисчисление** — счёт лет от какой-то точки отсчёта. В нашей стране принят счёт «от Рождества Христова» — так называемая **наша эра**.",
+            "Годы **после** начала нашей эры идут вперёд: 100 год, 1000 год, 2026 год. А годы **до нашей эры** считают назад: чем число больше, тем событие древнее. 3000 г. до н. э. — это раньше, чем 1000 г. до н. э.",
+            "**Век** — это 100 лет. Первый век — годы с 1-го по 100-й. Номер века пишут римскими цифрами: I, II, III, IV, V, X… Чтобы найти век, раздели год на 100: если остаток не нулевой — прибавь 1.",
+            "**Тысячелетие** — это 1000 лет. Историю Древнего мира изучают по ленте времени: на ней события располагаются по порядку, как на линейке."
+          ],
+          "example": {
+            "title": "К какому веку до н. э. относится 753 год до н. э.?",
+            "steps": [
+              {
+                "text": "Делим 753 на 100: получается 7 и остаток 53.",
+                "why": "Век — это сто лет, поэтому делим на 100."
+              },
+              {
+                "text": "Остаток не нулевой, поэтому к частному прибавляем 1: 7 + 1 = 8.",
+                "why": "Годы с 701-го по 800-й — это уже восьмая сотня лет."
+              },
+              {
+                "text": "Ответ: VIII век до н. э.",
+                "why": "Номер века записываем римскими цифрами."
+              }
+            ]
+          },
+          "selfCheck": [
+            {
+              "id": "history-t02-sc2",
+              "subject": "history",
+              "topicId": "history-t02",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Какое событие произошло раньше?",
+              "options": [
+                "2000 г. до н. э.",
+                "1000 г. до н. э."
+              ],
+              "answer": "2000 г. до н. э.",
+              "explanation": [
+                "До нашей эры счёт идёт к нулю.",
+                "2000 больше 1000, значит, 2000 г. до н. э. — раньше."
+              ],
+              "hints": [
+                "Чем больше число до н. э., тем древнее событие."
+              ]
+            },
+            {
+              "id": "history-t02-sc4",
+              "subject": "history",
+              "topicId": "history-t02",
+              "difficulty": "basic",
+              "type": "truefalse",
+              "question": "В одном веке 100 лет.",
+              "answer": true,
+              "explanation": [
+                "Век — это столетие.",
+                "Столетие — 100 лет."
+              ],
+              "hints": [
+                "Слово «столетие» подсказывает ответ."
+              ]
+            }
+          ],
+          "practice": [
+            {
+              "generator": "history.era.earlier",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "history.era.earlier",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "history.era.earlier",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "history.era.between",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "history.era.between",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "history.era.century",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "history.era.century",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "history.era.century",
+              "difficulty": "advanced"
+            },
+            {
+              "generator": "history.era.century",
+              "difficulty": "advanced"
+            }
+          ],
+          "bonus": [
+            {
+              "generator": "history.era.between",
+              "difficulty": "bonus"
+            },
+            {
+              "generator": "history.era.between",
+              "difficulty": "bonus"
+            },
+            {
+              "generator": "history.era.century",
+              "difficulty": "bonus"
+            }
+          ]
         },
         {
           "id": "history-t03",
