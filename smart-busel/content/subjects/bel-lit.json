@@ -13,29 +13,25 @@
           "id": "bel-lit-t01",
           "title": "Фальклор",
           "status": "planned",
-          "needsReview": true,
-          "tasks": []
+          "needsReview": true
         },
         {
           "id": "bel-lit-t02",
           "title": "Казкі",
           "status": "planned",
-          "needsReview": true,
-          "tasks": []
+          "needsReview": true
         },
         {
           "id": "bel-lit-t03",
           "title": "Вершы беларускіх паэтаў",
           "status": "planned",
-          "needsReview": true,
-          "tasks": []
+          "needsReview": true
         },
         {
           "id": "bel-lit-t04",
           "title": "Апавяданні",
           "status": "planned",
-          "needsReview": true,
-          "tasks": []
+          "needsReview": true
         }
       ]
     }

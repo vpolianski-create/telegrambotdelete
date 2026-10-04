@@ -12,20 +12,17 @@
         {
           "id": "world-t01",
           "title": "Природа Земли и человек",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         },
         {
           "id": "world-t02",
           "title": "Науки о природе",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         },
         {
           "id": "world-t03",
           "title": "Как человек познаёт природу",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         }
       ]
     },
@@ -36,50 +33,42 @@
         {
           "id": "world-t04",
           "title": "Что называют Вселенной",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         },
         {
           "id": "world-t05",
           "title": "Звёздное небо",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         },
         {
           "id": "world-t06",
           "title": "Солнечная система",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         },
         {
           "id": "world-t07",
           "title": "Астероиды. Кометы. Метеоры. Метеориты",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         },
         {
           "id": "world-t08",
           "title": "Как появилась наша планета. Внутреннее строение Земли",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         },
         {
           "id": "world-t09",
           "title": "Вращение Земли вокруг оси. Тропики и полярные круги",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         },
         {
           "id": "world-t10",
           "title": "Движение Земли вокруг Солнца и пояса освещённости",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         },
         {
           "id": "world-t11",
           "title": "Луна — спутник Земли",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         }
       ]
     },
@@ -90,32 +79,27 @@
         {
           "id": "world-t12",
           "title": "Лик Земли: суша и водная поверхность",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         },
         {
           "id": "world-t13",
           "title": "Как люди в Древности представляли себе Землю",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         },
         {
           "id": "world-t14",
           "title": "Путешествия в Древности и в Средневековье",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         },
         {
           "id": "world-t15",
           "title": "Эпоха Великих географических открытий",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         },
         {
           "id": "world-t16",
           "title": "Истоки современных географических исследований",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         }
       ]
     },
@@ -126,92 +110,77 @@
         {
           "id": "world-t17",
           "title": "Земная кора и недра Земли",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         },
         {
           "id": "world-t18",
           "title": "Полезные ископаемые",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         },
         {
           "id": "world-t19",
           "title": "Как человек изменяет поверхность Земли",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         },
         {
           "id": "world-t20",
           "title": "Состав и свойства воздуха",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         },
         {
           "id": "world-t21",
           "title": "Изменение температуры воздуха",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         },
         {
           "id": "world-t22",
           "title": "Перемещение воздуха. Ветер",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         },
         {
           "id": "world-t23",
           "title": "Как человек изменяет воздух",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         },
         {
           "id": "world-t24",
           "title": "Вода на Земле",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         },
         {
           "id": "world-t25",
           "title": "Мировой океан",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         },
         {
           "id": "world-t26",
           "title": "Воды суши",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         },
         {
           "id": "world-t27",
           "title": "Облака и осадки",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         },
         {
           "id": "world-t28",
           "title": "Как человек использует воду",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         },
         {
           "id": "world-t29",
           "title": "Жизнь на Земле",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         },
         {
           "id": "world-t30",
           "title": "Почва и её плодородие",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         },
         {
           "id": "world-t31",
           "title": "Как человек изменяет природу Земли",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         }
       ]
     }

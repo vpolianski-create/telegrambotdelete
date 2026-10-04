@@ -13,43 +13,37 @@
           "id": "english-t01",
           "title": "to be",
           "status": "planned",
-          "needsReview": true,
-          "tasks": []
+          "needsReview": true
         },
         {
           "id": "english-t02",
           "title": "have got",
           "status": "planned",
-          "needsReview": true,
-          "tasks": []
+          "needsReview": true
         },
         {
           "id": "english-t03",
           "title": "There is / There are",
           "status": "planned",
-          "needsReview": true,
-          "tasks": []
+          "needsReview": true
         },
         {
           "id": "english-t04",
           "title": "Present Simple",
           "status": "planned",
-          "needsReview": true,
-          "tasks": []
+          "needsReview": true
         },
         {
           "id": "english-t05",
           "title": "Can",
           "status": "planned",
-          "needsReview": true,
-          "tasks": []
+          "needsReview": true
         },
         {
           "id": "english-t06",
           "title": "Plurals and articles",
           "status": "planned",
-          "needsReview": true,
-          "tasks": []
+          "needsReview": true
         }
       ]
     }

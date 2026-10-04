@@ -12,86 +12,316 @@
         {
           "id": "math-t01",
           "title": "Как решать задачу",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         },
         {
           "id": "math-t02",
           "title": "Натуральные числа и число нуль. Чтение и запись",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         },
         {
           "id": "math-t03",
           "title": "Сравнение натуральных чисел",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         },
         {
           "id": "math-t04",
           "title": "Точка, прямая, луч, отрезок, плоскость",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         },
         {
           "id": "math-t05",
           "title": "Измерение отрезков. Длина отрезка",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         },
         {
           "id": "math-t06",
           "title": "Изображение натуральных чисел на координатном луче",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         },
         {
           "id": "math-t07",
           "title": "Округление натуральных чисел",
-          "status": "planned",
-          "tasks": []
+          "status": "ready",
+          "cards": [
+            "Не всегда нужно точное число. Сказать «на стадионе около 500 человек» проще, чем «497». Замена числа на близкое, «круглое» называется **округлением**.",
+            "Чтобы округлить число до нужного разряда, смотри на **цифру справа** от этого разряда. Если там **0, 1, 2, 3 или 4**, цифры слева не меняем, а справа ставим нули.",
+            "Если справа **5, 6, 7, 8 или 9**, то последнюю оставляемую цифру **увеличиваем на 1**, а справа тоже ставим нули.",
+            "Пример из игры: у тебя 2 468 монет. Округлим до сотен. После сотен стоит цифра 6, значит, округляем вверх: **2 500 монет**."
+          ],
+          "example": {
+            "title": "Округлим число 7 349 до десятков.",
+            "steps": [
+              {
+                "text": "Находим цифру десятков: в числе 7 349 это цифра 4.",
+                "why": "Мы округляем до десятков, значит, цифра десятков — последняя, которую оставляем."
+              },
+              {
+                "text": "Смотрим на цифру справа от неё: это 9.",
+                "why": "Именно она решает, округлять вверх или вниз."
+              },
+              {
+                "text": "9 — это 5 или больше, значит, 4 увеличиваем на 1 и получаем 5.",
+                "why": "Число 7 349 ближе к 7 350, чем к 7 340."
+              },
+              {
+                "text": "Справа ставим ноль: 7 350.",
+                "why": "Округлённое число должно оканчиваться нулями в нужных разрядах."
+              }
+            ]
+          },
+          "selfCheck": [
+            {
+              "id": "math-t07-sc1",
+              "subject": "math",
+              "topicId": "math-t07",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Округли число 83 до десятков.",
+              "options": [
+                "70",
+                "80",
+                "85",
+                "90"
+              ],
+              "answer": "80",
+              "explanation": [
+                "Смотрим на цифру единиц: это 3.",
+                "3 меньше 5, значит, цифра десятков остаётся: 8 десятков.",
+                "Получаем 80."
+              ],
+              "hints": [
+                "Посмотри на цифру справа от десятков."
+              ]
+            },
+            {
+              "id": "math-t07-sc2",
+              "subject": "math",
+              "topicId": "math-t07",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что делаем, если справа от нужного разряда стоит цифра 7?",
+              "options": [
+                "Оставляем цифру разряда без изменений",
+                "Увеличиваем цифру разряда на 1",
+                "Уменьшаем цифру разряда на 1"
+              ],
+              "answer": "Увеличиваем цифру разряда на 1",
+              "explanation": [
+                "Цифры 5, 6, 7, 8, 9 означают: округляем вверх.",
+                "Значит, прибавляем 1 к последней оставляемой цифре."
+              ],
+              "hints": [
+                "Вспомни правило про цифры 5–9."
+              ]
+            }
+          ],
+          "practice": [
+            {
+              "generator": "math.round.nearest",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "math.round.nearest",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "math.round.nearest",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "math.round.choose",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "math.round.choose",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "math.round.nearest",
+              "difficulty": "advanced"
+            },
+            {
+              "generator": "math.round.nearest",
+              "difficulty": "advanced"
+            },
+            {
+              "generator": "math.round.choose",
+              "difficulty": "advanced"
+            },
+            {
+              "generator": "math.round.estimate",
+              "difficulty": "advanced"
+            }
+          ],
+          "bonus": [
+            {
+              "generator": "math.round.maxMin",
+              "difficulty": "bonus"
+            },
+            {
+              "generator": "math.round.maxMin",
+              "difficulty": "bonus"
+            },
+            {
+              "generator": "math.round.nearest",
+              "difficulty": "bonus"
+            }
+          ]
         },
         {
           "id": "math-t08",
           "title": "Сложение и вычитание натуральных чисел",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         },
         {
           "id": "math-t09",
           "title": "Умножение и деление натуральных чисел",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         },
         {
           "id": "math-t10",
           "title": "Степень числа с натуральным показателем",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         },
         {
           "id": "math-t11",
           "title": "Деление с остатком",
-          "status": "planned",
-          "tasks": []
+          "status": "ready",
+          "cards": [
+            "Не всегда числа делятся поровну. Раздали 17 конфет пятерым друзьям: каждому по 3, и **2 конфеты остались**. Это **деление с остатком**.",
+            "Записывают так: 17 : 5 = 3 (ост. 2). Число 17 — **делимое**, 5 — **делитель**, 3 — **неполное частное**, 2 — **остаток**.",
+            "Главное правило: **остаток всегда меньше делителя**. Если остаток не меньше, значит, каждому можно было дать ещё по конфете.",
+            "Как проверить: **делитель · неполное частное + остаток = делимое**. У нас 5 · 3 + 2 = 17. Всё сходится!"
+          ],
+          "example": {
+            "title": "Разделим 47 на 6 с остатком.",
+            "steps": [
+              {
+                "text": "Ищем наибольшее число, которое делится на 6 и не больше 47: 6 · 7 = 42.",
+                "why": "6 · 8 = 48 — это уже больше 47, поэтому берём 7."
+              },
+              {
+                "text": "Неполное частное равно 7.",
+                "why": "Столько раз 6 целиком помещается в 47."
+              },
+              {
+                "text": "Остаток: 47 − 42 = 5.",
+                "why": "Остаток — то, что «не поместилось»."
+              },
+              {
+                "text": "Проверяем: 6 · 7 + 5 = 47, и 5 < 6.",
+                "why": "Остаток должен быть меньше делителя, а делимое должно получиться снова."
+              }
+            ]
+          },
+          "selfCheck": [
+            {
+              "id": "math-t11-sc1",
+              "subject": "math",
+              "topicId": "math-t11",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Какой остаток получится при делении 23 на 4?",
+              "options": [
+                "1",
+                "2",
+                "3",
+                "5"
+              ],
+              "answer": "3",
+              "explanation": [
+                "4 · 5 = 20, а 4 · 6 = 24 — уже больше 23.",
+                "23 − 20 = 3."
+              ],
+              "hints": [
+                "Найди наибольшее число, кратное 4 и не больше 23."
+              ]
+            },
+            {
+              "id": "math-t11-sc2",
+              "subject": "math",
+              "topicId": "math-t11",
+              "difficulty": "basic",
+              "type": "truefalse",
+              "question": "При делении на 6 остаток может быть равен 6.",
+              "answer": false,
+              "explanation": [
+                "Остаток всегда меньше делителя.",
+                "6 не меньше 6, значит, так быть не может."
+              ],
+              "hints": [
+                "Сравни остаток с делителем."
+              ]
+            }
+          ],
+          "practice": [
+            {
+              "generator": "math.divRem.remainder",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "math.divRem.remainder",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "math.divRem.quotient",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "math.divRem.quotient",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "math.divRem.canBe",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "math.divRem.dividend",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "math.divRem.remainder",
+              "difficulty": "advanced"
+            },
+            {
+              "generator": "math.divRem.quotient",
+              "difficulty": "advanced"
+            },
+            {
+              "generator": "math.divRem.pack",
+              "difficulty": "advanced"
+            }
+          ],
+          "bonus": [
+            {
+              "generator": "math.divRem.weekday",
+              "difficulty": "bonus"
+            },
+            {
+              "generator": "math.divRem.weekday",
+              "difficulty": "bonus"
+            },
+            {
+              "generator": "math.divRem.pack",
+              "difficulty": "bonus"
+            }
+          ]
         },
         {
           "id": "math-t12",
           "title": "Делители и кратные. НОД и НОК",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         },
         {
           "id": "math-t13",
           "title": "Признаки делимости",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         },
         {
           "id": "math-t14",
           "title": "Простые и составные числа. Разложение на простые множители",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         }
       ]
     },
@@ -102,38 +332,32 @@
         {
           "id": "math-t15",
           "title": "Числовые выражения",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         },
         {
           "id": "math-t16",
           "title": "Выражения с переменными",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         },
         {
           "id": "math-t17",
           "title": "Уравнение",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         },
         {
           "id": "math-t18",
           "title": "Формулы",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         },
         {
           "id": "math-t19",
           "title": "Решение задач с помощью уравнений",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         },
         {
           "id": "math-t20",
           "title": "Угол. Измерение и построение углов",
-          "status": "planned",
-          "tasks": []
+          "status": "planned"
         }
       ]
     }

@@ -13,29 +13,25 @@
           "id": "rus-lit-t01",
           "title": "Устное народное творчество",
           "status": "planned",
-          "needsReview": true,
-          "tasks": []
+          "needsReview": true
         },
         {
           "id": "rus-lit-t02",
           "title": "Басни",
           "status": "planned",
-          "needsReview": true,
-          "tasks": []
+          "needsReview": true
         },
         {
           "id": "rus-lit-t03",
           "title": "Стихи о природе",
           "status": "planned",
-          "needsReview": true,
-          "tasks": []
+          "needsReview": true
         },
         {
           "id": "rus-lit-t04",
           "title": "Рассказы и повести",
           "status": "planned",
-          "needsReview": true,
-          "tasks": []
+          "needsReview": true
         }
       ]
     }

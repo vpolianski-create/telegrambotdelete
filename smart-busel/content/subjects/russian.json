@@ -13,43 +13,37 @@
           "id": "russian-t01",
           "title": "Фонетика и орфография",
           "status": "planned",
-          "needsReview": true,
-          "tasks": []
+          "needsReview": true
         },
         {
           "id": "russian-t02",
           "title": "Состав слова",
           "status": "planned",
-          "needsReview": true,
-          "tasks": []
+          "needsReview": true
         },
         {
           "id": "russian-t03",
           "title": "Имя существительное",
           "status": "planned",
-          "needsReview": true,
-          "tasks": []
+          "needsReview": true
         },
         {
           "id": "russian-t04",
           "title": "Имя прилагательное",
           "status": "planned",
-          "needsReview": true,
-          "tasks": []
+          "needsReview": true
         },
         {
           "id": "russian-t05",
           "title": "Глагол",
           "status": "planned",
-          "needsReview": true,
-          "tasks": []
+          "needsReview": true
         },
         {
           "id": "russian-t06",
           "title": "Словосочетание и предложение",
           "status": "planned",
-          "needsReview": true,
-          "tasks": []
+          "needsReview": true
         }
       ]
     }

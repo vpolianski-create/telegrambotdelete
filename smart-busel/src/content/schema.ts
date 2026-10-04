@@ -1,10 +1,12 @@
 import { z } from 'zod';
 
+export const DifficultySchema = z.enum(['basic', 'advanced', 'bonus']);
+
 export const TaskSchema = z.object({
   id: z.string().min(1),
   subject: z.string(),
   topicId: z.string(),
-  difficulty: z.enum(['basic', 'advanced', 'bonus']),
+  difficulty: DifficultySchema,
   type: z.enum(['single', 'multi', 'input', 'match', 'order', 'fill', 'truefalse', 'fraction']),
   question: z.string(),
   options: z.array(z.string()).optional(),
@@ -14,13 +16,30 @@ export const TaskSchema = z.object({
   needsReview: z.boolean().optional(),
 });
 
+/** Ссылка на генератор: задание создаётся кодом со случайными числами, ответ вычисляется. */
+export const GeneratorRefSchema = z.object({
+  generator: z.string(),
+  difficulty: DifficultySchema,
+});
+
+export const EntrySchema = z.union([TaskSchema, GeneratorRefSchema]);
+
+export const ExampleSchema = z.object({
+  title: z.string(),
+  steps: z.array(z.object({ text: z.string(), why: z.string() })).min(1),
+});
+
 export const TopicSchema = z.object({
   id: z.string().min(1),
   title: z.string(),
   needsReview: z.boolean().optional(),
-  /** Пока контент не написан, тема отображается как «скоро». */
   status: z.enum(['planned', 'ready']).default('planned'),
-  tasks: z.array(TaskSchema).default([]),
+  /** Карточки объяснения; **жирный** выделяет ключевые слова. */
+  cards: z.array(z.string()).default([]),
+  example: ExampleSchema.optional(),
+  selfCheck: z.array(TaskSchema).default([]),
+  practice: z.array(EntrySchema).default([]),
+  bonus: z.array(EntrySchema).default([]),
 });
 
 export const SectionSchema = z.object({
@@ -38,6 +57,27 @@ export const SubjectSchema = z.object({
   sections: z.array(SectionSchema),
 });
 
+export const WordSchema = z.object({
+  id: z.string().min(1),
+  en: z.string(),
+  transcription: z.string(),
+  ru: z.string(),
+  example: z.string(),
+});
+
+export const WordSetSchema = z.object({
+  id: z.string().min(1),
+  title: z.string(),
+  icon: z.string(),
+  needsReview: z.boolean().optional(),
+  words: z.array(WordSchema).min(1),
+});
+
 export type Task = z.infer<typeof TaskSchema>;
+export type GeneratorRef = z.infer<typeof GeneratorRefSchema>;
+export type Entry = z.infer<typeof EntrySchema>;
 export type Topic = z.infer<typeof TopicSchema>;
 export type Subject = z.infer<typeof SubjectSchema>;
+export type Word = z.infer<typeof WordSchema>;
+export type WordSet = z.infer<typeof WordSetSchema>;
+export const isGeneratorRef = (e: Entry): e is GeneratorRef => 'generator' in e;
