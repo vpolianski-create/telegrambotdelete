@@ -1,7 +1,7 @@
 {
   "name": "smart-busel",
   "productName": "Умный Бусел",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Обучающее приложение для 5 класса",
   "author": "Smart Busel",
   "private": true,
@@ -29,7 +29,8 @@
     ],
     "win": {
       "target": "nsis",
-      "icon": "resources/icon.png"
+      "icon": "resources/icon.png",
+      "artifactName": "Umny-Busel-Setup-${version}.exe"
     },
     "nsis": {
       "oneClick": true,

@@ -2,8 +2,13 @@ name: Build Smart Busel installer
 
 on:
   push:
+    branches: ["**"]
+    tags: ["busel-v*"]
     paths: ["smart-busel/**", ".github/workflows/build-busel.yml"]
   workflow_dispatch: {}
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -25,4 +30,9 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: umny-busel-installer
-          path: smart-busel/release/*.exe
+          path: smart-busel/release/Umny-Busel-Setup-*.exe
+      # По метке busel-v* установщик ещё и выкладывается на страницу Releases
+      - uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/busel-v')
+        with:
+          files: smart-busel/release/Umny-Busel-Setup-*.exe

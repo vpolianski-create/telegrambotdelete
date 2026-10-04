@@ -30,4 +30,9 @@ Electron + Vite + React + TypeScript, Tailwind 3, Framer Motion, canvas-confetti
 - `npm run dist` — установщик в `release/` (на Windows). Основной путь: GitHub Actions `build-busel.yml` → артефакт `umny-busel-installer`.
 
 ## Порядок работы
-Этапы 1–6 из PLAN.md. После каждого: validate-content, test, build, коммит.
+Этапы 1–6 из PLAN.md выполнены; дальше — добавление тем и уроков (см. CURRICULUM_REVIEW.md). Родителю: README_ДЛЯ_РОДИТЕЛЯ.md. После каждого: validate-content, test, build, коммит.
+
+## Состояние (после этапа 6)
+- Готовые уроки: математика (§7, 10, 11, 12, 13, 17), история §2, «Человек и мир» §6, русский язык §5 и §18, английский «to be» + слова.
+- Остальные темы — `status: "planned"` (в приложении «Скоро»). Чтобы сделать тему готовой, заполните `cards`, `example`, `selfCheck`, `practice`, `bonus` и `status: "ready"`; для математики есть генераторы в `src/generators`.
+- Релиз: поставить метку `busel-vX.Y.Z` — Actions выложит установщик на страницу Releases.
