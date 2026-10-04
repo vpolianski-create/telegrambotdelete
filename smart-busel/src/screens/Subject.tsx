@@ -33,7 +33,7 @@ export function SubjectScreen({ id, onBack, onTopic, onVocab }: { id: string; on
               return (
                 <li key={t.id} className="relative pl-8">
                   <span className="absolute -left-[22px] top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full text-lg font-extrabold text-white"
-                    style={{ background: r?.done ? 'var(--ok)' : ready ? s.color : '#9aa5b4' }}>
+                    style={{ background: r?.done ? 'var(--ok)' : ready ? s.color : '#64748b' }}>
                     {r?.done ? '✓' : n}
                   </span>
                   <motion.button disabled={!ready} onClick={() => onTopic(t.id)}

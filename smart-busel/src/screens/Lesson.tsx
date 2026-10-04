@@ -18,7 +18,7 @@ type Phase = 'cards' | 'example' | 'selfcheck' | 'practice' | 'bonusAsk' | 'bonu
 
 const Btn = ({ children, onClick, ghost }: { children: React.ReactNode; onClick(): void; ghost?: boolean }) => (
   <button onClick={onClick}
-    className={`rounded-xl2 px-8 text-lg font-extrabold active:scale-95 ${ghost ? 'bg-black/5' : 'bg-brand text-white'}`}>
+    className={`rounded-xl2 px-8 text-lg font-extrabold active:scale-95 ${ghost ? 'bg-soft' : 'bg-brand text-white'}`}>
     {children}
   </button>
 );

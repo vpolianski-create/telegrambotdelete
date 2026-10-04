@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { ACCESSORIES } from '../engine/chest';
 import { levelFor } from '../engine/level';
 import { useApp } from '../store/useApp';
+import { play } from '../audio/sfx';
 import { Mascot } from './Mascot';
 
 /** Повышение уровня. Ждёт, пока ребёнок закроет праздничный экран награды. */
@@ -15,6 +16,7 @@ export function LevelUpOverlay() {
   const unlocked = ACCESSORIES.filter((a) => a.level !== undefined && a.level > levelSeen && a.level <= level);
 
   useEffect(() => {
+    if (show) play('level');
     if (show && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       confetti({ particleCount: 120, spread: 100, origin: { y: 0.5 }, colors: ['#ffd43b', '#ff8a3d', '#2f6fed'] });
     }

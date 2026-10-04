@@ -77,7 +77,7 @@ function Rewards() {
         {rewards.length === 0 && <p className="text-mute">Наград пока нет.</p>}
         <ul className="flex flex-col gap-2">
           {[...rewards].reverse().map((r) => (
-            <li key={r.id} className="flex items-center justify-between rounded-xl2 bg-black/5 px-4 py-2">
+            <li key={r.id} className="flex items-center justify-between rounded-xl2 bg-soft px-4 py-2">
               <span>{r.points} баллов — {r.text} · {r.status === 'given' ? 'Выдана ✓' : 'Ожидает'}</span>
               {r.status === 'pending' && <button onClick={() => giveReward(r.id)} className="rounded-xl2 bg-ok px-4 text-white">Выдана</button>}
             </li>
@@ -169,7 +169,7 @@ function Backup() {
       <p className="mb-3 text-sm text-mute">Копия также создаётся автоматически при каждом запуске приложения.</p>
       <div className="flex flex-wrap items-center gap-3">
         <button onClick={exportData} className="rounded-xl2 bg-brand px-5 text-white">Сохранить в файл</button>
-        <label className="cursor-pointer rounded-xl2 bg-black/5 px-5 py-3">Загрузить из файла
+        <label className="cursor-pointer rounded-xl2 bg-soft px-5 py-3">Загрузить из файла
           <input type="file" accept=".json" className="hidden" onChange={(e) => void importData(e.target.files?.[0])} />
         </label>
         {msg && <span className="font-bold">{msg}</span>}

@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import confetti from 'canvas-confetti';
 import { motion } from 'framer-motion';
+import { play } from '../audio/sfx';
 import { Mascot } from './Mascot';
 import { useApp } from '../store/useApp';
 
@@ -13,6 +14,7 @@ export function RewardOverlay() {
     if (!next) return;
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (!reduce) confetti({ particleCount: 180, spread: 90, origin: { y: 0.6 } });
+    play('reward');
   }, [next?.id]);
 
   if (!next) return null;

@@ -10,13 +10,19 @@
 
 :root {
   --bg: #f4f7fb; --card: #ffffff; --ink: #1e2a3a; --mute: #55657a;
-  --brand: #2f6fed; --accent: #ff8a3d; --ok: #1f9d55;
-  font-size: calc(16px * var(--font-scale, 1));
+  --brand: #2f6fed; --accent: #c2410c; --ok: #15803d;
+  --brand-ink: #2459c8; --accent-ink: #b43c0a; --ok-ink: #15803d;
+  --soft: rgba(30, 42, 58, 0.07); --line: rgba(30, 42, 58, 0.16);
 }
 [data-theme='dark'] {
   --bg: #121a26; --card: #1c2736; --ink: #eef3fa; --mute: #a9b8cc;
-  --brand: #6ea0ff; --accent: #ffa566; --ok: #4cd08a;
+  --brand-ink: #8db4ff; --accent-ink: #ffa566; --ok-ink: #5fd69a;
+  --soft: rgba(255, 255, 255, 0.12); --line: rgba(255, 255, 255, 0.28);
 }
+/* размер шрифта растёт вместе с окном: 1366 px → 16 px, 4K → ~27 px */
+html { font-size: calc(clamp(16px, 10px + 0.45vw, 30px) * var(--font-scale, 1)); }
+[data-theme='dark'] .shadow { box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12); }
+:focus-visible { outline: 3px solid var(--brand-ink); outline-offset: 2px; }
 html, body, #root { height: 100%; }
 body { margin: 0; background: var(--bg); color: var(--ink); font-family: Nunito, system-ui, sans-serif; }
 button { min-height: 48px; cursor: pointer; }

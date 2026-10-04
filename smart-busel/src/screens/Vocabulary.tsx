@@ -99,7 +99,7 @@ function MatchGame({ setId, onExit }: { setId: string; onExit(): void }) {
           return (
             <button key={c.key} onClick={() => pickCard(c)} disabled={isDone}
               className={`min-h-[84px] rounded-xl2 border-2 p-2 text-lg font-extrabold transition-all active:scale-95 ${
-                isDone ? 'border-ok bg-ok/20' : isOpen ? 'border-brand bg-brand/10' : 'border-black/10 bg-card shadow'}`}>
+                isDone ? 'border-ok bg-ok/20' : isOpen ? 'border-brand bg-brand/10' : 'border-line bg-card shadow'}`}>
               {isDone || isOpen ? c.text : '?'}
             </button>
           );
@@ -154,14 +154,14 @@ function WordTraining({ mode, setId, onExit }: { mode: Mode; setId: string; onEx
             </>
           ) : (
             <>
-              <span className="text-4xl font-extrabold text-brand">{w.ru}</span>
+              <span className="text-4xl font-extrabold text-brandink">{w.ru}</span>
               <span className="text-lg">{w.example}</span>
             </>
           )}
         </button>
         <button onClick={() => speak(w.en)} className="rounded-xl2 bg-brand px-6 text-lg text-white">🔊 Послушать</button>
         <div className="flex gap-3">
-          <button onClick={() => next(false)} className="rounded-xl2 bg-black/5 px-6 font-bold">Ещё повторю</button>
+          <button onClick={() => next(false)} className="rounded-xl2 bg-soft px-6 font-bold">Ещё повторю</button>
           <button onClick={() => next(true)} className="rounded-xl2 bg-ok px-6 font-bold text-white">Знаю!</button>
         </div>
       </div>

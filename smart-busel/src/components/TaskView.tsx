@@ -5,6 +5,7 @@ import { checkAnswer } from '../engine/answers';
 import { almost, effort, praise } from '../engine/feedback';
 import { taskPoints } from '../engine/points';
 import { shuffle } from '../engine/rng';
+import { play } from '../audio/sfx';
 import { speak } from '../audio/speech';
 import { Mascot } from './Mascot';
 
@@ -31,6 +32,11 @@ export function TaskView({ task, scored = true, speakWord, extraBonus = 0, onNex
     inputRef.current?.focus();
   }, [task.id]);
 
+  useEffect(() => {
+    if (status === 'right') play(extraBonus > 0 ? 'combo' : 'correct');
+    if (status === 'wrong') play('soft');
+  }, [status]);
+
   const points = scored ? taskPoints(task.difficulty, hints) : 0;
 
   const submit = (given: string | boolean) => {
@@ -43,7 +49,7 @@ export function TaskView({ task, scored = true, speakWord, extraBonus = 0, onNex
 
   return (
     <div className="mx-auto flex w-full max-w-2xl flex-col gap-5 rounded-xl3 bg-card p-6 shadow">
-      {label && <span className="text-sm font-extrabold text-accent">{label}</span>}
+      {label && <span className="text-sm font-extrabold text-accentink">{label}</span>}
       <div className="flex items-start gap-3">
         <h2 className="flex-1 text-2xl font-extrabold leading-snug">{task.question}</h2>
         {speakWord && (
@@ -56,7 +62,7 @@ export function TaskView({ task, scored = true, speakWord, extraBonus = 0, onNex
           {options.map((o) => (
             <button key={o} disabled={done} onClick={() => submit(o)}
               className={`min-h-touch rounded-xl2 border-2 px-4 py-3 text-lg font-bold transition-transform active:scale-95 ${
-                done && checkAnswer(task, o) ? 'border-ok bg-ok/15' : 'border-black/10 bg-bg hover:border-brand'}`}>
+                done && checkAnswer(task, o) ? 'border-ok bg-ok/15' : 'border-line bg-bg hover:border-brand'}`}>
               {o}
             </button>
           ))}
@@ -67,7 +73,7 @@ export function TaskView({ task, scored = true, speakWord, extraBonus = 0, onNex
         <div className="grid grid-cols-2 gap-3">
           {[true, false].map((v) => (
             <button key={String(v)} disabled={done} onClick={() => submit(v)}
-              className="min-h-touch rounded-xl2 border-2 border-black/10 bg-bg px-4 py-3 text-lg font-bold hover:border-brand active:scale-95">
+              className="min-h-touch rounded-xl2 border-2 border-line bg-bg px-4 py-3 text-lg font-bold hover:border-brand active:scale-95">
               {v ? 'Верно' : 'Неверно'}
             </button>
           ))}
@@ -78,7 +84,7 @@ export function TaskView({ task, scored = true, speakWord, extraBonus = 0, onNex
         <form className="flex gap-3" onSubmit={(e) => { e.preventDefault(); if (text.trim()) submit(text); }}>
           <input ref={inputRef} value={text} onChange={(e) => setText(e.target.value)} disabled={done}
             aria-label="Ответ" autoComplete="off" spellCheck={false}
-            className="min-h-touch flex-1 rounded-xl2 border-2 border-black/10 bg-bg px-4 text-xl font-bold focus:border-brand focus:outline-none" />
+            className="min-h-touch flex-1 rounded-xl2 border-2 border-line bg-bg px-4 text-xl font-bold focus:border-brand focus:outline-none" />
           <button type="submit" disabled={done || !text.trim()} className="rounded-xl2 bg-brand px-6 text-lg font-extrabold text-white disabled:opacity-40">
             Проверить
           </button>
@@ -91,7 +97,7 @@ export function TaskView({ task, scored = true, speakWord, extraBonus = 0, onNex
             <p key={i} className="rounded-xl2 bg-accent/15 px-4 py-2">💡 {h}</p>
           ))}
           {hints < Math.min(2, task.hints.length) && (
-            <button onClick={() => setHints(hints + 1)} className="self-start rounded-xl2 bg-black/5 px-4 font-bold">
+            <button onClick={() => setHints(hints + 1)} className="self-start rounded-xl2 bg-soft px-4 font-bold">
               💡 {hints === 0 ? 'Подсказка' : 'Ещё подсказка (баллов станет вдвое меньше)'}
             </button>
           )}
@@ -103,7 +109,7 @@ export function TaskView({ task, scored = true, speakWord, extraBonus = 0, onNex
           <div className="flex items-center gap-3">
             <Mascot size={64} cheer={status === 'right'} />
             <div>
-              <p className="text-xl font-extrabold" style={{ color: status === 'right' ? 'var(--ok)' : 'var(--accent)' }}>
+              <p className="text-xl font-extrabold" style={{ color: status === 'right' ? 'var(--ok-ink)' : 'var(--accent-ink)' }}>
                 {status === 'right' ? phrase.ok : phrase.no}
               </p>
               {status === 'right' && scored && (

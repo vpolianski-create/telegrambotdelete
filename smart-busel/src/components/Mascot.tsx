@@ -8,7 +8,7 @@ export function Mascot({ size = 120, cheer = false, accessory }: { size?: number
   const acc = ACCESSORIES.find((a) => a.id === (accessory ?? equipped));
   return (
     <motion.svg
-      width={size} height={size} viewBox="0 0 120 120" role="img" aria-label="Бусел"
+      width={size} height={size} style={{ flexShrink: 0 }} viewBox="0 0 120 120" role="img" aria-label="Бусел"
       animate={cheer ? { y: [0, -12, 0], rotate: [0, -4, 4, 0] } : { y: [0, -3, 0] }}
       transition={{ repeat: Infinity, duration: cheer ? 0.7 : 3, ease: 'easeInOut' }}
     >

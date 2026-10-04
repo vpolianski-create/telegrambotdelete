@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { play } from '../audio/sfx';
 import { BADGES } from '../engine/badges';
 import { useApp } from '../store/useApp';
 
@@ -11,6 +12,7 @@ export function BadgeToast() {
 
   useEffect(() => {
     if (!id) return;
+    play('badge');
     const t = setTimeout(popToast, 3500);
     return () => clearTimeout(t);
   }, [id, popToast]);

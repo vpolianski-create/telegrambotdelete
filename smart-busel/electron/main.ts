@@ -8,6 +8,7 @@ function createWindow() {
   const win = new BrowserWindow({
     width: 1280, height: 800, minWidth: 1024, minHeight: 640,
     title: 'Умный Бусел', autoHideMenuBar: true,
+    icon: path.join(__dirname, '../resources/icon.png'),
     webPreferences: { preload: path.join(__dirname, 'preload.js'), contextIsolation: true },
   });
   const dev = process.env.VITE_DEV_SERVER_URL;

@@ -8,6 +8,7 @@ export default {
       colors: {
         bg: 'var(--bg)', card: 'var(--card)', ink: 'var(--ink)', mute: 'var(--mute)',
         brand: 'var(--brand)', accent: 'var(--accent)', ok: 'var(--ok)',
+        soft: 'var(--soft)', line: 'var(--line)', brandink: 'var(--brand-ink)', accentink: 'var(--accent-ink)', okink: 'var(--ok-ink)',
       },
       borderRadius: { xl2: '1.25rem', xl3: '1.75rem' },
       spacing: { touch: '48px' },

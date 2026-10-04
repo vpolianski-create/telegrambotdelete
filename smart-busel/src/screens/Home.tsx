@@ -37,15 +37,15 @@ export function Home({ onSubject, onParent, onTopic, onCollection }: { onSubject
           </div>
         </div>
         {streak.days > 0 && (
-          <span className="rounded-full bg-black/5 px-4 py-2 font-extrabold" title={streak.freezeAvailable ? 'На этой неделе есть бесплатная заморозка серии' : 'Серия дней'}>
+          <span className="rounded-full bg-soft px-4 py-2 font-extrabold" title={streak.freezeAvailable ? 'На этой неделе есть бесплатная заморозка серии' : 'Серия дней'}>
             🔥 {streak.days}{streak.freezeAvailable && ' ❄️'}
           </span>
         )}
-        <button onClick={onCollection} aria-label="Моя коллекция" className="rounded-xl2 bg-black/5 px-4 text-2xl">🏅</button>
+        <button onClick={onCollection} aria-label="Моя коллекция" className="rounded-xl2 bg-soft px-4 text-2xl">🏅</button>
         {pending > 0 && (
           <span className="rounded-full bg-accent px-4 py-2 font-extrabold text-white" title="Награды ждут">🎁 {pending}</span>
         )}
-        <button onClick={onParent} aria-label="Родителям" className="rounded-xl2 bg-black/5 px-4 text-2xl">🔒</button>
+        <button onClick={onParent} aria-label="Родителям" className="rounded-xl2 bg-soft px-4 text-2xl">🔒</button>
       </header>
 
       <section className="flex flex-wrap items-center gap-4">
