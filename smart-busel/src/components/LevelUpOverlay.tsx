@@ -25,12 +25,12 @@ export function LevelUpOverlay() {
   if (!show) return null;
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-      className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-5 bg-accent p-8 text-center text-white">
+      className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-5 bg-sun p-8 text-center text-navy">
       <motion.div animate={{ scale: [0.6, 1.15, 1] }} transition={{ duration: 0.6 }}><Mascot size={170} cheer /></motion.div>
       <h1 className="text-5xl font-extrabold">Уровень {level}!</h1>
       <p className="text-2xl">{settings.name}, ты стал ещё сильнее!</p>
-      {unlocked.length > 0 && <p className="text-xl">Новый аксессуар для Бусела: {unlocked.map((a) => `${a.emoji} ${a.name}`).join(', ')}</p>}
-      <button onClick={markLevelSeen} className="rounded-xl2 bg-white px-10 py-3 text-xl font-extrabold text-accent">Ура!</button>
+      {unlocked.length > 0 && <p className="text-xl">Новое украшение Бусела: {unlocked.map((a) => `${a.emoji} ${a.name}`).join(', ')}</p>}
+      <button onClick={markLevelSeen} className="rounded-xl2 bg-navy px-10 py-3 text-xl font-extrabold text-white">Ура!</button>
     </motion.div>
   );
 }

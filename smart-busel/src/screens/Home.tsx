@@ -1,4 +1,4 @@
-import { Mascot } from '../components/Mascot';
+import { Logo } from '../components/Logo';
 import { ProgressBar } from '../components/ProgressBar';
 import { findTopic, subjects } from '../content/loader';
 import { levelFor } from '../engine/level';
@@ -27,7 +27,7 @@ export function Home({ onSubject, onParent, onTopic, onCollection }: { onSubject
   return (
     <main className="mx-auto flex max-w-6xl flex-col gap-6 p-6">
       <header className="flex items-center gap-6 rounded-xl3 bg-card p-6 shadow">
-        <Mascot />
+        <Logo height={176} />
         <div className="flex-1">
           <h1 className="text-3xl font-extrabold">Привет, {settings.name}!</h1>
           <p className="text-mute">Уровень {lvl.level} · {points} баллов</p>
@@ -43,7 +43,7 @@ export function Home({ onSubject, onParent, onTopic, onCollection }: { onSubject
         )}
         <button onClick={onCollection} aria-label="Моя коллекция" className="rounded-xl2 bg-soft px-4 text-2xl">🏅</button>
         {pending > 0 && (
-          <span className="rounded-full bg-accent px-4 py-2 font-extrabold text-white" title="Награды ждут">🎁 {pending}</span>
+          <span className="rounded-full bg-sun px-4 py-2 font-extrabold text-navy" title="Награды ждут">🎁 {pending}</span>
         )}
         <button onClick={onParent} aria-label="Родителям" className="rounded-xl2 bg-soft px-4 text-2xl">🔒</button>
       </header>

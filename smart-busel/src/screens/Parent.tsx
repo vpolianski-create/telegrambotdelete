@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { subjects } from '../content/loader';
 import { addDays } from '../engine/leitner';
 import { hasEnglishVoice } from '../audio/speech';
+import { Logo } from '../components/Logo';
 import { snapshot, todayStr, useApp } from '../store/useApp';
 
 type Tab = 'stats' | 'rewards' | 'settings' | 'backup';
@@ -190,6 +191,7 @@ export function Parent({ onBack }: { onBack(): void }) {
     return (
       <main className="mx-auto flex max-w-sm flex-col gap-4 p-8">
         <button onClick={onBack} className="self-start rounded-xl2 bg-card px-5 shadow">← Назад</button>
+        <Logo height={120} />
         <h1 className="text-2xl font-extrabold">Родительский режим</h1>
         <form className="flex flex-col gap-4" onSubmit={(e) => { e.preventDefault(); const good = pin === settings.pin; setOk(good); setWrong(!good); }}>
           <input type="password" inputMode="numeric" value={pin} onChange={(e) => setPin(e.target.value)} aria-label="PIN" autoFocus

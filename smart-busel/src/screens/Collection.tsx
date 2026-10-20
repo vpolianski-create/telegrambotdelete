@@ -30,7 +30,7 @@ export function Collection({ onBack }: { onBack(): void }) {
       </section>
 
       <section className="rounded-xl3 bg-card p-5 shadow">
-        <h2 className="mb-3 text-xl font-extrabold">Наряды Бусела</h2>
+        <h2 className="mb-3 text-xl font-extrabold">Украшения Бусела</h2>
         <div className="flex flex-wrap items-start gap-6">
           <Mascot size={140} />
           <div className="grid flex-1 gap-3 sm:grid-cols-2">
@@ -54,7 +54,7 @@ export function Collection({ onBack }: { onBack(): void }) {
         <div className="flex flex-wrap gap-3 text-4xl">
           {STICKERS.map((s) => <span key={s} className={stickers.includes(s) ? '' : 'opacity-30 grayscale'}>{stickers.includes(s) ? s : '❔'}</span>)}
         </div>
-        <p className="mt-2 text-sm text-mute">Стикеры, наряды и баллы можно найти в сундуке после каждой пройденной темы.</p>
+        <p className="mt-2 text-sm text-mute">Стикеры, украшения и баллы можно найти в сундуке после каждой пройденной темы.</p>
       </section>
     </main>
   );

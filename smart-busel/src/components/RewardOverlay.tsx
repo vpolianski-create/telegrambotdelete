@@ -20,7 +20,7 @@ export function RewardOverlay() {
   if (!next) return null;
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-      className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-6 bg-brand p-8 text-center text-white">
+      className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-6 p-8 text-center text-white" style={{ background: 'linear-gradient(160deg, #1d8cee 0%, #0b5fc2 70%)' }}>
       <Mascot size={180} cheer />
       <h1 className="text-4xl font-extrabold">
         {settings.name}, ты заработал {next.points} баллов! 🎁

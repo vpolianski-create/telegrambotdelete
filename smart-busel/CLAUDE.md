@@ -35,4 +35,5 @@ Electron + Vite + React + TypeScript, Tailwind 3, Framer Motion, canvas-confetti
 ## Состояние (после этапа 6)
 - Готовые уроки: математика (§7, 10, 11, 12, 13, 17), история §2, «Человек и мир» §6, русский язык §5 и §18, английский «to be» + слова.
 - Остальные темы — `status: "planned"` (в приложении «Скоро»). Чтобы сделать тему готовой, заполните `cards`, `example`, `selfCheck`, `practice`, `bonus` и `status: "ready"`; для математики есть генераторы в `src/generators`.
+- Бренд: см. BRANDBOOK.md (цвета в src/index.css, логотип resources/logo.png, иконка resources/icon.png). Новые экраны делать в этих цветах и шрифтах Rubik+Nunito.
 - Релиз: поставить метку `busel-vX.Y.Z` — Actions выложит установщик на страницу Releases.

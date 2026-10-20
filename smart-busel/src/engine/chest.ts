@@ -2,15 +2,15 @@ import { pick, randInt, type Rng } from './rng';
 
 export const STICKERS = ['🦊', '🐼', '🚀', '⭐', '🏆', '🎨', '🐢', '🦉', '🐬', '🌈', '⚽', '🎸'];
 
-export interface Accessory { id: string; emoji: string; name: string; level?: number; x: number; y: number; size: number }
-/** level — открывается с этого уровня; без level — только из сундука. */
+export interface Accessory { id: string; emoji: string; name: string; level?: number }
+/** Значок-украшение рядом с Буселом. level — открывается с этого уровня; без level — только из сундука. (id старых нарядов сохранены, чтобы не терять прогресс.) */
 export const ACCESSORIES: Accessory[] = [
-  { id: 'scarf', emoji: '🧣', name: 'Шарф', level: 2, x: 74, y: 48, size: 20 },
-  { id: 'glasses', emoji: '🕶️', name: 'Очки', level: 3, x: 84, y: 28, size: 16 },
-  { id: 'hat', emoji: '🎩', name: 'Шляпа', level: 5, x: 80, y: 14, size: 22 },
-  { id: 'crown', emoji: '👑', name: 'Корона', level: 8, x: 80, y: 14, size: 22 },
-  { id: 'bow', emoji: '🎀', name: 'Бант', x: 70, y: 18, size: 20 },
-  { id: 'cap', emoji: '🧢', name: 'Кепка', x: 80, y: 14, size: 22 },
+  { id: 'scarf', emoji: '⭐', name: 'Звезда', level: 2 },
+  { id: 'glasses', emoji: '🚀', name: 'Ракета', level: 3 },
+  { id: 'hat', emoji: '🏅', name: 'Медаль', level: 5 },
+  { id: 'crown', emoji: '👑', name: 'Корона', level: 8 },
+  { id: 'bow', emoji: '🎀', name: 'Бант' },
+  { id: 'rainbow', emoji: '🌈', name: 'Радуга' },
 ];
 
 export type ChestResult =

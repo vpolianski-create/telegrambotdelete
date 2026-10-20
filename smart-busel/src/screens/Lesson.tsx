@@ -186,7 +186,7 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
       {chest && (
         <motion.p initial={{ scale: 0.5, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="rounded-xl3 bg-ok/15 px-6 py-3 text-2xl font-extrabold">
           {chest.kind === 'sticker' && `В сундуке стикер ${chest.id}!`}
-          {chest.kind === 'accessory' && `В сундуке наряд для Бусела: ${ACCESSORIES.find((a) => a.id === chest.id)?.emoji} ${ACCESSORIES.find((a) => a.id === chest.id)?.name}!`}
+          {chest.kind === 'accessory' && `В сундуке украшение Бусела: ${ACCESSORIES.find((a) => a.id === chest.id)?.emoji} ${ACCESSORIES.find((a) => a.id === chest.id)?.name}!`}
           {chest.kind === 'points' && `В сундуке +${chest.amount} баллов!`}
         </motion.p>
       )}

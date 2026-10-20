@@ -4,11 +4,11 @@ export default {
   darkMode: ['class', '[data-theme="dark"]'],
   theme: {
     extend: {
-      fontFamily: { sans: ['Nunito', 'system-ui', 'sans-serif'] },
+      fontFamily: { sans: ['Nunito', 'system-ui', 'sans-serif'], display: ['Rubik', 'Nunito', 'sans-serif'] },
       colors: {
         bg: 'var(--bg)', card: 'var(--card)', ink: 'var(--ink)', mute: 'var(--mute)',
         brand: 'var(--brand)', accent: 'var(--accent)', ok: 'var(--ok)',
-        soft: 'var(--soft)', line: 'var(--line)', brandink: 'var(--brand-ink)', accentink: 'var(--accent-ink)', okink: 'var(--ok-ink)',
+        soft: 'var(--soft)', sun: 'var(--sun)', navy: 'var(--navy)', sky: 'var(--sky)', line: 'var(--line)', brandink: 'var(--brand-ink)', accentink: 'var(--accent-ink)', okink: 'var(--ok-ink)',
       },
       borderRadius: { xl2: '1.25rem', xl3: '1.75rem' },
       spacing: { touch: '48px' },
