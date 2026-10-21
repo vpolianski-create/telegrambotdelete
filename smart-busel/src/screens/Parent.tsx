@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { subjects } from '../content/loader';
+import { allTopics, subjects } from '../content/loader';
 import { addDays } from '../engine/leitner';
 import { hasEnglishVoice } from '../audio/speech';
 import { Logo } from '../components/Logo';
@@ -19,10 +19,12 @@ function Stats() {
   const { daily, topicResults, subjectStats, mistakes } = useApp();
   const days = Array.from({ length: 7 }, (_, k) => addDays(todayStr(), k - 6));
   const max = Math.max(60, ...days.map((d) => daily[d]?.sec ?? 0));
-  const topicTitle = (id: string) => subjects.flatMap((s) => s.sections.flatMap((x) => x.topics)).find((t) => t.id === id)?.title ?? id;
-  const byTopic = mistakes.reduce<Record<string, number>>((a, m) => ({ ...a, [m.topicId]: (a[m.topicId] ?? 0) + 1 }), {});
-  const done = Object.entries(topicResults).filter(([, r]) => r.done);
-  const progress = Object.entries(topicResults).filter(([, r]) => !r.done);
+  const known = new Set(allTopics.map((x) => x.topic.id));
+  const topicTitle = (id: string) => allTopics.find((x) => x.topic.id === id)?.topic.title ?? id;
+  const shown = mistakes.filter((m) => known.has(m.topicId));
+  const byTopic = shown.reduce<Record<string, number>>((a, m) => ({ ...a, [m.topicId]: (a[m.topicId] ?? 0) + 1 }), {});
+  const done = Object.entries(topicResults).filter(([id, r]) => r.done && known.has(id));
+  const progress = Object.entries(topicResults).filter(([id, r]) => !r.done && known.has(id));
 
   return (
     <>
@@ -57,7 +59,7 @@ function Stats() {
             {Object.entries(byTopic).sort((a, b) => b[1] - a[1]).slice(0, 5).map(([id, n]) => <li key={id}>{topicTitle(id)}: {n}</li>)}
           </ul>
         )}
-        {mistakes.slice(0, 5).map((m, k) => <p key={k} className="text-sm text-mute">{m.date} · {m.question}</p>)}
+        {shown.slice(0, 5).map((m, k) => <p key={k} className="text-sm text-mute">{m.date} · {m.question}</p>)}
       </Card>
     </>
   );

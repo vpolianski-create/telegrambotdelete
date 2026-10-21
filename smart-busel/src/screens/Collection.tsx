@@ -1,11 +1,16 @@
+import { useState } from 'react';
 import { Mascot } from '../components/Mascot';
+import { allTopics, learnSubjects } from '../content/loader';
 import { BADGES } from '../engine/badges';
 import { ACCESSORIES, STICKERS, unlockedAccessories } from '../engine/chest';
 import { levelFor } from '../engine/level';
 import { useApp } from '../store/useApp';
 
 export function Collection({ onBack }: { onBack(): void }) {
-  const { badges, stickers, chestAccessories, points, settings, updateSettings } = useApp();
+  const { badges, stickers, chestAccessories, points, settings, updateSettings, albumCards } = useApp();
+  const [open, setOpen] = useState<string>();
+  const cards = allTopics.filter((x) => x.topic.card);
+  const openCard = cards.find((x) => x.topic.id === open);
   const level = levelFor(points).level;
   const owned = unlockedAccessories(level, chestAccessories);
 
@@ -27,6 +32,38 @@ export function Collection({ onBack }: { onBack(): void }) {
             );
           })}
         </div>
+      </section>
+
+      <section className="rounded-xl3 bg-card p-5 shadow">
+        <h2 className="mb-1 text-xl font-extrabold">Альбом знаний: {albumCards.length} из {cards.length}</h2>
+        <p className="mb-3 text-sm text-mute">Карточка открывается, когда тема пройдена на 80% и выше. Нажми на карточку, чтобы прочитать интересный факт.</p>
+        {learnSubjects.map((sub) => {
+          const list = cards.filter((x) => x.subject.id === sub.id);
+          if (!list.length) return null;
+          return (
+            <div key={sub.id} className="mb-3">
+              <h3 className="mb-1 font-extrabold" style={{ color: sub.color }}>{sub.icon} {sub.title}</h3>
+              <div className="flex flex-wrap gap-2">
+                {list.map((x) => {
+                  const has = albumCards.includes(x.topic.id);
+                  return (
+                    <button key={x.topic.id} disabled={!has} onClick={() => setOpen(x.topic.id)} aria-label={has ? x.topic.card!.title : 'Закрытая карточка'}
+                      className={`h-14 w-14 rounded-xl2 text-3xl ${has ? 'bg-sun/25 shadow' : 'bg-soft opacity-50'} ${open === x.topic.id ? 'ring-2 ring-brand' : ''}`}>
+                      {has ? x.topic.card!.emoji : '❔'}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })}
+        {openCard && (
+          <div className="mt-2 rounded-xl2 border-2 border-sun bg-sun/15 p-4">
+            <p className="text-2xl font-extrabold">{openCard.topic.card!.emoji} {openCard.topic.card!.title}</p>
+            <p className="mt-1 text-lg">{openCard.topic.card!.fact}</p>
+            <p className="mt-1 text-sm text-mute">Тема: {openCard.topic.title}</p>
+          </div>
+        )}
       </section>
 
       <section className="rounded-xl3 bg-card p-5 shadow">

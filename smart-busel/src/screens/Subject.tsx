@@ -42,7 +42,7 @@ export function SubjectScreen({ id, onBack, onTopic, onVocab }: { id: string; on
                     style={current ? { ['--tw-ring-color' as string]: s.color } : undefined}>
                     <span>{t.title}</span>
                     <span className="whitespace-nowrap text-sm font-bold text-mute">
-                      {!ready ? 'Скоро' : r?.done ? `✓ ${r.bestPercent}%` : current ? '▶ Дальше' : r ? 'В процессе' : 'Начать'}
+                      {!ready ? 'Скоро' : r?.done ? `${'⭐'.repeat(r.stars ?? 1)}${'☆'.repeat(3 - (r.stars ?? 1))} ${r.bestPercent}%` : current ? '▶ Дальше' : r ? 'В процессе' : 'Начать'}
                     </span>
                   </motion.button>
                 </li>

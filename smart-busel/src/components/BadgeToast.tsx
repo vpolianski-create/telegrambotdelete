@@ -1,29 +1,28 @@
 import { useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { play } from '../audio/sfx';
-import { BADGES } from '../engine/badges';
 import { useApp } from '../store/useApp';
 
-/** Небольшое окошко «Новый значок!» — исчезает само. */
+/** Небольшое окошко: новый значок, задание дня, карточка знаний. Исчезает само. */
 export function BadgeToast() {
   const { toasts, popToast } = useApp();
-  const id = toasts[0];
-  const badge = BADGES.find((b) => b.id === id);
+  const toast = toasts[0];
+  const key = toast ? `${toast.title}|${toast.text}` : '';
 
   useEffect(() => {
-    if (!id) return;
+    if (!toast) return;
     play('badge');
     const t = setTimeout(popToast, 3500);
     return () => clearTimeout(t);
-  }, [id, popToast]);
+  }, [key, popToast]);
 
   return (
     <AnimatePresence>
-      {badge && (
-        <motion.div key={id} initial={{ y: -80, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: -80, opacity: 0 }}
-          role="status" className="fixed left-1/2 top-4 z-[60] flex -translate-x-1/2 items-center gap-3 rounded-xl3 bg-card px-6 py-3 shadow-xl">
-          <span className="text-4xl">{badge.icon}</span>
-          <span><b>Новый значок!</b><br />{badge.title}</span>
+      {toast && (
+        <motion.div key={key} initial={{ y: -80, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: -80, opacity: 0 }}
+          role="status" className="fixed left-1/2 top-4 z-[60] flex max-w-[90vw] -translate-x-1/2 items-center gap-3 rounded-xl3 bg-card px-6 py-3 shadow-xl">
+          <span className="text-4xl">{toast.icon}</span>
+          <span><b>{toast.title}</b><br />{toast.text}</span>
         </motion.div>
       )}
     </AnimatePresence>

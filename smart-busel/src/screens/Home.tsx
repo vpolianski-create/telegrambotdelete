@@ -1,7 +1,9 @@
+import { DailyFact } from '../components/DailyFact';
 import { Logo } from '../components/Logo';
+import { Quests } from '../components/Quests';
 import { ProgressBar } from '../components/ProgressBar';
-import { findTopic, subjects } from '../content/loader';
-import { levelFor } from '../engine/level';
+import { findTopic, learnSubjects, subjects } from '../content/loader';
+import { levelFor, levelTitle } from '../engine/level';
 import { progressToNext } from '../engine/rewards';
 import { currentStreak } from '../engine/streak';
 import { todayStr, useApp } from '../store/useApp';
@@ -10,6 +12,7 @@ export function Home({ onSubject, onParent, onTopic, onCollection }: { onSubject
   const { settings, points, rewards, topicResults, daily, lastTopic } = useApp();
   const p = progressToNext(points, settings.rewardThreshold);
   const lvl = levelFor(points);
+  const stars = Object.values(topicResults).reduce((a, r) => a + (r.stars ?? 0), 0);
   const pending = rewards.filter((r) => r.status === 'pending').length;
   const today = daily[todayStr()];
   const goalDone = today?.tasks ?? 0;
@@ -19,7 +22,7 @@ export function Home({ onSubject, onParent, onTopic, onCollection }: { onSubject
   let next: { subjectId: string; topicId: string; title: string } | undefined;
   const last = lastTopic ? findTopic(lastTopic.subjectId, lastTopic.topicId) : undefined;
   if (last && !topicResults[last.topic.id]?.done) next = { subjectId: last.subject.id, topicId: last.topic.id, title: last.topic.title };
-  for (const s of subjects)
+  for (const s of learnSubjects)
     for (const sec of s.sections)
       for (const t of sec.topics)
         if (!next && t.status === 'ready' && !topicResults[t.id]?.done) next = { subjectId: s.id, topicId: t.id, title: t.title };
@@ -30,7 +33,7 @@ export function Home({ onSubject, onParent, onTopic, onCollection }: { onSubject
         <Logo height={176} />
         <div className="flex-1">
           <h1 className="text-3xl font-extrabold">Привет, {settings.name}!</h1>
-          <p className="text-mute">Уровень {lvl.level} · {points} баллов</p>
+          <p className="text-mute">Уровень {lvl.level} · <b>{levelTitle(lvl.level)}</b> · {points} баллов{stars > 0 && <> · ⭐ {stars}</>}</p>
           <div className="mt-3">
             <ProgressBar ratio={p.ratio} label="До следующей награды" />
             <p className="mt-1 text-sm text-mute">До награды осталось {p.left} баллов</p>
@@ -66,8 +69,13 @@ export function Home({ onSubject, onParent, onTopic, onCollection }: { onSubject
         )}
       </section>
 
+      <div className="grid gap-4 lg:grid-cols-2">
+        <Quests />
+        <DailyFact date={todayStr()} onOpen={onTopic} />
+      </div>
+
       <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {subjects.map((s) => (
+        {learnSubjects.map((s) => (
           <button key={s.id} onClick={() => onSubject(s.id)}
             className="flex min-h-[120px] items-center gap-4 rounded-xl3 p-5 text-left text-white shadow transition-transform hover:scale-[1.02] active:scale-95"
             style={{ background: s.color }}>

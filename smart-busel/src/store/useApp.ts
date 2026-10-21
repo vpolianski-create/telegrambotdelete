@@ -1,8 +1,10 @@
 import { create } from 'zustand';
-import { computedBadges } from '../engine/badges';
+import { allTopics, learnSubjects } from '../content/loader';
+import { BADGES, computedBadges } from '../engine/badges';
 import { openChest, type ChestResult } from '../engine/chest';
 import { afterAnswer, type WordState } from '../engine/leitner';
-import { levelFor } from '../engine/level';
+import { levelFor, STAR_BONUS, starsFor } from '../engine/level';
+import { questProgress, questsFor, QUEST_POINTS } from '../engine/quests';
 import { DAILY_GOAL_BONUS, TOPIC_PASS_BONUS, TOPIC_PASS_PERCENT } from '../engine/points';
 import { DEFAULT_REWARD_TEXT, DEFAULT_THRESHOLD, newRewards, type Reward } from '../engine/rewards';
 
@@ -21,8 +23,12 @@ export interface Settings {
   accessory: string; // надетый аксессуар Бусела
 }
 
-export interface TopicResult { bestPercent: number; attempts: number; done: boolean; passBonusGiven: boolean; chestOpened?: boolean }
-export interface DayLog { sec: number; tasks: number; correct: number; goalDone: boolean; unlocked: boolean }
+export interface TopicResult { bestPercent: number; attempts: number; done: boolean; passBonusGiven: boolean; chestOpened?: boolean; stars?: number }
+export interface DayLog {
+  sec: number; tasks: number; correct: number; goalDone: boolean; unlocked: boolean;
+  bySubject?: Record<string, number>; words?: number; topics?: number; quests?: string[]; questChest?: boolean;
+}
+export interface Toast { icon: string; title: string; text: string }
 export interface Mistake { subject: string; topicId: string; question: string; date: string }
 
 export interface Data {
@@ -35,6 +41,7 @@ export interface Data {
   mistakes: Mistake[];
   leitner: Record<string, WordState>;
   badges: string[];
+  albumCards: string[]; // темы, чьи карточки знаний уже открыты
   stickers: string[];
   chestAccessories: string[];
   records: { matchBest?: number };
@@ -45,7 +52,7 @@ export interface Data {
 
 const initial: Data = {
   points: 0, rewards: [], celebrated: [], topicResults: {}, daily: {}, subjectStats: {},
-  mistakes: [], leitner: {}, badges: [], stickers: [], chestAccessories: [], records: {}, levelSeen: 1, lastTopic: null,
+  mistakes: [], leitner: {}, badges: [], albumCards: [], stickers: [], chestAccessories: [], records: {}, levelSeen: 1, lastTopic: null,
   settings: {
     name: 'Женя', pin: '0000', pinChanged: false,
     rewardThreshold: DEFAULT_THRESHOLD, rewardTexts: {},
@@ -65,7 +72,7 @@ export const todayStr = () => {
   const d = new Date();
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 };
-const emptyDay = (): DayLog => ({ sec: 0, tasks: 0, correct: 0, goalDone: false, unlocked: false });
+const emptyDay = (): DayLog => ({ sec: 0, tasks: 0, correct: 0, goalDone: false, unlocked: false, bySubject: {}, words: 0, topics: 0, quests: [], questChest: false });
 
 export function merge(raw: Partial<Data> | null): Data {
   return { ...initial, ...(raw ?? {}), settings: { ...initial.settings, ...(raw?.settings ?? {}) } };
@@ -91,12 +98,14 @@ export interface AnswerInfo {
 
 interface Store extends Data {
   ready: boolean;
-  toasts: string[]; // новые значки, ещё не показанные ребёнку (не сохраняются)
+  toasts: Toast[]; // всплывающие сообщения (значки, задания дня, карточки); не сохраняются
   init(): Promise<void>;
   /** Возвращает начисленные баллы (вместе с бонусом за дневную цель). */
   recordAnswer(a: AnswerInfo): number;
-  /** Баллы за тему и значок; возвращает начисленные баллы. */
-  finishTopic(topicId: string, percent: number, opts?: { noHints?: boolean }): number;
+  /** Баллы за тему и звёзды; возвращает начисленные баллы и число новых звёзд. */
+  finishTopic(topicId: string, percent: number, opts?: { noHints?: boolean }): { bonus: number; newStars: number; card?: string };
+  /** Сундук дня после всех трёх заданий дня. */
+  openDayChest(): ChestResult | undefined;
   /** Сундук-сюрприз после темы; возвращает, что выпало. */
   openChest(topicId: string): ChestResult | undefined;
   setRecord(key: 'matchBest', value: number): void;
@@ -115,7 +124,7 @@ interface Store extends Data {
 const dataOf = (s: Data): Data => ({
   points: s.points, rewards: s.rewards, celebrated: s.celebrated, topicResults: s.topicResults,
   daily: s.daily, subjectStats: s.subjectStats, mistakes: s.mistakes, leitner: s.leitner,
-  badges: s.badges, stickers: s.stickers, chestAccessories: s.chestAccessories, records: s.records,
+  badges: s.badges, albumCards: s.albumCards, stickers: s.stickers, chestAccessories: s.chestAccessories, records: s.records,
   levelSeen: s.levelSeen, lastTopic: s.lastTopic, settings: s.settings,
 });
 
@@ -127,14 +136,30 @@ function withPoints(s: Data, n: number): Pick<Data, 'points' | 'rewards'> {
 }
 
 export const useApp = create<Store>((set, get) => {
+  const day = (s: Data, date = todayStr()): DayLog => ({ ...emptyDay(), ...s.daily[date] });
   const commit = (p: Partial<Data>, extraBadges: string[] = []) => {
     set(p);
     const s = get();
-    const fresh = [...new Set([...extraBadges, ...computedBadges(s, todayStr())])].filter((id) => !s.badges.includes(id));
-    if (fresh.length) set({ badges: [...s.badges, ...fresh], toasts: [...s.toasts, ...fresh] });
+    const toasts: Toast[] = [];
+    // задания дня
+    const date = todayStr();
+    const d = day(s, date);
+    const quests = questsFor(date, learnSubjects);
+    const done = quests.filter((q) => !d.quests!.includes(q.id) && questProgress(q, d) >= q.target);
+    if (done.length) {
+      set({ ...withPoints(s, done.length * QUEST_POINTS), daily: { ...s.daily, [date]: { ...d, quests: [...d.quests!, ...done.map((q) => q.id)] } } });
+      done.forEach((q) => toasts.push({ icon: '✅', title: 'Задание дня выполнено!', text: `${q.text} · +${QUEST_POINTS} баллов` }));
+    }
+    // значки
+    const s2 = get();
+    const fresh = [...new Set([...extraBadges, ...computedBadges(s2, todayStr())])].filter((id) => !s2.badges.includes(id));
+    if (fresh.length) {
+      set({ badges: [...s2.badges, ...fresh] });
+      fresh.forEach((id) => { const b = BADGES.find((x) => x.id === id); if (b) toasts.push({ icon: b.icon, title: 'Новый значок!', text: b.title }); });
+    }
+    if (toasts.length) set({ toasts: [...get().toasts, ...toasts] });
     persist(dataOf(get()));
   };
-  const day = (s: Data, date = todayStr()): DayLog => s.daily[date] ?? emptyDay();
 
   return {
     ...initial,
@@ -161,7 +186,7 @@ export const useApp = create<Store>((set, get) => {
         : [{ subject: a.subject, topicId: a.topicId, question: a.question, date }, ...s.mistakes].slice(0, 100);
       commit({
         ...withPoints(s, a.points + bonus),
-        daily: { ...s.daily, [date]: { ...d, tasks, correct: d.correct + (a.correct ? 1 : 0), goalDone } },
+        daily: { ...s.daily, [date]: { ...d, tasks, correct: d.correct + (a.correct ? 1 : 0), goalDone, bySubject: { ...d.bySubject, [a.subject]: (d.bySubject?.[a.subject] ?? 0) + 1 } } },
         subjectStats: { ...s.subjectStats, [a.subject]: { tasks: st.tasks + 1, correct: st.correct + (a.correct ? 1 : 0) } },
         mistakes,
       }, a.combo ? ['combo'] : []);
@@ -170,21 +195,31 @@ export const useApp = create<Store>((set, get) => {
 
     finishTopic(topicId, percent, opts) {
       const s = get();
-      const prev = s.topicResults[topicId] ?? { bestPercent: 0, attempts: 0, done: false, passBonusGiven: false };
+      const prev = s.topicResults[topicId] ?? { bestPercent: 0, attempts: 0, done: false, passBonusGiven: false, stars: 0 };
       const passed = percent >= TOPIC_PASS_PERCENT;
-      const bonus = passed && !prev.passBonusGiven ? TOPIC_PASS_BONUS : 0;
+      const oldStars = prev.stars ?? 0;
+      const stars = Math.max(oldStars, starsFor(percent));
+      let bonus = passed && !prev.passBonusGiven ? TOPIC_PASS_BONUS : 0;
+      for (let k = oldStars + 1; k <= stars; k++) bonus += k >= 2 ? STAR_BONUS[k] : 0;
       const extra = [...(percent === 100 ? ['perfect'] : []), ...(passed && opts?.noHints ? ['no-hints'] : [])];
+      const date = todayStr();
+      const d = day(s, date);
+      const found = allTopics.find((x) => x.topic.id === topicId)?.topic;
+      const newCard = passed && found?.card && !s.albumCards.includes(topicId) ? topicId : undefined;
       commit({
         ...withPoints(s, bonus),
         topicResults: {
           ...s.topicResults,
           [topicId]: {
-            bestPercent: Math.max(prev.bestPercent, percent), attempts: prev.attempts + 1,
-            done: prev.done || passed, passBonusGiven: prev.passBonusGiven || passed,
+            ...prev, bestPercent: Math.max(prev.bestPercent, percent), attempts: prev.attempts + 1,
+            done: prev.done || passed, passBonusGiven: prev.passBonusGiven || passed, stars,
           },
         },
+        albumCards: newCard ? [...s.albumCards, newCard] : s.albumCards,
+        daily: passed ? { ...s.daily, [date]: { ...d, topics: (d.topics ?? 0) + 1 } } : s.daily,
       }, extra);
-      return bonus;
+      if (newCard && found?.card) set({ toasts: [...get().toasts, { icon: found.card.emoji, title: 'Новая карточка знаний!', text: found.card.title }] });
+      return { bonus, newStars: stars - oldStars, card: newCard };
     },
 
     openChest(topicId) {
@@ -193,6 +228,20 @@ export const useApp = create<Store>((set, get) => {
       if (!r || !r.done || r.chestOpened) return undefined;
       const res = openChest(Math.random, s.stickers, s.chestAccessories);
       const base: Partial<Data> = { topicResults: { ...s.topicResults, [topicId]: { ...r, chestOpened: true } } };
+      if (res.kind === 'sticker') base.stickers = [...s.stickers, res.id];
+      if (res.kind === 'accessory') base.chestAccessories = [...s.chestAccessories, res.id];
+      if (res.kind === 'points') Object.assign(base, withPoints(s, res.amount));
+      commit(base);
+      return res;
+    },
+    openDayChest() {
+      const s = get();
+      const date = todayStr();
+      const d = day(s, date);
+      const quests = questsFor(date, learnSubjects);
+      if (d.questChest || !quests.every((q) => d.quests!.includes(q.id))) return undefined;
+      const res = openChest(Math.random, s.stickers, s.chestAccessories);
+      const base: Partial<Data> = { daily: { ...s.daily, [date]: { ...d, questChest: true } } };
       if (res.kind === 'sticker') base.stickers = [...s.stickers, res.id];
       if (res.kind === 'accessory') base.chestAccessories = [...s.chestAccessories, res.id];
       if (res.kind === 'points') Object.assign(base, withPoints(s, res.amount));
@@ -209,7 +258,12 @@ export const useApp = create<Store>((set, get) => {
 
     answerWord(wordId, correct) {
       const s = get();
-      commit({ leitner: { ...s.leitner, [wordId]: afterAnswer(s.leitner[wordId], correct, todayStr()) } });
+      const date = todayStr();
+      const d = day(s, date);
+      commit({
+        leitner: { ...s.leitner, [wordId]: afterAnswer(s.leitner[wordId], correct, date) },
+        daily: { ...s.daily, [date]: { ...d, words: (d.words ?? 0) + 1 } },
+      });
     },
 
     tick(sec) {

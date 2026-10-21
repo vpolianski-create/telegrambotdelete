@@ -29,6 +29,9 @@ export const ExampleSchema = z.object({
   steps: z.array(z.object({ text: z.string(), why: z.string() })).min(1),
 });
 
+/** Карточка знаний: открывается в «Альбоме», когда тема пройдена. */
+export const KnowledgeCardSchema = z.object({ emoji: z.string(), title: z.string(), fact: z.string() });
+
 export const TopicSchema = z.object({
   id: z.string().min(1),
   title: z.string(),
@@ -40,6 +43,7 @@ export const TopicSchema = z.object({
   selfCheck: z.array(TaskSchema).default([]),
   practice: z.array(EntrySchema).default([]),
   bonus: z.array(EntrySchema).default([]),
+  card: KnowledgeCardSchema.optional(),
 });
 
 export const SectionSchema = z.object({
@@ -76,6 +80,7 @@ export const WordSetSchema = z.object({
 export type Task = z.infer<typeof TaskSchema>;
 export type GeneratorRef = z.infer<typeof GeneratorRefSchema>;
 export type Entry = z.infer<typeof EntrySchema>;
+export type KnowledgeCard = z.infer<typeof KnowledgeCardSchema>;
 export type Topic = z.infer<typeof TopicSchema>;
 export type Subject = z.infer<typeof SubjectSchema>;
 export type Word = z.infer<typeof WordSchema>;

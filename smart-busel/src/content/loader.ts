@@ -18,3 +18,8 @@ export function findTopic(subjectId: string, topicId: string) {
   }
   return undefined;
 }
+
+/** Предметы, в которых уже есть готовые темы (остальные не показываем). */
+export const learnSubjects = subjects.filter((x) => x.sections.some((sec) => sec.topics.some((t) => t.status === 'ready')));
+
+export const allTopics = subjects.flatMap((s) => s.sections.flatMap((sec) => sec.topics.map((t) => ({ subject: s, topic: t }))));

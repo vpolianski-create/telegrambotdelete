@@ -7,6 +7,7 @@ import { TaskView, type TaskResult } from '../components/TaskView';
 import { findTopic } from '../content/loader';
 import { isGeneratorRef, type Entry, type GeneratorRef, type Task } from '../content/schema';
 import { ACCESSORIES, type ChestResult } from '../engine/chest';
+import { starsFor } from '../engine/level';
 import { comboBonus, TOPIC_PASS_PERCENT } from '../engine/points';
 import { generate } from '../generators';
 import { useApp } from '../store/useApp';
@@ -40,7 +41,8 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
   const [i, setI] = useState(0);
   const [streak, setStreak] = useState(0);
   const [stats, setStats] = useState({ counted: 0, correct: 0, gained: 0, wrong: [] as string[] });
-  const [topicBonus, setTopicBonus] = useState(0);
+  const [outcome, setOutcome] = useState<{ bonus: number; newStars: number; card?: string }>({ bonus: 0, newStars: 0 });
+  const topicBonus = outcome.bonus;
   const [hintsUsed, setHintsUsed] = useState(0);
   const [chest, setChest] = useState<ChestResult>();
   const finished = useRef(false);
@@ -51,7 +53,7 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
   useEffect(() => {
     if (phase !== 'result' || finished.current) return;
     finished.current = true;
-    setTopicBonus(finishTopic(topic.id, percent, { noHints: hintsUsed === 0 }));
+    setOutcome(finishTopic(topic.id, percent, { noHints: hintsUsed === 0 }));
     if (percent >= TOPIC_PASS_PERCENT && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
     }
@@ -169,7 +171,23 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
       <h2 className="text-3xl font-extrabold">
         {passed ? `${settings.name}, тема пройдена! 🎉` : 'Ты не сдался — это главное!'}
       </h2>
+      <div className="flex gap-2 text-5xl" aria-label={`Звёзд: ${starsFor(percent)} из 3`}>
+        {[1, 2, 3].map((k) => (
+          <motion.span key={k} initial={{ scale: 0, rotate: -40 }} animate={{ scale: 1, rotate: 0 }} transition={{ delay: 0.3 + k * 0.25, type: 'spring' }}
+            style={{ filter: starsFor(percent) >= k ? 'none' : 'grayscale(1) opacity(.35)' }}>⭐</motion.span>
+        ))}
+      </div>
       <p className="text-xl">Правильно с первого раза: <b>{percent}%</b></p>
+      {outcome.newStars > 0 && starsFor(percent) >= 2 && <p className="font-bold text-okink">Новая звезда за результат! Бонус к баллам уже начислен.</p>}
+      {passed && starsFor(percent) < 3 && <p className="text-sm text-mute">Чтобы получить следующую звезду, пройди тему ещё раз на {starsFor(percent) === 1 ? 90 : 100}%.</p>}
+      {outcome.card && topic.card && (
+        <motion.div initial={{ rotateY: 90, opacity: 0 }} animate={{ rotateY: 0, opacity: 1 }} transition={{ delay: 0.9 }}
+          className="w-full max-w-md rounded-xl3 border-2 border-sun bg-sun/15 p-4 text-left">
+          <p className="text-sm font-extrabold uppercase tracking-wide text-accentink">Новая карточка знаний</p>
+          <p className="text-2xl font-extrabold">{topic.card.emoji} {topic.card.title}</p>
+          <p className="mt-1">{topic.card.fact}</p>
+        </motion.div>
+      )}
       <p className="text-xl">Заработано баллов: <b>{stats.gained + topicBonus}</b>{topicBonus > 0 && ` (в том числе +${topicBonus} за тему)`}</p>
       {!passed && <p className="text-mute">Попробуй ещё раз — с каждым разом получается лучше.</p>}
       {stats.wrong.length > 0 && (
