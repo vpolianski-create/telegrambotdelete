@@ -37,7 +37,7 @@ export function questsFor(date: string, subjects: { id: string; title: string; i
   ];
   const krug = subjects.find((s) => s.id === 'krugozor');
   if (krug) third.push({ kind: 'subject', subject: 'krugozor', icon: krug.icon, text: 'Узнай новое в «Кругозоре»: 4 задания', target: 4 });
-  out.push({ id: `${date}:q3`, ...third[(h >> 3) % third.length] });
+  out.push({ id: `${date}:q3`, ...third[(h >>> 3) % third.length] });
   return out;
 }
 

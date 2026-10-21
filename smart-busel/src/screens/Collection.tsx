@@ -6,7 +6,7 @@ import { ACCESSORIES, STICKERS, unlockedAccessories } from '../engine/chest';
 import { levelFor } from '../engine/level';
 import { useApp } from '../store/useApp';
 
-export function Collection({ onBack }: { onBack(): void }) {
+export function Collection({ onBack, onCerts }: { onBack(): void; onCerts(): void }) {
   const { badges, stickers, chestAccessories, points, settings, updateSettings, albumCards } = useApp();
   const [open, setOpen] = useState<string>();
   const cards = allTopics.filter((x) => x.topic.card);
@@ -18,6 +18,10 @@ export function Collection({ onBack }: { onBack(): void }) {
     <main className="mx-auto flex max-w-4xl flex-col gap-6 p-6">
       <button onClick={onBack} className="self-start rounded-xl2 bg-card px-5 shadow">← Назад</button>
       <h1 className="text-3xl font-extrabold">🏅 Моя коллекция</h1>
+
+      <button onClick={onCerts} className="flex min-h-[72px] items-center gap-4 rounded-xl3 bg-sun px-5 text-left text-xl font-extrabold text-navy shadow">
+        <span className="text-4xl">📜</span> Мои грамоты — посмотреть и распечатать
+      </button>
 
       <section className="rounded-xl3 bg-card p-5 shadow">
         <h2 className="mb-3 text-xl font-extrabold">Значки: {badges.length} из {BADGES.length}</h2>

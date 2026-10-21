@@ -68,6 +68,7 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
     const combo = r.correct ? comboBonus(newStreak) : 0;
     const gained = recordAnswer({
       subject: subjectId, topicId, question: item.task.question, correct: r.correct, points: r.points + combo, combo: combo > 0,
+      taskId: item.task.id, entry: item.entry,
     });
     setHintsUsed((h) => h + r.hints);
     setStreak(newStreak);

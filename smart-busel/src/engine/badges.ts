@@ -19,6 +19,7 @@ export const BADGES: BadgeDef[] = [
   { id: 'stars-30', icon: '🌟', title: '30 звёзд', desc: 'Собери 30 звёзд за темы' },
   { id: 'cards-10', icon: '🗂️', title: 'Коллекционер', desc: 'Собери 10 карточек знаний' },
   { id: 'cards-30', icon: '🏛️', title: 'Хранитель альбома', desc: 'Собери 30 карточек знаний' },
+  { id: 'fixer', icon: '🛠️', title: 'Мастер исправлений', desc: 'Исправь 10 ошибок в «Работе над ошибками»' },
   { id: 'level-5', icon: '🦅', title: 'Уровень 5', desc: 'Дойди до 5 уровня' },
   { id: 'points-500', icon: '🏆', title: '500 баллов', desc: 'Набери 500 баллов' },
 ];
@@ -29,6 +30,7 @@ export interface BadgeState {
   leitner: Record<string, WordState>;
   points: number;
   daily: Record<string, { tasks: number }>;
+  fixedMistakes?: number;
 }
 
 /** Значки, которые вычисляются из состояния (остальные выдаются в момент события). */
@@ -49,6 +51,7 @@ export function computedBadges(s: BadgeState, today: string): string[] {
   const stars = Object.values(s.topicResults).reduce((a, r) => a + (r.stars ?? 0), 0);
   if (stars >= 10) out.push('stars-10');
   if (stars >= 30) out.push('stars-30');
+  if ((s.fixedMistakes ?? 0) >= 10) out.push('fixer');
   const cards = s.albumCards?.length ?? 0;
   if (cards >= 10) out.push('cards-10');
   if (cards >= 30) out.push('cards-30');

@@ -6,6 +6,9 @@ import { afterAnswer, type WordState } from '../engine/leitner';
 import { levelFor, STAR_BONUS, starsFor } from '../engine/level';
 import { questProgress, questsFor, QUEST_POINTS } from '../engine/quests';
 import { DAILY_GOAL_BONUS, TOPIC_PASS_BONUS, TOPIC_PASS_PERCENT } from '../engine/points';
+import type { GeneratorRef } from '../content/schema';
+import { earnedCertificates } from '../engine/certificates';
+import { togglePlan as togglePlanFn, type Plan } from '../engine/plan';
 import { DEFAULT_REWARD_TEXT, DEFAULT_THRESHOLD, newRewards, type Reward } from '../engine/rewards';
 
 export interface Settings {
@@ -26,10 +29,10 @@ export interface Settings {
 export interface TopicResult { bestPercent: number; attempts: number; done: boolean; passBonusGiven: boolean; chestOpened?: boolean; stars?: number }
 export interface DayLog {
   sec: number; tasks: number; correct: number; goalDone: boolean; unlocked: boolean;
-  bySubject?: Record<string, number>; words?: number; topics?: number; quests?: string[]; questChest?: boolean;
+  bySubject?: Record<string, number>; words?: number; topics?: number; quests?: string[]; questChest?: boolean; topicIds?: string[];
 }
 export interface Toast { icon: string; title: string; text: string }
-export interface Mistake { subject: string; topicId: string; question: string; date: string }
+export interface Mistake { subject: string; topicId: string; question: string; date: string; taskId?: string; entry?: GeneratorRef }
 
 export interface Data {
   points: number;
@@ -45,6 +48,10 @@ export interface Data {
   stickers: string[];
   chestAccessories: string[];
   records: { matchBest?: number };
+  opened: string[]; // темы, которые ребёнок открывал
+  plan: Plan; // темы, выбранные на сегодня
+  certificates: Record<string, string>; // id грамоты → дата выдачи
+  fixedMistakes: number;
   levelSeen: number;
   lastTopic: { subjectId: string; topicId: string } | null;
   settings: Settings;
@@ -52,7 +59,7 @@ export interface Data {
 
 const initial: Data = {
   points: 0, rewards: [], celebrated: [], topicResults: {}, daily: {}, subjectStats: {},
-  mistakes: [], leitner: {}, badges: [], albumCards: [], stickers: [], chestAccessories: [], records: {}, levelSeen: 1, lastTopic: null,
+  mistakes: [], leitner: {}, badges: [], albumCards: [], stickers: [], chestAccessories: [], records: {}, opened: [], plan: { date: '', topics: [] }, certificates: {}, fixedMistakes: 0, levelSeen: 1, lastTopic: null,
   settings: {
     name: 'Женя', pin: '0000', pinChanged: false,
     rewardThreshold: DEFAULT_THRESHOLD, rewardTexts: {},
@@ -94,6 +101,7 @@ export interface AnswerInfo {
   subject: string; topicId: string; question: string;
   correct: boolean; points: number; // points уже с учётом подсказок и комбо
   combo?: boolean;
+  taskId?: string; entry?: GeneratorRef;
 }
 
 interface Store extends Data {
@@ -111,6 +119,10 @@ interface Store extends Data {
   setRecord(key: 'matchBest', value: number): void;
   markLevelSeen(): void;
   setLastTopic(subjectId: string, topicId: string): void;
+  /** Добавить тему в план на сегодня или убрать из него. */
+  togglePlan(topicId: string): void;
+  /** Ошибка исправлена в «Работе над ошибками». */
+  resolveMistake(topicId: string, question: string): void;
   popToast(): void;
   answerWord(wordId: string, correct: boolean): void;
   tick(sec: number): void;
@@ -125,6 +137,7 @@ const dataOf = (s: Data): Data => ({
   points: s.points, rewards: s.rewards, celebrated: s.celebrated, topicResults: s.topicResults,
   daily: s.daily, subjectStats: s.subjectStats, mistakes: s.mistakes, leitner: s.leitner,
   badges: s.badges, albumCards: s.albumCards, stickers: s.stickers, chestAccessories: s.chestAccessories, records: s.records,
+  opened: s.opened, plan: s.plan, certificates: s.certificates, fixedMistakes: s.fixedMistakes,
   levelSeen: s.levelSeen, lastTopic: s.lastTopic, settings: s.settings,
 });
 
@@ -157,6 +170,13 @@ export const useApp = create<Store>((set, get) => {
       set({ badges: [...s2.badges, ...fresh] });
       fresh.forEach((id) => { const b = BADGES.find((x) => x.id === id); if (b) toasts.push({ icon: b.icon, title: 'Новый значок!', text: b.title }); });
     }
+    // грамоты
+    const s3 = get();
+    const certs = earnedCertificates(s3, learnSubjects, date).filter((c) => !s3.certificates[c.id]);
+    if (certs.length) {
+      set({ certificates: { ...s3.certificates, ...Object.fromEntries(certs.map((c) => [c.id, date])) } });
+      certs.forEach((c) => toasts.push({ icon: '📜', title: 'Новая грамота!', text: c.title }));
+    }
     if (toasts.length) set({ toasts: [...get().toasts, ...toasts] });
     persist(dataOf(get()));
   };
@@ -183,7 +203,8 @@ export const useApp = create<Store>((set, get) => {
       }
       const st = s.subjectStats[a.subject] ?? { tasks: 0, correct: 0 };
       const mistakes = a.correct ? s.mistakes
-        : [{ subject: a.subject, topicId: a.topicId, question: a.question, date }, ...s.mistakes].slice(0, 100);
+        : [{ subject: a.subject, topicId: a.topicId, question: a.question, date, taskId: a.taskId, entry: a.entry },
+          ...s.mistakes.filter((m) => !(m.topicId === a.topicId && m.question === a.question))].slice(0, 100);
       commit({
         ...withPoints(s, a.points + bonus),
         daily: { ...s.daily, [date]: { ...d, tasks, correct: d.correct + (a.correct ? 1 : 0), goalDone, bySubject: { ...d.bySubject, [a.subject]: (d.bySubject?.[a.subject] ?? 0) + 1 } } },
@@ -216,7 +237,7 @@ export const useApp = create<Store>((set, get) => {
           },
         },
         albumCards: newCard ? [...s.albumCards, newCard] : s.albumCards,
-        daily: passed ? { ...s.daily, [date]: { ...d, topics: (d.topics ?? 0) + 1 } } : s.daily,
+        daily: passed ? { ...s.daily, [date]: { ...d, topics: (d.topics ?? 0) + 1, topicIds: [...(d.topicIds ?? []), topicId] } } : s.daily,
       }, extra);
       if (newCard && found?.card) set({ toasts: [...get().toasts, { icon: found.card.emoji, title: 'Новая карточка знаний!', text: found.card.title }] });
       return { bonus, newStars: stars - oldStars, card: newCard };
@@ -253,7 +274,15 @@ export const useApp = create<Store>((set, get) => {
       if (cur === undefined || value < cur) commit({ records: { ...get().records, [key]: value } });
     },
     markLevelSeen() { commit({ levelSeen: levelFor(get().points).level }); },
-    setLastTopic(subjectId, topicId) { commit({ lastTopic: { subjectId, topicId } }); },
+    setLastTopic(subjectId, topicId) {
+      const opened = get().opened;
+      commit({ lastTopic: { subjectId, topicId }, opened: opened.includes(topicId) ? opened : [...opened, topicId] });
+    },
+    togglePlan(topicId) { commit({ plan: togglePlanFn(get().plan, todayStr(), topicId) }); },
+    resolveMistake(topicId, question) {
+      const s = get();
+      commit({ mistakes: s.mistakes.filter((m) => !(m.topicId === topicId && m.question === question)), fixedMistakes: s.fixedMistakes + 1 });
+    },
     popToast() { set({ toasts: get().toasts.slice(1) }); },
 
     answerWord(wordId, correct) {

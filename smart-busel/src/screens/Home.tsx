@@ -1,15 +1,20 @@
+import { useMemo } from 'react';
+import { StatusChip } from '../components/StatusChip';
 import { DailyFact } from '../components/DailyFact';
 import { Logo } from '../components/Logo';
 import { Quests } from '../components/Quests';
 import { ProgressBar } from '../components/ProgressBar';
-import { findTopic, learnSubjects, subjects } from '../content/loader';
+import { reviewList } from '../content/review';
+import { allTopics, findTopic, learnSubjects } from '../content/loader';
+import { inProgramOrder, planFor } from '../engine/plan';
+import { topicStatus } from '../engine/status';
 import { levelFor, levelTitle } from '../engine/level';
 import { progressToNext } from '../engine/rewards';
 import { currentStreak } from '../engine/streak';
 import { todayStr, useApp } from '../store/useApp';
 
-export function Home({ onSubject, onParent, onTopic, onCollection }: { onSubject(id: string): void; onParent(): void; onTopic(subjectId: string, topicId: string): void; onCollection(): void }) {
-  const { settings, points, rewards, topicResults, daily, lastTopic } = useApp();
+export function Home({ onSubject, onParent, onTopic, onCollection, onPlan, onReview }: { onSubject(id: string): void; onParent(): void; onTopic(subjectId: string, topicId: string): void; onCollection(): void; onPlan(): void; onReview(): void }) {
+  const { settings, points, rewards, topicResults, daily, lastTopic, plan, opened, mistakes } = useApp();
   const p = progressToNext(points, settings.rewardThreshold);
   const lvl = levelFor(points);
   const stars = Object.values(topicResults).reduce((a, r) => a + (r.stars ?? 0), 0);
@@ -18,10 +23,16 @@ export function Home({ onSubject, onParent, onTopic, onCollection }: { onSubject
   const goalDone = today?.tasks ?? 0;
   const streak = currentStreak((d) => (daily[d]?.tasks ?? 0) > 0, todayStr());
 
-  // «Продолжить»: первая готовая тема, которую ещё не прошли
+  // План на сегодня (в порядке программы) и «Продолжить»
+  const order = allTopics.map((x) => x.topic.id);
+  const planned = inProgramOrder(planFor(plan, todayStr()), order).map((id) => allTopics.find((x) => x.topic.id === id)).filter((x) => !!x);
+  const statusOf = (id: string) => topicStatus(topicResults[id], opened.includes(id));
+  const reviewCount = useMemo(() => reviewList(mistakes, 99).length, [mistakes]);
   let next: { subjectId: string; topicId: string; title: string } | undefined;
+  const firstPlanned = planned.find((x) => x && !topicResults[x.topic.id]?.done);
+  if (firstPlanned) next = { subjectId: firstPlanned.subject.id, topicId: firstPlanned.topic.id, title: firstPlanned.topic.title };
   const last = lastTopic ? findTopic(lastTopic.subjectId, lastTopic.topicId) : undefined;
-  if (last && !topicResults[last.topic.id]?.done) next = { subjectId: last.subject.id, topicId: last.topic.id, title: last.topic.title };
+  if (!next && last && !topicResults[last.topic.id]?.done) next = { subjectId: last.subject.id, topicId: last.topic.id, title: last.topic.title };
   for (const s of learnSubjects)
     for (const sec of s.sections)
       for (const t of sec.topics)
@@ -66,6 +77,30 @@ export function Home({ onSubject, onParent, onTopic, onCollection }: { onSubject
               {today?.goalDone && ' ✓'}
             </p>
           </div>
+        )}
+      </section>
+
+      <section className="rounded-xl3 bg-card p-5 shadow">
+        <div className="mb-3 flex flex-wrap items-center gap-3">
+          <h2 className="flex-1 text-xl font-extrabold">🗓️ Мой план на сегодня</h2>
+          <button onClick={onPlan} className="min-h-touch rounded-xl2 bg-brand px-5 font-extrabold text-white">{planned.length ? 'Изменить' : 'Выбрать темы'}</button>
+          {reviewCount > 0 && (
+            <button onClick={onReview} className="min-h-touch rounded-xl2 bg-sun px-5 font-extrabold text-navy">🔁 Работа над ошибками · {reviewCount}</button>
+          )}
+        </div>
+        {planned.length === 0 ? (
+          <p className="text-mute">Выбери, что хочешь пройти сегодня. Если ничего не выбрано, Бусел предложит следующую тему по программе.</p>
+        ) : (
+          <ul className="flex flex-col gap-2">
+            {planned.map((x) => x && (
+              <li key={x.topic.id}>
+                <button onClick={() => onTopic(x.subject.id, x.topic.id)} className="flex min-h-touch w-full flex-wrap items-center justify-between gap-2 rounded-xl2 bg-bg px-4 py-2 text-left">
+                  <span>{x.subject.icon} {x.topic.title}</span>
+                  <StatusChip status={statusOf(x.topic.id)} />
+                </button>
+              </li>
+            ))}
+          </ul>
         )}
       </section>
 

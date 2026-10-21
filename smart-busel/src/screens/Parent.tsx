@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { allTopics, subjects } from '../content/loader';
 import { addDays } from '../engine/leitner';
+import { weekReport } from '../engine/report';
+import { statusCounts, topicStatus } from '../engine/status';
 import { hasEnglishVoice } from '../audio/speech';
 import { Logo } from '../components/Logo';
 import { snapshot, todayStr, useApp } from '../store/useApp';
 
-type Tab = 'stats' | 'rewards' | 'settings' | 'backup';
-const TABS: [Tab, string][] = [['stats', 'Статистика'], ['rewards', 'Награды'], ['settings', 'Настройки'], ['backup', 'Копия']];
+type Tab = 'stats' | 'report' | 'rewards' | 'settings' | 'backup';
+const TABS: [Tab, string][] = [['stats', 'Статистика'], ['report', 'Отчёт за неделю'], ['rewards', 'Награды'], ['settings', 'Настройки'], ['backup', 'Копия']];
 
 const Card = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <section className="rounded-xl2 bg-card p-4 shadow">
@@ -16,7 +18,7 @@ const Card = ({ title, children }: { title: string; children: React.ReactNode })
 );
 
 function Stats() {
-  const { daily, topicResults, subjectStats, mistakes } = useApp();
+  const { daily, topicResults, subjectStats, mistakes, opened } = useApp();
   const days = Array.from({ length: 7 }, (_, k) => addDays(todayStr(), k - 6));
   const max = Math.max(60, ...days.map((d) => daily[d]?.sec ?? 0));
   const known = new Set(allTopics.map((x) => x.topic.id));
@@ -49,6 +51,13 @@ function Stats() {
         })}
         {Object.keys(subjectStats).length === 0 && <p className="text-mute">Пока нет данных.</p>}
       </Card>
+      <Card title="Статус тем">
+        {subjects.filter((x) => x.sections.some((sec) => sec.topics.some((t) => t.status === 'ready'))).map((sub) => {
+          const ready = sub.sections.flatMap((sec) => sec.topics).filter((t) => t.status === 'ready');
+          const c = statusCounts(ready.map((t) => topicStatus(topicResults[t.id], opened.includes(t.id))));
+          return <p key={sub.id}>{sub.icon} {sub.title}: пройдено {c.done}, начато {c.started}, не пройдено {c.failed}, не начато {c.new}</p>;
+        })}
+      </Card>
       <Card title="Темы">
         <p>Пройдено: {done.length ? done.map(([id, r]) => `${topicTitle(id)} (${r.bestPercent}%)`).join('; ') : '—'}</p>
         <p>В процессе: {progress.length ? progress.map(([id, r]) => `${topicTitle(id)} (${r.bestPercent}%)`).join('; ') : '—'}</p>
@@ -61,6 +70,66 @@ function Stats() {
         )}
         {shown.slice(0, 5).map((m, k) => <p key={k} className="text-sm text-mute">{m.date} · {m.question}</p>)}
       </Card>
+    </>
+  );
+}
+
+function Report() {
+  const { daily, mistakes, topicResults } = useApp();
+  const [shift, setShift] = useState(0); // на сколько недель назад
+  const to = addDays(todayStr(), -7 * shift);
+  const r = weekReport({ daily, mistakes }, to);
+  const title = (id: string) => allTopics.find((x) => x.topic.id === id)?.topic.title ?? id;
+  const dm = (d: string) => `${d.slice(8)}.${d.slice(5, 7)}`;
+  const notDone = allTopics.filter((x) => x.topic.status === 'ready' && topicResults[x.topic.id] && !topicResults[x.topic.id].done);
+  const diff = r.minutes - r.prevMinutes;
+  const tips: string[] = [];
+  if (r.activeDays === 0) tips.push('На этой неделе занятий не было. Можно начать с одной короткой темы.');
+  else if (r.activeDays < 4) tips.push('Лучше заниматься понемногу, но чаще: 15–20 минут 4–5 дней в неделю.');
+  else tips.push('Отличный ритм занятий — отметьте это ребёнку.');
+  if (r.tasks >= 10 && r.percent < 60) tips.push('Много ошибок: стоит вместе разобрать трудные темы и запустить «Работу над ошибками».');
+  if (r.weakTopics.length) tips.push(`Чаще всего ошибки в теме «${title(r.weakTopics[0][0])}» — вернитесь к ней.`);
+  if (notDone.length) tips.push(`Темы, которые ещё не пройдены: ${notDone.slice(0, 3).map((x) => x.topic.title).join('; ')}.`);
+  const text = [
+    `Отчёт Умного Бусела: ${dm(r.from)} — ${dm(r.to)}`,
+    `Занятия: ${r.minutes} мин., дней с занятиями: ${r.activeDays} из 7`,
+    `Заданий: ${r.tasks}, верно с первого раза: ${r.percent}%`,
+    `Пройдено тем: ${r.topicsPassed.length ? r.topicsPassed.map(title).join('; ') : '—'}`,
+    ...tips.map((t) => `• ${t}`),
+  ].join('\n');
+  const [copied, setCopied] = useState(false);
+  const max = Math.max(60, ...r.days.map((d) => d.sec));
+
+  return (
+    <>
+      <div className="no-print flex flex-wrap items-center gap-2">
+        <button onClick={() => setShift(shift + 1)} className="rounded-xl2 bg-card px-4 shadow">← Раньше</button>
+        <button disabled={shift === 0} onClick={() => setShift(shift - 1)} className="rounded-xl2 bg-card px-4 shadow disabled:opacity-40">Позже →</button>
+        <button onClick={() => window.print()} className="rounded-xl2 bg-brand px-5 text-white">🖨️ Распечатать</button>
+        <button onClick={() => { void navigator.clipboard?.writeText(text).then(() => setCopied(true)); }} className="rounded-xl2 bg-soft px-5">{copied ? 'Скопировано ✓' : 'Скопировать текст'}</button>
+      </div>
+      <div className="print-area flex flex-col gap-4 rounded-xl2 bg-card p-4 shadow">
+        <h2 className="text-xl font-extrabold">Отчёт за неделю: {dm(r.from)} — {dm(r.to)}</h2>
+        <div className="grid gap-3 sm:grid-cols-4">
+          {[['⏱️', `${r.minutes} мин.`, diff === 0 ? 'как неделей раньше' : `${diff > 0 ? '+' : ''}${diff} мин. к прошлой неделе`], ['📅', `${r.activeDays} из 7`, 'дней с занятиями'], ['✍️', `${r.tasks}`, 'заданий'], ['🎯', `${r.percent}%`, 'верно с первого раза']].map(([i, v, l]) => (
+            <div key={l} className="rounded-xl2 bg-soft p-3 text-center"><p className="text-2xl">{i}</p><p className="text-xl font-extrabold">{v}</p><p className="text-sm text-mute">{l}</p></div>
+          ))}
+        </div>
+        <div className="flex h-24 items-end gap-2">
+          {r.days.map((d) => (
+            <div key={d.date} className="flex flex-1 flex-col items-center gap-1">
+              <div className="w-full rounded-t-lg bg-brand" style={{ height: 4 + (d.sec / max) * 70 }} />
+              <span className="text-xs text-mute">{dm(d.date)}</span>
+            </div>
+          ))}
+        </div>
+        <p><b>Пройдено тем:</b> {r.topicsPassed.length ? r.topicsPassed.map(title).join('; ') : '—'}</p>
+        <p><b>Чаще всего ошибки:</b> {r.weakTopics.length ? r.weakTopics.map(([id, n]) => `${title(id)} (${n})`).join('; ') : 'ошибок почти не было'}</p>
+        <div>
+          <p className="font-extrabold">Что можно сделать:</p>
+          <ul className="list-disc pl-6">{tips.map((t) => <li key={t}>{t}</li>)}</ul>
+        </div>
+      </div>
     </>
   );
 }
@@ -223,6 +292,7 @@ export function Parent({ onBack }: { onBack(): void }) {
         ))}
       </nav>
       {tab === 'stats' && <Stats />}
+      {tab === 'report' && <Report />}
       {tab === 'rewards' && <Rewards />}
       {tab === 'settings' && <SettingsTab />}
       {tab === 'backup' && <Backup />}
