@@ -3,22 +3,22 @@
   "title": "Английский язык",
   "language": "en",
   "color": "#0b7285",
-  "icon": "🇬🇧",
+  "icon": "🔤",
   "sections": [
     {
       "id": "english-s1",
-      "title": "Preliminary list",
+      "title": "Грамматика: основы",
       "topics": [
         {
           "id": "english-t01",
-          "title": "to be",
+          "title": "Глагол to be (am, is, are)",
           "status": "ready",
           "needsReview": true,
           "cards": [
-            "Глагол **to be** («быть») — самый частый в английском. В настоящем времени он имеет три формы: **am**, **is**, **are**. Выбор зависит от того, кто выполняет действие.",
+            "Глагол **to be** («быть») самый частый в английском. В настоящем времени он имеет три формы: **am**, **is**, **are**. Выбор зависит от того, о ком мы говорим.",
             "**I am** (я есть, я…), **he / she / it is**, **we / you / they are**. Например: I am a pupil. She is my sister. They are at school.",
-            "В русском языке мы пропускаем «есть»: «Я ученик». В английском предложение **без глагола не бывает**: I **am** a pupil.",
-            "Вопрос — глагол ставим **вперёд**: **Are** you ready? Is he at home? Отрицание — добавляем **not**: She **is not** (isn’t) tired."
+            "В русском языке мы пропускаем «есть»: «Я ученик». В английском предложение **без глагола не бывает**: I **am** a pupil. Короткие формы: I’m, he’s, she’s, we’re, they’re.",
+            "Вопрос: глагол ставим **вперёд**: **Are** you ready? Is he at home? Отрицание: добавляем **not**: She **is not** (isn’t) tired. Краткие ответы: Yes, I am. / No, he isn’t."
           ],
           "example": {
             "title": "Вставим am, is или are: «My friends ___ funny».",
@@ -33,71 +33,111 @@
               },
               {
                 "text": "Ответ: My friends are funny.",
-                "why": "Читаем получившееся предложение — оно звучит правильно."
+                "why": "Читаем получившееся предложение: оно звучит правильно."
               }
             ]
           },
           "selfCheck": [
+            {
+              "id": "english-t01-sc1",
+              "subject": "english",
+              "topicId": "english-t01",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "I ___ eleven.",
+              "answer": "am",
+              "options": [
+                "am",
+                "is",
+                "are"
+              ],
+              "explanation": [
+                "С местоимением I всегда am."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
             {
               "id": "english-t01-sc2",
               "subject": "english",
               "topicId": "english-t01",
               "difficulty": "basic",
               "type": "single",
-              "question": "I ___ eleven.",
-              "options": [
-                "am",
-                "is",
-                "are"
-              ],
-              "answer": "am",
-              "explanation": [
-                "С местоимением I всегда am."
-              ],
-              "hints": [
-                "Выбери форму для «I»."
-              ]
-            },
-            {
-              "id": "english-t01-sc4",
-              "subject": "english",
-              "topicId": "english-t01",
-              "difficulty": "basic",
-              "type": "single",
               "question": "She ___ my friend.",
+              "answer": "is",
               "options": [
                 "am",
                 "is",
                 "are"
               ],
-              "answer": "is",
               "explanation": [
                 "С he, she, it используем is."
               ],
               "hints": [
-                "Выбери форму для «she»."
+                "Вернись к карточкам урока: ответ там."
               ]
             }
           ],
           "practice": [
+            {
+              "id": "english-t01-p3",
+              "subject": "english",
+              "topicId": "english-t01",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "We ___ friends.",
+              "answer": "are",
+              "options": [
+                "am",
+                "is",
+                "are"
+              ],
+              "explanation": [
+                "We — это are."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t01-p4",
+              "subject": "english",
+              "topicId": "english-t01",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "He ___ a doctor.",
+              "answer": "is",
+              "options": [
+                "am",
+                "is",
+                "are"
+              ],
+              "explanation": [
+                "He — это is."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
             {
               "id": "english-t01-p5",
               "subject": "english",
               "topicId": "english-t01",
               "difficulty": "basic",
               "type": "single",
-              "question": "We ___ friends.",
+              "question": "They ___ at school.",
+              "answer": "are",
               "options": [
                 "am",
                 "is",
                 "are"
               ],
-              "answer": "are",
               "explanation": [
-                "We — это are."
+                "They — это are."
               ],
               "hints": [
-                "Найди подлежащее и вспомни его форму."
+                "Вернись к карточкам урока: ответ там."
               ]
             },
             {
@@ -106,18 +146,18 @@
               "topicId": "english-t01",
               "difficulty": "basic",
               "type": "single",
-              "question": "He ___ a doctor.",
+              "question": "It ___ a big dog.",
+              "answer": "is",
               "options": [
                 "am",
                 "is",
                 "are"
               ],
-              "answer": "is",
               "explanation": [
-                "He — это is."
+                "It — это is."
               ],
               "hints": [
-                "Найди подлежащее и вспомни его форму."
+                "Вернись к карточкам урока: ответ там."
               ]
             },
             {
@@ -126,18 +166,18 @@
               "topicId": "english-t01",
               "difficulty": "basic",
               "type": "single",
-              "question": "They ___ at school.",
+              "question": "You ___ very kind.",
+              "answer": "are",
               "options": [
                 "am",
                 "is",
                 "are"
               ],
-              "answer": "are",
               "explanation": [
-                "They — это are."
+                "You — это are."
               ],
               "hints": [
-                "Найди подлежащее и вспомни его форму."
+                "Вернись к карточкам урока: ответ там."
               ]
             },
             {
@@ -146,62 +186,23 @@
               "topicId": "english-t01",
               "difficulty": "basic",
               "type": "single",
-              "question": "I ___ a pupil.",
+              "question": "Как правильно задать вопрос?",
+              "answer": "Are you from Belarus?",
               "options": [
-                "am",
-                "is",
-                "are"
+                "You are from Belarus?",
+                "Are you from Belarus?",
+                "Is you from Belarus?"
               ],
-              "answer": "am",
               "explanation": [
-                "I — это am."
+                "В вопросе to be ставим перед подлежащим.",
+                "С you используем are."
               ],
               "hints": [
-                "Найди подлежащее и вспомни его форму."
+                "Вернись к карточкам урока: ответ там."
               ]
             },
             {
               "id": "english-t01-p9",
-              "subject": "english",
-              "topicId": "english-t01",
-              "difficulty": "basic",
-              "type": "single",
-              "question": "It ___ a big dog.",
-              "options": [
-                "am",
-                "is",
-                "are"
-              ],
-              "answer": "is",
-              "explanation": [
-                "It — это is."
-              ],
-              "hints": [
-                "Найди подлежащее и вспомни его форму."
-              ]
-            },
-            {
-              "id": "english-t01-p10",
-              "subject": "english",
-              "topicId": "english-t01",
-              "difficulty": "basic",
-              "type": "single",
-              "question": "You ___ very kind.",
-              "options": [
-                "am",
-                "is",
-                "are"
-              ],
-              "answer": "are",
-              "explanation": [
-                "You — это are."
-              ],
-              "hints": [
-                "Найди подлежащее и вспомни его форму."
-              ]
-            },
-            {
-              "id": "english-t01-a11",
               "subject": "english",
               "topicId": "english-t01",
               "difficulty": "advanced",
@@ -216,28 +217,7 @@
               ]
             },
             {
-              "id": "english-t01-a12",
-              "subject": "english",
-              "topicId": "english-t01",
-              "difficulty": "advanced",
-              "type": "single",
-              "question": "Как правильно задать вопрос?",
-              "options": [
-                "You are from Belarus?",
-                "Are you from Belarus?",
-                "Is you from Belarus?"
-              ],
-              "answer": "Are you from Belarus?",
-              "explanation": [
-                "В вопросе глагол to be ставим перед подлежащим.",
-                "С you используем are."
-              ],
-              "hints": [
-                "Вопрос начинается с глагола."
-              ]
-            },
-            {
-              "id": "english-t01-a13",
+              "id": "english-t01-p10",
               "subject": "english",
               "topicId": "english-t01",
               "difficulty": "advanced",
@@ -248,33 +228,33 @@
                 "С he нужно is: He is my brother."
               ],
               "hints": [
-                "Какая форма нужна для he?"
+                "Вернись к карточкам урока: ответ там."
               ]
-            }
-          ],
-          "bonus": [
+            },
             {
-              "id": "english-t01-x14",
+              "id": "english-t01-p11",
               "subject": "english",
               "topicId": "english-t01",
-              "difficulty": "bonus",
+              "difficulty": "advanced",
               "type": "single",
               "question": "Выбери верное отрицание: «Мы не дома».",
+              "answer": "We are not at home.",
               "options": [
                 "We is not at home.",
                 "We are not at home.",
                 "We am not at home."
               ],
-              "answer": "We are not at home.",
               "explanation": [
                 "С we используем are, а not ставим после глагола."
               ],
               "hints": [
-                "Глагол to be + not."
+                "Вернись к карточкам урока: ответ там."
               ]
-            },
+            }
+          ],
+          "bonus": [
             {
-              "id": "english-t01-x15",
+              "id": "english-t01-x12",
               "subject": "english",
               "topicId": "english-t01",
               "difficulty": "bonus",
@@ -287,38 +267,3226 @@
               "hints": [
                 "Замени «my parents» на they."
               ]
+            },
+            {
+              "id": "english-t01-x13",
+              "subject": "english",
+              "topicId": "english-t01",
+              "difficulty": "bonus",
+              "type": "single",
+              "question": "Выбери верный краткий ответ на вопрос «Is she a teacher?» (да).",
+              "answer": "Yes, she is.",
+              "options": [
+                "Yes, she am.",
+                "Yes, she is.",
+                "Yes, she are."
+              ],
+              "explanation": [
+                "Отвечаем с тем же глаголом: Yes, she is."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
             }
-          ]
+          ],
+          "card": {
+            "emoji": "🗣️",
+            "title": "Самый частый глагол",
+            "fact": "Глагол to be — один из самых частых в английском: им пользуются в каждой минуте разговора."
+          }
         },
         {
           "id": "english-t02",
-          "title": "have got",
-          "status": "planned",
-          "needsReview": true
+          "title": "have got / has got",
+          "status": "ready",
+          "needsReview": true,
+          "cards": [
+            "**have got** означает «иметь, у меня есть». Мы говорим: **I have got** a dog. С he, she, it — **has got**: She **has got** a cat.",
+            "**I, you, we, they** → **have got**. **He, she, it** → **has got**. Короткие формы: I’ve got, she’s got, they’ve got.",
+            "Отрицание: **haven’t got** / **hasn’t got**: I haven’t got a brother. He hasn’t got a bike.",
+            "Вопрос: **Have you got…? Has she got…?** Короткие ответы: Yes, I have. / No, I haven’t. Yes, she has. / No, she hasn’t."
+          ],
+          "example": {
+            "title": "Составим предложение: «У Тома есть велосипед».",
+            "steps": [
+              {
+                "text": "Подлежащее: Tom, это «он», he.",
+                "why": "Для he используем has got."
+              },
+              {
+                "text": "Tom has got a bike.",
+                "why": "Глагол has got ставим после подлежащего."
+              },
+              {
+                "text": "Вопрос: Has Tom got a bike? Ответ: Yes, he has.",
+                "why": "Для вопроса has идёт вперёд."
+              }
+            ]
+          },
+          "selfCheck": [
+            {
+              "id": "english-t02-sc1",
+              "subject": "english",
+              "topicId": "english-t02",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "I ___ got a sister.",
+              "answer": "have",
+              "options": [
+                "have",
+                "has",
+                "am"
+              ],
+              "explanation": [
+                "С I используем have got."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t02-sc2",
+              "subject": "english",
+              "topicId": "english-t02",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "She ___ got a dog.",
+              "answer": "has",
+              "options": [
+                "have",
+                "has",
+                "is"
+              ],
+              "explanation": [
+                "С she используем has got."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            }
+          ],
+          "practice": [
+            {
+              "id": "english-t02-p3",
+              "subject": "english",
+              "topicId": "english-t02",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "They ___ got a big house.",
+              "answer": "have",
+              "options": [
+                "have",
+                "has",
+                "are"
+              ],
+              "explanation": [
+                "They — have got."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t02-p4",
+              "subject": "english",
+              "topicId": "english-t02",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "My brother ___ got a bike.",
+              "answer": "has",
+              "options": [
+                "have",
+                "has",
+                "is"
+              ],
+              "explanation": [
+                "My brother — это he, значит, has got."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t02-p5",
+              "subject": "english",
+              "topicId": "english-t02",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "We ___ got a car. (отрицание, короткая форма)",
+              "answer": "haven’t",
+              "options": [
+                "hasn’t",
+                "haven’t",
+                "isn’t"
+              ],
+              "explanation": [
+                "С we: haven’t got."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t02-p6",
+              "subject": "english",
+              "topicId": "english-t02",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как правильно задать вопрос?",
+              "answer": "Has she got a cat?",
+              "options": [
+                "Have she got a cat?",
+                "Has she got a cat?",
+                "Does she got a cat?"
+              ],
+              "explanation": [
+                "С she — Has she got…?"
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t02-p7",
+              "subject": "english",
+              "topicId": "english-t02",
+              "difficulty": "basic",
+              "type": "truefalse",
+              "question": "Предложение «He have got a ball» правильное.",
+              "answer": false,
+              "explanation": [
+                "С he нужно has: He has got a ball."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t02-p8",
+              "subject": "english",
+              "topicId": "english-t02",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Выбери краткий ответ: «Have you got a pen?» (нет)",
+              "answer": "No, I haven’t.",
+              "options": [
+                "No, I haven’t.",
+                "No, I hasn’t.",
+                "No, I am not."
+              ],
+              "explanation": [
+                "Отвечаем с have."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t02-p9",
+              "subject": "english",
+              "topicId": "english-t02",
+              "difficulty": "advanced",
+              "type": "input",
+              "question": "Вставь have или has: Our teacher ___ got a new car.",
+              "answer": "has",
+              "explanation": [
+                "Our teacher — это she/he, значит, has got."
+              ],
+              "hints": [
+                "Замени teacher на she/he."
+              ]
+            },
+            {
+              "id": "english-t02-p10",
+              "subject": "english",
+              "topicId": "english-t02",
+              "difficulty": "advanced",
+              "type": "single",
+              "question": "Кому подходит «has got»?",
+              "answer": "he, she, it",
+              "options": [
+                "I, you",
+                "we, they",
+                "he, she, it",
+                "все"
+              ],
+              "explanation": [
+                "С he, she, it используем has got."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            }
+          ],
+          "bonus": [
+            {
+              "id": "english-t02-x11",
+              "subject": "english",
+              "topicId": "english-t02",
+              "difficulty": "bonus",
+              "type": "input",
+              "question": "Вставь have или has: My friends ___ got a dog.",
+              "answer": "have",
+              "explanation": [
+                "My friends — это they, значит, have got."
+              ],
+              "hints": [
+                "Замени friends на they."
+              ]
+            },
+            {
+              "id": "english-t02-x12",
+              "subject": "english",
+              "topicId": "english-t02",
+              "difficulty": "bonus",
+              "type": "truefalse",
+              "question": "«I’ve got» — это краткая форма «I have got».",
+              "answer": true,
+              "explanation": [
+                "Так говорят чаще всего."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            }
+          ],
+          "card": {
+            "emoji": "🐕",
+            "title": "Кто у кого есть",
+            "fact": "Конструкцией have got англичане говорят о том, что у них есть: от питомцев и друзей до идей."
+          }
         },
         {
           "id": "english-t03",
-          "title": "There is / There are",
-          "status": "planned",
-          "needsReview": true
+          "title": "Артикли a / an / the",
+          "status": "ready",
+          "needsReview": true,
+          "cards": [
+            "В английском перед существительным часто стоит **артикль**. **a / an** — неопределённый артикль («какой-то, один»). **the** — определённый («этот самый»).",
+            "**a** ставят перед согласным звуком: a book, a dog, a pupil. **an** — перед гласным звуком: an apple, an egg, an orange. Важно правильно слушать звук: an hour (h не произносится), a university (начинается на «ю»).",
+            "**the** используем, когда ясно, о чём речь: The cat is on the sofa (мы знаем, какая кошка), когда предмет единственный: the sun, the moon, the Earth, или когда упоминали его раньше: I have a dog. The dog is big.",
+            "Артикля нет: перед **именами** (Tom), перед **множественным числом в общем смысле** (I like cats), перед названиями **языков, дней и месяцев**, перед большинством названий стран (Belarus)."
+          ],
+          "example": {
+            "title": "Выберем артикль: «I have ___ apple and ___ banana».",
+            "steps": [
+              {
+                "text": "Apple начинается с гласного звука, значит, an.",
+                "why": "Перед гласным — an."
+              },
+              {
+                "text": "Banana начинается с согласного, значит, a.",
+                "why": "Перед согласным — a."
+              },
+              {
+                "text": "Ответ: I have an apple and a banana.",
+                "why": "Проверяем звук, а не букву."
+              }
+            ]
+          },
+          "selfCheck": [
+            {
+              "id": "english-t03-sc1",
+              "subject": "english",
+              "topicId": "english-t03",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "I have ___ egg.",
+              "answer": "an",
+              "options": [
+                "a",
+                "an",
+                "the"
+              ],
+              "explanation": [
+                "Egg начинается с гласного звука."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t03-sc2",
+              "subject": "english",
+              "topicId": "english-t03",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "She is ___ pupil.",
+              "answer": "a",
+              "options": [
+                "a",
+                "an",
+                "the"
+              ],
+              "explanation": [
+                "Pupil начинается с согласного звука."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            }
+          ],
+          "practice": [
+            {
+              "id": "english-t03-p3",
+              "subject": "english",
+              "topicId": "english-t03",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "He has ___ orange.",
+              "answer": "an",
+              "options": [
+                "a",
+                "an",
+                "the"
+              ],
+              "explanation": [
+                "Orange начинается с гласного."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t03-p4",
+              "subject": "english",
+              "topicId": "english-t03",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "___ sun is hot.",
+              "answer": "The",
+              "options": [
+                "A",
+                "An",
+                "The"
+              ],
+              "explanation": [
+                "Солнце одно, поэтому the."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t03-p5",
+              "subject": "english",
+              "topicId": "english-t03",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "I have a dog. ___ dog is big.",
+              "answer": "The",
+              "options": [
+                "A",
+                "An",
+                "The"
+              ],
+              "explanation": [
+                "Мы уже упоминали собаку."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t03-p6",
+              "subject": "english",
+              "topicId": "english-t03",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "It is ___ hour.",
+              "answer": "an",
+              "options": [
+                "a",
+                "an",
+                "the"
+              ],
+              "explanation": [
+                "В слове hour первая буква не читается, звук гласный."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t03-p7",
+              "subject": "english",
+              "topicId": "english-t03",
+              "difficulty": "basic",
+              "type": "truefalse",
+              "question": "Перед именем Tom нужен артикль the.",
+              "answer": false,
+              "explanation": [
+                "Перед именами артикль не ставят."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t03-p8",
+              "subject": "english",
+              "topicId": "english-t03",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как правильно: «Я люблю кошек» в общем смысле?",
+              "answer": "I like cats.",
+              "options": [
+                "I like the cats.",
+                "I like cats.",
+                "I like a cats."
+              ],
+              "explanation": [
+                "Во множественном числе в общем смысле артикль не нужен."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t03-p9",
+              "subject": "english",
+              "topicId": "english-t03",
+              "difficulty": "advanced",
+              "type": "single",
+              "question": "Выбери верное: «Это университет».",
+              "answer": "It is a university.",
+              "options": [
+                "It is an university.",
+                "It is a university.",
+                "It is the university only."
+              ],
+              "explanation": [
+                "University начинается на «ю», то есть на согласный звук."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t03-p10",
+              "subject": "english",
+              "topicId": "english-t03",
+              "difficulty": "advanced",
+              "type": "single",
+              "question": "Выбери верное: «Луна светит ярко».",
+              "answer": "The moon is bright.",
+              "options": [
+                "A moon is bright.",
+                "The moon is bright.",
+                "Moon is bright."
+              ],
+              "explanation": [
+                "Луна одна, поэтому the."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            }
+          ],
+          "bonus": [
+            {
+              "id": "english-t03-x11",
+              "subject": "english",
+              "topicId": "english-t03",
+              "difficulty": "bonus",
+              "type": "input",
+              "question": "Вставь a, an или the: Look at ___ blue sky!",
+              "answer": "the",
+              "explanation": [
+                "Небо одно, значит, the."
+              ],
+              "hints": [
+                "Небо одно для всех."
+              ]
+            },
+            {
+              "id": "english-t03-x12",
+              "subject": "english",
+              "topicId": "english-t03",
+              "difficulty": "bonus",
+              "type": "truefalse",
+              "question": "Перед словом apple нужно писать a.",
+              "answer": false,
+              "explanation": [
+                "Перед apple нужен an."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            }
+          ],
+          "card": {
+            "emoji": "🅰️",
+            "title": "Маленькое слово",
+            "fact": "Артикли a, an и the — самые частые слова английского языка. Их учат всю жизнь, и это нормально."
+          }
         },
         {
           "id": "english-t04",
-          "title": "Present Simple",
-          "status": "planned",
-          "needsReview": true
+          "title": "Множественное число существительных",
+          "status": "ready",
+          "needsReview": true,
+          "cards": [
+            "Чтобы получить **множественное число**, к слову обычно добавляют **-s**: book → books, dog → dogs, pen → pens.",
+            "Если слово оканчивается на **s, x, ch, sh, o**, добавляем **-es**: bus → buses, box → boxes, watch → watches, brush → brushes, tomato → tomatoes. Исключение: photo → photos.",
+            "Если слово оканчивается на **согласную + y**, то **y** меняется на **ies**: city → cities, baby → babies. Но если перед y гласная, то просто -s: boy → boys, day → days. Слова на -f/-fe: knife → knives, wolf → wolves, leaf → leaves.",
+            "**Исключения**: man → men, woman → women, child → children, foot → feet, tooth → teeth, mouse → mice. А слова sheep и fish не изменяются: one sheep, two sheep."
+          ],
+          "example": {
+            "title": "Образуем множественное число слов: box, city, child.",
+            "steps": [
+              {
+                "text": "Box оканчивается на x, добавляем -es: boxes.",
+                "why": "После s, x, ch, sh, o обычно -es."
+              },
+              {
+                "text": "City оканчивается на согласную + y: меняем y на ies: cities.",
+                "why": "Перед y стоит согласная t."
+              },
+              {
+                "text": "Child — исключение: children.",
+                "why": "Такие слова нужно запомнить."
+              }
+            ]
+          },
+          "selfCheck": [
+            {
+              "id": "english-t04-sc1",
+              "subject": "english",
+              "topicId": "english-t04",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Множественное число слова book:",
+              "answer": "books",
+              "options": [
+                "bookes",
+                "books",
+                "bookies"
+              ],
+              "explanation": [
+                "Добавляем -s."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t04-sc2",
+              "subject": "english",
+              "topicId": "english-t04",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Множественное число слова box:",
+              "answer": "boxes",
+              "options": [
+                "boxs",
+                "boxes",
+                "boxies"
+              ],
+              "explanation": [
+                "После x добавляем -es."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            }
+          ],
+          "practice": [
+            {
+              "id": "english-t04-p3",
+              "subject": "english",
+              "topicId": "english-t04",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Множественное число слова city:",
+              "answer": "cities",
+              "options": [
+                "citys",
+                "cities",
+                "cityes"
+              ],
+              "explanation": [
+                "Согласная + y → ies."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t04-p4",
+              "subject": "english",
+              "topicId": "english-t04",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Множественное число слова boy:",
+              "answer": "boys",
+              "options": [
+                "boies",
+                "boys",
+                "boyes"
+              ],
+              "explanation": [
+                "Перед y гласная, поэтому просто -s."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t04-p5",
+              "subject": "english",
+              "topicId": "english-t04",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Множественное число слова child:",
+              "answer": "children",
+              "options": [
+                "childs",
+                "children",
+                "childes"
+              ],
+              "explanation": [
+                "Это исключение."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t04-p6",
+              "subject": "english",
+              "topicId": "english-t04",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Множественное число слова man:",
+              "answer": "men",
+              "options": [
+                "mans",
+                "men",
+                "mens"
+              ],
+              "explanation": [
+                "Исключение."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t04-p7",
+              "subject": "english",
+              "topicId": "english-t04",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Множественное число слова tooth:",
+              "answer": "teeth",
+              "options": [
+                "tooths",
+                "teeth",
+                "toothes"
+              ],
+              "explanation": [
+                "Исключение."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t04-p8",
+              "subject": "english",
+              "topicId": "english-t04",
+              "difficulty": "basic",
+              "type": "truefalse",
+              "question": "Слово sheep во множественном числе не меняется.",
+              "answer": true,
+              "explanation": [
+                "One sheep, two sheep."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t04-p9",
+              "subject": "english",
+              "topicId": "english-t04",
+              "difficulty": "advanced",
+              "type": "input",
+              "question": "Напиши множественное число слова watch.",
+              "answer": "watches",
+              "explanation": [
+                "Watch оканчивается на ch, добавляем -es."
+              ],
+              "hints": [
+                "После ch добавляем -es."
+              ]
+            },
+            {
+              "id": "english-t04-p10",
+              "subject": "english",
+              "topicId": "english-t04",
+              "difficulty": "advanced",
+              "type": "input",
+              "question": "Напиши множественное число слова baby.",
+              "answer": "babies",
+              "explanation": [
+                "Согласная + y → ies."
+              ],
+              "hints": [
+                "y меняем на ies."
+              ]
+            },
+            {
+              "id": "english-t04-p11",
+              "subject": "english",
+              "topicId": "english-t04",
+              "difficulty": "advanced",
+              "type": "single",
+              "question": "Множественное число слова knife:",
+              "answer": "knives",
+              "options": [
+                "knifes",
+                "knives",
+                "knifs"
+              ],
+              "explanation": [
+                "f/fe → ves."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            }
+          ],
+          "bonus": [
+            {
+              "id": "english-t04-x12",
+              "subject": "english",
+              "topicId": "english-t04",
+              "difficulty": "bonus",
+              "type": "input",
+              "question": "Напиши множественное число слова mouse.",
+              "answer": "mice",
+              "explanation": [
+                "Исключение: mouse → mice."
+              ],
+              "hints": [
+                "Это исключение."
+              ]
+            },
+            {
+              "id": "english-t04-x13",
+              "subject": "english",
+              "topicId": "english-t04",
+              "difficulty": "bonus",
+              "type": "truefalse",
+              "question": "Слово foot во множественном числе: foots.",
+              "answer": false,
+              "explanation": [
+                "Правильно: feet."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            }
+          ],
+          "card": {
+            "emoji": "🐭",
+            "title": "Мышь и мыши",
+            "fact": "Mouse во множественном числе — mice. Таких «неправильных» слов в английском немного, и их стоит запомнить."
+          }
         },
         {
           "id": "english-t05",
-          "title": "Can",
-          "status": "planned",
-          "needsReview": true
+          "title": "There is / There are",
+          "status": "ready",
+          "needsReview": true,
+          "cards": [
+            "**There is** (there’s) означает «есть, имеется» для **одного** предмета: There is a book on the table. **There are** — для **нескольких**: There are two books on the table.",
+            "Для **неисчисляемых** слов (water, milk, bread) тоже используем **there is**: There is some milk in the glass.",
+            "Отрицание: **There isn’t** a cat in the room. **There aren’t** any pens in my bag. Вместо some в отрицании и вопросе используем **any**.",
+            "Вопрос: **Is there** a cat in the room? **Are there** any pens in your bag? Ответы: Yes, there is. / No, there isn’t. Yes, there are. / No, there aren’t."
+          ],
+          "example": {
+            "title": "Выберем: «___ three apples on the plate».",
+            "steps": [
+              {
+                "text": "Apples — это много предметов, значит, множественное число.",
+                "why": "Три яблока — несколько."
+              },
+              {
+                "text": "Используем there are.",
+                "why": "There are + множественное число."
+              },
+              {
+                "text": "Ответ: There are three apples on the plate.",
+                "why": "Проверяем число."
+              }
+            ]
+          },
+          "selfCheck": [
+            {
+              "id": "english-t05-sc1",
+              "subject": "english",
+              "topicId": "english-t05",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "There ___ a book on the table.",
+              "answer": "is",
+              "options": [
+                "is",
+                "are",
+                "am"
+              ],
+              "explanation": [
+                "A book — один предмет."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t05-sc2",
+              "subject": "english",
+              "topicId": "english-t05",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "There ___ two cats in the garden.",
+              "answer": "are",
+              "options": [
+                "is",
+                "are",
+                "am"
+              ],
+              "explanation": [
+                "Two cats — несколько."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            }
+          ],
+          "practice": [
+            {
+              "id": "english-t05-p3",
+              "subject": "english",
+              "topicId": "english-t05",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "There ___ some milk in the glass.",
+              "answer": "is",
+              "options": [
+                "is",
+                "are",
+                "am"
+              ],
+              "explanation": [
+                "Milk — неисчисляемое слово."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t05-p4",
+              "subject": "english",
+              "topicId": "english-t05",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "___ there a park near your house?",
+              "answer": "Is",
+              "options": [
+                "Are",
+                "Is",
+                "Do"
+              ],
+              "explanation": [
+                "Park — один предмет."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t05-p5",
+              "subject": "english",
+              "topicId": "english-t05",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "___ there any pens in your bag?",
+              "answer": "Are",
+              "options": [
+                "Is",
+                "Are",
+                "Do"
+              ],
+              "explanation": [
+                "Pens — множественное число."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t05-p6",
+              "subject": "english",
+              "topicId": "english-t05",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Выбери верное отрицание: «В комнате нет кошки».",
+              "answer": "There isn’t a cat in the room.",
+              "options": [
+                "There aren’t a cat in the room.",
+                "There isn’t a cat in the room.",
+                "There not a cat in the room."
+              ],
+              "explanation": [
+                "A cat — один предмет, значит, isn’t."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t05-p7",
+              "subject": "english",
+              "topicId": "english-t05",
+              "difficulty": "basic",
+              "type": "truefalse",
+              "question": "Предложение «There is two books» правильное.",
+              "answer": false,
+              "explanation": [
+                "Нужно: There are two books."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t05-p8",
+              "subject": "english",
+              "topicId": "english-t05",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Выбери краткий ответ: «Is there a lamp in the room?» (да)",
+              "answer": "Yes, there is.",
+              "options": [
+                "Yes, there is.",
+                "Yes, there are.",
+                "Yes, it is."
+              ],
+              "explanation": [
+                "Отвечаем с there is."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t05-p9",
+              "subject": "english",
+              "topicId": "english-t05",
+              "difficulty": "advanced",
+              "type": "input",
+              "question": "Вставь is или are: There ___ a lot of children in the yard.",
+              "answer": "are",
+              "explanation": [
+                "A lot of children — множественное число."
+              ],
+              "hints": [
+                "Children — это множественное число."
+              ]
+            },
+            {
+              "id": "english-t05-p10",
+              "subject": "english",
+              "topicId": "english-t05",
+              "difficulty": "advanced",
+              "type": "single",
+              "question": "Какое слово используют в отрицательных предложениях и вопросах вместо some?",
+              "answer": "any",
+              "options": [
+                "a",
+                "any",
+                "the",
+                "many"
+              ],
+              "explanation": [
+                "В вопросах и отрицаниях — any."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            }
+          ],
+          "bonus": [
+            {
+              "id": "english-t05-x11",
+              "subject": "english",
+              "topicId": "english-t05",
+              "difficulty": "bonus",
+              "type": "input",
+              "question": "Вставь is или are: There ___ water in the bottle.",
+              "answer": "is",
+              "explanation": [
+                "Water — неисчисляемое, значит, is."
+              ],
+              "hints": [
+                "Water нельзя посчитать на штуки."
+              ]
+            },
+            {
+              "id": "english-t05-x12",
+              "subject": "english",
+              "topicId": "english-t05",
+              "difficulty": "bonus",
+              "type": "truefalse",
+              "question": "Вопрос «Are there any apples?» построен правильно.",
+              "answer": true,
+              "explanation": [
+                "Apples — множественное число, any — в вопросе."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            }
+          ],
+          "card": {
+            "emoji": "🏠",
+            "title": "Что у нас есть",
+            "fact": "Конструкция there is / there are нужна, чтобы описать комнату, город или картинку: что и где находится."
+          }
         },
         {
           "id": "english-t06",
-          "title": "Plurals and articles",
-          "status": "planned",
-          "needsReview": true
+          "title": "Притяжательные местоимения и ’s",
+          "status": "ready",
+          "needsReview": true,
+          "cards": [
+            "Чтобы показать, кому что принадлежит, используем **притяжательные местоимения**: **my** (мой), **your** (твой, ваш), **his** (его), **her** (её), **its** (его, её — для предмета), **our** (наш), **their** (их).",
+            "Они стоят **перед существительным**: my book, her bag, our school. Не путай **its** (притяжательное) и **it’s** (= it is).",
+            "Для людей и животных используем **’s**: Tom’s book (книга Тома), my mother’s car (машина моей мамы). Если слово во множественном числе оканчивается на s, ставим только апостроф: the boys’ room (комната мальчиков).",
+            "Выбирая местоимение, думай, **кому** принадлежит: Anna and her brother. Tom and his dog. The dog and its bone."
+          ],
+          "example": {
+            "title": "Выберем слово: «This is Mary. ___ bag is red».",
+            "steps": [
+              {
+                "text": "Mary — девочка, значит, нужно «её».",
+                "why": "Выбираем по тому, кто владелец."
+              },
+              {
+                "text": "Её — her.",
+                "why": "Для женского рода — her."
+              },
+              {
+                "text": "Ответ: Her bag is red.",
+                "why": "Her стоит перед существительным."
+              }
+            ]
+          },
+          "selfCheck": [
+            {
+              "id": "english-t06-sc1",
+              "subject": "english",
+              "topicId": "english-t06",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "This is Tom. ___ bike is new.",
+              "answer": "His",
+              "options": [
+                "His",
+                "Her",
+                "Its"
+              ],
+              "explanation": [
+                "Tom — мальчик, значит, his."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t06-sc2",
+              "subject": "english",
+              "topicId": "english-t06",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "We love ___ school.",
+              "answer": "our",
+              "options": [
+                "my",
+                "our",
+                "their"
+              ],
+              "explanation": [
+                "We → our."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            }
+          ],
+          "practice": [
+            {
+              "id": "english-t06-p3",
+              "subject": "english",
+              "topicId": "english-t06",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Anna has a cat. ___ cat is white.",
+              "answer": "Her",
+              "options": [
+                "His",
+                "Her",
+                "Their"
+              ],
+              "explanation": [
+                "Anna — девочка, значит, her."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t06-p4",
+              "subject": "english",
+              "topicId": "english-t06",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "They have a house. ___ house is big.",
+              "answer": "Their",
+              "options": [
+                "Our",
+                "Their",
+                "His"
+              ],
+              "explanation": [
+                "They → their."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t06-p5",
+              "subject": "english",
+              "topicId": "english-t06",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Выбери верное: «книга Тома».",
+              "answer": "Tom’s book",
+              "options": [
+                "Tom book’s",
+                "Tom’s book",
+                "Toms’ book"
+              ],
+              "explanation": [
+                "Для людей добавляем ’s."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t06-p6",
+              "subject": "english",
+              "topicId": "english-t06",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Выбери верное: «Это моя сестра».",
+              "answer": "This is my sister.",
+              "options": [
+                "This is I sister.",
+                "This is my sister.",
+                "This is me sister."
+              ],
+              "explanation": [
+                "My стоит перед существительным."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t06-p7",
+              "subject": "english",
+              "topicId": "english-t06",
+              "difficulty": "basic",
+              "type": "truefalse",
+              "question": "Her bag — это «его сумка».",
+              "answer": false,
+              "explanation": [
+                "Her значит «её»."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t06-p8",
+              "subject": "english",
+              "topicId": "english-t06",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "The dog has a bone. ___ bone is big.",
+              "answer": "Its",
+              "options": [
+                "Its",
+                "It’s",
+                "His"
+              ],
+              "explanation": [
+                "Its — притяжательное для животных и предметов."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t06-p9",
+              "subject": "english",
+              "topicId": "english-t06",
+              "difficulty": "advanced",
+              "type": "single",
+              "question": "Выбери верное: «комната мальчиков» (много мальчиков).",
+              "answer": "the boys’ room",
+              "options": [
+                "the boy’s room",
+                "the boys’ room",
+                "the boys room’s"
+              ],
+              "explanation": [
+                "Во множественном числе на -s — апостроф после s."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t06-p10",
+              "subject": "english",
+              "topicId": "english-t06",
+              "difficulty": "advanced",
+              "type": "input",
+              "question": "Вставь слово: I love ___ mother. (my / your)",
+              "answer": "my",
+              "explanation": [
+                "I → my."
+              ],
+              "hints": [
+                "Я → мой."
+              ]
+            }
+          ],
+          "bonus": [
+            {
+              "id": "english-t06-x11",
+              "subject": "english",
+              "topicId": "english-t06",
+              "difficulty": "bonus",
+              "type": "single",
+              "question": "Вставь слово: You have a bag. ___ bag is blue.",
+              "answer": "Your",
+              "options": [
+                "My",
+                "Your",
+                "His"
+              ],
+              "explanation": [
+                "You → your."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t06-x12",
+              "subject": "english",
+              "topicId": "english-t06",
+              "difficulty": "bonus",
+              "type": "truefalse",
+              "question": "Its и it’s — это одно и то же.",
+              "answer": false,
+              "explanation": [
+                "Its — притяжательное, it’s = it is."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            }
+          ],
+          "card": {
+            "emoji": "👜",
+            "title": "Чьё это?",
+            "fact": "Притяжательные местоимения помогают сказать, чьё что: my bag, his book, our school. Без них не обойтись."
+          }
+        }
+      ]
+    },
+    {
+      "id": "english-s2",
+      "title": "Грамматика: глаголы и вопросы",
+      "topics": [
+        {
+          "id": "english-t07",
+          "title": "Present Simple (утверждение)",
+          "status": "ready",
+          "needsReview": true,
+          "cards": [
+            "**Present Simple** используем для **привычек**, **расписаний** и **фактов**: I go to school every day. The sun rises in the east.",
+            "С **I, you, we, they** глагол остаётся без изменений: I play, they live. С **he, she, it** к глаголу добавляем **-s**: he plays, she lives.",
+            "Если глагол оканчивается на **s, sh, ch, x, o**, добавляем **-es**: go → goes, watch → watches, wash → washes. Если на **согласную + y**, то y → ies: study → studies (но play → plays).",
+            "Частые слова-подсказки: **always** (всегда), **usually** (обычно), **often** (часто), **sometimes** (иногда), **never** (никогда), **every day** (каждый день). Они стоят перед глаголом: She often reads."
+          ],
+          "example": {
+            "title": "Составим предложение: «Она читает книги каждый день».",
+            "steps": [
+              {
+                "text": "Подлежащее she. Глагол read.",
+                "why": "Present Simple — привычка."
+              },
+              {
+                "text": "С she добавляем -s: reads.",
+                "why": "С he, she, it нужно -s."
+              },
+              {
+                "text": "She reads books every day.",
+                "why": "Время (every day) можно ставить в конце."
+              }
+            ]
+          },
+          "selfCheck": [
+            {
+              "id": "english-t07-sc1",
+              "subject": "english",
+              "topicId": "english-t07",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "He ___ football every Sunday.",
+              "answer": "plays",
+              "options": [
+                "play",
+                "plays",
+                "playing"
+              ],
+              "explanation": [
+                "С he — plays."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t07-sc2",
+              "subject": "english",
+              "topicId": "english-t07",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "They ___ English at school.",
+              "answer": "study",
+              "options": [
+                "study",
+                "studies",
+                "studying"
+              ],
+              "explanation": [
+                "С they — без -s."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            }
+          ],
+          "practice": [
+            {
+              "id": "english-t07-p3",
+              "subject": "english",
+              "topicId": "english-t07",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "She ___ to school by bus.",
+              "answer": "goes",
+              "options": [
+                "go",
+                "goes",
+                "going"
+              ],
+              "explanation": [
+                "go → goes."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t07-p4",
+              "subject": "english",
+              "topicId": "english-t07",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "My mother ___ in a hospital.",
+              "answer": "works",
+              "options": [
+                "work",
+                "works",
+                "working"
+              ],
+              "explanation": [
+                "С mother (she) — works."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t07-p5",
+              "subject": "english",
+              "topicId": "english-t07",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "We ___ up at 7 o’clock.",
+              "answer": "get",
+              "options": [
+                "get",
+                "gets",
+                "getting"
+              ],
+              "explanation": [
+                "С we — без -s."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t07-p6",
+              "subject": "english",
+              "topicId": "english-t07",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Tom ___ his homework after lunch.",
+              "answer": "does",
+              "options": [
+                "do",
+                "does",
+                "doing"
+              ],
+              "explanation": [
+                "С Tom (he) — does."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t07-p7",
+              "subject": "english",
+              "topicId": "english-t07",
+              "difficulty": "basic",
+              "type": "truefalse",
+              "question": "Предложение «She watch TV» правильное.",
+              "answer": false,
+              "explanation": [
+                "Правильно: She watches TV."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t07-p8",
+              "subject": "english",
+              "topicId": "english-t07",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Где поставить слово often? «She ___ reads ___.»",
+              "answer": "She often reads.",
+              "options": [
+                "She reads often.",
+                "She often reads.",
+                "Often she reads."
+              ],
+              "explanation": [
+                "Often стоит перед глаголом."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t07-p9",
+              "subject": "english",
+              "topicId": "english-t07",
+              "difficulty": "advanced",
+              "type": "input",
+              "question": "Напиши форму глагола study с he: He ___ English.",
+              "answer": "studies",
+              "explanation": [
+                "Согласная + y → ies."
+              ],
+              "hints": [
+                "y меняем на ies."
+              ]
+            },
+            {
+              "id": "english-t07-p10",
+              "subject": "english",
+              "topicId": "english-t07",
+              "difficulty": "advanced",
+              "type": "input",
+              "question": "Напиши форму глагола watch с she: She ___ cartoons.",
+              "answer": "watches",
+              "explanation": [
+                "После ch добавляем -es."
+              ],
+              "hints": [
+                "После ch -es."
+              ]
+            },
+            {
+              "id": "english-t07-p11",
+              "subject": "english",
+              "topicId": "english-t07",
+              "difficulty": "advanced",
+              "type": "single",
+              "question": "Какое слово подходит к Present Simple?",
+              "answer": "every day",
+              "options": [
+                "now",
+                "at the moment",
+                "every day",
+                "yesterday"
+              ],
+              "explanation": [
+                "Every day — привычка."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            }
+          ],
+          "bonus": [
+            {
+              "id": "english-t07-x12",
+              "subject": "english",
+              "topicId": "english-t07",
+              "difficulty": "bonus",
+              "type": "input",
+              "question": "Вставь глагол: The sun ___ (rise) in the east.",
+              "answer": "rises",
+              "explanation": [
+                "С sun (it) добавляем -s."
+              ],
+              "hints": [
+                "С it нужно -s."
+              ]
+            },
+            {
+              "id": "english-t07-x13",
+              "subject": "english",
+              "topicId": "english-t07",
+              "difficulty": "bonus",
+              "type": "truefalse",
+              "question": "С you в Present Simple глагол получает -s.",
+              "answer": false,
+              "explanation": [
+                "С you — без -s."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            }
+          ],
+          "card": {
+            "emoji": "⏰",
+            "title": "Привычки",
+            "fact": "Present Simple рассказывает о привычках: что мы делаем всегда, часто или никогда."
+          }
+        },
+        {
+          "id": "english-t08",
+          "title": "Present Simple: отрицание и вопросы",
+          "status": "ready",
+          "needsReview": true,
+          "cards": [
+            "Чтобы сделать **отрицание**, используем **don’t** (do not) с I, you, we, they и **doesn’t** (does not) с he, she, it. После них глагол стоит **без -s**: I don’t like milk. She doesn’t like milk.",
+            "Чтобы задать **вопрос**, ставим **Do** или **Does** в начало: **Do** you like pizza? **Does** he play chess? После does глагол тоже без -s.",
+            "Краткие ответы: Yes, I do. / No, I don’t. Yes, she does. / No, she doesn’t. Не повторяем глагол: Yes, she does (а не Yes, she likes).",
+            "Вопросы с вопросительными словами: **Where do you live? What does she do? When does the lesson start?** Вопросительное слово ставим перед do/does."
+          ],
+          "example": {
+            "title": "Сделаем отрицание: «He plays tennis».",
+            "steps": [
+              {
+                "text": "Подлежащее he, значит, нужно doesn’t.",
+                "why": "С he, she, it — doesn’t."
+              },
+              {
+                "text": "После doesn’t глагол без -s: play.",
+                "why": "-s уже «ушло» в does."
+              },
+              {
+                "text": "Ответ: He doesn’t play tennis.",
+                "why": "Проверяем: нет ни -s, ни другого времени."
+              }
+            ]
+          },
+          "selfCheck": [
+            {
+              "id": "english-t08-sc1",
+              "subject": "english",
+              "topicId": "english-t08",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "I ___ like carrots.",
+              "answer": "don’t",
+              "options": [
+                "don’t",
+                "doesn’t",
+                "isn’t"
+              ],
+              "explanation": [
+                "С I — don’t."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t08-sc2",
+              "subject": "english",
+              "topicId": "english-t08",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "She ___ like carrots.",
+              "answer": "doesn’t",
+              "options": [
+                "don’t",
+                "doesn’t",
+                "isn’t"
+              ],
+              "explanation": [
+                "С she — doesn’t."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            }
+          ],
+          "practice": [
+            {
+              "id": "english-t08-p3",
+              "subject": "english",
+              "topicId": "english-t08",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "___ you play chess?",
+              "answer": "Do",
+              "options": [
+                "Does",
+                "Do",
+                "Are"
+              ],
+              "explanation": [
+                "С you — Do."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t08-p4",
+              "subject": "english",
+              "topicId": "english-t08",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "___ your brother play chess?",
+              "answer": "Does",
+              "options": [
+                "Do",
+                "Does",
+                "Is"
+              ],
+              "explanation": [
+                "С brother (he) — Does."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t08-p5",
+              "subject": "english",
+              "topicId": "english-t08",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "He doesn’t ___ milk.",
+              "answer": "like",
+              "options": [
+                "likes",
+                "like",
+                "liking"
+              ],
+              "explanation": [
+                "После doesn’t глагол без -s."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t08-p6",
+              "subject": "english",
+              "topicId": "english-t08",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Выбери верный краткий ответ: «Does she live in Minsk?» (да)",
+              "answer": "Yes, she does.",
+              "options": [
+                "Yes, she lives.",
+                "Yes, she does.",
+                "Yes, she do."
+              ],
+              "explanation": [
+                "Отвечаем с does."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t08-p7",
+              "subject": "english",
+              "topicId": "english-t08",
+              "difficulty": "basic",
+              "type": "truefalse",
+              "question": "Предложение «She doesn’t likes tea» правильное.",
+              "answer": false,
+              "explanation": [
+                "После doesn’t нужен глагол без -s: She doesn’t like tea."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t08-p8",
+              "subject": "english",
+              "topicId": "english-t08",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Выбери верный вопрос: «Где ты живёшь?»",
+              "answer": "Where do you live?",
+              "options": [
+                "Where you live?",
+                "Where do you live?",
+                "Where are you live?"
+              ],
+              "explanation": [
+                "Вопросительное слово + do + подлежащее."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t08-p9",
+              "subject": "english",
+              "topicId": "english-t08",
+              "difficulty": "advanced",
+              "type": "input",
+              "question": "Вставь do или does: ___ they go to school by bus?",
+              "answer": "Do",
+              "explanation": [
+                "С they — Do."
+              ],
+              "hints": [
+                "С they используем do."
+              ]
+            },
+            {
+              "id": "english-t08-p10",
+              "subject": "english",
+              "topicId": "english-t08",
+              "difficulty": "advanced",
+              "type": "single",
+              "question": "Выбери верное: «Мама не работает в субботу».",
+              "answer": "My mother doesn’t work on Saturday.",
+              "options": [
+                "My mother don’t work on Saturday.",
+                "My mother doesn’t works on Saturday.",
+                "My mother doesn’t work on Saturday."
+              ],
+              "explanation": [
+                "Doesn’t + глагол без -s."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            }
+          ],
+          "bonus": [
+            {
+              "id": "english-t08-x11",
+              "subject": "english",
+              "topicId": "english-t08",
+              "difficulty": "bonus",
+              "type": "input",
+              "question": "Вставь don’t или doesn’t: My friends ___ play football.",
+              "answer": "don’t",
+              "explanation": [
+                "My friends — they, значит, don’t."
+              ],
+              "hints": [
+                "Friends — это они."
+              ]
+            },
+            {
+              "id": "english-t08-x12",
+              "subject": "english",
+              "topicId": "english-t08",
+              "difficulty": "bonus",
+              "type": "truefalse",
+              "question": "После do или does глагол всегда стоит без -s.",
+              "answer": true,
+              "explanation": [
+                "Это главное правило."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            }
+          ],
+          "card": {
+            "emoji": "❓",
+            "title": "Do и does",
+            "fact": "Do и does — маленькие помощники, которые строят вопросы и отрицания в Present Simple."
+          }
+        },
+        {
+          "id": "english-t09",
+          "title": "Can / can’t",
+          "status": "ready",
+          "needsReview": true,
+          "cards": [
+            "**Can** значит «мочь, уметь»: I can swim. (Я умею плавать.) Can также используют для разрешения: Can I go out? (Можно мне выйти?)",
+            "С **can** глагол стоит **без to и без -s**: She can sing. He can play the guitar. Для всех лиц форма одна: I can, he can, they can.",
+            "Отрицание: **can’t** (cannot): I can’t swim. Вопрос: **Can** you swim? Короткие ответы: Yes, I can. / No, I can’t.",
+            "Просьбы и предложения: **Can you help me?** (Ты можешь мне помочь?) **Can I have some water?** (Можно мне воды?) **Can** — вежливое и короткое слово."
+          ],
+          "example": {
+            "title": "Скажем, что Анна умеет петь, но не умеет плавать.",
+            "steps": [
+              {
+                "text": "Anna can sing.",
+                "why": "Can + глагол без to и без -s."
+              },
+              {
+                "text": "Anna can’t swim.",
+                "why": "Отрицание — can’t."
+              },
+              {
+                "text": "Вопрос: Can Anna sing? — Yes, she can.",
+                "why": "Can идёт вперёд."
+              }
+            ]
+          },
+          "selfCheck": [
+            {
+              "id": "english-t09-sc1",
+              "subject": "english",
+              "topicId": "english-t09",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "He ___ play the guitar.",
+              "answer": "can",
+              "options": [
+                "can",
+                "cans",
+                "is can"
+              ],
+              "explanation": [
+                "Can не меняется."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t09-sc2",
+              "subject": "english",
+              "topicId": "english-t09",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как будет «Я не умею плавать»?",
+              "answer": "I can’t swim.",
+              "options": [
+                "I can’t swim.",
+                "I don’t can swim.",
+                "I not can swim."
+              ],
+              "explanation": [
+                "Can’t + глагол."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            }
+          ],
+          "practice": [
+            {
+              "id": "english-t09-p3",
+              "subject": "english",
+              "topicId": "english-t09",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "___ you speak English?",
+              "answer": "Can",
+              "options": [
+                "Do",
+                "Can",
+                "Are"
+              ],
+              "explanation": [
+                "Can you…?"
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t09-p4",
+              "subject": "english",
+              "topicId": "english-t09",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "She can ___ very well.",
+              "answer": "dance",
+              "options": [
+                "dance",
+                "dances",
+                "dancing"
+              ],
+              "explanation": [
+                "После can глагол без -s."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t09-p5",
+              "subject": "english",
+              "topicId": "english-t09",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Выбери краткий ответ: «Can he swim?» (нет)",
+              "answer": "No, he can’t.",
+              "options": [
+                "No, he can’t.",
+                "No, he doesn’t.",
+                "No, he isn’t."
+              ],
+              "explanation": [
+                "Отвечаем с can."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t09-p6",
+              "subject": "english",
+              "topicId": "english-t09",
+              "difficulty": "basic",
+              "type": "truefalse",
+              "question": "Предложение «She cans sing» правильное.",
+              "answer": false,
+              "explanation": [
+                "Can не принимает -s: She can sing."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t09-p7",
+              "subject": "english",
+              "topicId": "english-t09",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как вежливо попросить воды?",
+              "answer": "Can I have some water?",
+              "options": [
+                "Can I have some water?",
+                "I can have water?",
+                "Do I can water?"
+              ],
+              "explanation": [
+                "Can I have…?"
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t09-p8",
+              "subject": "english",
+              "topicId": "english-t09",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Какое слово означает «умею, могу»?",
+              "answer": "can",
+              "options": [
+                "must",
+                "can",
+                "will",
+                "am"
+              ],
+              "explanation": [
+                "Can — мочь, уметь."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t09-p9",
+              "subject": "english",
+              "topicId": "english-t09",
+              "difficulty": "advanced",
+              "type": "input",
+              "question": "Вставь can или can’t: A fish ___ fly. (рыба не умеет летать)",
+              "answer": "can’t",
+              "explanation": [
+                "Рыбы не летают."
+              ],
+              "hints": [
+                "Отрицание — can’t."
+              ]
+            },
+            {
+              "id": "english-t09-p10",
+              "subject": "english",
+              "topicId": "english-t09",
+              "difficulty": "advanced",
+              "type": "single",
+              "question": "Выбери верное: «Они могут помочь нам».",
+              "answer": "They can help us.",
+              "options": [
+                "They can to help us.",
+                "They can help us.",
+                "They cans help us."
+              ],
+              "explanation": [
+                "После can нет to."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            }
+          ],
+          "bonus": [
+            {
+              "id": "english-t09-x11",
+              "subject": "english",
+              "topicId": "english-t09",
+              "difficulty": "bonus",
+              "type": "input",
+              "question": "Вставь can или can’t: Birds ___ fly.",
+              "answer": "can",
+              "explanation": [
+                "Птицы умеют летать."
+              ],
+              "hints": [
+                "Птицы летают."
+              ]
+            },
+            {
+              "id": "english-t09-x12",
+              "subject": "english",
+              "topicId": "english-t09",
+              "difficulty": "bonus",
+              "type": "truefalse",
+              "question": "После can ставят to: I can to swim.",
+              "answer": false,
+              "explanation": [
+                "После can to не нужен."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            }
+          ],
+          "card": {
+            "emoji": "🏊",
+            "title": "Что я умею",
+            "fact": "С помощью can можно рассказать о своих умениях: I can swim, I can draw, I can play chess."
+          }
+        },
+        {
+          "id": "english-t10",
+          "title": "Предлоги места",
+          "status": "ready",
+          "needsReview": true,
+          "cards": [
+            "Предлоги места показывают, **где** находится предмет: **in** (в), **on** (на), **under** (под), **next to** (рядом с), **behind** (за, позади), **in front of** (перед), **between** (между), **near** (около).",
+            "**in** — внутри: The book is in the bag. **on** — на поверхности: The cup is on the table. **under** — под: The cat is under the chair.",
+            "**next to** и **near** — рядом: The school is next to the park. **behind** и **in front of** — сзади и спереди: The garden is behind the house. **between** — между двумя: The bank is between the shop and the café.",
+            "Помни: **at** используем для точек: at school, at home, at the bus stop. **in** — для городов и стран: in Minsk, in Belarus."
+          ],
+          "example": {
+            "title": "Выберем предлог: «The ball is ___ the box» (мяч внутри коробки).",
+            "steps": [
+              {
+                "text": "Мяч внутри коробки, значит, in.",
+                "why": "In — внутри."
+              },
+              {
+                "text": "Ответ: The ball is in the box.",
+                "why": "Проверяем смысл."
+              },
+              {
+                "text": "Если мяч лежит сверху — on the box; под коробкой — under the box.",
+                "why": "Меняем предлог — меняется положение."
+              }
+            ]
+          },
+          "selfCheck": [
+            {
+              "id": "english-t10-sc1",
+              "subject": "english",
+              "topicId": "english-t10",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "The book is ___ the bag. (внутри)",
+              "answer": "in",
+              "options": [
+                "in",
+                "on",
+                "under"
+              ],
+              "explanation": [
+                "Внутри — in."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t10-sc2",
+              "subject": "english",
+              "topicId": "english-t10",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "The cat is ___ the table. (под)",
+              "answer": "under",
+              "options": [
+                "in",
+                "on",
+                "under"
+              ],
+              "explanation": [
+                "Под — under."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            }
+          ],
+          "practice": [
+            {
+              "id": "english-t10-p3",
+              "subject": "english",
+              "topicId": "english-t10",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "The cup is ___ the table. (на)",
+              "answer": "on",
+              "options": [
+                "in",
+                "on",
+                "under"
+              ],
+              "explanation": [
+                "На поверхности — on."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t10-p4",
+              "subject": "english",
+              "topicId": "english-t10",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "The bank is ___ the shop and the café. (между)",
+              "answer": "between",
+              "options": [
+                "behind",
+                "between",
+                "near"
+              ],
+              "explanation": [
+                "Между двумя — between."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t10-p5",
+              "subject": "english",
+              "topicId": "english-t10",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "The school is ___ the park. (рядом с)",
+              "answer": "next to",
+              "options": [
+                "next to",
+                "under",
+                "in"
+              ],
+              "explanation": [
+                "Рядом — next to."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t10-p6",
+              "subject": "english",
+              "topicId": "english-t10",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "The garden is ___ the house. (позади)",
+              "answer": "behind",
+              "options": [
+                "behind",
+                "in front of",
+                "on"
+              ],
+              "explanation": [
+                "Позади — behind."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t10-p7",
+              "subject": "english",
+              "topicId": "english-t10",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Выбери верное: «Я живу в Минске».",
+              "answer": "I live in Minsk.",
+              "options": [
+                "I live on Minsk.",
+                "I live in Minsk.",
+                "I live at Minsk."
+              ],
+              "explanation": [
+                "Города — in."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t10-p8",
+              "subject": "english",
+              "topicId": "english-t10",
+              "difficulty": "basic",
+              "type": "truefalse",
+              "question": "Предложение «The bird is in the tree» означает «Птица в дереве».",
+              "answer": true,
+              "explanation": [
+                "In the tree — на дереве среди ветвей."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t10-p9",
+              "subject": "english",
+              "topicId": "english-t10",
+              "difficulty": "advanced",
+              "type": "single",
+              "question": "Какой предлог означает «перед»?",
+              "answer": "in front of",
+              "options": [
+                "behind",
+                "in front of",
+                "between",
+                "under"
+              ],
+              "explanation": [
+                "Перед — in front of."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t10-p10",
+              "subject": "english",
+              "topicId": "english-t10",
+              "difficulty": "advanced",
+              "type": "single",
+              "question": "Выбери верное: «Я в школе».",
+              "answer": "I am at school.",
+              "options": [
+                "I am in school only.",
+                "I am at school.",
+                "I am on school."
+              ],
+              "explanation": [
+                "At school — в школе (как место занятий)."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            }
+          ],
+          "bonus": [
+            {
+              "id": "english-t10-x11",
+              "subject": "english",
+              "topicId": "english-t10",
+              "difficulty": "bonus",
+              "type": "input",
+              "question": "Вставь предлог: The picture is ___ the wall. (на стене)",
+              "answer": "on",
+              "explanation": [
+                "На вертикальной поверхности — on."
+              ],
+              "hints": [
+                "На — on."
+              ]
+            },
+            {
+              "id": "english-t10-x12",
+              "subject": "english",
+              "topicId": "english-t10",
+              "difficulty": "bonus",
+              "type": "truefalse",
+              "question": "Behind означает «перед».",
+              "answer": false,
+              "explanation": [
+                "Behind — позади, перед — in front of."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            }
+          ],
+          "card": {
+            "emoji": "📍",
+            "title": "Где это?",
+            "fact": "Предлоги места позволяют объяснить, где что находится. Это очень нужно, когда спрашиваешь дорогу."
+          }
+        },
+        {
+          "id": "english-t11",
+          "title": "Вопросительные слова",
+          "status": "ready",
+          "needsReview": true,
+          "cards": [
+            "Чтобы узнать подробности, используем **вопросительные слова**: **What** (что, какой), **Where** (где, куда), **Who** (кто), **When** (когда), **Why** (почему), **How** (как), **Whose** (чей), **How many** (сколько — для счётных), **How much** (сколько — для неисчисляемых).",
+            "Вопросительное слово ставим **в начало**: What is your name? Where do you live? Who is your friend? When does the lesson start?",
+            "Ответы: **Why** — **Because**: Why are you happy? Because it is Friday. **How old** — возраст: How old are you? I’m eleven.",
+            "Вопрос с **How many** используем для предметов, которых можно сосчитать: How many books have you got? **How much** — для воды, молока, денег: How much milk is there?"
+          ],
+          "example": {
+            "title": "Составим вопрос к предложению «Tom lives in Minsk». Спросим про место.",
+            "steps": [
+              {
+                "text": "Спрашиваем «где»: Where.",
+                "why": "Выбираем вопросительное слово."
+              },
+              {
+                "text": "Для he/she/it используем does, после него глагол без -s.",
+                "why": "Where does Tom live?"
+              },
+              {
+                "text": "Ответ: Tom lives in Minsk.",
+                "why": "Вопрос и ответ согласованы."
+              }
+            ]
+          },
+          "selfCheck": [
+            {
+              "id": "english-t11-sc1",
+              "subject": "english",
+              "topicId": "english-t11",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "___ is your name?",
+              "answer": "What",
+              "options": [
+                "Where",
+                "What",
+                "When"
+              ],
+              "explanation": [
+                "What — что, какой."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t11-sc2",
+              "subject": "english",
+              "topicId": "english-t11",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "___ do you live?",
+              "answer": "Where",
+              "options": [
+                "Where",
+                "Who",
+                "Why"
+              ],
+              "explanation": [
+                "Где ты живёшь?"
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            }
+          ],
+          "practice": [
+            {
+              "id": "english-t11-p3",
+              "subject": "english",
+              "topicId": "english-t11",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "___ is your friend? — Anna.",
+              "answer": "Who",
+              "options": [
+                "Who",
+                "When",
+                "Where"
+              ],
+              "explanation": [
+                "Who — кто."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t11-p4",
+              "subject": "english",
+              "topicId": "english-t11",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "___ is your birthday? — In May.",
+              "answer": "When",
+              "options": [
+                "Why",
+                "When",
+                "How"
+              ],
+              "explanation": [
+                "When — когда."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t11-p5",
+              "subject": "english",
+              "topicId": "english-t11",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "___ are you happy? — Because it’s Friday.",
+              "answer": "Why",
+              "options": [
+                "Why",
+                "Who",
+                "What"
+              ],
+              "explanation": [
+                "Because — ответ на why."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t11-p6",
+              "subject": "english",
+              "topicId": "english-t11",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "___ old are you? — I’m eleven.",
+              "answer": "How",
+              "options": [
+                "How",
+                "What",
+                "Who"
+              ],
+              "explanation": [
+                "How old — сколько лет."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t11-p7",
+              "subject": "english",
+              "topicId": "english-t11",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "___ books have you got? — Ten.",
+              "answer": "How many",
+              "options": [
+                "How much",
+                "How many",
+                "How old"
+              ],
+              "explanation": [
+                "Books можно посчитать."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t11-p8",
+              "subject": "english",
+              "topicId": "english-t11",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "___ milk is there in the fridge?",
+              "answer": "How much",
+              "options": [
+                "How many",
+                "How much",
+                "How old"
+              ],
+              "explanation": [
+                "Milk нельзя посчитать на штуки."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t11-p9",
+              "subject": "english",
+              "topicId": "english-t11",
+              "difficulty": "advanced",
+              "type": "single",
+              "question": "___ bag is this? — It’s Tom’s.",
+              "answer": "Whose",
+              "options": [
+                "Who",
+                "Whose",
+                "What"
+              ],
+              "explanation": [
+                "Whose — чей."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t11-p10",
+              "subject": "english",
+              "topicId": "english-t11",
+              "difficulty": "advanced",
+              "type": "truefalse",
+              "question": "На вопрос Why мы отвечаем словом Because.",
+              "answer": true,
+              "explanation": [
+                "Because — потому что."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            }
+          ],
+          "bonus": [
+            {
+              "id": "english-t11-x11",
+              "subject": "english",
+              "topicId": "english-t11",
+              "difficulty": "bonus",
+              "type": "single",
+              "question": "Как спросить «Сколько тебе лет?»",
+              "answer": "How old are you?",
+              "options": [
+                "What age you?",
+                "How old are you?",
+                "How many old you?"
+              ],
+              "explanation": [
+                "How old are you?"
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t11-x12",
+              "subject": "english",
+              "topicId": "english-t11",
+              "difficulty": "bonus",
+              "type": "input",
+              "question": "Вставь слово: ___ do you go to school? — By bus. (Как?)",
+              "answer": "How",
+              "explanation": [
+                "Как — how."
+              ],
+              "hints": [
+                "Как — how."
+              ]
+            }
+          ],
+          "card": {
+            "emoji": "🔎",
+            "title": "Шесть помощников",
+            "fact": "What, where, who, when, why и how задают вопросы почти обо всём. Их знает каждый, кто говорит по-английски."
+          }
+        },
+        {
+          "id": "english-t12",
+          "title": "Present Continuous",
+          "status": "ready",
+          "needsReview": true,
+          "cards": [
+            "**Present Continuous** рассказывает о том, что происходит **сейчас**, в момент речи: I am reading now. She is playing in the garden.",
+            "Как строится: **am / is / are + глагол с -ing**. I am working. He is watching TV. They are running. Слова-подсказки: **now** (сейчас), **at the moment** (в данный момент), **today**.",
+            "Правила написания -ing: обычно просто добавляем -ing (play → playing). Если слово оканчивается на немое **-e**, то е убираем: make → making, write → writing. Если слово короткое с одной гласной и согласной, согласная удваивается: run → running, sit → sitting.",
+            "Вопрос: **Is** he reading? **Are** they playing? Отрицание: He **isn’t** reading. They **aren’t** playing. Различай: **Present Simple** — привычка (I read every day), **Present Continuous** — сейчас (I am reading now)."
+          ],
+          "example": {
+            "title": "Скажем, что мама сейчас готовит ужин.",
+            "steps": [
+              {
+                "text": "Подлежащее mother (she). Глагол cook.",
+                "why": "Действие происходит сейчас."
+              },
+              {
+                "text": "С she используем is, к глаголу добавляем -ing: is cooking.",
+                "why": "Present Continuous: is + V-ing."
+              },
+              {
+                "text": "My mother is cooking dinner now.",
+                "why": "Слово now подтверждает время."
+              }
+            ]
+          },
+          "selfCheck": [
+            {
+              "id": "english-t12-sc1",
+              "subject": "english",
+              "topicId": "english-t12",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "I ___ reading a book now.",
+              "answer": "am",
+              "options": [
+                "am",
+                "is",
+                "are"
+              ],
+              "explanation": [
+                "С I — am."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t12-sc2",
+              "subject": "english",
+              "topicId": "english-t12",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "They ___ playing football.",
+              "answer": "are",
+              "options": [
+                "am",
+                "is",
+                "are"
+              ],
+              "explanation": [
+                "С they — are."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            }
+          ],
+          "practice": [
+            {
+              "id": "english-t12-p3",
+              "subject": "english",
+              "topicId": "english-t12",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "She is ___ now.",
+              "answer": "sleeping",
+              "options": [
+                "sleep",
+                "sleeps",
+                "sleeping"
+              ],
+              "explanation": [
+                "Is + V-ing."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t12-p4",
+              "subject": "english",
+              "topicId": "english-t12",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "We are ___ a film.",
+              "answer": "watching",
+              "options": [
+                "watch",
+                "watches",
+                "watching"
+              ],
+              "explanation": [
+                "Are + V-ing."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t12-p5",
+              "subject": "english",
+              "topicId": "english-t12",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как правильно пишется make с -ing?",
+              "answer": "making",
+              "options": [
+                "makeing",
+                "making",
+                "makking"
+              ],
+              "explanation": [
+                "Немое e убираем."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t12-p6",
+              "subject": "english",
+              "topicId": "english-t12",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как правильно пишется run с -ing?",
+              "answer": "running",
+              "options": [
+                "runing",
+                "running",
+                "runeing"
+              ],
+              "explanation": [
+                "Согласная удваивается."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t12-p7",
+              "subject": "english",
+              "topicId": "english-t12",
+              "difficulty": "basic",
+              "type": "truefalse",
+              "question": "Предложение «He is play now» правильное.",
+              "answer": false,
+              "explanation": [
+                "Нужно: He is playing now."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t12-p8",
+              "subject": "english",
+              "topicId": "english-t12",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Какие слова подходят к Present Continuous?",
+              "answer": "now, at the moment",
+              "options": [
+                "every day",
+                "now, at the moment",
+                "always",
+                "usually"
+              ],
+              "explanation": [
+                "Now — сейчас."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t12-p9",
+              "subject": "english",
+              "topicId": "english-t12",
+              "difficulty": "advanced",
+              "type": "input",
+              "question": "Вставь am, is или are: The children ___ playing in the yard.",
+              "answer": "are",
+              "explanation": [
+                "Children — they, значит, are."
+              ],
+              "hints": [
+                "Они — are."
+              ]
+            },
+            {
+              "id": "english-t12-p10",
+              "subject": "english",
+              "topicId": "english-t12",
+              "difficulty": "advanced",
+              "type": "single",
+              "question": "Выбери верное: «Что ты делаешь сейчас?»",
+              "answer": "What are you doing now?",
+              "options": [
+                "What you doing now?",
+                "What are you doing now?",
+                "What do you doing now?"
+              ],
+              "explanation": [
+                "What are you doing?"
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            }
+          ],
+          "bonus": [
+            {
+              "id": "english-t12-x11",
+              "subject": "english",
+              "topicId": "english-t12",
+              "difficulty": "bonus",
+              "type": "input",
+              "question": "Напиши форму sit с -ing: He is ___ on the chair.",
+              "answer": "sitting",
+              "explanation": [
+                "Согласная удваивается: sitting."
+              ],
+              "hints": [
+                "Согласная удваивается."
+              ]
+            },
+            {
+              "id": "english-t12-x12",
+              "subject": "english",
+              "topicId": "english-t12",
+              "difficulty": "bonus",
+              "type": "truefalse",
+              "question": "Present Simple и Present Continuous — это одно и то же время.",
+              "answer": false,
+              "explanation": [
+                "Первое — привычка, второе — действие сейчас."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            }
+          ],
+          "card": {
+            "emoji": "🎬",
+            "title": "Прямо сейчас",
+            "fact": "Present Continuous — время «прямо сейчас». Им описывают, что люди делают в эту минуту."
+          }
+        },
+        {
+          "id": "english-t13",
+          "title": "Числа, дни недели, месяцы, время",
+          "status": "ready",
+          "needsReview": true,
+          "cards": [
+            "**Дни недели**: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday. **Месяцы**: January, February, March, April, May, June, July, August, September, October, November, December. Названия пишем с **большой буквы**.",
+            "С днями используем предлог **on** (on Monday), с месяцами и годами — **in** (in May, in 2026), с временем — **at** (at 7 o’clock). Времена года: spring, summer, autumn, winter.",
+            "**Порядковые числа**: first (1st), second (2nd), third (3rd), fourth (4th), fifth (5th)… twelfth, twentieth. Дату говорят так: the fifth of May.",
+            "**Время**: 7:00 — **seven o’clock**, 7:15 — **a quarter past seven**, 7:30 — **half past seven**, 7:45 — **a quarter to eight**. Вопрос: What time is it? — It’s half past seven."
+          ],
+          "example": {
+            "title": "Скажем по-английски, что урок начинается в 8:30.",
+            "steps": [
+              {
+                "text": "8:30 — это «половина девятого»: half past eight.",
+                "why": "Half past + час, который уже начался."
+              },
+              {
+                "text": "Предлог времени — at: at half past eight.",
+                "why": "С точным временем используем at."
+              },
+              {
+                "text": "The lesson starts at half past eight.",
+                "why": "Предложение в Present Simple (расписание)."
+              }
+            ]
+          },
+          "selfCheck": [
+            {
+              "id": "english-t13-sc1",
+              "subject": "english",
+              "topicId": "english-t13",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Какой день идёт после Monday?",
+              "answer": "Tuesday",
+              "options": [
+                "Sunday",
+                "Tuesday",
+                "Friday"
+              ],
+              "explanation": [
+                "Понедельник, вторник…"
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t13-sc2",
+              "subject": "english",
+              "topicId": "english-t13",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как по-английски «в мае»?",
+              "answer": "in May",
+              "options": [
+                "on May",
+                "in May",
+                "at May"
+              ],
+              "explanation": [
+                "С месяцами — in."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            }
+          ],
+          "practice": [
+            {
+              "id": "english-t13-p3",
+              "subject": "english",
+              "topicId": "english-t13",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как по-английски «в понедельник»?",
+              "answer": "on Monday",
+              "options": [
+                "in Monday",
+                "on Monday",
+                "at Monday"
+              ],
+              "explanation": [
+                "С днями — on."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t13-p4",
+              "subject": "english",
+              "topicId": "english-t13",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Какой месяц идёт после March?",
+              "answer": "April",
+              "options": [
+                "February",
+                "April",
+                "May"
+              ],
+              "explanation": [
+                "Март, апрель…"
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t13-p5",
+              "subject": "english",
+              "topicId": "english-t13",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как сказать «7:30»?",
+              "answer": "half past seven",
+              "options": [
+                "half to seven",
+                "half past seven",
+                "seven past half"
+              ],
+              "explanation": [
+                "Half past seven."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t13-p6",
+              "subject": "english",
+              "topicId": "english-t13",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как сказать «7:45»?",
+              "answer": "a quarter to eight",
+              "options": [
+                "a quarter past seven",
+                "a quarter to eight",
+                "half past eight"
+              ],
+              "explanation": [
+                "Без пятнадцати восемь."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t13-p7",
+              "subject": "english",
+              "topicId": "english-t13",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Порядковое число 3-е:",
+              "answer": "third",
+              "options": [
+                "three",
+                "third",
+                "threeth"
+              ],
+              "explanation": [
+                "First, second, third."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t13-p8",
+              "subject": "english",
+              "topicId": "english-t13",
+              "difficulty": "basic",
+              "type": "truefalse",
+              "question": "Названия месяцев в английском пишутся с большой буквы.",
+              "answer": true,
+              "explanation": [
+                "January, May, December."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t13-p9",
+              "subject": "english",
+              "topicId": "english-t13",
+              "difficulty": "advanced",
+              "type": "single",
+              "question": "Как по-английски «зима»?",
+              "answer": "winter",
+              "options": [
+                "spring",
+                "summer",
+                "winter",
+                "autumn"
+              ],
+              "explanation": [
+                "Winter — зима."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t13-p10",
+              "subject": "english",
+              "topicId": "english-t13",
+              "difficulty": "advanced",
+              "type": "input",
+              "question": "Вставь предлог: I get up ___ seven o’clock.",
+              "answer": "at",
+              "explanation": [
+                "С временем — at."
+              ],
+              "hints": [
+                "С точным временем — at."
+              ]
+            }
+          ],
+          "bonus": [
+            {
+              "id": "english-t13-x11",
+              "subject": "english",
+              "topicId": "english-t13",
+              "difficulty": "bonus",
+              "type": "single",
+              "question": "Как спросить время?",
+              "answer": "What time is it?",
+              "options": [
+                "What time is it?",
+                "Which time it is?",
+                "How time is it?"
+              ],
+              "explanation": [
+                "What time is it?"
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            },
+            {
+              "id": "english-t13-x12",
+              "subject": "english",
+              "topicId": "english-t13",
+              "difficulty": "bonus",
+              "type": "truefalse",
+              "question": "Sunday — седьмой день недели у англичан (воскресенье).",
+              "answer": true,
+              "explanation": [
+                "Sunday — воскресенье."
+              ],
+              "hints": [
+                "Вернись к карточкам урока: ответ там."
+              ]
+            }
+          ],
+          "card": {
+            "emoji": "📆",
+            "title": "Названия дней",
+            "fact": "Названия дней недели в английском связаны с Солнцем, Луной и богами. Sunday — день Солнца, Monday — день Луны."
+          }
         }
       ]
     }

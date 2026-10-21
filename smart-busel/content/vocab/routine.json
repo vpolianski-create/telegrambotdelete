@@ -1,0 +1,148 @@
+{
+  "id": "routine",
+  "title": "Распорядок дня",
+  "icon": "⏰",
+  "needsReview": true,
+  "words": [
+    {
+      "id": "routine-01",
+      "en": "get up",
+      "transcription": "[ˌɡet ˈʌp]",
+      "ru": "вставать",
+      "example": "I get up at seven."
+    },
+    {
+      "id": "routine-02",
+      "en": "wash",
+      "transcription": "[wɒʃ]",
+      "ru": "умываться, мыть",
+      "example": "I wash my face."
+    },
+    {
+      "id": "routine-03",
+      "en": "brush teeth",
+      "transcription": "[brʌʃ tiːθ]",
+      "ru": "чистить зубы",
+      "example": "I brush my teeth twice a day."
+    },
+    {
+      "id": "routine-04",
+      "en": "have breakfast",
+      "transcription": "[hæv ˈbrekfəst]",
+      "ru": "завтракать",
+      "example": "I have breakfast at half past seven."
+    },
+    {
+      "id": "routine-05",
+      "en": "go to school",
+      "transcription": "[ɡəʊ tə skuːl]",
+      "ru": "идти в школу",
+      "example": "I go to school by bus."
+    },
+    {
+      "id": "routine-06",
+      "en": "lesson",
+      "transcription": "[ˈlesn]",
+      "ru": "урок",
+      "example": "We have six lessons."
+    },
+    {
+      "id": "routine-07",
+      "en": "have lunch",
+      "transcription": "[hæv lʌntʃ]",
+      "ru": "обедать",
+      "example": "We have lunch at school."
+    },
+    {
+      "id": "routine-08",
+      "en": "do homework",
+      "transcription": "[duː ˈhəʊmwɜːk]",
+      "ru": "делать домашнее задание",
+      "example": "I do my homework at four."
+    },
+    {
+      "id": "routine-09",
+      "en": "play",
+      "transcription": "[pleɪ]",
+      "ru": "играть",
+      "example": "I play with my friends."
+    },
+    {
+      "id": "routine-10",
+      "en": "watch TV",
+      "transcription": "[wɒtʃ ˌtiː ˈviː]",
+      "ru": "смотреть телевизор",
+      "example": "I watch TV in the evening."
+    },
+    {
+      "id": "routine-11",
+      "en": "read a book",
+      "transcription": "[riːd ə bʊk]",
+      "ru": "читать книгу",
+      "example": "I read a book before bed."
+    },
+    {
+      "id": "routine-12",
+      "en": "have dinner",
+      "transcription": "[hæv ˈdɪnə]",
+      "ru": "ужинать",
+      "example": "We have dinner at seven."
+    },
+    {
+      "id": "routine-13",
+      "en": "go to bed",
+      "transcription": "[ɡəʊ tə bed]",
+      "ru": "ложиться спать",
+      "example": "I go to bed at nine."
+    },
+    {
+      "id": "routine-14",
+      "en": "sleep",
+      "transcription": "[sliːp]",
+      "ru": "спать",
+      "example": "I sleep eight hours."
+    },
+    {
+      "id": "routine-15",
+      "en": "morning",
+      "transcription": "[ˈmɔːnɪŋ]",
+      "ru": "утро",
+      "example": "Good morning!"
+    },
+    {
+      "id": "routine-16",
+      "en": "afternoon",
+      "transcription": "[ˌɑːftəˈnuːn]",
+      "ru": "день (после обеда)",
+      "example": "Good afternoon!"
+    },
+    {
+      "id": "routine-17",
+      "en": "evening",
+      "transcription": "[ˈiːvnɪŋ]",
+      "ru": "вечер",
+      "example": "Good evening!"
+    },
+    {
+      "id": "routine-18",
+      "en": "night",
+      "transcription": "[naɪt]",
+      "ru": "ночь",
+      "example": "Good night!"
+    },
+    {
+      "id": "routine-19",
+      "en": "early",
+      "transcription": "[ˈɜːli]",
+      "ru": "рано",
+      "example": "I get up early."
+    },
+    {
+      "id": "routine-20",
+      "en": "late",
+      "transcription": "[leɪt]",
+      "ru": "поздно",
+      "example": "Don’t be late."
+    }
+  ]
+}

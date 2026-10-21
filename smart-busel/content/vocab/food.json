@@ -1,0 +1,148 @@
+{
+  "id": "food",
+  "title": "Еда",
+  "icon": "🍎",
+  "needsReview": true,
+  "words": [
+    {
+      "id": "food-01",
+      "en": "bread",
+      "transcription": "[bred]",
+      "ru": "хлеб",
+      "example": "I eat bread for breakfast."
+    },
+    {
+      "id": "food-02",
+      "en": "milk",
+      "transcription": "[mɪlk]",
+      "ru": "молоко",
+      "example": "I drink milk every day."
+    },
+    {
+      "id": "food-03",
+      "en": "cheese",
+      "transcription": "[tʃiːz]",
+      "ru": "сыр",
+      "example": "I like cheese."
+    },
+    {
+      "id": "food-04",
+      "en": "apple",
+      "transcription": "[ˈæpl]",
+      "ru": "яблоко",
+      "example": "An apple a day is good."
+    },
+    {
+      "id": "food-05",
+      "en": "banana",
+      "transcription": "[bəˈnɑːnə]",
+      "ru": "банан",
+      "example": "The banana is yellow."
+    },
+    {
+      "id": "food-06",
+      "en": "potato",
+      "transcription": "[pəˈteɪtəʊ]",
+      "ru": "картофель",
+      "example": "We have potatoes for dinner."
+    },
+    {
+      "id": "food-07",
+      "en": "tomato",
+      "transcription": "[təˈmɑːtəʊ]",
+      "ru": "помидор",
+      "example": "A tomato is red."
+    },
+    {
+      "id": "food-08",
+      "en": "soup",
+      "transcription": "[suːp]",
+      "ru": "суп",
+      "example": "The soup is hot."
+    },
+    {
+      "id": "food-09",
+      "en": "rice",
+      "transcription": "[raɪs]",
+      "ru": "рис",
+      "example": "I like rice."
+    },
+    {
+      "id": "food-10",
+      "en": "egg",
+      "transcription": "[eɡ]",
+      "ru": "яйцо",
+      "example": "I have an egg for breakfast."
+    },
+    {
+      "id": "food-11",
+      "en": "fish",
+      "transcription": "[fɪʃ]",
+      "ru": "рыба",
+      "example": "We eat fish on Friday."
+    },
+    {
+      "id": "food-12",
+      "en": "meat",
+      "transcription": "[miːt]",
+      "ru": "мясо",
+      "example": "He doesn’t eat meat."
+    },
+    {
+      "id": "food-13",
+      "en": "butter",
+      "transcription": "[ˈbʌtə]",
+      "ru": "сливочное масло",
+      "example": "Bread and butter, please."
+    },
+    {
+      "id": "food-14",
+      "en": "sugar",
+      "transcription": "[ˈʃʊɡə]",
+      "ru": "сахар",
+      "example": "No sugar, please."
+    },
+    {
+      "id": "food-15",
+      "en": "salad",
+      "transcription": "[ˈsæləd]",
+      "ru": "салат",
+      "example": "Mum makes a salad."
+    },
+    {
+      "id": "food-16",
+      "en": "chocolate",
+      "transcription": "[ˈtʃɒklət]",
+      "ru": "шоколад",
+      "example": "I love chocolate."
+    },
+    {
+      "id": "food-17",
+      "en": "juice",
+      "transcription": "[dʒuːs]",
+      "ru": "сок",
+      "example": "Orange juice is tasty."
+    },
+    {
+      "id": "food-18",
+      "en": "water",
+      "transcription": "[ˈwɔːtə]",
+      "ru": "вода",
+      "example": "Drink water every day."
+    },
+    {
+      "id": "food-19",
+      "en": "breakfast",
+      "transcription": "[ˈbrekfəst]",
+      "ru": "завтрак",
+      "example": "Breakfast is at eight."
+    },
+    {
+      "id": "food-20",
+      "en": "dinner",
+      "transcription": "[ˈdɪnə]",
+      "ru": "обед, ужин",
+      "example": "We have dinner together."
+    }
+  ]
+}

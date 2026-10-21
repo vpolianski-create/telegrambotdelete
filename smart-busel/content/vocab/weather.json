@@ -1,0 +1,148 @@
+{
+  "id": "weather",
+  "title": "Погода и времена года",
+  "icon": "⛅",
+  "needsReview": true,
+  "words": [
+    {
+      "id": "weather-01",
+      "en": "weather",
+      "transcription": "[ˈweðə]",
+      "ru": "погода",
+      "example": "What’s the weather like?"
+    },
+    {
+      "id": "weather-02",
+      "en": "sun",
+      "transcription": "[sʌn]",
+      "ru": "солнце",
+      "example": "The sun is bright."
+    },
+    {
+      "id": "weather-03",
+      "en": "sunny",
+      "transcription": "[ˈsʌni]",
+      "ru": "солнечный",
+      "example": "It’s sunny today."
+    },
+    {
+      "id": "weather-04",
+      "en": "rain",
+      "transcription": "[reɪn]",
+      "ru": "дождь",
+      "example": "I like the rain."
+    },
+    {
+      "id": "weather-05",
+      "en": "rainy",
+      "transcription": "[ˈreɪni]",
+      "ru": "дождливый",
+      "example": "It’s a rainy day."
+    },
+    {
+      "id": "weather-06",
+      "en": "cloud",
+      "transcription": "[klaʊd]",
+      "ru": "облако",
+      "example": "There is a big cloud."
+    },
+    {
+      "id": "weather-07",
+      "en": "cloudy",
+      "transcription": "[ˈklaʊdi]",
+      "ru": "облачный",
+      "example": "It’s cloudy today."
+    },
+    {
+      "id": "weather-08",
+      "en": "wind",
+      "transcription": "[wɪnd]",
+      "ru": "ветер",
+      "example": "The wind is strong."
+    },
+    {
+      "id": "weather-09",
+      "en": "windy",
+      "transcription": "[ˈwɪndi]",
+      "ru": "ветреный",
+      "example": "It’s windy outside."
+    },
+    {
+      "id": "weather-10",
+      "en": "snow",
+      "transcription": "[snəʊ]",
+      "ru": "снег",
+      "example": "Snow is white."
+    },
+    {
+      "id": "weather-11",
+      "en": "snowy",
+      "transcription": "[ˈsnəʊi]",
+      "ru": "снежный",
+      "example": "It’s a snowy day."
+    },
+    {
+      "id": "weather-12",
+      "en": "fog",
+      "transcription": "[fɒɡ]",
+      "ru": "туман",
+      "example": "There is fog in the morning."
+    },
+    {
+      "id": "weather-13",
+      "en": "storm",
+      "transcription": "[stɔːm]",
+      "ru": "буря, гроза",
+      "example": "A storm is coming."
+    },
+    {
+      "id": "weather-14",
+      "en": "hot",
+      "transcription": "[hɒt]",
+      "ru": "жаркий",
+      "example": "It’s hot in summer."
+    },
+    {
+      "id": "weather-15",
+      "en": "cold",
+      "transcription": "[kəʊld]",
+      "ru": "холодный",
+      "example": "It’s cold in winter."
+    },
+    {
+      "id": "weather-16",
+      "en": "warm",
+      "transcription": "[wɔːm]",
+      "ru": "тёплый",
+      "example": "It’s warm today."
+    },
+    {
+      "id": "weather-17",
+      "en": "spring",
+      "transcription": "[sprɪŋ]",
+      "ru": "весна",
+      "example": "Flowers grow in spring."
+    },
+    {
+      "id": "weather-18",
+      "en": "summer",
+      "transcription": "[ˈsʌmə]",
+      "ru": "лето",
+      "example": "I swim in summer."
+    },
+    {
+      "id": "weather-19",
+      "en": "autumn",
+      "transcription": "[ˈɔːtəm]",
+      "ru": "осень",
+      "example": "Leaves fall in autumn."
+    },
+    {
+      "id": "weather-20",
+      "en": "winter",
+      "transcription": "[ˈwɪntə]",
+      "ru": "зима",
+      "example": "We skate in winter."
+    }
+  ]
+}

@@ -1,0 +1,148 @@
+{
+  "id": "house",
+  "title": "Дом",
+  "icon": "🏠",
+  "needsReview": true,
+  "words": [
+    {
+      "id": "house-01",
+      "en": "house",
+      "transcription": "[haʊs]",
+      "ru": "дом",
+      "example": "We live in a big house."
+    },
+    {
+      "id": "house-02",
+      "en": "flat",
+      "transcription": "[flæt]",
+      "ru": "квартира",
+      "example": "Our flat is on the third floor."
+    },
+    {
+      "id": "house-03",
+      "en": "room",
+      "transcription": "[ruːm]",
+      "ru": "комната",
+      "example": "My room is small."
+    },
+    {
+      "id": "house-04",
+      "en": "kitchen",
+      "transcription": "[ˈkɪtʃɪn]",
+      "ru": "кухня",
+      "example": "Mum is in the kitchen."
+    },
+    {
+      "id": "house-05",
+      "en": "bedroom",
+      "transcription": "[ˈbedruːm]",
+      "ru": "спальня",
+      "example": "My bedroom is blue."
+    },
+    {
+      "id": "house-06",
+      "en": "bathroom",
+      "transcription": "[ˈbɑːθruːm]",
+      "ru": "ванная",
+      "example": "The bathroom is clean."
+    },
+    {
+      "id": "house-07",
+      "en": "living room",
+      "transcription": "[ˈlɪvɪŋ ruːm]",
+      "ru": "гостиная",
+      "example": "We watch TV in the living room."
+    },
+    {
+      "id": "house-08",
+      "en": "garden",
+      "transcription": "[ˈɡɑːdn]",
+      "ru": "сад",
+      "example": "The garden is green."
+    },
+    {
+      "id": "house-09",
+      "en": "door",
+      "transcription": "[dɔː]",
+      "ru": "дверь",
+      "example": "Open the door, please."
+    },
+    {
+      "id": "house-10",
+      "en": "window",
+      "transcription": "[ˈwɪndəʊ]",
+      "ru": "окно",
+      "example": "The window is open."
+    },
+    {
+      "id": "house-11",
+      "en": "table",
+      "transcription": "[ˈteɪbl]",
+      "ru": "стол",
+      "example": "The book is on the table."
+    },
+    {
+      "id": "house-12",
+      "en": "chair",
+      "transcription": "[tʃeə]",
+      "ru": "стул",
+      "example": "Sit on the chair."
+    },
+    {
+      "id": "house-13",
+      "en": "bed",
+      "transcription": "[bed]",
+      "ru": "кровать",
+      "example": "My bed is soft."
+    },
+    {
+      "id": "house-14",
+      "en": "sofa",
+      "transcription": "[ˈsəʊfə]",
+      "ru": "диван",
+      "example": "The cat is on the sofa."
+    },
+    {
+      "id": "house-15",
+      "en": "lamp",
+      "transcription": "[læmp]",
+      "ru": "лампа",
+      "example": "Switch on the lamp."
+    },
+    {
+      "id": "house-16",
+      "en": "TV",
+      "transcription": "[ˌtiː ˈviː]",
+      "ru": "телевизор",
+      "example": "The TV is in the living room."
+    },
+    {
+      "id": "house-17",
+      "en": "fridge",
+      "transcription": "[frɪdʒ]",
+      "ru": "холодильник",
+      "example": "The milk is in the fridge."
+    },
+    {
+      "id": "house-18",
+      "en": "wall",
+      "transcription": "[wɔːl]",
+      "ru": "стена",
+      "example": "The picture is on the wall."
+    },
+    {
+      "id": "house-19",
+      "en": "floor",
+      "transcription": "[flɔː]",
+      "ru": "пол, этаж",
+      "example": "The ball is on the floor."
+    },
+    {
+      "id": "house-20",
+      "en": "stairs",
+      "transcription": "[steəz]",
+      "ru": "лестница",
+      "example": "Go up the stairs."
+    }
+  ]
+}
