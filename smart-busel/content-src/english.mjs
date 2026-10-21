@@ -319,7 +319,7 @@ export const subject = buildSubject({ id: 'english', title: 'Английски�
         S('The school is ___ the park. (рядом с)', 'next to', ['next to', 'under', 'in'], ['Рядом — next to.']),
         S('The garden is ___ the house. (позади)', 'behind', ['behind', 'in front of', 'on'], ['Позади — behind.']),
         S('Выбери верное: «Я живу в Минске».', 'I live in Minsk.', ['I live on Minsk.', 'I live in Minsk.', 'I live at Minsk.'], ['Города — in.']),
-        TF('Предложение «The bird is in the tree» означает «Птица в дереве».', true, ['In the tree — на дереве среди ветвей.']),
+        TF('Предложение «The bird is in the tree» означает «Птица на дереве».', true, ['In the tree — на дереве, среди ветвей.']),
         adv(S('Какой предлог означает «перед»?', 'in front of', ['behind', 'in front of', 'between', 'under'], ['Перед — in front of.'])),
         adv(S('Выбери верное: «Я в школе».', 'I am at school.', ['I am in school only.', 'I am at school.', 'I am on school.'], ['At school — в школе (как место занятий).'])),
       ],
@@ -338,8 +338,8 @@ export const subject = buildSubject({ id: 'english', title: 'Английски�
       ],
       example: ['Составим вопрос к предложению «Tom lives in Minsk». Спросим про место.', [
         ['Спрашиваем «где»: Where.', 'Выбираем вопросительное слово.'],
-        ['Для he/she/it используем does, после него глагол без -s.', 'Where does Tom live?'],
-        ['Ответ: Tom lives in Minsk.', 'Вопрос и ответ согласованы.'],
+        ['Для he/she/it используем does, после него глагол без -s: Where does Tom live?', 'Вопрос готов.'],
+        ['Ответ на этот вопрос: Tom lives in Minsk.', 'Вопрос и ответ согласованы.'],
       ]],
       check: [
         S('___ is your name?', 'What', ['Where', 'What', 'When'], ['What — что, какой.']),
@@ -421,7 +421,7 @@ export const subject = buildSubject({ id: 'english', title: 'Английски�
       ],
       bonus: [
         S('Как спросить время?', 'What time is it?', ['What time is it?', 'Which time it is?', 'How time is it?'], ['What time is it?']),
-        TF('Sunday — седьмой день недели у англичан (воскресенье).', true, ['Sunday — воскресенье.']),
+        TF('Saturday и Sunday — выходные дни (the weekend).', true, ['Weekend — выходные.']),
       ],
       card: ['📆', 'Названия дней', 'Названия дней недели в английском связаны с Солнцем, Луной и богами. Sunday — день Солнца, Monday — день Луны.'],
     }),

@@ -2602,10 +2602,10 @@
               "topicId": "english-t10",
               "difficulty": "basic",
               "type": "truefalse",
-              "question": "Предложение «The bird is in the tree» означает «Птица в дереве».",
+              "question": "Предложение «The bird is in the tree» означает «Птица на дереве».",
               "answer": true,
               "explanation": [
-                "In the tree — на дереве среди ветвей."
+                "In the tree — на дереве, среди ветвей."
               ],
               "hints": [
                 "Вернись к карточкам урока: ответ там."
@@ -2710,11 +2710,11 @@
                 "why": "Выбираем вопросительное слово."
               },
               {
-                "text": "Для he/she/it используем does, после него глагол без -s.",
-                "why": "Where does Tom live?"
+                "text": "Для he/she/it используем does, после него глагол без -s: Where does Tom live?",
+                "why": "Вопрос готов."
               },
               {
-                "text": "Ответ: Tom lives in Minsk.",
+                "text": "Ответ на этот вопрос: Tom lives in Minsk.",
                 "why": "Вопрос и ответ согласованы."
               }
             ]
@@ -3472,10 +3472,10 @@
               "topicId": "english-t13",
               "difficulty": "bonus",
               "type": "truefalse",
-              "question": "Sunday — седьмой день недели у англичан (воскресенье).",
+              "question": "Saturday и Sunday — выходные дни (the weekend).",
               "answer": true,
               "explanation": [
-                "Sunday — воскресенье."
+                "Weekend — выходные."
               ],
               "hints": [
                 "Вернись к карточкам урока: ответ там."
