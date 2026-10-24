@@ -227,7 +227,7 @@ const oldSections = [
         S('We ___ up at 7 o’clock.', 'get', ['get', 'gets', 'getting'], ['С we — без -s.']),
         S('Tom ___ his homework after lunch.', 'does', ['do', 'does', 'doing'], ['С Tom (he) — does.']),
         TF('Предложение «She watch TV» правильное.', false, ['Правильно: She watches TV.']),
-        S('Где поставить слово often? «She ___ reads ___.»', 'She often reads.', ['She reads often.', 'She often reads.', 'Often she reads.'], ['Often стоит перед глаголом.']),
+        S('Где по правилу стоит often (перед глаголом)? «She ___ reads ___.»', 'She often reads.', ['She reads oftens.', 'She often reads.', 'Oftens she reads.'], ['Often стоит перед глаголом.']),
         adv(I('Напиши форму глагола study с he: He ___ English.', 'studies', ['Согласная + y → ies.'], ['y меняем на ies.'])),
         adv(I('Напиши форму глагола watch с she: She ___ cartoons.', 'watches', ['После ch добавляем -es.'], ['После ch -es.'])),
         adv(S('Какое слово подходит к Present Simple?', 'every day', ['now', 'at the moment', 'every day', 'yesterday'], ['Every day — привычка.'])),

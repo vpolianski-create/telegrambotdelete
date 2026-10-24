@@ -59,7 +59,7 @@ const wordDiff: Generator = (rng, d) => {
 };
 
 const wordLeft: Generator = (rng) => {
-  const total = randInt(rng, 40, 120);
+  const total = randInt(rng, 55, 120);
   const a = randInt(rng, 5, 25);
   const b = randInt(rng, 5, 25);
   return {
@@ -197,9 +197,9 @@ const cmpBetween: Generator = (rng, d) => {
   const incl = d !== 'basic' && rng() < 0.5;
   return {
     type: 'input',
-    question: incl ? `Сколько натуральных чисел x удовлетворяет двойному неравенству ${fmt(a)} ≤ x ≤ ${fmt(b)}?` : `Сколько натуральных чисел лежит между числами ${fmt(a)} и ${fmt(b)}?`,
+    question: incl ? `Сколько натуральных чисел от ${fmt(a)} до ${fmt(b)} включительно?` : `Сколько натуральных чисел лежит между числами ${fmt(a)} и ${fmt(b)}?`,
     answer: incl ? b - a + 1 : b - a - 1,
-    explanation: incl ? ['Знак ≤ значит, что крайние числа тоже подходят.', `Всего ${fmt(b)} − ${fmt(a)} + 1 = ${fmt(b - a + 1)}.`] : ['«Между» значит, что крайние числа не считаются.', `Всего ${fmt(b)} − ${fmt(a)} − 1 = ${fmt(b - a - 1)}.`],
+    explanation: incl ? ['«Включительно» значит, что крайние числа тоже считаем.', `Всего ${fmt(b)} − ${fmt(a)} + 1 = ${fmt(b - a + 1)}.`] : ['«Между» значит, что крайние числа не считаются.', `Всего ${fmt(b)} − ${fmt(a)} − 1 = ${fmt(b - a - 1)}.`],
     hints: ['Проверь на маленьком примере: сколько чисел между 3 и 6? (4 и 5, то есть два).'],
   };
 };

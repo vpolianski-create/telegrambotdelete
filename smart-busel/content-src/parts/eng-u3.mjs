@@ -115,14 +115,14 @@ export const engU3 = [
     practice: [
       S('I ___ watch TV in the evening. (всегда)', 'always', ['always', 'never', 'rarely', 'ago'], ['Always — всегда.']),
       S('He is ___ late. (никогда)', 'never', ['never', 'always', 'often', 'does'], ['После is.']),
-      S('Выбери верное предложение.', 'They often play games.', ['They play often games.', 'They often play games.', 'They play games often.'], ['Often — перед глаголом.']),
+      S('Выбери предложение, где often стоит по правилу (перед глаголом).', 'They often play games.', ['They play often games.', 'They often play games.', 'They often plays games.'], ['Often — перед смысловым глаголом.']),
       S('Как спросить «Как часто ты смотришь ТВ?»', 'How often do you watch TV?', ['How often do you watch TV?', 'How do you often watch TV?', 'Do you how often watch TV?'], ['How often + do + you.']),
       S('Что значит rarely?', 'редко', ['редко', 'часто', 'всегда', 'иногда'], ['Rarely — почти никогда.']),
-      adv(S('She ___ cartoons on Sundays. (иногда)', 'sometimes watches', ['sometimes watches', 'watches sometimes', 'sometimes watch', 'watch sometimes'], ['С she — watches.'])),
+      adv(S('She ___ cartoons on Sundays. (иногда, наречие перед глаголом)', 'sometimes watches', ['sometimes watches', 'sometimes watching', 'sometimes watch', 'sometimes to watch'], ['С she — watches.'])),
       adv(TF('Наречие always стоит после глагола to be.', true, ['He is always kind.'])),
     ],
     bonus: [
-      S('Как сказать «Он часто читает»?', 'He often reads.', ['He often read.', 'He reads often.', 'He often reads.'], ['Often + reads.']),
+      S('Как сказать «Он часто читает» (often перед глаголом)?', 'He often reads.', ['He often read.', 'He often reading.', 'He often reads.'], ['Often + reads.']),
       I('Вставь слово: We ___ have dinner at 7. (обычно)', 'usually', ['Usually — обычно.'], ['Первая буква — u.']),
     ],
     card: ['📊', 'Как часто?', 'От 100% до 0%: always – usually – often – sometimes – rarely – never. Выучи шкалу по порядку.'],

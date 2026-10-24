@@ -83,7 +83,7 @@ export const engU4 = [
     ],
     practice: [
       S('What ___ you do last Easter?', 'did', ['do', 'does', 'did'], ['Last Easter — прошедшее.']),
-      S('Where ___ your family go every summer?', 'does', ['do', 'does', 'did'], ['Family в единственном числе — как she / it: does.']),
+      S('Where ___ your friend go every summer?', 'does', ['do', 'does', 'did'], ['Friend — как he / she: does.']),
       S('We ___ paint eggs last year. (отрицание)', 'didn’t', ['don’t', 'didn’t', 'doesn’t'], ['Last year — didn’t.']),
       S('She ___ like jokes. (отрицание, Present)', 'doesn’t', ['don’t', 'doesn’t', 'didn’t'], ['С she — doesn’t.']),
       S('Выбери верное предложение.', 'Did he go to church?', ['Did he went to church?', 'Did he go to church?', 'Does he went to church?'], ['After did — go.']),

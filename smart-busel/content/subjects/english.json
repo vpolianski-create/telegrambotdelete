@@ -7199,12 +7199,12 @@
               "topicId": "english-t07",
               "difficulty": "basic",
               "type": "single",
-              "question": "Где поставить слово often? «She ___ reads ___.»",
+              "question": "Где по правилу стоит often (перед глаголом)? «She ___ reads ___.»",
               "answer": "She often reads.",
               "options": [
-                "She reads often.",
+                "She reads oftens.",
                 "She often reads.",
-                "Often she reads."
+                "Oftens she reads."
               ],
               "explanation": [
                 "Often стоит перед глаголом."
@@ -7682,15 +7682,15 @@
               "topicId": "english-t30",
               "difficulty": "basic",
               "type": "single",
-              "question": "Выбери верное предложение.",
+              "question": "Выбери предложение, где often стоит по правилу (перед глаголом).",
               "answer": "They often play games.",
               "options": [
                 "They play often games.",
                 "They often play games.",
-                "They play games often."
+                "They often plays games."
               ],
               "explanation": [
-                "Often — перед глаголом."
+                "Often — перед смысловым глаголом."
               ],
               "hints": [
                 "Вернись к карточкам урока: ответ там."
@@ -7743,13 +7743,13 @@
               "topicId": "english-t30",
               "difficulty": "advanced",
               "type": "single",
-              "question": "She ___ cartoons on Sundays. (иногда)",
+              "question": "She ___ cartoons on Sundays. (иногда, наречие перед глаголом)",
               "answer": "sometimes watches",
               "options": [
                 "sometimes watches",
-                "watches sometimes",
+                "sometimes watching",
                 "sometimes watch",
-                "watch sometimes"
+                "sometimes to watch"
               ],
               "explanation": [
                 "С she — watches."
@@ -7781,11 +7781,11 @@
               "topicId": "english-t30",
               "difficulty": "bonus",
               "type": "single",
-              "question": "Как сказать «Он часто читает»?",
+              "question": "Как сказать «Он часто читает» (often перед глаголом)?",
               "answer": "He often reads.",
               "options": [
                 "He often read.",
-                "He reads often.",
+                "He often reading.",
                 "He often reads."
               ],
               "explanation": [
@@ -8682,7 +8682,7 @@
               "topicId": "english-t34",
               "difficulty": "basic",
               "type": "single",
-              "question": "Where ___ your family go every summer?",
+              "question": "Where ___ your friend go every summer?",
               "answer": "does",
               "options": [
                 "do",
@@ -8690,7 +8690,7 @@
                 "did"
               ],
               "explanation": [
-                "Family в единственном числе — как she / it: does."
+                "Friend — как he / she: does."
               ],
               "hints": [
                 "Вернись к карточкам урока: ответ там."
@@ -9962,7 +9962,7 @@
               "options": [
                 "much",
                 "many",
-                "a lot of"
+                "a lot"
               ],
               "explanation": [
                 "Milk — неисчисляемое."
@@ -9982,7 +9982,7 @@
               "options": [
                 "much",
                 "many",
-                "a lot of"
+                "a lot"
               ],
               "explanation": [
                 "Tourists — исчисляемое."
@@ -10079,7 +10079,7 @@
               "options": [
                 "much",
                 "many",
-                "a lot of"
+                "a lot"
               ],
               "explanation": [
                 "Sweets — исчисляемое."

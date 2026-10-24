@@ -83,3 +83,31 @@ describe('задания дня', () => {
     }
   });
 });
+
+describe('обновление: сброс тем переписанных предметов', () => {
+  it('убирает отметки по history/world/art, но сохраняет баллы, награды и слова', async () => {
+    const { merge, CONTENT_REV } = await import('../src/store/useApp');
+    const raw = {
+      points: 350,
+      topicResults: { 'history-t05': { bestPercent: 100, attempts: 1, done: true, passBonusGiven: true }, 'math-t03': { bestPercent: 90, attempts: 2, done: true, passBonusGiven: true }, 'world-t01': { bestPercent: 80, attempts: 1, done: true, passBonusGiven: true } },
+      opened: ['history-t05', 'math-t03', 'art-t02'],
+      albumCards: ['history-t05', 'math-t03'],
+      mistakes: [{ subject: 'history', topicId: 'history-t05', question: 'q', date: '2025-01-01' }, { subject: 'math', topicId: 'math-t03', question: 'q2', date: '2025-01-01' }],
+      certificates: { 't:history-t05': '2025-01-01', 't:math-t03': '2025-01-02', 'j:history': '2025-01-03' },
+      leitner: { 'food-01': { box: 3, due: '2025-01-01' } },
+      lastTopic: { subjectId: 'history', topicId: 'history-t05' },
+    } as never;
+    const d = merge(raw);
+    expect(d.points).toBe(350);
+    expect(Object.keys(d.topicResults)).toEqual(['math-t03']);
+    expect(d.opened).toEqual(['math-t03']);
+    expect(d.albumCards).toEqual(['math-t03']);
+    expect(d.mistakes.map((m) => m.topicId)).toEqual(['math-t03']);
+    expect(Object.keys(d.certificates)).toEqual(['t:math-t03']);
+    expect(Object.keys(d.leitner)).toEqual(['food-01']);
+    expect(d.lastTopic).toBeNull();
+    expect(d.contentRev).toBe(CONTENT_REV);
+    // повторная загрузка ничего не меняет
+    expect(merge(d)).toEqual(d);
+  });
+});

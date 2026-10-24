@@ -53,6 +53,7 @@ export interface Data {
   certificates: Record<string, string>; // id грамоты → дата выдачи
   fixedMistakes: number;
   levelSeen: number;
+  contentRev?: number; // версия набора уроков: при переписывании предметов сбрасываем отметки о прохождении тем
   lastTopic: { subjectId: string; topicId: string } | null;
   settings: Settings;
 }
@@ -81,8 +82,30 @@ export const todayStr = () => {
 };
 const emptyDay = (): DayLog => ({ sec: 0, tasks: 0, correct: 0, goalDone: false, unlocked: false, bySubject: {}, words: 0, topics: 0, quests: [], questChest: false });
 
+/** Предметы, темы которых переписаны по учебникам: старые отметки «пройдено» относились бы к другим темам. */
+export const REWRITTEN_SUBJECTS = ['history', 'world', 'art'];
+export const CONTENT_REV = 2;
+
+/** Убирает прогресс по темам переписанных предметов. Баллы, награды, серия и слова остаются. */
+export function resetRewrittenTopics(d: Data): Data {
+  const isOld = (id: string) => REWRITTEN_SUBJECTS.some((p) => id.startsWith(`${p}-`));
+  const certOld = (id: string) => REWRITTEN_SUBJECTS.some((p) => id.startsWith(`t:${p}-`) || id.startsWith(`s:${p}-`) || id === `j:${p}`);
+  return {
+    ...d,
+    topicResults: Object.fromEntries(Object.entries(d.topicResults).filter(([id]) => !isOld(id))),
+    opened: d.opened.filter((id) => !isOld(id)),
+    plan: { ...d.plan, topics: d.plan.topics.filter((id) => !isOld(id)) },
+    albumCards: d.albumCards.filter((id) => !isOld(id)),
+    mistakes: d.mistakes.filter((m) => !isOld(m.topicId)),
+    certificates: Object.fromEntries(Object.entries(d.certificates).filter(([id]) => !certOld(id))),
+    lastTopic: d.lastTopic && isOld(d.lastTopic.topicId) ? null : d.lastTopic,
+  };
+}
+
 export function merge(raw: Partial<Data> | null): Data {
-  return { ...initial, ...(raw ?? {}), settings: { ...initial.settings, ...(raw?.settings ?? {}) } };
+  const d: Data = { ...initial, ...(raw ?? {}), settings: { ...initial.settings, ...(raw?.settings ?? {}) } };
+  if (raw && (raw.contentRev ?? 0) < CONTENT_REV) return { ...resetRewrittenTopics(d), contentRev: CONTENT_REV };
+  return { ...d, contentRev: CONTENT_REV };
 }
 
 async function load(): Promise<Data> {
@@ -138,7 +161,7 @@ const dataOf = (s: Data): Data => ({
   daily: s.daily, subjectStats: s.subjectStats, mistakes: s.mistakes, leitner: s.leitner,
   badges: s.badges, albumCards: s.albumCards, stickers: s.stickers, chestAccessories: s.chestAccessories, records: s.records,
   opened: s.opened, plan: s.plan, certificates: s.certificates, fixedMistakes: s.fixedMistakes,
-  levelSeen: s.levelSeen, lastTopic: s.lastTopic, settings: s.settings,
+  levelSeen: s.levelSeen, contentRev: s.contentRev, lastTopic: s.lastTopic, settings: s.settings,
 });
 
 /** Баллы → дозапись наград; награды создаются ровно при пересечении порога. */

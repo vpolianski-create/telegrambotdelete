@@ -1,6 +1,7 @@
 import { T, S, TF, I, adv } from '../lib.mjs';
 
 const MM = ['much', 'many', 'a lot of'];
+const MM2 = ['much', 'many', 'a lot'];
 const SAN = ['some', 'any', 'no'];
 
 export const engU5 = [
@@ -115,15 +116,15 @@ export const engU5 = [
     ],
     practice: [
       S('I eat a ___ of vegetables.', 'lot', ['lot', 'much', 'many'], ['A lot of — много.']),
-      S('There isn’t ___ milk.', 'much', MM, ['Milk — неисчисляемое.']),
-      S('There aren’t ___ tourists.', 'many', MM, ['Tourists — исчисляемое.']),
+      S('There isn’t ___ milk.', 'much', MM2, ['Milk — неисчисляемое.']),
+      S('There aren’t ___ tourists.', 'many', MM2, ['Tourists — исчисляемое.']),
       S('How ___ sugar do you eat?', 'much', MM, ['Sugar — неисчисляемое.']),
       S('How ___ is it? (цена)', 'much', MM, ['How much — о цене.']),
       adv(S('Какое предложение верное?', 'I eat a lot of fruit.', ['I eat much fruit.', 'I eat a lot of fruit.', 'I eat many fruit.'], ['В утверждении — a lot of.'])),
       adv(TF('С неисчисляемыми существительными используем many.', false, ['Нужно much.'])),
     ],
     bonus: [
-      S('Выбери верное: You shouldn’t eat ___ sweets.', 'many', MM, ['Sweets — исчисляемое.']),
+      S('Выбери верное: You shouldn’t eat ___ sweets.', 'many', MM2, ['Sweets — исчисляемое.']),
       I('Вставь слово: Do you drink ___ of water? (много)', 'a lot', ['A lot of — для утверждения и вопроса.'], ['Два слова.']),
     ],
     card: ['🔢', 'Много — много способов', 'Many — с тем, что считаем. Much — с тем, что не считаем. A lot of — подходит почти всегда.'],
