@@ -1,0 +1,386 @@
+{
+  "id": "irregular",
+  "title": "Неправильные глаголы",
+  "icon": "🔁",
+  "needsReview": true,
+  "words": [
+    {
+      "id": "irregular-01",
+      "en": "be",
+      "transcription": "[biː]",
+      "ru": "быть, находиться — прошедшее: was / were",
+      "example": "I was at home."
+    },
+    {
+      "id": "irregular-02",
+      "en": "begin",
+      "transcription": "[bɪˈɡɪn]",
+      "ru": "начинать — прошедшее: began",
+      "example": "The film began at six."
+    },
+    {
+      "id": "irregular-03",
+      "en": "break",
+      "transcription": "[breɪk]",
+      "ru": "ломать — прошедшее: broke",
+      "example": "He broke a cup."
+    },
+    {
+      "id": "irregular-04",
+      "en": "bring",
+      "transcription": "[brɪŋ]",
+      "ru": "приносить — прошедшее: brought",
+      "example": "She brought a cake."
+    },
+    {
+      "id": "irregular-05",
+      "en": "build",
+      "transcription": "[bɪld]",
+      "ru": "строить — прошедшее: built",
+      "example": "We built a sandcastle."
+    },
+    {
+      "id": "irregular-06",
+      "en": "buy",
+      "transcription": "[baɪ]",
+      "ru": "покупать — прошедшее: bought",
+      "example": "I bought a book."
+    },
+    {
+      "id": "irregular-07",
+      "en": "can",
+      "transcription": "[kæn]",
+      "ru": "мочь, уметь — прошедшее: could",
+      "example": "I could swim at five."
+    },
+    {
+      "id": "irregular-08",
+      "en": "catch",
+      "transcription": "[kætʃ]",
+      "ru": "ловить — прошедшее: caught",
+      "example": "He caught a fish."
+    },
+    {
+      "id": "irregular-09",
+      "en": "choose",
+      "transcription": "[tʃuːz]",
+      "ru": "выбирать — прошедшее: chose",
+      "example": "She chose a film."
+    },
+    {
+      "id": "irregular-10",
+      "en": "come",
+      "transcription": "[kʌm]",
+      "ru": "приходить — прошедшее: came",
+      "example": "They came to the party."
+    },
+    {
+      "id": "irregular-11",
+      "en": "cut",
+      "transcription": "[kʌt]",
+      "ru": "резать — прошедшее: cut",
+      "example": "He cut the bread."
+    },
+    {
+      "id": "irregular-12",
+      "en": "do",
+      "transcription": "[duː]",
+      "ru": "делать — прошедшее: did",
+      "example": "What did you do?"
+    },
+    {
+      "id": "irregular-13",
+      "en": "drink",
+      "transcription": "[drɪŋk]",
+      "ru": "пить — прошедшее: drank",
+      "example": "I drank water."
+    },
+    {
+      "id": "irregular-14",
+      "en": "drive",
+      "transcription": "[draɪv]",
+      "ru": "ехать, вести (машину) — прошедшее: drove",
+      "example": "Dad drove to the sea."
+    },
+    {
+      "id": "irregular-15",
+      "en": "eat",
+      "transcription": "[iːt]",
+      "ru": "есть, кушать — прошедшее: ate",
+      "example": "We ate berries."
+    },
+    {
+      "id": "irregular-16",
+      "en": "fall",
+      "transcription": "[fɔːl]",
+      "ru": "падать — прошедшее: fell",
+      "example": "She fell off a horse."
+    },
+    {
+      "id": "irregular-17",
+      "en": "feed",
+      "transcription": "[fiːd]",
+      "ru": "кормить — прошедшее: fed",
+      "example": "I fed the dog."
+    },
+    {
+      "id": "irregular-18",
+      "en": "feel",
+      "transcription": "[fiːl]",
+      "ru": "чувствовать — прошедшее: felt",
+      "example": "I felt happy."
+    },
+    {
+      "id": "irregular-19",
+      "en": "find",
+      "transcription": "[faɪnd]",
+      "ru": "находить — прошедшее: found",
+      "example": "We found mushrooms."
+    },
+    {
+      "id": "irregular-20",
+      "en": "fly",
+      "transcription": "[flaɪ]",
+      "ru": "летать — прошедшее: flew",
+      "example": "We flew a kite."
+    },
+    {
+      "id": "irregular-21",
+      "en": "get",
+      "transcription": "[ɡet]",
+      "ru": "получать, добираться — прошедшее: got",
+      "example": "I got a present."
+    },
+    {
+      "id": "irregular-22",
+      "en": "give",
+      "transcription": "[ɡɪv]",
+      "ru": "давать — прошедшее: gave",
+      "example": "He gave me a card."
+    },
+    {
+      "id": "irregular-23",
+      "en": "go",
+      "transcription": "[ɡəʊ]",
+      "ru": "идти, ехать — прошедшее: went",
+      "example": "We went to the seaside."
+    },
+    {
+      "id": "irregular-24",
+      "en": "hang",
+      "transcription": "[hæŋ]",
+      "ru": "вешать — прошедшее: hung",
+      "example": "We hung stockings."
+    },
+    {
+      "id": "irregular-25",
+      "en": "have",
+      "transcription": "[hæv]",
+      "ru": "иметь — прошедшее: had",
+      "example": "I had a great time."
+    },
+    {
+      "id": "irregular-26",
+      "en": "hear",
+      "transcription": "[hɪə]",
+      "ru": "слышать — прошедшее: heard",
+      "example": "I heard a song."
+    },
+    {
+      "id": "irregular-27",
+      "en": "hide",
+      "transcription": "[haɪd]",
+      "ru": "прятать — прошедшее: hid",
+      "example": "He hid the present."
+    },
+    {
+      "id": "irregular-28",
+      "en": "hit",
+      "transcription": "[hɪt]",
+      "ru": "ударять — прошедшее: hit",
+      "example": "She hit the ball."
+    },
+    {
+      "id": "irregular-29",
+      "en": "hurt",
+      "transcription": "[hɜːt]",
+      "ru": "болеть, причинять боль — прошедшее: hurt",
+      "example": "My leg hurt."
+    },
+    {
+      "id": "irregular-30",
+      "en": "know",
+      "transcription": "[nəʊ]",
+      "ru": "знать — прошедшее: knew",
+      "example": "I knew the answer."
+    },
+    {
+      "id": "irregular-31",
+      "en": "lead",
+      "transcription": "[liːd]",
+      "ru": "вести — прошедшее: led",
+      "example": "He led the group."
+    },
+    {
+      "id": "irregular-32",
+      "en": "learn",
+      "transcription": "[lɜːn]",
+      "ru": "узнавать, учить — прошедшее: learnt",
+      "example": "We learnt a new song."
+    },
+    {
+      "id": "irregular-33",
+      "en": "leave",
+      "transcription": "[liːv]",
+      "ru": "уезжать, покидать — прошедшее: left",
+      "example": "They left at six."
+    },
+    {
+      "id": "irregular-34",
+      "en": "lose",
+      "transcription": "[luːz]",
+      "ru": "терять, проигрывать — прошедшее: lost",
+      "example": "I lost my pen."
+    },
+    {
+      "id": "irregular-35",
+      "en": "make",
+      "transcription": "[meɪk]",
+      "ru": "делать — прошедшее: made",
+      "example": "Granny made a cake."
+    },
+    {
+      "id": "irregular-36",
+      "en": "pay",
+      "transcription": "[peɪ]",
+      "ru": "платить — прошедшее: paid",
+      "example": "Dad paid for the tickets."
+    },
+    {
+      "id": "irregular-37",
+      "en": "put",
+      "transcription": "[pʊt]",
+      "ru": "класть — прошедшее: put",
+      "example": "She put the book on the table."
+    },
+    {
+      "id": "irregular-38",
+      "en": "read",
+      "transcription": "[riːd]",
+      "ru": "читать — прошедшее: read",
+      "example": "I read an interesting book."
+    },
+    {
+      "id": "irregular-39",
+      "en": "ride",
+      "transcription": "[raɪd]",
+      "ru": "ехать верхом — прошедшее: rode",
+      "example": "We rode horses."
+    },
+    {
+      "id": "irregular-40",
+      "en": "run",
+      "transcription": "[rʌn]",
+      "ru": "бегать — прошедшее: ran",
+      "example": "He ran in the park."
+    },
+    {
+      "id": "irregular-41",
+      "en": "say",
+      "transcription": "[seɪ]",
+      "ru": "говорить — прошедшее: said",
+      "example": "She said hello."
+    },
+    {
+      "id": "irregular-42",
+      "en": "see",
+      "transcription": "[siː]",
+      "ru": "видеть — прошедшее: saw",
+      "example": "We saw a deer."
+    },
+    {
+      "id": "irregular-43",
+      "en": "send",
+      "transcription": "[send]",
+      "ru": "посылать — прошедшее: sent",
+      "example": "I sent a card."
+    },
+    {
+      "id": "irregular-44",
+      "en": "sing",
+      "transcription": "[sɪŋ]",
+      "ru": "петь — прошедшее: sang",
+      "example": "We sang carols."
+    },
+    {
+      "id": "irregular-45",
+      "en": "sleep",
+      "transcription": "[sliːp]",
+      "ru": "спать — прошедшее: slept",
+      "example": "I slept well."
+    },
+    {
+      "id": "irregular-46",
+      "en": "spend",
+      "transcription": "[spend]",
+      "ru": "проводить (время) — прошедшее: spent",
+      "example": "We spent a week there."
+    },
+    {
+      "id": "irregular-47",
+      "en": "steal",
+      "transcription": "[stiːl]",
+      "ru": "красть — прошедшее: stole",
+      "example": "The fox stole a hen."
+    },
+    {
+      "id": "irregular-48",
+      "en": "shoot",
+      "transcription": "[ʃuːt]",
+      "ru": "стрелять — прошедшее: shot",
+      "example": "He shot an arrow."
+    },
+    {
+      "id": "irregular-49",
+      "en": "swim",
+      "transcription": "[swɪm]",
+      "ru": "плавать — прошедшее: swam",
+      "example": "We swam in the lake."
+    },
+    {
+      "id": "irregular-50",
+      "en": "take",
+      "transcription": "[teɪk]",
+      "ru": "брать — прошедшее: took",
+      "example": "He took photos."
+    },
+    {
+      "id": "irregular-51",
+      "en": "think",
+      "transcription": "[θɪŋk]",
+      "ru": "думать — прошедшее: thought",
+      "example": "I thought it was fun."
+    },
+    {
+      "id": "irregular-52",
+      "en": "throw",
+      "transcription": "[θrəʊ]",
+      "ru": "бросать — прошедшее: threw",
+      "example": "She threw a ball."
+    },
+    {
+      "id": "irregular-53",
+      "en": "wear",
+      "transcription": "[weə]",
+      "ru": "носить (одежду) — прошедшее: wore",
+      "example": "I wore a hat."
+    },
+    {
+      "id": "irregular-54",
+      "en": "win",
+      "transcription": "[wɪn]",
+      "ru": "побеждать, выигрывать — прошедшее: won",
+      "example": "Our team won."
+    }
+  ]
+}

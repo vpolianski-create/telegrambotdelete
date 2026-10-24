@@ -1,8 +1,13 @@
 import { T, S, TF, I, adv, buildSubject } from './lib.mjs';
+import { engU1 } from './parts/eng-u1.mjs';
+import { engU2 } from './parts/eng-u2.mjs';
+import { engU3 } from './parts/eng-u3.mjs';
+import { engU4 } from './parts/eng-u4.mjs';
+import { engU5 } from './parts/eng-u5.mjs';
 
 const AIA = ['am', 'is', 'are'];
 
-export const subject = buildSubject({ id: 'english', title: 'Английский язык', language: 'en', color: '#0b7285', icon: '🔤', review: true }, [
+const oldSections = [
   ['Грамматика: основы', [
     T(1, 'Глагол to be (am, is, are)', {
       cards: [
@@ -426,4 +431,17 @@ export const subject = buildSubject({ id: 'english', title: 'Английски�
       card: ['📆', 'Названия дней', 'Названия дней недели в английском связаны с Солнцем, Луной и богами. Sunday — день Солнца, Monday — день Луны.'],
     }),
   ]],
+];
+
+// Темы 1–13 написаны раньше; в учебнике (ч. 1) они используются внутри юнитов. Берём их по номеру.
+const old = oldSections.flatMap(([, topics]) => topics);
+const o = (...ns) => ns.map((n) => old.find((t) => t.n === n));
+
+export const subject = buildSubject({ id: 'english', title: 'Английский язык', language: 'en', color: '#0b7285', icon: '🔤', review: false }, [
+  ['Повторение: то, что знаешь из начальной школы', o(1, 2, 4, 6, 9, 10, 12)],
+  ['Unit 1. In Summer', [...engU1.slice(0, 3), ...o(5), ...engU1.slice(3, 4), ...o(11), ...engU1.slice(4)]],
+  ['Unit 2. Be Active!', [...engU2.slice(0, 3), ...o(3), ...engU2.slice(3)]],
+  ['Unit 3. What’s on TV?', [...engU3.slice(0, 2), ...o(13), ...engU3.slice(2, 3), ...o(7, 8), ...engU3.slice(3)]],
+  ['Unit 4. Festivals and Celebrations', engU4],
+  ['Unit 5. Be Healthy!', engU5],
 ]);

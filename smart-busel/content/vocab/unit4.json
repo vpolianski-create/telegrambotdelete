@@ -1,0 +1,274 @@
+{
+  "id": "unit4",
+  "title": "Unit 4. Festivals and Celebrations",
+  "icon": "🎉",
+  "needsReview": true,
+  "words": [
+    {
+      "id": "unit4-01",
+      "en": "angel",
+      "transcription": "[ˈeɪndʒl]",
+      "ru": "ангел",
+      "example": "An angel is on the tree."
+    },
+    {
+      "id": "unit4-02",
+      "en": "celebrate",
+      "transcription": "[ˈselɪbreɪt]",
+      "ru": "праздновать",
+      "example": "We celebrate Easter."
+    },
+    {
+      "id": "unit4-03",
+      "en": "celebration",
+      "transcription": "[ˌselɪˈbreɪʃn]",
+      "ru": "праздник, празднование",
+      "example": "The celebration was fun."
+    },
+    {
+      "id": "unit4-04",
+      "en": "Christmas",
+      "transcription": "[ˈkrɪsməs]",
+      "ru": "Рождество",
+      "example": "We decorate the tree at Christmas."
+    },
+    {
+      "id": "unit4-05",
+      "en": "church",
+      "transcription": "[tʃɜːtʃ]",
+      "ru": "церковь, костёл",
+      "example": "They go to church at Easter."
+    },
+    {
+      "id": "unit4-06",
+      "en": "decorate",
+      "transcription": "[ˈdekəreɪt]",
+      "ru": "украшать",
+      "example": "We decorate the house."
+    },
+    {
+      "id": "unit4-07",
+      "en": "Easter",
+      "transcription": "[ˈiːstə]",
+      "ru": "Пасха",
+      "example": "We paint eggs at Easter."
+    },
+    {
+      "id": "unit4-08",
+      "en": "Fatherland Defender’s Day",
+      "transcription": "[ˈfɑːðələnd dɪˈfendəz deɪ]",
+      "ru": "День защитников Отечества",
+      "example": "Fatherland Defender’s Day is in February."
+    },
+    {
+      "id": "unit4-09",
+      "en": "fireplace",
+      "transcription": "[ˈfaɪəpleɪs]",
+      "ru": "камин",
+      "example": "We hang stockings by the fireplace."
+    },
+    {
+      "id": "unit4-10",
+      "en": "get presents",
+      "transcription": "[ɡet ˈpreznts]",
+      "ru": "получать подарки",
+      "example": "I get presents on my birthday."
+    },
+    {
+      "id": "unit4-11",
+      "en": "hang stockings",
+      "transcription": "[hæŋ ˈstɒkɪŋz]",
+      "ru": "вешать чулки",
+      "example": "They hang stockings at Christmas."
+    },
+    {
+      "id": "unit4-12",
+      "en": "Harvest Festival",
+      "transcription": "[ˈhɑːvɪst ˈfestɪvl]",
+      "ru": "Праздник урожая",
+      "example": "We go to the Harvest Festival."
+    },
+    {
+      "id": "unit4-13",
+      "en": "Independence Day",
+      "transcription": "[ˌɪndɪˈpendəns deɪ]",
+      "ru": "День Независимости",
+      "example": "Independence Day is on July 3rd."
+    },
+    {
+      "id": "unit4-14",
+      "en": "invite",
+      "transcription": "[ɪnˈvaɪt]",
+      "ru": "приглашать",
+      "example": "We invite our friends."
+    },
+    {
+      "id": "unit4-15",
+      "en": "Labour Day",
+      "transcription": "[ˈleɪbə deɪ]",
+      "ru": "Праздник труда",
+      "example": "Labour Day is in May."
+    },
+    {
+      "id": "unit4-16",
+      "en": "light candles",
+      "transcription": "[laɪt ˈkændlz]",
+      "ru": "зажигать свечи",
+      "example": "We light candles on the cake."
+    },
+    {
+      "id": "unit4-17",
+      "en": "lights",
+      "transcription": "[laɪts]",
+      "ru": "огни",
+      "example": "The street has bright lights."
+    },
+    {
+      "id": "unit4-18",
+      "en": "New Year’s Day",
+      "transcription": "[njuː jɪəz deɪ]",
+      "ru": "Новый год",
+      "example": "New Year’s Day is January 1st."
+    },
+    {
+      "id": "unit4-19",
+      "en": "October Revolution Day",
+      "transcription": "[ɒkˈtəʊbə ˌrevəˈluːʃn deɪ]",
+      "ru": "День Октябрьской революции",
+      "example": "October Revolution Day is in November."
+    },
+    {
+      "id": "unit4-20",
+      "en": "ornament",
+      "transcription": "[ˈɔːnəmənt]",
+      "ru": "украшение",
+      "example": "We hang ornaments on the tree."
+    },
+    {
+      "id": "unit4-21",
+      "en": "paint eggs",
+      "transcription": "[peɪnt eɡz]",
+      "ru": "красить яйца",
+      "example": "We paint eggs at Easter."
+    },
+    {
+      "id": "unit4-22",
+      "en": "Pancake Day",
+      "transcription": "[ˈpænkeɪk deɪ]",
+      "ru": "вторник на Масленой неделе",
+      "example": "We eat pancakes on Pancake Day."
+    },
+    {
+      "id": "unit4-23",
+      "en": "play jokes on",
+      "transcription": "[pleɪ dʒəʊks ɒn]",
+      "ru": "подшучивать над кем-либо",
+      "example": "They play jokes on April 1st."
+    },
+    {
+      "id": "unit4-24",
+      "en": "pull crackers",
+      "transcription": "[pʊl ˈkrækəz]",
+      "ru": "взрывать хлопушки",
+      "example": "We pull crackers at Christmas."
+    },
+    {
+      "id": "unit4-25",
+      "en": "relative",
+      "transcription": "[ˈrelətɪv]",
+      "ru": "родственник",
+      "example": "Our relatives come to visit."
+    },
+    {
+      "id": "unit4-26",
+      "en": "send cards",
+      "transcription": "[send kɑːdz]",
+      "ru": "посылать открытки",
+      "example": "I send cards to my friends."
+    },
+    {
+      "id": "unit4-27",
+      "en": "sing carols",
+      "transcription": "[sɪŋ ˈkærəlz]",
+      "ru": "петь рождественские гимны",
+      "example": "Children sing carols."
+    },
+    {
+      "id": "unit4-28",
+      "en": "snowflake",
+      "transcription": "[ˈsnəʊfleɪk]",
+      "ru": "снежинка",
+      "example": "A snowflake is on my glove."
+    },
+    {
+      "id": "unit4-29",
+      "en": "snowman",
+      "transcription": "[ˈsnəʊmæn]",
+      "ru": "снеговик",
+      "example": "We built a snowman."
+    },
+    {
+      "id": "unit4-30",
+      "en": "special day",
+      "transcription": "[ˈspeʃl deɪ]",
+      "ru": "праздничный день",
+      "example": "My birthday is a special day."
+    },
+    {
+      "id": "unit4-31",
+      "en": "symbol",
+      "transcription": "[ˈsɪmbl]",
+      "ru": "символ",
+      "example": "An egg is a symbol of Easter."
+    },
+    {
+      "id": "unit4-32",
+      "en": "tinsel",
+      "transcription": "[ˈtɪnsl]",
+      "ru": "мишура",
+      "example": "The tree has tinsel."
+    },
+    {
+      "id": "unit4-33",
+      "en": "tradition",
+      "transcription": "[trəˈdɪʃn]",
+      "ru": "традиция",
+      "example": "This is a Belarusian tradition."
+    },
+    {
+      "id": "unit4-34",
+      "en": "Victory Day",
+      "transcription": "[ˈvɪktəri deɪ]",
+      "ru": "День Победы",
+      "example": "Victory Day is on May 9th."
+    },
+    {
+      "id": "unit4-35",
+      "en": "watch a parade",
+      "transcription": "[wɒtʃ ə pəˈreɪd]",
+      "ru": "смотреть парад",
+      "example": "We watch a parade."
+    },
+    {
+      "id": "unit4-36",
+      "en": "watch fireworks",
+      "transcription": "[wɒtʃ ˈfaɪəwɜːks]",
+      "ru": "смотреть салют",
+      "example": "We watch fireworks."
+    },
+    {
+      "id": "unit4-37",
+      "en": "wish happiness",
+      "transcription": "[wɪʃ ˈhæpinəs]",
+      "ru": "желать счастья",
+      "example": "We wish happiness to our friends."
+    },
+    {
+      "id": "unit4-38",
+      "en": "Women’s Day",
+      "transcription": "[ˈwɪmɪnz deɪ]",
+      "ru": "День женщин",
+      "example": "Women’s Day is on March 8th."
+    }
+  ]
+}

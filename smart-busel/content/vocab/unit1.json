@@ -1,0 +1,330 @@
+{
+  "id": "unit1",
+  "title": "Unit 1. In Summer",
+  "icon": "☀️",
+  "needsReview": true,
+  "words": [
+    {
+      "id": "unit1-01",
+      "en": "abroad",
+      "transcription": "[əˈbrɔːd]",
+      "ru": "за границей",
+      "example": "We were abroad in July."
+    },
+    {
+      "id": "unit1-02",
+      "en": "after",
+      "transcription": "[ˈɑːftə]",
+      "ru": "после",
+      "example": "We swam after lunch."
+    },
+    {
+      "id": "unit1-03",
+      "en": "ago",
+      "transcription": "[əˈɡəʊ]",
+      "ru": "тому назад",
+      "example": "I was there two years ago."
+    },
+    {
+      "id": "unit1-04",
+      "en": "beach",
+      "transcription": "[biːtʃ]",
+      "ru": "пляж",
+      "example": "There was a lot of sand on the beach."
+    },
+    {
+      "id": "unit1-05",
+      "en": "berry",
+      "transcription": "[ˈberi]",
+      "ru": "ягода",
+      "example": "We picked berries in the woods."
+    },
+    {
+      "id": "unit1-06",
+      "en": "buy",
+      "transcription": "[baɪ]",
+      "ru": "покупать",
+      "example": "I bought an ice cream."
+    },
+    {
+      "id": "unit1-07",
+      "en": "camp",
+      "transcription": "[kæmp]",
+      "ru": "лагерь",
+      "example": "He was at summer camp."
+    },
+    {
+      "id": "unit1-08",
+      "en": "cook over a campfire",
+      "transcription": "[kʊk ˈəʊvər ə ˈkæmpfaɪə]",
+      "ru": "готовить на костре",
+      "example": "We cooked over a campfire."
+    },
+    {
+      "id": "unit1-09",
+      "en": "country",
+      "transcription": "[ˈkʌntri]",
+      "ru": "местность за городом",
+      "example": "My grandma lives in the country."
+    },
+    {
+      "id": "unit1-10",
+      "en": "fall",
+      "transcription": "[fɔːl]",
+      "ru": "падать",
+      "example": "She fell off a horse."
+    },
+    {
+      "id": "unit1-11",
+      "en": "flower",
+      "transcription": "[ˈflaʊə]",
+      "ru": "цветок",
+      "example": "I picked flowers."
+    },
+    {
+      "id": "unit1-12",
+      "en": "fun",
+      "transcription": "[fʌn]",
+      "ru": "веселье",
+      "example": "We had fun at camp."
+    },
+    {
+      "id": "unit1-13",
+      "en": "go for a picnic",
+      "transcription": "[ɡəʊ fər ə ˈpɪknɪk]",
+      "ru": "ходить на пикник",
+      "example": "We went for a picnic."
+    },
+    {
+      "id": "unit1-14",
+      "en": "go hiking",
+      "transcription": "[ɡəʊ ˈhaɪkɪŋ]",
+      "ru": "ходить в походы",
+      "example": "They went hiking in the mountains."
+    },
+    {
+      "id": "unit1-15",
+      "en": "go sunbathing",
+      "transcription": "[ɡəʊ ˈsʌnbeɪðɪŋ]",
+      "ru": "загорать",
+      "example": "I went sunbathing on the beach."
+    },
+    {
+      "id": "unit1-16",
+      "en": "go swimming",
+      "transcription": "[ɡəʊ ˈswɪmɪŋ]",
+      "ru": "плавать, пойти купаться",
+      "example": "We went swimming in the lake."
+    },
+    {
+      "id": "unit1-17",
+      "en": "hard",
+      "transcription": "[hɑːd]",
+      "ru": "усердный; усердно, тяжело",
+      "example": "Work hard at school."
+    },
+    {
+      "id": "unit1-18",
+      "en": "have fun",
+      "transcription": "[hæv fʌn]",
+      "ru": "веселиться",
+      "example": "Did you have fun?"
+    },
+    {
+      "id": "unit1-19",
+      "en": "hotel",
+      "transcription": "[həʊˈtel]",
+      "ru": "гостиница",
+      "example": "We stayed in a hotel."
+    },
+    {
+      "id": "unit1-20",
+      "en": "lake",
+      "transcription": "[leɪk]",
+      "ru": "озеро",
+      "example": "We swam in the lake."
+    },
+    {
+      "id": "unit1-21",
+      "en": "last",
+      "transcription": "[lɑːst]",
+      "ru": "последний, прошлый",
+      "example": "Last summer we went to the seaside."
+    },
+    {
+      "id": "unit1-22",
+      "en": "mountain",
+      "transcription": "[ˈmaʊntən]",
+      "ru": "гора",
+      "example": "We saw high mountains."
+    },
+    {
+      "id": "unit1-23",
+      "en": "mushroom",
+      "transcription": "[ˈmʌʃruːm]",
+      "ru": "гриб",
+      "example": "I found a big mushroom."
+    },
+    {
+      "id": "unit1-24",
+      "en": "pick",
+      "transcription": "[pɪk]",
+      "ru": "собирать",
+      "example": "We picked berries."
+    },
+    {
+      "id": "unit1-25",
+      "en": "polite",
+      "transcription": "[pəˈlaɪt]",
+      "ru": "вежливый",
+      "example": "Be polite to your teacher."
+    },
+    {
+      "id": "unit1-26",
+      "en": "raise",
+      "transcription": "[reɪz]",
+      "ru": "поднимать",
+      "example": "Raise your hand, please."
+    },
+    {
+      "id": "unit1-27",
+      "en": "river",
+      "transcription": "[ˈrɪvə]",
+      "ru": "река",
+      "example": "We went to the Berezina River."
+    },
+    {
+      "id": "unit1-28",
+      "en": "rock",
+      "transcription": "[rɒk]",
+      "ru": "большой камень, скала",
+      "example": "The children climbed a rock."
+    },
+    {
+      "id": "unit1-29",
+      "en": "rule",
+      "transcription": "[ruːl]",
+      "ru": "правило",
+      "example": "Make classroom rules."
+    },
+    {
+      "id": "unit1-30",
+      "en": "sand",
+      "transcription": "[sænd]",
+      "ru": "песок",
+      "example": "The sand was warm."
+    },
+    {
+      "id": "unit1-31",
+      "en": "sandcastle",
+      "transcription": "[ˈsændkɑːsl]",
+      "ru": "песочный замок",
+      "example": "We built a sandcastle."
+    },
+    {
+      "id": "unit1-32",
+      "en": "say",
+      "transcription": "[seɪ]",
+      "ru": "говорить",
+      "example": "What did he say?"
+    },
+    {
+      "id": "unit1-33",
+      "en": "seaside",
+      "transcription": "[ˈsiːsaɪd]",
+      "ru": "побережье",
+      "example": "We spent a week at the seaside."
+    },
+    {
+      "id": "unit1-34",
+      "en": "seaweed",
+      "transcription": "[ˈsiːwiːd]",
+      "ru": "водоросли",
+      "example": "There was seaweed on the beach."
+    },
+    {
+      "id": "unit1-35",
+      "en": "spend",
+      "transcription": "[spend]",
+      "ru": "тратить; проводить (время)",
+      "example": "We spent the summer in the country."
+    },
+    {
+      "id": "unit1-36",
+      "en": "stay",
+      "transcription": "[steɪ]",
+      "ru": "останавливаться, проживать",
+      "example": "We stayed in a hotel."
+    },
+    {
+      "id": "unit1-37",
+      "en": "storm",
+      "transcription": "[stɔːm]",
+      "ru": "шторм",
+      "example": "There was a storm at night."
+    },
+    {
+      "id": "unit1-38",
+      "en": "take photos (of)",
+      "transcription": "[teɪk ˈfəʊtəʊz]",
+      "ru": "фотографировать",
+      "example": "He took photos of the lake."
+    },
+    {
+      "id": "unit1-39",
+      "en": "tent",
+      "transcription": "[tent]",
+      "ru": "палатка",
+      "example": "We slept in a tent."
+    },
+    {
+      "id": "unit1-40",
+      "en": "tourist",
+      "transcription": "[ˈtʊərɪst]",
+      "ru": "турист",
+      "example": "There were many tourists."
+    },
+    {
+      "id": "unit1-41",
+      "en": "travel",
+      "transcription": "[ˈtrævl]",
+      "ru": "путешествовать",
+      "example": "They travelled by train."
+    },
+    {
+      "id": "unit1-42",
+      "en": "understand",
+      "transcription": "[ˌʌndəˈstænd]",
+      "ru": "понимать",
+      "example": "I don’t understand."
+    },
+    {
+      "id": "unit1-43",
+      "en": "visit",
+      "transcription": "[ˈvɪzɪt]",
+      "ru": "посещать",
+      "example": "We visited a museum."
+    },
+    {
+      "id": "unit1-44",
+      "en": "watch birds",
+      "transcription": "[wɒtʃ bɜːdz]",
+      "ru": "наблюдать за птицами",
+      "example": "We watched birds in the woods."
+    },
+    {
+      "id": "unit1-45",
+      "en": "woods",
+      "transcription": "[wʊdz]",
+      "ru": "негустой лес",
+      "example": "We went to the woods."
+    },
+    {
+      "id": "unit1-46",
+      "en": "yesterday",
+      "transcription": "[ˈjestədeɪ]",
+      "ru": "вчера",
+      "example": "Yesterday I was at school."
+    }
+  ]
+}
