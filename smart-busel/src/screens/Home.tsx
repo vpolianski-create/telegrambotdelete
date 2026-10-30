@@ -14,8 +14,8 @@ import { currentStreak } from '../engine/streak';
 import { todayStr, useApp } from '../store/useApp';
 
 export function Home({ onSubject, onParent, onTopic, onCollection, onPlan, onReview }: { onSubject(id: string): void; onParent(): void; onTopic(subjectId: string, topicId: string): void; onCollection(): void; onPlan(): void; onReview(): void }) {
-  const { settings, points, rewards, topicResults, daily, lastTopic, plan, opened, mistakes } = useApp();
-  const p = progressToNext(points, settings.rewardThreshold);
+  const { settings, points, rewards, rewardBase, topicResults, daily, lastTopic, plan, opened, mistakes } = useApp();
+  const p = progressToNext(points, settings.rewardThreshold, rewardBase);
   const lvl = levelFor(points);
   const stars = Object.values(topicResults).reduce((a, r) => a + (r.stars ?? 0), 0);
   const pending = rewards.filter((r) => r.status === 'pending').length;

@@ -77,17 +77,37 @@ describe('баллы и награды в хранилище', () => {
 });
 
 describe('порог награды в родительском режиме', () => {
-  it('порог 50 при 120 баллах: награды за 50 и 100 создаются', () => {
+  it('порог 50 при 120 баллах: прошлые баллы наград не дают, награда будет за следующие 50', () => {
     store.useApp.setState({ points: 120 });
     st().updateSettings({ rewardThreshold: 50 });
-    expect(st().rewards.map((r) => r.points)).toEqual([50, 100]);
+    expect(st().rewards).toHaveLength(0);
+    st().recordAnswer(ans({ points: 50 }));
+    expect(st().rewards.map((r) => r.points)).toEqual([170]);
   });
-  it('ТЕКУЩЕЕ ПОВЕДЕНИЕ: порог снижен — «догоняются» награды за уже набранные баллы', () => {
+  it('порог снижен — новый порог действует только вперёд: задним числом награды не создаются', () => {
     store.useApp.setState({ points: 350 });
-    st().recordAnswer(ans({ points: 0 })); // создаст 3 награды по порогу 100
+    st().recordAnswer(ans({ points: 0 })); // 3 награды по порогу 100
     expect(st().rewards).toHaveLength(3);
     st().updateSettings({ rewardThreshold: 50 });
-    expect(st().rewards).toHaveLength(7);
+    expect(st().rewards).toHaveLength(3);
+    st().recordAnswer(ans({ points: 49, question: 'a' }));
+    expect(st().rewards).toHaveLength(3); // 399 баллов: до следующей награды ещё 1
+    st().recordAnswer(ans({ points: 1, question: 'b' }));
+    expect(st().points).toBe(400);
+    expect(st().rewards).toHaveLength(4);
+    expect(st().rewards[3].points).toBe(400);
+    st().recordAnswer(ans({ points: 50, question: 'c' }));
+    expect(st().rewards.map((r) => r.points)).toEqual([100, 200, 300, 400, 450]);
+  });
+  it('порог снижен: награды в процессе набора не «сгорают» и не дублируются при повторном изменении', () => {
+    store.useApp.setState({ points: 120 });
+    st().recordAnswer(ans({ points: 0 }));
+    st().updateSettings({ rewardThreshold: 50 });
+    st().updateSettings({ rewardThreshold: 50 });
+    st().updateSettings({ rewardThreshold: 25 });
+    expect(st().rewards).toHaveLength(1);
+    st().recordAnswer(ans({ points: 25, question: 'x' }));
+    expect(st().rewards).toHaveLength(2);
   });
   it('порог повышен — уже выданные награды остаются, новые не создаются', () => {
     store.useApp.setState({ points: 300 });

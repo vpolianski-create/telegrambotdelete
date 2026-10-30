@@ -128,3 +128,20 @@ describe('резервная копия и импорт', () => {
     expect(st().points).toBe(5);
   });
 });
+
+describe('точка отсчёта наград сохраняется', () => {
+  it('после смены порога и «перезапуска» новый порог по-прежнему действует только вперёд', async () => {
+    vi.useFakeTimers({ toFake: ['Date'] });
+    vi.setSystemTime(new Date('2026-03-10T12:00:00'));
+    installFakeDisk();
+    store = await freshStore();
+    store.useApp.setState({ points: 120 });
+    st().updateSettings({ rewardThreshold: 50 });
+    store = await freshStore();
+    await st().init();
+    expect(st().rewards).toHaveLength(0);
+    st().recordAnswer(ans({ points: 50 }));
+    expect(st().rewards.map((r) => r.points)).toEqual([170]);
+    vi.useRealTimers();
+  });
+});

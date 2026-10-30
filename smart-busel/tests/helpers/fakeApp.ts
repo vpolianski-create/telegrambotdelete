@@ -15,7 +15,7 @@ export function installFakeDisk(initial: unknown = null) {
 /** Чистое состояние хранилища, как при первом запуске. */
 export async function freshStore() {
   const mod = await import('../../src/store/useApp');
-  mod.useApp.setState({ ...mod.merge(null), toasts: [], ready: false });
+  mod.useApp.setState({ ...mod.merge(null), rewardBase: undefined, toasts: [], ready: false });
   return mod;
 }
 

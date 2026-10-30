@@ -41,3 +41,20 @@ describe('level', () => {
     expect(levelFor(250).level).toBe(3);
   });
 });
+
+describe('награды: отсчёт от точки смены порога', () => {
+  it('без точки отсчёта всё считается от нуля, как раньше', () => {
+    expect(newRewards(250, 100, []).map((r) => r.points)).toEqual([100, 200]);
+  });
+  it('с точкой отсчёта считается только то, что набрано после смены порога', () => {
+    const base = { points: 350, count: 3 };
+    const have = newRewards(350, 100, []).map((r, i) => ({ ...r, id: `r${i + 1}` })); // три прежние награды
+    expect(have).toHaveLength(3);
+    expect(newRewards(380, 50, have, undefined, new Date(), base)).toEqual([]);
+    expect(newRewards(400, 50, have, undefined, new Date(), base).map((r) => r.points)).toEqual([400]);
+  });
+  it('прогресс до следующей награды считается от точки отсчёта', () => {
+    expect(progressToNext(380, 50, { points: 355, count: 3 })).toMatchObject({ into: 25, left: 25 });
+    expect(progressToNext(380, 100)).toMatchObject({ into: 80, left: 20 });
+  });
+});

@@ -9,7 +9,7 @@ import { DAILY_GOAL_BONUS, TOPIC_PASS_BONUS, TOPIC_PASS_PERCENT } from '../engin
 import type { GeneratorRef } from '../content/schema';
 import { earnedCertificates } from '../engine/certificates';
 import { togglePlan as togglePlanFn, type Plan } from '../engine/plan';
-import { DEFAULT_REWARD_TEXT, DEFAULT_THRESHOLD, newRewards, type Reward } from '../engine/rewards';
+import { DEFAULT_REWARD_TEXT, DEFAULT_THRESHOLD, newRewards, type Reward, type RewardBase } from '../engine/rewards';
 
 export interface Settings {
   name: string;
@@ -37,6 +37,7 @@ export interface Mistake { subject: string; topicId: string; question: string; d
 export interface Data {
   points: number;
   rewards: Reward[];
+  rewardBase?: RewardBase; // с какого момента считается текущий порог награды (меняется вместе с порогом)
   celebrated: string[]; // награды, для которых ребёнок уже видел праздничный экран
   topicResults: Record<string, TopicResult>;
   daily: Record<string, DayLog>;
@@ -157,7 +158,7 @@ interface Store extends Data {
 }
 
 const dataOf = (s: Data): Data => ({
-  points: s.points, rewards: s.rewards, celebrated: s.celebrated, topicResults: s.topicResults,
+  points: s.points, rewards: s.rewards, rewardBase: s.rewardBase, celebrated: s.celebrated, topicResults: s.topicResults,
   daily: s.daily, subjectStats: s.subjectStats, mistakes: s.mistakes, leitner: s.leitner,
   badges: s.badges, albumCards: s.albumCards, stickers: s.stickers, chestAccessories: s.chestAccessories, records: s.records,
   opened: s.opened, plan: s.plan, certificates: s.certificates, fixedMistakes: s.fixedMistakes,
@@ -168,7 +169,7 @@ const dataOf = (s: Data): Data => ({
 function withPoints(s: Data, n: number): Pick<Data, 'points' | 'rewards'> {
   const points = s.points + n;
   const textFor = (p: number) => s.settings.rewardTexts[String(p)] ?? DEFAULT_REWARD_TEXT;
-  return { points, rewards: [...s.rewards, ...newRewards(points, s.settings.rewardThreshold, s.rewards, textFor)] };
+  return { points, rewards: [...s.rewards, ...newRewards(points, s.settings.rewardThreshold, s.rewards, textFor, new Date(), s.rewardBase)] };
 }
 
 export const useApp = create<Store>((set, get) => {
@@ -333,7 +334,13 @@ export const useApp = create<Store>((set, get) => {
       commit({ rewards: get().rewards.map((r) => (r.id === id ? { ...r, status: 'given' as const } : r)) });
     },
     updateSettings(p) {
-      commit({ settings: { ...get().settings, ...p } });
+      const cur = get();
+      // новый порог действует только вперёд: отсчёт начинается с текущих баллов
+      const thresholdChanged = p.rewardThreshold !== undefined && p.rewardThreshold !== cur.settings.rewardThreshold;
+      commit({
+        settings: { ...cur.settings, ...p },
+        ...(thresholdChanged ? { rewardBase: { points: cur.points, count: cur.rewards.length } } : {}),
+      });
       commit(withPoints(get(), 0));
     },
     importData(raw) {
