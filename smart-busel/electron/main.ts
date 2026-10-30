@@ -1,6 +1,6 @@
 import { app, BrowserWindow, ipcMain } from 'electron';
 import path from 'node:path';
-import { backupOnStart, readJson, writeJson } from './store';
+import { backupOnStart, loadData, writeJson } from './store';
 
 const DATA = 'data.json';
 
@@ -18,7 +18,7 @@ function createWindow() {
 
 app.whenReady().then(() => {
   backupOnStart(DATA);
-  ipcMain.handle('data:load', () => readJson<unknown>(DATA, null));
+  ipcMain.handle('data:load', () => loadData<unknown>(DATA));
   ipcMain.handle('data:save', (_e, data: unknown) => writeJson(DATA, data));
   createWindow();
 });

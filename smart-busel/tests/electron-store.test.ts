@@ -27,11 +27,6 @@ describe('файл прогресса на диске (electron/store.ts)', () =
     expect(readJson('data.json', null)).toBeNull();
     expect(readJson('data.json', { x: 1 })).toEqual({ x: 1 });
   });
-  it('ТЕКУЩЕЕ ПОВЕДЕНИЕ: повреждённый файл молча читается как «файла нет»', async () => {
-    const { readJson } = await store();
-    fs.writeFileSync(path.join(dir, 'data.json'), '{"points": 120, "rewa');
-    expect(readJson('data.json', null)).toBeNull();
-  });
   it('резервная копия при запуске создаётся; без файла — ничего не делает и не падает', async () => {
     const { backupOnStart, writeJson } = await store();
     expect(() => backupOnStart('data.json')).not.toThrow();
@@ -56,7 +51,7 @@ describe('файл прогресса на диске (electron/store.ts)', () =
     expect(JSON.parse(fs.readFileSync(path.join(dir, 'backups', files[0]), 'utf8')).n).toBe(4);
     expect(JSON.parse(fs.readFileSync(path.join(dir, 'backups', files[6]), 'utf8')).n).toBe(10);
   });
-  it('ТЕКУЩЕЕ ПОВЕДЕНИЕ: испорченный файл тоже попадает в копии и вытесняет хорошие', async () => {
+  it('испорченный файл в копии не попадает: рабочие копии не вытесняются', async () => {
     const { backupOnStart, writeJson } = await store();
     vi.useFakeTimers({ toFake: ['Date'] });
     vi.setSystemTime(new Date('2026-03-01T10:00:00Z'));
@@ -67,9 +62,60 @@ describe('файл прогресса на диске (electron/store.ts)', () =
       fs.writeFileSync(path.join(dir, 'data.json'), '{ испорчено');
       backupOnStart('data.json');
     }
-    const good = fs.readdirSync(path.join(dir, 'backups')).filter((f) => {
-      try { JSON.parse(fs.readFileSync(path.join(dir, 'backups', f), 'utf8')); return true; } catch { return false; }
-    });
-    expect(good).toHaveLength(0); // ни одной рабочей копии не осталось
+    const files = fs.readdirSync(path.join(dir, 'backups'));
+    expect(files).toHaveLength(1);
+    expect(JSON.parse(fs.readFileSync(path.join(dir, 'backups', files[0]), 'utf8'))).toEqual({ points: 500 });
+  });
+});
+
+describe('загрузка прогресса с восстановлением (loadData)', () => {
+  it('исправный файл читается как есть', async () => {
+    const { loadData, writeJson } = await store();
+    writeJson('data.json', { points: 70 });
+    expect(loadData('data.json')).toEqual({ points: 70 });
+  });
+  it('файла нет — null, ничего не создаётся', async () => {
+    const { loadData } = await store();
+    expect(loadData('data.json')).toBeNull();
+    expect(fs.readdirSync(dir)).toEqual([]);
+  });
+  it('повреждённый файл: прогресс берётся из последней рабочей копии, сам файл сохраняется рядом', async () => {
+    const { loadData, backupOnStart, writeJson } = await store();
+    vi.useFakeTimers({ toFake: ['Date'] });
+    vi.setSystemTime(new Date('2026-03-01T10:00:00Z'));
+    writeJson('data.json', { points: 100 });
+    backupOnStart('data.json');
+    vi.setSystemTime(new Date('2026-03-02T10:00:00Z'));
+    writeJson('data.json', { points: 250 });
+    backupOnStart('data.json');
+    fs.writeFileSync(path.join(dir, 'data.json'), '{"points": 3');
+    expect(loadData('data.json')).toEqual({ points: 250 });
+    const corrupt = fs.readdirSync(dir).filter((f) => f.startsWith('data.json.corrupt-'));
+    expect(corrupt).toHaveLength(1);
+    expect(fs.readFileSync(path.join(dir, corrupt[0]), 'utf8')).toBe('{"points": 3');
+  });
+  it('после восстановления data.json снова исправный (не затирается пустыми данными)', async () => {
+    const { loadData, backupOnStart, writeJson, readJson } = await store();
+    writeJson('data.json', { points: 40 });
+    backupOnStart('data.json');
+    fs.writeFileSync(path.join(dir, 'data.json'), 'мусор');
+    loadData('data.json');
+    expect(readJson('data.json', null)).toEqual({ points: 40 });
+  });
+  it('повреждён файл и рабочих копий нет — null, но испорченный файл не удаляется', async () => {
+    const { loadData } = await store();
+    fs.writeFileSync(path.join(dir, 'data.json'), '{ x');
+    expect(loadData('data.json')).toBeNull();
+    expect(fs.readdirSync(dir).some((f) => f.startsWith('data.json.corrupt-'))).toBe(true);
+  });
+  it('в копиях есть испорченные: берётся самая свежая из рабочих', async () => {
+    const { loadData } = await store();
+    const b = path.join(dir, 'backups');
+    fs.mkdirSync(b);
+    fs.writeFileSync(path.join(b, '2026-03-01T10-00-00-000Z-data.json'), '{"points": 1}');
+    fs.writeFileSync(path.join(b, '2026-03-02T10-00-00-000Z-data.json'), '{"points": 2}');
+    fs.writeFileSync(path.join(b, '2026-03-03T10-00-00-000Z-data.json'), '{ битая');
+    fs.writeFileSync(path.join(dir, 'data.json'), '');
+    expect(loadData('data.json')).toEqual({ points: 2 });
   });
 });
