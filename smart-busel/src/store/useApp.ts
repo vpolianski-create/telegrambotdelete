@@ -103,9 +103,10 @@ export function resetRewrittenTopics(d: Data): Data {
   };
 }
 
-export function merge(raw: Partial<Data> | null): Data {
+/** keepAllProgress: при импорте копии из файла ничего не сбрасываем — родитель сам выбрал эти данные. */
+export function merge(raw: Partial<Data> | null, keepAllProgress = false): Data {
   const d: Data = { ...initial, ...(raw ?? {}), settings: { ...initial.settings, ...(raw?.settings ?? {}) } };
-  if (raw && (raw.contentRev ?? 0) < CONTENT_REV) return { ...resetRewrittenTopics(d), contentRev: CONTENT_REV };
+  if (raw && !keepAllProgress && (raw.contentRev ?? 0) < CONTENT_REV) return { ...resetRewrittenTopics(d), contentRev: CONTENT_REV };
   return { ...d, contentRev: CONTENT_REV };
 }
 
@@ -344,7 +345,7 @@ export const useApp = create<Store>((set, get) => {
       commit(withPoints(get(), 0));
     },
     importData(raw) {
-      commit(merge(raw as Partial<Data>));
+      commit(merge(raw as Partial<Data>, true));
     },
   };
 });

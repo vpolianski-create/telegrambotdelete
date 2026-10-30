@@ -145,3 +145,25 @@ describe('точка отсчёта наград сохраняется', () => 
     vi.useRealTimers();
   });
 });
+
+describe('импорт старой резервной копии сохраняет всю историю', () => {
+  it('отметки тем (в том числе по истории) и баллы остаются, как в копии', async () => {
+    installFakeDisk();
+    store = await freshStore();
+    const old = { points: 340, topicResults: { 'history-t05': { bestPercent: 100, attempts: 1, done: true, passBonusGiven: true, stars: 3 }, 'math-t01': { bestPercent: 90, attempts: 1, done: true, passBonusGiven: true } }, opened: ['history-t05'], albumCards: ['history-t05'] };
+    st().importData(old);
+    expect(Object.keys(st().topicResults).sort()).toEqual(['history-t05', 'math-t01']);
+    expect(st().opened).toEqual(['history-t05']);
+    expect(st().albumCards).toEqual(['history-t05']);
+    expect(st().points).toBe(340);
+  });
+  it('после импорта и «перезапуска» эти отметки не пропадают', async () => {
+    const disk = installFakeDisk();
+    store = await freshStore();
+    st().importData({ points: 10, topicResults: { 'history-t05': { bestPercent: 100, attempts: 1, done: true, passBonusGiven: true } } });
+    expect(Object.keys((disk.content as { topicResults: object }).topicResults)).toEqual(['history-t05']);
+    store = await freshStore();
+    await st().init();
+    expect(Object.keys(st().topicResults)).toEqual(['history-t05']);
+  });
+});
