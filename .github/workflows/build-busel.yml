@@ -1,0 +1,38 @@
+name: Build Smart Busel installer
+
+on:
+  push:
+    branches: ["**"]
+    tags: ["busel-v*"]
+    paths: ["smart-busel/**", ".github/workflows/build-busel.yml"]
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: smart-busel
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: smart-busel/package-lock.json
+      - run: npm ci
+      - run: npm run validate-content
+      - run: npm test
+      - run: npm run dist
+      - uses: actions/upload-artifact@v4
+        with:
+          name: umny-busel-installer
+          path: smart-busel/release/Umny-Busel-Setup-*.exe
+      # По метке busel-v* установщик ещё и выкладывается на страницу Releases
+      - uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/busel-v')
+        with:
+          files: smart-busel/release/Umny-Busel-Setup-*.exe

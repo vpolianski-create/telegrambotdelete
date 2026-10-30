@@ -1,0 +1,148 @@
+{
+  "id": "animals",
+  "title": "Животные",
+  "icon": "🦁",
+  "needsReview": true,
+  "words": [
+    {
+      "id": "animals-01",
+      "en": "cat",
+      "transcription": "[kæt]",
+      "ru": "кошка",
+      "example": "The cat is sleeping."
+    },
+    {
+      "id": "animals-02",
+      "en": "dog",
+      "transcription": "[dɒɡ]",
+      "ru": "собака",
+      "example": "My dog is friendly."
+    },
+    {
+      "id": "animals-03",
+      "en": "horse",
+      "transcription": "[hɔːs]",
+      "ru": "лошадь",
+      "example": "The horse is fast."
+    },
+    {
+      "id": "animals-04",
+      "en": "cow",
+      "transcription": "[kaʊ]",
+      "ru": "корова",
+      "example": "The cow gives milk."
+    },
+    {
+      "id": "animals-05",
+      "en": "sheep",
+      "transcription": "[ʃiːp]",
+      "ru": "овца",
+      "example": "The sheep is white."
+    },
+    {
+      "id": "animals-06",
+      "en": "pig",
+      "transcription": "[pɪɡ]",
+      "ru": "свинья",
+      "example": "The pig is pink."
+    },
+    {
+      "id": "animals-07",
+      "en": "rabbit",
+      "transcription": "[ˈræbɪt]",
+      "ru": "кролик",
+      "example": "The rabbit eats carrots."
+    },
+    {
+      "id": "animals-08",
+      "en": "mouse",
+      "transcription": "[maʊs]",
+      "ru": "мышь",
+      "example": "A mouse is small."
+    },
+    {
+      "id": "animals-09",
+      "en": "bird",
+      "transcription": "[bɜːd]",
+      "ru": "птица",
+      "example": "The bird can fly."
+    },
+    {
+      "id": "animals-10",
+      "en": "frog",
+      "transcription": "[frɒɡ]",
+      "ru": "лягушка",
+      "example": "The frog is green."
+    },
+    {
+      "id": "animals-11",
+      "en": "lion",
+      "transcription": "[ˈlaɪən]",
+      "ru": "лев",
+      "example": "The lion is strong."
+    },
+    {
+      "id": "animals-12",
+      "en": "tiger",
+      "transcription": "[ˈtaɪɡə]",
+      "ru": "тигр",
+      "example": "The tiger is big."
+    },
+    {
+      "id": "animals-13",
+      "en": "elephant",
+      "transcription": "[ˈelɪfənt]",
+      "ru": "слон",
+      "example": "The elephant is huge."
+    },
+    {
+      "id": "animals-14",
+      "en": "monkey",
+      "transcription": "[ˈmʌŋki]",
+      "ru": "обезьяна",
+      "example": "The monkey likes bananas."
+    },
+    {
+      "id": "animals-15",
+      "en": "bear",
+      "transcription": "[beə]",
+      "ru": "медведь",
+      "example": "The bear lives in the forest."
+    },
+    {
+      "id": "animals-16",
+      "en": "wolf",
+      "transcription": "[wʊlf]",
+      "ru": "волк",
+      "example": "The wolf is grey."
+    },
+    {
+      "id": "animals-17",
+      "en": "fox",
+      "transcription": "[fɒks]",
+      "ru": "лиса",
+      "example": "The fox is clever."
+    },
+    {
+      "id": "animals-18",
+      "en": "owl",
+      "transcription": "[aʊl]",
+      "ru": "сова",
+      "example": "The owl sleeps in the day."
+    },
+    {
+      "id": "animals-19",
+      "en": "stork",
+      "transcription": "[stɔːk]",
+      "ru": "аист (бусел)",
+      "example": "The stork is a symbol of Belarus."
+    },
+    {
+      "id": "animals-20",
+      "en": "duck",
+      "transcription": "[dʌk]",
+      "ru": "утка",
+      "example": "The duck swims in the pond."
+    }
+  ]
+}

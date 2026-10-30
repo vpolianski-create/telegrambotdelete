@@ -1,0 +1,148 @@
+{
+  "id": "hobbies",
+  "title": "Хобби",
+  "icon": "🎨",
+  "needsReview": true,
+  "words": [
+    {
+      "id": "hobbies-01",
+      "en": "reading",
+      "transcription": "[ˈriːdɪŋ]",
+      "ru": "чтение",
+      "example": "My hobby is reading."
+    },
+    {
+      "id": "hobbies-02",
+      "en": "drawing",
+      "transcription": "[ˈdrɔːɪŋ]",
+      "ru": "рисование",
+      "example": "She likes drawing."
+    },
+    {
+      "id": "hobbies-03",
+      "en": "painting",
+      "transcription": "[ˈpeɪntɪŋ]",
+      "ru": "живопись",
+      "example": "Painting is fun."
+    },
+    {
+      "id": "hobbies-04",
+      "en": "singing",
+      "transcription": "[ˈsɪŋɪŋ]",
+      "ru": "пение",
+      "example": "He loves singing."
+    },
+    {
+      "id": "hobbies-05",
+      "en": "dancing",
+      "transcription": "[ˈdɑːnsɪŋ]",
+      "ru": "танцы",
+      "example": "I go to dancing classes."
+    },
+    {
+      "id": "hobbies-06",
+      "en": "swimming",
+      "transcription": "[ˈswɪmɪŋ]",
+      "ru": "плавание",
+      "example": "Swimming is good for you."
+    },
+    {
+      "id": "hobbies-07",
+      "en": "football",
+      "transcription": "[ˈfʊtbɔːl]",
+      "ru": "футбол",
+      "example": "We play football after school."
+    },
+    {
+      "id": "hobbies-08",
+      "en": "chess",
+      "transcription": "[tʃes]",
+      "ru": "шахматы",
+      "example": "My grandfather plays chess."
+    },
+    {
+      "id": "hobbies-09",
+      "en": "cycling",
+      "transcription": "[ˈsaɪklɪŋ]",
+      "ru": "езда на велосипеде",
+      "example": "Cycling is my hobby."
+    },
+    {
+      "id": "hobbies-10",
+      "en": "fishing",
+      "transcription": "[ˈfɪʃɪŋ]",
+      "ru": "рыбалка",
+      "example": "Dad likes fishing."
+    },
+    {
+      "id": "hobbies-11",
+      "en": "cooking",
+      "transcription": "[ˈkʊkɪŋ]",
+      "ru": "приготовление еды",
+      "example": "Cooking is interesting."
+    },
+    {
+      "id": "hobbies-12",
+      "en": "hiking",
+      "transcription": "[ˈhaɪkɪŋ]",
+      "ru": "походы",
+      "example": "We go hiking in summer."
+    },
+    {
+      "id": "hobbies-13",
+      "en": "skating",
+      "transcription": "[ˈskeɪtɪŋ]",
+      "ru": "катание на коньках",
+      "example": "Skating is great in winter."
+    },
+    {
+      "id": "hobbies-14",
+      "en": "gardening",
+      "transcription": "[ˈɡɑːdnɪŋ]",
+      "ru": "садоводство",
+      "example": "Grandma likes gardening."
+    },
+    {
+      "id": "hobbies-15",
+      "en": "collecting",
+      "transcription": "[kəˈlektɪŋ]",
+      "ru": "коллекционирование",
+      "example": "I like collecting stamps."
+    },
+    {
+      "id": "hobbies-16",
+      "en": "photography",
+      "transcription": "[fəˈtɒɡrəfi]",
+      "ru": "фотография",
+      "example": "Photography is her hobby."
+    },
+    {
+      "id": "hobbies-17",
+      "en": "guitar",
+      "transcription": "[ɡɪˈtɑː]",
+      "ru": "гитара",
+      "example": "He plays the guitar."
+    },
+    {
+      "id": "hobbies-18",
+      "en": "piano",
+      "transcription": "[piˈænəʊ]",
+      "ru": "пианино",
+      "example": "She plays the piano."
+    },
+    {
+      "id": "hobbies-19",
+      "en": "computer game",
+      "transcription": "[kəmˈpjuːtə ɡeɪm]",
+      "ru": "компьютерная игра",
+      "example": "I play a computer game."
+    },
+    {
+      "id": "hobbies-20",
+      "en": "hobby",
+      "transcription": "[ˈhɒbi]",
+      "ru": "хобби",
+      "example": "What is your hobby?"
+    }
+  ]
+}

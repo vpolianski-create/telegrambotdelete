@@ -1,0 +1,302 @@
+{
+  "id": "unit3",
+  "title": "Unit 3. What’s on TV?",
+  "icon": "📺",
+  "needsReview": true,
+  "words": [
+    {
+      "id": "unit3-01",
+      "en": "action film",
+      "transcription": "[ˈækʃn fɪlm]",
+      "ru": "боевик",
+      "example": "I like action films."
+    },
+    {
+      "id": "unit3-02",
+      "en": "adventure film",
+      "transcription": "[ədˈventʃə fɪlm]",
+      "ru": "приключенческий фильм",
+      "example": "This adventure film is exciting."
+    },
+    {
+      "id": "unit3-03",
+      "en": "amusing",
+      "transcription": "[əˈmjuːzɪŋ]",
+      "ru": "забавный",
+      "example": "The cartoon was amusing."
+    },
+    {
+      "id": "unit3-04",
+      "en": "be on TV",
+      "transcription": "[biː ɒn ˌtiː ˈviː]",
+      "ru": "идти по телевизору",
+      "example": "What’s on TV now?"
+    },
+    {
+      "id": "unit3-05",
+      "en": "both",
+      "transcription": "[bəʊθ]",
+      "ru": "оба, обе",
+      "example": "Both films were good."
+    },
+    {
+      "id": "unit3-06",
+      "en": "brave",
+      "transcription": "[breɪv]",
+      "ru": "храбрый",
+      "example": "Pooh is brave."
+    },
+    {
+      "id": "unit3-07",
+      "en": "cartoon",
+      "transcription": "[kɑːˈtuːn]",
+      "ru": "мультфильм",
+      "example": "My favourite cartoon is “Frozen”."
+    },
+    {
+      "id": "unit3-08",
+      "en": "cheerful",
+      "transcription": "[ˈtʃɪəfl]",
+      "ru": "жизнерадостный",
+      "example": "He is cheerful."
+    },
+    {
+      "id": "unit3-09",
+      "en": "comedy",
+      "transcription": "[ˈkɒmədi]",
+      "ru": "комедия",
+      "example": "We watched a comedy."
+    },
+    {
+      "id": "unit3-10",
+      "en": "cowardly",
+      "transcription": "[ˈkaʊədli]",
+      "ru": "трусливый",
+      "example": "The lion was cowardly."
+    },
+    {
+      "id": "unit3-11",
+      "en": "detective film",
+      "transcription": "[dɪˈtektɪv fɪlm]",
+      "ru": "детективный фильм",
+      "example": "A detective film is about a crime."
+    },
+    {
+      "id": "unit3-12",
+      "en": "documentary",
+      "transcription": "[ˌdɒkjuˈmentri]",
+      "ru": "документальный фильм",
+      "example": "I watched a documentary about nature."
+    },
+    {
+      "id": "unit3-13",
+      "en": "educational programme",
+      "transcription": "[ˌedʒuˈkeɪʃənl ˈprəʊɡræm]",
+      "ru": "познавательная программа",
+      "example": "This is an educational programme."
+    },
+    {
+      "id": "unit3-14",
+      "en": "exciting",
+      "transcription": "[ɪkˈsaɪtɪŋ]",
+      "ru": "захватывающий",
+      "example": "The film was exciting."
+    },
+    {
+      "id": "unit3-15",
+      "en": "fairy tale",
+      "transcription": "[ˈfeəri teɪl]",
+      "ru": "сказка",
+      "example": "I love fairy tales."
+    },
+    {
+      "id": "unit3-16",
+      "en": "fantasy film",
+      "transcription": "[ˈfæntəsi fɪlm]",
+      "ru": "фильм в жанре фэнтези",
+      "example": "He likes fantasy films."
+    },
+    {
+      "id": "unit3-17",
+      "en": "game show",
+      "transcription": "[ˈɡeɪm ʃəʊ]",
+      "ru": "игровое шоу",
+      "example": "We watch a game show."
+    },
+    {
+      "id": "unit3-18",
+      "en": "genre",
+      "transcription": "[ˈʒɒnrə]",
+      "ru": "жанр",
+      "example": "What genre is it?"
+    },
+    {
+      "id": "unit3-19",
+      "en": "half",
+      "transcription": "[hɑːf]",
+      "ru": "половина",
+      "example": "It’s half past five."
+    },
+    {
+      "id": "unit3-20",
+      "en": "hard-working",
+      "transcription": "[ˌhɑːdˈwɜːkɪŋ]",
+      "ru": "трудолюбивый",
+      "example": "Rabbit is hard-working."
+    },
+    {
+      "id": "unit3-21",
+      "en": "helpful",
+      "transcription": "[ˈhelpfl]",
+      "ru": "любезный, готовый помочь",
+      "example": "Our teacher is helpful."
+    },
+    {
+      "id": "unit3-22",
+      "en": "horrible",
+      "transcription": "[ˈhɒrəbl]",
+      "ru": "ужасный",
+      "example": "The storm was horrible."
+    },
+    {
+      "id": "unit3-23",
+      "en": "horror film",
+      "transcription": "[ˈhɒrə fɪlm]",
+      "ru": "фильм ужасов",
+      "example": "The horror film was scary."
+    },
+    {
+      "id": "unit3-24",
+      "en": "lazy",
+      "transcription": "[ˈleɪzi]",
+      "ru": "ленивый",
+      "example": "My cat is lazy."
+    },
+    {
+      "id": "unit3-25",
+      "en": "loyal",
+      "transcription": "[ˈlɔɪəl]",
+      "ru": "преданный",
+      "example": "A dog is a loyal friend."
+    },
+    {
+      "id": "unit3-26",
+      "en": "mean",
+      "transcription": "[miːn]",
+      "ru": "злой, скупой",
+      "example": "He was mean to us."
+    },
+    {
+      "id": "unit3-27",
+      "en": "music programme",
+      "transcription": "[ˈmjuːzɪk ˈprəʊɡræm]",
+      "ru": "музыкальная программа",
+      "example": "I like music programmes."
+    },
+    {
+      "id": "unit3-28",
+      "en": "nature programme",
+      "transcription": "[ˈneɪtʃə ˈprəʊɡræm]",
+      "ru": "передача о природе",
+      "example": "Nature programmes are interesting."
+    },
+    {
+      "id": "unit3-29",
+      "en": "nosy",
+      "transcription": "[ˈnəʊzi]",
+      "ru": "любопытный",
+      "example": "Don’t be nosy."
+    },
+    {
+      "id": "unit3-30",
+      "en": "quarter",
+      "transcription": "[ˈkwɔːtə]",
+      "ru": "четверть",
+      "example": "It’s a quarter past four."
+    },
+    {
+      "id": "unit3-31",
+      "en": "romantic film",
+      "transcription": "[rəʊˈmæntɪk fɪlm]",
+      "ru": "мелодрама",
+      "example": "She likes romantic films."
+    },
+    {
+      "id": "unit3-32",
+      "en": "rude",
+      "transcription": "[ruːd]",
+      "ru": "грубый",
+      "example": "Don’t be rude."
+    },
+    {
+      "id": "unit3-33",
+      "en": "scary",
+      "transcription": "[ˈskeəri]",
+      "ru": "пугающий, страшный",
+      "example": "The film was scary."
+    },
+    {
+      "id": "unit3-34",
+      "en": "science fiction film",
+      "transcription": "[ˌsaɪəns ˈfɪkʃn fɪlm]",
+      "ru": "научно-фантастический фильм",
+      "example": "I love science fiction films."
+    },
+    {
+      "id": "unit3-35",
+      "en": "silly",
+      "transcription": "[ˈsɪli]",
+      "ru": "глупый",
+      "example": "It was a silly film."
+    },
+    {
+      "id": "unit3-36",
+      "en": "sports programme",
+      "transcription": "[spɔːts ˈprəʊɡræm]",
+      "ru": "спортивная программа",
+      "example": "He watches sports programmes."
+    },
+    {
+      "id": "unit3-37",
+      "en": "strong",
+      "transcription": "[strɒŋ]",
+      "ru": "сильный",
+      "example": "The boy is strong."
+    },
+    {
+      "id": "unit3-38",
+      "en": "talk show",
+      "transcription": "[ˈtɔːk ʃəʊ]",
+      "ru": "ток-шоу",
+      "example": "My mum watches a talk show."
+    },
+    {
+      "id": "unit3-39",
+      "en": "the news",
+      "transcription": "[ðə njuːz]",
+      "ru": "новости",
+      "example": "The news is on at seven."
+    },
+    {
+      "id": "unit3-40",
+      "en": "touching",
+      "transcription": "[ˈtʌtʃɪŋ]",
+      "ru": "трогательный",
+      "example": "The film was touching."
+    },
+    {
+      "id": "unit3-41",
+      "en": "TV series",
+      "transcription": "[ˌtiː ˈviː ˈsɪəriːz]",
+      "ru": "сериал",
+      "example": "We watch a TV series."
+    },
+    {
+      "id": "unit3-42",
+      "en": "weak",
+      "transcription": "[wiːk]",
+      "ru": "слабый",
+      "example": "The little mouse was weak."
+    }
+  ]
+}

@@ -1,0 +1,183 @@
+{
+  "id": "unit5",
+  "title": "Unit 5. Be Healthy!",
+  "icon": "🥦",
+  "needsReview": true,
+  "words": [
+    {
+      "id": "unit5-01",
+      "en": "bean",
+      "transcription": "[biːn]",
+      "ru": "боб, фасоль",
+      "example": "Beans are healthy."
+    },
+    {
+      "id": "unit5-02",
+      "en": "beet",
+      "transcription": "[biːt]",
+      "ru": "свёкла",
+      "example": "I like beet salad."
+    },
+    {
+      "id": "unit5-03",
+      "en": "biscuit",
+      "transcription": "[ˈbɪskɪt]",
+      "ru": "печенье",
+      "example": "Don’t eat many biscuits."
+    },
+    {
+      "id": "unit5-04",
+      "en": "broccoli",
+      "transcription": "[ˈbrɒkəli]",
+      "ru": "брокколи",
+      "example": "I like broccoli."
+    },
+    {
+      "id": "unit5-05",
+      "en": "butter",
+      "transcription": "[ˈbʌtə]",
+      "ru": "масло",
+      "example": "Put butter on toast."
+    },
+    {
+      "id": "unit5-06",
+      "en": "cabbage",
+      "transcription": "[ˈkæbɪdʒ]",
+      "ru": "капуста",
+      "example": "Cabbage soup is tasty."
+    },
+    {
+      "id": "unit5-07",
+      "en": "cereal",
+      "transcription": "[ˈsɪəriəl]",
+      "ru": "злаки, хлопья",
+      "example": "I eat cereal for breakfast."
+    },
+    {
+      "id": "unit5-08",
+      "en": "crisps",
+      "transcription": "[krɪsps]",
+      "ru": "чипсы",
+      "example": "Crisps are unhealthy."
+    },
+    {
+      "id": "unit5-09",
+      "en": "fruit",
+      "transcription": "[fruːt]",
+      "ru": "фрукт, фрукты",
+      "example": "Eat fruit every day."
+    },
+    {
+      "id": "unit5-10",
+      "en": "grapes",
+      "transcription": "[ɡreɪps]",
+      "ru": "виноград",
+      "example": "I like grapes."
+    },
+    {
+      "id": "unit5-11",
+      "en": "healthy",
+      "transcription": "[ˈhelθi]",
+      "ru": "здоровый, полезный",
+      "example": "Vegetables are healthy."
+    },
+    {
+      "id": "unit5-12",
+      "en": "lettuce",
+      "transcription": "[ˈletɪs]",
+      "ru": "салат-латук",
+      "example": "Put lettuce in the sandwich."
+    },
+    {
+      "id": "unit5-13",
+      "en": "melon",
+      "transcription": "[ˈmelən]",
+      "ru": "дыня",
+      "example": "A melon is sweet."
+    },
+    {
+      "id": "unit5-14",
+      "en": "onion",
+      "transcription": "[ˈʌnjən]",
+      "ru": "лук",
+      "example": "I don’t like onion."
+    },
+    {
+      "id": "unit5-15",
+      "en": "peach",
+      "transcription": "[piːtʃ]",
+      "ru": "персик",
+      "example": "This peach is sweet."
+    },
+    {
+      "id": "unit5-16",
+      "en": "pear",
+      "transcription": "[peə]",
+      "ru": "груша",
+      "example": "I ate a pear."
+    },
+    {
+      "id": "unit5-17",
+      "en": "pepper",
+      "transcription": "[ˈpepə]",
+      "ru": "перец",
+      "example": "Put some pepper in the soup."
+    },
+    {
+      "id": "unit5-18",
+      "en": "rice",
+      "transcription": "[raɪs]",
+      "ru": "рис",
+      "example": "We had rice for lunch."
+    },
+    {
+      "id": "unit5-19",
+      "en": "salt",
+      "transcription": "[sɔːlt]",
+      "ru": "соль",
+      "example": "Don’t eat much salt."
+    },
+    {
+      "id": "unit5-20",
+      "en": "snack",
+      "transcription": "[snæk]",
+      "ru": "перекус",
+      "example": "An apple is a good snack."
+    },
+    {
+      "id": "unit5-21",
+      "en": "sugar",
+      "transcription": "[ˈʃʊɡə]",
+      "ru": "сахар",
+      "example": "Don’t eat much sugar."
+    },
+    {
+      "id": "unit5-22",
+      "en": "toast",
+      "transcription": "[təʊst]",
+      "ru": "гренок, тост",
+      "example": "I had toast for breakfast."
+    },
+    {
+      "id": "unit5-23",
+      "en": "unhealthy",
+      "transcription": "[ʌnˈhelθi]",
+      "ru": "нездоровый, неполезный",
+      "example": "Crisps are unhealthy."
+    },
+    {
+      "id": "unit5-24",
+      "en": "vegetable",
+      "transcription": "[ˈvedʒtəbl]",
+      "ru": "овощ",
+      "example": "Eat vegetables every day."
+    },
+    {
+      "id": "unit5-25",
+      "en": "watermelon",
+      "transcription": "[ˈwɔːtəmelən]",
+      "ru": "арбуз",
+      "example": "Watermelon is juicy."
+    }
+  ]
+}

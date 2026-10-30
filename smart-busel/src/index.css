@@ -1,0 +1,51 @@
+@import '@fontsource/nunito/cyrillic-400.css';
+@import '@fontsource/nunito/cyrillic-600.css';
+@import '@fontsource/nunito/cyrillic-800.css';
+@import '@fontsource/nunito/latin-400.css';
+@import '@fontsource/nunito/latin-600.css';
+@import '@fontsource/nunito/latin-800.css';
+@import '@fontsource/rubik/cyrillic-700.css';
+@import '@fontsource/rubik/cyrillic-800.css';
+@import '@fontsource/rubik/latin-700.css';
+@import '@fontsource/rubik/latin-800.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Фирменные цвета «Умного Бусела» (см. BRANDBOOK.md) */
+  --navy: #13244f; --sky: #1d8cee; --sun: #ffc21a; --beak: #fa5e21;
+  --bg: #eef6ff; --card: #ffffff; --ink: #13244f; --mute: #4a5a7a;
+  --brand: #0b5fc2; --accent: #c2410c; --ok: #15803d;
+  --brand-ink: #0b5fc2; --accent-ink: #b43c0a; --ok-ink: #15803d;
+  --soft: rgba(19, 36, 79, 0.07); --line: rgba(19, 36, 79, 0.18);
+}
+[data-theme='dark'] {
+  --bg: #0b1733; --card: #132549; --ink: #eef4ff; --mute: #a9bbdc;
+  --brand: #1f74dc;
+  --brand-ink: #7cb7ff; --accent-ink: #ffb27a; --ok-ink: #5fd69a;
+  --soft: rgba(255, 255, 255, 0.12); --line: rgba(255, 255, 255, 0.28);
+}
+/* размер шрифта растёт вместе с окном: 1366 px → 16 px, 4K → ~27 px */
+html { font-size: calc(clamp(16px, 10px + 0.45vw, 30px) * var(--font-scale, 1)); }
+[data-theme='dark'] .shadow { box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12); }
+:focus-visible { outline: 3px solid var(--brand-ink); outline-offset: 2px; }
+html, body, #root { height: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: Nunito, system-ui, sans-serif; }
+button { min-height: 48px; cursor: pointer; }
+/* заголовки — крупный округлый шрифт, как в логотипе */
+h1, h2 { font-family: Rubik, Nunito, system-ui, sans-serif; letter-spacing: 0.005em; }
+/* главные кнопки «выпуклые», как иконка приложения */
+button.bg-brand, button.bg-ok, button.bg-sun { box-shadow: 0 3px 0 rgba(0, 0, 0, 0.22); transition: transform 0.08s, box-shadow 0.08s; }
+button.bg-brand:active, button.bg-ok:active, button.bg-sun:active { transform: translateY(2px) scale(0.98); box-shadow: 0 1px 0 rgba(0, 0, 0, 0.22); }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* Печать: грамоты и недельный отчёт */
+@media print {
+  body * { visibility: hidden; }
+  .print-area, .print-area * { visibility: visible; }
+  .print-area { position: absolute; left: 0; top: 0; width: 100%; box-shadow: none !important; }
+  .no-print { display: none !important; }
+}

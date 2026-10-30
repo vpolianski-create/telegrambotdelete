@@ -1,0 +1,148 @@
+{
+  "id": "clothes",
+  "title": "Одежда",
+  "icon": "👕",
+  "needsReview": true,
+  "words": [
+    {
+      "id": "clothes-01",
+      "en": "T-shirt",
+      "transcription": "[ˈtiː ʃɜːt]",
+      "ru": "футболка",
+      "example": "He wears a blue T-shirt."
+    },
+    {
+      "id": "clothes-02",
+      "en": "jeans",
+      "transcription": "[dʒiːnz]",
+      "ru": "джинсы",
+      "example": "I like my jeans."
+    },
+    {
+      "id": "clothes-03",
+      "en": "dress",
+      "transcription": "[dres]",
+      "ru": "платье",
+      "example": "She has a red dress."
+    },
+    {
+      "id": "clothes-04",
+      "en": "skirt",
+      "transcription": "[skɜːt]",
+      "ru": "юбка",
+      "example": "The skirt is short."
+    },
+    {
+      "id": "clothes-05",
+      "en": "jacket",
+      "transcription": "[ˈdʒækɪt]",
+      "ru": "куртка, пиджак",
+      "example": "Put on your jacket."
+    },
+    {
+      "id": "clothes-06",
+      "en": "coat",
+      "transcription": "[kəʊt]",
+      "ru": "пальто",
+      "example": "It’s cold. Take your coat."
+    },
+    {
+      "id": "clothes-07",
+      "en": "hat",
+      "transcription": "[hæt]",
+      "ru": "шляпа",
+      "example": "He wears a hat."
+    },
+    {
+      "id": "clothes-08",
+      "en": "cap",
+      "transcription": "[kæp]",
+      "ru": "кепка",
+      "example": "My cap is black."
+    },
+    {
+      "id": "clothes-09",
+      "en": "scarf",
+      "transcription": "[skɑːf]",
+      "ru": "шарф",
+      "example": "The scarf is warm."
+    },
+    {
+      "id": "clothes-10",
+      "en": "gloves",
+      "transcription": "[ɡlʌvz]",
+      "ru": "перчатки",
+      "example": "I wear gloves in winter."
+    },
+    {
+      "id": "clothes-11",
+      "en": "shoes",
+      "transcription": "[ʃuːz]",
+      "ru": "туфли, обувь",
+      "example": "My shoes are new."
+    },
+    {
+      "id": "clothes-12",
+      "en": "boots",
+      "transcription": "[buːts]",
+      "ru": "ботинки, сапоги",
+      "example": "Wear boots in the rain."
+    },
+    {
+      "id": "clothes-13",
+      "en": "socks",
+      "transcription": "[sɒks]",
+      "ru": "носки",
+      "example": "These socks are warm."
+    },
+    {
+      "id": "clothes-14",
+      "en": "trousers",
+      "transcription": "[ˈtraʊzəz]",
+      "ru": "брюки",
+      "example": "His trousers are grey."
+    },
+    {
+      "id": "clothes-15",
+      "en": "shirt",
+      "transcription": "[ʃɜːt]",
+      "ru": "рубашка",
+      "example": "The shirt is white."
+    },
+    {
+      "id": "clothes-16",
+      "en": "sweater",
+      "transcription": "[ˈswetə]",
+      "ru": "свитер",
+      "example": "My sweater is green."
+    },
+    {
+      "id": "clothes-17",
+      "en": "shorts",
+      "transcription": "[ʃɔːts]",
+      "ru": "шорты",
+      "example": "I wear shorts in summer."
+    },
+    {
+      "id": "clothes-18",
+      "en": "pyjamas",
+      "transcription": "[pəˈdʒɑːməz]",
+      "ru": "пижама",
+      "example": "I sleep in pyjamas."
+    },
+    {
+      "id": "clothes-19",
+      "en": "uniform",
+      "transcription": "[ˈjuːnɪfɔːm]",
+      "ru": "форма",
+      "example": "We wear a school uniform."
+    },
+    {
+      "id": "clothes-20",
+      "en": "pocket",
+      "transcription": "[ˈpɒkɪt]",
+      "ru": "карман",
+      "example": "The key is in my pocket."
+    }
+  ]
+}

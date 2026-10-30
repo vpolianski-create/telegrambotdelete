@@ -1,0 +1,148 @@
+{
+  "id": "family",
+  "title": "Семья",
+  "icon": "👨‍👩‍👧",
+  "needsReview": true,
+  "words": [
+    {
+      "id": "family-01",
+      "en": "mother",
+      "transcription": "[ˈmʌðə]",
+      "ru": "мама",
+      "example": "My mother is a doctor."
+    },
+    {
+      "id": "family-02",
+      "en": "father",
+      "transcription": "[ˈfɑːðə]",
+      "ru": "папа",
+      "example": "My father likes football."
+    },
+    {
+      "id": "family-03",
+      "en": "sister",
+      "transcription": "[ˈsɪstə]",
+      "ru": "сестра",
+      "example": "I have a little sister."
+    },
+    {
+      "id": "family-04",
+      "en": "brother",
+      "transcription": "[ˈbrʌðə]",
+      "ru": "брат",
+      "example": "My brother plays chess."
+    },
+    {
+      "id": "family-05",
+      "en": "grandmother",
+      "transcription": "[ˈɡrænmʌðə]",
+      "ru": "бабушка",
+      "example": "My grandmother bakes pies."
+    },
+    {
+      "id": "family-06",
+      "en": "grandfather",
+      "transcription": "[ˈɡrænfɑːðə]",
+      "ru": "дедушка",
+      "example": "My grandfather lives in a village."
+    },
+    {
+      "id": "family-07",
+      "en": "parents",
+      "transcription": "[ˈpeərənts]",
+      "ru": "родители",
+      "example": "My parents work in Minsk."
+    },
+    {
+      "id": "family-08",
+      "en": "uncle",
+      "transcription": "[ˈʌŋkl]",
+      "ru": "дядя",
+      "example": "My uncle has a big dog."
+    },
+    {
+      "id": "family-09",
+      "en": "aunt",
+      "transcription": "[ɑːnt]",
+      "ru": "тётя",
+      "example": "My aunt is very kind."
+    },
+    {
+      "id": "family-10",
+      "en": "cousin",
+      "transcription": "[ˈkʌzn]",
+      "ru": "двоюродный брат / сестра",
+      "example": "My cousin is eleven."
+    },
+    {
+      "id": "family-11",
+      "en": "son",
+      "transcription": "[sʌn]",
+      "ru": "сын",
+      "example": "Their son is a student."
+    },
+    {
+      "id": "family-12",
+      "en": "daughter",
+      "transcription": "[ˈdɔːtə]",
+      "ru": "дочь",
+      "example": "Her daughter likes music."
+    },
+    {
+      "id": "family-13",
+      "en": "baby",
+      "transcription": "[ˈbeɪbi]",
+      "ru": "малыш",
+      "example": "The baby is sleeping."
+    },
+    {
+      "id": "family-14",
+      "en": "family",
+      "transcription": "[ˈfæməli]",
+      "ru": "семья",
+      "example": "I love my family."
+    },
+    {
+      "id": "family-15",
+      "en": "friend",
+      "transcription": "[frend]",
+      "ru": "друг",
+      "example": "My friend is funny."
+    },
+    {
+      "id": "family-16",
+      "en": "husband",
+      "transcription": "[ˈhʌzbənd]",
+      "ru": "муж",
+      "example": "Her husband is a teacher."
+    },
+    {
+      "id": "family-17",
+      "en": "wife",
+      "transcription": "[waɪf]",
+      "ru": "жена",
+      "example": "His wife is a nurse."
+    },
+    {
+      "id": "family-18",
+      "en": "child",
+      "transcription": "[tʃaɪld]",
+      "ru": "ребёнок",
+      "example": "The child is playing."
+    },
+    {
+      "id": "family-19",
+      "en": "twins",
+      "transcription": "[twɪnz]",
+      "ru": "близнецы",
+      "example": "My friends are twins."
+    },
+    {
+      "id": "family-20",
+      "en": "pet",
+      "transcription": "[pet]",
+      "ru": "домашний питомец",
+      "example": "Our pet is a cat."
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "unit2",
+  "title": "Unit 2. Be Active!",
+  "icon": "🏃",
+  "needsReview": true,
+  "words": [
+    {
+      "id": "unit2-01",
+      "en": "breathe",
+      "transcription": "[briːð]",
+      "ru": "дышать",
+      "example": "Breathe deeply."
+    },
+    {
+      "id": "unit2-02",
+      "en": "build",
+      "transcription": "[bɪld]",
+      "ru": "строить",
+      "example": "We built a snowman."
+    },
+    {
+      "id": "unit2-03",
+      "en": "dislike",
+      "transcription": "[dɪsˈlaɪk]",
+      "ru": "не нравиться",
+      "example": "I dislike cold weather."
+    },
+    {
+      "id": "unit2-04",
+      "en": "do sports",
+      "transcription": "[duː spɔːts]",
+      "ru": "заниматься спортом",
+      "example": "I like to do sports."
+    },
+    {
+      "id": "unit2-05",
+      "en": "enjoy",
+      "transcription": "[ɪnˈdʒɔɪ]",
+      "ru": "получать удовольствие",
+      "example": "He enjoys swimming."
+    },
+    {
+      "id": "unit2-06",
+      "en": "excursion",
+      "transcription": "[ɪkˈskɜːʃn]",
+      "ru": "экскурсия",
+      "example": "We went on an excursion."
+    },
+    {
+      "id": "unit2-07",
+      "en": "fly a kite",
+      "transcription": "[flaɪ ə kaɪt]",
+      "ru": "запускать воздушного змея",
+      "example": "We flew a kite."
+    },
+    {
+      "id": "unit2-08",
+      "en": "free",
+      "transcription": "[friː]",
+      "ru": "бесплатный; свободный",
+      "example": "The workshop is free."
+    },
+    {
+      "id": "unit2-09",
+      "en": "go for",
+      "transcription": "[ɡəʊ fɔː]",
+      "ru": "заняться, сделать что-либо",
+      "example": "Let’s go for a walk."
+    },
+    {
+      "id": "unit2-10",
+      "en": "go on an excursion",
+      "transcription": "[ɡəʊ ɒn ən ɪkˈskɜːʃn]",
+      "ru": "пойти на экскурсию",
+      "example": "They went on an excursion."
+    },
+    {
+      "id": "unit2-11",
+      "en": "go out",
+      "transcription": "[ɡəʊ aʊt]",
+      "ru": "выходить из дома",
+      "example": "Can I go out?"
+    },
+    {
+      "id": "unit2-12",
+      "en": "go rock climbing",
+      "transcription": "[ɡəʊ rɒk ˈklaɪmɪŋ]",
+      "ru": "заниматься скалолазанием",
+      "example": "We went rock climbing."
+    },
+    {
+      "id": "unit2-13",
+      "en": "go shopping",
+      "transcription": "[ɡəʊ ˈʃɒpɪŋ]",
+      "ru": "ходить за покупками",
+      "example": "My mum goes shopping on Saturdays."
+    },
+    {
+      "id": "unit2-14",
+      "en": "hate",
+      "transcription": "[heɪt]",
+      "ru": "ненавидеть",
+      "example": "I hate getting up early."
+    },
+    {
+      "id": "unit2-15",
+      "en": "inside",
+      "transcription": "[ɪnˈsaɪd]",
+      "ru": "внутри",
+      "example": "It is cold outside, so stay inside."
+    },
+    {
+      "id": "unit2-16",
+      "en": "make friends",
+      "transcription": "[meɪk frendz]",
+      "ru": "подружиться",
+      "example": "He made friends at camp."
+    },
+    {
+      "id": "unit2-17",
+      "en": "mind",
+      "transcription": "[maɪnd]",
+      "ru": "возражать",
+      "example": "I don’t mind."
+    },
+    {
+      "id": "unit2-18",
+      "en": "night",
+      "transcription": "[naɪt]",
+      "ru": "ночь",
+      "example": "We watched the stars at night."
+    },
+    {
+      "id": "unit2-19",
+      "en": "outside",
+      "transcription": "[ˌaʊtˈsaɪd]",
+      "ru": "снаружи, на улице",
+      "example": "Let’s play outside."
+    },
+    {
+      "id": "unit2-20",
+      "en": "relax",
+      "transcription": "[rɪˈlæks]",
+      "ru": "отдыхать",
+      "example": "I relax after school."
+    },
+    {
+      "id": "unit2-21",
+      "en": "sky",
+      "transcription": "[skaɪ]",
+      "ru": "небо",
+      "example": "The sky was blue."
+    },
+    {
+      "id": "unit2-22",
+      "en": "star",
+      "transcription": "[stɑː]",
+      "ru": "звезда",
+      "example": "I like to watch the stars."
+    },
+    {
+      "id": "unit2-23",
+      "en": "stretch",
+      "transcription": "[stretʃ]",
+      "ru": "потягиваться",
+      "example": "Stretch your arms."
+    },
+    {
+      "id": "unit2-24",
+      "en": "take part (in)",
+      "transcription": "[teɪk pɑːt]",
+      "ru": "принимать участие",
+      "example": "We took part in the festival."
+    },
+    {
+      "id": "unit2-25",
+      "en": "theme park",
+      "transcription": "[ˈθiːm pɑːk]",
+      "ru": "парк развлечений",
+      "example": "We went to a theme park."
+    },
+    {
+      "id": "unit2-26",
+      "en": "What’s up?",
+      "transcription": "[ˌwɒts ˈʌp]",
+      "ru": "Как дела?",
+      "example": "Hi! What’s up?"
+    },
+    {
+      "id": "unit2-27",
+      "en": "workshop",
+      "transcription": "[ˈwɜːkʃɒp]",
+      "ru": "мастер-класс",
+      "example": "We went to a workshop."
+    },
+    {
+      "id": "unit2-28",
+      "en": "yoga",
+      "transcription": "[ˈjəʊɡə]",
+      "ru": "йога",
+      "example": "I do yoga at the weekend."
+    }
+  ]
+}

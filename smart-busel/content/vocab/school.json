@@ -1,0 +1,148 @@
+{
+  "id": "school",
+  "title": "Школа",
+  "icon": "🎒",
+  "needsReview": true,
+  "words": [
+    {
+      "id": "school-01",
+      "en": "school",
+      "transcription": "[skuːl]",
+      "ru": "школа",
+      "example": "I go to school every day."
+    },
+    {
+      "id": "school-02",
+      "en": "teacher",
+      "transcription": "[ˈtiːtʃə]",
+      "ru": "учитель",
+      "example": "Our teacher is friendly."
+    },
+    {
+      "id": "school-03",
+      "en": "pupil",
+      "transcription": "[ˈpjuːpl]",
+      "ru": "ученик",
+      "example": "He is a good pupil."
+    },
+    {
+      "id": "school-04",
+      "en": "classroom",
+      "transcription": "[ˈklɑːsruːm]",
+      "ru": "класс (комната)",
+      "example": "The classroom is bright."
+    },
+    {
+      "id": "school-05",
+      "en": "desk",
+      "transcription": "[desk]",
+      "ru": "парта",
+      "example": "My bag is under the desk."
+    },
+    {
+      "id": "school-06",
+      "en": "book",
+      "transcription": "[bʊk]",
+      "ru": "книга",
+      "example": "I read a book."
+    },
+    {
+      "id": "school-07",
+      "en": "notebook",
+      "transcription": "[ˈnəʊtbʊk]",
+      "ru": "тетрадь",
+      "example": "Open your notebook."
+    },
+    {
+      "id": "school-08",
+      "en": "pen",
+      "transcription": "[pen]",
+      "ru": "ручка",
+      "example": "I write with a blue pen."
+    },
+    {
+      "id": "school-09",
+      "en": "pencil",
+      "transcription": "[ˈpensl]",
+      "ru": "карандаш",
+      "example": "I draw with a pencil."
+    },
+    {
+      "id": "school-10",
+      "en": "ruler",
+      "transcription": "[ˈruːlə]",
+      "ru": "линейка",
+      "example": "Use a ruler to draw a line."
+    },
+    {
+      "id": "school-11",
+      "en": "bag",
+      "transcription": "[bæɡ]",
+      "ru": "сумка, рюкзак",
+      "example": "My bag is heavy."
+    },
+    {
+      "id": "school-12",
+      "en": "lesson",
+      "transcription": "[ˈlesn]",
+      "ru": "урок",
+      "example": "The English lesson is fun."
+    },
+    {
+      "id": "school-13",
+      "en": "homework",
+      "transcription": "[ˈhəʊmwɜːk]",
+      "ru": "домашнее задание",
+      "example": "I do my homework after lunch."
+    },
+    {
+      "id": "school-14",
+      "en": "blackboard",
+      "transcription": "[ˈblækbɔːd]",
+      "ru": "доска",
+      "example": "Look at the blackboard."
+    },
+    {
+      "id": "school-15",
+      "en": "break",
+      "transcription": "[breɪk]",
+      "ru": "перемена",
+      "example": "We play outside at break."
+    },
+    {
+      "id": "school-16",
+      "en": "library",
+      "transcription": "[ˈlaɪbrəri]",
+      "ru": "библиотека",
+      "example": "The library is quiet."
+    },
+    {
+      "id": "school-17",
+      "en": "subject",
+      "transcription": "[ˈsʌbdʒɪkt]",
+      "ru": "школьный предмет",
+      "example": "Maths is my favourite subject."
+    },
+    {
+      "id": "school-18",
+      "en": "mark",
+      "transcription": "[mɑːk]",
+      "ru": "оценка",
+      "example": "I got a good mark."
+    },
+    {
+      "id": "school-19",
+      "en": "question",
+      "transcription": "[ˈkwestʃən]",
+      "ru": "вопрос",
+      "example": "I have a question."
+    },
+    {
+      "id": "school-20",
+      "en": "answer",
+      "transcription": "[ˈɑːnsə]",
+      "ru": "ответ",
+      "example": "Write the answer here."
+    }
+  ]
+}
