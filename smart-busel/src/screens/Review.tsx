@@ -6,7 +6,7 @@ import { useApp } from '../store/useApp';
 
 /** Работа над ошибками: спокойно повторяем то, что раньше не получилось. Без штрафов. */
 export function Review({ onBack }: { onBack(): void }) {
-  const { mistakes, recordAnswer, resolveMistake, settings } = useApp();
+  const { mistakes, recordAnswer, resolveMistake, settings, topicResults } = useApp();
   const list = useMemo(() => reviewList(mistakes, 8), []);
   const [i, setI] = useState(0);
   const [fixed, setFixed] = useState(0);
@@ -38,5 +38,5 @@ export function Review({ onBack }: { onBack(): void }) {
     if (r.correct) { resolveMistake(m.topicId, m.question); setFixed((f) => f + 1); }
     setI(i + 1);
   };
-  return shell(<TaskView key={task.id} task={task} onNext={answered} />);
+  return shell(<TaskView key={task.id} task={task} repeat={topicResults[m.topicId]?.done === true} onNext={answered} />);
 }

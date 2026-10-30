@@ -16,10 +16,11 @@ interface Props {
   scored?: boolean; // false для «Проверь себя»
   speakWord?: string; // автоматически произнести слово
   extraBonus?: number; // бонус за комбо, показывается после верного ответа
+  repeat?: boolean; // тема уже пройдена: баллы за повтор вдвое меньше
   onNext(r: TaskResult): void;
 }
 
-export function TaskView({ task, scored = true, speakWord, extraBonus = 0, onNext }: Props) {
+export function TaskView({ task, scored = true, speakWord, extraBonus = 0, repeat = false, onNext }: Props) {
   const options = useMemo(() => (task.options ? shuffle(Math.random, task.options) : []), [task.id]);
   const [text, setText] = useState('');
   const [status, setStatus] = useState<'idle' | 'right' | 'wrong'>('idle');
@@ -37,7 +38,7 @@ export function TaskView({ task, scored = true, speakWord, extraBonus = 0, onNex
     if (status === 'wrong') play('soft');
   }, [status]);
 
-  const points = scored ? taskPoints(task.difficulty, hints) : 0;
+  const points = scored ? taskPoints(task.difficulty, hints, repeat) : 0;
 
   const submit = (given: string | boolean) => {
     if (status !== 'idle') return;

@@ -148,7 +148,7 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
     const total = items.filter((x) => x.counted).length;
     const label = phase === 'practice' ? `Практика ${Math.min(i + 1, total)}/${total}` : 'Бонус';
     return shell(label,
-      <TaskView key={it.task.id} task={it.task} extraBonus={comboBonus(streak + 1)} onNext={answered} />);
+      <TaskView key={it.task.id} task={it.task} extraBonus={comboBonus(streak + 1)} repeat={topicResults[topic.id]?.done === true} onNext={answered} />);
   }
 
   if (phase === 'bonusAsk') {

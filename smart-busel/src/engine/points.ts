@@ -7,9 +7,12 @@ export const TOPIC_PASS_PERCENT = 80;
 export const TOPIC_PASS_BONUS = 50;
 export const DAILY_GOAL_BONUS = 20;
 
-/** Вторая подсказка уменьшает баллы вдвое; первая бесплатна. */
-export function taskPoints(difficulty: Task['difficulty'], hintsUsed: number): number {
-  const base = BASE_POINTS[difficulty];
+/**
+ * Вторая подсказка уменьшает баллы вдвое; первая бесплатна.
+ * Если тема уже пройдена (repeat), баллы за повтор вдвое меньше.
+ */
+export function taskPoints(difficulty: Task['difficulty'], hintsUsed: number, repeat = false): number {
+  const base = repeat ? Math.floor(BASE_POINTS[difficulty] / 2) : BASE_POINTS[difficulty];
   return hintsUsed >= 2 ? Math.floor(base / 2) : base;
 }
 
