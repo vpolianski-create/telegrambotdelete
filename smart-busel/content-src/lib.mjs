@@ -1,6 +1,8 @@
 // Помощники для написания уроков. Исходники лежат в content-src/*.mjs,
 // команда `npm run build-content` собирает из них content/subjects/*.json.
 
+import { findRef, splitCard } from './refs.mjs';
+
 const arr = (x) => (x === undefined ? [] : Array.isArray(x) ? x : [x]);
 
 /** Ссылка на генератор заданий: g('math.round.nearest', 'basic', 3) */
@@ -19,7 +21,6 @@ export const adv = (task) => ({ ...task, adv: true });
 export const T = (n, title, spec = {}) => ({ n, title, spec });
 
 const pad = (n) => String(n).padStart(2, '0');
-const DEFAULT_HINT = 'Вернись к карточкам урока: ответ там.';
 
 export function buildSubject(meta, sections) {
   const seen = new Set();
@@ -34,18 +35,21 @@ export function buildSubject(meta, sections) {
         seen.add(id);
         let k = 0;
         const next = () => ++k;
+        // длинные карточки делим на короткие: одна мысль — одна карточка
+        const cards = (spec.cards ?? []).flatMap((c) => splitCard(c));
         const fix = (task, difficulty, prefix) => {
           if ('generator' in task) return task;
           const { adv: isAdv, ...rest } = task;
+          const ref = findRef(rest, cards); // место в уроке, где есть ответ: для подсказки и разбора ошибки
           return {
             id: `${id}-${prefix}${next()}`, subject: meta.id, topicId: id,
             difficulty: difficulty === 'basic' && isAdv ? 'advanced' : difficulty,
-            ...rest, hints: rest.hints.length ? rest.hints : [DEFAULT_HINT],
+            ...rest, ...(ref ? { ref } : {}),
           };
         };
         const topic = { id, title: tt, status: spec.cards ? 'ready' : 'planned' };
         if (spec.review ?? meta.review) topic.needsReview = true;
-        topic.cards = spec.cards ?? [];
+        topic.cards = cards;
         if (spec.example) topic.example = { title: spec.example[0], steps: spec.example[1].map(([text, why]) => ({ text, why })) };
         topic.selfCheck = (spec.check ?? []).map((t) => fix(t, 'basic', 'sc'));
         topic.practice = (spec.practice ?? []).map((t) => fix(t, 'basic', 'p'));
