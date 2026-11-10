@@ -9,6 +9,8 @@ import { shuffle } from '../engine/rng';
 import { play } from '../audio/sfx';
 import { speak } from '../audio/speech';
 import { Mascot } from './Mascot';
+import { MatchInput } from './MatchInput';
+import { OrderInput } from './OrderInput';
 import { Rich } from './Rich';
 
 export interface TaskResult { correct: boolean; hints: number; points: number }
@@ -25,7 +27,10 @@ interface Props {
 }
 
 export function TaskView({ task, scored = true, speakWord, extraBonus = 0, repeat = false, cards = [], note, onNext }: Props) {
-  const options = useMemo(() => (task.options ? shuffle(Math.random, task.options) : []), [task.id]);
+  // у «порядка» варианты уже перемешаны; у «пар» перемешиваем правую колонку
+  const options = useMemo(() => (task.options && task.type !== 'order' && task.type !== 'match' ? shuffle(Math.random, task.options) : task.options ?? []), [task.id]);
+  const rightSide = useMemo(() => (task.type === 'match' ? shuffle(Math.random, task.answer as string[]) : []), [task.id]);
+  const [given, setGiven] = useState<string[]>([]);
   const [text, setText] = useState('');
   const [status, setStatus] = useState<'idle' | 'right' | 'wrong'>('idle');
   const [picked, setPicked] = useState<string | boolean>();
@@ -46,9 +51,9 @@ export function TaskView({ task, scored = true, speakWord, extraBonus = 0, repea
 
   const points = scored ? taskPoints(task.difficulty, hints, repeat) : 0;
 
-  const submit = (given: string | boolean) => {
+  const submit = (given: string | boolean | string[]) => {
     if (status !== 'idle') return;
-    setPicked(given);
+    if (Array.isArray(given)) setGiven(given); else setPicked(given);
     setStatus(checkAnswer(task, given) ? 'right' : 'wrong');
   };
 
@@ -80,7 +85,7 @@ export function TaskView({ task, scored = true, speakWord, extraBonus = 0, repea
   const label = { basic: '', advanced: '⭐ Повышенная', bonus: '🏆 Бонус' }[task.difficulty];
 
   return (
-    <div data-task={task.type} {...(import.meta.env.DEV ? { 'data-answer': String(task.answer) } : {})}
+    <div data-task={task.type} {...(import.meta.env.DEV ? { 'data-answer': Array.isArray(task.answer) ? JSON.stringify(task.answer) : String(task.answer) } : {})}
       className="mx-auto flex w-full max-w-2xl flex-col gap-5 rounded-xl3 bg-card p-6 shadow">
       {(label || note) && <span className="text-sm font-extrabold text-accentink">{[note, label].filter(Boolean).join(' · ')}</span>}
       <div className="flex items-start gap-3">
@@ -125,6 +130,14 @@ export function TaskView({ task, scored = true, speakWord, extraBonus = 0, repea
         </form>
       )}
 
+      {task.type === 'order' && (
+        <OrderInput options={options} kind={task.kind ?? 'list'} disabled={done} onSubmit={submit}
+          correct={done ? given.map((x, i) => checkAnswer({ type: 'input', answer: (task.answer as string[])[i] }, x)) : undefined} />
+      )}
+      {task.type === 'match' && (
+        <MatchInput left={options} right={rightSide} disabled={done} answer={done ? (task.answer as string[]) : undefined} onSubmit={submit} />
+      )}
+
       {!done && hintList.length > 0 && (
         <div className="flex flex-col gap-2">
           {hintList.slice(0, hints).map((h, i) => (
@@ -156,7 +169,11 @@ export function TaskView({ task, scored = true, speakWord, extraBonus = 0, repea
           </div>
           {status === 'wrong' && (
             <>
-              <p className="font-bold">Правильный ответ: {Array.isArray(task.answer) ? task.answer.join(', ') : task.type === 'truefalse' ? (task.answer ? 'Верно' : 'Неверно') : String(task.answer)}</p>
+              {task.type !== 'match' && (
+                <p className="font-bold">Правильный ответ: {Array.isArray(task.answer)
+                  ? task.answer.join(task.kind === 'letters' ? '' : task.kind === 'words' ? ' ' : task.type === 'order' ? ' → ' : ', ')
+                  : task.type === 'truefalse' ? (task.answer ? 'Верно' : 'Неверно') : String(task.answer)}</p>
+              )}
               {task.explanation.length > 1
                 ? <ol className="list-decimal space-y-1 pl-6">{task.explanation.map((e, i) => <li key={i}>{e}</li>)}</ol>
                 : <p>{task.explanation[0]}</p>}

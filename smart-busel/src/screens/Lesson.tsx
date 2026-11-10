@@ -5,11 +5,12 @@ import { Mascot } from '../components/Mascot';
 import { Rich } from '../components/Rich';
 import { TaskView, type TaskResult } from '../components/TaskView';
 import { findTopic } from '../content/loader';
-import { isGeneratorRef, type Entry } from '../content/schema';
+import { isGeneratorRef, type Entry, type Task } from '../content/schema';
 import { ACCESSORIES, type ChestResult } from '../engine/chest';
 import { starsFor } from '../engine/level';
 import { introSteps, queueAfterAnswer, type LessonItem } from '../engine/lesson';
 import { comboBonus, TOPIC_PASS_PERCENT } from '../engine/points';
+import { withVariety } from '../engine/variety';
 import { generate } from '../generators';
 import { useApp } from '../store/useApp';
 
@@ -30,13 +31,23 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
   const topic = found!.topic;
   const ctx = { subject: subjectId, topicId };
 
-  const build = (entries: Entry[], counted: boolean): Item[] =>
-    entries.map((e) => (isGeneratorRef(e) ? { task: generate(e, ctx), counted, entry: e } : { task: e, counted }));
+  const build = (entries: Entry[], counted: boolean, variety = false): Item[] => {
+    // тема уже пройдена: часть вопросов приходит в другом виде («собери слово», «соедини пары»)
+    const statics = entries.filter((e): e is Task => !isGeneratorRef(e));
+    const varied = variety ? withVariety(statics, Math.random) : statics;
+    const keep = new Map(varied.map((t) => [t.id, t]));
+    const out: Item[] = [];
+    for (const e of entries) {
+      if (isGeneratorRef(e)) out.push({ task: generate(e, ctx), counted, entry: e });
+      else if (keep.has(e.id)) out.push({ task: keep.get(e.id)!, counted });
+    }
+    return out;
+  };
 
   const [phase, setPhase] = useState<Phase>(topic.cards.length ? 'cards' : 'practice');
   const [card, setCard] = useState(0);
   const [step, setStep] = useState(1);
-  const [items, setItems] = useState<Item[]>(() => build(topic.practice, true));
+  const [items, setItems] = useState<Item[]>(() => build(topic.practice, true, topicResults[topic.id]?.done === true));
   const [i, setI] = useState(0);
   const [streak, setStreak] = useState(0);
   const [stats, setStats] = useState({ counted: 0, correct: 0, gained: 0, wrong: [] as string[] });

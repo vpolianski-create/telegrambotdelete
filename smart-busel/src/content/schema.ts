@@ -13,6 +13,8 @@ export const TaskSchema = z.object({
   answer: z.union([z.string(), z.number(), z.boolean(), z.array(z.string())]),
   explanation: z.array(z.string()).min(1),
   hints: z.array(z.string()),
+  /** Для type «order»: что собираем — список событий, предложение из слов или слово из букв. */
+  kind: z.enum(['list', 'words', 'letters']).optional(),
   /** Место в уроке, где есть ответ: номер карточки и дословное предложение из неё. */
   ref: z.object({ card: z.number().int().min(0), quote: z.string().optional() }).optional(),
   needsReview: z.boolean().optional(),

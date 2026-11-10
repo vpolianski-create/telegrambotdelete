@@ -24,6 +24,11 @@ export function checkAnswer(task: Pick<Task, 'type' | 'answer'>, given: Given): 
     const g = new Set((given as string[]).map(norm));
     return a.size === g.size && [...a].every((x) => g.has(x));
   }
+  if (task.type === 'order' || task.type === 'match') {
+    // порядок элементов важен: i-й элемент ответа должен совпасть с i-м данным
+    const a = answer as string[];
+    return Array.isArray(given) && given.length === a.length && a.every((x, i) => norm(x) === norm(given[i]));
+  }
   const g = norm(given as string);
   const a = norm(answer as string | number);
   if (task.type === 'single') return g === a;
