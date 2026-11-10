@@ -51,6 +51,8 @@ export const TopicSchema = z.object({
   selfCheck: z.array(TaskSchema).default([]),
   practice: z.array(EntrySchema).default([]),
   bonus: z.array(EntrySchema).default([]),
+  /** Запас дополнительных вопросов: при повторном прохождении часть практики берётся отсюда. */
+  pool: z.array(TaskSchema).default([]),
   card: KnowledgeCardSchema.optional(),
 });
 

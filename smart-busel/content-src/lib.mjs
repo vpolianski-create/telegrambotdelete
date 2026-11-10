@@ -68,10 +68,12 @@ export function buildSubject(meta, sections) {
           if ('generator' in task) return task;
           const { adv: isAdv, ...rest } = task;
           const ref = findRef(rest, cards); // место в уроке, где есть ответ: для подсказки и разбора ошибки
+          const taskId = `${id}-${prefix}${next()}`;
+          const better = meta.explain?.[taskId]; // переписанное объяснение к старому заданию
           return {
-            id: `${id}-${prefix}${next()}`, subject: meta.id, topicId: id,
+            id: taskId, subject: meta.id, topicId: id,
             difficulty: difficulty === 'basic' && isAdv ? 'advanced' : difficulty,
-            ...rest, ...(ref ? { ref } : {}),
+            ...rest, ...(better ? { explanation: [better] } : {}), ...(ref ? { ref } : {}),
           };
         };
         const topic = { id, title: tt, status: spec.cards ? 'ready' : 'planned' };
@@ -94,6 +96,9 @@ export function buildSubject(meta, sections) {
             topic.practice.push({ id: `${id}-i${k + 1}`, subject: meta.id, topicId: id, difficulty: 'basic', ...pictureTask(img, pictures, k), ref: { card } });
           });
         }
+        // запас вопросов темы: идёт последним, чтобы номера старых заданий не менялись
+        const extraPool = (meta.pool?.[n] ?? []).map((t) => fix(t, 'basic', 'q'));
+        if (extraPool.length) topic.pool = extraPool;
         if (spec.card) topic.card = { emoji: spec.card[0], title: spec.card[1], fact: spec.card[2] };
         return topic;
       }),

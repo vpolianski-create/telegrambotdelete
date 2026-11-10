@@ -180,12 +180,12 @@ export function TaskView({ task, scored = true, speakWord, extraBonus = 0, repea
                   ? task.answer.join(task.kind === 'letters' ? '' : task.kind === 'words' ? ' ' : task.type === 'order' ? ' → ' : ', ')
                   : task.type === 'truefalse' ? (task.answer ? 'Верно' : 'Неверно') : String(task.answer)}</p>
               )}
-              {task.explanation.length > 1
-                ? <ol className="list-decimal space-y-1 pl-6">{task.explanation.map((e, i) => <li key={i}>{e}</li>)}</ol>
-                : <p>{task.explanation[0]}</p>}
               {task.ref?.quote && (
                 <div className="rounded-xl2 bg-bg px-4 py-3"><p className="mb-1 text-sm font-extrabold text-mute">📖 В уроке об этом</p><p><Rich text={task.ref.quote} /></p></div>
               )}
+              {task.explanation.length > 1
+                ? <ol className="list-decimal space-y-1 pl-6">{task.explanation.map((e, i) => <li key={i}>{e}</li>)}</ol>
+                : <p>{task.explanation[0]}</p>}
             </>
           )}
           <button autoFocus onClick={() => onNext({ correct: status === 'right', hints, points: status === 'right' ? points : 0 })}

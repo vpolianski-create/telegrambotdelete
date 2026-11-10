@@ -45,7 +45,7 @@ for (const f of fs.readdirSync(dir).filter((x) => x.endsWith('.json'))) {
         if (im.card >= t.cards.length) errors.push(`${t.id}: картинка ${im.file} привязана к несуществующей карточке`);
       }
       if (t.status === 'ready' && (!t.practice.length || !t.cards.length)) errors.push(`${t.id}: готовая тема без объяснения или практики`);
-      for (const e of [...t.selfCheck, ...t.practice, ...t.bonus]) {
+      for (const e of [...t.selfCheck, ...t.practice, ...t.bonus, ...t.pool]) {
         if (isGeneratorRef(e)) {
           if (!generators[e.generator as keyof typeof generators]) errors.push(`${t.id}: неизвестный генератор ${e.generator}`);
           else for (let k = 0; k < 100; k++) {

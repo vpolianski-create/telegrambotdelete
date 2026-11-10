@@ -11,7 +11,7 @@ export function rebuildTask(m: MistakeRef): Task | undefined {
   if (!found) return undefined;
   if (m.entry) return generate(m.entry, { subject: m.subject, topicId: m.topicId });
   const t = found.topic;
-  for (const e of [...t.selfCheck, ...t.practice, ...t.bonus]) {
+  for (const e of [...t.selfCheck, ...t.practice, ...t.bonus, ...t.pool]) {
     if (isGeneratorRef(e)) continue;
     if ((m.taskId && e.id === m.taskId) || e.question === m.question) return e;
   }

@@ -8,7 +8,7 @@ import { findTopic, imageUrl } from '../content/loader';
 import { isGeneratorRef, type Entry, type Task } from '../content/schema';
 import { ACCESSORIES, type ChestResult } from '../engine/chest';
 import { starsFor } from '../engine/level';
-import { introSteps, queueAfterAnswer, type LessonItem } from '../engine/lesson';
+import { introSteps, queueAfterAnswer, samplePractice, type LessonItem } from '../engine/lesson';
 import { comboBonus, TOPIC_PASS_PERCENT } from '../engine/points';
 import { withVariety } from '../engine/variety';
 import { generate } from '../generators';
@@ -47,7 +47,11 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
   const [phase, setPhase] = useState<Phase>(topic.cards.length ? 'cards' : 'practice');
   const [card, setCard] = useState(0);
   const [step, setStep] = useState(1);
-  const [items, setItems] = useState<Item[]>(() => build(topic.practice, true, topicResults[topic.id]?.done === true));
+  const [items, setItems] = useState<Item[]>(() => {
+    // не первая попытка: часть вопросов берём из запаса темы, чтобы урок не повторялся слово в слово
+    const again = (topicResults[topic.id]?.attempts ?? 0) > 0;
+    return build(again ? samplePractice(topic.practice, topic.pool, Math.random) : topic.practice, true, topicResults[topic.id]?.done === true);
+  });
   const [i, setI] = useState(0);
   const [streak, setStreak] = useState(0);
   const [stats, setStats] = useState({ counted: 0, correct: 0, gained: 0, wrong: [] as string[] });

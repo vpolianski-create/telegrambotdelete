@@ -1,4 +1,5 @@
-import type { GeneratorRef, Task } from '../content/schema';
+import type { Entry, GeneratorRef, Task } from '../content/schema';
+import { shuffle, type Rng } from './rng';
 
 export interface LessonItem { task: Task; counted: boolean; entry?: GeneratorRef; similar?: boolean; retry?: boolean }
 
@@ -44,4 +45,17 @@ export function introSteps(cards: string[], selfCheck: Task[]): { steps: IntroSt
     selfCheck.filter((t) => t.ref?.card === index).forEach((task) => { steps.push({ kind: 'check', task }); placed.add(task); });
   });
   return { steps, rest: selfCheck.filter((t) => !placed.has(t)) };
+}
+
+/**
+ * Практика для повторного прохождения: обычные вопросы случайно выбираются из практики и запаса темы.
+ * Длина урока прежняя; задания-генераторы, повышенные задания и задания с картиной остаются на своих местах.
+ */
+export function samplePractice(practice: Entry[], pool: Task[], rng: Rng): Entry[] {
+  if (!pool.length) return practice;
+  const swappable = (e: Entry): e is Task => !('generator' in e) && e.difficulty === 'basic' && !e.image;
+  const basics = practice.filter(swappable);
+  const chosen = shuffle(rng, [...basics, ...pool]).slice(0, basics.length);
+  let k = 0;
+  return practice.map((e) => (swappable(e) ? chosen[k++] : e));
 }

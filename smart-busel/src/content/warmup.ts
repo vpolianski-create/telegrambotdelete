@@ -13,7 +13,7 @@ export function warmupItems(topicIds: string[], rng: Rng, perTopic = WARMUP_PER_
     const found = allTopics.find((x) => x.topic.id === id);
     if (!found) continue;
     const { subject, topic } = found;
-    for (const e of shuffle(rng, topic.practice).slice(0, perTopic)) {
+    for (const e of shuffle(rng, [...topic.practice, ...topic.pool]).slice(0, perTopic)) {
       out.push(isGeneratorRef(e)
         ? { subject, topic, entry: e, task: generate(e, { subject: subject.id, topicId: topic.id }) }
         : { subject, topic, task: e });
