@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { Mascot } from '../components/Mascot';
 import { Rich } from '../components/Rich';
 import { TaskView, type TaskResult } from '../components/TaskView';
-import { findTopic } from '../content/loader';
+import { findTopic, imageUrl } from '../content/loader';
 import { isGeneratorRef, type Entry, type Task } from '../content/schema';
 import { ACCESSORIES, type ChestResult } from '../engine/chest';
 import { starsFor } from '../engine/level';
@@ -126,6 +126,13 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
           <Mascot size={90} />
           <p className="text-2xl leading-relaxed"><Rich text={topic.cards[cur.index]} /></p>
         </div>
+        {(topic.images ?? []).filter((im) => im.card === cur.index && imageUrl(im.file)).map((im) => (
+          <figure key={im.file} className="flex flex-col items-center gap-2">
+            <img src={imageUrl(im.file)} alt={`${im.author}. «${im.title}»`} draggable={false}
+              className="max-h-[420px] w-auto max-w-full rounded-xl2 shadow" />
+            <figcaption className="text-center font-bold text-mute">{im.author}. «{im.title}»</figcaption>
+          </figure>
+        ))}
         <div className="flex justify-between">
           <Btn ghost onClick={() => card > 0 && setCard(card - 1)}>← Назад</Btn>
           <Btn onClick={forward}>{last ? 'Дальше →' : 'Понятно →'}</Btn>

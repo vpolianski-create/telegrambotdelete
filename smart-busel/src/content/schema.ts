@@ -13,6 +13,8 @@ export const TaskSchema = z.object({
   answer: z.union([z.string(), z.number(), z.boolean(), z.array(z.string())]),
   explanation: z.array(z.string()).min(1),
   hints: z.array(z.string()),
+  /** Картинка к заданию: путь внутри content/images. */
+  image: z.string().optional(),
   /** Для type «order»: что собираем — список событий, предложение из слов или слово из букв. */
   kind: z.enum(['list', 'words', 'letters']).optional(),
   /** Место в уроке, где есть ответ: номер карточки и дословное предложение из неё. */
@@ -44,6 +46,8 @@ export const TopicSchema = z.object({
   /** Карточки объяснения; **жирный** выделяет ключевые слова. */
   cards: z.array(z.string()).default([]),
   example: ExampleSchema.optional(),
+  /** Картины к уроку: показываются у карточки с номером card. */
+  images: z.array(z.object({ card: z.number().int().min(0), file: z.string(), title: z.string(), author: z.string() })).optional(),
   selfCheck: z.array(TaskSchema).default([]),
   practice: z.array(EntrySchema).default([]),
   bonus: z.array(EntrySchema).default([]),

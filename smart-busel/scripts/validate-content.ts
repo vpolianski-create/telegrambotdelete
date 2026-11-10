@@ -40,6 +40,10 @@ for (const f of fs.readdirSync(dir).filter((x) => x.endsWith('.json'))) {
     for (const t of sec.topics) {
       dup(t.id, f);
       if (t.needsReview) review.push(`${s.title} → ${t.title}`);
+      for (const im of t.images ?? []) {
+        if (!fs.existsSync(path.join('content/images', im.file))) errors.push(`${t.id}: нет файла картинки ${im.file}`);
+        if (im.card >= t.cards.length) errors.push(`${t.id}: картинка ${im.file} привязана к несуществующей карточке`);
+      }
       if (t.status === 'ready' && (!t.practice.length || !t.cards.length)) errors.push(`${t.id}: готовая тема без объяснения или практики`);
       for (const e of [...t.selfCheck, ...t.practice, ...t.bonus]) {
         if (isGeneratorRef(e)) {

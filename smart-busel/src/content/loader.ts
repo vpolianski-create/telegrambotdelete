@@ -23,3 +23,7 @@ export function findTopic(subjectId: string, topicId: string) {
 export const learnSubjects = subjects.filter((x) => x.sections.some((sec) => sec.topics.some((t) => t.status === 'ready')));
 
 export const allTopics = subjects.flatMap((s) => s.sections.flatMap((sec) => sec.topics.map((t) => ({ subject: s, topic: t }))));
+
+// Картинки уроков лежат в content/images; в уроке указывается путь относительно этой папки.
+const imageFiles = import.meta.glob<string>('../../content/images/**/*.jpg', { eager: true, import: 'default' });
+export const imageUrl = (file: string): string | undefined => imageFiles[`../../content/images/${file}`];

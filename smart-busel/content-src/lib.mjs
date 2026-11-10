@@ -14,6 +14,14 @@ export const S = (question, answer, options, explanation, hints) => ({ type: 'si
 export const TF = (question, answer, explanation, hints) => ({ type: 'truefalse', question, answer, explanation: arr(explanation), hints: arr(hints) });
 /** Ввод слова или числа. */
 export const I = (question, answer, explanation, hints) => ({ type: 'input', question, answer, explanation: arr(explanation), hints: arr(hints) });
+/**
+ * Расставь по порядку. items — в ПРАВИЛЬНОМ порядке; показываются перемешанными (всегда одинаково).
+ */
+export const O = (question, items, explanation, hints) => {
+  const options = items.map((x, i) => [x, (i * 7 + 3) % items.length]).sort((a, b) => a[1] - b[1]).map(([x]) => x);
+  if (options.join('|') === items.join('|')) options.reverse();
+  return { type: 'order', kind: 'list', question, answer: items, options, explanation: arr(explanation), hints: arr(hints) };
+};
 /** Пометить статическое задание как «повышенной сложности». */
 export const adv = (task) => ({ ...task, adv: true });
 
@@ -22,8 +30,27 @@ export const T = (n, title, spec = {}) => ({ n, title, spec });
 
 const pad = (n) => String(n).padStart(2, '0');
 
+/**
+ * Задание «узнай картину»: название картины по её изображению.
+ * Неверные варианты — названия других картин этого же предмета (других авторов), выбор детерминированный.
+ */
+function pictureTask(img, pool, k) {
+  const others = pool.filter((x) => x.title !== img.title && x.author !== img.author);
+  const start = pool.indexOf(img) * 7 + k;
+  const wrong = [];
+  for (let i = 0; wrong.length < 3 && i < others.length; i++) {
+    const t = others[(start + i * 5) % others.length].title;
+    if (!wrong.includes(t)) wrong.push(t);
+  }
+  return {
+    type: 'single', image: img.file, question: 'Как называется эта картина?', answer: img.title,
+    options: [img.title, ...wrong], explanation: [`${img.author}. «${img.title}».`], hints: [],
+  };
+}
+
 export function buildSubject(meta, sections) {
   const seen = new Set();
+  const pictures = meta.images ?? [];
   const out = {
     id: meta.id, title: meta.title, language: meta.language, color: meta.color, icon: meta.icon,
     sections: sections.map(([title, topics], si) => ({
@@ -53,7 +80,20 @@ export function buildSubject(meta, sections) {
         if (spec.example) topic.example = { title: spec.example[0], steps: spec.example[1].map(([text, why]) => ({ text, why })) };
         topic.selfCheck = (spec.check ?? []).map((t) => fix(t, 'basic', 'sc'));
         topic.practice = (spec.practice ?? []).map((t) => fix(t, 'basic', 'p'));
-        topic.bonus = (spec.bonus ?? []).map((t) => fix(t, 'bonus', 'x'));
+        topic.bonus = [...(spec.bonus ?? []), ...(meta.extra?.[n] ?? [])].map((t) => fix(t, 'bonus', 'x'));
+        // картины: показываются у своей карточки и приходят заданием «узнай картину»
+        const mine = pictures.filter((x) => x.n === n);
+        if (mine.length) {
+          topic.images = mine.map((img) => {
+            const card = cards.findIndex((c) => c.includes(img.match));
+            if (card < 0) throw new Error(`${id}: в карточках нет слов «${img.match}» для картины ${img.file}`);
+            return { card, file: img.file, title: img.title, author: img.author };
+          });
+          mine.forEach((img, k) => {
+            const card = topic.images[k].card;
+            topic.practice.push({ id: `${id}-i${k + 1}`, subject: meta.id, topicId: id, difficulty: 'basic', ...pictureTask(img, pictures, k), ref: { card } });
+          });
+        }
         if (spec.card) topic.card = { emoji: spec.card[0], title: spec.card[1], fact: spec.card[2] };
         return topic;
       }),

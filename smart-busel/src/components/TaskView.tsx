@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
+import { imageUrl } from '../content/loader';
 import type { Task } from '../content/schema';
 import { checkAnswer } from '../engine/answers';
 import { almost, effort, praise } from '../engine/feedback';
@@ -95,6 +96,11 @@ export function TaskView({ task, scored = true, speakWord, extraBonus = 0, repea
         )}
       </div>
 
+      {task.image && imageUrl(task.image) && (
+        <img src={imageUrl(task.image)} alt="Картина к заданию" draggable={false}
+          className="mx-auto max-h-[300px] w-auto max-w-full rounded-xl2 shadow" />
+      )}
+
       {(task.type === 'single') && (
         <div className="grid gap-3 sm:grid-cols-2">
           {options.map((o, k) => (
@@ -156,7 +162,7 @@ export function TaskView({ task, scored = true, speakWord, extraBonus = 0, repea
       {done && (
         <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col gap-3" role="status">
           <div className="flex items-center gap-3">
-            <Mascot size={64} cheer={status === 'right'} />
+            <Mascot size={64} mood={status === 'right' ? 'cheer' : 'support'} />
             <div>
               <p className="text-xl font-extrabold" style={{ color: status === 'right' ? 'var(--ok-ink)' : 'var(--accent-ink)' }}>
                 {status === 'right' ? phrase.ok : phrase.no}
