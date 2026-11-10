@@ -44,20 +44,28 @@ export function Collection({ onBack, onCerts }: { onBack(): void; onCerts(): voi
         {learnSubjects.map((sub) => {
           const list = cards.filter((x) => x.subject.id === sub.id);
           if (!list.length) return null;
+          const got = list.filter((x) => albumCards.includes(x.topic.id));
+          const locked = list.filter((x) => !albumCards.includes(x.topic.id));
           return (
-            <div key={sub.id} className="mb-3">
-              <h3 className="mb-1 font-extrabold" style={{ color: sub.color }}>{sub.icon} {sub.title}</h3>
-              <div className="flex flex-wrap gap-2">
-                {list.map((x) => {
-                  const has = albumCards.includes(x.topic.id);
-                  return (
-                    <button key={x.topic.id} disabled={!has} onClick={() => setOpen(x.topic.id)} aria-label={has ? x.topic.card!.title : 'Закрытая карточка'}
-                      className={`h-14 w-14 rounded-xl2 text-3xl ${has ? 'bg-sun/25 shadow' : 'bg-soft opacity-50'} ${open === x.topic.id ? 'ring-2 ring-brand' : ''}`}>
-                      {has ? x.topic.card!.emoji : '❔'}
-                    </button>
-                  );
-                })}
+            <div key={sub.id} className="mb-5">
+              <h3 className="mb-1 font-extrabold" style={{ color: sub.color }}>{sub.icon} {sub.title} · {got.length} из {list.length}</h3>
+              <div className="mb-2 h-2 overflow-hidden rounded-full bg-soft">
+                <div className="h-full rounded-full" style={{ background: sub.color, width: `${(got.length / list.length) * 100}%` }} />
               </div>
+              <div className="flex flex-wrap items-center gap-2">
+                {got.map((x) => (
+                  <button key={x.topic.id} onClick={() => setOpen(x.topic.id)} aria-label={x.topic.card!.title}
+                    className={`h-14 w-14 rounded-xl2 bg-sun/25 text-3xl shadow ${open === x.topic.id ? 'ring-2 ring-brand' : ''}`}>
+                    {x.topic.card!.emoji}
+                  </button>
+                ))}
+                {locked.slice(0, 3).map((x) => (
+                  <span key={x.topic.id} title={`Откроется за тему «${x.topic.title}»`} aria-label="Закрытая карточка"
+                    className="flex h-14 w-14 items-center justify-center rounded-xl2 bg-soft text-3xl opacity-50">❔</span>
+                ))}
+                {locked.length > 3 && <span className="text-sm font-bold text-mute">и ещё {locked.length - 3}</span>}
+              </div>
+              {locked.length > 0 && <p className="mt-1 text-sm text-mute">Следующая карточка — за тему «{locked[0].topic.title}».</p>}
             </div>
           );
         })}
