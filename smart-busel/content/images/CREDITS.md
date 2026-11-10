@@ -12,6 +12,7 @@
 | art/courbet-stonebreakers.jpg | Гюстав Курбе. «Дробильщики камней» | Public domain | https://commons.wikimedia.org/wiki/File:Gustave_Courbet_018.jpg |
 | art/levitan-autumn.jpg | Исаак Левитан. «Золотая осень» | Public domain | https://commons.wikimedia.org/wiki/File:Levitan_Zolotaya_Osen.jpg |
 | art/millet-gleaners.jpg | Жан-Франсуа Милле. «Сборщицы колосьев» | Public domain | https://commons.wikimedia.org/wiki/File:Jean-Fran%C3%A7ois_Millet_-_Des_glaneuses.jpg |
+| art/perov-troika.jpg | Василий Перов. «Тройка» | Public domain | https://commons.wikimedia.org/wiki/File:%D0%A2%D1%80%D0%BE%D0%B9%D0%BA%D0%B0_-_%D0%92%D0%B0%D1%81%D0%B8%D0%BB%D0%B8%D0%B9_%D0%93%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D1%8C%D0%B5%D0%B2%D0%B8%D1%87_%D0%9F%D0%B5%D1%80%D0%BE%D0%B2_(1866).jpg |
 | art/raphael-chair.jpg | Рафаэль. «Мадонна в кресле» | Public domain | https://commons.wikimedia.org/wiki/File:Raphael_Madonna_della_seggiola.jpg |
 | art/raphael-sistine.jpg | Рафаэль. «Сикстинская Мадонна» | Public domain | https://commons.wikimedia.org/wiki/File:RAFAEL_-_Madonna_Sixtina_(Gem%C3%A4ldegalerie_Alter_Meister,_Dresden,_1513-14._%C3%93leo_sobre_lienzo,_265_x_196_cm)FXD.jpg |
 | art/renoir-piano.jpg | Огюст Ренуар. «Девушки за фортепиано» | Public domain | https://commons.wikimedia.org/wiki/File:Auguste_Renoir_-_Young_Girls_at_the_Piano_-_Google_Art_Project.jpg |
