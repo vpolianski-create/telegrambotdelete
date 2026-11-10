@@ -16,6 +16,7 @@ export const artImages = [
   { n: 20, match: 'Портрет Мики Морозова', file: 'art/serov-mika.jpg', title: 'Портрет Мики Морозова', author: 'Валентин Серов' },
   { n: 21, match: 'Спящий пастушок', file: 'art/venetsianov-shepherd.jpg', title: 'Спящий пастушок', author: 'Алексей Венецианов' },
   { n: 21, match: 'Тройка', file: 'art/perov-troika.jpg', title: 'Тройка', author: 'Василий Перов' },
+  { n: 22, match: 'Поющих мальчиков', file: 'art/hals-boys.jpg', title: 'Поющие мальчики', author: 'Франц Хальс' },
   { n: 23, match: 'Устный счёт', file: 'art/bogdanov-count.jpg', title: 'Устный счёт', author: 'Николай Богданов-Бельский' },
   { n: 25, match: 'Сикстинской Мадонне', file: 'art/raphael-sistine.jpg', title: 'Сикстинская Мадонна', author: 'Рафаэль' },
   { n: 25, match: 'Мадонне в кресле', file: 'art/raphael-chair.jpg', title: 'Мадонна в кресле', author: 'Рафаэль' },

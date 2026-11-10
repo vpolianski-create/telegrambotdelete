@@ -10,6 +10,7 @@
 | art/arcimboldo-spring.jpg | Джузеппе Арчимбольдо. «Весна» | Public domain | https://commons.wikimedia.org/wiki/File:Arcimboldo_Spring_1563.jpg |
 | art/bogdanov-count.jpg | Николай Богданов-Бельский. «Устный счёт» | Public domain | https://commons.wikimedia.org/wiki/File:BogdanovBelsky_UstnySchet.jpg |
 | art/courbet-stonebreakers.jpg | Гюстав Курбе. «Дробильщики камней» | Public domain | https://commons.wikimedia.org/wiki/File:Gustave_Courbet_018.jpg |
+| art/hals-boys.jpg | Франц Хальс. «Поющие мальчики» | Public domain | https://commons.wikimedia.org/wiki/File:Frans_Hals_-_Two_Boys_Singing_-_WGA11077.jpg |
 | art/levitan-autumn.jpg | Исаак Левитан. «Золотая осень» | Public domain | https://commons.wikimedia.org/wiki/File:Levitan_Zolotaya_Osen.jpg |
 | art/millet-gleaners.jpg | Жан-Франсуа Милле. «Сборщицы колосьев» | Public domain | https://commons.wikimedia.org/wiki/File:Jean-Fran%C3%A7ois_Millet_-_Des_glaneuses.jpg |
 | art/perov-troika.jpg | Василий Перов. «Тройка» | Public domain | https://commons.wikimedia.org/wiki/File:%D0%A2%D1%80%D0%BE%D0%B9%D0%BA%D0%B0_-_%D0%92%D0%B0%D1%81%D0%B8%D0%BB%D0%B8%D0%B9_%D0%93%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D1%8C%D0%B5%D0%B2%D0%B8%D1%87_%D0%9F%D0%B5%D1%80%D0%BE%D0%B2_(1866).jpg |
