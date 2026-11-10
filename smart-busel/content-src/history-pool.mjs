@@ -4,7 +4,8 @@ import * as b from './pool/history-b.mjs';
 import * as c from './pool/history-c.mjs';
 import * as d from './pool/history-d.mjs';
 import * as e from './pool/history-e.mjs';
+import * as f from './pool/history-f.mjs';
 
-const parts = [a, b, c, d, e];
+const parts = [a, b, c, d, e, f];
 export const historyPool = Object.assign({}, ...parts.map((p) => p.pool));
 export const historyExplain = Object.assign({}, ...parts.map((p) => p.explain));
