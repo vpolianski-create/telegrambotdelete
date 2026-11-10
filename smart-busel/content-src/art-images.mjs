@@ -13,6 +13,7 @@ export const artImages = [
   { n: 11, match: 'Золотая осень', file: 'art/levitan-autumn.jpg', title: 'Золотая осень', author: 'Исаак Левитан' },
   { n: 12, match: 'Чёрное море', file: 'art/aivazovsky-blacksea.jpg', title: 'Чёрное море', author: 'Иван Айвазовский' },
   { n: 18, match: 'Девушек за фортепиано', file: 'art/renoir-piano.jpg', title: 'Девушки за фортепиано', author: 'Огюст Ренуар' },
+  { n: 19, match: 'Портрет Титуса, читающего книгу', file: 'art/rembrandt-titus.jpg', title: 'Портрет Титуса, читающего книгу', author: 'Рембрандт' },
   { n: 20, match: 'Портрет Мики Морозова', file: 'art/serov-mika.jpg', title: 'Портрет Мики Морозова', author: 'Валентин Серов' },
   { n: 21, match: 'Спящий пастушок', file: 'art/venetsianov-shepherd.jpg', title: 'Спящий пастушок', author: 'Алексей Венецианов' },
   { n: 21, match: 'Тройка', file: 'art/perov-troika.jpg', title: 'Тройка', author: 'Василий Перов' },
