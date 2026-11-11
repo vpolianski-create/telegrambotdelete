@@ -10,6 +10,8 @@ import { artDrop } from '../content-src/art-pool.mjs';
 // @ts-expect-error — то же
 import { historyDrop } from '../content-src/history-pool.mjs';
 // @ts-expect-error — то же
+import { krugozorDrop } from '../content-src/krugozor-pool.mjs';
+// @ts-expect-error — то же
 import { worldDrop } from '../content-src/world-pool.mjs';
 
 const task = (id: string, extra: Partial<Task> = {}): Task => ({
@@ -99,8 +101,8 @@ describe('вопросы без опоры на урок убраны', () => {
   const all = new Set(subjects.flatMap((s) => s.sections.flatMap((sec) => sec.topics.flatMap((t) =>
     [...t.selfCheck, ...t.practice, ...t.bonus, ...t.pool].filter((e): e is Task => !('generator' in e)).map((e) => e.id)))));
   it('убранных вопросов нет ни в одном уроке', () => {
-    const dropped: string[] = [...artDrop, ...historyDrop, ...worldDrop];
-    expect(dropped.length).toBeGreaterThan(30);
+    const dropped: string[] = [...artDrop, ...historyDrop, ...krugozorDrop, ...worldDrop];
+    expect(dropped.length).toBeGreaterThan(50);
     dropped.forEach((id) => expect(all.has(id), id).toBe(false));
   });
   it('в каждой готовой теме осталась практика', () => {
