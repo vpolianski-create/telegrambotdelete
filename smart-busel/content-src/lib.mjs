@@ -1,7 +1,7 @@
 // Помощники для написания уроков. Исходники лежат в content-src/*.mjs,
 // команда `npm run build-content` собирает из них content/subjects/*.json.
 
-import { findRef, splitCard } from './refs.mjs';
+import { findRef, refAt, splitCard } from './refs.mjs';
 
 const arr = (x) => (x === undefined ? [] : Array.isArray(x) ? x : [x]);
 
@@ -22,6 +22,11 @@ export const O = (question, items, explanation, hints) => {
   if (options.join('|') === items.join('|')) options.reverse();
   return { type: 'order', kind: 'list', question, answer: items, options, explanation: arr(explanation), hints: arr(hints) };
 };
+/**
+ * Привязать задание к правилу урока: phrase — фраза, которая дословно стоит в карточке темы.
+ * Сборка остановится, если такой фразы в уроке нет.
+ */
+export const R = (phrase, task) => ({ ...task, at: phrase });
 /** Пометить статическое задание как «повышенной сложности». */
 export const adv = (task) => ({ ...task, adv: true });
 
@@ -67,8 +72,10 @@ export function buildSubject(meta, sections) {
         const cards = (spec.cards ?? []).flatMap((c) => splitCard(c));
         const fix = (task, difficulty, prefix) => {
           if ('generator' in task) return task;
-          const { adv: isAdv, ...rest } = task;
-          const ref = findRef(rest, cards); // место в уроке, где есть ответ: для подсказки и разбора ошибки
+          const { adv: isAdv, at, ...rest } = task;
+          // место в уроке, где есть ответ: для подсказки и разбора ошибки
+          const ref = at ? refAt(at, cards) : findRef(rest, cards);
+          if (at && !ref) throw new Error(`${id}: в карточках нет фразы «${at}» (вопрос «${rest.question}»)`);
           const taskId = `${id}-${prefix}${next()}`;
           const better = meta.explain?.[taskId]; // переписанное объяснение к старому заданию
           return {

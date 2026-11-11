@@ -83,3 +83,21 @@ export function findRef(task, cards) {
   if (best) return { card: best.card, quote: best.quote };
   return loose && { card: loose.card };
 }
+
+const norm = (s) => plain(s).replace(/[’‘`]/g, "'").replace(/\s+/g, ' ').trim();
+
+/**
+ * Явная ссылка на место в уроке: карточка и предложение, где дословно стоит фраза `phrase`.
+ * Нужна там, где вопрос применяет правило и по словам с текстом урока не совпадает (грамматика).
+ * Регистр, **выделение** и вид апострофа не важны. Если фразы в уроке нет — undefined.
+ */
+export function refAt(phrase, cards) {
+  const need = norm(phrase);
+  if (!need) return undefined;
+  for (let ci = 0; ci < cards.length; ci++) {
+    if (!norm(cards[ci]).includes(need)) continue;
+    const quote = sentences(cards[ci]).find((s) => norm(s).includes(need));
+    return quote ? { card: ci, quote } : { card: ci };
+  }
+  return undefined;
+}

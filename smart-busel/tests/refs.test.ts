@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 // @ts-expect-error — помощник сборки уроков написан на обычном JS
-import { findRef, sameWord, sentences, splitCard } from '../content-src/refs.mjs';
+import { findRef, refAt, sameWord, sentences, splitCard } from '../content-src/refs.mjs';
 
 describe('деление текста урока на предложения', () => {
   it('режет по точке перед заглавной буквой', () => {
@@ -66,5 +66,22 @@ describe('поиск места в уроке для задания', () => {
   });
   it('без карточек не падает', () => {
     expect(findRef({ type: 'single', question: 'Вопрос?', answer: 'ответ' }, [])).toBeUndefined();
+  });
+});
+
+describe('явная ссылка на правило урока (для грамматики)', () => {
+  const cards = [
+    'Глагол **to be** имеет три формы: am, is, are.',
+    '**I am**, **he / she / it is**, we / you / they are. Например: I am a pupil. She is my sister.',
+  ];
+  it('находит карточку и предложение, где стоит указанная фраза', () => {
+    expect(refAt('he / she / it is', cards)).toEqual({ card: 1, quote: '**I am**, **he / she / it is**, we / you / they are.' });
+  });
+  it('не зависит от регистра, выделения жирным и вида апострофа', () => {
+    expect(refAt('ТРИ ФОРМЫ', cards)?.card).toBe(0);
+    expect(refAt("She isn't tired", ['Отрицание: She isn’t tired.'])).toEqual({ card: 0, quote: 'Отрицание: She isn’t tired.' });
+  });
+  it('если фразы в уроке нет — возвращает undefined, чтобы сборка остановилась', () => {
+    expect(refAt('was / were', cards)).toBeUndefined();
   });
 });
