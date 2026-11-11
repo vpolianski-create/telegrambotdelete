@@ -9,7 +9,7 @@ export const engU1 = [
       'В классе нам нужны **вежливые фразы** (classroom language). Не понял слово: **Sorry, I don’t understand.** Хочешь узнать перевод: **What is “правило” in English?** / **What is it in Russian?** Нужна помощь: **Excuse me! Can you help me, please?** Как пишется слово: **How do you spell it?**',
       'Опоздал на урок: **Sorry, I’m late. May I take a seat?** Нужно выйти: **Can I go out?** Нет карандаша: **Could you give me a pencil, please?** Слова **please** и **sorry** делают просьбу вежливой.',
       'Новые слова урока: **rule** (правило), **polite** (вежливый), **hard** (усердно; трудно), **raise** (поднимать), **understand** (понимать). Например: **Raise your hand** — «Подними руку».',
-      'Правила класса пишем **короткими приказами**: **Speak English. Be kind. Do your homework. Listen, think, and learn.** Запрет: **No phones.** Приказ начинается с глагола, а слово **please** добавляем для вежливости.',
+      'Правила класса пишем **короткими приказами**: **Speak English** (говори по-английски). **Be kind** (будь добрым). **Do your homework** (делай домашнее задание). **Listen, think, and learn.** Запрет: **No phones.** Приказ начинается с глагола, а слово **please** добавляем для вежливости.',
     ],
     example: ['Что сказать, если ты опоздал на урок?', [
       ['Сначала извиняемся: Sorry, I’m late.', 'Слово sorry — «извините».'],
@@ -101,7 +101,7 @@ export const engU1 = [
     cards: [
       'Фразу **there is / there are** («есть, находится») в прошлом меняем на **there was / there were** («был, были, находился»). **There was** + один предмет или неисчисляемое: There **was** a tent on the beach. **There were** + много: There **were** many tourists at the seaside.',
       'Отрицание: **there wasn’t / there weren’t**: There **wasn’t** a storm. There **weren’t** any rocks. Вопрос: **Was there …? Were there …?** — **Was there** a sandcastle? Yes, there was. / No, there wasn’t.',
-      'Вопросы с **Wh-**: **What was** there on the beach? **Where were** the tourists? Слова урока: **beach** (пляж), **tourist**, **tent**, **rock** (скала), **sand**, **sandcastle**, **seaweed**, **storm**.',
+      'Вопросы с **Wh-**: **What was** there on the beach? **Where were** the tourists? Слова урока: **beach** (пляж), **tourist** (турист), **tent** (палатка), **rock** (скала), **sand** (песок), **sandcastle** (замок из песка), **seaweed** (водоросли), **storm** (шторм).',
       'После there was / were рассказываем, что **можно было увидеть**: There was a lot of sand. There were tents and a few rocks. Так удобно описывать фотографию прошлого лета.',
     ],
     example: ['Вставь was или were: «There ___ three tents on the beach».', [

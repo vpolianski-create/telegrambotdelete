@@ -3763,7 +3763,7 @@
             "Не понял слово: **Sorry, I don’t understand.** Хочешь узнать перевод: **What is “правило” in English?** / **What is it in Russian?** Нужна помощь: **Excuse me! Can you help me, please?** Как пишется слово: **How do you spell it?**",
             "Опоздал на урок: **Sorry, I’m late. May I take a seat?** Нужно выйти: **Can I go out?** Нет карандаша: **Could you give me a pencil, please?** Слова **please** и **sorry** делают просьбу вежливой.",
             "Новые слова урока: **rule** (правило), **polite** (вежливый), **hard** (усердно; трудно), **raise** (поднимать), **understand** (понимать). Например: **Raise your hand** — «Подними руку».",
-            "Правила класса пишем **короткими приказами**: **Speak English. Be kind. Do your homework. Listen, think, and learn.** Запрет: **No phones.** Приказ начинается с глагола, а слово **please** добавляем для вежливости."
+            "Правила класса пишем **короткими приказами**: **Speak English** (говори по-английски). **Be kind** (будь добрым). **Do your homework** (делай домашнее задание). **Listen, think, and learn.** Запрет: **No phones.** Приказ начинается с глагола, а слово **please** добавляем для вежливости."
           ],
           "example": {
             "title": "Что сказать, если ты опоздал на урок?",
@@ -3965,8 +3965,7 @@
               ],
               "hints": [],
               "ref": {
-                "card": 4,
-                "quote": "Правила класса пишем **короткими приказами**: **Speak English. Be kind. Do your homework. Listen, think, and learn.** Запрет: **No phones.** Приказ начинается с глагола, а слово **please** добавляем для вежливости."
+                "card": 4
               }
             },
             {
@@ -3982,7 +3981,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 4
+                "card": 4,
+                "quote": "**Be kind** (будь добрым)."
               }
             }
           ],
@@ -4006,8 +4006,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 1,
-                "quote": "Не понял слово: **Sorry, I don’t understand.** Хочешь узнать перевод: **What is “правило” in English?** / **What is it in Russian?** Нужна помощь: **Excuse me! Can you help me, please?** Как пишется слово: **How do you spell it?**"
+                "card": 4,
+                "quote": "Правила класса пишем **короткими приказами**: **Speak English** (говори по-английски)."
               }
             },
             {
@@ -4025,6 +4025,255 @@
               "ref": {
                 "card": 1,
                 "quote": "Не понял слово: **Sorry, I don’t understand.** Хочешь узнать перевод: **What is “правило” in English?** / **What is it in Russian?** Нужна помощь: **Excuse me! Can you help me, please?** Как пишется слово: **How do you spell it?**"
+              }
+            }
+          ],
+          "pool": [
+            {
+              "id": "english-t14-q12",
+              "subject": "english",
+              "topicId": "english-t14",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как спросить перевод слова на русский?",
+              "answer": "What is it in Russian?",
+              "options": [
+                "What is it in Russian?",
+                "How do you spell it?",
+                "Can I go out?",
+                "Sorry, I’m late."
+              ],
+              "explanation": [
+                "Перевод на русский спрашивают так: What is it in Russian?"
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Не понял слово: **Sorry, I don’t understand.** Хочешь узнать перевод: **What is “правило” in English?** / **What is it in Russian?** Нужна помощь: **Excuse me! Can you help me, please?** Как пишется слово: **How do you spell it?**"
+              }
+            },
+            {
+              "id": "english-t14-q13",
+              "subject": "english",
+              "topicId": "english-t14",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Тебе нужна помощь. Что скажешь?",
+              "answer": "Can you help me, please?",
+              "options": [
+                "Can you help me, please?",
+                "Sorry, I’m late.",
+                "No phones.",
+                "How do you spell it?"
+              ],
+              "explanation": [
+                "О помощи просят так: Excuse me! Can you help me, please?"
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Не понял слово: **Sorry, I don’t understand.** Хочешь узнать перевод: **What is “правило” in English?** / **What is it in Russian?** Нужна помощь: **Excuse me! Can you help me, please?** Как пишется слово: **How do you spell it?**"
+              }
+            },
+            {
+              "id": "english-t14-q14",
+              "subject": "english",
+              "topicId": "english-t14",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Ты опоздал на урок. Что скажешь?",
+              "answer": "Sorry, I’m late.",
+              "options": [
+                "Sorry, I’m late.",
+                "Sorry, I don’t understand.",
+                "Can I go out?",
+                "Be kind."
+              ],
+              "explanation": [
+                "Опоздал на урок — говорим: Sorry, I’m late."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Опоздал на урок: **Sorry, I’m late. May I take a seat?** Нужно выйти: **Can I go out?** Нет карандаша: **Could you give me a pencil, please?** Слова **please** и **sorry** делают просьбу вежливой."
+              }
+            },
+            {
+              "id": "english-t14-q15",
+              "subject": "english",
+              "topicId": "english-t14",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как спросить, можно ли сесть?",
+              "answer": "May I take a seat?",
+              "options": [
+                "May I take a seat?",
+                "Can I go out?",
+                "What is it in Russian?",
+                "Do your homework."
+              ],
+              "explanation": [
+                "Take a seat — сесть. Спрашиваем: May I take a seat?"
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Опоздал на урок: **Sorry, I’m late. May I take a seat?** Нужно выйти: **Can I go out?** Нет карандаша: **Could you give me a pencil, please?** Слова **please** и **sorry** делают просьбу вежливой."
+              }
+            },
+            {
+              "id": "english-t14-q16",
+              "subject": "english",
+              "topicId": "english-t14",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Какие слова делают просьбу вежливой?",
+              "answer": "please и sorry",
+              "options": [
+                "please и sorry",
+                "rule и hard",
+                "no и not",
+                "raise и spell"
+              ],
+              "explanation": [
+                "Слова please и sorry делают просьбу вежливой."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Опоздал на урок: **Sorry, I’m late. May I take a seat?** Нужно выйти: **Can I go out?** Нет карандаша: **Could you give me a pencil, please?** Слова **please** и **sorry** делают просьбу вежливой."
+              }
+            },
+            {
+              "id": "english-t14-q17",
+              "subject": "english",
+              "topicId": "english-t14",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит understand?",
+              "answer": "понимать",
+              "options": [
+                "понимать",
+                "поднимать",
+                "вежливый",
+                "правило"
+              ],
+              "explanation": [
+                "Understand значит «понимать»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 3,
+                "quote": "Новые слова урока: **rule** (правило), **polite** (вежливый), **hard** (усердно; трудно), **raise** (поднимать), **understand** (понимать)."
+              }
+            },
+            {
+              "id": "english-t14-q18",
+              "subject": "english",
+              "topicId": "english-t14",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит raise?",
+              "answer": "поднимать",
+              "options": [
+                "поднимать",
+                "понимать",
+                "усердно",
+                "правило"
+              ],
+              "explanation": [
+                "Raise значит «поднимать»: Raise your hand."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 3,
+                "quote": "Новые слова урока: **rule** (правило), **polite** (вежливый), **hard** (усердно; трудно), **raise** (поднимать), **understand** (понимать)."
+              }
+            },
+            {
+              "id": "english-t14-q19",
+              "subject": "english",
+              "topicId": "english-t14",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как по-английски «усердно»?",
+              "answer": "hard",
+              "options": [
+                "hard",
+                "polite",
+                "rule",
+                "raise"
+              ],
+              "explanation": [
+                "Hard значит «усердно; трудно»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 3,
+                "quote": "Новые слова урока: **rule** (правило), **polite** (вежливый), **hard** (усердно; трудно), **raise** (поднимать), **understand** (понимать)."
+              }
+            },
+            {
+              "id": "english-t14-q20",
+              "subject": "english",
+              "topicId": "english-t14",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Какое правило значит «Делай домашнее задание»?",
+              "answer": "Do your homework.",
+              "options": [
+                "Do your homework.",
+                "Speak English.",
+                "Be kind.",
+                "No phones."
+              ],
+              "explanation": [
+                "Do your homework — делай домашнее задание."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 4,
+                "quote": "**Do your homework** (делай домашнее задание)."
+              }
+            },
+            {
+              "id": "english-t14-q21",
+              "subject": "english",
+              "topicId": "english-t14",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Какое правило значит «Говори по-английски»?",
+              "answer": "Speak English.",
+              "options": [
+                "Speak English.",
+                "Do your homework.",
+                "Be kind.",
+                "No phones."
+              ],
+              "explanation": [
+                "Speak English — говори по-английски."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 4,
+                "quote": "**Do your homework** (делай домашнее задание)."
+              }
+            },
+            {
+              "id": "english-t14-q22",
+              "subject": "english",
+              "topicId": "english-t14",
+              "difficulty": "basic",
+              "type": "truefalse",
+              "question": "Правило класса начинается с глагола: «Listen, think, and learn».",
+              "answer": true,
+              "explanation": [
+                "Приказ начинается с глагола: Listen, think, and learn."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 4,
+                "quote": "**Listen, think, and learn.** Запрет: **No phones.** Приказ начинается с глагола, а слово **please** добавляем для вежливости."
               }
             }
           ],
@@ -4077,7 +4326,11 @@
               "explanation": [
                 "С I в прошлом используем was."
               ],
-              "hints": []
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "**I was**, **he / she / it was**, **we / you / they were**."
+              }
             },
             {
               "id": "english-t15-sc2",
@@ -4096,7 +4349,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 1
+                "card": 0,
+                "quote": "**I was**, **he / she / it was**, **we / you / they were**."
               }
             }
           ],
@@ -4116,7 +4370,11 @@
               "explanation": [
                 "С she — was."
               ],
-              "hints": []
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "**I was**, **he / she / it was**, **we / you / they were**."
+              }
             },
             {
               "id": "english-t15-p4",
@@ -4133,7 +4391,11 @@
               "explanation": [
                 "С they — were."
               ],
-              "hints": []
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "**I was**, **he / she / it was**, **we / you / they were**."
+              }
             },
             {
               "id": "english-t15-p5",
@@ -4150,7 +4412,11 @@
               "explanation": [
                 "С it — was."
               ],
-              "hints": []
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "**I was**, **he / she / it was**, **we / you / they were**."
+              }
             },
             {
               "id": "english-t15-p6",
@@ -4169,7 +4435,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 1
+                "card": 0,
+                "quote": "**I was**, **he / she / it was**, **we / you / they were**."
               }
             },
             {
@@ -4229,7 +4496,11 @@
               ],
               "hints": [
                 "Замени имена на they."
-              ]
+              ],
+              "ref": {
+                "card": 0,
+                "quote": "**I was**, **he / she / it was**, **we / you / they were**."
+              }
             }
           ],
           "bonus": [
@@ -4244,7 +4515,11 @@
               "explanation": [
                 "С we нужно were: We were at the lake."
               ],
-              "hints": []
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "**I was**, **he / she / it was**, **we / you / they were**."
+              }
             },
             {
               "id": "english-t15-x11",
@@ -4265,7 +4540,251 @@
               ],
               "hints": [],
               "ref": {
-                "card": 1
+                "card": 1,
+                "quote": "Слова-подсказки о прошлом: **yesterday** (вчера), **last summer / last Sunday** (прошлым летом / в прошлое воскресенье), **two days ago** (два дня назад), **in 2024**."
+              }
+            }
+          ],
+          "pool": [
+            {
+              "id": "english-t15-q12",
+              "subject": "english",
+              "topicId": "english-t15",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "My grandma ___ in the country last week.",
+              "answer": "was",
+              "options": [
+                "was",
+                "were",
+                "am",
+                "be"
+              ],
+              "explanation": [
+                "My grandma — это she, а с she в прошлом используем was."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "**I was**, **he / she / it was**, **we / you / they were**."
+              }
+            },
+            {
+              "id": "english-t15-q13",
+              "subject": "english",
+              "topicId": "english-t15",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "My parents ___ abroad last year.",
+              "answer": "were",
+              "options": [
+                "was",
+                "were",
+                "am",
+                "be"
+              ],
+              "explanation": [
+                "My parents — это they, а с they в прошлом используем were."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "**I was**, **he / she / it was**, **we / you / they were**."
+              }
+            },
+            {
+              "id": "english-t15-q14",
+              "subject": "english",
+              "topicId": "english-t15",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "The weather ___ nice yesterday.",
+              "answer": "was",
+              "options": [
+                "was",
+                "were",
+                "am",
+                "be"
+              ],
+              "explanation": [
+                "The weather — это it, а с it в прошлом используем was."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "**I was**, **he / she / it was**, **we / you / they were**."
+              }
+            },
+            {
+              "id": "english-t15-q15",
+              "subject": "english",
+              "topicId": "english-t15",
+              "difficulty": "basic",
+              "type": "input",
+              "question": "Вставь was или were: Sasha and I ___ at the lake.",
+              "answer": "were",
+              "explanation": [
+                "Sasha and I — это we, а с we используем were."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "**I was**, **he / she / it was**, **we / you / they were**."
+              }
+            },
+            {
+              "id": "english-t15-q16",
+              "subject": "english",
+              "topicId": "english-t15",
+              "difficulty": "basic",
+              "type": "truefalse",
+              "question": "Предложение «They was happy» правильное.",
+              "answer": false,
+              "explanation": [
+                "С they нужно were: They were happy."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "**I was**, **he / she / it was**, **we / you / they were**."
+              }
+            },
+            {
+              "id": "english-t15-q17",
+              "subject": "english",
+              "topicId": "english-t15",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Какое слово говорит о прошлом?",
+              "answer": "yesterday",
+              "options": [
+                "yesterday",
+                "now",
+                "tomorrow",
+                "every day"
+              ],
+              "explanation": [
+                "Yesterday (вчера) — слово-подсказка о прошлом."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Слова-подсказки о прошлом: **yesterday** (вчера), **last summer / last Sunday** (прошлым летом / в прошлое воскресенье), **two days ago** (два дня назад), **in 2024**."
+              }
+            },
+            {
+              "id": "english-t15-q18",
+              "subject": "english",
+              "topicId": "english-t15",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит last summer?",
+              "answer": "прошлым летом",
+              "options": [
+                "прошлым летом",
+                "следующим летом",
+                "каждое лето",
+                "этим летом"
+              ],
+              "explanation": [
+                "Last summer значит «прошлым летом»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Слова-подсказки о прошлом: **yesterday** (вчера), **last summer / last Sunday** (прошлым летом / в прошлое воскресенье), **two days ago** (два дня назад), **in 2024**."
+              }
+            },
+            {
+              "id": "english-t15-q19",
+              "subject": "english",
+              "topicId": "english-t15",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит abroad?",
+              "answer": "за границей",
+              "options": [
+                "за границей",
+                "в горах",
+                "в лагере",
+                "на побережье"
+              ],
+              "explanation": [
+                "Abroad значит «за границей»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Слова урока: **abroad** (за границей), **mountain** (гора), **country** (местность за городом), **summer camp** (лагерь), **seaside** (побережье)."
+              }
+            },
+            {
+              "id": "english-t15-q20",
+              "subject": "english",
+              "topicId": "english-t15",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как по-английски «гора»?",
+              "answer": "mountain",
+              "options": [
+                "mountain",
+                "seaside",
+                "country",
+                "camp"
+              ],
+              "explanation": [
+                "Mountain значит «гора»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Слова урока: **abroad** (за границей), **mountain** (гора), **country** (местность за городом), **summer camp** (лагерь), **seaside** (побережье)."
+              }
+            },
+            {
+              "id": "english-t15-q21",
+              "subject": "english",
+              "topicId": "english-t15",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит seaside?",
+              "answer": "побережье",
+              "options": [
+                "побережье",
+                "гора",
+                "лагерь",
+                "за границей"
+              ],
+              "explanation": [
+                "Seaside значит «побережье»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Слова урока: **abroad** (за границей), **mountain** (гора), **country** (местность за городом), **summer camp** (лагерь), **seaside** (побережье)."
+              }
+            },
+            {
+              "id": "english-t15-q22",
+              "subject": "english",
+              "topicId": "english-t15",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "They ___ in Brest next Sunday.",
+              "answer": "will be",
+              "options": [
+                "will be",
+                "was",
+                "were",
+                "am"
+              ],
+              "explanation": [
+                "Next Sunday — это будущее, поэтому will be."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 3,
+                "quote": "Есть ещё **будущее**: **will be**: They **will be** in Brest next Sunday."
               }
             }
           ],
@@ -4320,7 +4839,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 0
+                "card": 0,
+                "quote": "Глагол ставим **перед** подлежащим."
               }
             },
             {
@@ -4365,7 +4885,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 2
+                "card": 0,
+                "quote": "Глагол ставим **перед** подлежащим."
               }
             },
             {
@@ -4452,7 +4973,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 0
+                "card": 0,
+                "quote": "Глагол ставим **перед** подлежащим."
               }
             },
             {
@@ -4469,7 +4991,7 @@
                 "Was you at camp?"
               ],
               "explanation": [
-                "Были ли вы в лагере?"
+                "В вопросе were ставим перед подлежащим: Were you at camp?"
               ],
               "hints": [],
               "ref": {
@@ -4486,11 +5008,12 @@
               "question": "Краткий ответ на вопрос «Were they in the mountains?» может быть «No, they weren’t».",
               "answer": true,
               "explanation": [
-                "Были ли они в горах? Нет."
+                "They — множественное число, поэтому в ответе weren’t."
               ],
               "hints": [],
               "ref": {
-                "card": 1
+                "card": 1,
+                "quote": "Короткие ответы: **Yes, I was. / No, I wasn’t. Yes, we were. / No, we weren’t. Yes, he / she / it was. / No, he / she / it wasn’t.** Вопрос про подлежащее you отвечаем с I или we: Were you …? — Yes, I was."
               }
             }
           ],
@@ -4530,7 +5053,237 @@
               ],
               "hints": [
                 "Замени the leaders на they."
-              ]
+              ],
+              "ref": {
+                "card": 0,
+                "quote": "Глагол ставим **перед** подлежащим."
+              }
+            }
+          ],
+          "pool": [
+            {
+              "id": "english-t16-q12",
+              "subject": "english",
+              "topicId": "english-t16",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "___ she at home yesterday?",
+              "answer": "Was",
+              "options": [
+                "Was",
+                "Were",
+                "Is",
+                "Did"
+              ],
+              "explanation": [
+                "С she в прошлом используем was и ставим его перед подлежащим."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Глагол ставим **перед** подлежащим."
+              }
+            },
+            {
+              "id": "english-t16-q13",
+              "subject": "english",
+              "topicId": "english-t16",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "___ your friends at the seaside last summer?",
+              "answer": "Were",
+              "options": [
+                "Were",
+                "Was",
+                "Are",
+                "Did"
+              ],
+              "explanation": [
+                "Your friends — это they, значит, Were."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Глагол ставим **перед** подлежащим."
+              }
+            },
+            {
+              "id": "english-t16-q14",
+              "subject": "english",
+              "topicId": "english-t16",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Выбери верный вопрос: «Он опоздал?»",
+              "answer": "Was he late?",
+              "options": [
+                "Was he late?",
+                "He was late?",
+                "Were he late?",
+                "Did he late?"
+              ],
+              "explanation": [
+                "В вопросе was ставим перед подлежащим: Was he late?"
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Глагол ставим **перед** подлежащим."
+              }
+            },
+            {
+              "id": "english-t16-q15",
+              "subject": "english",
+              "topicId": "english-t16",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Were you at camp? — …",
+              "answer": "Yes, I was.",
+              "options": [
+                "Yes, I was.",
+                "Yes, I were.",
+                "Yes, you was.",
+                "Yes, I did."
+              ],
+              "explanation": [
+                "На вопрос про you отвечаем с I: Yes, I was."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Короткие ответы: **Yes, I was. / No, I wasn’t. Yes, we were. / No, we weren’t. Yes, he / she / it was. / No, he / she / it wasn’t.** Вопрос про подлежащее you отвечаем с I или we: Were you …? — Yes, I was."
+              }
+            },
+            {
+              "id": "english-t16-q16",
+              "subject": "english",
+              "topicId": "english-t16",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Was Maxim late? — …",
+              "answer": "No, he wasn’t.",
+              "options": [
+                "No, he wasn’t.",
+                "No, he weren’t.",
+                "No, he didn’t.",
+                "No, he isn’t."
+              ],
+              "explanation": [
+                "Maxim — это he, значит, No, he wasn’t."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Короткие ответы: **Yes, I was. / No, I wasn’t. Yes, we were. / No, we weren’t. Yes, he / she / it was. / No, he / she / it wasn’t.** Вопрос про подлежащее you отвечаем с I или we: Were you …? — Yes, I was."
+              }
+            },
+            {
+              "id": "english-t16-q17",
+              "subject": "english",
+              "topicId": "english-t16",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "We ___ at school last Sunday. (отрицание)",
+              "answer": "weren’t",
+              "options": [
+                "weren’t",
+                "wasn’t",
+                "aren’t",
+                "didn’t"
+              ],
+              "explanation": [
+                "С we в прошлом отрицание — weren’t."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Отрицание — добавляем **not**: **was not = wasn’t**, **were not = weren’t**."
+              }
+            },
+            {
+              "id": "english-t16-q18",
+              "subject": "english",
+              "topicId": "english-t16",
+              "difficulty": "basic",
+              "type": "input",
+              "question": "Вставь wasn’t или weren’t: She ___ angry.",
+              "answer": "wasn’t",
+              "explanation": [
+                "С she отрицание — wasn’t."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Отрицание — добавляем **not**: **was not = wasn’t**, **were not = weren’t**."
+              }
+            },
+            {
+              "id": "english-t16-q19",
+              "subject": "english",
+              "topicId": "english-t16",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что означает wasn’t?",
+              "answer": "was not",
+              "options": [
+                "was not",
+                "were not",
+                "is not",
+                "will not"
+              ],
+              "explanation": [
+                "Wasn’t — короткая форма от was not."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Отрицание — добавляем **not**: **was not = wasn’t**, **were not = weren’t**."
+              }
+            },
+            {
+              "id": "english-t16-q20",
+              "subject": "english",
+              "topicId": "english-t16",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "___ was with you? — My sister.",
+              "answer": "Who",
+              "options": [
+                "Who",
+                "Where",
+                "Why",
+                "When"
+              ],
+              "explanation": [
+                "Спрашиваем о человеке — Who."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 3,
+                "quote": "Вопросительное слово ставим в начало, а дальше — как в вопросе."
+              }
+            },
+            {
+              "id": "english-t16-q21",
+              "subject": "english",
+              "topicId": "english-t16",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Выбери верный вопрос: «Где ты был летом?»",
+              "answer": "Where were you in summer?",
+              "options": [
+                "Where were you in summer?",
+                "Where you were in summer?",
+                "Where was you in summer?",
+                "Were where you in summer?"
+              ],
+              "explanation": [
+                "Вопросительное слово в начале, затем were и подлежащее."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 3,
+                "quote": "Вопросительное слово ставим в начало, а дальше — как в вопросе."
+              }
             }
           ],
           "card": {
@@ -5055,7 +5808,7 @@
             "Фразу **there is / there are** («есть, находится») в прошлом меняем на **there was / there were** («был, были, находился»). **There was** + один предмет или неисчисляемое: There **was** a tent on the beach.",
             "**There were** + много: There **were** many tourists at the seaside.",
             "Отрицание: **there wasn’t / there weren’t**: There **wasn’t** a storm. There **weren’t** any rocks. Вопрос: **Was there …? Were there …?** — **Was there** a sandcastle? Yes, there was. / No, there wasn’t.",
-            "Вопросы с **Wh-**: **What was** there on the beach? **Where were** the tourists? Слова урока: **beach** (пляж), **tourist**, **tent**, **rock** (скала), **sand**, **sandcastle**, **seaweed**, **storm**.",
+            "Вопросы с **Wh-**: **What was** there on the beach? **Where were** the tourists? Слова урока: **beach** (пляж), **tourist** (турист), **tent** (палатка), **rock** (скала), **sand** (песок), **sandcastle** (замок из песка), **seaweed** (водоросли), **storm** (шторм).",
             "После there was / were рассказываем, что **можно было увидеть**: There was a lot of sand. There were tents and a few rocks. Так удобно описывать фотографию прошлого лета."
           ],
           "example": {
@@ -5093,7 +5846,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 3
+                "card": 0,
+                "quote": "**There was** + один предмет или неисчисляемое: There **was** a tent on the beach."
               }
             },
             {
@@ -5113,7 +5867,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 1
+                "card": 1,
+                "quote": "**There were** + много: There **were** many tourists at the seaside."
               }
             }
           ],
@@ -5135,7 +5890,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 2
+                "card": 0,
+                "quote": "**There was** + один предмет или неисчисляемое: There **was** a tent on the beach."
               }
             },
             {
@@ -5156,7 +5912,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 2
+                "card": 2,
+                "quote": "Вопрос: **Was there …? Were there …?** — **Was there** a sandcastle?"
               }
             },
             {
@@ -5220,7 +5977,11 @@
               "explanation": [
                 "Tent — палатка."
               ],
-              "hints": []
+              "hints": [],
+              "ref": {
+                "card": 3,
+                "quote": "Слова урока: **beach** (пляж), **tourist** (турист), **tent** (палатка), **rock** (скала), **sand** (песок), **sandcastle** (замок из песка), **seaweed** (водоросли), **storm** (шторм)."
+              }
             },
             {
               "id": "english-t17-p8",
@@ -5240,7 +6001,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 3
+                "card": 3,
+                "quote": "**Where were** the tourists?"
               }
             },
             {
@@ -5256,7 +6018,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 0
+                "card": 1,
+                "quote": "**There were** + много: There **were** many tourists at the seaside."
               }
             }
           ],
@@ -5276,9 +6039,13 @@
                 "водоросли"
               ],
               "explanation": [
-                "Sandcastle — замок из песка."
+                "Sand значит «песок», а sandcastle — замок из песка."
               ],
-              "hints": []
+              "hints": [],
+              "ref": {
+                "card": 3,
+                "quote": "Слова урока: **beach** (пляж), **tourist** (турист), **tent** (палатка), **rock** (скала), **sand** (песок), **sandcastle** (замок из песка), **seaweed** (водоросли), **storm** (шторм)."
+              }
             },
             {
               "id": "english-t17-x11",
@@ -5295,7 +6062,251 @@
                 "Песок не считаем штуками."
               ],
               "ref": {
-                "card": 4
+                "card": 0,
+                "quote": "**There was** + один предмет или неисчисляемое: There **was** a tent on the beach."
+              }
+            }
+          ],
+          "pool": [
+            {
+              "id": "english-t17-q12",
+              "subject": "english",
+              "topicId": "english-t17",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "There ___ a tent near the river.",
+              "answer": "was",
+              "options": [
+                "was",
+                "were",
+                "am",
+                "be"
+              ],
+              "explanation": [
+                "A tent — один предмет, поэтому there was."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "**There was** + один предмет или неисчисляемое: There **was** a tent on the beach."
+              }
+            },
+            {
+              "id": "english-t17-q13",
+              "subject": "english",
+              "topicId": "english-t17",
+              "difficulty": "basic",
+              "type": "input",
+              "question": "Вставь was или were: There ___ a big rock on the beach.",
+              "answer": "was",
+              "explanation": [
+                "A big rock — один предмет, поэтому there was."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "**There was** + один предмет или неисчисляемое: There **was** a tent on the beach."
+              }
+            },
+            {
+              "id": "english-t17-q14",
+              "subject": "english",
+              "topicId": "english-t17",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "There ___ many rocks in the sea.",
+              "answer": "were",
+              "options": [
+                "was",
+                "were",
+                "am",
+                "be"
+              ],
+              "explanation": [
+                "Many rocks — много предметов, поэтому there were."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "**There were** + много: There **were** many tourists at the seaside."
+              }
+            },
+            {
+              "id": "english-t17-q15",
+              "subject": "english",
+              "topicId": "english-t17",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "There ___ a few tents on the beach.",
+              "answer": "were",
+              "options": [
+                "was",
+                "were",
+                "am",
+                "be"
+              ],
+              "explanation": [
+                "A few tents — несколько предметов, поэтому there were."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "**There were** + много: There **were** many tourists at the seaside."
+              }
+            },
+            {
+              "id": "english-t17-q16",
+              "subject": "english",
+              "topicId": "english-t17",
+              "difficulty": "basic",
+              "type": "truefalse",
+              "question": "«There were a sandcastle» — правильное предложение.",
+              "answer": false,
+              "explanation": [
+                "A sandcastle — один предмет: There was a sandcastle."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "**There were** + много: There **were** many tourists at the seaside."
+              }
+            },
+            {
+              "id": "english-t17-q17",
+              "subject": "english",
+              "topicId": "english-t17",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "There ___ any tourists on the beach. (отрицание)",
+              "answer": "weren’t",
+              "options": [
+                "weren’t",
+                "wasn’t",
+                "isn’t",
+                "didn’t"
+              ],
+              "explanation": [
+                "Tourists — много, поэтому there weren’t."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Отрицание: **there wasn’t / there weren’t**: There **wasn’t** a storm."
+              }
+            },
+            {
+              "id": "english-t17-q18",
+              "subject": "english",
+              "topicId": "english-t17",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Was there a storm? — …",
+              "answer": "No, there wasn’t.",
+              "options": [
+                "No, there wasn’t.",
+                "No, there weren’t.",
+                "No, it wasn’t.",
+                "No, there didn’t."
+              ],
+              "explanation": [
+                "На вопрос Was there…? отвечаем: No, there wasn’t."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Отрицание: **there wasn’t / there weren’t**: There **wasn’t** a storm."
+              }
+            },
+            {
+              "id": "english-t17-q19",
+              "subject": "english",
+              "topicId": "english-t17",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Выбери верный вопрос: «Там была палатка?»",
+              "answer": "Was there a tent?",
+              "options": [
+                "Was there a tent?",
+                "There was a tent?",
+                "Were there a tent?",
+                "Did there a tent?"
+              ],
+              "explanation": [
+                "A tent — один предмет, в вопросе was ставим вперёд."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Вопрос: **Was there …? Were there …?** — **Was there** a sandcastle?"
+              }
+            },
+            {
+              "id": "english-t17-q20",
+              "subject": "english",
+              "topicId": "english-t17",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит rock?",
+              "answer": "скала",
+              "options": [
+                "скала",
+                "песок",
+                "пляж",
+                "шторм"
+              ],
+              "explanation": [
+                "Rock значит «скала»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 3,
+                "quote": "Слова урока: **beach** (пляж), **tourist** (турист), **tent** (палатка), **rock** (скала), **sand** (песок), **sandcastle** (замок из песка), **seaweed** (водоросли), **storm** (шторм)."
+              }
+            },
+            {
+              "id": "english-t17-q21",
+              "subject": "english",
+              "topicId": "english-t17",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как по-английски «пляж»?",
+              "answer": "beach",
+              "options": [
+                "beach",
+                "sand",
+                "tent",
+                "rock"
+              ],
+              "explanation": [
+                "Beach значит «пляж»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 3,
+                "quote": "Слова урока: **beach** (пляж), **tourist** (турист), **tent** (палатка), **rock** (скала), **sand** (песок), **sandcastle** (замок из песка), **seaweed** (водоросли), **storm** (шторм)."
+              }
+            },
+            {
+              "id": "english-t17-q22",
+              "subject": "english",
+              "topicId": "english-t17",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит seaweed?",
+              "answer": "водоросли",
+              "options": [
+                "водоросли",
+                "песок",
+                "скала",
+                "палатка"
+              ],
+              "explanation": [
+                "Seaweed значит «водоросли»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 3,
+                "quote": "Слова урока: **beach** (пляж), **tourist** (турист), **tent** (палатка), **rock** (скала), **sand** (песок), **sandcastle** (замок из песка), **seaweed** (водоросли), **storm** (шторм)."
               }
             }
           ],
@@ -6009,7 +7020,7 @@
                 "travel"
               ],
               "explanation": [
-                "Прошедшее время."
+                "Рассказ о прошлом: travel → travelled."
               ],
               "hints": [],
               "ref": {
@@ -6052,7 +7063,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 0
+                "card": 0,
+                "quote": "Форма одна для всех лиц: I **visited**, he **visited**, they **visited**."
               }
             }
           ],
@@ -6097,6 +7109,243 @@
               "ref": {
                 "card": 1,
                 "quote": "Правила написания: если глагол оканчивается на **-e**, добавляем только **-d**: **live → lived**, **like → liked**."
+              }
+            }
+          ],
+          "pool": [
+            {
+              "id": "english-t18-q12",
+              "subject": "english",
+              "topicId": "english-t18",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Past Simple от help — это …",
+              "answer": "helped",
+              "options": [
+                "helped",
+                "helpd",
+                "helpied",
+                "help"
+              ],
+              "explanation": [
+                "Правильный глагол: добавляем -ed."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "У **правильных глаголов** добавляем **-ed**: **visit → visited**, **stay → stayed**, **cook → cooked**, **travel → travelled / traveled**."
+              }
+            },
+            {
+              "id": "english-t18-q13",
+              "subject": "english",
+              "topicId": "english-t18",
+              "difficulty": "basic",
+              "type": "input",
+              "question": "Напиши Past Simple глагола want.",
+              "answer": "wanted",
+              "explanation": [
+                "Правильный глагол: want → wanted."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "У **правильных глаголов** добавляем **-ed**: **visit → visited**, **stay → stayed**, **cook → cooked**, **travel → travelled / traveled**."
+              }
+            },
+            {
+              "id": "english-t18-q14",
+              "subject": "english",
+              "topicId": "english-t18",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Yesterday we ___ a museum. (visit)",
+              "answer": "visited",
+              "options": [
+                "visited",
+                "visit",
+                "visits",
+                "visitted"
+              ],
+              "explanation": [
+                "Yesterday — прошлое, добавляем -ed: visited."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "У **правильных глаголов** добавляем **-ed**: **visit → visited**, **stay → stayed**, **cook → cooked**, **travel → travelled / traveled**."
+              }
+            },
+            {
+              "id": "english-t18-q15",
+              "subject": "english",
+              "topicId": "english-t18",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Past Simple от dance — это …",
+              "answer": "danced",
+              "options": [
+                "danced",
+                "danceed",
+                "dancied",
+                "dancd"
+              ],
+              "explanation": [
+                "Dance оканчивается на -e, добавляем только -d."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Правила написания: если глагол оканчивается на **-e**, добавляем только **-d**: **live → lived**, **like → liked**."
+              }
+            },
+            {
+              "id": "english-t18-q16",
+              "subject": "english",
+              "topicId": "english-t18",
+              "difficulty": "basic",
+              "type": "input",
+              "question": "Напиши Past Simple глагола close.",
+              "answer": "closed",
+              "explanation": [
+                "Close оканчивается на -e, добавляем только -d."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Правила написания: если глагол оканчивается на **-e**, добавляем только **-d**: **live → lived**, **like → liked**."
+              }
+            },
+            {
+              "id": "english-t18-q17",
+              "subject": "english",
+              "topicId": "english-t18",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Past Simple от cry — это …",
+              "answer": "cried",
+              "options": [
+                "cried",
+                "cryed",
+                "cryd",
+                "cryied"
+              ],
+              "explanation": [
+                "Перед y согласная: меняем y на i и добавляем -ed."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Если на **согласную + y** — меняем **y на i**: **study → studied**."
+              }
+            },
+            {
+              "id": "english-t18-q18",
+              "subject": "english",
+              "topicId": "english-t18",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Past Simple от play — это …",
+              "answer": "played",
+              "options": [
+                "played",
+                "plaied",
+                "playd",
+                "plaid"
+              ],
+              "explanation": [
+                "Перед y гласная, поэтому y оставляем: played."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Если на **гласную + y**, оставляем y: **stay → stayed**."
+              }
+            },
+            {
+              "id": "english-t18-q19",
+              "subject": "english",
+              "topicId": "english-t18",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "В каком слове окончание -ed читается [t]?",
+              "answer": "watched",
+              "options": [
+                "watched",
+                "stayed",
+                "visited",
+                "wanted"
+              ],
+              "explanation": [
+                "В слове watched окончание читается [t]."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Окончание **-ed** читается по-разному: **[t]** (watched), **[d]** (stayed, travelled), **[ɪd]** после t и d (visited, wanted)."
+              }
+            },
+            {
+              "id": "english-t18-q20",
+              "subject": "english",
+              "topicId": "english-t18",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "В каком слове окончание -ed читается [d]?",
+              "answer": "stayed",
+              "options": [
+                "stayed",
+                "watched",
+                "visited",
+                "wanted"
+              ],
+              "explanation": [
+                "В слове stayed окончание читается [d]."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Окончание **-ed** читается по-разному: **[t]** (watched), **[d]** (stayed, travelled), **[ɪd]** после t и d (visited, wanted)."
+              }
+            },
+            {
+              "id": "english-t18-q21",
+              "subject": "english",
+              "topicId": "english-t18",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Какие слова подсказывают, что нужно Past Simple?",
+              "answer": "last summer",
+              "options": [
+                "last summer",
+                "every day",
+                "now",
+                "usually"
+              ],
+              "explanation": [
+                "Слова last summer, yesterday, ago подсказывают Past Simple."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 3,
+                "quote": "Слова **last summer, yesterday, ago** подсказывают, что нужно Past Simple."
+              }
+            },
+            {
+              "id": "english-t18-q22",
+              "subject": "english",
+              "topicId": "english-t18",
+              "difficulty": "basic",
+              "type": "truefalse",
+              "question": "В Past Simple к глаголу с he добавляют ещё -s: he visiteds.",
+              "answer": false,
+              "explanation": [
+                "Форма одна для всех лиц: he visited."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Форма одна для всех лиц: I **visited**, he **visited**, they **visited**."
               }
             }
           ],
@@ -6154,7 +7403,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 0
+                "card": 0,
+                "quote": "У **неправильных глаголов** вторая форма (**V2**) не заканчивается на -ed — её надо **запомнить**: **go → went**, **see → saw**, **eat → ate**, **have → had**, **take → took**, **make → made**, **swim → swam**, **ride → rode**, **write → wrote**, **read → read** (читается [red])."
               }
             },
             {
@@ -6222,7 +7472,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 0
+                "card": 0,
+                "quote": "У **неправильных глаголов** вторая форма (**V2**) не заканчивается на -ed — её надо **запомнить**: **go → went**, **see → saw**, **eat → ate**, **have → had**, **take → took**, **make → made**, **swim → swam**, **ride → rode**, **write → wrote**, **read → read** (читается [red])."
               }
             },
             {
@@ -6347,7 +7598,11 @@
               "explanation": [
                 "Пишется read, но читается [red]."
               ],
-              "hints": []
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "У **неправильных глаголов** вторая форма (**V2**) не заканчивается на -ed — её надо **запомнить**: **go → went**, **see → saw**, **eat → ate**, **have → had**, **take → took**, **make → made**, **swim → swam**, **ride → rode**, **write → wrote**, **read → read** (читается [red])."
+              }
             }
           ],
           "bonus": [
@@ -6390,6 +7645,289 @@
               "ref": {
                 "card": 1,
                 "quote": "Ещё из учебника: **buy → bought**, **catch → caught**, **come → came**, **do → did**, **drink → drank**, **fall → fell**, **feed → fed**, **find → found**, **fly → flew**, **get → got**, **give → gave**, **hear → heard**, **know → knew**, **leave → left**, **run → ran**, **say → said**, **sing → sang**, **sleep → slept**, **spend → spent**, **think → thought**, **wear → wore**, **win → won**."
+              }
+            }
+          ],
+          "pool": [
+            {
+              "id": "english-t19-q13",
+              "subject": "english",
+              "topicId": "english-t19",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Past Simple от take.",
+              "answer": "took",
+              "options": [
+                "took",
+                "taked",
+                "taken",
+                "tooked"
+              ],
+              "explanation": [
+                "Неправильный глагол: take → took."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "У **неправильных глаголов** вторая форма (**V2**) не заканчивается на -ed — её надо **запомнить**: **go → went**, **see → saw**, **eat → ate**, **have → had**, **take → took**, **make → made**, **swim → swam**, **ride → rode**, **write → wrote**, **read → read** (читается [red])."
+              }
+            },
+            {
+              "id": "english-t19-q14",
+              "subject": "english",
+              "topicId": "english-t19",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Past Simple от make.",
+              "answer": "made",
+              "options": [
+                "made",
+                "maked",
+                "maded",
+                "make"
+              ],
+              "explanation": [
+                "Неправильный глагол: make → made."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "У **неправильных глаголов** вторая форма (**V2**) не заканчивается на -ed — её надо **запомнить**: **go → went**, **see → saw**, **eat → ate**, **have → had**, **take → took**, **make → made**, **swim → swam**, **ride → rode**, **write → wrote**, **read → read** (читается [red])."
+              }
+            },
+            {
+              "id": "english-t19-q15",
+              "subject": "english",
+              "topicId": "english-t19",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Past Simple от ride.",
+              "answer": "rode",
+              "options": [
+                "rode",
+                "rided",
+                "ride",
+                "rod"
+              ],
+              "explanation": [
+                "Неправильный глагол: ride → rode."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "У **неправильных глаголов** вторая форма (**V2**) не заканчивается на -ed — её надо **запомнить**: **go → went**, **see → saw**, **eat → ate**, **have → had**, **take → took**, **make → made**, **swim → swam**, **ride → rode**, **write → wrote**, **read → read** (читается [red])."
+              }
+            },
+            {
+              "id": "english-t19-q16",
+              "subject": "english",
+              "topicId": "english-t19",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Past Simple от come.",
+              "answer": "came",
+              "options": [
+                "came",
+                "comed",
+                "come",
+                "camed"
+              ],
+              "explanation": [
+                "Неправильный глагол: come → came."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Ещё из учебника: **buy → bought**, **catch → caught**, **come → came**, **do → did**, **drink → drank**, **fall → fell**, **feed → fed**, **find → found**, **fly → flew**, **get → got**, **give → gave**, **hear → heard**, **know → knew**, **leave → left**, **run → ran**, **say → said**, **sing → sang**, **sleep → slept**, **spend → spent**, **think → thought**, **wear → wore**, **win → won**."
+              }
+            },
+            {
+              "id": "english-t19-q17",
+              "subject": "english",
+              "topicId": "english-t19",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Past Simple от give.",
+              "answer": "gave",
+              "options": [
+                "gave",
+                "gived",
+                "given",
+                "gaved"
+              ],
+              "explanation": [
+                "Неправильный глагол: give → gave."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Ещё из учебника: **buy → bought**, **catch → caught**, **come → came**, **do → did**, **drink → drank**, **fall → fell**, **feed → fed**, **find → found**, **fly → flew**, **get → got**, **give → gave**, **hear → heard**, **know → knew**, **leave → left**, **run → ran**, **say → said**, **sing → sang**, **sleep → slept**, **spend → spent**, **think → thought**, **wear → wore**, **win → won**."
+              }
+            },
+            {
+              "id": "english-t19-q18",
+              "subject": "english",
+              "topicId": "english-t19",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Past Simple от run.",
+              "answer": "ran",
+              "options": [
+                "ran",
+                "runned",
+                "run",
+                "raned"
+              ],
+              "explanation": [
+                "Неправильный глагол: run → ran."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Ещё из учебника: **buy → bought**, **catch → caught**, **come → came**, **do → did**, **drink → drank**, **fall → fell**, **feed → fed**, **find → found**, **fly → flew**, **get → got**, **give → gave**, **hear → heard**, **know → knew**, **leave → left**, **run → ran**, **say → said**, **sing → sang**, **sleep → slept**, **spend → spent**, **think → thought**, **wear → wore**, **win → won**."
+              }
+            },
+            {
+              "id": "english-t19-q19",
+              "subject": "english",
+              "topicId": "english-t19",
+              "difficulty": "basic",
+              "type": "input",
+              "question": "Напиши Past Simple глагола drink.",
+              "answer": "drank",
+              "explanation": [
+                "Неправильный глагол: drink → drank."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Ещё из учебника: **buy → bought**, **catch → caught**, **come → came**, **do → did**, **drink → drank**, **fall → fell**, **feed → fed**, **find → found**, **fly → flew**, **get → got**, **give → gave**, **hear → heard**, **know → knew**, **leave → left**, **run → ran**, **say → said**, **sing → sang**, **sleep → slept**, **spend → spent**, **think → thought**, **wear → wore**, **win → won**."
+              }
+            },
+            {
+              "id": "english-t19-q20",
+              "subject": "english",
+              "topicId": "english-t19",
+              "difficulty": "basic",
+              "type": "input",
+              "question": "Напиши Past Simple глагола win.",
+              "answer": "won",
+              "explanation": [
+                "Неправильный глагол: win → won."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Ещё из учебника: **buy → bought**, **catch → caught**, **come → came**, **do → did**, **drink → drank**, **fall → fell**, **feed → fed**, **find → found**, **fly → flew**, **get → got**, **give → gave**, **hear → heard**, **know → knew**, **leave → left**, **run → ran**, **say → said**, **sing → sang**, **sleep → slept**, **spend → spent**, **think → thought**, **wear → wore**, **win → won**."
+              }
+            },
+            {
+              "id": "english-t19-q21",
+              "subject": "english",
+              "topicId": "english-t19",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "I ___ a new book yesterday. (find)",
+              "answer": "found",
+              "options": [
+                "found",
+                "finded",
+                "find",
+                "founded"
+              ],
+              "explanation": [
+                "Неправильный глагол: find → found."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Ещё из учебника: **buy → bought**, **catch → caught**, **come → came**, **do → did**, **drink → drank**, **fall → fell**, **feed → fed**, **find → found**, **fly → flew**, **get → got**, **give → gave**, **hear → heard**, **know → knew**, **leave → left**, **run → ran**, **say → said**, **sing → sang**, **sleep → slept**, **spend → spent**, **think → thought**, **wear → wore**, **win → won**."
+              }
+            },
+            {
+              "id": "english-t19-q22",
+              "subject": "english",
+              "topicId": "english-t19",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "She ___ a red dress at the party. (wear)",
+              "answer": "wore",
+              "options": [
+                "wore",
+                "weared",
+                "wear",
+                "worn"
+              ],
+              "explanation": [
+                "Неправильный глагол: wear → wore."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Ещё из учебника: **buy → bought**, **catch → caught**, **come → came**, **do → did**, **drink → drank**, **fall → fell**, **feed → fed**, **find → found**, **fly → flew**, **get → got**, **give → gave**, **hear → heard**, **know → knew**, **leave → left**, **run → ran**, **say → said**, **sing → sang**, **sleep → slept**, **spend → spent**, **think → thought**, **wear → wore**, **win → won**."
+              }
+            },
+            {
+              "id": "english-t19-q23",
+              "subject": "english",
+              "topicId": "english-t19",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит go hiking?",
+              "answer": "ходить в поход",
+              "options": [
+                "ходить в поход",
+                "загорать",
+                "идти купаться",
+                "идти на пикник"
+              ],
+              "explanation": [
+                "Go hiking значит «ходить в поход»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 4,
+                "quote": "Фразы урока: **go sunbathing** (загорать), **go hiking** (ходить в поход), **go swimming** (идти купаться), **go for a picnic** (идти на пикник)."
+              }
+            },
+            {
+              "id": "english-t19-q24",
+              "subject": "english",
+              "topicId": "english-t19",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как сказать «Мы ходили купаться»?",
+              "answer": "We went swimming.",
+              "options": [
+                "We went swimming.",
+                "We goed swimming.",
+                "We go swimming.",
+                "We went swim."
+              ],
+              "explanation": [
+                "Go swimming в прошедшем времени — went swimming."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 4,
+                "quote": "Фразы урока: **go sunbathing** (загорать), **go hiking** (ходить в поход), **go swimming** (идти купаться), **go for a picnic** (идти на пикник)."
+              }
+            },
+            {
+              "id": "english-t19-q25",
+              "subject": "english",
+              "topicId": "english-t19",
+              "difficulty": "basic",
+              "type": "truefalse",
+              "question": "Глагол pick — правильный: pick → picked.",
+              "answer": true,
+              "explanation": [
+                "Pick — правильный глагол, поэтому picked."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "We **ate** berries and **picked** mushrooms (pick — правильный)."
               }
             }
           ],
@@ -6467,7 +8005,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 2
+                "card": 1,
+                "quote": "Вопрос: **Did + подлежащее + глагол?** **Did you go** fishing?"
               }
             }
           ],
@@ -6488,7 +8027,11 @@
               "explanation": [
                 "После didn’t — начальная форма."
               ],
-              "hints": []
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Глагол после didn’t остаётся **без -ed** и без V2!"
+              }
             },
             {
               "id": "english-t20-p4",
@@ -6506,7 +8049,11 @@
               "explanation": [
                 "После did — начальная форма."
               ],
-              "hints": []
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Сам глагол — в начальной форме."
+              }
             },
             {
               "id": "english-t20-p5",
@@ -6526,7 +8073,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 3
+                "card": 0,
+                "quote": "Глагол после didn’t остаётся **без -ed** и без V2!"
               }
             },
             {
@@ -6547,7 +8095,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 1
+                "card": 1,
+                "quote": "Вопрос: **Did + подлежащее + глагол?** **Did you go** fishing?"
               }
             },
             {
@@ -6568,7 +8117,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 2
+                "card": 2,
+                "quote": "Вопросительные слова: **What did you do** last summer?"
               }
             },
             {
@@ -6589,7 +8139,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 1
+                "card": 1,
+                "quote": "Короткие ответы: **Yes, I did. / No, I didn’t.** Помощник **did** один для всех лиц."
               }
             },
             {
@@ -6605,7 +8156,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 3
+                "card": 2,
+                "quote": "Сам глагол — в начальной форме."
               }
             }
           ],
@@ -6649,6 +8201,232 @@
               "ref": {
                 "card": 0,
                 "quote": "Отрицание: **did not (didn’t) + глагол в начальной форме**: I **didn’t go** to the seaside."
+              }
+            }
+          ],
+          "pool": [
+            {
+              "id": "english-t20-q12",
+              "subject": "english",
+              "topicId": "english-t20",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "We ___ go to the cinema yesterday. (отрицание)",
+              "answer": "didn’t",
+              "options": [
+                "didn’t",
+                "don’t",
+                "wasn’t",
+                "doesn’t"
+              ],
+              "explanation": [
+                "В Past Simple отрицание строим с didn’t."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Отрицание: **did not (didn’t) + глагол в начальной форме**: I **didn’t go** to the seaside."
+              }
+            },
+            {
+              "id": "english-t20-q13",
+              "subject": "english",
+              "topicId": "english-t20",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "He didn’t ___ his homework. (do)",
+              "answer": "do",
+              "options": [
+                "do",
+                "did",
+                "does",
+                "done"
+              ],
+              "explanation": [
+                "После didn’t глагол стоит в начальной форме: do."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Отрицание: **did not (didn’t) + глагол в начальной форме**: I **didn’t go** to the seaside."
+              }
+            },
+            {
+              "id": "english-t20-q14",
+              "subject": "english",
+              "topicId": "english-t20",
+              "difficulty": "basic",
+              "type": "truefalse",
+              "question": "Предложение «She didn’t went home» правильное.",
+              "answer": false,
+              "explanation": [
+                "После didn’t нужна начальная форма: She didn’t go home."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Отрицание: **did not (didn’t) + глагол в начальной форме**: I **didn’t go** to the seaside."
+              }
+            },
+            {
+              "id": "english-t20-q15",
+              "subject": "english",
+              "topicId": "english-t20",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Сделай отрицание: «I saw a storm».",
+              "answer": "I didn’t see a storm.",
+              "options": [
+                "I didn’t see a storm.",
+                "I didn’t saw a storm.",
+                "I not saw a storm.",
+                "I don’t saw a storm."
+              ],
+              "explanation": [
+                "Didn’t + начальная форма: I didn’t see a storm."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Отрицание: **did not (didn’t) + глагол в начальной форме**: I **didn’t go** to the seaside."
+              }
+            },
+            {
+              "id": "english-t20-q16",
+              "subject": "english",
+              "topicId": "english-t20",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "___ they visit the farm last week?",
+              "answer": "Did",
+              "options": [
+                "Did",
+                "Do",
+                "Were",
+                "Does"
+              ],
+              "explanation": [
+                "Вопрос в Past Simple начинаем с Did."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Вопрос: **Did + подлежащее + глагол?** **Did you go** fishing?"
+              }
+            },
+            {
+              "id": "english-t20-q17",
+              "subject": "english",
+              "topicId": "english-t20",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Did you ___ a good time? (have)",
+              "answer": "have",
+              "options": [
+                "have",
+                "had",
+                "has",
+                "having"
+              ],
+              "explanation": [
+                "После did глагол в начальной форме: have."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Вопрос: **Did + подлежащее + глагол?** **Did you go** fishing?"
+              }
+            },
+            {
+              "id": "english-t20-q18",
+              "subject": "english",
+              "topicId": "english-t20",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Did you go fishing? — …",
+              "answer": "No, I didn’t.",
+              "options": [
+                "No, I didn’t.",
+                "No, I don’t.",
+                "No, I wasn’t.",
+                "No, I didn’t went."
+              ],
+              "explanation": [
+                "На вопрос с Did отвечаем: No, I didn’t."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Короткие ответы: **Yes, I did. / No, I didn’t.** Помощник **did** один для всех лиц."
+              }
+            },
+            {
+              "id": "english-t20-q19",
+              "subject": "english",
+              "topicId": "english-t20",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Выбери верный вопрос: «Куда они ходили?»",
+              "answer": "Where did they go?",
+              "options": [
+                "Where did they go?",
+                "Where they went?",
+                "Where did they went?",
+                "Where they did go?"
+              ],
+              "explanation": [
+                "Порядок: вопросительное слово + did + подлежащее + глагол."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Порядок: вопросительное слово + did + подлежащее + глагол."
+              }
+            },
+            {
+              "id": "english-t20-q20",
+              "subject": "english",
+              "topicId": "english-t20",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "___ did he visit the farm? — Last week.",
+              "answer": "When",
+              "options": [
+                "When",
+                "Where",
+                "What",
+                "Who"
+              ],
+              "explanation": [
+                "Спрашиваем о времени — When."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Порядок: вопросительное слово + did + подлежащее + глагол."
+              }
+            },
+            {
+              "id": "english-t20-q21",
+              "subject": "english",
+              "topicId": "english-t20",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Сделай вопрос из «He went to the lake».",
+              "answer": "Did he go to the lake?",
+              "options": [
+                "Did he go to the lake?",
+                "Did he went to the lake?",
+                "He did go to the lake?",
+                "Went he to the lake?"
+              ],
+              "explanation": [
+                "В вопросе прошедшее время показывает did, а глагол — go."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 3,
+                "quote": "Во втором и третьем предложениях V2 исчезает, потому что прошедшее время показывает **did**."
               }
             }
           ],

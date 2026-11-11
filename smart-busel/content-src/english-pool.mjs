@@ -1,8 +1,9 @@
 // Запас вопросов, ссылки на правила и переписанные объяснения по английскому: собирается из файлов content-src/pool/english-*.mjs.
 import * as a from './pool/english-a.mjs';
 import * as b from './pool/english-b.mjs';
+import * as c from './pool/english-c.mjs';
 
-const parts = [a, b];
+const parts = [a, b, c];
 export const englishPool = Object.assign({}, ...parts.map((p) => p.pool));
 export const englishExplain = Object.assign({}, ...parts.map((p) => p.explain));
 /** Для старых заданий: фраза-правило из урока, которую показывает подсказка и разбор ошибки. */
