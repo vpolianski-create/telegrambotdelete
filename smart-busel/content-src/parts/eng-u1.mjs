@@ -225,9 +225,9 @@ export const engU1 = [
   T(21, 'Unit 1. Словарь лета (In Summer)', {
     cards: [
       'Места и природа: **seaside** (побережье), **beach** (пляж), **lake** (озеро), **river** (река), **mountain** (гора), **woods** (лес), **country** (местность за городом), **sand** (песок), **rock** (скала), **storm** (шторм), **seaweed** (водоросли).',
-      'Занятия: **go hiking**, **go sunbathing**, **go swimming**, **go for a picnic**, **cook over a campfire**, **watch birds**, **take photos (of)**, **have fun** (веселиться), **pick** (собирать), **travel**, **visit**, **stay**.',
-      'Что берём или находим: **tent** (палатка), **hotel** (гостиница), **camp** (лагерь), **berries** (ягоды), **flowers** (цветы), **mushrooms** (грибы), **sandcastle** (замок из песка). Люди: **tourist**.',
-      'Слова-помощники: **yesterday**, **last**, **ago**, **abroad** (за границей), **after**, **fall** (падать), **buy**, **say**, **spend** (проводить время), **understand**. Полный список слов юнита можно потренировать в разделе «Слова».',
+      'Занятия: **go hiking** (ходить в поход), **go sunbathing** (загорать), **go swimming** (идти купаться), **go for a picnic** (идти на пикник), **cook over a campfire** (готовить на костре), **watch birds** (наблюдать за птицами), **take photos (of)** (фотографировать), **have fun** (веселиться), **pick** (собирать), **travel** (путешествовать), **visit** (посещать), **stay** (останавливаться, жить).',
+      'Что берём или находим: **tent** (палатка), **hotel** (гостиница), **camp** (лагерь), **berries** (ягоды), **flowers** (цветы), **mushrooms** (грибы), **sandcastle** (замок из песка). Люди: **tourist** (турист).',
+      'Слова-помощники: **yesterday** (вчера), **last** (прошлый), **ago** (тому назад), **abroad** (за границей), **after** (после), **fall** (падать), **buy** (покупать), **say** (сказать), **spend** (проводить время), **understand** (понимать). Полный список слов юнита можно потренировать в разделе «Слова».',
     ],
     example: ['Составь рассказ из 3 предложений о лете.', [
       ['Выбираем место: Last summer we were at the seaside.', 'Was / were — о месте.'],

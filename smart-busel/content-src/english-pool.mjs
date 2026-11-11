@@ -2,8 +2,9 @@
 import * as a from './pool/english-a.mjs';
 import * as b from './pool/english-b.mjs';
 import * as c from './pool/english-c.mjs';
+import * as d from './pool/english-d.mjs';
 
-const parts = [a, b, c];
+const parts = [a, b, c, d];
 export const englishPool = Object.assign({}, ...parts.map((p) => p.pool));
 export const englishExplain = Object.assign({}, ...parts.map((p) => p.explain));
 /** Для старых заданий: фраза-правило из урока, которую показывает подсказка и разбор ошибки. */

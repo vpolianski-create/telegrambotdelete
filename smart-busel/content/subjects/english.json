@@ -8442,9 +8442,9 @@
           "status": "ready",
           "cards": [
             "Места и природа: **seaside** (побережье), **beach** (пляж), **lake** (озеро), **river** (река), **mountain** (гора), **woods** (лес), **country** (местность за городом), **sand** (песок), **rock** (скала), **storm** (шторм), **seaweed** (водоросли).",
-            "Занятия: **go hiking**, **go sunbathing**, **go swimming**, **go for a picnic**, **cook over a campfire**, **watch birds**, **take photos (of)**, **have fun** (веселиться), **pick** (собирать), **travel**, **visit**, **stay**.",
-            "Что берём или находим: **tent** (палатка), **hotel** (гостиница), **camp** (лагерь), **berries** (ягоды), **flowers** (цветы), **mushrooms** (грибы), **sandcastle** (замок из песка). Люди: **tourist**.",
-            "Слова-помощники: **yesterday**, **last**, **ago**, **abroad** (за границей), **after**, **fall** (падать), **buy**, **say**, **spend** (проводить время), **understand**. Полный список слов юнита можно потренировать в разделе «Слова»."
+            "Занятия: **go hiking** (ходить в поход), **go sunbathing** (загорать), **go swimming** (идти купаться), **go for a picnic** (идти на пикник), **cook over a campfire** (готовить на костре), **watch birds** (наблюдать за птицами), **take photos (of)** (фотографировать), **have fun** (веселиться), **pick** (собирать), **travel** (путешествовать), **visit** (посещать), **stay** (останавливаться, жить).",
+            "Что берём или находим: **tent** (палатка), **hotel** (гостиница), **camp** (лагерь), **berries** (ягоды), **flowers** (цветы), **mushrooms** (грибы), **sandcastle** (замок из песка). Люди: **tourist** (турист).",
+            "Слова-помощники: **yesterday** (вчера), **last** (прошлый), **ago** (тому назад), **abroad** (за границей), **after** (после), **fall** (падать), **buy** (покупать), **say** (сказать), **spend** (проводить время), **understand** (понимать). Полный список слов юнита можно потренировать в разделе «Слова»."
           ],
           "example": {
             "title": "Составь рассказ из 3 предложений о лете.",
@@ -8527,9 +8527,13 @@
                 "ходить на пикник"
               ],
               "explanation": [
-                "Hiking — пешие походы."
+                "Go hiking значит «ходить в поход»."
               ],
-              "hints": []
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Занятия: **go hiking** (ходить в поход), **go sunbathing** (загорать), **go swimming** (идти купаться), **go for a picnic** (идти на пикник), **cook over a campfire** (готовить на костре), **watch birds** (наблюдать за птицами), **take photos (of)** (фотографировать), **have fun** (веселиться), **pick** (собирать), **travel** (путешествовать), **visit** (посещать), **stay** (останавливаться, жить)."
+              }
             },
             {
               "id": "english-t21-p4",
@@ -8597,7 +8601,7 @@
               "hints": [],
               "ref": {
                 "card": 1,
-                "quote": "Занятия: **go hiking**, **go sunbathing**, **go swimming**, **go for a picnic**, **cook over a campfire**, **watch birds**, **take photos (of)**, **have fun** (веселиться), **pick** (собирать), **travel**, **visit**, **stay**."
+                "quote": "Занятия: **go hiking** (ходить в поход), **go sunbathing** (загорать), **go swimming** (идти купаться), **go for a picnic** (идти на пикник), **cook over a campfire** (готовить на костре), **watch birds** (наблюдать за птицами), **take photos (of)** (фотографировать), **have fun** (веселиться), **pick** (собирать), **travel** (путешествовать), **visit** (посещать), **stay** (останавливаться, жить)."
               }
             },
             {
@@ -8620,7 +8624,7 @@
               "hints": [],
               "ref": {
                 "card": 3,
-                "quote": "Слова-помощники: **yesterday**, **last**, **ago**, **abroad** (за границей), **after**, **fall** (падать), **buy**, **say**, **spend** (проводить время), **understand**."
+                "quote": "Слова-помощники: **yesterday** (вчера), **last** (прошлый), **ago** (тому назад), **abroad** (за границей), **after** (после), **fall** (падать), **buy** (покупать), **say** (сказать), **spend** (проводить время), **understand** (понимать)."
               }
             },
             {
@@ -8643,7 +8647,7 @@
               "hints": [],
               "ref": {
                 "card": 1,
-                "quote": "Занятия: **go hiking**, **go sunbathing**, **go swimming**, **go for a picnic**, **cook over a campfire**, **watch birds**, **take photos (of)**, **have fun** (веселиться), **pick** (собирать), **travel**, **visit**, **stay**."
+                "quote": "Занятия: **go hiking** (ходить в поход), **go sunbathing** (загорать), **go swimming** (идти купаться), **go for a picnic** (идти на пикник), **cook over a campfire** (готовить на костре), **watch birds** (наблюдать за птицами), **take photos (of)** (фотографировать), **have fun** (веселиться), **pick** (собирать), **travel** (путешествовать), **visit** (посещать), **stay** (останавливаться, жить)."
               }
             },
             {
@@ -8661,11 +8665,12 @@
                 "sand"
               ],
               "explanation": [
-                "Tourist — путешественник."
+                "Tourist значит «турист»."
               ],
               "hints": [],
               "ref": {
-                "card": 2
+                "card": 2,
+                "quote": "Люди: **tourist** (турист)."
               }
             }
           ],
@@ -8690,7 +8695,7 @@
               "hints": [],
               "ref": {
                 "card": 3,
-                "quote": "Слова-помощники: **yesterday**, **last**, **ago**, **abroad** (за границей), **after**, **fall** (падать), **buy**, **say**, **spend** (проводить время), **understand**."
+                "quote": "Слова-помощники: **yesterday** (вчера), **last** (прошлый), **ago** (тому назад), **abroad** (за границей), **after** (после), **fall** (падать), **buy** (покупать), **say** (сказать), **spend** (проводить время), **understand** (понимать)."
               }
             },
             {
@@ -8702,12 +8707,284 @@
               "question": "Seaweed — это «водоросли».",
               "answer": true,
               "explanation": [
-                "Seaweed лежит на берегу моря."
+                "Seaweed значит «водоросли»."
               ],
               "hints": [],
               "ref": {
                 "card": 0,
                 "quote": "Места и природа: **seaside** (побережье), **beach** (пляж), **lake** (озеро), **river** (река), **mountain** (гора), **woods** (лес), **country** (местность за городом), **sand** (песок), **rock** (скала), **storm** (шторм), **seaweed** (водоросли)."
+              }
+            }
+          ],
+          "pool": [
+            {
+              "id": "english-t21-q12",
+              "subject": "english",
+              "topicId": "english-t21",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит woods?",
+              "answer": "лес",
+              "options": [
+                "лес",
+                "река",
+                "гора",
+                "песок"
+              ],
+              "explanation": [
+                "Woods значит «лес»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Места и природа: **seaside** (побережье), **beach** (пляж), **lake** (озеро), **river** (река), **mountain** (гора), **woods** (лес), **country** (местность за городом), **sand** (песок), **rock** (скала), **storm** (шторм), **seaweed** (водоросли)."
+              }
+            },
+            {
+              "id": "english-t21-q13",
+              "subject": "english",
+              "topicId": "english-t21",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как будет «река»?",
+              "answer": "river",
+              "options": [
+                "river",
+                "lake",
+                "rock",
+                "woods"
+              ],
+              "explanation": [
+                "River значит «река»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Места и природа: **seaside** (побережье), **beach** (пляж), **lake** (озеро), **river** (река), **mountain** (гора), **woods** (лес), **country** (местность за городом), **sand** (песок), **rock** (скала), **storm** (шторм), **seaweed** (водоросли)."
+              }
+            },
+            {
+              "id": "english-t21-q14",
+              "subject": "english",
+              "topicId": "english-t21",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит storm?",
+              "answer": "шторм",
+              "options": [
+                "шторм",
+                "песок",
+                "скала",
+                "пляж"
+              ],
+              "explanation": [
+                "Storm значит «шторм»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Места и природа: **seaside** (побережье), **beach** (пляж), **lake** (озеро), **river** (река), **mountain** (гора), **woods** (лес), **country** (местность за городом), **sand** (песок), **rock** (скала), **storm** (шторм), **seaweed** (водоросли)."
+              }
+            },
+            {
+              "id": "english-t21-q15",
+              "subject": "english",
+              "topicId": "english-t21",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как будет «побережье»?",
+              "answer": "seaside",
+              "options": [
+                "seaside",
+                "country",
+                "mountain",
+                "lake"
+              ],
+              "explanation": [
+                "Seaside значит «побережье»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Места и природа: **seaside** (побережье), **beach** (пляж), **lake** (озеро), **river** (река), **mountain** (гора), **woods** (лес), **country** (местность за городом), **sand** (песок), **rock** (скала), **storm** (шторм), **seaweed** (водоросли)."
+              }
+            },
+            {
+              "id": "english-t21-q16",
+              "subject": "english",
+              "topicId": "english-t21",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит go sunbathing?",
+              "answer": "загорать",
+              "options": [
+                "загорать",
+                "ходить в поход",
+                "идти купаться",
+                "идти на пикник"
+              ],
+              "explanation": [
+                "Go sunbathing значит «загорать»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Занятия: **go hiking** (ходить в поход), **go sunbathing** (загорать), **go swimming** (идти купаться), **go for a picnic** (идти на пикник), **cook over a campfire** (готовить на костре), **watch birds** (наблюдать за птицами), **take photos (of)** (фотографировать), **have fun** (веселиться), **pick** (собирать), **travel** (путешествовать), **visit** (посещать), **stay** (останавливаться, жить)."
+              }
+            },
+            {
+              "id": "english-t21-q17",
+              "subject": "english",
+              "topicId": "english-t21",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как будет «готовить на костре»?",
+              "answer": "cook over a campfire",
+              "options": [
+                "cook over a campfire",
+                "watch birds",
+                "take photos",
+                "go for a picnic"
+              ],
+              "explanation": [
+                "Cook over a campfire — готовить на костре."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Занятия: **go hiking** (ходить в поход), **go sunbathing** (загорать), **go swimming** (идти купаться), **go for a picnic** (идти на пикник), **cook over a campfire** (готовить на костре), **watch birds** (наблюдать за птицами), **take photos (of)** (фотографировать), **have fun** (веселиться), **pick** (собирать), **travel** (путешествовать), **visit** (посещать), **stay** (останавливаться, жить)."
+              }
+            },
+            {
+              "id": "english-t21-q18",
+              "subject": "english",
+              "topicId": "english-t21",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит pick (berries)?",
+              "answer": "собирать",
+              "options": [
+                "собирать",
+                "покупать",
+                "падать",
+                "готовить"
+              ],
+              "explanation": [
+                "Pick значит «собирать»: pick berries — собирать ягоды."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Занятия: **go hiking** (ходить в поход), **go sunbathing** (загорать), **go swimming** (идти купаться), **go for a picnic** (идти на пикник), **cook over a campfire** (готовить на костре), **watch birds** (наблюдать за птицами), **take photos (of)** (фотографировать), **have fun** (веселиться), **pick** (собирать), **travel** (путешествовать), **visit** (посещать), **stay** (останавливаться, жить)."
+              }
+            },
+            {
+              "id": "english-t21-q19",
+              "subject": "english",
+              "topicId": "english-t21",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит hotel?",
+              "answer": "гостиница",
+              "options": [
+                "гостиница",
+                "палатка",
+                "лагерь",
+                "пляж"
+              ],
+              "explanation": [
+                "Hotel значит «гостиница»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Что берём или находим: **tent** (палатка), **hotel** (гостиница), **camp** (лагерь), **berries** (ягоды), **flowers** (цветы), **mushrooms** (грибы), **sandcastle** (замок из песка)."
+              }
+            },
+            {
+              "id": "english-t21-q20",
+              "subject": "english",
+              "topicId": "english-t21",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как будет «цветы»?",
+              "answer": "flowers",
+              "options": [
+                "flowers",
+                "berries",
+                "mushrooms",
+                "woods"
+              ],
+              "explanation": [
+                "Flowers значит «цветы»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Что берём или находим: **tent** (палатка), **hotel** (гостиница), **camp** (лагерь), **berries** (ягоды), **flowers** (цветы), **mushrooms** (грибы), **sandcastle** (замок из песка)."
+              }
+            },
+            {
+              "id": "english-t21-q21",
+              "subject": "english",
+              "topicId": "english-t21",
+              "difficulty": "basic",
+              "type": "input",
+              "question": "Напиши по-английски слово «лагерь».",
+              "answer": "camp",
+              "explanation": [
+                "Camp значит «лагерь»: summer camp."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Что берём или находим: **tent** (палатка), **hotel** (гостиница), **camp** (лагерь), **berries** (ягоды), **flowers** (цветы), **mushrooms** (грибы), **sandcastle** (замок из песка)."
+              }
+            },
+            {
+              "id": "english-t21-q22",
+              "subject": "english",
+              "topicId": "english-t21",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит fall?",
+              "answer": "падать",
+              "options": [
+                "падать",
+                "покупать",
+                "сказать",
+                "понимать"
+              ],
+              "explanation": [
+                "Fall значит «падать»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 3,
+                "quote": "Слова-помощники: **yesterday** (вчера), **last** (прошлый), **ago** (тому назад), **abroad** (за границей), **after** (после), **fall** (падать), **buy** (покупать), **say** (сказать), **spend** (проводить время), **understand** (понимать)."
+              }
+            },
+            {
+              "id": "english-t21-q23",
+              "subject": "english",
+              "topicId": "english-t21",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как будет «покупать»?",
+              "answer": "buy",
+              "options": [
+                "buy",
+                "say",
+                "spend",
+                "fall"
+              ],
+              "explanation": [
+                "Buy значит «покупать»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 3,
+                "quote": "Слова-помощники: **yesterday** (вчера), **last** (прошлый), **ago** (тому назад), **abroad** (за границей), **after** (после), **fall** (падать), **buy** (покупать), **say** (сказать), **spend** (проводить время), **understand** (понимать)."
               }
             }
           ],
@@ -8860,7 +9137,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 2
+                "card": 2,
+                "quote": "Вопрос: **Do you like** going to theme parks? — Yes, I do. / No, I don’t."
               }
             },
             {
@@ -8882,7 +9160,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 3
+                "card": 3,
+                "quote": "Слова урока: **inside / outside** (внутри / снаружи), **spend** (проводить время), **theme park** (парк развлечений), **go on an excursion** (идти на экскурсию), **go out** (выйти из дома), **do / play sports** (заниматься спортом)."
               }
             },
             {
@@ -8989,6 +9268,272 @@
               "ref": {
                 "card": 0,
                 "quote": "Например: I **enjoy** playing sports."
+              }
+            }
+          ],
+          "pool": [
+            {
+              "id": "english-t22-q12",
+              "subject": "english",
+              "topicId": "english-t22",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Какое слово значит «ненавидеть»?",
+              "answer": "hate",
+              "options": [
+                "hate",
+                "enjoy",
+                "love",
+                "like"
+              ],
+              "explanation": [
+                "Hate значит «ненавидеть»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Чтобы сказать, что нравится, используем **like**, **love**, **enjoy**."
+              }
+            },
+            {
+              "id": "english-t22-q13",
+              "subject": "english",
+              "topicId": "english-t22",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит «I don’t mind walking»?",
+              "answer": "Я не против ходить пешком.",
+              "options": [
+                "Я не против ходить пешком.",
+                "Я ненавижу ходить пешком.",
+                "Я обожаю ходить пешком.",
+                "Я не умею ходить пешком."
+              ],
+              "explanation": [
+                "Don’t mind значит «не возражаю, мне всё равно»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Чтобы сказать, что нравится, используем **like**, **love**, **enjoy**."
+              }
+            },
+            {
+              "id": "english-t22-q14",
+              "subject": "english",
+              "topicId": "english-t22",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "He enjoys ___ a kite. (fly)",
+              "answer": "flying",
+              "options": [
+                "flying",
+                "fly",
+                "flies",
+                "flew"
+              ],
+              "explanation": [
+                "После enjoy идёт глагол с -ing: flying."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "После этих глаголов часто идёт глагол с окончанием **-ing**: I like **swimming**."
+              }
+            },
+            {
+              "id": "english-t22-q15",
+              "subject": "english",
+              "topicId": "english-t22",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "They hate ___ up early. (get)",
+              "answer": "getting",
+              "options": [
+                "getting",
+                "get",
+                "gets",
+                "got"
+              ],
+              "explanation": [
+                "После hate идёт глагол с -ing: getting."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "После этих глаголов часто идёт глагол с окончанием **-ing**: I like **swimming**."
+              }
+            },
+            {
+              "id": "english-t22-q16",
+              "subject": "english",
+              "topicId": "english-t22",
+              "difficulty": "basic",
+              "type": "input",
+              "question": "Вставь форму: I like ___ (read) books.",
+              "answer": "reading",
+              "explanation": [
+                "После like идёт глагол с -ing: reading."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "После этих глаголов часто идёт глагол с окончанием **-ing**: I like **swimming**."
+              }
+            },
+            {
+              "id": "english-t22-q17",
+              "subject": "english",
+              "topicId": "english-t22",
+              "difficulty": "basic",
+              "type": "truefalse",
+              "question": "Предложение «I enjoy play sports» правильное.",
+              "answer": false,
+              "explanation": [
+                "После enjoy нужен глагол с -ing: I enjoy playing sports."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "После этих глаголов часто идёт глагол с окончанием **-ing**: I like **swimming**."
+              }
+            },
+            {
+              "id": "english-t22-q18",
+              "subject": "english",
+              "topicId": "english-t22",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "My brother ___ doing sports. (нравится)",
+              "answer": "likes",
+              "options": [
+                "likes",
+                "like",
+                "liking",
+                "is like"
+              ],
+              "explanation": [
+                "My brother — это he, поэтому likes."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "С he / she / it к глаголу добавляем **-s**: **likes, enjoys, hates, doesn’t mind**."
+              }
+            },
+            {
+              "id": "english-t22-q19",
+              "subject": "english",
+              "topicId": "english-t22",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Anna ___ mind walking. (не против)",
+              "answer": "doesn’t",
+              "options": [
+                "doesn’t",
+                "don’t",
+                "isn’t",
+                "not"
+              ],
+              "explanation": [
+                "Anna — это she, поэтому doesn’t mind."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "С he / she / it к глаголу добавляем **-s**: **likes, enjoys, hates, doesn’t mind**."
+              }
+            },
+            {
+              "id": "english-t22-q20",
+              "subject": "english",
+              "topicId": "english-t22",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "___ she enjoy doing sports?",
+              "answer": "Does",
+              "options": [
+                "Does",
+                "Do",
+                "Is",
+                "Are"
+              ],
+              "explanation": [
+                "С she вопрос начинаем с Does."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "**Does she enjoy** doing sports? — Yes, she does. / No, she doesn’t."
+              }
+            },
+            {
+              "id": "english-t22-q21",
+              "subject": "english",
+              "topicId": "english-t22",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Do you like going out? — …",
+              "answer": "Yes, I do.",
+              "options": [
+                "Yes, I do.",
+                "Yes, I like.",
+                "Yes, I am.",
+                "Yes, I does."
+              ],
+              "explanation": [
+                "На вопрос с Do отвечаем: Yes, I do."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "**Does she enjoy** doing sports? — Yes, she does. / No, she doesn’t."
+              }
+            },
+            {
+              "id": "english-t22-q22",
+              "subject": "english",
+              "topicId": "english-t22",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит inside?",
+              "answer": "внутри",
+              "options": [
+                "внутри",
+                "снаружи",
+                "рядом",
+                "далеко"
+              ],
+              "explanation": [
+                "Inside значит «внутри», outside — «снаружи»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 3,
+                "quote": "Слова урока: **inside / outside** (внутри / снаружи), **spend** (проводить время), **theme park** (парк развлечений), **go on an excursion** (идти на экскурсию), **go out** (выйти из дома), **do / play sports** (заниматься спортом)."
+              }
+            },
+            {
+              "id": "english-t22-q23",
+              "subject": "english",
+              "topicId": "english-t22",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит theme park?",
+              "answer": "парк развлечений",
+              "options": [
+                "парк развлечений",
+                "зоопарк",
+                "школьный двор",
+                "музей"
+              ],
+              "explanation": [
+                "Theme park — парк развлечений."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 3,
+                "quote": "Слова урока: **inside / outside** (внутри / снаружи), **spend** (проводить время), **theme park** (парк развлечений), **go on an excursion** (идти на экскурсию), **go out** (выйти из дома), **do / play sports** (заниматься спортом)."
               }
             }
           ],
@@ -9269,6 +9814,278 @@
               }
             }
           ],
+          "pool": [
+            {
+              "id": "english-t23-q12",
+              "subject": "english",
+              "topicId": "english-t23",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Past Simple от enjoy.",
+              "answer": "enjoyed",
+              "options": [
+                "enjoyed",
+                "enjoied",
+                "enjoyd",
+                "enjoy"
+              ],
+              "explanation": [
+                "Правильный глагол: enjoy → enjoyed."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Правильные глаголы с **-ed**: **relaxed**, **stretched**, **breathed**, **watched**, **enjoyed**."
+              }
+            },
+            {
+              "id": "english-t23-q13",
+              "subject": "english",
+              "topicId": "english-t23",
+              "difficulty": "basic",
+              "type": "input",
+              "question": "Напиши Past Simple глагола stretch.",
+              "answer": "stretched",
+              "explanation": [
+                "Правильный глагол: stretch → stretched."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Правильные глаголы с **-ed**: **relaxed**, **stretched**, **breathed**, **watched**, **enjoyed**."
+              }
+            },
+            {
+              "id": "english-t23-q14",
+              "subject": "english",
+              "topicId": "english-t23",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Past Simple от breathe.",
+              "answer": "breathed",
+              "options": [
+                "breathed",
+                "breatheed",
+                "breathd",
+                "brothe"
+              ],
+              "explanation": [
+                "Правильный глагол: breathe → breathed."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Правильные глаголы с **-ed**: **relaxed**, **stretched**, **breathed**, **watched**, **enjoyed**."
+              }
+            },
+            {
+              "id": "english-t23-q15",
+              "subject": "english",
+              "topicId": "english-t23",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "We ___ a sandcastle. (build)",
+              "answer": "built",
+              "options": [
+                "built",
+                "builded",
+                "build",
+                "builts"
+              ],
+              "explanation": [
+                "Неправильный глагол: build → built."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Неправильные — V2: **built** (build), **made friends** (make friends), **flew a kite** (fly a kite), **went rock climbing**."
+              }
+            },
+            {
+              "id": "english-t23-q16",
+              "subject": "english",
+              "topicId": "english-t23",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Yesterday I ___ a kite in the park. (fly)",
+              "answer": "flew",
+              "options": [
+                "flew",
+                "flied",
+                "flyed",
+                "fly"
+              ],
+              "explanation": [
+                "Неправильный глагол: fly → flew."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Неправильные — V2: **built** (build), **made friends** (make friends), **flew a kite** (fly a kite), **went rock climbing**."
+              }
+            },
+            {
+              "id": "english-t23-q17",
+              "subject": "english",
+              "topicId": "english-t23",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "They ___ rock climbing last weekend. (go)",
+              "answer": "went",
+              "options": [
+                "went",
+                "goed",
+                "go",
+                "gone"
+              ],
+              "explanation": [
+                "Неправильный глагол: go → went."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Неправильные — V2: **built** (build), **made friends** (make friends), **flew a kite** (fly a kite), **went rock climbing**."
+              }
+            },
+            {
+              "id": "english-t23-q18",
+              "subject": "english",
+              "topicId": "english-t23",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит fly a kite?",
+              "answer": "запускать змея",
+              "options": [
+                "запускать змея",
+                "смотреть на звёзды",
+                "строить",
+                "подружиться"
+              ],
+              "explanation": [
+                "Fly a kite — запускать змея."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Слова урока 2: **build** (строить), **make friends** (подружиться), **fly a kite** (запускать змея), **watch the stars** (смотреть на звёзды), **sky** (небо), **night** (ночь), **go rock climbing** (заниматься скалолазанием)."
+              }
+            },
+            {
+              "id": "english-t23-q19",
+              "subject": "english",
+              "topicId": "english-t23",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как будет «подружиться»?",
+              "answer": "make friends",
+              "options": [
+                "make friends",
+                "build",
+                "watch the stars",
+                "go out"
+              ],
+              "explanation": [
+                "Make friends значит «подружиться»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Слова урока 2: **build** (строить), **make friends** (подружиться), **fly a kite** (запускать змея), **watch the stars** (смотреть на звёзды), **sky** (небо), **night** (ночь), **go rock climbing** (заниматься скалолазанием)."
+              }
+            },
+            {
+              "id": "english-t23-q20",
+              "subject": "english",
+              "topicId": "english-t23",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит watch the stars?",
+              "answer": "смотреть на звёзды",
+              "options": [
+                "смотреть на звёзды",
+                "запускать змея",
+                "строить",
+                "дышать"
+              ],
+              "explanation": [
+                "Watch the stars — смотреть на звёзды."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Слова урока 2: **build** (строить), **make friends** (подружиться), **fly a kite** (запускать змея), **watch the stars** (смотреть на звёзды), **sky** (небо), **night** (ночь), **go rock climbing** (заниматься скалолазанием)."
+              }
+            },
+            {
+              "id": "english-t23-q21",
+              "subject": "english",
+              "topicId": "english-t23",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как будет «строить»?",
+              "answer": "build",
+              "options": [
+                "build",
+                "breathe",
+                "stretch",
+                "relax"
+              ],
+              "explanation": [
+                "Build значит «строить»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Слова урока 2: **build** (строить), **make friends** (подружиться), **fly a kite** (запускать змея), **watch the stars** (смотреть на звёзды), **sky** (небо), **night** (ночь), **go rock climbing** (заниматься скалолазанием)."
+              }
+            },
+            {
+              "id": "english-t23-q22",
+              "subject": "english",
+              "topicId": "english-t23",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как будет «дышать»?",
+              "answer": "breathe",
+              "options": [
+                "breathe",
+                "relax",
+                "stretch",
+                "build"
+              ],
+              "explanation": [
+                "Breathe значит «дышать»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Слова урока 4: **breathe** (дышать), **relax** (отдыхать), **stretch** (потягиваться), **yoga** (йога)."
+              }
+            },
+            {
+              "id": "english-t23-q23",
+              "subject": "english",
+              "topicId": "english-t23",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Какие слова подсказывают Past Simple?",
+              "answer": "last weekend",
+              "options": [
+                "last weekend",
+                "every weekend",
+                "now",
+                "tomorrow"
+              ],
+              "explanation": [
+                "Слова on Saturday, last weekend, yesterday подсказывают Past Simple."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 3,
+                "quote": "Рассказ о выходных: **On Saturday we went out. We flew a kite in the park, made friends with other children, and watched the stars at night.** Слова **on Saturday, last weekend, yesterday** подсказывают Past Simple."
+              }
+            }
+          ],
           "card": {
             "emoji": "🪁",
             "title": "Выходные",
@@ -9281,7 +10098,7 @@
           "status": "ready",
           "cards": [
             "Чтобы **пригласить**, говорим: **Would you like to go for a walk?** **Let’s go for a swim!** **Do you want to go for a run?** Друг может **принять** приглашение: **Yes, I’d love to! Great idea! OK, let’s go.**",
-            "Чтобы **отказаться**, говорим вежливо: **Sorry, I can’t. I’m busy.** **I’d like to, but I can’t.** Не забываем **sorry** и **thank you**: Thank you, but I can’t.",
+            "Чтобы **отказаться**, говорим вежливо: **Sorry, I can’t. I’m busy.** I’m busy значит «я занят». **I’d like to, but I can’t.** Не забываем **sorry** и **thank you**: Thank you, but I can’t.",
             "Фразы со словом **go**: **go for a walk** (пойти погулять), **go for a swim** (пойти поплавать), **go for a run** (пойти побегать), **go for a bike ride** (поехать кататься на велосипеде), **go out** (выйти). Спросить, как дела: **What’s up?** (Как дела?)",
             "Пример диалога: — **What’s up?** — Hi! Would you like to go for a walk? — Yes, I’d love to! — Let’s go to the park. — Sorry, I can’t. I’m at school. Это вежливые разговорные фразы."
           ],
@@ -9318,11 +10135,12 @@
                 "Который час?"
               ],
               "explanation": [
-                "Дружеское приветствие."
+                "What’s up? — так по-дружески спрашивают «Как дела?»."
               ],
               "hints": [],
               "ref": {
-                "card": 2
+                "card": 2,
+                "quote": "Спросить, как дела: **What’s up?** (Как дела?)"
               }
             },
             {
@@ -9370,7 +10188,7 @@
               "hints": [],
               "ref": {
                 "card": 1,
-                "quote": "Чтобы **отказаться**, говорим вежливо: **Sorry, I can’t. I’m busy.** **I’d like to, but I can’t.** Не забываем **sorry** и **thank you**: Thank you, but I can’t."
+                "quote": "Чтобы **отказаться**, говорим вежливо: **Sorry, I can’t. I’m busy.** I’m busy значит «я занят»."
               }
             },
             {
@@ -9461,7 +10279,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 3
+                "card": 0,
+                "quote": "Чтобы **пригласить**, говорим: **Would you like to go for a walk?** **Let’s go for a swim!** **Do you want to go for a run?** Друг может **принять** приглашение: **Yes, I’d love to! Great idea! OK, let’s go.**"
               }
             },
             {
@@ -9522,7 +10341,11 @@
               "explanation": [
                 "I’m busy — я занят."
               ],
-              "hints": []
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Чтобы **отказаться**, говорим вежливо: **Sorry, I can’t. I’m busy.** I’m busy значит «я занят»."
+              }
             },
             {
               "id": "english-t24-x11",
@@ -9541,6 +10364,226 @@
               "ref": {
                 "card": 0,
                 "quote": "Чтобы **пригласить**, говорим: **Would you like to go for a walk?** **Let’s go for a swim!** **Do you want to go for a run?** Друг может **принять** приглашение: **Yes, I’d love to! Great idea! OK, let’s go.**"
+              }
+            }
+          ],
+          "pool": [
+            {
+              "id": "english-t24-q12",
+              "subject": "english",
+              "topicId": "english-t24",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Какая фраза — приглашение?",
+              "answer": "Do you want to go for a run?",
+              "options": [
+                "Do you want to go for a run?",
+                "Sorry, I can’t.",
+                "I’m busy.",
+                "Great idea!"
+              ],
+              "explanation": [
+                "Приглашают так: Do you want to go for a run?"
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Чтобы **пригласить**, говорим: **Would you like to go for a walk?** **Let’s go for a swim!** **Do you want to go for a run?** Друг может **принять** приглашение: **Yes, I’d love to! Great idea! OK, let’s go.**"
+              }
+            },
+            {
+              "id": "english-t24-q13",
+              "subject": "english",
+              "topicId": "english-t24",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Would you like ___ for a walk?",
+              "answer": "to go",
+              "options": [
+                "to go",
+                "go",
+                "going",
+                "goes"
+              ],
+              "explanation": [
+                "После Would you like идёт to + глагол: to go."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Чтобы **пригласить**, говорим: **Would you like to go for a walk?** **Let’s go for a swim!** **Do you want to go for a run?** Друг может **принять** приглашение: **Yes, I’d love to! Great idea! OK, let’s go.**"
+              }
+            },
+            {
+              "id": "english-t24-q14",
+              "subject": "english",
+              "topicId": "english-t24",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Какой ответ значит «да»?",
+              "answer": "OK, let’s go.",
+              "options": [
+                "OK, let’s go.",
+                "Sorry, I can’t.",
+                "I’m busy.",
+                "Thank you, but I can’t."
+              ],
+              "explanation": [
+                "Приглашение принимают так: OK, let’s go."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Чтобы **пригласить**, говорим: **Would you like to go for a walk?** **Let’s go for a swim!** **Do you want to go for a run?** Друг может **принять** приглашение: **Yes, I’d love to! Great idea! OK, let’s go.**"
+              }
+            },
+            {
+              "id": "english-t24-q15",
+              "subject": "english",
+              "topicId": "english-t24",
+              "difficulty": "basic",
+              "type": "truefalse",
+              "question": "«Yes, I’d love to!» говорят, когда отказываются.",
+              "answer": false,
+              "explanation": [
+                "Yes, I’d love to! — так принимают приглашение."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Чтобы **пригласить**, говорим: **Would you like to go for a walk?** **Let’s go for a swim!** **Do you want to go for a run?** Друг может **принять** приглашение: **Yes, I’d love to! Great idea! OK, let’s go.**"
+              }
+            },
+            {
+              "id": "english-t24-q16",
+              "subject": "english",
+              "topicId": "english-t24",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Какая фраза — вежливый отказ?",
+              "answer": "I’d like to, but I can’t.",
+              "options": [
+                "I’d like to, but I can’t.",
+                "Yes, I’d love to!",
+                "Great idea!",
+                "Let’s go!"
+              ],
+              "explanation": [
+                "Вежливый отказ: I’d like to, but I can’t."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Чтобы **отказаться**, говорим вежливо: **Sorry, I can’t. I’m busy.** I’m busy значит «я занят»."
+              }
+            },
+            {
+              "id": "english-t24-q17",
+              "subject": "english",
+              "topicId": "english-t24",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Какие слова не забываем при отказе?",
+              "answer": "sorry и thank you",
+              "options": [
+                "sorry и thank you",
+                "no и never",
+                "what и where",
+                "go и run"
+              ],
+              "explanation": [
+                "При отказе не забываем sorry и thank you."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "**I’d like to, but I can’t.** Не забываем **sorry** и **thank you**: Thank you, but I can’t."
+              }
+            },
+            {
+              "id": "english-t24-q18",
+              "subject": "english",
+              "topicId": "english-t24",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит go for a walk?",
+              "answer": "пойти погулять",
+              "options": [
+                "пойти погулять",
+                "пойти побегать",
+                "пойти поплавать",
+                "выйти"
+              ],
+              "explanation": [
+                "Go for a walk — пойти погулять."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Фразы со словом **go**: **go for a walk** (пойти погулять), **go for a swim** (пойти поплавать), **go for a run** (пойти побегать), **go for a bike ride** (поехать кататься на велосипеде), **go out** (выйти)."
+              }
+            },
+            {
+              "id": "english-t24-q19",
+              "subject": "english",
+              "topicId": "english-t24",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как будет «поехать кататься на велосипеде»?",
+              "answer": "go for a bike ride",
+              "options": [
+                "go for a bike ride",
+                "go for a run",
+                "go for a swim",
+                "go out"
+              ],
+              "explanation": [
+                "Go for a bike ride — поехать кататься на велосипеде."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Фразы со словом **go**: **go for a walk** (пойти погулять), **go for a swim** (пойти поплавать), **go for a run** (пойти побегать), **go for a bike ride** (поехать кататься на велосипеде), **go out** (выйти)."
+              }
+            },
+            {
+              "id": "english-t24-q20",
+              "subject": "english",
+              "topicId": "english-t24",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит go out?",
+              "answer": "выйти",
+              "options": [
+                "выйти",
+                "войти",
+                "побегать",
+                "поплавать"
+              ],
+              "explanation": [
+                "Go out значит «выйти»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Фразы со словом **go**: **go for a walk** (пойти погулять), **go for a swim** (пойти поплавать), **go for a run** (пойти побегать), **go for a bike ride** (поехать кататься на велосипеде), **go out** (выйти)."
+              }
+            },
+            {
+              "id": "english-t24-q21",
+              "subject": "english",
+              "topicId": "english-t24",
+              "difficulty": "basic",
+              "type": "input",
+              "question": "Вставь слово: Let’s go ___ a swim!",
+              "answer": "for",
+              "explanation": [
+                "Говорят go for a swim — пойти поплавать."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Фразы со словом **go**: **go for a walk** (пойти погулять), **go for a swim** (пойти поплавать), **go for a run** (пойти побегать), **go for a bike ride** (поехать кататься на велосипеде), **go out** (выйти)."
               }
             }
           ],
@@ -10097,7 +11140,11 @@
               "explanation": [
                 "После did — начальная форма."
               ],
-              "hints": []
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Глагол после did — в начальной форме."
+              }
             }
           ],
           "practice": [
@@ -10119,7 +11166,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 0
+                "card": 0,
+                "quote": "Чтобы взять **интервью** о том, что было, задаём вопросы в **Past Simple**: **Wh-слово + did + подлежащее + глагол**."
               }
             },
             {
@@ -10140,7 +11188,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 1
+                "card": 1,
+                "quote": "С глаголом **to be** вопрос строим без did: **Where were you** on Sunday?"
               }
             },
             {
@@ -10159,7 +11208,11 @@
               "explanation": [
                 "After did — buy."
               ],
-              "hints": []
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Глагол после did — в начальной форме."
+              }
             },
             {
               "id": "english-t25-p6",
@@ -10180,29 +11233,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 0
-              }
-            },
-            {
-              "id": "english-t25-p7",
-              "subject": "english",
-              "topicId": "english-t25",
-              "difficulty": "basic",
-              "type": "single",
-              "question": "How was the show?",
-              "answer": "Это вопрос о впечатлении",
-              "options": [
-                "Это вопрос о впечатлении",
-                "Это вопрос о месте",
-                "Это вопрос о времени",
-                "Это вопрос о человеке"
-              ],
-              "explanation": [
-                "How was …? — «Как было?»"
-              ],
-              "hints": [],
-              "ref": {
-                "card": 1
+                "card": 0,
+                "quote": "**When did it happen**?"
               }
             },
             {
@@ -10240,7 +11272,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 0
+                "card": 0,
+                "quote": "Глагол после did — в начальной форме."
               }
             }
           ],
@@ -10263,7 +11296,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 0
+                "card": 0,
+                "quote": "Чтобы взять **интервью** о том, что было, задаём вопросы в **Past Simple**: **Wh-слово + did + подлежащее + глагол**."
               }
             },
             {
@@ -10279,7 +11313,237 @@
               ],
               "hints": [
                 "Первая буква — d."
-              ]
+              ],
+              "ref": {
+                "card": 0,
+                "quote": "Чтобы взять **интервью** о том, что было, задаём вопросы в **Past Simple**: **Wh-слово + did + подлежащее + глагол**."
+              }
+            }
+          ],
+          "pool": [
+            {
+              "id": "english-t25-q12",
+              "subject": "english",
+              "topicId": "english-t25",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "___ did you do at the weekend?",
+              "answer": "What",
+              "options": [
+                "What",
+                "Who",
+                "Where",
+                "When"
+              ],
+              "explanation": [
+                "Спрашиваем, что делал, — What did you do?"
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Чтобы взять **интервью** о том, что было, задаём вопросы в **Past Simple**: **Wh-слово + did + подлежащее + глагол**."
+              }
+            },
+            {
+              "id": "english-t25-q13",
+              "subject": "english",
+              "topicId": "english-t25",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "What did you ___ at the shop? (buy)",
+              "answer": "buy",
+              "options": [
+                "buy",
+                "bought",
+                "buys",
+                "buying"
+              ],
+              "explanation": [
+                "После did глагол в начальной форме: buy."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Чтобы взять **интервью** о том, что было, задаём вопросы в **Past Simple**: **Wh-слово + did + подлежащее + глагол**."
+              }
+            },
+            {
+              "id": "english-t25-q14",
+              "subject": "english",
+              "topicId": "english-t25",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Выбери верный вопрос: «Куда она ходила?»",
+              "answer": "Where did she go?",
+              "options": [
+                "Where did she go?",
+                "Where did she went?",
+                "Where she went?",
+                "Where was she go?"
+              ],
+              "explanation": [
+                "Wh-слово + did + подлежащее + глагол: Where did she go?"
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Чтобы взять **интервью** о том, что было, задаём вопросы в **Past Simple**: **Wh-слово + did + подлежащее + глагол**."
+              }
+            },
+            {
+              "id": "english-t25-q15",
+              "subject": "english",
+              "topicId": "english-t25",
+              "difficulty": "basic",
+              "type": "truefalse",
+              "question": "Вопрос «Who did you met?» правильный.",
+              "answer": false,
+              "explanation": [
+                "После did глагол в начальной форме: Who did you meet?"
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Чтобы взять **интервью** о том, что было, задаём вопросы в **Past Simple**: **Wh-слово + did + подлежащее + глагол**."
+              }
+            },
+            {
+              "id": "english-t25-q16",
+              "subject": "english",
+              "topicId": "english-t25",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "What ___ the weather like?",
+              "answer": "was",
+              "options": [
+                "was",
+                "did",
+                "were",
+                "do"
+              ],
+              "explanation": [
+                "С глаголом to be вопрос строим без did: What was the weather like?"
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "С глаголом **to be** вопрос строим без did: **Where were you** on Sunday?"
+              }
+            },
+            {
+              "id": "english-t25-q17",
+              "subject": "english",
+              "topicId": "english-t25",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Who ___ with you?",
+              "answer": "was",
+              "options": [
+                "was",
+                "did",
+                "does",
+                "do"
+              ],
+              "explanation": [
+                "С глаголом to be вопрос строим без did: Who was with you?"
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "С глаголом **to be** вопрос строим без did: **Where were you** on Sunday?"
+              }
+            },
+            {
+              "id": "english-t25-q18",
+              "subject": "english",
+              "topicId": "english-t25",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Выбери верный вопрос: «Где ты был в воскресенье?»",
+              "answer": "Where were you on Sunday?",
+              "options": [
+                "Where were you on Sunday?",
+                "Where did you be on Sunday?",
+                "Where did you were on Sunday?",
+                "Where you were on Sunday?"
+              ],
+              "explanation": [
+                "С to be помощник did не нужен: Where were you?"
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "С глаголом **to be** вопрос строим без did: **Where were you** on Sunday?"
+              }
+            },
+            {
+              "id": "english-t25-q19",
+              "subject": "english",
+              "topicId": "english-t25",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Where did she go? — …",
+              "answer": "She went to the park.",
+              "options": [
+                "She went to the park.",
+                "She go to the park.",
+                "She did go park.",
+                "She goes to the park."
+              ],
+              "explanation": [
+                "Отвечаем в прошедшем времени: She went to the park."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Отвечаем полным предложением в прошедшем времени: **What did you do? — I read a book. Where did she go? — She went to the park.** Ответ о том, с кем: **Who did you play with? — I played with my friends.**"
+              }
+            },
+            {
+              "id": "english-t25-q20",
+              "subject": "english",
+              "topicId": "english-t25",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "What did you do? — …",
+              "answer": "I read a book.",
+              "options": [
+                "I read a book.",
+                "I reading a book.",
+                "I did read book.",
+                "I am read a book."
+              ],
+              "explanation": [
+                "Отвечаем полным предложением в прошедшем времени."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Отвечаем полным предложением в прошедшем времени: **What did you do? — I read a book. Where did she go? — She went to the park.** Ответ о том, с кем: **Who did you play with? — I played with my friends.**"
+              }
+            },
+            {
+              "id": "english-t25-q21",
+              "subject": "english",
+              "topicId": "english-t25",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Did you like it? — …",
+              "answer": "Yes, I did!",
+              "options": [
+                "Yes, I did!",
+                "Yes, I liked!",
+                "Yes, I was!",
+                "Yes, I do liked!"
+              ],
+              "explanation": [
+                "На вопрос с Did отвечаем: Yes, I did."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 3,
+                "quote": "Пример интервью: — **What did you do on Saturday?** — I went to the school radio station. — **Who did you meet there?** — I met a famous singer. — **Did you like it?** — Yes, I did!"
+              }
             }
           ],
           "card": {
@@ -10294,7 +11558,7 @@
           "status": "ready",
           "cards": [
             "**Workshop** — «мастер-класс»: люди собираются, чтобы научиться чему-то новому (например, плести или готовить). **Take part (in)** значит «принимать участие». **Free** — «бесплатный» или «свободный».",
-            "Приглашение на мастер-класс: **Come to our workshop! You can learn to paint eggs. Take part in the festival! Entrance is free.** Здесь используем приказы и **can** — «можешь».",
+            "Приглашение на мастер-класс: **Come to our workshop! You can learn to paint eggs. Take part in the festival! Entrance is free.** Entrance is free значит «вход бесплатный», festival — «фестиваль, праздник». Здесь используем приказы и **can** — «можешь».",
             "Для рассказа об участии в мероприятии в прошлом: **We took part in the workshop. We learnt to make a toy. It was free.** Take — took, learn — learnt (или learned).",
             "Афиша (плакат) отвечает на вопросы: **What?** (что), **Where?** (где), **When?** (когда), **How much?** (сколько стоит). Например: Workshop “Paint a pot”. Where? School hall. When? Saturday, 11 a.m. Free."
           ],
@@ -10335,8 +11599,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 0,
-                "quote": "**Workshop** — «мастер-класс»: люди собираются, чтобы научиться чему-то новому (например, плести или готовить)."
+                "card": 1,
+                "quote": "Приглашение на мастер-класс: **Come to our workshop! You can learn to paint eggs. Take part in the festival! Entrance is free.** Entrance is free значит «вход бесплатный», festival — «фестиваль, праздник»."
               }
             },
             {
@@ -10429,27 +11693,8 @@
               "hints": [],
               "ref": {
                 "card": 1,
-                "quote": "Приглашение на мастер-класс: **Come to our workshop! You can learn to paint eggs. Take part in the festival! Entrance is free.** Здесь используем приказы и **can** — «можешь»."
+                "quote": "Приглашение на мастер-класс: **Come to our workshop! You can learn to paint eggs. Take part in the festival! Entrance is free.** Entrance is free значит «вход бесплатный», festival — «фестиваль, праздник»."
               }
-            },
-            {
-              "id": "english-t26-p6",
-              "subject": "english",
-              "topicId": "english-t26",
-              "difficulty": "basic",
-              "type": "single",
-              "question": "Что значит autumn?",
-              "answer": "осень",
-              "options": [
-                "осень",
-                "лето",
-                "зима",
-                "весна"
-              ],
-              "explanation": [
-                "Autumn — осень."
-              ],
-              "hints": []
             },
             {
               "id": "english-t26-p7",
@@ -10530,8 +11775,8 @@
                 "Первая буква — f."
               ],
               "ref": {
-                "card": 0,
-                "quote": "**Free** — «бесплатный» или «свободный»."
+                "card": 1,
+                "quote": "Приглашение на мастер-класс: **Come to our workshop! You can learn to paint eggs. Take part in the festival! Entrance is free.** Entrance is free значит «вход бесплатный», festival — «фестиваль, праздник»."
               }
             },
             {
@@ -10549,9 +11794,239 @@
                 "парк"
               ],
               "explanation": [
-                "The Bright Autumn Festival."
+                "Festival значит «фестиваль, праздник»."
               ],
-              "hints": []
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Приглашение на мастер-класс: **Come to our workshop! You can learn to paint eggs. Take part in the festival! Entrance is free.** Entrance is free значит «вход бесплатный», festival — «фестиваль, праздник»."
+              }
+            }
+          ],
+          "pool": [
+            {
+              "id": "english-t26-q12",
+              "subject": "english",
+              "topicId": "english-t26",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Какие два значения у слова free?",
+              "answer": "«бесплатный» или «свободный»",
+              "options": [
+                "«бесплатный» или «свободный»",
+                "«быстрый» или «лёгкий»",
+                "«новый» или «старый»",
+                "«большой» или «маленький»"
+              ],
+              "explanation": [
+                "Free — «бесплатный» или «свободный»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "**Free** — «бесплатный» или «свободный»."
+              }
+            },
+            {
+              "id": "english-t26-q13",
+              "subject": "english",
+              "topicId": "english-t26",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как будет «принимать участие»?",
+              "answer": "take part",
+              "options": [
+                "take part",
+                "take photos",
+                "take a seat",
+                "take off"
+              ],
+              "explanation": [
+                "Take part (in) значит «принимать участие»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "**Take part (in)** значит «принимать участие»."
+              }
+            },
+            {
+              "id": "english-t26-q14",
+              "subject": "english",
+              "topicId": "english-t26",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Какая фраза приглашает на праздник?",
+              "answer": "Take part in the festival!",
+              "options": [
+                "Take part in the festival!",
+                "We took part in the workshop.",
+                "It was free.",
+                "Where? School hall."
+              ],
+              "explanation": [
+                "Приглашение — это приказ: Take part in the festival!"
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Приглашение на мастер-класс: **Come to our workshop! You can learn to paint eggs. Take part in the festival! Entrance is free.** Entrance is free значит «вход бесплатный», festival — «фестиваль, праздник»."
+              }
+            },
+            {
+              "id": "english-t26-q15",
+              "subject": "english",
+              "topicId": "english-t26",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит «Entrance is free»?",
+              "answer": "Вход бесплатный.",
+              "options": [
+                "Вход бесплатный.",
+                "Вход закрыт.",
+                "Вход платный.",
+                "Выход свободен."
+              ],
+              "explanation": [
+                "Entrance is free значит «вход бесплатный»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Приглашение на мастер-класс: **Come to our workshop! You can learn to paint eggs. Take part in the festival! Entrance is free.** Entrance is free значит «вход бесплатный», festival — «фестиваль, праздник»."
+              }
+            },
+            {
+              "id": "english-t26-q16",
+              "subject": "english",
+              "topicId": "english-t26",
+              "difficulty": "basic",
+              "type": "truefalse",
+              "question": "В приглашении используют приказы: «Come to our workshop!»",
+              "answer": true,
+              "explanation": [
+                "В приглашении используем приказы и can: Come to our workshop!"
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Здесь используем приказы и **can** — «можешь»."
+              }
+            },
+            {
+              "id": "english-t26-q17",
+              "subject": "english",
+              "topicId": "english-t26",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Past Simple от learn.",
+              "answer": "learnt",
+              "options": [
+                "learnt",
+                "learnd",
+                "learn",
+                "learns"
+              ],
+              "explanation": [
+                "Learn → learnt (или learned)."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Для рассказа об участии в мероприятии в прошлом: **We took part in the workshop. We learnt to make a toy. It was free.** Take — took, learn — learnt (или learned)."
+              }
+            },
+            {
+              "id": "english-t26-q18",
+              "subject": "english",
+              "topicId": "english-t26",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как сказать «Это было бесплатно»?",
+              "answer": "It was free.",
+              "options": [
+                "It was free.",
+                "It is free.",
+                "It were free.",
+                "It free."
+              ],
+              "explanation": [
+                "О прошлом говорим: It was free."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Для рассказа об участии в мероприятии в прошлом: **We took part in the workshop. We learnt to make a toy. It was free.** Take — took, learn — learnt (или learned)."
+              }
+            },
+            {
+              "id": "english-t26-q19",
+              "subject": "english",
+              "topicId": "english-t26",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Какой вопрос афиши значит «сколько стоит»?",
+              "answer": "How much?",
+              "options": [
+                "How much?",
+                "When?",
+                "Where?",
+                "What?"
+              ],
+              "explanation": [
+                "How much? — «сколько стоит»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 3,
+                "quote": "Афиша (плакат) отвечает на вопросы: **What?** (что), **Where?** (где), **When?** (когда), **How much?** (сколько стоит)."
+              }
+            },
+            {
+              "id": "english-t26-q20",
+              "subject": "english",
+              "topicId": "english-t26",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Какой вопрос отвечает на «School hall»?",
+              "answer": "Where?",
+              "options": [
+                "Where?",
+                "When?",
+                "How much?",
+                "Why?"
+              ],
+              "explanation": [
+                "School hall — это место, вопрос Where? (где)."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 3,
+                "quote": "Афиша (плакат) отвечает на вопросы: **What?** (что), **Where?** (где), **When?** (когда), **How much?** (сколько стоит)."
+              }
+            },
+            {
+              "id": "english-t26-q21",
+              "subject": "english",
+              "topicId": "english-t26",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Какой вопрос отвечает на «Workshop “Paint a pot”»?",
+              "answer": "What?",
+              "options": [
+                "What?",
+                "When?",
+                "Where?",
+                "How much?"
+              ],
+              "explanation": [
+                "Название события отвечает на вопрос What? (что)."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 3,
+                "quote": "Афиша (плакат) отвечает на вопросы: **What?** (что), **Where?** (где), **When?** (когда), **How much?** (сколько стоит)."
+              }
             }
           ],
           "card": {
