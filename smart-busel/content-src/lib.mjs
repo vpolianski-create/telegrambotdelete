@@ -57,6 +57,7 @@ export function buildSubject(meta, sections) {
   const seen = new Set();
   const pictures = meta.images ?? [];
   const dropped = new Set(meta.drop ?? []);
+  const usedAt = new Set();
   const out = {
     id: meta.id, title: meta.title, language: meta.language, color: meta.color, icon: meta.icon,
     sections: sections.map(([title, topics], si) => ({
@@ -72,11 +73,14 @@ export function buildSubject(meta, sections) {
         const cards = (spec.cards ?? []).flatMap((c) => splitCard(c));
         const fix = (task, difficulty, prefix) => {
           if ('generator' in task) return task;
-          const { adv: isAdv, at, ...rest } = task;
-          // место в уроке, где есть ответ: для подсказки и разбора ошибки
-          const ref = at ? refAt(at, cards) : findRef(rest, cards);
-          if (at && !ref) throw new Error(`${id}: в карточках нет фразы «${at}» (вопрос «${rest.question}»)`);
+          const { adv: isAdv, at: own, ...rest } = task;
           const taskId = `${id}-${prefix}${next()}`;
+          // место в уроке, где есть ответ: для подсказки и разбора ошибки.
+          // Фразу-правило можно указать у самого задания (R) или в meta.at по номеру старого задания.
+          const at = own ?? meta.at?.[taskId];
+          if (meta.at) usedAt.add(taskId);
+          const ref = at ? refAt(at, cards) : findRef(rest, cards);
+          if (at && !ref) throw new Error(`${taskId}: в карточках нет фразы «${at}» (вопрос «${rest.question}»)`);
           const better = meta.explain?.[taskId]; // переписанное объяснение к старому заданию
           return {
             id: taskId, subject: meta.id, topicId: id,
@@ -114,6 +118,8 @@ export function buildSubject(meta, sections) {
       }),
     })),
   };
+  const lostAt = Object.keys(meta.at ?? {}).filter((x) => !usedAt.has(x));
+  if (lostAt.length) throw new Error(`${meta.id}: в at указаны несуществующие задания: ${lostAt.join(', ')}`);
   if (dropped.size) throw new Error(`${meta.id}: в drop указаны несуществующие задания: ${[...dropped].join(', ')}`);
   return out;
 }

@@ -4,6 +4,7 @@ import { engU2 } from './parts/eng-u2.mjs';
 import { engU3 } from './parts/eng-u3.mjs';
 import { engU4 } from './parts/eng-u4.mjs';
 import { engU5 } from './parts/eng-u5.mjs';
+import { englishAt, englishDrop, englishExplain, englishPool } from './english-pool.mjs';
 
 const AIA = ['am', 'is', 'are'];
 
@@ -437,7 +438,7 @@ const oldSections = [
 const old = oldSections.flatMap(([, topics]) => topics);
 const o = (...ns) => ns.map((n) => old.find((t) => t.n === n));
 
-export const subject = buildSubject({ id: 'english', title: 'Английский язык', language: 'en', color: '#0b7285', icon: '🔤', review: false }, [
+export const subject = buildSubject({ id: 'english', title: 'Английский язык', language: 'en', color: '#0b7285', icon: '🔤', review: false, pool: englishPool, explain: englishExplain, drop: englishDrop, at: englishAt }, [
   ['Повторение: то, что знаешь из начальной школы', o(1, 2, 4, 6, 9, 10, 12)],
   ['Unit 1. In Summer', [...engU1.slice(0, 3), ...o(5), ...engU1.slice(3, 4), ...o(11), ...engU1.slice(4)]],
   ['Unit 2. Be Active!', [...engU2.slice(0, 3), ...o(3), ...engU2.slice(3)]],
