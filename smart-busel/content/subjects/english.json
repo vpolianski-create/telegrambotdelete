@@ -12048,7 +12048,8 @@
           "cards": [
             "Виды передач (TV programmes): **the news** (новости), **cartoon** (мультфильм), **documentary** (документальный фильм), **educational programme** (познавательная программа), **game show** (игровое шоу), **talk show** (ток-шоу), **music programme** (музыкальная программа), **nature programme** (передача о природе), **sports programme** (спортивная программа), **TV series** (сериал).",
             "Жанры фильмов (genre — жанр): **action film** (боевик), **adventure film** (приключенческий), **comedy** (комедия), **detective film** (детектив), **fantasy film** (фэнтези), **horror film** (фильм ужасов), **romantic film** (мелодрама), **science fiction film** (научная фантастика), **fairy tale** (сказка).",
-            "Чтобы высказать **мнение**, говорим: **I like / I love … I don’t like … My favourite programme is … I think … is exciting.** Спросить: **Do you like cartoons? What is your favourite film?** Ответ: Yes, I do. / No, I don’t.",
+            "Чтобы высказать **мнение**, говорим: **I like / I love … I don’t like … My favourite programme is … I think … is exciting.** Favourite значит «любимый».",
+            "Спросить: **Do you like cartoons? What is your favourite film?** Ответ: Yes, I do. / No, I don’t.",
             "**To be on TV** значит «идти по телевизору»: **What’s on TV?** — «Что сейчас по ТВ?» **The news is on at seven.** Эти слова помогут составить идеальную телепрограмму (TV guide)."
           ],
           "example": {
@@ -12226,7 +12227,11 @@
               "explanation": [
                 "Be on TV — идти по ТВ."
               ],
-              "hints": []
+              "hints": [],
+              "ref": {
+                "card": 4,
+                "quote": "**To be on TV** значит «идти по телевизору»: **What’s on TV?** — «Что сейчас по ТВ?» **The news is on at seven.** Эти слова помогут составить идеальную телепрограмму (TV guide)."
+              }
             },
             {
               "id": "english-t27-p8",
@@ -12302,14 +12307,286 @@
               "question": "Вставь слово: My ___ film is “Frozen”. (любимый)",
               "answer": "favourite",
               "explanation": [
-                "Favourite — любимый."
+                "Favourite значит «любимый»."
               ],
               "hints": [
                 "Первая буква — f."
               ],
               "ref": {
                 "card": 2,
-                "quote": "Чтобы высказать **мнение**, говорим: **I like / I love … I don’t like … My favourite programme is … I think … is exciting.** Спросить: **Do you like cartoons? What is your favourite film?** Ответ: Yes, I do. / No, I don’t."
+                "quote": "Чтобы высказать **мнение**, говорим: **I like / I love … I don’t like … My favourite programme is … I think … is exciting.** Favourite значит «любимый»."
+              }
+            }
+          ],
+          "pool": [
+            {
+              "id": "english-t27-q12",
+              "subject": "english",
+              "topicId": "english-t27",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит cartoon?",
+              "answer": "мультфильм",
+              "options": [
+                "мультфильм",
+                "сериал",
+                "новости",
+                "сказка"
+              ],
+              "explanation": [
+                "Cartoon значит «мультфильм»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Виды передач (TV programmes): **the news** (новости), **cartoon** (мультфильм), **documentary** (документальный фильм), **educational programme** (познавательная программа), **game show** (игровое шоу), **talk show** (ток-шоу), **music programme** (музыкальная программа), **nature programme** (передача о природе), **sports programme** (спортивная программа), **TV series** (сериал)."
+              }
+            },
+            {
+              "id": "english-t27-q13",
+              "subject": "english",
+              "topicId": "english-t27",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как будет «игровое шоу»?",
+              "answer": "game show",
+              "options": [
+                "game show",
+                "talk show",
+                "TV series",
+                "the news"
+              ],
+              "explanation": [
+                "Game show — игровое шоу."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Виды передач (TV programmes): **the news** (новости), **cartoon** (мультфильм), **documentary** (документальный фильм), **educational programme** (познавательная программа), **game show** (игровое шоу), **talk show** (ток-шоу), **music programme** (музыкальная программа), **nature programme** (передача о природе), **sports programme** (спортивная программа), **TV series** (сериал)."
+              }
+            },
+            {
+              "id": "english-t27-q14",
+              "subject": "english",
+              "topicId": "english-t27",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит nature programme?",
+              "answer": "передача о природе",
+              "options": [
+                "передача о природе",
+                "музыкальная программа",
+                "спортивная программа",
+                "познавательная программа"
+              ],
+              "explanation": [
+                "Nature programme — передача о природе."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Виды передач (TV programmes): **the news** (новости), **cartoon** (мультфильм), **documentary** (документальный фильм), **educational programme** (познавательная программа), **game show** (игровое шоу), **talk show** (ток-шоу), **music programme** (музыкальная программа), **nature programme** (передача о природе), **sports programme** (спортивная программа), **TV series** (сериал)."
+              }
+            },
+            {
+              "id": "english-t27-q15",
+              "subject": "english",
+              "topicId": "english-t27",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как будет «сериал»?",
+              "answer": "TV series",
+              "options": [
+                "TV series",
+                "cartoon",
+                "documentary",
+                "game show"
+              ],
+              "explanation": [
+                "TV series значит «сериал»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Виды передач (TV programmes): **the news** (новости), **cartoon** (мультфильм), **documentary** (документальный фильм), **educational programme** (познавательная программа), **game show** (игровое шоу), **talk show** (ток-шоу), **music programme** (музыкальная программа), **nature programme** (передача о природе), **sports programme** (спортивная программа), **TV series** (сериал)."
+              }
+            },
+            {
+              "id": "english-t27-q16",
+              "subject": "english",
+              "topicId": "english-t27",
+              "difficulty": "basic",
+              "type": "input",
+              "question": "Напиши по-английски слово «мультфильм».",
+              "answer": "cartoon",
+              "explanation": [
+                "Мультфильм по-английски — cartoon."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Виды передач (TV programmes): **the news** (новости), **cartoon** (мультфильм), **documentary** (документальный фильм), **educational programme** (познавательная программа), **game show** (игровое шоу), **talk show** (ток-шоу), **music programme** (музыкальная программа), **nature programme** (передача о природе), **sports programme** (спортивная программа), **TV series** (сериал)."
+              }
+            },
+            {
+              "id": "english-t27-q17",
+              "subject": "english",
+              "topicId": "english-t27",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит comedy?",
+              "answer": "комедия",
+              "options": [
+                "комедия",
+                "детектив",
+                "сказка",
+                "боевик"
+              ],
+              "explanation": [
+                "Comedy значит «комедия»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Жанры фильмов (genre — жанр): **action film** (боевик), **adventure film** (приключенческий), **comedy** (комедия), **detective film** (детектив), **fantasy film** (фэнтези), **horror film** (фильм ужасов), **romantic film** (мелодрама), **science fiction film** (научная фантастика), **fairy tale** (сказка)."
+              }
+            },
+            {
+              "id": "english-t27-q18",
+              "subject": "english",
+              "topicId": "english-t27",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как будет «сказка»?",
+              "answer": "fairy tale",
+              "options": [
+                "fairy tale",
+                "fantasy film",
+                "comedy",
+                "adventure film"
+              ],
+              "explanation": [
+                "Fairy tale значит «сказка»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Жанры фильмов (genre — жанр): **action film** (боевик), **adventure film** (приключенческий), **comedy** (комедия), **detective film** (детектив), **fantasy film** (фэнтези), **horror film** (фильм ужасов), **romantic film** (мелодрама), **science fiction film** (научная фантастика), **fairy tale** (сказка)."
+              }
+            },
+            {
+              "id": "english-t27-q19",
+              "subject": "english",
+              "topicId": "english-t27",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит science fiction film?",
+              "answer": "научная фантастика",
+              "options": [
+                "научная фантастика",
+                "фильм ужасов",
+                "мелодрама",
+                "приключенческий фильм"
+              ],
+              "explanation": [
+                "Science fiction film — научная фантастика."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Жанры фильмов (genre — жанр): **action film** (боевик), **adventure film** (приключенческий), **comedy** (комедия), **detective film** (детектив), **fantasy film** (фэнтези), **horror film** (фильм ужасов), **romantic film** (мелодрама), **science fiction film** (научная фантастика), **fairy tale** (сказка)."
+              }
+            },
+            {
+              "id": "english-t27-q20",
+              "subject": "english",
+              "topicId": "english-t27",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как будет «приключенческий фильм»?",
+              "answer": "adventure film",
+              "options": [
+                "adventure film",
+                "action film",
+                "detective film",
+                "horror film"
+              ],
+              "explanation": [
+                "Adventure film — приключенческий фильм."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Жанры фильмов (genre — жанр): **action film** (боевик), **adventure film** (приключенческий), **comedy** (комедия), **detective film** (детектив), **fantasy film** (фэнтези), **horror film** (фильм ужасов), **romantic film** (мелодрама), **science fiction film** (научная фантастика), **fairy tale** (сказка)."
+              }
+            },
+            {
+              "id": "english-t27-q21",
+              "subject": "english",
+              "topicId": "english-t27",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как сказать «Моя любимая передача — …»?",
+              "answer": "My favourite programme is …",
+              "options": [
+                "My favourite programme is …",
+                "I don’t like …",
+                "What’s on TV?",
+                "Do you like cartoons?"
+              ],
+              "explanation": [
+                "Favourite значит «любимый»: My favourite programme is …"
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Чтобы высказать **мнение**, говорим: **I like / I love … I don’t like … My favourite programme is … I think … is exciting.** Favourite значит «любимый»."
+              }
+            },
+            {
+              "id": "english-t27-q22",
+              "subject": "english",
+              "topicId": "english-t27",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "The news ___ on at seven.",
+              "answer": "is",
+              "options": [
+                "is",
+                "are",
+                "am",
+                "be"
+              ],
+              "explanation": [
+                "Со словом the news используем is: The news is on at seven."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 4,
+                "quote": "**To be on TV** значит «идти по телевизору»: **What’s on TV?** — «Что сейчас по ТВ?» **The news is on at seven.** Эти слова помогут составить идеальную телепрограмму (TV guide)."
+              }
+            },
+            {
+              "id": "english-t27-q23",
+              "subject": "english",
+              "topicId": "english-t27",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Do you like cartoons? — …",
+              "answer": "Yes, I do.",
+              "options": [
+                "Yes, I do.",
+                "Yes, I like.",
+                "Yes, I am.",
+                "Yes, I does."
+              ],
+              "explanation": [
+                "На вопрос с Do отвечаем: Yes, I do."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 3,
+                "quote": "Спросить: **Do you like cartoons? What is your favourite film?** Ответ: Yes, I do. / No, I don’t."
               }
             }
           ],
@@ -12591,6 +12868,301 @@
               "ref": {
                 "card": 2,
                 "quote": "**Рецензия** (review) — короткий отзыв: название, жанр, о чём, мнение, совет. **“Frozen” is a cartoon. It is about two sisters. It is exciting and touching. I recommend it!** Слово **recommend** — «рекомендовать»."
+              }
+            }
+          ],
+          "pool": [
+            {
+              "id": "english-t28-q12",
+              "subject": "english",
+              "topicId": "english-t28",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит amusing?",
+              "answer": "забавный",
+              "options": [
+                "забавный",
+                "страшный",
+                "глупый",
+                "ужасный"
+              ],
+              "explanation": [
+                "Amusing значит «забавный»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Слова-оценки: **exciting** (захватывающий), **amusing** (забавный), **scary** (страшный), **touching** (трогательный), **silly** (глупый), **horrible** (ужасный)."
+              }
+            },
+            {
+              "id": "english-t28-q13",
+              "subject": "english",
+              "topicId": "english-t28",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как будет «ужасный»?",
+              "answer": "horrible",
+              "options": [
+                "horrible",
+                "exciting",
+                "touching",
+                "amusing"
+              ],
+              "explanation": [
+                "Horrible значит «ужасный»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Слова-оценки: **exciting** (захватывающий), **amusing** (забавный), **scary** (страшный), **touching** (трогательный), **silly** (глупый), **horrible** (ужасный)."
+              }
+            },
+            {
+              "id": "english-t28-q14",
+              "subject": "english",
+              "topicId": "english-t28",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как будет «трогательный»?",
+              "answer": "touching",
+              "options": [
+                "touching",
+                "scary",
+                "silly",
+                "horrible"
+              ],
+              "explanation": [
+                "Touching значит «трогательный»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Слова-оценки: **exciting** (захватывающий), **amusing** (забавный), **scary** (страшный), **touching** (трогательный), **silly** (глупый), **horrible** (ужасный)."
+              }
+            },
+            {
+              "id": "english-t28-q15",
+              "subject": "english",
+              "topicId": "english-t28",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит exciting?",
+              "answer": "захватывающий",
+              "options": [
+                "захватывающий",
+                "забавный",
+                "глупый",
+                "страшный"
+              ],
+              "explanation": [
+                "Exciting значит «захватывающий»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Слова-оценки: **exciting** (захватывающий), **amusing** (забавный), **scary** (страшный), **touching** (трогательный), **silly** (глупый), **horrible** (ужасный)."
+              }
+            },
+            {
+              "id": "english-t28-q16",
+              "subject": "english",
+              "topicId": "english-t28",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "What films did you watch yesterday? — …",
+              "answer": "I watched a comedy.",
+              "options": [
+                "I watched a comedy.",
+                "I watch a comedy.",
+                "I am watching a comedy.",
+                "I did watched a comedy."
+              ],
+              "explanation": [
+                "О вчерашнем отвечаем в Past Simple: I watched a comedy."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Вопросы о вчерашнем просмотре: **What films did you watch yesterday? Did you like it? Why?** Ответ: I watched a comedy."
+              }
+            },
+            {
+              "id": "english-t28-q17",
+              "subject": "english",
+              "topicId": "english-t28",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Выбери верный вопрос: «Тебе понравилось?»",
+              "answer": "Did you like it?",
+              "options": [
+                "Did you like it?",
+                "Did you liked it?",
+                "Do you liked it?",
+                "Was you like it?"
+              ],
+              "explanation": [
+                "Вопрос о прошлом: Did you like it?"
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Вопросы о вчерашнем просмотре: **What films did you watch yesterday? Did you like it? Why?** Ответ: I watched a comedy."
+              }
+            },
+            {
+              "id": "english-t28-q18",
+              "subject": "english",
+              "topicId": "english-t28",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что такое review?",
+              "answer": "короткий отзыв",
+              "options": [
+                "короткий отзыв",
+                "длинный фильм",
+                "телепрограмма",
+                "афиша"
+              ],
+              "explanation": [
+                "Рецензия (review) — короткий отзыв."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "**Рецензия** (review) — короткий отзыв: название, жанр, о чём, мнение, совет. **“Frozen” is a cartoon. It is about two sisters. It is exciting and touching. I recommend it!** Слово **recommend** — «рекомендовать»."
+              }
+            },
+            {
+              "id": "english-t28-q19",
+              "subject": "english",
+              "topicId": "english-t28",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "It is ___ two sisters. (о двух сёстрах)",
+              "answer": "about",
+              "options": [
+                "about",
+                "at",
+                "on",
+                "of"
+              ],
+              "explanation": [
+                "О чём фильм, говорим с about: It is about two sisters."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "**Рецензия** (review) — короткий отзыв: название, жанр, о чём, мнение, совет. **“Frozen” is a cartoon. It is about two sisters. It is exciting and touching. I recommend it!** Слово **recommend** — «рекомендовать»."
+              }
+            },
+            {
+              "id": "english-t28-q20",
+              "subject": "english",
+              "topicId": "english-t28",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит strong?",
+              "answer": "сильный",
+              "options": [
+                "сильный",
+                "слабый",
+                "храбрый",
+                "оба"
+              ],
+              "explanation": [
+                "Strong значит «сильный»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 3,
+                "quote": "Полезные слова: **both** (оба), **brave** (храбрый), **strong** (сильный), **weak** (слабый)."
+              }
+            },
+            {
+              "id": "english-t28-q21",
+              "subject": "english",
+              "topicId": "english-t28",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит both?",
+              "answer": "оба",
+              "options": [
+                "оба",
+                "храбрый",
+                "слабый",
+                "сильный"
+              ],
+              "explanation": [
+                "Both значит «оба»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 3,
+                "quote": "Полезные слова: **both** (оба), **brave** (храбрый), **strong** (сильный), **weak** (слабый)."
+              }
+            },
+            {
+              "id": "english-t28-q22",
+              "subject": "english",
+              "topicId": "english-t28",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как будет «слабый»?",
+              "answer": "weak",
+              "options": [
+                "weak",
+                "strong",
+                "brave",
+                "both"
+              ],
+              "explanation": [
+                "Weak значит «слабый»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 3,
+                "quote": "Полезные слова: **both** (оба), **brave** (храбрый), **strong** (сильный), **weak** (слабый)."
+              }
+            },
+            {
+              "id": "english-t28-q23",
+              "subject": "english",
+              "topicId": "english-t28",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Какая фраза — совет посмотреть фильм?",
+              "answer": "You should watch it.",
+              "options": [
+                "You should watch it.",
+                "I didn’t like it.",
+                "It was silly.",
+                "What films did you watch?"
+              ],
+              "explanation": [
+                "Фраза совета: You should watch it."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 3,
+                "quote": "Фразы совета: **You should watch it. Don’t miss it!**"
+              }
+            },
+            {
+              "id": "english-t28-q24",
+              "subject": "english",
+              "topicId": "english-t28",
+              "difficulty": "basic",
+              "type": "truefalse",
+              "question": "«Don’t miss it!» — это фраза совета.",
+              "answer": true,
+              "explanation": [
+                "Фразы совета: You should watch it. Don’t miss it!"
+              ],
+              "hints": [],
+              "ref": {
+                "card": 3,
+                "quote": "Фразы совета: **You should watch it. Don’t miss it!**"
               }
             }
           ],
@@ -13310,7 +13882,7 @@
                 "Who is it?"
               ],
               "explanation": [
-                "Time — время."
+                "Время спрашивают так: What time is it?"
               ],
               "hints": [],
               "ref": {
@@ -13417,12 +13989,261 @@
                 "two o’clock"
               ],
               "explanation": [
-                "Half past."
+                "30 минут — «половина после»: half past two."
               ],
               "hints": [],
               "ref": {
                 "card": 0,
                 "quote": "**It’s a quarter past five** (5:15, «четверть после пяти»), **It’s half past five** (5:30, «половина после пяти»), **It’s a quarter to six** (5:45, «четверть до шести»)."
+              }
+            }
+          ],
+          "pool": [
+            {
+              "id": "english-t29-q12",
+              "subject": "english",
+              "topicId": "english-t29",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "6:15 — это …",
+              "answer": "It’s a quarter past six.",
+              "options": [
+                "It’s a quarter past six.",
+                "It’s a quarter to six.",
+                "It’s half past six.",
+                "It’s six o’clock."
+              ],
+              "explanation": [
+                "15 минут после часа — a quarter past."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "**It’s a quarter past five** (5:15, «четверть после пяти»), **It’s half past five** (5:30, «половина после пяти»), **It’s a quarter to six** (5:45, «четверть до шести»)."
+              }
+            },
+            {
+              "id": "english-t29-q13",
+              "subject": "english",
+              "topicId": "english-t29",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "8:30 — это …",
+              "answer": "It’s half past eight.",
+              "options": [
+                "It’s half past eight.",
+                "It’s half to eight.",
+                "It’s a quarter past eight.",
+                "It’s eight o’clock."
+              ],
+              "explanation": [
+                "30 минут — half past."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "**It’s a quarter past five** (5:15, «четверть после пяти»), **It’s half past five** (5:30, «половина после пяти»), **It’s a quarter to six** (5:45, «четверть до шести»)."
+              }
+            },
+            {
+              "id": "english-t29-q14",
+              "subject": "english",
+              "topicId": "english-t29",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "9:45 — это …",
+              "answer": "It’s a quarter to ten.",
+              "options": [
+                "It’s a quarter to ten.",
+                "It’s a quarter past nine.",
+                "It’s a quarter to nine.",
+                "It’s half past nine."
+              ],
+              "explanation": [
+                "45 минут — четверть до следующего часа: a quarter to ten."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "**It’s a quarter past five** (5:15, «четверть после пяти»), **It’s half past five** (5:30, «половина после пяти»), **It’s a quarter to six** (5:45, «четверть до шести»)."
+              }
+            },
+            {
+              "id": "english-t29-q15",
+              "subject": "english",
+              "topicId": "english-t29",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "3:25 — это …",
+              "answer": "twenty-five past three",
+              "options": [
+                "twenty-five past three",
+                "twenty-five to three",
+                "three past twenty-five",
+                "twenty-five to four"
+              ],
+              "explanation": [
+                "До 30 минут говорим past: twenty-five past three."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Минуты: после часа до 30 минут говорим **past**: **ten past three** (3:10), **twenty-five past three** (3:25)."
+              }
+            },
+            {
+              "id": "english-t29-q16",
+              "subject": "english",
+              "topicId": "english-t29",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "4:20 — это …",
+              "answer": "twenty past four",
+              "options": [
+                "twenty past four",
+                "twenty to four",
+                "four past twenty",
+                "twenty to five"
+              ],
+              "explanation": [
+                "До 30 минут говорим past: twenty past four."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Минуты: после часа до 30 минут говорим **past**: **ten past three** (3:10), **twenty-five past three** (3:25)."
+              }
+            },
+            {
+              "id": "english-t29-q17",
+              "subject": "english",
+              "topicId": "english-t29",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "3:55 — это …",
+              "answer": "five to four",
+              "options": [
+                "five to four",
+                "five past three",
+                "five to three",
+                "fifty-five past three"
+              ],
+              "explanation": [
+                "Больше 30 минут — to: five to four."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Если минут больше 30 — **to**: **ten to four** (3:50), **five to four** (3:55)."
+              }
+            },
+            {
+              "id": "english-t29-q18",
+              "subject": "english",
+              "topicId": "english-t29",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Ten to seven — это …",
+              "answer": "6:50",
+              "options": [
+                "6:50",
+                "7:10",
+                "6:10",
+                "7:50"
+              ],
+              "explanation": [
+                "Ten to seven — без десяти семь, 6:50."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Если минут больше 30 — **to**: **ten to four** (3:50), **five to four** (3:55)."
+              }
+            },
+            {
+              "id": "english-t29-q19",
+              "subject": "english",
+              "topicId": "english-t29",
+              "difficulty": "basic",
+              "type": "input",
+              "question": "Вставь слово: It’s twenty ___ six. (5:40)",
+              "answer": "to",
+              "explanation": [
+                "Минут больше 30, поэтому to: twenty to six."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Если минут больше 30 — **to**: **ten to four** (3:50), **five to four** (3:55)."
+              }
+            },
+            {
+              "id": "english-t29-q20",
+              "subject": "english",
+              "topicId": "english-t29",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "What time is the news on? — …",
+              "answer": "It’s on at seven o’clock.",
+              "options": [
+                "It’s on at seven o’clock.",
+                "It’s seven o’clock on.",
+                "It on seven.",
+                "It’s in seven o’clock."
+              ],
+              "explanation": [
+                "Отвечаем: It’s on at seven o’clock."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Телепрограмма: **What time is the news on? — It’s on at seven o’clock.** **The cartoon is on at a quarter past four.** Слова **quarter** (четверть) и **half** (половина) мы уже знаем из учебника, а **be on** значит «идти (о передаче)»."
+              }
+            },
+            {
+              "id": "english-t29-q21",
+              "subject": "english",
+              "topicId": "english-t29",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "В программе: 6:30 nature programme. Как прочитать?",
+              "answer": "The nature programme is on at half past six.",
+              "options": [
+                "The nature programme is on at half past six.",
+                "The nature programme is on at half to six.",
+                "The nature programme is in half past six.",
+                "The nature programme on six thirty is."
+              ],
+              "explanation": [
+                "6:30 — half past six; передача «идёт» — is on."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 3,
+                "quote": "Составим «идеальную программу» (TV guide): **4:00 cartoons — 5:15 sports programme — 6:30 nature programme — 7:00 the news.** Читаем: The sports programme is on at a quarter past five."
+              }
+            },
+            {
+              "id": "english-t29-q22",
+              "subject": "english",
+              "topicId": "english-t29",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит quarter?",
+              "answer": "четверть",
+              "options": [
+                "четверть",
+                "половина",
+                "час",
+                "минута"
+              ],
+              "explanation": [
+                "Quarter значит «четверть», half — «половина»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Телепрограмма: **What time is the news on? — It’s on at seven o’clock.** **The cartoon is on at a quarter past four.** Слова **quarter** (четверть) и **half** (половина) мы уже знаем из учебника, а **be on** значит «идти (о передаче)»."
               }
             }
           ],
@@ -14620,7 +15441,7 @@
                 "does"
               ],
               "explanation": [
-                "После is."
+                "Never значит «никогда» и стоит после to be: He is never late."
               ],
               "hints": [],
               "ref": {
@@ -14646,7 +15467,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 1
+                "card": 1,
+                "quote": "Место наречия: **перед** смысловым глаголом, но **после** to be."
               }
             },
             {
@@ -14713,7 +15535,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 2
+                "card": 2,
+                "quote": "С he / she / it к глаголу добавляем **-s** (watches, goes)."
               }
             },
             {
@@ -14753,7 +15576,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 0
+                "card": 1,
+                "quote": "Место наречия: **перед** смысловым глаголом, но **после** to be."
               }
             },
             {
@@ -14773,6 +15597,232 @@
               "ref": {
                 "card": 0,
                 "quote": "Наречия частоты отвечают на вопрос **How often?** — «Как часто?»: **always** (всегда), **usually** (обычно), **often** (часто), **sometimes** (иногда), **rarely** (редко), **never** (никогда)."
+              }
+            }
+          ],
+          "pool": [
+            {
+              "id": "english-t30-q12",
+              "subject": "english",
+              "topicId": "english-t30",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит sometimes?",
+              "answer": "иногда",
+              "options": [
+                "иногда",
+                "всегда",
+                "редко",
+                "никогда"
+              ],
+              "explanation": [
+                "Sometimes значит «иногда»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Наречия частоты отвечают на вопрос **How often?** — «Как часто?»: **always** (всегда), **usually** (обычно), **often** (часто), **sometimes** (иногда), **rarely** (редко), **never** (никогда)."
+              }
+            },
+            {
+              "id": "english-t30-q13",
+              "subject": "english",
+              "topicId": "english-t30",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как будет «часто»?",
+              "answer": "often",
+              "options": [
+                "often",
+                "rarely",
+                "never",
+                "always"
+              ],
+              "explanation": [
+                "Often значит «часто»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Наречия частоты отвечают на вопрос **How often?** — «Как часто?»: **always** (всегда), **usually** (обычно), **often** (часто), **sometimes** (иногда), **rarely** (редко), **never** (никогда)."
+              }
+            },
+            {
+              "id": "english-t30-q14",
+              "subject": "english",
+              "topicId": "english-t30",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как будет «редко»?",
+              "answer": "rarely",
+              "options": [
+                "rarely",
+                "usually",
+                "often",
+                "sometimes"
+              ],
+              "explanation": [
+                "Rarely значит «редко»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Наречия частоты отвечают на вопрос **How often?** — «Как часто?»: **always** (всегда), **usually** (обычно), **often** (часто), **sometimes** (иногда), **rarely** (редко), **never** (никогда)."
+              }
+            },
+            {
+              "id": "english-t30-q15",
+              "subject": "english",
+              "topicId": "english-t30",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит How often?",
+              "answer": "Как часто?",
+              "options": [
+                "Как часто?",
+                "Как долго?",
+                "Сколько?",
+                "Когда?"
+              ],
+              "explanation": [
+                "How often? — «Как часто?»"
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Наречия частоты отвечают на вопрос **How often?** — «Как часто?»: **always** (всегда), **usually** (обычно), **often** (часто), **sometimes** (иногда), **rarely** (редко), **never** (никогда)."
+              }
+            },
+            {
+              "id": "english-t30-q16",
+              "subject": "english",
+              "topicId": "english-t30",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Выбери верное: «Они обычно дома».",
+              "answer": "They are usually at home.",
+              "options": [
+                "They are usually at home.",
+                "They usually are at home.",
+                "Usually they at home are.",
+                "They are at usually home."
+              ],
+              "explanation": [
+                "После to be: They are usually at home."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Место наречия: **перед** смысловым глаголом, но **после** to be."
+              }
+            },
+            {
+              "id": "english-t30-q17",
+              "subject": "english",
+              "topicId": "english-t30",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Выбери верное: «Я часто смотрю ТВ».",
+              "answer": "I often watch TV.",
+              "options": [
+                "I often watch TV.",
+                "I watch often TV.",
+                "I am often watch TV.",
+                "Often I TV watch."
+              ],
+              "explanation": [
+                "Наречие стоит перед смысловым глаголом: I often watch TV."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Место наречия: **перед** смысловым глаголом, но **после** to be."
+              }
+            },
+            {
+              "id": "english-t30-q18",
+              "subject": "english",
+              "topicId": "english-t30",
+              "difficulty": "basic",
+              "type": "truefalse",
+              "question": "В предложении «He always is late» слово always стоит правильно.",
+              "answer": false,
+              "explanation": [
+                "После to be: He is always late."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Место наречия: **перед** смысловым глаголом, но **после** to be."
+              }
+            },
+            {
+              "id": "english-t30-q19",
+              "subject": "english",
+              "topicId": "english-t30",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "She sometimes ___ to the cinema. (go)",
+              "answer": "goes",
+              "options": [
+                "goes",
+                "go",
+                "going",
+                "gos"
+              ],
+              "explanation": [
+                "С she к глаголу добавляем -s: goes."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "С he / she / it к глаголу добавляем **-s** (watches, goes)."
+              }
+            },
+            {
+              "id": "english-t30-q20",
+              "subject": "english",
+              "topicId": "english-t30",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "How often ___ she go to the cinema?",
+              "answer": "does",
+              "options": [
+                "does",
+                "do",
+                "is",
+                "are"
+              ],
+              "explanation": [
+                "С she в вопросе используем does."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "С he / she / it к глаголу добавляем **-s** (watches, goes)."
+              }
+            },
+            {
+              "id": "english-t30-q21",
+              "subject": "english",
+              "topicId": "english-t30",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Какой ответ значит «Нет, никогда»?",
+              "answer": "No, never.",
+              "options": [
+                "No, never.",
+                "No, rarely.",
+                "Yes, sometimes.",
+                "Yes, always."
+              ],
+              "explanation": [
+                "Never значит «никогда»: No, never."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 3,
+                "quote": "Ответ в шкале: **Yes, always. / Yes, often. / Yes, sometimes. / No, rarely. / No, never.** Так можно ответить в анкете о телепросмотре или даже о здоровом образе жизни."
               }
             }
           ],
@@ -14992,7 +16042,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 0
+                "card": 0,
+                "quote": "Плохие качества: **lazy** (ленивый), **rude** (грубый), **mean** (злой, скупой), **cowardly** (трусливый), **nosy** (любопытный), **weak** (слабый)."
               }
             },
             {
@@ -15057,6 +16108,261 @@
               }
             }
           ],
+          "pool": [
+            {
+              "id": "english-t31-q12",
+              "subject": "english",
+              "topicId": "english-t31",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит loyal?",
+              "answer": "преданный",
+              "options": [
+                "преданный",
+                "ленивый",
+                "грубый",
+                "слабый"
+              ],
+              "explanation": [
+                "Loyal значит «преданный»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Герои мультфильмов — какие они? **cheerful** (жизнерадостный), **helpful** (готовый помочь), **hard-working** (трудолюбивый), **loyal** (преданный), **brave** (храбрый), **strong** (сильный)."
+              }
+            },
+            {
+              "id": "english-t31-q13",
+              "subject": "english",
+              "topicId": "english-t31",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как будет «трудолюбивый»?",
+              "answer": "hard-working",
+              "options": [
+                "hard-working",
+                "helpful",
+                "cheerful",
+                "lazy"
+              ],
+              "explanation": [
+                "Hard-working значит «трудолюбивый»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Герои мультфильмов — какие они? **cheerful** (жизнерадостный), **helpful** (готовый помочь), **hard-working** (трудолюбивый), **loyal** (преданный), **brave** (храбрый), **strong** (сильный)."
+              }
+            },
+            {
+              "id": "english-t31-q14",
+              "subject": "english",
+              "topicId": "english-t31",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит brave?",
+              "answer": "храбрый",
+              "options": [
+                "храбрый",
+                "трусливый",
+                "слабый",
+                "злой"
+              ],
+              "explanation": [
+                "Brave значит «храбрый»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Герои мультфильмов — какие они? **cheerful** (жизнерадостный), **helpful** (готовый помочь), **hard-working** (трудолюбивый), **loyal** (преданный), **brave** (храбрый), **strong** (сильный)."
+              }
+            },
+            {
+              "id": "english-t31-q15",
+              "subject": "english",
+              "topicId": "english-t31",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как будет «готовый помочь»?",
+              "answer": "helpful",
+              "options": [
+                "helpful",
+                "loyal",
+                "nosy",
+                "mean"
+              ],
+              "explanation": [
+                "Helpful значит «готовый помочь»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Герои мультфильмов — какие они? **cheerful** (жизнерадостный), **helpful** (готовый помочь), **hard-working** (трудолюбивый), **loyal** (преданный), **brave** (храбрый), **strong** (сильный)."
+              }
+            },
+            {
+              "id": "english-t31-q16",
+              "subject": "english",
+              "topicId": "english-t31",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как будет «ленивый»?",
+              "answer": "lazy",
+              "options": [
+                "lazy",
+                "rude",
+                "mean",
+                "nosy"
+              ],
+              "explanation": [
+                "Lazy значит «ленивый»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Плохие качества: **lazy** (ленивый), **rude** (грубый), **mean** (злой, скупой), **cowardly** (трусливый), **nosy** (любопытный), **weak** (слабый)."
+              }
+            },
+            {
+              "id": "english-t31-q17",
+              "subject": "english",
+              "topicId": "english-t31",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как будет «грубый»?",
+              "answer": "rude",
+              "options": [
+                "rude",
+                "lazy",
+                "weak",
+                "cowardly"
+              ],
+              "explanation": [
+                "Rude значит «грубый»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Плохие качества: **lazy** (ленивый), **rude** (грубый), **mean** (злой, скупой), **cowardly** (трусливый), **nosy** (любопытный), **weak** (слабый)."
+              }
+            },
+            {
+              "id": "english-t31-q18",
+              "subject": "english",
+              "topicId": "english-t31",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит cowardly?",
+              "answer": "трусливый",
+              "options": [
+                "трусливый",
+                "храбрый",
+                "любопытный",
+                "сильный"
+              ],
+              "explanation": [
+                "Cowardly значит «трусливый»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Плохие качества: **lazy** (ленивый), **rude** (грубый), **mean** (злой, скупой), **cowardly** (трусливый), **nosy** (любопытный), **weak** (слабый)."
+              }
+            },
+            {
+              "id": "english-t31-q19",
+              "subject": "english",
+              "topicId": "english-t31",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Какое слово называет плохое качество?",
+              "answer": "mean",
+              "options": [
+                "mean",
+                "loyal",
+                "helpful",
+                "cheerful"
+              ],
+              "explanation": [
+                "Mean (злой, скупой) — плохое качество."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Плохие качества: **lazy** (ленивый), **rude** (грубый), **mean** (злой, скупой), **cowardly** (трусливый), **nosy** (любопытный), **weak** (слабый)."
+              }
+            },
+            {
+              "id": "english-t31-q20",
+              "subject": "english",
+              "topicId": "english-t31",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Winnie-the-Pooh ___ cheerful and loyal.",
+              "answer": "is",
+              "options": [
+                "is",
+                "are",
+                "am",
+                "be"
+              ],
+              "explanation": [
+                "Winnie-the-Pooh — это he, поэтому is."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Описываем героя: **Winnie-the-Pooh is cheerful and loyal. Piglet is cowardly, but he is a good friend. Rabbit is hard-working. Eeyore is sad.** Используем глагол **to be** и союзы **and, but**."
+              }
+            },
+            {
+              "id": "english-t31-q21",
+              "subject": "english",
+              "topicId": "english-t31",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Piglet is cowardly, ___ he is a good friend.",
+              "answer": "but",
+              "options": [
+                "but",
+                "because",
+                "why",
+                "who"
+              ],
+              "explanation": [
+                "Противопоставление соединяем союзом but («но»)."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Описываем героя: **Winnie-the-Pooh is cheerful and loyal. Piglet is cowardly, but he is a good friend. Rabbit is hard-working. Eeyore is sad.** Используем глагол **to be** и союзы **and, but**."
+              }
+            },
+            {
+              "id": "english-t31-q22",
+              "subject": "english",
+              "topicId": "english-t31",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "I like him ___ he is brave.",
+              "answer": "because",
+              "options": [
+                "because",
+                "why",
+                "what",
+                "who"
+              ],
+              "explanation": [
+                "Причину называем со словом because («потому что»)."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Рассказ о любимом персонаже: **My favourite character is … He / She is … He / She likes … I like him / her because he / she is …** Можно сказать, кого герой напоминает: **He is like my friend.**"
+              }
+            }
+          ],
           "card": {
             "emoji": "🐻",
             "title": "Характер героя",
@@ -15114,7 +16420,11 @@
               "explanation": [
                 "Месяц — in."
               ],
-              "hints": []
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Предлог **in** — для месяцев, лет, времён года, частей суток: **in July, in 2025, in summer, in the morning**."
+              }
             },
             {
               "id": "english-t32-sc2",
@@ -15134,7 +16444,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 3
+                "card": 1,
+                "quote": "Предлог **on** — для дней и дат: **on Monday, on May 9th, on my birthday, on New Year’s Day**."
               }
             }
           ],
@@ -15157,7 +16468,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 3
+                "card": 2,
+                "quote": "Предлог **at** — для точного времени и праздников-периодов: **at 5 o’clock, at night, at Christmas, at Easter, at the weekend**."
               }
             },
             {
@@ -15178,7 +16490,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 0
+                "card": 2,
+                "quote": "Предлог **at** — для точного времени и праздников-периодов: **at 5 o’clock, at night, at Christmas, at Easter, at the weekend**."
               }
             },
             {
@@ -15197,7 +16510,11 @@
               "explanation": [
                 "Время года — in."
               ],
-              "hints": []
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Предлог **in** — для месяцев, лет, времён года, частей суток: **in July, in 2025, in summer, in the morning**."
+              }
             },
             {
               "id": "english-t32-p6",
@@ -15217,7 +16534,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 1
+                "card": 1,
+                "quote": "Предлог **on** — для дней и дат: **on Monday, on May 9th, on my birthday, on New Year’s Day**."
               }
             },
             {
@@ -15236,7 +16554,11 @@
               "explanation": [
                 "At night — ночью."
               ],
-              "hints": []
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Предлог **at** — для точного времени и праздников-периодов: **at 5 o’clock, at night, at Christmas, at Easter, at the weekend**."
+              }
             },
             {
               "id": "english-t32-p8",
@@ -15271,7 +16593,11 @@
               "explanation": [
                 "Нужно in the morning."
               ],
-              "hints": []
+              "hints": [],
+              "ref": {
+                "card": 4,
+                "quote": "Хитрости: **in the morning**, но **at night**; **on Monday**, но **at the weekend**; **on Sundays** — по воскресеньям."
+              }
             }
           ],
           "bonus": [
@@ -15313,7 +16639,303 @@
                 "Две буквы."
               ],
               "ref": {
-                "card": 0
+                "card": 1,
+                "quote": "Предлог **in** — для месяцев, лет, времён года, частей суток: **in July, in 2025, in summer, in the morning**."
+              }
+            }
+          ],
+          "pool": [
+            {
+              "id": "english-t32-q12",
+              "subject": "english",
+              "topicId": "english-t32",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как будет «День Победы»?",
+              "answer": "Victory Day",
+              "options": [
+                "Victory Day",
+                "Labour Day",
+                "Independence Day",
+                "Women’s Day"
+              ],
+              "explanation": [
+                "Victory Day — День Победы."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Праздники Беларуси: **New Year’s Day** (Новый год), **Women’s Day** (8 марта), **Labour Day** (Праздник труда), **Victory Day** (День Победы), **Independence Day** (День Независимости), **Fatherland Defender’s Day** (День защитников Отечества), **Harvest Festival** (Праздник урожая), **October Revolution Day**, **Christmas** (Рождество), **Easter** (Пасха), **Pancake Day** (Масленица)."
+              }
+            },
+            {
+              "id": "english-t32-q13",
+              "subject": "english",
+              "topicId": "english-t32",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит Independence Day?",
+              "answer": "День Независимости",
+              "options": [
+                "День Независимости",
+                "День Победы",
+                "Праздник труда",
+                "Праздник урожая"
+              ],
+              "explanation": [
+                "Independence Day — День Независимости."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Праздники Беларуси: **New Year’s Day** (Новый год), **Women’s Day** (8 марта), **Labour Day** (Праздник труда), **Victory Day** (День Победы), **Independence Day** (День Независимости), **Fatherland Defender’s Day** (День защитников Отечества), **Harvest Festival** (Праздник урожая), **October Revolution Day**, **Christmas** (Рождество), **Easter** (Пасха), **Pancake Day** (Масленица)."
+              }
+            },
+            {
+              "id": "english-t32-q14",
+              "subject": "english",
+              "topicId": "english-t32",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как будет «Пасха»?",
+              "answer": "Easter",
+              "options": [
+                "Easter",
+                "Christmas",
+                "Pancake Day",
+                "Harvest Festival"
+              ],
+              "explanation": [
+                "Easter значит «Пасха»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Праздники Беларуси: **New Year’s Day** (Новый год), **Women’s Day** (8 марта), **Labour Day** (Праздник труда), **Victory Day** (День Победы), **Independence Day** (День Независимости), **Fatherland Defender’s Day** (День защитников Отечества), **Harvest Festival** (Праздник урожая), **October Revolution Day**, **Christmas** (Рождество), **Easter** (Пасха), **Pancake Day** (Масленица)."
+              }
+            },
+            {
+              "id": "english-t32-q15",
+              "subject": "english",
+              "topicId": "english-t32",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит Harvest Festival?",
+              "answer": "Праздник урожая",
+              "options": [
+                "Праздник урожая",
+                "Масленица",
+                "Рождество",
+                "Новый год"
+              ],
+              "explanation": [
+                "Harvest Festival — Праздник урожая."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Праздники Беларуси: **New Year’s Day** (Новый год), **Women’s Day** (8 марта), **Labour Day** (Праздник труда), **Victory Day** (День Победы), **Independence Day** (День Независимости), **Fatherland Defender’s Day** (День защитников Отечества), **Harvest Festival** (Праздник урожая), **October Revolution Day**, **Christmas** (Рождество), **Easter** (Пасха), **Pancake Day** (Масленица)."
+              }
+            },
+            {
+              "id": "english-t32-q16",
+              "subject": "english",
+              "topicId": "english-t32",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит celebrate?",
+              "answer": "праздновать",
+              "options": [
+                "праздновать",
+                "украшать",
+                "приглашать",
+                "дарить"
+              ],
+              "explanation": [
+                "Celebrate значит «праздновать»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "**Celebrate** — «праздновать», **celebration** — «праздник»."
+              }
+            },
+            {
+              "id": "english-t32-q17",
+              "subject": "english",
+              "topicId": "english-t32",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "We go to the sea ___ summer.",
+              "answer": "in",
+              "options": [
+                "in",
+                "on",
+                "at",
+                "to"
+              ],
+              "explanation": [
+                "С временами года используем in: in summer."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Предлог **in** — для месяцев, лет, времён года, частей суток: **in July, in 2025, in summer, in the morning**."
+              }
+            },
+            {
+              "id": "english-t32-q18",
+              "subject": "english",
+              "topicId": "english-t32",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "I do my homework ___ the evening.",
+              "answer": "in",
+              "options": [
+                "in",
+                "on",
+                "at",
+                "to"
+              ],
+              "explanation": [
+                "С частями суток используем in: in the evening."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Предлог **in** — для месяцев, лет, времён года, частей суток: **in July, in 2025, in summer, in the morning**."
+              }
+            },
+            {
+              "id": "english-t32-q19",
+              "subject": "english",
+              "topicId": "english-t32",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "He was born ___ 2014.",
+              "answer": "in",
+              "options": [
+                "in",
+                "on",
+                "at",
+                "to"
+              ],
+              "explanation": [
+                "С годами используем in: in 2014."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Предлог **in** — для месяцев, лет, времён года, частей суток: **in July, in 2025, in summer, in the morning**."
+              }
+            },
+            {
+              "id": "english-t32-q20",
+              "subject": "english",
+              "topicId": "english-t32",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "The party is ___ my birthday.",
+              "answer": "on",
+              "options": [
+                "in",
+                "on",
+                "at",
+                "to"
+              ],
+              "explanation": [
+                "С днями используем on: on my birthday."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Предлог **on** — для дней и дат: **on Monday, on May 9th, on my birthday, on New Year’s Day**."
+              }
+            },
+            {
+              "id": "english-t32-q21",
+              "subject": "english",
+              "topicId": "english-t32",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Women’s Day is ___ March 8th.",
+              "answer": "on",
+              "options": [
+                "in",
+                "on",
+                "at",
+                "to"
+              ],
+              "explanation": [
+                "С датами используем on: on March 8th."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Предлог **on** — для дней и дат: **on Monday, on May 9th, on my birthday, on New Year’s Day**."
+              }
+            },
+            {
+              "id": "english-t32-q22",
+              "subject": "english",
+              "topicId": "english-t32",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "We don’t go to school ___ the weekend.",
+              "answer": "at",
+              "options": [
+                "in",
+                "on",
+                "at",
+                "to"
+              ],
+              "explanation": [
+                "Говорят at the weekend."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Предлог **at** — для точного времени и праздников-периодов: **at 5 o’clock, at night, at Christmas, at Easter, at the weekend**."
+              }
+            },
+            {
+              "id": "english-t32-q23",
+              "subject": "english",
+              "topicId": "english-t32",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "We paint eggs ___ Easter.",
+              "answer": "at",
+              "options": [
+                "in",
+                "on",
+                "at",
+                "to"
+              ],
+              "explanation": [
+                "С праздниками-периодами используем at: at Easter."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Предлог **at** — для точного времени и праздников-периодов: **at 5 o’clock, at night, at Christmas, at Easter, at the weekend**."
+              }
+            },
+            {
+              "id": "english-t32-q24",
+              "subject": "english",
+              "topicId": "english-t32",
+              "difficulty": "basic",
+              "type": "truefalse",
+              "question": "Говорят «at the weekend», но «on Monday».",
+              "answer": true,
+              "explanation": [
+                "Хитрость: on Monday, но at the weekend."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 4,
+                "quote": "Хитрости: **in the morning**, но **at night**; **on Monday**, но **at the weekend**; **on Sundays** — по воскресеньям."
               }
             }
           ],
@@ -15331,7 +16953,7 @@
             "Что делают на празднике: **invite relatives** (приглашать родственников), **decorate … with …** (украшать чем-то), **light candles** (зажигать свечи), **get presents** (получать подарки), **send cards** (посылать открытки), **watch a parade** (смотреть парад), **watch fireworks** (смотреть салют), **play jokes on …** (подшучивать над …), **wish happiness** (желать счастья), **paint eggs** (красить яйца).",
             "Про то, что **делаем каждый год**, используем **Present Simple**: **We invite our relatives. My mum decorates the house with lights. We watch fireworks.** С he / she / it добавляем **-s**: **decorates, lights, sends, gets**.",
             "Про то, что **было в прошлом году**, используем **Past Simple**: **We invited relatives. We lit candles (light — lit). We got presents. She sent cards. We watched a parade.** Light — lit, get — got, send — sent.",
-            "Рассказ: **On Easter we paint eggs. Last Easter we painted eggs and gave them to our relatives.** Здесь важно слово: **Last Easter, last year** — прошедшее время, **every year, always** — настоящее."
+            "Рассказ: **At Easter we paint eggs. Last Easter we painted eggs and gave them to our relatives.** Здесь важно слово: **Last Easter, last year** — прошедшее время, **every year, always** — настоящее."
           ],
           "example": {
             "title": "Расскажи, что ты делаешь на Новый год.",
@@ -15530,7 +17152,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 0
+                "card": 0,
+                "quote": "Что делают на празднике: **invite relatives** (приглашать родственников), **decorate … with …** (украшать чем-то), **light candles** (зажигать свечи), **get presents** (получать подарки), **send cards** (посылать открытки), **watch a parade** (смотреть парад), **watch fireworks** (смотреть салют), **play jokes on …** (подшучивать над …), **wish happiness** (желать счастья), **paint eggs** (красить яйца)."
               }
             },
             {
@@ -15592,6 +17215,261 @@
               "ref": {
                 "card": 2,
                 "quote": "Про то, что **было в прошлом году**, используем **Past Simple**: **We invited relatives. We lit candles (light — lit). We got presents. She sent cards. We watched a parade.** Light — lit, get — got, send — sent."
+              }
+            }
+          ],
+          "pool": [
+            {
+              "id": "english-t33-q12",
+              "subject": "english",
+              "topicId": "english-t33",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит invite relatives?",
+              "answer": "приглашать родственников",
+              "options": [
+                "приглашать родственников",
+                "получать подарки",
+                "посылать открытки",
+                "желать счастья"
+              ],
+              "explanation": [
+                "Invite relatives — приглашать родственников."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Что делают на празднике: **invite relatives** (приглашать родственников), **decorate … with …** (украшать чем-то), **light candles** (зажигать свечи), **get presents** (получать подарки), **send cards** (посылать открытки), **watch a parade** (смотреть парад), **watch fireworks** (смотреть салют), **play jokes on …** (подшучивать над …), **wish happiness** (желать счастья), **paint eggs** (красить яйца)."
+              }
+            },
+            {
+              "id": "english-t33-q13",
+              "subject": "english",
+              "topicId": "english-t33",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как будет «получать подарки»?",
+              "answer": "get presents",
+              "options": [
+                "get presents",
+                "send cards",
+                "light candles",
+                "paint eggs"
+              ],
+              "explanation": [
+                "Get presents — получать подарки."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Что делают на празднике: **invite relatives** (приглашать родственников), **decorate … with …** (украшать чем-то), **light candles** (зажигать свечи), **get presents** (получать подарки), **send cards** (посылать открытки), **watch a parade** (смотреть парад), **watch fireworks** (смотреть салют), **play jokes on …** (подшучивать над …), **wish happiness** (желать счастья), **paint eggs** (красить яйца)."
+              }
+            },
+            {
+              "id": "english-t33-q14",
+              "subject": "english",
+              "topicId": "english-t33",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как будет «посылать открытки»?",
+              "answer": "send cards",
+              "options": [
+                "send cards",
+                "get presents",
+                "watch a parade",
+                "wish happiness"
+              ],
+              "explanation": [
+                "Send cards — посылать открытки."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Что делают на празднике: **invite relatives** (приглашать родственников), **decorate … with …** (украшать чем-то), **light candles** (зажигать свечи), **get presents** (получать подарки), **send cards** (посылать открытки), **watch a parade** (смотреть парад), **watch fireworks** (смотреть салют), **play jokes on …** (подшучивать над …), **wish happiness** (желать счастья), **paint eggs** (красить яйца)."
+              }
+            },
+            {
+              "id": "english-t33-q15",
+              "subject": "english",
+              "topicId": "english-t33",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит watch a parade?",
+              "answer": "смотреть парад",
+              "options": [
+                "смотреть парад",
+                "смотреть салют",
+                "красить яйца",
+                "зажигать свечи"
+              ],
+              "explanation": [
+                "Watch a parade — смотреть парад."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Что делают на празднике: **invite relatives** (приглашать родственников), **decorate … with …** (украшать чем-то), **light candles** (зажигать свечи), **get presents** (получать подарки), **send cards** (посылать открытки), **watch a parade** (смотреть парад), **watch fireworks** (смотреть салют), **play jokes on …** (подшучивать над …), **wish happiness** (желать счастья), **paint eggs** (красить яйца)."
+              }
+            },
+            {
+              "id": "english-t33-q16",
+              "subject": "english",
+              "topicId": "english-t33",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как будет «желать счастья»?",
+              "answer": "wish happiness",
+              "options": [
+                "wish happiness",
+                "play jokes",
+                "invite relatives",
+                "light candles"
+              ],
+              "explanation": [
+                "Wish happiness — желать счастья."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Что делают на празднике: **invite relatives** (приглашать родственников), **decorate … with …** (украшать чем-то), **light candles** (зажигать свечи), **get presents** (получать подарки), **send cards** (посылать открытки), **watch a parade** (смотреть парад), **watch fireworks** (смотреть салют), **play jokes on …** (подшучивать над …), **wish happiness** (желать счастья), **paint eggs** (красить яйца)."
+              }
+            },
+            {
+              "id": "english-t33-q17",
+              "subject": "english",
+              "topicId": "english-t33",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Every year we ___ our relatives. (invite)",
+              "answer": "invite",
+              "options": [
+                "invite",
+                "invited",
+                "invites",
+                "inviting"
+              ],
+              "explanation": [
+                "Every year — каждый год, Present Simple: we invite."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Про то, что **делаем каждый год**, используем **Present Simple**: **We invite our relatives. My mum decorates the house with lights. We watch fireworks.** С he / she / it добавляем **-s**: **decorates, lights, sends, gets**."
+              }
+            },
+            {
+              "id": "english-t33-q18",
+              "subject": "english",
+              "topicId": "english-t33",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "My dad always ___ cards to his friends. (send)",
+              "answer": "sends",
+              "options": [
+                "sends",
+                "send",
+                "sent",
+                "sending"
+              ],
+              "explanation": [
+                "My dad — это he, в Present Simple добавляем -s: sends."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Про то, что **делаем каждый год**, используем **Present Simple**: **We invite our relatives. My mum decorates the house with lights. We watch fireworks.** С he / she / it добавляем **-s**: **decorates, lights, sends, gets**."
+              }
+            },
+            {
+              "id": "english-t33-q19",
+              "subject": "english",
+              "topicId": "english-t33",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Last year we ___ a parade. (watch)",
+              "answer": "watched",
+              "options": [
+                "watched",
+                "watch",
+                "watches",
+                "watching"
+              ],
+              "explanation": [
+                "Last year — прошлое, Past Simple: watched."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Про то, что **было в прошлом году**, используем **Past Simple**: **We invited relatives. We lit candles (light — lit). We got presents. She sent cards. We watched a parade.** Light — lit, get — got, send — sent."
+              }
+            },
+            {
+              "id": "english-t33-q20",
+              "subject": "english",
+              "topicId": "english-t33",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Last Christmas we ___ candles. (light)",
+              "answer": "lit",
+              "options": [
+                "lit",
+                "light",
+                "lights",
+                "lighting"
+              ],
+              "explanation": [
+                "Неправильный глагол: light → lit."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Про то, что **было в прошлом году**, используем **Past Simple**: **We invited relatives. We lit candles (light — lit). We got presents. She sent cards. We watched a parade.** Light — lit, get — got, send — sent."
+              }
+            },
+            {
+              "id": "english-t33-q21",
+              "subject": "english",
+              "topicId": "english-t33",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Какие слова подсказывают прошедшее время?",
+              "answer": "last year",
+              "options": [
+                "last year",
+                "every year",
+                "always",
+                "usually"
+              ],
+              "explanation": [
+                "Last Easter, last year — прошедшее время."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 3,
+                "quote": "Рассказ: **At Easter we paint eggs. Last Easter we painted eggs and gave them to our relatives.** Здесь важно слово: **Last Easter, last year** — прошедшее время, **every year, always** — настоящее."
+              }
+            },
+            {
+              "id": "english-t33-q22",
+              "subject": "english",
+              "topicId": "english-t33",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Какие слова подсказывают настоящее время?",
+              "answer": "every year",
+              "options": [
+                "every year",
+                "last year",
+                "last Easter",
+                "yesterday"
+              ],
+              "explanation": [
+                "Every year, always — настоящее время."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 3,
+                "quote": "Рассказ: **At Easter we paint eggs. Last Easter we painted eggs and gave them to our relatives.** Здесь важно слово: **Last Easter, last year** — прошедшее время, **every year, always** — настоящее."
               }
             }
           ],

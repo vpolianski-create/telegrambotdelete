@@ -39,7 +39,7 @@ export const engU4 = [
       'Что делают на празднике: **invite relatives** (приглашать родственников), **decorate … with …** (украшать чем-то), **light candles** (зажигать свечи), **get presents** (получать подарки), **send cards** (посылать открытки), **watch a parade** (смотреть парад), **watch fireworks** (смотреть салют), **play jokes on …** (подшучивать над …), **wish happiness** (желать счастья), **paint eggs** (красить яйца).',
       'Про то, что **делаем каждый год**, используем **Present Simple**: **We invite our relatives. My mum decorates the house with lights. We watch fireworks.** С he / she / it добавляем **-s**: **decorates, lights, sends, gets**.',
       'Про то, что **было в прошлом году**, используем **Past Simple**: **We invited relatives. We lit candles (light — lit). We got presents. She sent cards. We watched a parade.** Light — lit, get — got, send — sent.',
-      'Рассказ: **On Easter we paint eggs. Last Easter we painted eggs and gave them to our relatives.** Здесь важно слово: **Last Easter, last year** — прошедшее время, **every year, always** — настоящее.',
+      'Рассказ: **At Easter we paint eggs. Last Easter we painted eggs and gave them to our relatives.** Здесь важно слово: **Last Easter, last year** — прошедшее время, **every year, always** — настоящее.',
     ],
     example: ['Расскажи, что ты делаешь на Новый год.', [
       ['Выбираем фразы: decorate the tree, get presents, watch fireworks.', 'Берём из учебника.'],
