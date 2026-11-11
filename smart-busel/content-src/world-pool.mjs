@@ -5,7 +5,8 @@ import * as c from './pool/world-c.mjs';
 import * as d from './pool/world-d.mjs';
 import * as e from './pool/world-e.mjs';
 import * as f from './pool/world-f.mjs';
+import * as g from './pool/world-g.mjs';
 
-const parts = [a, b, c, d, e, f];
+const parts = [a, b, c, d, e, f, g];
 export const worldPool = Object.assign({}, ...parts.map((p) => p.pool));
 export const worldExplain = Object.assign({}, ...parts.map((p) => p.explain));
