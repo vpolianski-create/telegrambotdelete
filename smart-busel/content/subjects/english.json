@@ -17485,10 +17485,9 @@
           "status": "ready",
           "cards": [
             "**Present Simple** — для привычек и фактов: **Do you celebrate Easter? — Yes, I do. Does she get presents? — Yes, she does.** Помощник — **do / does**; Past Simple — для событий в прошлом: **Did you celebrate Easter? — Yes, I did. Did she get presents? — No, she didn’t.** Помощник — **did**.",
-            "Wh-вопросы в Present Simple: **What do you do on Easter? Where does your family go? When do they celebrate it?** В Past Simple: **What did you do last Easter? Where did your family go? When did they celebrate it?** Меняем do / does на did.",
+            "Wh-вопросы в Present Simple: **What do you do at Easter? Where does your family go? When do they celebrate it?** В Past Simple: **What did you do last Easter? Where did your family go? When did they celebrate it?** Меняем do / does на did.",
             "Отрицание: Present — **don’t / doesn’t** (We **don’t** paint eggs. She **doesn’t** like jokes). Past — **didn’t** (We **didn’t** paint eggs last year). После вспомогательного глагола — всегда начальная форма: **don’t go, didn’t go**.",
-            "Сравнение: **Every Easter we paint eggs. Last Easter we painted eggs and ate cake.** Подсказки: **every year, usually, always** — Present; **last year, yesterday, ago** — Past. Символы Пасхи: **symbol, church, tradition**.",
-            "Это слова урока 4 об Пасхе в Беларуси и других странах."
+            "Сравнение: **Every Easter we paint eggs. Last Easter we painted eggs and ate cake.** Подсказки: **every year, usually, always** — Present; **last year, yesterday, ago** — Past. Слова урока 4 о Пасхе: **symbol** (символ), **church** (церковь, костёл), **tradition** (традиция)."
           ],
           "example": {
             "title": "Преврати «We go to church at Easter» в вопрос в Past Simple.",
@@ -17526,7 +17525,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 0
+                "card": 0,
+                "quote": "**Present Simple** — для привычек и фактов: **Do you celebrate Easter? — Yes, I do. Does she get presents? — Yes, she does.** Помощник — **do / does**; Past Simple — для событий в прошлом: **Did you celebrate Easter? — Yes, I did. Did she get presents? — No, she didn’t.** Помощник — **did**."
               }
             },
             {
@@ -17547,7 +17547,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 1
+                "card": 0,
+                "quote": "**Present Simple** — для привычек и фактов: **Do you celebrate Easter? — Yes, I do. Does she get presents? — Yes, she does.** Помощник — **do / does**; Past Simple — для событий в прошлом: **Did you celebrate Easter? — Yes, I did. Did she get presents? — No, she didn’t.** Помощник — **did**."
               }
             }
           ],
@@ -17570,7 +17571,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 1
+                "card": 0,
+                "quote": "**Present Simple** — для привычек и фактов: **Do you celebrate Easter? — Yes, I do. Does she get presents? — Yes, she does.** Помощник — **do / does**; Past Simple — для событий в прошлом: **Did you celebrate Easter? — Yes, I did. Did she get presents? — No, she didn’t.** Помощник — **did**."
               }
             },
             {
@@ -17591,7 +17593,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 1
+                "card": 0,
+                "quote": "**Present Simple** — для привычек и фактов: **Do you celebrate Easter? — Yes, I do. Does she get presents? — Yes, she does.** Помощник — **do / does**; Past Simple — для событий в прошлом: **Did you celebrate Easter? — Yes, I did. Did she get presents? — No, she didn’t.** Помощник — **did**."
               }
             },
             {
@@ -17656,7 +17659,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 3
+                "card": 2,
+                "quote": "После вспомогательного глагола — всегда начальная форма: **don’t go, didn’t go**."
               }
             },
             {
@@ -17691,9 +17695,13 @@
               "question": "«Church» значит «церковь, костёл».",
               "answer": true,
               "explanation": [
-                "A church is a place of worship."
+                "Church значит «церковь, костёл»."
               ],
-              "hints": []
+              "hints": [],
+              "ref": {
+                "card": 3,
+                "quote": "Слова урока 4 о Пасхе: **symbol** (символ), **church** (церковь, костёл), **tradition** (традиция)."
+              }
             }
           ],
           "bonus": [
@@ -17712,9 +17720,13 @@
                 "подарок"
               ],
               "explanation": [
-                "Tradition — обычай."
+                "Tradition значит «традиция»."
               ],
-              "hints": []
+              "hints": [],
+              "ref": {
+                "card": 3,
+                "quote": "Слова урока 4 о Пасхе: **symbol** (символ), **church** (церковь, костёл), **tradition** (традиция)."
+              }
             },
             {
               "id": "english-t34-x11",
@@ -17732,7 +17744,279 @@
               ],
               "ref": {
                 "card": 3,
-                "quote": "Символы Пасхи: **symbol, church, tradition**."
+                "quote": "Слова урока 4 о Пасхе: **symbol** (символ), **church** (церковь, костёл), **tradition** (традиция)."
+              }
+            }
+          ],
+          "pool": [
+            {
+              "id": "english-t34-q12",
+              "subject": "english",
+              "topicId": "english-t34",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "___ you celebrate Easter every year?",
+              "answer": "Do",
+              "options": [
+                "Do",
+                "Does",
+                "Is",
+                "Are"
+              ],
+              "explanation": [
+                "Every year — Present Simple, с you помощник Do."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "**Present Simple** — для привычек и фактов: **Do you celebrate Easter? — Yes, I do. Does she get presents? — Yes, she does.** Помощник — **do / does**; Past Simple — для событий в прошлом: **Did you celebrate Easter? — Yes, I did. Did she get presents? — No, she didn’t.** Помощник — **did**."
+              }
+            },
+            {
+              "id": "english-t34-q13",
+              "subject": "english",
+              "topicId": "english-t34",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "___ your mum decorate the house every year?",
+              "answer": "Does",
+              "options": [
+                "Does",
+                "Do",
+                "Is",
+                "Are"
+              ],
+              "explanation": [
+                "Your mum — это she, в Present Simple помощник Does."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "**Present Simple** — для привычек и фактов: **Do you celebrate Easter? — Yes, I do. Does she get presents? — Yes, she does.** Помощник — **do / does**; Past Simple — для событий в прошлом: **Did you celebrate Easter? — Yes, I did. Did she get presents? — No, she didn’t.** Помощник — **did**."
+              }
+            },
+            {
+              "id": "english-t34-q14",
+              "subject": "english",
+              "topicId": "english-t34",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "___ you get presents last Christmas?",
+              "answer": "Did",
+              "options": [
+                "Did",
+                "Do",
+                "Does",
+                "Are"
+              ],
+              "explanation": [
+                "Last Christmas — прошлое, помощник Did."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "**Present Simple** — для привычек и фактов: **Do you celebrate Easter? — Yes, I do. Does she get presents? — Yes, she does.** Помощник — **do / does**; Past Simple — для событий в прошлом: **Did you celebrate Easter? — Yes, I did. Did she get presents? — No, she didn’t.** Помощник — **did**."
+              }
+            },
+            {
+              "id": "english-t34-q15",
+              "subject": "english",
+              "topicId": "english-t34",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Did she get presents? — …",
+              "answer": "No, she didn’t.",
+              "options": [
+                "No, she didn’t.",
+                "No, she doesn’t.",
+                "No, she isn’t.",
+                "No, she didn’t got."
+              ],
+              "explanation": [
+                "На вопрос с Did отвечаем: No, she didn’t."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "**Present Simple** — для привычек и фактов: **Do you celebrate Easter? — Yes, I do. Does she get presents? — Yes, she does.** Помощник — **do / does**; Past Simple — для событий в прошлом: **Did you celebrate Easter? — Yes, I did. Did she get presents? — No, she didn’t.** Помощник — **did**."
+              }
+            },
+            {
+              "id": "english-t34-q16",
+              "subject": "english",
+              "topicId": "english-t34",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Сделай вопрос о прошлом из «Where does your family go?»",
+              "answer": "Where did your family go?",
+              "options": [
+                "Where did your family go?",
+                "Where did your family went?",
+                "Where do your family went?",
+                "Where your family went?"
+              ],
+              "explanation": [
+                "В Past Simple меняем does на did: Where did your family go?"
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Wh-вопросы в Present Simple: **What do you do at Easter? Where does your family go? When do they celebrate it?** В Past Simple: **What did you do last Easter? Where did your family go? When did they celebrate it?** Меняем do / does на did."
+              }
+            },
+            {
+              "id": "english-t34-q17",
+              "subject": "english",
+              "topicId": "english-t34",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "When ___ they celebrate it every year?",
+              "answer": "do",
+              "options": [
+                "do",
+                "does",
+                "is",
+                "are"
+              ],
+              "explanation": [
+                "С they в Present Simple помощник do."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Wh-вопросы в Present Simple: **What do you do at Easter? Where does your family go? When do they celebrate it?** В Past Simple: **What did you do last Easter? Where did your family go? When did they celebrate it?** Меняем do / does на did."
+              }
+            },
+            {
+              "id": "english-t34-q18",
+              "subject": "english",
+              "topicId": "english-t34",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "We didn’t ___ to church last year. (go)",
+              "answer": "go",
+              "options": [
+                "go",
+                "went",
+                "goes",
+                "going"
+              ],
+              "explanation": [
+                "После didn’t — начальная форма: go."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "После вспомогательного глагола — всегда начальная форма: **don’t go, didn’t go**."
+              }
+            },
+            {
+              "id": "english-t34-q19",
+              "subject": "english",
+              "topicId": "english-t34",
+              "difficulty": "basic",
+              "type": "truefalse",
+              "question": "Предложение «She doesn’t likes jokes» правильное.",
+              "answer": false,
+              "explanation": [
+                "После doesn’t — начальная форма: She doesn’t like jokes."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "После вспомогательного глагола — всегда начальная форма: **don’t go, didn’t go**."
+              }
+            },
+            {
+              "id": "english-t34-q20",
+              "subject": "english",
+              "topicId": "english-t34",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "We ___ paint eggs every year. (отрицание)",
+              "answer": "don’t",
+              "options": [
+                "don’t",
+                "doesn’t",
+                "isn’t",
+                "aren’t"
+              ],
+              "explanation": [
+                "С we в Present Simple отрицание — don’t."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "После вспомогательного глагола — всегда начальная форма: **don’t go, didn’t go**."
+              }
+            },
+            {
+              "id": "english-t34-q21",
+              "subject": "english",
+              "topicId": "english-t34",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Какое слово подсказывает Past Simple?",
+              "answer": "ago",
+              "options": [
+                "ago",
+                "usually",
+                "always",
+                "every year"
+              ],
+              "explanation": [
+                "Last year, yesterday, ago — подсказки Past Simple."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 3,
+                "quote": "Сравнение: **Every Easter we paint eggs. Last Easter we painted eggs and ate cake.** Подсказки: **every year, usually, always** — Present; **last year, yesterday, ago** — Past."
+              }
+            },
+            {
+              "id": "english-t34-q22",
+              "subject": "english",
+              "topicId": "english-t34",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Last Easter we ___ eggs. (paint)",
+              "answer": "painted",
+              "options": [
+                "painted",
+                "paint",
+                "paints",
+                "painting"
+              ],
+              "explanation": [
+                "Last Easter — прошлое, Past Simple: painted."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 3,
+                "quote": "Сравнение: **Every Easter we paint eggs. Last Easter we painted eggs and ate cake.** Подсказки: **every year, usually, always** — Present; **last year, yesterday, ago** — Past."
+              }
+            },
+            {
+              "id": "english-t34-q23",
+              "subject": "english",
+              "topicId": "english-t34",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит symbol?",
+              "answer": "символ",
+              "options": [
+                "символ",
+                "церковь",
+                "традиция",
+                "праздник"
+              ],
+              "explanation": [
+                "Symbol значит «символ»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 3,
+                "quote": "Слова урока 4 о Пасхе: **symbol** (символ), **church** (церковь, костёл), **tradition** (традиция)."
               }
             }
           ],
@@ -18018,6 +18302,278 @@
               }
             }
           ],
+          "pool": [
+            {
+              "id": "english-t35-q12",
+              "subject": "english",
+              "topicId": "english-t35",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит pull crackers?",
+              "answer": "взрывать хлопушки",
+              "options": [
+                "взрывать хлопушки",
+                "вешать чулки",
+                "петь гимны",
+                "лепить снеговика"
+              ],
+              "explanation": [
+                "Pull crackers — взрывать хлопушки."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Слова Рождества (**Christmas**): **pull crackers** (взрывать хлопушки), **hang stockings** (вешать чулки), **sing carols** (петь рождественские гимны), **fireplace** (камин), **angel** (ангел), **tinsel** (мишура), **ornament** (украшение), **lights** (огни), **snowman** (снеговик), **snowflake** (снежинка)."
+              }
+            },
+            {
+              "id": "english-t35-q13",
+              "subject": "english",
+              "topicId": "english-t35",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как будет «украшение»?",
+              "answer": "ornament",
+              "options": [
+                "ornament",
+                "tinsel",
+                "angel",
+                "snowflake"
+              ],
+              "explanation": [
+                "Ornament значит «украшение»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Слова Рождества (**Christmas**): **pull crackers** (взрывать хлопушки), **hang stockings** (вешать чулки), **sing carols** (петь рождественские гимны), **fireplace** (камин), **angel** (ангел), **tinsel** (мишура), **ornament** (украшение), **lights** (огни), **snowman** (снеговик), **snowflake** (снежинка)."
+              }
+            },
+            {
+              "id": "english-t35-q14",
+              "subject": "english",
+              "topicId": "english-t35",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит fireplace?",
+              "answer": "камин",
+              "options": [
+                "камин",
+                "хлопушка",
+                "чулок",
+                "огни"
+              ],
+              "explanation": [
+                "Fireplace значит «камин»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Слова Рождества (**Christmas**): **pull crackers** (взрывать хлопушки), **hang stockings** (вешать чулки), **sing carols** (петь рождественские гимны), **fireplace** (камин), **angel** (ангел), **tinsel** (мишура), **ornament** (украшение), **lights** (огни), **snowman** (снеговик), **snowflake** (снежинка)."
+              }
+            },
+            {
+              "id": "english-t35-q15",
+              "subject": "english",
+              "topicId": "english-t35",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит snowflake?",
+              "answer": "снежинка",
+              "options": [
+                "снежинка",
+                "снеговик",
+                "мишура",
+                "ангел"
+              ],
+              "explanation": [
+                "Snowflake значит «снежинка»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Слова Рождества (**Christmas**): **pull crackers** (взрывать хлопушки), **hang stockings** (вешать чулки), **sing carols** (петь рождественские гимны), **fireplace** (камин), **angel** (ангел), **tinsel** (мишура), **ornament** (украшение), **lights** (огни), **snowman** (снеговик), **snowflake** (снежинка)."
+              }
+            },
+            {
+              "id": "english-t35-q16",
+              "subject": "english",
+              "topicId": "english-t35",
+              "difficulty": "basic",
+              "type": "input",
+              "question": "Напиши по-английски слово «снеговик».",
+              "answer": "snowman",
+              "explanation": [
+                "Снеговик по-английски — snowman."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Слова Рождества (**Christmas**): **pull crackers** (взрывать хлопушки), **hang stockings** (вешать чулки), **sing carols** (петь рождественские гимны), **fireplace** (камин), **angel** (ангел), **tinsel** (мишура), **ornament** (украшение), **lights** (огни), **snowman** (снеговик), **snowflake** (снежинка)."
+              }
+            },
+            {
+              "id": "english-t35-q17",
+              "subject": "english",
+              "topicId": "english-t35",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как сказать «С Новым годом!»?",
+              "answer": "Happy New Year!",
+              "options": [
+                "Happy New Year!",
+                "Merry Christmas!",
+                "Happy birthday!",
+                "Good night!"
+              ],
+              "explanation": [
+                "Happy New Year! — «С Новым годом!»"
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Рождественская открытка: **Dear Anna, Merry Christmas and a Happy New Year! I wish you happiness and health. Love, Maxim.** Слова **Merry Christmas!** — «С Рождеством!», **Happy New Year!** — «С Новым годом!», **I wish you …** — «желаю тебе …»."
+              }
+            },
+            {
+              "id": "english-t35-q18",
+              "subject": "english",
+              "topicId": "english-t35",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит «I wish you …»?",
+              "answer": "желаю тебе …",
+              "options": [
+                "желаю тебе …",
+                "спасибо тебе …",
+                "я вижу тебя …",
+                "до свидания …"
+              ],
+              "explanation": [
+                "I wish you … — «желаю тебе …»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Рождественская открытка: **Dear Anna, Merry Christmas and a Happy New Year! I wish you happiness and health. Love, Maxim.** Слова **Merry Christmas!** — «С Рождеством!», **Happy New Year!** — «С Новым годом!», **I wish you …** — «желаю тебе …»."
+              }
+            },
+            {
+              "id": "english-t35-q19",
+              "subject": "english",
+              "topicId": "english-t35",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Каким словом начинают открытку?",
+              "answer": "Dear",
+              "options": [
+                "Dear",
+                "Love",
+                "Merry",
+                "Happy"
+              ],
+              "explanation": [
+                "Открытку начинают словом Dear: Dear Anna, …"
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Рождественская открытка: **Dear Anna, Merry Christmas and a Happy New Year! I wish you happiness and health. Love, Maxim.** Слова **Merry Christmas!** — «С Рождеством!», **Happy New Year!** — «С Новым годом!», **I wish you …** — «желаю тебе …»."
+              }
+            },
+            {
+              "id": "english-t35-q20",
+              "subject": "english",
+              "topicId": "english-t35",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит pancake?",
+              "answer": "блин",
+              "options": [
+                "блин",
+                "пирог",
+                "хлеб",
+                "торт"
+              ],
+              "explanation": [
+                "Pancake значит «блин»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Говорим: **We eat pancakes. We see off winter. We play games and sing songs.** Pancake — блин."
+              }
+            },
+            {
+              "id": "english-t35-q21",
+              "subject": "english",
+              "topicId": "english-t35",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Maslenitsa — это праздник …",
+              "answer": "проводов зимы",
+              "options": [
+                "проводов зимы",
+                "урожая",
+                "начала лета",
+                "Нового года"
+              ],
+              "explanation": [
+                "Maslenitsa (Pancake Day) — праздник проводов зимы."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "**Maslenitsa** (**Pancake Day**) — праздник проводов зимы."
+              }
+            },
+            {
+              "id": "english-t35-q22",
+              "subject": "english",
+              "topicId": "english-t35",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "We decorate the tree ___ lights and ornaments.",
+              "answer": "with",
+              "options": [
+                "with",
+                "by",
+                "at",
+                "of"
+              ],
+              "explanation": [
+                "Украшаем чем-то — decorate with: with lights and ornaments."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 3,
+                "quote": "Чтобы сказать, что **делаем на Рождество**: **We hang stockings by the fireplace. We sing carols. We decorate the tree with lights and ornaments.** Рассказ о прошлом: **Last Christmas we pulled crackers and built a snowman.**"
+              }
+            },
+            {
+              "id": "english-t35-q23",
+              "subject": "english",
+              "topicId": "english-t35",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Last Christmas we ___ a snowman. (build)",
+              "answer": "built",
+              "options": [
+                "built",
+                "builded",
+                "build",
+                "builds"
+              ],
+              "explanation": [
+                "Last Christmas — прошлое: build → built."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 3,
+                "quote": "Чтобы сказать, что **делаем на Рождество**: **We hang stockings by the fireplace. We sing carols. We decorate the tree with lights and ornaments.** Рассказ о прошлом: **Last Christmas we pulled crackers and built a snowman.**"
+              }
+            }
+          ],
           "card": {
             "emoji": "🎄",
             "title": "Рождество",
@@ -18190,7 +18746,7 @@
                 "beans"
               ],
               "explanation": [
-                "Grapes — всегда во множественном числе."
+                "Grapes значит «виноград»."
               ],
               "hints": [],
               "ref": {
@@ -18213,7 +18769,7 @@
                 "butter"
               ],
               "explanation": [
-                "Broccoli — овощ."
+                "Broccoli — овощ, а овощи — полезная еда (healthy food)."
               ],
               "hints": [],
               "ref": {
@@ -18306,6 +18862,284 @@
               }
             }
           ],
+          "pool": [
+            {
+              "id": "english-t36-q12",
+              "subject": "english",
+              "topicId": "english-t36",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит cereal?",
+              "answer": "злаки, хлопья",
+              "options": [
+                "злаки, хлопья",
+                "фасоль",
+                "капуста",
+                "рис"
+              ],
+              "explanation": [
+                "Cereal значит «злаки, хлопья»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Полезная еда (**healthy food**): **vegetables** (овощи), **fruit** (фрукты), **cereal** (злаки, хлопья), **rice** (рис), **beans** (фасоль), **toast** (тост), **broccoli**, **cabbage** (капуста), **lettuce** (салат-латук), **onion** (лук), **beet** (свёкла), **pepper** (перец)."
+              }
+            },
+            {
+              "id": "english-t36-q13",
+              "subject": "english",
+              "topicId": "english-t36",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как будет «лук»?",
+              "answer": "onion",
+              "options": [
+                "onion",
+                "beet",
+                "pepper",
+                "lettuce"
+              ],
+              "explanation": [
+                "Onion значит «лук»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Полезная еда (**healthy food**): **vegetables** (овощи), **fruit** (фрукты), **cereal** (злаки, хлопья), **rice** (рис), **beans** (фасоль), **toast** (тост), **broccoli**, **cabbage** (капуста), **lettuce** (салат-латук), **onion** (лук), **beet** (свёкла), **pepper** (перец)."
+              }
+            },
+            {
+              "id": "english-t36-q14",
+              "subject": "english",
+              "topicId": "english-t36",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит lettuce?",
+              "answer": "салат-латук",
+              "options": [
+                "салат-латук",
+                "капуста",
+                "свёкла",
+                "перец"
+              ],
+              "explanation": [
+                "Lettuce значит «салат-латук»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Полезная еда (**healthy food**): **vegetables** (овощи), **fruit** (фрукты), **cereal** (злаки, хлопья), **rice** (рис), **beans** (фасоль), **toast** (тост), **broccoli**, **cabbage** (капуста), **lettuce** (салат-латук), **onion** (лук), **beet** (свёкла), **pepper** (перец)."
+              }
+            },
+            {
+              "id": "english-t36-q15",
+              "subject": "english",
+              "topicId": "english-t36",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как будет «свёкла»?",
+              "answer": "beet",
+              "options": [
+                "beet",
+                "beans",
+                "onion",
+                "rice"
+              ],
+              "explanation": [
+                "Beet значит «свёкла»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Полезная еда (**healthy food**): **vegetables** (овощи), **fruit** (фрукты), **cereal** (злаки, хлопья), **rice** (рис), **beans** (фасоль), **toast** (тост), **broccoli**, **cabbage** (капуста), **lettuce** (салат-латук), **onion** (лук), **beet** (свёкла), **pepper** (перец)."
+              }
+            },
+            {
+              "id": "english-t36-q16",
+              "subject": "english",
+              "topicId": "english-t36",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как будет «рис»?",
+              "answer": "rice",
+              "options": [
+                "rice",
+                "cereal",
+                "toast",
+                "beans"
+              ],
+              "explanation": [
+                "Rice значит «рис»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Полезная еда (**healthy food**): **vegetables** (овощи), **fruit** (фрукты), **cereal** (злаки, хлопья), **rice** (рис), **beans** (фасоль), **toast** (тост), **broccoli**, **cabbage** (капуста), **lettuce** (салат-латук), **onion** (лук), **beet** (свёкла), **pepper** (перец)."
+              }
+            },
+            {
+              "id": "english-t36-q17",
+              "subject": "english",
+              "topicId": "english-t36",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит peach?",
+              "answer": "персик",
+              "options": [
+                "персик",
+                "груша",
+                "дыня",
+                "виноград"
+              ],
+              "explanation": [
+                "Peach значит «персик»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Фрукты: **peach** (персик), **pear** (груша), **grapes** (виноград), **melon** (дыня), **watermelon** (арбуз)."
+              }
+            },
+            {
+              "id": "english-t36-q18",
+              "subject": "english",
+              "topicId": "english-t36",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как будет «груша»?",
+              "answer": "pear",
+              "options": [
+                "pear",
+                "peach",
+                "melon",
+                "grapes"
+              ],
+              "explanation": [
+                "Pear значит «груша»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Фрукты: **peach** (персик), **pear** (груша), **grapes** (виноград), **melon** (дыня), **watermelon** (арбуз)."
+              }
+            },
+            {
+              "id": "english-t36-q19",
+              "subject": "english",
+              "topicId": "english-t36",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит melon?",
+              "answer": "дыня",
+              "options": [
+                "дыня",
+                "арбуз",
+                "персик",
+                "груша"
+              ],
+              "explanation": [
+                "Melon значит «дыня»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Фрукты: **peach** (персик), **pear** (груша), **grapes** (виноград), **melon** (дыня), **watermelon** (арбуз)."
+              }
+            },
+            {
+              "id": "english-t36-q20",
+              "subject": "english",
+              "topicId": "english-t36",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит biscuit?",
+              "answer": "печенье",
+              "options": [
+                "печенье",
+                "чипсы",
+                "сахар",
+                "масло"
+              ],
+              "explanation": [
+                "Biscuit значит «печенье»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Не очень полезное: **crisps** (чипсы), **biscuit** (печенье), **sugar** (сахар), **salt** (соль), **butter** (масло), **snack** (перекус)."
+              }
+            },
+            {
+              "id": "english-t36-q21",
+              "subject": "english",
+              "topicId": "english-t36",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как будет «соль»?",
+              "answer": "salt",
+              "options": [
+                "salt",
+                "sugar",
+                "butter",
+                "snack"
+              ],
+              "explanation": [
+                "Salt значит «соль»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Не очень полезное: **crisps** (чипсы), **biscuit** (печенье), **sugar** (сахар), **salt** (соль), **butter** (масло), **snack** (перекус)."
+              }
+            },
+            {
+              "id": "english-t36-q22",
+              "subject": "english",
+              "topicId": "english-t36",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Crisps are ___ .",
+              "answer": "unhealthy",
+              "options": [
+                "unhealthy",
+                "healthy",
+                "fruit",
+                "vegetables"
+              ],
+              "explanation": [
+                "Чипсы — неполезная еда: Crisps are unhealthy."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Crisps are **unhealthy**."
+              }
+            },
+            {
+              "id": "english-t36-q23",
+              "subject": "english",
+              "topicId": "english-t36",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как называют вредную еду?",
+              "answer": "junk food",
+              "options": [
+                "junk food",
+                "healthy food",
+                "cereal",
+                "fruit"
+              ],
+              "explanation": [
+                "Junk food — вредная еда."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "**Junk food** — вредная еда (быстрая, жирная, сладкая)."
+              }
+            }
+          ],
           "card": {
             "emoji": "🥦",
             "title": "Тарелка здоровья",
@@ -18319,7 +19153,7 @@
           "cards": [
             "Чтобы дать **совет**, используем **should** («следует, стоит») и **shouldn’t** («не следует»). После них глагол стоит в начальной форме, а **-s** не добавляем: **You should eat more fruit. She should sleep eight hours. You shouldn’t eat many sweets.**",
             "Вопрос: **Should I eat fruit? — Yes, you should. / No, you shouldn’t.** Спросить о совете: **What should I do to be healthy?** Ответ: **You should walk more and drink water.**",
-            "Что **следует делать**: eat fruit and vegetables, drink water, exercise, sleep 8 hours, wash hands, brush teeth twice a day.",
+            "Что **следует делать**: eat fruit and vegetables, drink water, exercise (заниматься физкультурой), sleep 8 hours, wash hands, brush teeth twice a day (дважды в день).",
             "Что **не следует**: eat a lot of junk food, play video games for more than two hours a day, go to bed late.",
             "**Дневник здоровья** (health diary): записываем, что мы ели и делали вчера: **I ate four portions of fruit and vegetables. I didn’t exercise. I drank 5 glasses of water.** Потом даём себе совет: **I should exercise more.**"
           ],
@@ -18423,7 +19257,7 @@
                 "do"
               ],
               "explanation": [
-                "Много телевизора вредно."
+                "Долго сидеть перед экраном не следует, поэтому shouldn’t."
               ],
               "hints": [],
               "ref": {
@@ -18490,9 +19324,13 @@
                 "читать"
               ],
               "explanation": [
-                "To exercise — тренироваться."
+                "Exercise значит «заниматься физкультурой»."
               ],
-              "hints": []
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Что **следует делать**: eat fruit and vegetables, drink water, exercise (заниматься физкультурой), sleep 8 hours, wash hands, brush teeth twice a day (дважды в день)."
+              }
             },
             {
               "id": "english-t37-p8",
@@ -18575,6 +19413,255 @@
               "ref": {
                 "card": 1,
                 "quote": "Вопрос: **Should I eat fruit? — Yes, you should. / No, you shouldn’t.** Спросить о совете: **What should I do to be healthy?** Ответ: **You should walk more and drink water.**"
+              }
+            }
+          ],
+          "pool": [
+            {
+              "id": "english-t37-q12",
+              "subject": "english",
+              "topicId": "english-t37",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что значит should?",
+              "answer": "следует, стоит",
+              "options": [
+                "следует, стоит",
+                "не следует",
+                "могу",
+                "люблю"
+              ],
+              "explanation": [
+                "Should значит «следует, стоит»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Чтобы дать **совет**, используем **should** («следует, стоит») и **shouldn’t** («не следует»)."
+              }
+            },
+            {
+              "id": "english-t37-q13",
+              "subject": "english",
+              "topicId": "english-t37",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "You ___ brush your teeth twice a day.",
+              "answer": "should",
+              "options": [
+                "should",
+                "shouldn’t",
+                "should to",
+                "shoulds"
+              ],
+              "explanation": [
+                "Чистить зубы следует — should."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Чтобы дать **совет**, используем **should** («следует, стоит») и **shouldn’t** («не следует»)."
+              }
+            },
+            {
+              "id": "english-t37-q14",
+              "subject": "english",
+              "topicId": "english-t37",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "You ___ go to bed late.",
+              "answer": "shouldn’t",
+              "options": [
+                "shouldn’t",
+                "should",
+                "shouldn’t to",
+                "don’t should"
+              ],
+              "explanation": [
+                "Поздно ложиться не следует — shouldn’t."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Чтобы дать **совет**, используем **should** («следует, стоит») и **shouldn’t** («не следует»)."
+              }
+            },
+            {
+              "id": "english-t37-q15",
+              "subject": "english",
+              "topicId": "english-t37",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "She should ___ more. (walk)",
+              "answer": "walk",
+              "options": [
+                "walk",
+                "walks",
+                "to walk",
+                "walking"
+              ],
+              "explanation": [
+                "После should глагол в начальной форме: walk."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "После них глагол стоит в начальной форме, а **-s** не добавляем: **You should eat more fruit. She should sleep eight hours. You shouldn’t eat many sweets.**"
+              }
+            },
+            {
+              "id": "english-t37-q16",
+              "subject": "english",
+              "topicId": "english-t37",
+              "difficulty": "basic",
+              "type": "truefalse",
+              "question": "Предложение «He shoulds exercise» правильное.",
+              "answer": false,
+              "explanation": [
+                "К should не добавляют -s: He should exercise."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "После них глагол стоит в начальной форме, а **-s** не добавляем: **You should eat more fruit. She should sleep eight hours. You shouldn’t eat many sweets.**"
+              }
+            },
+            {
+              "id": "english-t37-q17",
+              "subject": "english",
+              "topicId": "english-t37",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Should I eat a lot of junk food? — …",
+              "answer": "No, you shouldn’t.",
+              "options": [
+                "No, you shouldn’t.",
+                "No, you don’t.",
+                "No, you aren’t.",
+                "No, you should."
+              ],
+              "explanation": [
+                "На вопрос с Should отвечаем: No, you shouldn’t."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Вопрос: **Should I eat fruit? — Yes, you should. / No, you shouldn’t.** Спросить о совете: **What should I do to be healthy?** Ответ: **You should walk more and drink water.**"
+              }
+            },
+            {
+              "id": "english-t37-q18",
+              "subject": "english",
+              "topicId": "english-t37",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как спросить совета: «Что мне делать, чтобы быть здоровым?»",
+              "answer": "What should I do to be healthy?",
+              "options": [
+                "What should I do to be healthy?",
+                "What I should do to be healthy?",
+                "What do I should to be healthy?",
+                "What should I to do be healthy?"
+              ],
+              "explanation": [
+                "Спросить о совете: What should I do to be healthy?"
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Вопрос: **Should I eat fruit? — Yes, you should. / No, you shouldn’t.** Спросить о совете: **What should I do to be healthy?** Ответ: **You should walk more and drink water.**"
+              }
+            },
+            {
+              "id": "english-t37-q19",
+              "subject": "english",
+              "topicId": "english-t37",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что следует делать, чтобы быть здоровым?",
+              "answer": "drink water",
+              "options": [
+                "drink water",
+                "go to bed late",
+                "eat a lot of junk food",
+                "play video games all day"
+              ],
+              "explanation": [
+                "Следует: eat fruit and vegetables, drink water, exercise."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Что **следует делать**: eat fruit and vegetables, drink water, exercise (заниматься физкультурой), sleep 8 hours, wash hands, brush teeth twice a day (дважды в день)."
+              }
+            },
+            {
+              "id": "english-t37-q20",
+              "subject": "english",
+              "topicId": "english-t37",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как часто следует чистить зубы (brush teeth)?",
+              "answer": "twice a day",
+              "options": [
+                "twice a day",
+                "once a week",
+                "never",
+                "every hour"
+              ],
+              "explanation": [
+                "Brush teeth twice a day — чистить зубы дважды в день."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Что **следует делать**: eat fruit and vegetables, drink water, exercise (заниматься физкультурой), sleep 8 hours, wash hands, brush teeth twice a day (дважды в день)."
+              }
+            },
+            {
+              "id": "english-t37-q21",
+              "subject": "english",
+              "topicId": "english-t37",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Что НЕ следует делать?",
+              "answer": "go to bed late",
+              "options": [
+                "go to bed late",
+                "wash hands",
+                "drink water",
+                "sleep 8 hours"
+              ],
+              "explanation": [
+                "Не следует: go to bed late — поздно ложиться."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 3,
+                "quote": "Что **не следует**: eat a lot of junk food, play video games for more than two hours a day, go to bed late."
+              }
+            },
+            {
+              "id": "english-t37-q22",
+              "subject": "english",
+              "topicId": "english-t37",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "В дневнике записано: «I didn’t exercise». Какой совет подходит?",
+              "answer": "I should exercise more.",
+              "options": [
+                "I should exercise more.",
+                "I shouldn’t exercise.",
+                "I should eat more sweets.",
+                "I should go to bed late."
+              ],
+              "explanation": [
+                "Не занимался — совет себе: I should exercise more."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 4,
+                "quote": "**Дневник здоровья** (health diary): записываем, что мы ели и делали вчера: **I ate four portions of fruit and vegetables. I didn’t exercise. I drank 5 glasses of water.** Потом даём себе совет: **I should exercise more.**"
               }
             }
           ],
@@ -18720,7 +19807,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 1
+                "card": 1,
+                "quote": "**Some** — в утвердительных предложениях: **There are some biscuits. There is some water.** **Any** — в вопросах и отрицаниях: **Are there any biscuits? There aren’t any biscuits. Is there any water? There isn’t any water.** **No** — «никакой», «нет»: **There are no biscuits** (то же, что there aren’t any biscuits)."
               }
             },
             {
@@ -18846,6 +19934,278 @@
               "hints": [
                 "Первая буква — a."
               ],
+              "ref": {
+                "card": 3,
+                "quote": "Вопросы о наличии: **Is there any milk in the fridge? — Yes, there is some. / No, there isn’t any.** **Are there any apples? — Yes, there are some. / No, there aren’t any.** Слова урока: **bean, beet, broccoli, cereal, pepper** и другие овощи и злаки."
+              }
+            }
+          ],
+          "pool": [
+            {
+              "id": "english-t38-q12",
+              "subject": "english",
+              "topicId": "english-t38",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "I’d like ___ orange.",
+              "answer": "an",
+              "options": [
+                "an",
+                "some",
+                "any",
+                "much"
+              ],
+              "explanation": [
+                "Orange — исчисляемое, начинается с гласного: an orange."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Перед исчисляемым ставим **a / an**, перед неисчисляемым — **some**: I’d like **a** sandwich."
+              }
+            },
+            {
+              "id": "english-t38-q13",
+              "subject": "english",
+              "topicId": "english-t38",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "I’d like ___ jam.",
+              "answer": "some",
+              "options": [
+                "some",
+                "a",
+                "an",
+                "many"
+              ],
+              "explanation": [
+                "Jam — неисчисляемое, перед ним some."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Перед исчисляемым ставим **a / an**, перед неисчисляемым — **some**: I’d like **a** sandwich."
+              }
+            },
+            {
+              "id": "english-t38-q14",
+              "subject": "english",
+              "topicId": "english-t38",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Какое из этих слов нельзя посчитать штуками?",
+              "answer": "sugar",
+              "options": [
+                "sugar",
+                "apple",
+                "book",
+                "sandwich"
+              ],
+              "explanation": [
+                "Sugar — неисчисляемое: его не считают штуками."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "**Неисчисляемые** (uncountable) не считают штуками: **milk, water, jam, tea, money, rice, sugar, butter**."
+              }
+            },
+            {
+              "id": "english-t38-q15",
+              "subject": "english",
+              "topicId": "english-t38",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Какое из этих слов можно посчитать?",
+              "answer": "sandwich",
+              "options": [
+                "sandwich",
+                "water",
+                "money",
+                "rice"
+              ],
+              "explanation": [
+                "Sandwich — исчисляемое: a sandwich, two sandwiches."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "**Неисчисляемые** (uncountable) не считают штуками: **milk, water, jam, tea, money, rice, sugar, butter**."
+              }
+            },
+            {
+              "id": "english-t38-q16",
+              "subject": "english",
+              "topicId": "english-t38",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "There is ___ water in the glass.",
+              "answer": "some",
+              "options": [
+                "some",
+                "any",
+                "a",
+                "an"
+              ],
+              "explanation": [
+                "В утвердительном предложении — some."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "**Some** — в утвердительных предложениях: **There are some biscuits. There is some water.** **Any** — в вопросах и отрицаниях: **Are there any biscuits? There aren’t any biscuits. Is there any water? There isn’t any water.** **No** — «никакой», «нет»: **There are no biscuits** (то же, что there aren’t any biscuits)."
+              }
+            },
+            {
+              "id": "english-t38-q17",
+              "subject": "english",
+              "topicId": "english-t38",
+              "difficulty": "basic",
+              "type": "truefalse",
+              "question": "В утверждении говорят: «There are any biscuits».",
+              "answer": false,
+              "explanation": [
+                "В утвердительных предложениях — some: There are some biscuits."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "**Some** — в утвердительных предложениях: **There are some biscuits. There is some water.** **Any** — в вопросах и отрицаниях: **Are there any biscuits? There aren’t any biscuits. Is there any water? There isn’t any water.** **No** — «никакой», «нет»: **There are no biscuits** (то же, что there aren’t any biscuits)."
+              }
+            },
+            {
+              "id": "english-t38-q18",
+              "subject": "english",
+              "topicId": "english-t38",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Is there ___ water?",
+              "answer": "any",
+              "options": [
+                "any",
+                "a",
+                "an",
+                "many"
+              ],
+              "explanation": [
+                "В вопросе — any: Is there any water?"
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "**Some** — в утвердительных предложениях: **There are some biscuits. There is some water.** **Any** — в вопросах и отрицаниях: **Are there any biscuits? There aren’t any biscuits. Is there any water? There isn’t any water.** **No** — «никакой», «нет»: **There are no biscuits** (то же, что there aren’t any biscuits)."
+              }
+            },
+            {
+              "id": "english-t38-q19",
+              "subject": "english",
+              "topicId": "english-t38",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "There aren’t ___ apples.",
+              "answer": "any",
+              "options": [
+                "any",
+                "some",
+                "a",
+                "an"
+              ],
+              "explanation": [
+                "В отрицании — any: There aren’t any apples."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "**Some** — в утвердительных предложениях: **There are some biscuits. There is some water.** **Any** — в вопросах и отрицаниях: **Are there any biscuits? There aren’t any biscuits. Is there any water? There isn’t any water.** **No** — «никакой», «нет»: **There are no biscuits** (то же, что there aren’t any biscuits)."
+              }
+            },
+            {
+              "id": "english-t38-q20",
+              "subject": "english",
+              "topicId": "english-t38",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "«There are no biscuits» значит то же, что …",
+              "answer": "There aren’t any biscuits.",
+              "options": [
+                "There aren’t any biscuits.",
+                "There are some biscuits.",
+                "There are any biscuits.",
+                "There is a biscuit."
+              ],
+              "explanation": [
+                "No = not any: There are no biscuits = There aren’t any biscuits."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "**Some** — в утвердительных предложениях: **There are some biscuits. There is some water.** **Any** — в вопросах и отрицаниях: **Are there any biscuits? There aren’t any biscuits. Is there any water? There isn’t any water.** **No** — «никакой», «нет»: **There are no biscuits** (то же, что there aren’t any biscuits)."
+              }
+            },
+            {
+              "id": "english-t38-q21",
+              "subject": "english",
+              "topicId": "english-t38",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "We need ___ flour.",
+              "answer": "some",
+              "options": [
+                "some",
+                "any",
+                "a",
+                "an"
+              ],
+              "explanation": [
+                "В утверждении с неисчисляемым — some: some flour."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Рецепт пирога (**zucchini cake**): **We need some flour, some sugar, two eggs, a zucchini. We don’t need any salt.** Объясняя рецепт, используем слова **First, then, next, after that**."
+              }
+            },
+            {
+              "id": "english-t38-q22",
+              "subject": "english",
+              "topicId": "english-t38",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "We don’t need ___ salt.",
+              "answer": "any",
+              "options": [
+                "any",
+                "some",
+                "a",
+                "an"
+              ],
+              "explanation": [
+                "В отрицании — any: We don’t need any salt."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Рецепт пирога (**zucchini cake**): **We need some flour, some sugar, two eggs, a zucchini. We don’t need any salt.** Объясняя рецепт, используем слова **First, then, next, after that**."
+              }
+            },
+            {
+              "id": "english-t38-q23",
+              "subject": "english",
+              "topicId": "english-t38",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Is there any milk in the fridge? — …",
+              "answer": "Yes, there is some.",
+              "options": [
+                "Yes, there is some.",
+                "Yes, there are some.",
+                "Yes, there is any.",
+                "Yes, it is some."
+              ],
+              "explanation": [
+                "Milk — неисчисляемое: Yes, there is some."
+              ],
+              "hints": [],
               "ref": {
                 "card": 3,
                 "quote": "Вопросы о наличии: **Is there any milk in the fridge? — Yes, there is some. / No, there isn’t any.** **Are there any apples? — Yes, there are some. / No, there aren’t any.** Слова урока: **bean, beet, broccoli, cereal, pepper** и другие овощи и злаки."
@@ -19038,7 +20398,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 0
+                "card": 2,
+                "quote": "Вопросы **How much?** и **How many?**: **How much sugar do you eat? — Not much. How many fruits do you eat? — A lot of.** Для денег: **How much is it?** («Сколько это стоит?»)."
               }
             },
             {
@@ -19124,6 +20485,232 @@
               }
             }
           ],
+          "pool": [
+            {
+              "id": "english-t39-q12",
+              "subject": "english",
+              "topicId": "english-t39",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "How ___ apples did you eat?",
+              "answer": "many",
+              "options": [
+                "many",
+                "much",
+                "a lot",
+                "any"
+              ],
+              "explanation": [
+                "Apples можно посчитать, поэтому How many."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "**Many** — «много» с **исчисляемыми** существительными (во множественном числе): **many books, many apples, many tourists**."
+              }
+            },
+            {
+              "id": "english-t39-q13",
+              "subject": "english",
+              "topicId": "english-t39",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "I haven’t got ___ friends.",
+              "answer": "many",
+              "options": [
+                "many",
+                "much",
+                "a lot",
+                "a"
+              ],
+              "explanation": [
+                "Friends — исчисляемое, поэтому many."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "**Many** — «много» с **исчисляемыми** существительными (во множественном числе): **many books, many apples, many tourists**."
+              }
+            },
+            {
+              "id": "english-t39-q14",
+              "subject": "english",
+              "topicId": "english-t39",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "С какими словами используют many?",
+              "answer": "с исчисляемыми",
+              "options": [
+                "с исчисляемыми",
+                "с неисчисляемыми",
+                "только с именами",
+                "с глаголами"
+              ],
+              "explanation": [
+                "Many — «много» с исчисляемыми существительными."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "**Many** — «много» с **исчисляемыми** существительными (во множественном числе): **many books, many apples, many tourists**."
+              }
+            },
+            {
+              "id": "english-t39-q15",
+              "subject": "english",
+              "topicId": "english-t39",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "How ___ money have you got?",
+              "answer": "much",
+              "options": [
+                "much",
+                "many",
+                "a lot",
+                "a"
+              ],
+              "explanation": [
+                "Money — неисчисляемое, поэтому How much."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "**Much** — «много» с **неисчисляемыми**: **much water, much sugar, much money**."
+              }
+            },
+            {
+              "id": "english-t39-q16",
+              "subject": "english",
+              "topicId": "english-t39",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "There isn’t ___ sugar in my tea.",
+              "answer": "much",
+              "options": [
+                "much",
+                "many",
+                "a lot",
+                "a"
+              ],
+              "explanation": [
+                "Sugar — неисчисляемое, поэтому much."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "**Much** — «много» с **неисчисляемыми**: **much water, much sugar, much money**."
+              }
+            },
+            {
+              "id": "english-t39-q17",
+              "subject": "english",
+              "topicId": "english-t39",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "I drink ___ water.",
+              "answer": "a lot of",
+              "options": [
+                "a lot of",
+                "many",
+                "a lot",
+                "a many"
+              ],
+              "explanation": [
+                "В утверждении лучше a lot of: a lot of water."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "**A lot of** — «много» с любыми: **a lot of books, a lot of water**."
+              }
+            },
+            {
+              "id": "english-t39-q18",
+              "subject": "english",
+              "topicId": "english-t39",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "We have got ___ books.",
+              "answer": "a lot of",
+              "options": [
+                "a lot of",
+                "much",
+                "a lot",
+                "a much"
+              ],
+              "explanation": [
+                "A lot of подходит к любым словам: a lot of books."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "**A lot of** — «много» с любыми: **a lot of books, a lot of water**."
+              }
+            },
+            {
+              "id": "english-t39-q19",
+              "subject": "english",
+              "topicId": "english-t39",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как спросить «Сколько это стоит?»",
+              "answer": "How much is it?",
+              "options": [
+                "How much is it?",
+                "How many is it?",
+                "How a lot is it?",
+                "What much is it?"
+              ],
+              "explanation": [
+                "О цене спрашивают: How much is it?"
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Вопросы **How much?** и **How many?**: **How much sugar do you eat? — Not much. How many fruits do you eat? — A lot of.** Для денег: **How much is it?** («Сколько это стоит?»)."
+              }
+            },
+            {
+              "id": "english-t39-q20",
+              "subject": "english",
+              "topicId": "english-t39",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "How much sugar do you eat? — …",
+              "answer": "Not much.",
+              "options": [
+                "Not much.",
+                "Not many.",
+                "A many.",
+                "No many."
+              ],
+              "explanation": [
+                "Sugar — неисчисляемое, отвечаем: Not much."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Вопросы **How much?** и **How many?**: **How much sugar do you eat? — Not much. How many fruits do you eat? — A lot of.** Для денег: **How much is it?** («Сколько это стоит?»)."
+              }
+            },
+            {
+              "id": "english-t39-q21",
+              "subject": "english",
+              "topicId": "english-t39",
+              "difficulty": "basic",
+              "type": "truefalse",
+              "question": "Чтобы выбрать much или many, нужно понять, можно ли предмет посчитать штуками.",
+              "answer": true,
+              "explanation": [
+                "Сначала определи, можно ли предмет посчитать штуками."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 3,
+                "quote": "Сначала определи, можно ли предмет посчитать штуками."
+              }
+            }
+          ],
           "card": {
             "emoji": "🔢",
             "title": "Много — много способов",
@@ -19135,10 +20722,10 @@
           "title": "Unit 5, Lessons 2, 4–5. Мой день: привычки и дневник",
           "status": "ready",
           "cards": [
-            "Расскажи о **вчерашнем дне** в **Past Simple**: **I got up at 7. I brushed my teeth. I ate cereal and toast for breakfast. I went to school. I played football. I didn’t eat junk food.** Помни: ate, went, got — неправильные глаголы.",
+            "Расскажи о **вчерашнем дне** в **Past Simple**: **I got up at 7. I brushed my teeth. I ate cereal and toast for breakfast. I went to school. I played football. I drank a lot of water. I didn’t eat junk food.** Помни: ate, went, got, drank — неправильные глаголы.",
             "А о **привычках** — в **Present Simple** с наречиями: **I always brush my teeth in the morning. I rarely eat sweets. I never play video games before bed. I sometimes go running.** Таблица «Yes, always / often / sometimes / No, rarely / never» помогает ответить на вопросы анкеты.",
             "Вопросы анкеты: **Do you eat fruit and vegetables? Do you drink water? Do you brush your teeth twice a day? Do you sleep eight hours? Do you exercise? Do you play video games?** Отвечаем: **Yes, always.** / **No, never.**",
-            "Дневник: **Day: Monday. Fruit and vegetables: 4 portions. Water: 5 glasses. Sleep: 9 hours. Exercise: 30 minutes.** Потом вывод: **I had a healthy day.** Или: **I should drink more water.**"
+            "Дневник: **Day: Monday. Fruit and vegetables: 4 portions. Water: 5 glasses. Sleep: 9 hours. Exercise: 30 minutes.** Слово portion значит «порция». Потом вывод: **I had a healthy day.** Или: **I should drink more water.**"
           ],
           "example": {
             "title": "Расскажи, что ты вчера ел.",
@@ -19177,7 +20764,7 @@
               "hints": [],
               "ref": {
                 "card": 0,
-                "quote": "Расскажи о **вчерашнем дне** в **Past Simple**: **I got up at 7. I brushed my teeth. I ate cereal and toast for breakfast. I went to school. I played football. I didn’t eat junk food.** Помни: ate, went, got — неправильные глаголы."
+                "quote": "Расскажи о **вчерашнем дне** в **Past Simple**: **I got up at 7. I brushed my teeth. I ate cereal and toast for breakfast. I went to school. I played football. I drank a lot of water. I didn’t eat junk food.** Помни: ate, went, got, drank — неправильные глаголы."
               }
             },
             {
@@ -19198,7 +20785,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 0
+                "card": 0,
+                "quote": "Расскажи о **вчерашнем дне** в **Past Simple**: **I got up at 7. I brushed my teeth. I ate cereal and toast for breakfast. I went to school. I played football. I drank a lot of water. I didn’t eat junk food.** Помни: ate, went, got, drank — неправильные глаголы."
               }
             }
           ],
@@ -19222,7 +20810,7 @@
               "hints": [],
               "ref": {
                 "card": 0,
-                "quote": "Расскажи о **вчерашнем дне** в **Past Simple**: **I got up at 7. I brushed my teeth. I ate cereal and toast for breakfast. I went to school. I played football. I didn’t eat junk food.** Помни: ate, went, got — неправильные глаголы."
+                "quote": "Расскажи о **вчерашнем дне** в **Past Simple**: **I got up at 7. I brushed my teeth. I ate cereal and toast for breakfast. I went to school. I played football. I drank a lot of water. I didn’t eat junk food.** Помни: ate, went, got, drank — неправильные глаголы."
               }
             },
             {
@@ -19310,7 +20898,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 0
+                "card": 3,
+                "quote": "Потом вывод: **I had a healthy day.** Или: **I should drink more water.**"
               }
             },
             {
@@ -19369,9 +20958,13 @@
                 "таблетка"
               ],
               "explanation": [
-                "4 portions of fruit — 4 порции фруктов."
+                "Portion значит «порция»: 4 portions — четыре порции."
               ],
-              "hints": []
+              "hints": [],
+              "ref": {
+                "card": 3,
+                "quote": "Дневник: **Day: Monday. Fruit and vegetables: 4 portions. Water: 5 glasses. Sleep: 9 hours. Exercise: 30 minutes.** Слово portion значит «порция»."
+              }
             },
             {
               "id": "english-t40-x11",
@@ -19389,7 +20982,256 @@
               ],
               "ref": {
                 "card": 0,
-                "quote": "Расскажи о **вчерашнем дне** в **Past Simple**: **I got up at 7. I brushed my teeth. I ate cereal and toast for breakfast. I went to school. I played football. I didn’t eat junk food.** Помни: ate, went, got — неправильные глаголы."
+                "quote": "Расскажи о **вчерашнем дне** в **Past Simple**: **I got up at 7. I brushed my teeth. I ate cereal and toast for breakfast. I went to school. I played football. I drank a lot of water. I didn’t eat junk food.** Помни: ate, went, got, drank — неправильные глаголы."
+              }
+            }
+          ],
+          "pool": [
+            {
+              "id": "english-t40-q12",
+              "subject": "english",
+              "topicId": "english-t40",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Yesterday I ___ up at 7. (get)",
+              "answer": "got",
+              "options": [
+                "got",
+                "get",
+                "gets",
+                "getted"
+              ],
+              "explanation": [
+                "Неправильный глагол: get → got."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Расскажи о **вчерашнем дне** в **Past Simple**: **I got up at 7. I brushed my teeth. I ate cereal and toast for breakfast. I went to school. I played football. I drank a lot of water. I didn’t eat junk food.** Помни: ate, went, got, drank — неправильные глаголы."
+              }
+            },
+            {
+              "id": "english-t40-q13",
+              "subject": "english",
+              "topicId": "english-t40",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "I ___ my teeth yesterday morning. (brush)",
+              "answer": "brushed",
+              "options": [
+                "brushed",
+                "brush",
+                "brushes",
+                "brushing"
+              ],
+              "explanation": [
+                "Правильный глагол: brush → brushed."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Расскажи о **вчерашнем дне** в **Past Simple**: **I got up at 7. I brushed my teeth. I ate cereal and toast for breakfast. I went to school. I played football. I drank a lot of water. I didn’t eat junk food.** Помни: ate, went, got, drank — неправильные глаголы."
+              }
+            },
+            {
+              "id": "english-t40-q14",
+              "subject": "english",
+              "topicId": "english-t40",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "I ___ cereal and toast for breakfast yesterday. (eat)",
+              "answer": "ate",
+              "options": [
+                "ate",
+                "eat",
+                "eated",
+                "eats"
+              ],
+              "explanation": [
+                "Неправильный глагол: eat → ate."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Расскажи о **вчерашнем дне** в **Past Simple**: **I got up at 7. I brushed my teeth. I ate cereal and toast for breakfast. I went to school. I played football. I drank a lot of water. I didn’t eat junk food.** Помни: ate, went, got, drank — неправильные глаголы."
+              }
+            },
+            {
+              "id": "english-t40-q15",
+              "subject": "english",
+              "topicId": "english-t40",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Yesterday I ___ football. (play)",
+              "answer": "played",
+              "options": [
+                "played",
+                "play",
+                "plays",
+                "plaied"
+              ],
+              "explanation": [
+                "Правильный глагол: play → played."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Расскажи о **вчерашнем дне** в **Past Simple**: **I got up at 7. I brushed my teeth. I ate cereal and toast for breakfast. I went to school. I played football. I drank a lot of water. I didn’t eat junk food.** Помни: ate, went, got, drank — неправильные глаголы."
+              }
+            },
+            {
+              "id": "english-t40-q16",
+              "subject": "english",
+              "topicId": "english-t40",
+              "difficulty": "basic",
+              "type": "truefalse",
+              "question": "Глагол went — правильный.",
+              "answer": false,
+              "explanation": [
+                "Ate, went, got, drank — неправильные глаголы."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Расскажи о **вчерашнем дне** в **Past Simple**: **I got up at 7. I brushed my teeth. I ate cereal and toast for breakfast. I went to school. I played football. I drank a lot of water. I didn’t eat junk food.** Помни: ate, went, got, drank — неправильные глаголы."
+              }
+            },
+            {
+              "id": "english-t40-q17",
+              "subject": "english",
+              "topicId": "english-t40",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "I ___ eat sweets. (редко)",
+              "answer": "rarely",
+              "options": [
+                "rarely",
+                "always",
+                "often",
+                "usually"
+              ],
+              "explanation": [
+                "Rarely значит «редко»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "А о **привычках** — в **Present Simple** с наречиями: **I always brush my teeth in the morning. I rarely eat sweets. I never play video games before bed. I sometimes go running.** Таблица «Yes, always / often / sometimes / No, rarely / never» помогает ответить на вопросы анкеты."
+              }
+            },
+            {
+              "id": "english-t40-q18",
+              "subject": "english",
+              "topicId": "english-t40",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "I ___ play video games before bed. (никогда)",
+              "answer": "never",
+              "options": [
+                "never",
+                "always",
+                "sometimes",
+                "often"
+              ],
+              "explanation": [
+                "Never значит «никогда»."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "А о **привычках** — в **Present Simple** с наречиями: **I always brush my teeth in the morning. I rarely eat sweets. I never play video games before bed. I sometimes go running.** Таблица «Yes, always / often / sometimes / No, rarely / never» помогает ответить на вопросы анкеты."
+              }
+            },
+            {
+              "id": "english-t40-q19",
+              "subject": "english",
+              "topicId": "english-t40",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Выбери предложение о привычке.",
+              "answer": "I sometimes go running.",
+              "options": [
+                "I sometimes go running.",
+                "I went to school.",
+                "I ate cereal.",
+                "I got up at 7."
+              ],
+              "explanation": [
+                "О привычках говорим в Present Simple с наречием: I sometimes go running."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "А о **привычках** — в **Present Simple** с наречиями: **I always brush my teeth in the morning. I rarely eat sweets. I never play video games before bed. I sometimes go running.** Таблица «Yes, always / often / sometimes / No, rarely / never» помогает ответить на вопросы анкеты."
+              }
+            },
+            {
+              "id": "english-t40-q20",
+              "subject": "english",
+              "topicId": "english-t40",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как спросить «Ты пьёшь воду?»",
+              "answer": "Do you drink water?",
+              "options": [
+                "Do you drink water?",
+                "Did you drank water?",
+                "Are you drink water?",
+                "Does you drink water?"
+              ],
+              "explanation": [
+                "Вопрос анкеты в Present Simple: Do you drink water?"
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "А о **привычках** — в **Present Simple** с наречиями: **I always brush my teeth in the morning. I rarely eat sweets. I never play video games before bed. I sometimes go running.** Таблица «Yes, always / often / sometimes / No, rarely / never» помогает ответить на вопросы анкеты."
+              }
+            },
+            {
+              "id": "english-t40-q21",
+              "subject": "english",
+              "topicId": "english-t40",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Do you exercise? — …",
+              "answer": "Yes, always.",
+              "options": [
+                "Yes, always.",
+                "Yes, I am.",
+                "Yes, I did.",
+                "Yes, never."
+              ],
+              "explanation": [
+                "На вопросы анкеты отвечаем: Yes, always. / No, never."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "Вопросы анкеты: **Do you eat fruit and vegetables? Do you drink water? Do you brush your teeth twice a day? Do you sleep eight hours? Do you exercise? Do you play video games?** Отвечаем: **Yes, always.** / **No, never.**"
+              }
+            },
+            {
+              "id": "english-t40-q22",
+              "subject": "english",
+              "topicId": "english-t40",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "В дневнике: «Water: 1 glass». Какой вывод подходит?",
+              "answer": "I should drink more water.",
+              "options": [
+                "I should drink more water.",
+                "I had a healthy day.",
+                "I shouldn’t drink water.",
+                "I never drink water."
+              ],
+              "explanation": [
+                "Воды мало — вывод: I should drink more water."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 3,
+                "quote": "Потом вывод: **I had a healthy day.** Или: **I should drink more water.**"
               }
             }
           ],
@@ -19515,7 +21357,11 @@
               "explanation": [
                 "Я → me."
               ],
-              "hints": []
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Местоимения-**дополнения** (**кого? кому?**): **me, you, him, her, it, us, them**."
+              }
             },
             {
               "id": "english-t41-p5",
@@ -19534,7 +21380,11 @@
               "explanation": [
                 "Мы → us."
               ],
-              "hints": []
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Местоимения-**дополнения** (**кого? кому?**): **me, you, him, her, it, us, them**."
+              }
             },
             {
               "id": "english-t41-p6",
@@ -19553,7 +21403,11 @@
               "explanation": [
                 "Предмет → it."
               ],
-              "hints": []
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Местоимения-**дополнения** (**кого? кому?**): **me, you, him, her, it, us, them**."
+              }
             },
             {
               "id": "english-t41-p7",
@@ -19574,7 +21428,8 @@
               ],
               "hints": [],
               "ref": {
-                "card": 2
+                "card": 2,
+                "quote": "После предлогов тоже используем дополнение: **with me, for him, to her, about us, at them**."
               }
             },
             {
@@ -19636,7 +21491,11 @@
               "explanation": [
                 "Мы → us."
               ],
-              "hints": []
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Местоимения-**дополнения** (**кого? кому?**): **me, you, him, her, it, us, them**."
+              }
             },
             {
               "id": "english-t41-x11",
@@ -19653,7 +21512,257 @@
                 "Две буквы."
               ],
               "ref": {
-                "card": 0
+                "card": 0,
+                "quote": "Местоимения-**дополнения** (**кого? кому?**): **me, you, him, her, it, us, them**."
+              }
+            }
+          ],
+          "pool": [
+            {
+              "id": "english-t41-q12",
+              "subject": "english",
+              "topicId": "english-t41",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как будет «нас»?",
+              "answer": "us",
+              "options": [
+                "us",
+                "we",
+                "our",
+                "them"
+              ],
+              "explanation": [
+                "We → us (нас, нам)."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Местоимения-**дополнения** (**кого? кому?**): **me, you, him, her, it, us, them**."
+              }
+            },
+            {
+              "id": "english-t41-q13",
+              "subject": "english",
+              "topicId": "english-t41",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Как будет «их» (кого?)",
+              "answer": "them",
+              "options": [
+                "them",
+                "they",
+                "their",
+                "us"
+              ],
+              "explanation": [
+                "They → them (их, им)."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Местоимения-**дополнения** (**кого? кому?**): **me, you, him, her, it, us, them**."
+              }
+            },
+            {
+              "id": "english-t41-q14",
+              "subject": "english",
+              "topicId": "english-t41",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Какое местоимение-дополнение соответствует she?",
+              "answer": "her",
+              "options": [
+                "her",
+                "she",
+                "him",
+                "us"
+              ],
+              "explanation": [
+                "She → her (её, ей)."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Местоимения-**дополнения** (**кого? кому?**): **me, you, him, her, it, us, them**."
+              }
+            },
+            {
+              "id": "english-t41-q15",
+              "subject": "english",
+              "topicId": "english-t41",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Какое местоимение-дополнение соответствует he?",
+              "answer": "him",
+              "options": [
+                "him",
+                "he",
+                "her",
+                "them"
+              ],
+              "explanation": [
+                "He → him (его, ему)."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0,
+                "quote": "Местоимения-**дополнения** (**кого? кому?**): **me, you, him, her, it, us, them**."
+              }
+            },
+            {
+              "id": "english-t41-q16",
+              "subject": "english",
+              "topicId": "english-t41",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "They like ___ . (меня)",
+              "answer": "me",
+              "options": [
+                "me",
+                "I",
+                "my",
+                "we"
+              ],
+              "explanation": [
+                "После глагола стоит дополнение: me."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Подлежащее стоит **перед** глаголом, дополнение — **после** глагола: **I like them.** (я люблю их)."
+              }
+            },
+            {
+              "id": "english-t41-q17",
+              "subject": "english",
+              "topicId": "english-t41",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "___ like them. (я)",
+              "answer": "I",
+              "options": [
+                "I",
+                "Me",
+                "My",
+                "Us"
+              ],
+              "explanation": [
+                "Перед глаголом стоит подлежащее: I."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Подлежащее стоит **перед** глаголом, дополнение — **после** глагола: **I like them.** (я люблю их)."
+              }
+            },
+            {
+              "id": "english-t41-q18",
+              "subject": "english",
+              "topicId": "english-t41",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Listen to ___ . (их)",
+              "answer": "them",
+              "options": [
+                "them",
+                "they",
+                "their",
+                "he"
+              ],
+              "explanation": [
+                "После глагола и предлога — дополнение: them."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 1,
+                "quote": "Подлежащее стоит **перед** глаголом, дополнение — **после** глагола: **I like them.** (я люблю их)."
+              }
+            },
+            {
+              "id": "english-t41-q19",
+              "subject": "english",
+              "topicId": "english-t41",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Play with ___ . (со мной)",
+              "answer": "me",
+              "options": [
+                "me",
+                "I",
+                "my",
+                "we"
+              ],
+              "explanation": [
+                "После предлога with — дополнение: with me."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "После предлогов тоже используем дополнение: **with me, for him, to her, about us, at them**."
+              }
+            },
+            {
+              "id": "english-t41-q20",
+              "subject": "english",
+              "topicId": "english-t41",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "This present is for ___ . (него)",
+              "answer": "him",
+              "options": [
+                "him",
+                "he",
+                "his",
+                "she"
+              ],
+              "explanation": [
+                "После предлога for — дополнение: for him."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "После предлогов тоже используем дополнение: **with me, for him, to her, about us, at them**."
+              }
+            },
+            {
+              "id": "english-t41-q21",
+              "subject": "english",
+              "topicId": "english-t41",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "We talked about ___ . (ней)",
+              "answer": "her",
+              "options": [
+                "her",
+                "she",
+                "he",
+                "they"
+              ],
+              "explanation": [
+                "После предлога about — дополнение: about her."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 2,
+                "quote": "После предлогов тоже используем дополнение: **with me, for him, to her, about us, at them**."
+              }
+            },
+            {
+              "id": "english-t41-q22",
+              "subject": "english",
+              "topicId": "english-t41",
+              "difficulty": "basic",
+              "type": "truefalse",
+              "question": "В предложении «I can see they» всё правильно.",
+              "answer": false,
+              "explanation": [
+                "После глагола нужно дополнение: I can see them."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 3,
+                "quote": "Не путай **he / him**, **she / her**, **we / us**."
               }
             }
           ],

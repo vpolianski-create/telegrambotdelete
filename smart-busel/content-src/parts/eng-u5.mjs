@@ -40,7 +40,7 @@ export const engU5 = [
     cards: [
       'Чтобы дать **совет**, используем **should** («следует, стоит») и **shouldn’t** («не следует»). После них глагол стоит в начальной форме, а **-s** не добавляем: **You should eat more fruit. She should sleep eight hours. You shouldn’t eat many sweets.**',
       'Вопрос: **Should I eat fruit? — Yes, you should. / No, you shouldn’t.** Спросить о совете: **What should I do to be healthy?** Ответ: **You should walk more and drink water.**',
-      'Что **следует делать**: eat fruit and vegetables, drink water, exercise, sleep 8 hours, wash hands, brush teeth twice a day. Что **не следует**: eat a lot of junk food, play video games for more than two hours a day, go to bed late.',
+      'Что **следует делать**: eat fruit and vegetables, drink water, exercise (заниматься физкультурой), sleep 8 hours, wash hands, brush teeth twice a day (дважды в день). Что **не следует**: eat a lot of junk food, play video games for more than two hours a day, go to bed late.',
       '**Дневник здоровья** (health diary): записываем, что мы ели и делали вчера: **I ate four portions of fruit and vegetables. I didn’t exercise. I drank 5 glasses of water.** Потом даём себе совет: **I should exercise more.**',
     ],
     example: ['Дай совет другу, который редко ест овощи.', [
@@ -131,10 +131,10 @@ export const engU5 = [
   }),
   T(40, 'Unit 5, Lessons 2, 4–5. Мой день: привычки и дневник', {
     cards: [
-      'Расскажи о **вчерашнем дне** в **Past Simple**: **I got up at 7. I brushed my teeth. I ate cereal and toast for breakfast. I went to school. I played football. I didn’t eat junk food.** Помни: ate, went, got — неправильные глаголы.',
+      'Расскажи о **вчерашнем дне** в **Past Simple**: **I got up at 7. I brushed my teeth. I ate cereal and toast for breakfast. I went to school. I played football. I drank a lot of water. I didn’t eat junk food.** Помни: ate, went, got, drank — неправильные глаголы.',
       'А о **привычках** — в **Present Simple** с наречиями: **I always brush my teeth in the morning. I rarely eat sweets. I never play video games before bed. I sometimes go running.** Таблица «Yes, always / often / sometimes / No, rarely / never» помогает ответить на вопросы анкеты.',
       'Вопросы анкеты: **Do you eat fruit and vegetables? Do you drink water? Do you brush your teeth twice a day? Do you sleep eight hours? Do you exercise? Do you play video games?** Отвечаем: **Yes, always.** / **No, never.**',
-      'Дневник: **Day: Monday. Fruit and vegetables: 4 portions. Water: 5 glasses. Sleep: 9 hours. Exercise: 30 minutes.** Потом вывод: **I had a healthy day.** Или: **I should drink more water.**',
+      'Дневник: **Day: Monday. Fruit and vegetables: 4 portions. Water: 5 glasses. Sleep: 9 hours. Exercise: 30 minutes.** Слово portion значит «порция». Потом вывод: **I had a healthy day.** Или: **I should drink more water.**',
     ],
     example: ['Расскажи, что ты вчера ел.', [
       ['Ставим слово yesterday: Yesterday I …', 'Past Simple.'],

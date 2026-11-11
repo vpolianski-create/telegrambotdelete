@@ -8,6 +8,8 @@ import { seeded } from '../src/engine/rng';
 // @ts-expect-error — списки сборки уроков написаны на обычном JS
 import { artDrop } from '../content-src/art-pool.mjs';
 // @ts-expect-error — то же
+import { englishDrop } from '../content-src/english-pool.mjs';
+// @ts-expect-error — то же
 import { historyDrop } from '../content-src/history-pool.mjs';
 // @ts-expect-error — то же
 import { krugozorDrop } from '../content-src/krugozor-pool.mjs';
@@ -101,7 +103,7 @@ describe('вопросы без опоры на урок убраны', () => {
   const all = new Set(subjects.flatMap((s) => s.sections.flatMap((sec) => sec.topics.flatMap((t) =>
     [...t.selfCheck, ...t.practice, ...t.bonus, ...t.pool].filter((e): e is Task => !('generator' in e)).map((e) => e.id)))));
   it('убранных вопросов нет ни в одном уроке', () => {
-    const dropped: string[] = [...artDrop, ...historyDrop, ...krugozorDrop, ...worldDrop];
+    const dropped: string[] = [...artDrop, ...englishDrop, ...historyDrop, ...krugozorDrop, ...worldDrop];
     expect(dropped.length).toBeGreaterThan(50);
     dropped.forEach((id) => expect(all.has(id), id).toBe(false));
   });

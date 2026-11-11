@@ -68,9 +68,9 @@ export const engU4 = [
   T(34, 'Unit 4, Lessons 3–4. Present Simple и Past Simple: Yes / No и Wh-вопросы', {
     cards: [
       '**Present Simple** — для привычек и фактов: **Do you celebrate Easter? — Yes, I do. Does she get presents? — Yes, she does.** Помощник — **do / does**; Past Simple — для событий в прошлом: **Did you celebrate Easter? — Yes, I did. Did she get presents? — No, she didn’t.** Помощник — **did**.',
-      'Wh-вопросы в Present Simple: **What do you do on Easter? Where does your family go? When do they celebrate it?** В Past Simple: **What did you do last Easter? Where did your family go? When did they celebrate it?** Меняем do / does на did.',
+      'Wh-вопросы в Present Simple: **What do you do at Easter? Where does your family go? When do they celebrate it?** В Past Simple: **What did you do last Easter? Where did your family go? When did they celebrate it?** Меняем do / does на did.',
       'Отрицание: Present — **don’t / doesn’t** (We **don’t** paint eggs. She **doesn’t** like jokes). Past — **didn’t** (We **didn’t** paint eggs last year). После вспомогательного глагола — всегда начальная форма: **don’t go, didn’t go**.',
-      'Сравнение: **Every Easter we paint eggs. Last Easter we painted eggs and ate cake.** Подсказки: **every year, usually, always** — Present; **last year, yesterday, ago** — Past. Символы Пасхи: **symbol, church, tradition**. Это слова урока 4 об Пасхе в Беларуси и других странах.',
+      'Сравнение: **Every Easter we paint eggs. Last Easter we painted eggs and ate cake.** Подсказки: **every year, usually, always** — Present; **last year, yesterday, ago** — Past. Слова урока 4 о Пасхе: **symbol** (символ), **church** (церковь, костёл), **tradition** (традиция).',
     ],
     example: ['Преврати «We go to church at Easter» в вопрос в Past Simple.', [
       ['Меняем время на прошедшее: last Easter.', 'Нужно слово-подсказка.'],
