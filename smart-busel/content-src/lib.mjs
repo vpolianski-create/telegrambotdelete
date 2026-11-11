@@ -51,6 +51,7 @@ function pictureTask(img, pool, k) {
 export function buildSubject(meta, sections) {
   const seen = new Set();
   const pictures = meta.images ?? [];
+  const dropped = new Set(meta.drop ?? []);
   const out = {
     id: meta.id, title: meta.title, language: meta.language, color: meta.color, icon: meta.icon,
     sections: sections.map(([title, topics], si) => ({
@@ -80,9 +81,11 @@ export function buildSubject(meta, sections) {
         if (spec.review ?? meta.review) topic.needsReview = true;
         topic.cards = cards;
         if (spec.example) topic.example = { title: spec.example[0], steps: spec.example[1].map(([text, why]) => ({ text, why })) };
-        topic.selfCheck = (spec.check ?? []).map((t) => fix(t, 'basic', 'sc'));
-        topic.practice = (spec.practice ?? []).map((t) => fix(t, 'basic', 'p'));
-        topic.bonus = [...(spec.bonus ?? []), ...(meta.extra?.[n] ?? [])].map((t) => fix(t, 'bonus', 'x'));
+        // сначала всем заданиям выдаются номера, потом убираются помеченные в drop — так номера остальных не сдвигаются
+        const kept = (list) => list.filter((t) => !('id' in t) || !dropped.has(t.id) || !dropped.delete(t.id));
+        topic.selfCheck = kept((spec.check ?? []).map((t) => fix(t, 'basic', 'sc')));
+        topic.practice = kept((spec.practice ?? []).map((t) => fix(t, 'basic', 'p')));
+        topic.bonus = kept([...(spec.bonus ?? []), ...(meta.extra?.[n] ?? [])].map((t) => fix(t, 'bonus', 'x')));
         // картины: показываются у своей карточки и приходят заданием «узнай картину»
         const mine = pictures.filter((x) => x.n === n);
         if (mine.length) {
@@ -104,5 +107,6 @@ export function buildSubject(meta, sections) {
       }),
     })),
   };
+  if (dropped.size) throw new Error(`${meta.id}: в drop указаны несуществующие задания: ${[...dropped].join(', ')}`);
   return out;
 }

@@ -5,6 +5,12 @@ import { rebuildTask } from '../src/content/review';
 import { checkAnswer } from '../src/engine/answers';
 import { samplePractice } from '../src/engine/lesson';
 import { seeded } from '../src/engine/rng';
+// @ts-expect-error — списки сборки уроков написаны на обычном JS
+import { artDrop } from '../content-src/art-pool.mjs';
+// @ts-expect-error — то же
+import { historyDrop } from '../content-src/history-pool.mjs';
+// @ts-expect-error — то же
+import { worldDrop } from '../content-src/world-pool.mjs';
 
 const task = (id: string, extra: Partial<Task> = {}): Task => ({
   id, subject: 'history', topicId: 't', difficulty: 'basic', type: 'single', question: `Вопрос ${id}?`,
@@ -85,6 +91,21 @@ describe('запас вопросов в настоящих уроках', () =>
     for (const { s, topic } of pooled.slice(0, 5)) {
       const t = topic.pool[0];
       expect(rebuildTask({ subject: s.id, topicId: topic.id, question: t.question, taskId: t.id })?.id).toBe(t.id);
+    }
+  });
+});
+
+describe('вопросы без опоры на урок убраны', () => {
+  const all = new Set(subjects.flatMap((s) => s.sections.flatMap((sec) => sec.topics.flatMap((t) =>
+    [...t.selfCheck, ...t.practice, ...t.bonus, ...t.pool].filter((e): e is Task => !('generator' in e)).map((e) => e.id)))));
+  it('убранных вопросов нет ни в одном уроке', () => {
+    const dropped: string[] = [...artDrop, ...historyDrop, ...worldDrop];
+    expect(dropped.length).toBeGreaterThan(30);
+    dropped.forEach((id) => expect(all.has(id), id).toBe(false));
+  });
+  it('в каждой готовой теме осталась практика', () => {
+    for (const s of subjects) for (const sec of s.sections) for (const t of sec.topics) {
+      if (t.status === 'ready') expect(t.practice.length, t.id).toBeGreaterThanOrEqual(4);
     }
   });
 });

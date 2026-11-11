@@ -11,7 +11,10 @@ import * as i from './pool/history-i.mjs';
 import * as j from './pool/history-j.mjs';
 import * as k from './pool/history-k.mjs';
 import * as l from './pool/history-l.mjs';
+import * as dropped from './pool/history-drop.mjs';
 
-const parts = [a, b, c, d, e, f, g, h, i, j, k, l];
+const parts = [a, b, c, d, e, f, g, h, i, j, k, l, dropped];
 export const historyPool = Object.assign({}, ...parts.map((p) => p.pool));
 export const historyExplain = Object.assign({}, ...parts.map((p) => p.explain));
+/** Номера заданий, убранных из уроков: ответа на них в тексте урока нет. */
+export const historyDrop = parts.flatMap((p) => p.drop ?? []);

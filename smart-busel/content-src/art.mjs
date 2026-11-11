@@ -1,6 +1,6 @@
 import { buildSubject } from './lib.mjs';
 import { artImages } from './art-images.mjs';
-import { artExplain, artPool } from './art-pool.mjs';
+import { artDrop, artExplain, artPool } from './art-pool.mjs';
 import { artA } from './parts/art-a.mjs';
 import { artB } from './parts/art-b.mjs';
 import { artC } from './parts/art-c.mjs';
@@ -13,6 +13,6 @@ import { artI } from './parts/art-i.mjs';
 
 // Порядок и названия тем — по учебнику «Искусство», 5 класс (Колбышева и др., 2022). Тексты — оригинальные.
 export const subject = buildSubject(
-  { id: 'art', title: 'Искусство', language: 'ru', color: '#be185d', icon: '🎨', images: artImages, pool: artPool, explain: artExplain },
+  { id: 'art', title: 'Искусство', language: 'ru', color: '#be185d', icon: '🎨', images: artImages, pool: artPool, explain: artExplain, drop: artDrop },
   [...artA, ...artB, ...artC, ...artD, ...artE, ...artF, ...artG, ...artH, ...artI],
 );
