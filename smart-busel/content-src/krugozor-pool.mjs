@@ -5,8 +5,9 @@ import * as c from './pool/krugozor-c.mjs';
 import * as d from './pool/krugozor-d.mjs';
 import * as e from './pool/krugozor-e.mjs';
 import * as f from './pool/krugozor-f.mjs';
+import * as g from './pool/krugozor-g.mjs';
 
-const parts = [a, b, c, d, e, f];
+const parts = [a, b, c, d, e, f, g];
 export const krugozorPool = Object.assign({}, ...parts.map((p) => p.pool));
 export const krugozorExplain = Object.assign({}, ...parts.map((p) => p.explain));
 /** Номера заданий, убранных из уроков: ответа на них в тексте урока нет. */
