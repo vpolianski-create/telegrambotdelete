@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { Celebration } from './Celebration';
 import { Mascot } from './Mascot';
 import { todayStr, useApp } from '../store/useApp';
 
@@ -26,27 +27,27 @@ export function SessionGuard() {
 
   if (limitHit) {
     return (
-      <div className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-5 bg-brand p-8 text-center text-onbrand">
+      <Celebration label="На сегодня всё">
         <Mascot size={170} mood="rest" />
-        <h1 className="text-4xl font-extrabold">Отличная работа на сегодня, {settings.name}!</h1>
-        <p className="text-xl">Пора отдохнуть. Завтра продолжим!</p>
-        <div className="flex items-center gap-2 text-sm opacity-90">
+        <h1 className="text-4xl font-bold">Отличная работа на сегодня, {settings.name}!</h1>
+        <p className="text-xl text-mute">Пора отдохнуть. Завтра продолжим!</p>
+        <div className="flex flex-wrap items-center justify-center gap-2 text-sm">
           <input type="password" inputMode="numeric" value={pin} onChange={(e) => setPin(e.target.value)} placeholder="PIN родителя"
-            aria-label="PIN родителя" className="rounded-xl2 px-3 py-2 text-ink" />
-          <button onClick={() => pin === settings.pin && unlockToday()} className="rounded-xl2 bg-white/20 px-4">Продлить</button>
+            aria-label="PIN родителя" className="min-h-touch rounded-xl2 border px-3" />
+          <button onClick={() => pin === settings.pin && unlockToday()} className="rounded-xl2 bg-soft px-4 font-bold">Продлить</button>
         </div>
-      </div>
+      </Celebration>
     );
   }
   if (onBreak) {
     return (
-      <div className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-5 bg-ok p-8 text-center text-onok">
+      <Celebration label="Перерыв">
         <Mascot size={170} mood="rest" />
-        <h1 className="text-4xl font-extrabold">Пора сделать перерыв!</h1>
-        <p className="text-xl">Встань, потянись, попей воды и посмотри вдаль.</p>
-        <button onClick={() => { session.current = 0; setOnBreak(false); }}
-          className="rounded-xl2 bg-card px-10 py-3 text-xl font-extrabold text-ink">Я отдохнул</button>
-      </div>
+        <h1 className="text-4xl font-bold">Пора сделать перерыв!</h1>
+        <p className="text-xl text-mute">Встань, потянись, попей воды и посмотри вдаль.</p>
+        <button autoFocus onClick={() => { session.current = 0; setOnBreak(false); }}
+          className="min-w-40 rounded-xl2 bg-brand px-10 text-xl font-bold text-onbrand">Я отдохнул</button>
+      </Celebration>
     );
   }
   return null;

@@ -1,13 +1,14 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import confetti from 'canvas-confetti';
 import { motion } from 'framer-motion';
+import { ChestButton, ChestPrize } from '../components/Chest';
 import { Mascot } from '../components/Mascot';
 import { Rich } from '../components/Rich';
+import { Spark } from '../components/Spark';
 import { TaskView, type TaskResult } from '../components/TaskView';
 import { Visual } from '../components/Visual';
 import { findTopic, imageUrl } from '../content/loader';
 import { isGeneratorRef, type Entry, type Task } from '../content/schema';
-import { ACCESSORIES, type ChestResult } from '../engine/chest';
+import type { ChestResult } from '../engine/chest';
 import { starsFor } from '../engine/level';
 import { introSteps, queueAfterAnswer, samplePractice, type LessonItem } from '../engine/lesson';
 import { comboBonus, TOPIC_PASS_PERCENT } from '../engine/points';
@@ -71,9 +72,6 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
     if (phase !== 'result' || finished.current) return;
     finished.current = true;
     setOutcome(finishTopic(topic.id, percent, { noHints: hintsUsed === 0 }));
-    if (percent >= TOPIC_PASS_PERCENT && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
-    }
   }, [phase]);
 
   const afterList = (next: Phase) => { setI(0); setPhase(next); };
@@ -197,13 +195,13 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
   return shell('Итог',
     <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}
       className="flex flex-col items-center gap-4 rounded-xl3 bg-card p-8 text-center shadow">
-      <Mascot size={150} mood={passed ? 'cheer' : 'support'} />
+      <Spark fire={passed}><Mascot size={150} mood={passed ? 'cheer' : 'support'} /></Spark>
       <h2 className="text-3xl font-extrabold">
-        {passed ? `${settings.name}, тема пройдена! 🎉` : 'Ты не сдался — это главное!'}
+        {passed ? `${settings.name}, тема пройдена!` : 'Ты не сдался — это главное!'}
       </h2>
       <div className="flex gap-2 text-5xl" aria-label={`Звёзд: ${starsFor(percent)} из 3`}>
         {[1, 2, 3].map((k) => (
-          <motion.span key={k} initial={{ scale: 0, rotate: -40 }} animate={{ scale: 1, rotate: 0 }} transition={{ delay: 0.3 + k * 0.25, type: 'spring' }}
+          <motion.span key={k} initial={{ scale: 0, rotate: -40 }} animate={{ scale: 1, rotate: 0 }} transition={{ delay: 0.2 + k * 0.12, duration: 0.22 }}
             style={{ filter: starsFor(percent) >= k ? 'none' : 'grayscale(1) opacity(.35)' }}>⭐</motion.span>
         ))}
       </div>
@@ -228,17 +226,9 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
         </div>
       )}
       {passed && !chest && topicResults[topic.id]?.done && !topicResults[topic.id]?.chestOpened && (
-        <motion.button whileTap={{ scale: 0.9 }} animate={{ rotate: [0, -6, 6, 0] }} transition={{ repeat: Infinity, duration: 1.4 }}
-          onClick={() => setChest(openChest(topic.id))}
-          className="rounded-xl3 bg-accent px-8 py-4 text-2xl font-extrabold text-onaccent shadow">🎁 Открыть сундук-сюрприз!</motion.button>
+        <ChestButton label="Открыть сундук-сюрприз" onOpen={() => setChest(openChest(topic.id))} />
       )}
-      {chest && (
-        <motion.p initial={{ scale: 0.5, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="rounded-xl3 bg-ok/15 px-6 py-3 text-2xl font-extrabold">
-          {chest.kind === 'sticker' && `В сундуке стикер ${chest.id}!`}
-          {chest.kind === 'accessory' && `В сундуке украшение Бусела: ${ACCESSORIES.find((a) => a.id === chest.id)?.emoji} ${ACCESSORIES.find((a) => a.id === chest.id)?.name}!`}
-          {chest.kind === 'points' && `В сундуке +${chest.amount} баллов!`}
-        </motion.p>
-      )}
+      {chest && <ChestPrize result={chest} mascot />}
       <div className="flex gap-3">
         <Btn ghost onClick={onExit}>К темам</Btn>
         <Btn onClick={() => onRetry()}>Ещё раз</Btn>

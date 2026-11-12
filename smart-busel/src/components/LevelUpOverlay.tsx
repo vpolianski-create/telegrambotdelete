@@ -1,13 +1,13 @@
 import { useEffect } from 'react';
-import confetti from 'canvas-confetti';
-import { motion } from 'framer-motion';
 import { ACCESSORIES } from '../engine/chest';
-import { levelFor } from '../engine/level';
+import { levelFor, levelTitle } from '../engine/level';
 import { useApp } from '../store/useApp';
 import { play } from '../audio/sfx';
+import { Celebration } from './Celebration';
 import { Mascot } from './Mascot';
+import { Spark } from './Spark';
 
-/** Повышение уровня. Ждёт, пока ребёнок закроет праздничный экран награды. */
+/** Повышение уровня. Ждёт, пока ребёнок закроет экран награды. */
 export function LevelUpOverlay() {
   const { points, levelSeen, markLevelSeen, rewards, celebrated, settings } = useApp();
   const level = levelFor(points).level;
@@ -15,22 +15,17 @@ export function LevelUpOverlay() {
   const show = level > levelSeen && !rewardShowing;
   const unlocked = ACCESSORIES.filter((a) => a.level !== undefined && a.level > levelSeen && a.level <= level);
 
-  useEffect(() => {
-    if (show) play('level');
-    if (show && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      confetti({ particleCount: 120, spread: 100, origin: { y: 0.5 }, colors: ['#ffd43b', '#ff8a3d', '#2f6fed'] });
-    }
-  }, [show]);
+  useEffect(() => { if (show) play('level'); }, [show]);
 
   if (!show) return null;
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-      className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-5 bg-sun p-8 text-center text-navy">
-      <motion.div animate={{ scale: [0.6, 1.15, 1] }} transition={{ duration: 0.6 }}><Mascot size={170} cheer /></motion.div>
-      <h1 className="text-5xl font-extrabold">Уровень {level}!</h1>
-      <p className="text-2xl">{settings.name}, ты стал ещё сильнее!</p>
-      {unlocked.length > 0 && <p className="text-xl">Новое украшение Бусела: {unlocked.map((a) => `${a.emoji} ${a.name}`).join(', ')}</p>}
-      <button onClick={markLevelSeen} className="rounded-xl2 bg-navy px-10 py-3 text-xl font-extrabold text-white">Ура!</button>
-    </motion.div>
+    <Celebration label="Новый уровень">
+      <Spark><Mascot size={180} cheer /></Spark>
+      <p className="rounded-full bg-sun px-4 py-1 text-sm font-bold text-navy">Новый уровень</p>
+      <h1 className="text-4xl font-bold">Уровень {level} · {levelTitle(level)}</h1>
+      <p className="text-xl text-mute">{settings.name}, ты стал ещё сильнее!</p>
+      {unlocked.length > 0 && <p className="text-lg">Новое украшение Бусела: {unlocked.map((a) => `${a.emoji} ${a.name}`).join(', ')}</p>}
+      <button autoFocus onClick={markLevelSeen} className="min-w-40 rounded-xl2 bg-brand px-10 text-xl font-bold text-onbrand">Ура!</button>
+    </Celebration>
   );
 }

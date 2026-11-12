@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { learnSubjects } from '../content/loader';
-import { ACCESSORIES, type ChestResult } from '../engine/chest';
+import type { ChestResult } from '../engine/chest';
+import { ChestArt, ChestButton, ChestPrize } from './Chest';
 import { questProgress, questsFor, QUEST_POINTS } from '../engine/quests';
 import { todayStr, useApp } from '../store/useApp';
 
@@ -18,7 +19,10 @@ export function Quests() {
 
   return (
     <section className="flex flex-col gap-3 rounded-xl3 bg-card p-5 shadow">
-      <h2 className="text-xl font-extrabold">Задания дня</h2>
+      <div className="flex items-center gap-3">
+        <h2 className="flex-1 text-xl font-extrabold">Задания дня</h2>
+        <span className={all ? '' : 'opacity-60'} title="Сундук дня"><ChestArt open={!!chestOpened} size={40} /></span>
+      </div>
       <ul className="flex flex-col gap-2">
         {quests.map((q) => {
           const p = questProgress(q, d);
@@ -38,17 +42,8 @@ export function Quests() {
         })}
       </ul>
       <p className="text-sm text-mute">За каждое задание +{QUEST_POINTS} баллов. Выполни все три — откроется сундук дня.</p>
-      {all && !chestOpened && !res && (
-        <motion.button whileTap={{ scale: 0.92 }} animate={{ rotate: [0, -4, 4, 0] }} transition={{ repeat: Infinity, duration: 1.4 }}
-          onClick={() => setRes(openDayChest())} className="rounded-xl2 bg-sun px-6 py-3 text-lg font-extrabold text-navy">🎁 Открыть сундук дня!</motion.button>
-      )}
-      {res && (
-        <p className="rounded-xl2 bg-ok/15 px-4 py-2 text-lg font-extrabold">
-          {res.kind === 'sticker' && `В сундуке стикер ${res.id}!`}
-          {res.kind === 'accessory' && `В сундуке украшение: ${ACCESSORIES.find((a) => a.id === res.id)?.emoji} ${ACCESSORIES.find((a) => a.id === res.id)?.name}!`}
-          {res.kind === 'points' && `В сундуке +${res.amount} баллов!`}
-        </p>
-      )}
+      {all && !chestOpened && !res && <ChestButton label="Открыть сундук дня" onOpen={() => setRes(openDayChest())} />}
+      {res && <ChestPrize result={res} />}
       {all && chestOpened && !res && <p className="font-bold text-okink">Сегодня всё выполнено. Отличная работа!</p>}
     </section>
   );
