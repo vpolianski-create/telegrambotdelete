@@ -95,8 +95,8 @@ export function Home({ onSubject, onSubjects, onTopic, onPlan, onReview, onWarmu
         className="relative flex min-h-[max(260px,36vh)] items-center overflow-hidden rounded-hero text-ink shadow" style={{ background: '#070e1d' }}>
         <img src={heroUrl} alt="" draggable={false} className="absolute inset-y-0 right-0 h-full w-auto max-w-none object-cover" />
         <div aria-hidden className="absolute inset-0" style={{ background: 'var(--aurora)' }} />
-        <div aria-hidden className="absolute inset-0" style={{ background: 'linear-gradient(90deg, #070e1d 0%, #070e1d 38%, rgba(7,14,29,0.72) 55%, transparent 78%)' }} />
-        <div className="relative flex w-full max-w-[36rem] flex-col gap-3 p-8">
+        <div aria-hidden className="absolute inset-0" style={{ background: 'linear-gradient(90deg, #070e1d 0%, #070e1d 46%, rgba(7,14,29,0.78) 62%, transparent 82%)' }} />
+        <div className="relative flex w-full max-w-[min(36rem,62%)] flex-col gap-3 p-8">
           <div className="flex items-center gap-4">
             <Mascot size={104} />
             <div>
