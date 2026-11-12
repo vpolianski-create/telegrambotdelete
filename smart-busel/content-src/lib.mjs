@@ -100,10 +100,16 @@ export function buildSubject(meta, sections) {
         topic.practice = kept((spec.practice ?? []).map((t) => fix(t, 'basic', 'p')));
         topic.bonus = kept([...(spec.bonus ?? []), ...(meta.extra?.[n] ?? [])].map((t) => fix(t, 'bonus', 'x')));
         // рисунки к уроку: каждый привязан к карточке, где стоит фраза at
-        if (spec.visuals?.length) {
-          topic.visuals = spec.visuals.map(({ at, ...visual }) => {
+        const pictures2 = [...(spec.visuals ?? []), ...(meta.visuals?.[n] ?? [])];
+        if (pictures2.length) {
+          const digits = cards.join(' ').replace(/[\s\u00a0\u202f]/g, '');
+          topic.visuals = pictures2.map(({ at, ...visual }) => {
             const card = cards.findIndex((c) => c.replace(/\*\*/g, '').includes(at));
             if (card < 0) throw new Error(`${id}: в карточках нет фразы «${at}» для рисунка ${visual.kind}`);
+            // лента времени показывает только те годы, что названы в уроке
+            if (visual.kind === 'timeline') for (const e of visual.events) {
+              if (!new RegExp(`(^|\\D)${Math.abs(e.year)}(\\D|$)`).test(digits)) throw new Error(`${id}: года ${e.year} нет в карточках (лента времени)`);
+            }
             return { card, visual };
           });
         }

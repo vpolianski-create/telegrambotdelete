@@ -137,35 +137,50 @@ function Lines() {
   );
 }
 
-/** Лента времени: слева — до нашей эры, справа — наша эра; года 0 нет. */
+/** Лента времени: слева — до нашей эры, справа — наша эра; года 0 нет. Близкие события поднимаются «этажом» выше. */
 function Timeline({ v }: { v: Of<'timeline'> }) {
   const events = [...v.events].sort((a, b) => a.year - b.year);
   const r = timelineRange(events.map((e) => e.year));
   const x = (year: number) => scale(yearPos(year), yearPos(r.from), yearPos(r.to), 48, 580);
   const labelled = events.some((e) => e.label);
   const crosses = r.from < 0 && r.to > 0;
+  // этаж каждого события: если кружок налезает на соседний, ставим его выше
+  const last: number[] = [];
+  const level = events.map((e) => {
+    if (!labelled) return 0;
+    let l = 0;
+    while (last[l] !== undefined && x(e.year) - last[l] < 30) l++;
+    last[l] = x(e.year);
+    return l;
+  });
+  const up = Math.max(...level) * 30;
+  const ay = 74 + up; // высота оси
   return (
     <div className="flex flex-col gap-2">
-      <svg viewBox="0 0 640 128" className="h-auto w-full" role="img" aria-label="Лента времени">
-        <line x1={24} y1={74} x2={612} y2={74} stroke={INK} strokeWidth={3} />
-        <polygon points="628,74 612,67 612,81" fill={INK} />
-        {crosses && <line x1={x(1)} y1={22} x2={x(1)} y2={92} stroke={ACCENT} strokeWidth={2} strokeDasharray="5 5" />}
+      <svg viewBox={`0 0 640 ${128 + up}`} className="h-auto w-full" role="img" aria-label="Лента времени">
+        <line x1={24} y1={ay} x2={612} y2={ay} stroke={INK} strokeWidth={3} />
+        <polygon points={`628,${ay} 612,${ay - 7} 612,${ay + 7}`} fill={INK} />
+        {crosses && <line x1={x(1)} y1={22} x2={x(1)} y2={ay + 18} stroke={ACCENT} strokeWidth={2} strokeDasharray="5 5" />}
         {r.from < 0 && <text x={crosses ? x(1) - 10 : 30} y={18} textAnchor={crosses ? 'end' : 'start'} fontSize={15} fill={MUTE} style={font}>← до нашей эры</text>}
         {r.to > 0 && <text x={crosses ? x(1) + 10 : 610} y={18} textAnchor={crosses ? 'start' : 'end'} fontSize={15} fill={MUTE} style={font}>наша эра →</text>}
         {r.ticks.map((t) => (
           <g key={t}>
-            <line x1={x(t)} y1={66} x2={x(t)} y2={82} stroke={INK} strokeWidth={2} />
-            <text x={x(t)} y={106} textAnchor="middle" fontSize={15} fill={MUTE} style={font}>{Math.abs(t)}</text>
+            <line x1={x(t)} y1={ay - 8} x2={x(t)} y2={ay + 8} stroke={INK} strokeWidth={2} />
+            <text x={x(t)} y={ay + 32} textAnchor="middle" fontSize={15} fill={MUTE} style={font}>{Math.abs(t)}</text>
           </g>
         ))}
-        {events.map((e, i) => (
-          <g key={i}>
-            <circle cx={x(e.year)} cy={74} r={labelled ? 13 : 9} fill={ACCENT} />
-            {labelled
-              ? <text x={x(e.year)} y={80} textAnchor="middle" fontSize={16} fill="#fff" style={font}>{i + 1}</text>
-              : <text x={x(e.year)} y={i % 2 ? 36 : 54} textAnchor="middle" fontSize={16} fill={ACCENT} style={font}>{yearLabel(e.year)}</text>}
-          </g>
-        ))}
+        {events.map((e, i) => {
+          const cy = ay - level[i] * 30;
+          return (
+            <g key={i}>
+              {level[i] > 0 && <line x1={x(e.year)} y1={cy} x2={x(e.year)} y2={ay} stroke={ACCENT} strokeWidth={2} />}
+              <circle cx={x(e.year)} cy={cy} r={labelled ? 13 : 9} fill={ACCENT} />
+              {labelled
+                ? <text x={x(e.year)} y={cy + 6} textAnchor="middle" fontSize={16} fill="#fff" style={font}>{i + 1}</text>
+                : <text x={x(e.year)} y={i % 2 ? ay - 38 : ay - 20} textAnchor="middle" fontSize={16} fill={ACCENT} style={font}>{yearLabel(e.year)}</text>}
+            </g>
+          );
+        })}
       </svg>
       {labelled && (
         <ol className="flex flex-col gap-1 px-2 text-base">
