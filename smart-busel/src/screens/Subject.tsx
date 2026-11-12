@@ -32,7 +32,7 @@ export function SubjectScreen({ id, onBack, onTopic, onVocab }: { id: string; on
         <span aria-hidden className="absolute inset-y-0 left-0 w-1" style={{ background: tone.mark }} />
         <SubjectArt subject={s} size={96} />
         <div className="min-w-0 flex-1">
-          <h1 className="mb-1 text-3xl font-extrabold">{s.title}</h1>
+          <h1 className="mb-1 text-4xl font-extrabold">{s.title}</h1>
           <p className="text-mute">
             {(['done', 'started', 'failed', 'new'] as TopicStatus[]).map((k) => `${STATUS_LABEL[k]}: ${counts[k]}`).join(' · ')}
           </p>

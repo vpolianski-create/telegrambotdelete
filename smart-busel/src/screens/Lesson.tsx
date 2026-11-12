@@ -212,7 +212,7 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
       {passed && starsFor(percent) < 3 && <p className="text-sm text-mute">Чтобы получить следующую звезду, пройди тему ещё раз на {starsFor(percent) === 1 ? 90 : 100}%.</p>}
       {outcome.card && topic.card && (
         <motion.div initial={{ rotateY: 90, opacity: 0 }} animate={{ rotateY: 0, opacity: 1 }} transition={{ delay: 0.9 }}
-          className="w-full max-w-md rounded-xl3 border-2 border-sun bg-sun/15 p-4 text-left">
+          className="w-full max-w-md rounded-xl3 border border-sun bg-sun/15 p-4 text-left">
           <p className="text-sm font-extrabold uppercase tracking-wide text-accentink">Новая карточка знаний</p>
           <p className="text-2xl font-extrabold">{topic.card.emoji} {topic.card.title}</p>
           <p className="mt-1">{topic.card.fact}</p>

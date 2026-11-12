@@ -210,9 +210,9 @@ export function Vocabulary({ onBack }: { onBack(): void }) {
       <button onClick={mode ? () => setMode(null) : onBack} className="self-start rounded-xl2 bg-card px-5 shadow">← Назад</button>
       {mode ? <Training mode={mode} setId={set} onExit={() => setMode(null)} /> : (
         <>
-          <h1 className="text-3xl font-extrabold">📒 Английские слова</h1>
+          <h1 className="text-4xl font-extrabold">📒 Английские слова</h1>
           {!voice && (
-            <p className="rounded-xl2 bg-accent/20 p-3">
+            <p className="rounded-xl2 bg-warn/15 p-3">
               🔇 Английский голос не найден. Родителям: Параметры Windows → Время и язык → Язык и регион → добавить English (United States) → Речь.
             </p>
           )}
@@ -221,13 +221,13 @@ export function Vocabulary({ onBack }: { onBack(): void }) {
             <div className="flex items-end gap-3">
               {counts.map((c, k) => (
                 <div key={k} className="flex flex-1 flex-col items-center gap-1">
-                  <div className="w-full rounded-t-lg bg-accent" style={{ height: 8 + c * 6 }} />
+                  <div className="w-full rounded-t bg-brand" style={{ height: 8 + (c / Math.max(1, ...counts)) * 80 }} />
                   <span className="text-sm text-mute">Коробка {k + 1}: {c}</span>
                 </div>
               ))}
             </div>
           </section>
-          <section className="flex flex-wrap gap-2">
+          <section className="flex flex-wrap gap-2" aria-label="Набор слов">
             {[{ id: 'all', title: 'Все слова', icon: '📚' }, ...wordSets].map((s) => (
               <button key={s.id} onClick={() => setSet(s.id)}
                 className={`rounded-xl2 px-5 font-bold ${set === s.id ? 'bg-brand text-onbrand' : 'bg-card shadow'}`}>
@@ -238,7 +238,7 @@ export function Vocabulary({ onBack }: { onBack(): void }) {
           <section className="grid gap-3 sm:grid-cols-2">
             {MODES.map((m) => (
               <button key={m.id} onClick={() => setMode(m.id)}
-                className="flex min-h-[90px] items-center gap-4 rounded-xl3 bg-card p-5 text-left shadow transition-transform hover:scale-[1.02] active:scale-95">
+                className="flex min-h-[90px] items-center gap-4 rounded-xl3 bg-card p-5 text-left shadow active:scale-[0.99]">
                 <span className="text-4xl">{m.icon}</span>
                 <span className="text-xl font-extrabold">{m.title}</span>
               </button>

@@ -155,8 +155,8 @@ export function TaskView({ task, scored = true, speakWord, extraBonus = 0, repea
         <div className="flex flex-col gap-2">
           {hintList.slice(0, hints).map((h, i) => (
             h.kind === 'card'
-              ? <div key={i} className="rounded-xl2 bg-accent/15 px-4 py-3"><p className="mb-1 text-sm font-extrabold text-accentink">📖 Из урока</p><p><Rich text={h.text} /></p></div>
-              : <p key={i} className="rounded-xl2 bg-accent/15 px-4 py-2">💡 {h.text}</p>
+              ? <div key={i} className="rounded-xl2 bg-warn/15 px-4 py-3"><p className="mb-1 text-sm font-extrabold text-accentink">📖 Из урока</p><p><Rich text={h.text} /></p></div>
+              : <p key={i} className="rounded-xl2 bg-warn/15 px-4 py-2">💡 {h.text}</p>
           ))}
           {hints < hintList.length && (
             <button onClick={() => setHints(hints + 1)} className="self-start rounded-xl2 bg-soft px-4 font-bold">

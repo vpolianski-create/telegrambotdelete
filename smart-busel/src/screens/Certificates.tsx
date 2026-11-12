@@ -17,13 +17,13 @@ export function Certificates({ onBack }: { onBack(): void }) {
     <main className="mx-auto flex max-w-4xl flex-col gap-5 p-6">
       <div className="no-print flex items-center gap-3">
         <button onClick={() => (open ? setOpenId(undefined) : onBack())} className="rounded-xl2 bg-card px-5 shadow">← Назад</button>
-        <h1 className="flex-1 text-3xl font-extrabold">📜 Мои грамоты</h1>
+        <h1 className="flex-1 text-4xl font-extrabold">📜 Мои грамоты</h1>
         {open && <button onClick={() => window.print()} className="rounded-xl2 bg-brand px-6 font-extrabold text-onbrand">🖨️ Распечатать</button>}
       </div>
 
       {open ? (
         <div className="print-area flex flex-col items-center gap-4 rounded-xl3 border-8 border-double border-sun bg-white p-10 text-center text-navy shadow">
-          <Logo height={120} />
+          <Logo height={72} />
           <p className="text-lg font-extrabold uppercase tracking-widest">Грамота</p>
           <p className="text-6xl" aria-hidden>{open.icon}</p>
           <p className="text-xl">награждается</p>

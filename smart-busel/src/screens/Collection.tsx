@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Mascot } from '../components/Mascot';
+import { SubjectArt } from '../components/SubjectArt';
+import { subjectTone } from '../content/subjectArt';
 import { allTopics, learnSubjects } from '../content/loader';
 import { BADGES } from '../engine/badges';
 import { ACCESSORIES, STICKERS, unlockedAccessories } from '../engine/chest';
@@ -16,7 +18,7 @@ export function Collection({ onCerts }: { onCerts(): void }) {
 
   return (
     <main className="mx-auto flex max-w-4xl flex-col gap-6 p-6">
-      <h1 className="text-3xl font-extrabold">🏅 Моя коллекция</h1>
+      <h1 className="text-4xl font-extrabold">🏅 Моя коллекция</h1>
 
       <button onClick={onCerts} className="flex min-h-[72px] items-center gap-4 rounded-xl3 bg-sun px-5 text-left text-xl font-extrabold text-navy shadow">
         <span className="text-4xl">📜</span> Мои грамоты — посмотреть и распечатать
@@ -47,9 +49,9 @@ export function Collection({ onCerts }: { onCerts(): void }) {
           const locked = list.filter((x) => !albumCards.includes(x.topic.id));
           return (
             <div key={sub.id} className="mb-5">
-              <h3 className="mb-1 font-extrabold" style={{ color: sub.color }}>{sub.icon} {sub.title} · {got.length} из {list.length}</h3>
+              <h3 className="mb-1 flex items-center gap-2 font-extrabold"><SubjectArt subject={sub} size={28} /> {sub.title} · {got.length} из {list.length}</h3>
               <div className="mb-2 h-2 overflow-hidden rounded-full bg-soft">
-                <div className="h-full rounded-full" style={{ background: sub.color, width: `${(got.length / list.length) * 100}%` }} />
+                <div className="h-full rounded-full" style={{ background: subjectTone(sub.id, sub.color).mark, width: `${(got.length / list.length) * 100}%` }} />
               </div>
               <div className="flex flex-wrap items-center gap-2">
                 {got.map((x) => (
@@ -69,7 +71,7 @@ export function Collection({ onCerts }: { onCerts(): void }) {
           );
         })}
         {openCard && (
-          <div className="mt-2 rounded-xl2 border-2 border-sun bg-sun/15 p-4">
+          <div className="mt-2 rounded-xl3 border border-sun bg-sun/15 p-4">
             <p className="text-2xl font-extrabold">{openCard.topic.card!.emoji} {openCard.topic.card!.title}</p>
             <p className="mt-1 text-lg">{openCard.topic.card!.fact}</p>
             <p className="mt-1 text-sm text-mute">Тема: {openCard.topic.title}</p>

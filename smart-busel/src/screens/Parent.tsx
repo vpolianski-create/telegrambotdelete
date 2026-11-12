@@ -12,7 +12,7 @@ type Tab = 'stats' | 'report' | 'rewards' | 'settings' | 'backup';
 const TABS: [Tab, string][] = [['stats', 'Статистика'], ['report', 'Отчёт за неделю'], ['rewards', 'Награды'], ['settings', 'Настройки'], ['backup', 'Копия']];
 
 const Card = ({ title, children }: { title: string; children: React.ReactNode }) => (
-  <section className="rounded-xl2 bg-card p-4 shadow">
+  <section className="rounded-xl3 bg-card p-5 shadow">
     <h2 className="mb-3 text-xl font-extrabold">{title}</h2>
     {children}
   </section>
@@ -37,9 +37,9 @@ function Stats() {
             const sec = daily[d]?.sec ?? 0;
             return (
               <div key={d} className="flex flex-1 flex-col items-center gap-1">
-                <span className="text-xs">{Math.round(sec / 60)}</span>
-                <div className="w-full rounded-t-lg bg-brand" style={{ height: 4 + (sec / max) * 90 }} />
-                <span className="text-xs text-mute">{d.slice(8)}.{d.slice(5, 7)}</span>
+                <span className="text-sm">{Math.round(sec / 60)}</span>
+                <div className="w-full rounded-t bg-brand" style={{ height: 4 + (sec / max) * 90 }} />
+                <span className="text-sm text-mute">{d.slice(8)}.{d.slice(5, 7)}</span>
               </div>
             );
           })}
@@ -109,7 +109,7 @@ function Report() {
         <button onClick={() => window.print()} className="rounded-xl2 bg-brand px-5 text-onbrand">🖨️ Распечатать</button>
         <button onClick={() => { void navigator.clipboard?.writeText(text).then(() => setCopied(true)); }} className="rounded-xl2 bg-soft px-5">{copied ? 'Скопировано ✓' : 'Скопировать текст'}</button>
       </div>
-      <div className="print-area flex flex-col gap-4 rounded-xl2 bg-card p-4 shadow">
+      <div className="print-area flex flex-col gap-4 rounded-xl3 bg-card p-5 shadow">
         <h2 className="text-xl font-extrabold">Отчёт за неделю: {dm(r.from)} — {dm(r.to)}</h2>
         <div className="grid gap-3 sm:grid-cols-4">
           {[['⏱️', `${r.minutes} мин.`, diff === 0 ? 'как неделей раньше' : `${diff > 0 ? '+' : ''}${diff} мин. к прошлой неделе`], ['📅', `${r.activeDays} из 7`, 'дней с занятиями'], ['✍️', `${r.tasks}`, 'заданий'], ['🎯', `${r.percent}%`, 'верно с первого раза']].map(([i, v, l]) => (
@@ -119,8 +119,8 @@ function Report() {
         <div className="flex h-24 items-end gap-2">
           {r.days.map((d) => (
             <div key={d.date} className="flex flex-1 flex-col items-center gap-1">
-              <div className="w-full rounded-t-lg bg-brand" style={{ height: 4 + (d.sec / max) * 70 }} />
-              <span className="text-xs text-mute">{dm(d.date)}</span>
+              <div className="w-full rounded-t bg-brand" style={{ height: 4 + (d.sec / max) * 70 }} />
+              <span className="text-sm text-mute">{dm(d.date)}</span>
             </div>
           ))}
         </div>
@@ -263,14 +263,15 @@ export function Parent() {
 
   if (!ok) {
     return (
-      <main className="mx-auto flex max-w-sm flex-col gap-4 p-8">
-        <Logo height={120} />
+      <main className="mx-auto mt-10 flex max-w-sm flex-col items-stretch gap-4 rounded-panel bg-card p-8 shadow">
+        <Logo height={64} />
         <h1 className="text-2xl font-extrabold">Родительский режим</h1>
+        <p className="text-mute">Введите PIN, чтобы открыть статистику, награды и настройки.</p>
         <form className="flex flex-col gap-4" onSubmit={(e) => { e.preventDefault(); const good = pin === settings.pin; setOk(good); setWrong(!good); }}>
           <input type="password" inputMode="numeric" value={pin} onChange={(e) => setPin(e.target.value)} aria-label="PIN" autoFocus
             className="rounded-xl2 border p-3 text-center text-2xl tracking-widest" />
           {wrong && <p className="text-center text-mute">PIN не подошёл</p>}
-          <button type="submit" className="rounded-xl2 bg-brand text-onbrand">Войти</button>
+          <button type="submit" className="rounded-xl2 bg-brand font-bold text-onbrand">Войти</button>
         </form>
       </main>
     );
@@ -278,16 +279,16 @@ export function Parent() {
 
   return (
     <main className="mx-auto flex max-w-3xl flex-col gap-5 p-6">
-      <h1 className="text-2xl font-extrabold">Родительский режим</h1>
+      <h1 className="text-4xl font-extrabold">Родительский режим</h1>
       {!settings.pinChanged && (
-        <div className="rounded-xl2 bg-accent/20 p-4">
+        <div className="rounded-xl3 border border-line bg-warn/15 p-4">
           <p className="mb-2 font-bold">Смените PIN по умолчанию (0000)</p>
           <input value={newPin} onChange={(e) => setNewPin(e.target.value.replace(/\D/g, '').slice(0, 6))} aria-label="Новый PIN" className="mr-2 rounded-xl2 border p-2" />
           <button disabled={newPin.length < 4} className="rounded-xl2 bg-brand px-4 text-onbrand disabled:opacity-40"
             onClick={() => updateSettings({ pin: newPin, pinChanged: true })}>Сохранить</button>
         </div>
       )}
-      <nav className="flex gap-2">
+      <nav className="flex flex-wrap gap-2" aria-label="Разделы родительского режима">
         {TABS.map(([id, label]) => (
           <button key={id} onClick={() => setTab(id)} className={`rounded-xl2 px-5 font-bold ${tab === id ? 'bg-brand text-onbrand' : 'bg-card shadow'}`}>{label}</button>
         ))}
