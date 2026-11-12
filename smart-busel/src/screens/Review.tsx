@@ -25,7 +25,7 @@ export function Review({ onBack }: { onBack(): void }) {
   if (list.length === 0 || i >= list.length) {
     return shell(
       <div className="flex flex-col items-center gap-4 rounded-xl3 bg-card p-8 text-center shadow">
-        <Mascot size={120} cheer />
+        <Mascot size={140} mood={list.length === 0 ? 'read' : 'cheer'} />
         <h2 className="text-3xl font-extrabold">{list.length === 0 ? 'Ошибок для повторения нет!' : `${settings.name}, готово!`}</h2>
         {list.length > 0 && <p className="text-xl">Исправлено: <b>{fixed}</b> из {list.length}</p>}
         {list.length > 0 && fixed < list.length && <p className="text-mute">То, что пока не вышло, останется в списке — вернёмся к этому позже.</p>}

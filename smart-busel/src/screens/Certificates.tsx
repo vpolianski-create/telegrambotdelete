@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Logo } from '../components/Logo';
+import { Mascot } from '../components/Mascot';
 import { learnSubjects } from '../content/loader';
 import { earnedCertificates } from '../engine/certificates';
 import { todayStr, useApp } from '../store/useApp';
@@ -36,7 +37,12 @@ export function Certificates({ onBack }: { onBack(): void }) {
       ) : (
         <>
           <p className="text-mute">Грамоты выдаются за отличные темы (3 звезды), пройденные разделы и предметы и за долгую серию занятий. Нажми на грамоту, чтобы открыть её и распечатать.</p>
-          {earned.length === 0 && <p className="rounded-xl3 bg-card p-6 shadow">Пока грамот нет. Пройди тему на 100% — и первая грамота твоя! 🌟</p>}
+          {earned.length === 0 && (
+            <div className="flex items-center gap-5 rounded-xl3 bg-card p-6 shadow">
+              <Mascot size={110} mood="read" />
+              <p className="text-lg">Пока грамот нет. Пройди тему на 100% — и первая грамота твоя!</p>
+            </div>
+          )}
           <ul className="grid gap-3 sm:grid-cols-2">
             {earned.map((c) => (
               <li key={c.id}>

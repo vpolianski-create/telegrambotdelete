@@ -98,7 +98,7 @@ export function Home({ onSubject, onSubjects, onTopic, onPlan, onReview, onWarmu
         <div aria-hidden className="absolute inset-0" style={{ background: 'linear-gradient(90deg, #070e1d 0%, #070e1d 38%, rgba(7,14,29,0.72) 55%, transparent 78%)' }} />
         <div className="relative flex w-full max-w-[36rem] flex-col gap-3 p-8">
           <div className="flex items-center gap-4">
-            <Mascot size={84} />
+            <Mascot size={104} />
             <div>
               <h1 className="text-4xl font-bold">Привет, {settings.name}!</h1>
               <p className="text-mute">Уровень {lvl.level} · {levelTitle(lvl.level)} · {points} {plural(points, 'балл', 'балла', 'баллов')}</p>

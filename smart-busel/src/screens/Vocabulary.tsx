@@ -87,7 +87,7 @@ function MatchGame({ setId, onExit }: { setId: string; onExit(): void }) {
   if (done) {
     return (
       <div className="mx-auto flex max-w-xl flex-col items-center gap-4 rounded-xl3 bg-card p-8 text-center shadow">
-        <Mascot size={120} cheer />
+        <Mascot size={140} cheer />
         <h2 className="text-3xl font-extrabold">Все пары найдены!</h2>
         <p className="text-xl">Время: <b>{sec} с</b>{records.matchBest !== undefined && <> · рекорд: <b>{Math.min(records.matchBest, sec)} с</b></>}</p>
         <p className="text-mute">+20 баллов</p>
@@ -136,7 +136,7 @@ function WordTraining({ mode, setId, onExit }: { mode: Mode; setId: string; onEx
   if (i >= session.length) {
     return (
       <div className="mx-auto flex max-w-xl flex-col items-center gap-4 rounded-xl3 bg-card p-8 text-center shadow">
-        <Mascot size={120} cheer />
+        <Mascot size={140} cheer />
         <h2 className="text-3xl font-extrabold">Отличная тренировка!</h2>
         <p className="text-xl">Верных ответов: <b>{right}</b> из {session.length}</p>
         <button onClick={onExit} className="rounded-xl2 bg-brand px-8 text-lg font-extrabold text-onbrand">Готово</button>
@@ -210,7 +210,10 @@ export function Vocabulary({ onBack }: { onBack(): void }) {
       <button onClick={mode ? () => setMode(null) : onBack} className="self-start rounded-xl2 bg-card px-5 shadow">← Назад</button>
       {mode ? <Training mode={mode} setId={set} onExit={() => setMode(null)} /> : (
         <>
-          <h1 className="text-4xl font-extrabold">📒 Английские слова</h1>
+          <div className="flex items-center gap-4">
+            <Mascot size={96} mood="read" />
+            <h1 className="text-4xl font-extrabold">📒 Английские слова</h1>
+          </div>
           {!voice && (
             <p className="rounded-xl2 bg-warn/15 p-3">
               🔇 Английский голос не найден. Родителям: Параметры Windows → Время и язык → Язык и регион → добавить English (United States) → Речь.

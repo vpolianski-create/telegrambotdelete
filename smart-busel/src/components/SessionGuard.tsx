@@ -27,7 +27,7 @@ export function SessionGuard() {
   if (limitHit) {
     return (
       <div className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-5 bg-brand p-8 text-center text-onbrand">
-        <Mascot size={150} cheer />
+        <Mascot size={170} mood="rest" />
         <h1 className="text-4xl font-extrabold">Отличная работа на сегодня, {settings.name}!</h1>
         <p className="text-xl">Пора отдохнуть. Завтра продолжим!</p>
         <div className="flex items-center gap-2 text-sm opacity-90">
@@ -41,7 +41,7 @@ export function SessionGuard() {
   if (onBreak) {
     return (
       <div className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-5 bg-ok p-8 text-center text-onok">
-        <Mascot size={150} cheer />
+        <Mascot size={170} mood="rest" />
         <h1 className="text-4xl font-extrabold">Пора сделать перерыв!</h1>
         <p className="text-xl">Встань, потянись, попей воды и посмотри вдаль.</p>
         <button onClick={() => { session.current = 0; setOnBreak(false); }}

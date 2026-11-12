@@ -128,7 +128,7 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
       <motion.div key={card} initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }}
         className="flex flex-col gap-6 rounded-xl3 bg-card p-8 shadow">
         <div className="flex items-start gap-5">
-          <Mascot size={90} />
+          <Mascot size={132} mood="read" />
           <p className="text-2xl leading-relaxed"><Rich text={topic.cards[cur.index]} /></p>
         </div>
         {(topic.images ?? []).filter((im) => im.card === cur.index && imageUrl(im.file)).map((im) => (
@@ -183,7 +183,7 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
   if (phase === 'bonusAsk') {
     return shell('Бонус',
       <div className="flex flex-col items-center gap-5 rounded-xl3 bg-card p-8 text-center shadow">
-        <Mascot size={110} cheer />
+        <Mascot size={130} cheer />
         <h2 className="text-2xl font-extrabold">Хочешь бонусные задания?</h2>
         <p className="text-mute">Они посложнее, зато дают по 30 баллов. Можно пропустить.</p>
         <div className="flex gap-3">
@@ -197,7 +197,7 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
   return shell('Итог',
     <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}
       className="flex flex-col items-center gap-4 rounded-xl3 bg-card p-8 text-center shadow">
-      <Mascot size={130} cheer={passed} />
+      <Mascot size={150} mood={passed ? 'cheer' : 'support'} />
       <h2 className="text-3xl font-extrabold">
         {passed ? `${settings.name}, тема пройдена! 🎉` : 'Ты не сдался — это главное!'}
       </h2>

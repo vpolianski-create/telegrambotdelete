@@ -153,6 +153,7 @@ export function TaskView({ task, scored = true, speakWord, extraBonus = 0, repea
 
       {!done && hintList.length > 0 && (
         <div className="flex flex-col gap-2">
+          {hints > 0 && <div className="flex items-center gap-3"><Mascot size={88} mood="think" /><p className="font-bold text-mute">Бусел подсказывает:</p></div>}
           {hintList.slice(0, hints).map((h, i) => (
             h.kind === 'card'
               ? <div key={i} className="rounded-xl2 bg-warn/15 px-4 py-3"><p className="mb-1 text-sm font-extrabold text-accentink">📖 Из урока</p><p><Rich text={h.text} /></p></div>
@@ -169,7 +170,7 @@ export function TaskView({ task, scored = true, speakWord, extraBonus = 0, repea
       {done && (
         <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col gap-3" role="status">
           <div className="flex items-center gap-3">
-            <Mascot size={64} mood={status === 'right' ? 'cheer' : 'support'} />
+            <Mascot size={96} mood={status === 'right' ? 'cheer' : 'support'} />
             <div>
               <p className="text-xl font-extrabold" style={{ color: status === 'right' ? 'var(--ok-ink)' : 'var(--accent-ink)' }}>
                 {status === 'right' ? phrase.ok : phrase.no}
