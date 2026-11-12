@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 import { StatusChip } from '../components/StatusChip';
+import { SubjectArt } from '../components/SubjectArt';
+import { subjectTone } from '../content/subjectArt';
 import { subjects } from '../content/loader';
 import { planFor } from '../engine/plan';
 import { statusCounts, topicStatus, STATUS_LABEL, type TopicStatus } from '../engine/status';
@@ -11,6 +12,7 @@ export function SubjectScreen({ id, onBack, onTopic, onVocab }: { id: string; on
   const { topicResults, opened, plan, togglePlan } = useApp();
   const s = subjects.find((x) => x.id === id);
   if (!s) return null;
+  const tone = subjectTone(s.id, s.color);
   const today = planFor(plan, todayStr());
   const all = s.sections.flatMap((x) => x.topics);
   const ready = all.filter((t) => t.status === 'ready');
@@ -26,14 +28,20 @@ export function SubjectScreen({ id, onBack, onTopic, onVocab }: { id: string; on
   return (
     <main className="mx-auto max-w-3xl p-6">
       <button onClick={onBack} className="mb-4 rounded-xl2 bg-card px-5 shadow">← Назад</button>
-      <h1 className="mb-2 text-3xl font-extrabold" style={{ color: s.color }}>{s.icon} {s.title}</h1>
-      <p className="mb-1 text-mute">
-        {(['done', 'started', 'failed', 'new'] as TopicStatus[]).map((k) => `${STATUS_LABEL[k]}: ${counts[k]}`).join(' · ')}
-      </p>
+      <header className="relative mb-4 flex items-center gap-5 overflow-hidden rounded-panel p-5 pl-6 shadow" style={{ background: `linear-gradient(${tone.tint}, ${tone.tint}), var(--card)` }}>
+        <span aria-hidden className="absolute inset-y-0 left-0 w-1" style={{ background: tone.mark }} />
+        <SubjectArt subject={s} size={96} />
+        <div className="min-w-0 flex-1">
+          <h1 className="mb-1 text-3xl font-extrabold">{s.title}</h1>
+          <p className="text-mute">
+            {(['done', 'started', 'failed', 'new'] as TopicStatus[]).map((k) => `${STATUS_LABEL[k]}: ${counts[k]}`).join(' · ')}
+          </p>
+        </div>
+      </header>
       <p className="mb-6 text-sm text-mute">Темы идут по порядку программы, но сегодня можно открыть любую. Кнопка «В план» добавит тему в список на сегодня.</p>
       {id === 'english' && (
-        <button onClick={onVocab} className="mb-6 flex min-h-[80px] w-full items-center gap-4 rounded-xl3 p-5 text-left text-xl font-extrabold text-white shadow"
-          style={{ background: s.color }}>
+        <button onClick={onVocab} className="mb-6 flex min-h-[80px] w-full items-center gap-4 rounded-xl3 border border-line p-5 text-left text-xl font-extrabold shadow hover:brightness-[1.03]"
+          style={{ background: `linear-gradient(${tone.tint}, ${tone.tint}), var(--card)` }}>
           <span className="text-4xl">📒</span> Английские слова: карточки, слушание, письмо
         </button>
       )}
@@ -51,11 +59,11 @@ export function SubjectScreen({ id, onBack, onTopic, onVocab }: { id: string; on
             <span className="min-w-[200px] flex-1 text-xl font-extrabold">{sec.title}</span>
             <span className="text-sm font-bold text-mute">{secDone === secReady.length && secReady.length > 0 ? '✓ ' : ''}{secDone} из {secReady.length}</span>
             <span className="block h-2 w-full overflow-hidden rounded-full bg-soft">
-              <span className="block h-full rounded-full" style={{ background: s.color, width: `${secReady.length ? (secDone / secReady.length) * 100 : 0}%` }} />
+              <span className="block h-full rounded-full" style={{ background: tone.mark, width: `${secReady.length ? (secDone / secReady.length) * 100 : 0}%` }} />
             </span>
           </button>
           {isOpen && first >= 0 && (
-          <ol className="relative flex flex-col gap-3 border-l-4 border-dashed pl-0" style={{ borderColor: s.color + '55', marginLeft: 28 }}>
+          <ol className="relative flex flex-col gap-3 border-l-4 border-dashed pl-0" style={{ borderColor: tone.line, marginLeft: 28 }}>
             {sec.topics.map((t) => {
               const r = topicResults[t.id];
               const isReady = t.status === 'ready';
@@ -65,26 +73,27 @@ export function SubjectScreen({ id, onBack, onTopic, onVocab }: { id: string; on
               const n = ++index;
               return (
                 <li key={t.id} className="relative flex items-center gap-2 pl-8">
-                  <span className="absolute -left-[22px] top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full text-lg font-extrabold text-white"
-                    style={{ background: st === 'done' ? 'var(--ok)' : st === 'failed' ? '#b45309' : isReady ? s.color : '#64748b', color: st === 'done' ? 'var(--on-ok)' : '#fff' }}>
+                  <span className="absolute -left-[22px] top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full text-lg font-extrabold"
+                    style={isReady
+                      ? { background: st === 'done' ? 'var(--ok)' : st === 'failed' ? 'var(--warn)' : tone.mark, color: 'var(--on-brand)' }
+                      : { background: 'var(--hover)', color: 'var(--mute)' }}>
                     {st === 'done' ? '✓' : n}
                   </span>
-                  <motion.button disabled={!isReady} onClick={() => onTopic(t.id)}
-                    animate={current ? { scale: [1, 1.02, 1] } : undefined} transition={{ repeat: Infinity, duration: 2 }}
-                    className={`flex min-h-touch flex-1 flex-wrap items-center justify-between gap-2 rounded-xl2 bg-card px-5 py-2 text-left shadow ${isReady ? 'hover:scale-[1.01] active:scale-95' : 'opacity-60'} ${current ? 'ring-2' : ''}`}
-                    style={current ? { ['--tw-ring-color' as string]: s.color } : undefined}>
+                  <button disabled={!isReady} onClick={() => onTopic(t.id)}
+                    className={`flex min-h-touch flex-1 flex-wrap items-center justify-between gap-2 rounded-xl2 bg-card px-5 py-2 text-left shadow ${isReady ? 'active:scale-[0.99]' : 'opacity-60'}`}
+                    style={current ? { borderColor: tone.mark, borderWidth: 2 } : undefined}>
                     <span>{t.title}</span>
                     <span className="flex items-center gap-2">
                       {!isReady ? <span className="text-sm font-bold text-mute">Скоро</span> : (
                         <>
                           {st === 'done' && <span aria-label={`Звёзд: ${r?.stars ?? 1} из 3`}>{'⭐'.repeat(r?.stars ?? 1)}{'☆'.repeat(3 - (r?.stars ?? 1))}</span>}
                           {r && r.bestPercent > 0 && <span className="text-sm font-bold text-mute">{r.bestPercent}%</span>}
-                          {current && st !== 'done' && <span className="text-sm font-extrabold" style={{ color: s.color }}>▶ Дальше</span>}
+                          {current && st !== 'done' && <span className="text-sm font-extrabold" style={{ color: tone.mark }}>▶ Дальше</span>}
                           <StatusChip status={st} />
                         </>
                       )}
                     </span>
-                  </motion.button>
+                  </button>
                   {isReady && (
                     <button onClick={() => togglePlan(t.id)} aria-pressed={planned}
                       className={`min-h-touch whitespace-nowrap rounded-xl2 px-3 text-sm font-extrabold ${planned ? 'bg-brand text-onbrand' : 'bg-soft'}`}>
