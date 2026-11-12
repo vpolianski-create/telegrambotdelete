@@ -37,3 +37,10 @@ export const scale = (value: number, from: number, to: number, x0: number, x1: n
 export type AngleKind = 'острый' | 'прямой' | 'тупой' | 'развёрнутый';
 /** Вид угла по градусной мере. */
 export const angleKind = (deg: number): AngleKind => (deg < 90 ? 'острый' : deg === 90 ? 'прямой' : deg < 180 ? 'тупой' : 'развёрнутый');
+
+export type MapFrame = { w: number; h: number; west: number; east: number; south: number; north: number };
+/** Положение точки на карте: долгота и широта → координаты на рисунке (запад слева, север сверху). */
+export const projectMap = (m: MapFrame, lon: number, lat: number) => ({
+  x: ((lon - m.west) / (m.east - m.west)) * m.w,
+  y: ((m.north - lat) / (m.north - m.south)) * m.h,
+});

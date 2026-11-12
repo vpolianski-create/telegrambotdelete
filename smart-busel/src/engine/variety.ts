@@ -7,7 +7,8 @@ import { shuffle, type Rng } from './rng';
 /** Вопрос опирается на варианты ответа («какое из…», «выбери…») — без вариантов он не имеет смысла. */
 const NEEDS_OPTIONS = /како[ейгм]+ из|какая из|какие из|кто из|что из|выбери|лишн|перечисленн|вариант|утвержден|___/i;
 const wordCount = (s: string) => s.trim().split(/\s+/).length;
-const isSingle = (t: Task) => t.type === 'single' && typeof t.answer === 'string' && !NEEDS_OPTIONS.test(t.question);
+// задание с картинкой или рисунком оставляем как есть: без них вопрос теряет смысл
+const isSingle = (t: Task) => t.type === 'single' && typeof t.answer === 'string' && !NEEDS_OPTIONS.test(t.question) && !t.image && !t.visual;
 
 /** Ответ — одно слово из 4–12 букв: его можно собрать из букв. */
 export function canSpell(t: Task): boolean {

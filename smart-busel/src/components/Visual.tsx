@@ -1,5 +1,6 @@
 import type { Visual as V } from '../content/schema';
-import { scale, timelineRange, yearLabel, yearPos } from '../engine/visual';
+import { mapData } from '../content/loader';
+import { projectMap, scale, timelineRange, yearLabel, yearPos } from '../engine/visual';
 
 // Рисунки к урокам и заданиям. Всё рисуется кодом (SVG) в цветах приложения, поэтому работает офлайн и в тёмной теме.
 const INK = 'var(--ink)';
@@ -196,9 +197,72 @@ function Timeline({ v }: { v: Of<'timeline'> }) {
   );
 }
 
-export function Visual({ v }: { v: V }) {
+/** Для задания «покажи на карте»: что выбрано, какой ответ верный и что делать при нажатии на точку. */
+export type MapPick = { done: boolean; picked?: string; answer: string; onPick: (name: string) => void };
+
+/** Контурная карта с городами, областями, морями и реками. В задании точки без подписей — по ним нажимают. */
+function MapView({ v, pick }: { v: Of<'map'>; pick?: MapPick }) {
+  const m = mapData(v.map);
+  if (!m) return null;
+  const asking = !!v.pick && !pick?.done; // пока не ответили, подписи точек скрыты
+  const halo = { paintOrder: 'stroke', stroke: 'var(--map-land)', strokeWidth: 3.5, strokeLinejoin: 'round' } as const;
+  const side = (p: Of<'map'>['points'][number], x: number) => p.label ?? (x > m.w - 110 ? 'l' : 'r');
+  const labelAt = (p: Of<'map'>['points'][number], x: number, y: number, gap: number) => {
+    const s = side(p, x);
+    return s === 'r' ? { x: x + gap, y: y + 5, anchor: 'start' as const } : s === 'l' ? { x: x - gap, y: y + 5, anchor: 'end' as const }
+      : s === 't' ? { x, y: y - gap - 2, anchor: 'middle' as const } : { x, y: y + gap + 14, anchor: 'middle' as const };
+  };
+  return (
+    <svg viewBox={`0 0 ${m.w} ${m.h}`} className="h-auto w-full rounded-xl2" style={{ background: 'var(--map-sea)' }} role="img" aria-label={`Карта: ${m.title}`}>
+      <path d={m.land} fill="var(--map-land)" stroke="var(--map-edge)" strokeWidth={0.8} />
+      {m.focus && <path d={m.focus} fill="var(--map-focus)" stroke={INK} strokeWidth={1.6} />}
+      <path d={m.rivers} fill="none" stroke="var(--map-river)" strokeWidth={1.7} strokeLinecap="round" strokeLinejoin="round" />
+      {v.points.filter((p) => p.type === 'water').map((p) => {
+        const { x, y } = projectMap(m, p.lon, p.lat);
+        return <text key={p.name} x={x} y={y} textAnchor="middle" fontSize={13} fontStyle="italic" fill="var(--map-water-ink)" style={{ ...font, fontWeight: 700 }}>{p.name}</text>;
+      })}
+      {v.points.filter((p) => p.type === 'area').map((p) => {
+        const { x, y } = projectMap(m, p.lon, p.lat);
+        return <text key={p.name} x={x} y={y} textAnchor="middle" fontSize={13} letterSpacing={2} fill={MUTE} style={{ ...font, ...halo }}>{p.name.toUpperCase()}</text>;
+      })}
+      {v.points.filter((p) => p.type === 'city' || p.type === 'spot').map((p) => {
+        const { x, y } = projectMap(m, p.lon, p.lat);
+        if (v.pick) {
+          const right = pick?.done && p.name === pick.answer;
+          const wrong = pick?.done && p.name === pick.picked && !right;
+          const fill = right ? 'var(--ok)' : wrong ? 'var(--accent)' : pick?.done ? MUTE : 'var(--brand)';
+          const l = labelAt(p, x, y, 16);
+          return (
+            <g key={p.name} data-option={p.name} role="button" tabIndex={asking ? 0 : -1} aria-label={asking ? 'Точка на карте' : p.name}
+              style={{ cursor: asking ? 'pointer' : 'default' }}
+              onClick={() => asking && pick?.onPick(p.name)}
+              onKeyDown={(e) => { if (asking && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); pick?.onPick(p.name); } }}>
+              <circle cx={x} cy={y} r={20} fill="transparent" />
+              <circle cx={x} cy={y} r={11} fill={fill} stroke="#fff" strokeWidth={2.5} />
+              {(right || wrong) && <text x={x} y={y + 5} textAnchor="middle" fontSize={14} fill="#fff" style={font}>{right ? '✓' : '✗'}</text>}
+              {!asking && <text x={l.x} y={l.y} textAnchor={l.anchor} fontSize={15} fill={INK} style={{ ...font, ...halo }}>{p.name}</text>}
+            </g>
+          );
+        }
+        // город — точка с подписью сбоку; место без города — надпись по центру (или колечко с подписью, если задана сторона)
+        const dot = p.type === 'city' || !!p.label;
+        const l = labelAt(p, x, y, dot ? 9 : 0);
+        return (
+          <g key={p.name}>
+            {p.type === 'city' && <circle cx={x} cy={y} r={5} fill={ACCENT} stroke="#fff" strokeWidth={1.5} />}
+            {p.type === 'spot' && dot && <circle cx={x} cy={y} r={4.5} fill="#fff" stroke={ACCENT} strokeWidth={2.5} />}
+            <text x={dot ? l.x : x} y={dot ? l.y : y + 5} textAnchor={dot ? l.anchor : 'middle'} fontSize={dot ? 15 : 16} fill={INK} style={{ ...font, ...halo }}>{p.name}</text>
+          </g>
+        );
+      })}
+    </svg>
+  );
+}
+
+export function Visual({ v, pick }: { v: V; pick?: MapPick }) {
   return (
     <figure data-visual={v.kind} className="mx-auto w-full rounded-xl2 bg-bg p-3">
+      {v.kind === 'map' && <MapView v={v} pick={pick} />}
       {v.kind === 'ray' && <Ray v={v} />}
       {v.kind === 'ruler' && <Ruler v={v} />}
       {v.kind === 'angles' && <Angles v={v} />}

@@ -8,9 +8,10 @@ import { world2E } from './parts/world2-e.mjs';
 import { world2F } from './parts/world2-f.mjs';
 import { world2G } from './parts/world2-g.mjs';
 import { world2H } from './parts/world2-h.mjs';
+import { worldMaps } from './maps.mjs';
 
 // Порядок, номера параграфов и названия — по учебнику «Человек и мир», 5 класс (Лопух, Сарычева, Шкель, 2022). Тексты — оригинальные.
 export const subject = buildSubject(
-  { id: 'world', title: 'Человек и мир', language: 'ru', color: '#15803d', icon: '🌍', pool: worldPool, explain: worldExplain, drop: worldDrop },
+  { id: 'world', title: 'Человек и мир', language: 'ru', color: '#15803d', icon: '🌍', pool: worldPool, explain: worldExplain, drop: worldDrop, maps: worldMaps },
   [...world2A, ...world2B, ...world2C, ...world2D, ...world2E, ...world2F, ...world2G, ...world2H],
 );

@@ -60,10 +60,12 @@ export function TaskView({ task, scored = true, speakWord, extraBonus = 0, repea
   };
 
   const done = status !== 'idle';
+  /** «Покажи на карте»: вместо кнопок с вариантами — точки на карте. */
+  const mapPick = task.type === 'single' && task.visual?.kind === 'map' && !!task.visual.pick;
 
   // клавиши 1–4 выбирают вариант ответа
   useEffect(() => {
-    if (done || (task.type !== 'single' && task.type !== 'truefalse')) return;
+    if (done || mapPick || (task.type !== 'single' && task.type !== 'truefalse')) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.ctrlKey || e.altKey || e.metaKey) return;
       const k = Number(e.key) - 1;
@@ -102,9 +104,11 @@ export function TaskView({ task, scored = true, speakWord, extraBonus = 0, repea
           className="mx-auto max-h-[300px] w-auto max-w-full rounded-xl2 shadow" />
       )}
 
-      {task.visual && (!task.visualAfter || done) && <Visual v={task.visual} />}
+      {mapPick
+        ? <Visual v={task.visual!} pick={{ done, picked: typeof picked === 'string' ? picked : undefined, answer: String(task.answer), onPick: submit }} />
+        : task.visual && (!task.visualAfter || done) && <Visual v={task.visual} />}
 
-      {(task.type === 'single') && (
+      {(task.type === 'single') && !mapPick && (
         <div className="grid gap-3 sm:grid-cols-2">
           {options.map((o, k) => (
             <button key={o} data-option={o} disabled={done} onClick={() => submit(o)}

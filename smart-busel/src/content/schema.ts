@@ -5,7 +5,8 @@ export const DifficultySchema = z.enum(['basic', 'advanced', 'bonus']);
 /**
  * Рисунок к уроку или заданию: рисуется кодом (SVG), картинок-файлов не нужно.
  * ray — координатный луч; ruler — отрезок на линейке; angles — углы; dots — точки рядами (деление с остатком);
- * lines — прямая, луч и отрезок; timeline — лента времени (год < 0 — до нашей эры, года 0 нет).
+ * lines — прямая, луч и отрезок; timeline — лента времени (год < 0 — до нашей эры, года 0 нет);
+ * map — контурная карта с точками (города, области, моря).
  */
 export const VisualSchema = z.discriminatedUnion('kind', [
   z.object({
@@ -21,6 +22,19 @@ export const VisualSchema = z.discriminatedUnion('kind', [
   z.object({
     kind: z.literal('timeline'),
     events: z.array(z.object({ year: z.number().int().refine((y) => y !== 0, 'года 0 не было'), label: z.string().optional() })).min(1),
+  }),
+  z.object({
+    kind: z.literal('map'),
+    /** Контур лежит в content/maps/<map>.json. */
+    map: z.enum(['world', 'ancient', 'mediterranean', 'neareast', 'empire', 'greece', 'belarus']),
+    /** city — город (точка с подписью), spot — место без кружка-города (материк, остров), area — область (только надпись), water — море, река. */
+    points: z.array(z.object({
+      name: z.string(), lon: z.number(), lat: z.number(), type: z.enum(['city', 'spot', 'area', 'water']).default('city'),
+      /** С какой стороны от точки подпись: справа, слева, сверху, снизу. */
+      label: z.enum(['r', 'l', 't', 'b']).optional(),
+    })).min(1),
+    /** «Покажи на карте»: точки без подписей, ответ выбирают нажатием на точку. */
+    pick: z.boolean().optional(),
   }),
 ]);
 

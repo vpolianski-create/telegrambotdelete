@@ -2,6 +2,7 @@
 // команда `npm run build-content` собирает из них content/subjects/*.json.
 
 import { findRef, refAt, splitCard } from './refs.mjs';
+import { mentioned, places } from './places.mjs';
 
 const arr = (x) => (x === undefined ? [] : Array.isArray(x) ? x : [x]);
 
@@ -55,11 +56,52 @@ function pictureTask(img, pool, k) {
   };
 }
 
+// размеры карт (как в content/maps/*.json) — чтобы при сборке не ставить рядом точки, которые сольются на рисунке
+const MAP_FRAMES = {
+  world: [640, 309, -180, 180, -90, 84], ancient: [640, 298, -12, 125, 3, 58], mediterranean: [640, 312, -10, 45, 28, 49],
+  neareast: [640, 437, 24, 62, 21, 43], empire: [640, 325, 15, 80, 18, 46], greece: [640, 482, 18, 31, 34.3, 42], belarus: [640, 561, 22.6, 33.4, 50.9, 56.5],
+};
+const onMap = (map, p) => { const [w, h, west, east, south, north] = MAP_FRAMES[map]; return [((p.lon - west) / (east - west)) * w, ((north - p.lat) / (north - south)) * h]; };
+const pickable = (p) => p.type === 'city' || p.type === 'spot';
+
+/** Точки карты темы: берём координаты из справочника и проверяем, что место названо в уроке. */
+function mapPoints(id, spec, cards) {
+  const text = cards.join(' ');
+  return spec.places.map((item) => {
+    const [name, own = {}] = Array.isArray(item) ? item : [item];
+    const p = places[name];
+    if (!p) throw new Error(`${id}: места «${name}» нет в справочнике places.mjs`);
+    if (!mentioned(name, text)) throw new Error(`${id}: «${name}» не упоминается в уроке — на карту ставить нельзя`);
+    return { name, lon: own.lon ?? p.lon, lat: own.lat ?? p.lat, type: p.type, ...(own.label ? { label: own.label } : {}) };
+  });
+}
+
+/** Задание «покажи на карте»: спрашиваем одно место, на карте — оно и ещё до трёх других, достаточно далёких друг от друга. */
+function pickTask(map, points, answer, k) {
+  const spots = points.filter(pickable);
+  const target = spots.find((p) => p.name === answer);
+  const chosen = [target];
+  const others = spots.filter((p) => p !== target);
+  for (let i = 0; i < others.length && chosen.length < 4; i++) {
+    const c = others[(i + k) % others.length];
+    const [x, y] = onMap(map, c);
+    if (!chosen.includes(c) && chosen.every((q) => { const [qx, qy] = onMap(map, q); return Math.hypot(x - qx, y - qy) >= 30; })) chosen.push(c);
+  }
+  if (chosen.length < 3) return undefined;
+  const shown = [...points.filter((p) => !pickable(p)), ...chosen].map(({ label, ...p }) => p);
+  return {
+    type: 'single', question: `Покажи на карте: ${answer}.`, answer, options: chosen.map((p) => p.name),
+    visual: { kind: 'map', map, pick: true, points: shown },
+    explanation: ['Посмотри на карту ещё раз: теперь все точки на ней подписаны.'], hints: [],
+  };
+}
+
 export function buildSubject(meta, sections) {
   const seen = new Set();
   const pictures = meta.images ?? [];
   const dropped = new Set(meta.drop ?? []);
   const usedAt = new Set();
+  const usedMaps = new Set();
   const out = {
     id: meta.id, title: meta.title, language: meta.language, color: meta.color, icon: meta.icon,
     sections: sections.map(([title, topics], si) => ({
@@ -113,6 +155,19 @@ export function buildSubject(meta, sections) {
             return { card, visual };
           });
         }
+        // карта темы: показывается у первой карточки, где названо первое место; к ней — задания «покажи на карте»
+        const mapSpec = meta.maps?.[n];
+        let mapPicks = [];
+        if (mapSpec) {
+          usedMaps.add(n);
+          const points = mapPoints(id, mapSpec, cards);
+          const card = Math.max(0, cards.findIndex((c) => mentioned(points[0].name, c)));
+          (topic.visuals ??= []).push({ card, visual: { kind: 'map', map: mapSpec.map, points } });
+          const asks = mapSpec.ask ?? points.filter(pickable).map((p) => p.name);
+          mapPicks = asks.map((name, k) => pickTask(mapSpec.map, points, name, k)).filter(Boolean)
+            .map((t, k) => ({ id: `${id}-m${k + 1}`, subject: meta.id, topicId: id, difficulty: 'basic', ...t, ref: { card } }));
+          if (mapPicks.length) topic.practice.push(mapPicks[0]);
+        }
         // картины: показываются у своей карточки и приходят заданием «узнай картину»
         const mine = pictures.filter((x) => x.n === n);
         if (mine.length) {
@@ -128,7 +183,9 @@ export function buildSubject(meta, sections) {
         }
         // запас вопросов темы: идёт последним, чтобы номера старых заданий не менялись
         const extraPool = (meta.pool?.[n] ?? []).map((t) => fix(t, 'basic', 'q'));
-        if (extraPool.length) topic.pool = extraPool;
+        // остальные задания «покажи на карте» идут в запас (там у вопроса должно быть ровно четыре варианта)
+        const mapPool = mapPicks.slice(1).filter((t) => t.options.length === 4);
+        if (extraPool.length || mapPool.length) topic.pool = [...extraPool, ...mapPool];
         if (spec.card) topic.card = { emoji: spec.card[0], title: spec.card[1], fact: spec.card[2] };
         return topic;
       }),
@@ -136,6 +193,8 @@ export function buildSubject(meta, sections) {
   };
   const lostAt = Object.keys(meta.at ?? {}).filter((x) => !usedAt.has(x));
   if (lostAt.length) throw new Error(`${meta.id}: в at указаны несуществующие задания: ${lostAt.join(', ')}`);
+  const lostMaps = Object.keys(meta.maps ?? {}).filter((x) => !usedMaps.has(Number(x)));
+  if (lostMaps.length) throw new Error(`${meta.id}: карты указаны для несуществующих тем: ${lostMaps.join(', ')}`);
   if (dropped.size) throw new Error(`${meta.id}: в drop указаны несуществующие задания: ${[...dropped].join(', ')}`);
   return out;
 }

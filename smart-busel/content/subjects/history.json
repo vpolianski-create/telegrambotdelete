@@ -4259,6 +4259,35 @@
               }
             }
           ],
+          "visuals": [
+            {
+              "card": 0,
+              "visual": {
+                "kind": "map",
+                "map": "neareast",
+                "points": [
+                  {
+                    "name": "Египет",
+                    "lon": 30.5,
+                    "lat": 27.3,
+                    "type": "area"
+                  },
+                  {
+                    "name": "Нил",
+                    "lon": 30.6,
+                    "lat": 25,
+                    "type": "water"
+                  },
+                  {
+                    "name": "Средиземное море",
+                    "lon": 29.5,
+                    "lat": 33.4,
+                    "type": "water"
+                  }
+                ]
+              }
+            }
+          ],
           "pool": [
             {
               "id": "history-t09-q13",
@@ -4764,6 +4793,35 @@
               "hints": [],
               "ref": {
                 "card": 5
+              }
+            }
+          ],
+          "visuals": [
+            {
+              "card": 1,
+              "visual": {
+                "kind": "map",
+                "map": "neareast",
+                "points": [
+                  {
+                    "name": "Мемфис",
+                    "lon": 31.25,
+                    "lat": 29.85,
+                    "type": "city"
+                  },
+                  {
+                    "name": "Египет",
+                    "lon": 30.5,
+                    "lat": 27.3,
+                    "type": "area"
+                  },
+                  {
+                    "name": "Нил",
+                    "lon": 30.6,
+                    "lat": 25,
+                    "type": "water"
+                  }
+                ]
               }
             }
           ],
@@ -5286,6 +5344,39 @@
                   {
                     "year": -1258,
                     "label": "первый известный мирный договор"
+                  }
+                ]
+              }
+            },
+            {
+              "card": 1,
+              "visual": {
+                "kind": "map",
+                "map": "neareast",
+                "points": [
+                  {
+                    "name": "Фивы",
+                    "lon": 32.64,
+                    "lat": 25.72,
+                    "type": "city"
+                  },
+                  {
+                    "name": "Египет",
+                    "lon": 30.5,
+                    "lat": 27.3,
+                    "type": "area"
+                  },
+                  {
+                    "name": "Палестина",
+                    "lon": 35,
+                    "lat": 31.3,
+                    "type": "area"
+                  },
+                  {
+                    "name": "Евфрат",
+                    "lon": 39.6,
+                    "lat": 33.9,
+                    "type": "water"
                   }
                 ]
               }
@@ -7297,6 +7388,47 @@
               }
             }
           ],
+          "visuals": [
+            {
+              "card": 0,
+              "visual": {
+                "kind": "map",
+                "map": "neareast",
+                "points": [
+                  {
+                    "name": "Междуречье",
+                    "lon": 44.2,
+                    "lat": 34.2,
+                    "type": "area"
+                  },
+                  {
+                    "name": "Тигр",
+                    "lon": 46.3,
+                    "lat": 35.3,
+                    "type": "water"
+                  },
+                  {
+                    "name": "Евфрат",
+                    "lon": 39.6,
+                    "lat": 33.9,
+                    "type": "water"
+                  },
+                  {
+                    "name": "Персидский залив",
+                    "lon": 51.5,
+                    "lat": 26.9,
+                    "type": "water"
+                  },
+                  {
+                    "name": "Средиземное море",
+                    "lon": 29.5,
+                    "lat": 33.4,
+                    "type": "water"
+                  }
+                ]
+              }
+            }
+          ],
           "pool": [
             {
               "id": "history-t15-q13",
@@ -7805,6 +7937,42 @@
               }
             }
           ],
+          "visuals": [
+            {
+              "card": 4,
+              "visual": {
+                "kind": "map",
+                "map": "neareast",
+                "points": [
+                  {
+                    "name": "Ур",
+                    "lon": 46.1,
+                    "lat": 30.96,
+                    "type": "city"
+                  },
+                  {
+                    "name": "Урук",
+                    "lon": 45.64,
+                    "lat": 31.32,
+                    "type": "city",
+                    "label": "l"
+                  },
+                  {
+                    "name": "Месопотамия",
+                    "lon": 44.2,
+                    "lat": 34.2,
+                    "type": "area"
+                  },
+                  {
+                    "name": "Евфрат",
+                    "lon": 39.6,
+                    "lat": 33.9,
+                    "type": "water"
+                  }
+                ]
+              }
+            }
+          ],
           "pool": [
             {
               "id": "history-t16-q13",
@@ -8291,6 +8459,41 @@
               "hints": [],
               "ref": {
                 "card": 4
+              }
+            }
+          ],
+          "visuals": [
+            {
+              "card": 1,
+              "visual": {
+                "kind": "map",
+                "map": "neareast",
+                "points": [
+                  {
+                    "name": "Вавилон",
+                    "lon": 44.42,
+                    "lat": 32.54,
+                    "type": "city"
+                  },
+                  {
+                    "name": "Месопотамия",
+                    "lon": 44.2,
+                    "lat": 34.2,
+                    "type": "area"
+                  },
+                  {
+                    "name": "Тигр",
+                    "lon": 46.3,
+                    "lat": 35.3,
+                    "type": "water"
+                  },
+                  {
+                    "name": "Евфрат",
+                    "lon": 39.6,
+                    "lat": 33.9,
+                    "type": "water"
+                  }
+                ]
               }
             }
           ],
@@ -8799,6 +9002,47 @@
               "ref": {
                 "card": 3,
                 "quote": "В VIII веке до н. э. они покорили страны Передней Азии, и к концу века Ассирия стала огромной державой «от Египта до Ирана»."
+              }
+            }
+          ],
+          "visuals": [
+            {
+              "card": 4,
+              "visual": {
+                "kind": "map",
+                "map": "neareast",
+                "points": [
+                  {
+                    "name": "Вавилон",
+                    "lon": 44.42,
+                    "lat": 32.54,
+                    "type": "city"
+                  },
+                  {
+                    "name": "Ниневия",
+                    "lon": 43.15,
+                    "lat": 36.36,
+                    "type": "city"
+                  },
+                  {
+                    "name": "Египет",
+                    "lon": 30.5,
+                    "lat": 27.3,
+                    "type": "area"
+                  },
+                  {
+                    "name": "Тигр",
+                    "lon": 46.3,
+                    "lat": 35.3,
+                    "type": "water"
+                  },
+                  {
+                    "name": "Евфрат",
+                    "lon": 39.6,
+                    "lat": 33.9,
+                    "type": "water"
+                  }
+                ]
               }
             }
           ],
@@ -9820,6 +10064,35 @@
               }
             }
           ],
+          "visuals": [
+            {
+              "card": 3,
+              "visual": {
+                "kind": "map",
+                "map": "neareast",
+                "points": [
+                  {
+                    "name": "Малая Азия",
+                    "lon": 32.5,
+                    "lat": 39,
+                    "type": "area"
+                  },
+                  {
+                    "name": "Вавилон",
+                    "lon": 44.42,
+                    "lat": 32.54,
+                    "type": "city"
+                  },
+                  {
+                    "name": "Египет",
+                    "lon": 30.5,
+                    "lat": 27.3,
+                    "type": "area"
+                  }
+                ]
+              }
+            }
+          ],
           "pool": [
             {
               "id": "history-t20-q13",
@@ -10324,6 +10597,53 @@
               "ref": {
                 "card": 2,
                 "quote": "В VII веке до н. э. возникла **Мидия**, но в середине VI века до н. э. её захватили персы."
+              }
+            }
+          ],
+          "visuals": [
+            {
+              "card": 2,
+              "visual": {
+                "kind": "map",
+                "map": "empire",
+                "points": [
+                  {
+                    "name": "Персия",
+                    "lon": 53.5,
+                    "lat": 32.5,
+                    "type": "area"
+                  },
+                  {
+                    "name": "Вавилон",
+                    "lon": 44.42,
+                    "lat": 32.54,
+                    "type": "city"
+                  },
+                  {
+                    "name": "Египет",
+                    "lon": 30.5,
+                    "lat": 27.3,
+                    "type": "area"
+                  },
+                  {
+                    "name": "Индия",
+                    "lon": 75,
+                    "lat": 23.5,
+                    "type": "area"
+                  },
+                  {
+                    "name": "Малая Азия",
+                    "lon": 32.5,
+                    "lat": 39,
+                    "type": "area"
+                  },
+                  {
+                    "name": "Инд",
+                    "lon": 66.8,
+                    "lat": 30,
+                    "type": "water"
+                  }
+                ]
               }
             }
           ],
@@ -10833,6 +11153,42 @@
               "hints": [],
               "ref": {
                 "card": 3
+              }
+            }
+          ],
+          "visuals": [
+            {
+              "card": 2,
+              "visual": {
+                "kind": "map",
+                "map": "mediterranean",
+                "points": [
+                  {
+                    "name": "Тир",
+                    "lon": 35.2,
+                    "lat": 33.27,
+                    "type": "city",
+                    "label": "l"
+                  },
+                  {
+                    "name": "Карфаген",
+                    "lon": 10.32,
+                    "lat": 36.85,
+                    "type": "city"
+                  },
+                  {
+                    "name": "Египет",
+                    "lon": 30.3,
+                    "lat": 29.6,
+                    "type": "area"
+                  },
+                  {
+                    "name": "Средиземное море",
+                    "lon": 18.5,
+                    "lat": 34.6,
+                    "type": "water"
+                  }
+                ]
               }
             }
           ],
@@ -11367,6 +11723,39 @@
                   }
                 ]
               }
+            },
+            {
+              "card": 3,
+              "visual": {
+                "kind": "map",
+                "map": "neareast",
+                "points": [
+                  {
+                    "name": "Иерусалим",
+                    "lon": 35.22,
+                    "lat": 31.78,
+                    "type": "city"
+                  },
+                  {
+                    "name": "Вавилон",
+                    "lon": 44.42,
+                    "lat": 32.54,
+                    "type": "city"
+                  },
+                  {
+                    "name": "Финикия",
+                    "lon": 36.2,
+                    "lat": 34,
+                    "type": "area"
+                  },
+                  {
+                    "name": "Евфрат",
+                    "lon": 39.6,
+                    "lat": 33.9,
+                    "type": "water"
+                  }
+                ]
+              }
             }
           ],
           "pool": [
@@ -11881,6 +12270,48 @@
                 "Индийцы изобрели игру «чатуранга» — предшественницу шахмат."
               ],
               "hints": []
+            }
+          ],
+          "visuals": [
+            {
+              "card": 0,
+              "visual": {
+                "kind": "map",
+                "map": "ancient",
+                "points": [
+                  {
+                    "name": "Индия",
+                    "lon": 78.5,
+                    "lat": 21.5,
+                    "type": "area"
+                  },
+                  {
+                    "name": "Инд",
+                    "lon": 71,
+                    "lat": 34.2,
+                    "type": "water"
+                  },
+                  {
+                    "name": "Ганг",
+                    "lon": 84.5,
+                    "lat": 27.3,
+                    "type": "water"
+                  },
+                  {
+                    "name": "Мохенджо-Даро",
+                    "lon": 68.14,
+                    "lat": 27.33,
+                    "type": "city",
+                    "label": "l"
+                  },
+                  {
+                    "name": "Хараппа",
+                    "lon": 72.87,
+                    "lat": 30.63,
+                    "type": "city"
+                  }
+                ]
+              }
             }
           ],
           "pool": [
@@ -12896,6 +13327,35 @@
               "ref": {
                 "card": 4,
                 "quote": "Китайцы первыми в мире производили **шёлк** из нитей коконов шелковичных червей, а секрет держали в строгой тайне."
+              }
+            }
+          ],
+          "visuals": [
+            {
+              "card": 0,
+              "visual": {
+                "kind": "map",
+                "map": "ancient",
+                "points": [
+                  {
+                    "name": "Китай",
+                    "lon": 110.5,
+                    "lat": 34.5,
+                    "type": "area"
+                  },
+                  {
+                    "name": "Хуанхэ",
+                    "lon": 111.5,
+                    "lat": 38,
+                    "type": "water"
+                  },
+                  {
+                    "name": "Янцзы",
+                    "lon": 111,
+                    "lat": 29.2,
+                    "type": "water"
+                  }
+                ]
               }
             }
           ],
@@ -14850,9 +15310,109 @@
               "ref": {
                 "card": 8
               }
+            },
+            {
+              "id": "history-t30-m1",
+              "subject": "history",
+              "topicId": "history-t30",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Покажи на карте: Афины.",
+              "answer": "Афины",
+              "options": [
+                "Афины",
+                "Спарта",
+                "Крит"
+              ],
+              "visual": {
+                "kind": "map",
+                "map": "greece",
+                "pick": true,
+                "points": [
+                  {
+                    "name": "Греция",
+                    "lon": 22,
+                    "lat": 39.3,
+                    "type": "area"
+                  },
+                  {
+                    "name": "Эгейское море",
+                    "lon": 25.2,
+                    "lat": 38.6,
+                    "type": "water"
+                  },
+                  {
+                    "name": "Афины",
+                    "lon": 23.73,
+                    "lat": 37.98,
+                    "type": "city"
+                  },
+                  {
+                    "name": "Спарта",
+                    "lon": 22.43,
+                    "lat": 37.07,
+                    "type": "city"
+                  },
+                  {
+                    "name": "Крит",
+                    "lon": 24.9,
+                    "lat": 35.2,
+                    "type": "spot"
+                  }
+                ]
+              },
+              "explanation": [
+                "Посмотри на карту ещё раз: теперь все точки на ней подписаны."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0
+              }
             }
           ],
           "bonus": [],
+          "visuals": [
+            {
+              "card": 0,
+              "visual": {
+                "kind": "map",
+                "map": "greece",
+                "points": [
+                  {
+                    "name": "Греция",
+                    "lon": 22,
+                    "lat": 39.3,
+                    "type": "area"
+                  },
+                  {
+                    "name": "Афины",
+                    "lon": 23.73,
+                    "lat": 37.98,
+                    "type": "city"
+                  },
+                  {
+                    "name": "Спарта",
+                    "lon": 22.43,
+                    "lat": 37.07,
+                    "type": "city",
+                    "label": "l"
+                  },
+                  {
+                    "name": "Крит",
+                    "lon": 24.9,
+                    "lat": 35.2,
+                    "type": "spot"
+                  },
+                  {
+                    "name": "Эгейское море",
+                    "lon": 25.2,
+                    "lat": 38.6,
+                    "type": "water"
+                  }
+                ]
+              }
+            }
+          ],
           "pool": [
             {
               "id": "history-t30-q11",
@@ -15324,6 +15884,41 @@
               }
             }
           ],
+          "visuals": [
+            {
+              "card": 0,
+              "visual": {
+                "kind": "map",
+                "map": "greece",
+                "points": [
+                  {
+                    "name": "Крит",
+                    "lon": 24,
+                    "lat": 34.75,
+                    "type": "spot"
+                  },
+                  {
+                    "name": "Кносс",
+                    "lon": 25.16,
+                    "lat": 35.3,
+                    "type": "city"
+                  },
+                  {
+                    "name": "Афины",
+                    "lon": 23.73,
+                    "lat": 37.98,
+                    "type": "city"
+                  },
+                  {
+                    "name": "Эгейское море",
+                    "lon": 25.2,
+                    "lat": 38.6,
+                    "type": "water"
+                  }
+                ]
+              }
+            }
+          ],
           "pool": [
             {
               "id": "history-t31-q12",
@@ -15766,6 +16361,58 @@
               "ref": {
                 "card": 7
               }
+            },
+            {
+              "id": "history-t32-m1",
+              "subject": "history",
+              "topicId": "history-t32",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Покажи на карте: Троя.",
+              "answer": "Троя",
+              "options": [
+                "Троя",
+                "Микены",
+                "Крит"
+              ],
+              "visual": {
+                "kind": "map",
+                "map": "greece",
+                "pick": true,
+                "points": [
+                  {
+                    "name": "Греция",
+                    "lon": 22,
+                    "lat": 39.3,
+                    "type": "area"
+                  },
+                  {
+                    "name": "Троя",
+                    "lon": 26.24,
+                    "lat": 39.96,
+                    "type": "city"
+                  },
+                  {
+                    "name": "Микены",
+                    "lon": 22.76,
+                    "lat": 37.73,
+                    "type": "city"
+                  },
+                  {
+                    "name": "Крит",
+                    "lon": 24.9,
+                    "lat": 35.2,
+                    "type": "spot"
+                  }
+                ]
+              },
+              "explanation": [
+                "Посмотри на карту ещё раз: теперь все точки на ней подписаны."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0
+              }
             }
           ],
           "bonus": [
@@ -15789,6 +16436,41 @@
               "hints": [],
               "ref": {
                 "card": 1
+              }
+            }
+          ],
+          "visuals": [
+            {
+              "card": 0,
+              "visual": {
+                "kind": "map",
+                "map": "greece",
+                "points": [
+                  {
+                    "name": "Микены",
+                    "lon": 22.76,
+                    "lat": 37.73,
+                    "type": "city"
+                  },
+                  {
+                    "name": "Троя",
+                    "lon": 26.24,
+                    "lat": 39.96,
+                    "type": "city"
+                  },
+                  {
+                    "name": "Крит",
+                    "lon": 24.9,
+                    "lat": 35.2,
+                    "type": "spot"
+                  },
+                  {
+                    "name": "Греция",
+                    "lon": 22,
+                    "lat": 39.3,
+                    "type": "area"
+                  }
+                ]
               }
             }
           ],
@@ -16767,6 +17449,53 @@
               }
             }
           ],
+          "visuals": [
+            {
+              "card": 3,
+              "visual": {
+                "kind": "map",
+                "map": "mediterranean",
+                "points": [
+                  {
+                    "name": "Афины",
+                    "lon": 23.73,
+                    "lat": 37.98,
+                    "type": "city"
+                  },
+                  {
+                    "name": "Италия",
+                    "lon": 12.6,
+                    "lat": 43.2,
+                    "type": "area"
+                  },
+                  {
+                    "name": "Сицилия",
+                    "lon": 14.2,
+                    "lat": 37.6,
+                    "type": "area"
+                  },
+                  {
+                    "name": "Средиземное море",
+                    "lon": 18.5,
+                    "lat": 34.6,
+                    "type": "water"
+                  },
+                  {
+                    "name": "Чёрное море",
+                    "lon": 34.5,
+                    "lat": 43.3,
+                    "type": "water"
+                  },
+                  {
+                    "name": "Египет",
+                    "lon": 30.3,
+                    "lat": 29.6,
+                    "type": "area"
+                  }
+                ]
+              }
+            }
+          ],
           "pool": [
             {
               "id": "history-t34-q12",
@@ -17237,6 +17966,29 @@
               "ref": {
                 "card": 6,
                 "quote": "**Лаконичная** речь — краткая и чёткая (по области Лаконика)."
+              }
+            }
+          ],
+          "visuals": [
+            {
+              "card": 0,
+              "visual": {
+                "kind": "map",
+                "map": "greece",
+                "points": [
+                  {
+                    "name": "Спарта",
+                    "lon": 22.43,
+                    "lat": 37.07,
+                    "type": "city"
+                  },
+                  {
+                    "name": "Пелопоннес",
+                    "lon": 22.1,
+                    "lat": 37.75,
+                    "type": "area"
+                  }
+                ]
               }
             }
           ],
@@ -17723,6 +18475,23 @@
               }
             }
           ],
+          "visuals": [
+            {
+              "card": 0,
+              "visual": {
+                "kind": "map",
+                "map": "greece",
+                "points": [
+                  {
+                    "name": "Афины",
+                    "lon": 23.73,
+                    "lat": 37.98,
+                    "type": "city"
+                  }
+                ]
+              }
+            }
+          ],
           "pool": [
             {
               "id": "history-t36-q12",
@@ -18172,6 +18941,52 @@
                 "card": 6,
                 "quote": "Женщины, метеки и рабы не допускались; граждане составляли меньшинство."
               }
+            },
+            {
+              "id": "history-t37-m1",
+              "subject": "history",
+              "topicId": "history-t37",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Покажи на карте: Афины.",
+              "answer": "Афины",
+              "options": [
+                "Афины",
+                "Спарта",
+                "Фермопилы"
+              ],
+              "visual": {
+                "kind": "map",
+                "map": "greece",
+                "pick": true,
+                "points": [
+                  {
+                    "name": "Афины",
+                    "lon": 23.73,
+                    "lat": 37.98,
+                    "type": "city"
+                  },
+                  {
+                    "name": "Спарта",
+                    "lon": 22.43,
+                    "lat": 37.07,
+                    "type": "city"
+                  },
+                  {
+                    "name": "Фермопилы",
+                    "lon": 22.54,
+                    "lat": 38.8,
+                    "type": "city"
+                  }
+                ]
+              },
+              "explanation": [
+                "Посмотри на карту ещё раз: теперь все точки на ней подписаны."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0
+              }
             }
           ],
           "bonus": [
@@ -18270,6 +19085,49 @@
                   {
                     "year": -449,
                     "label": "заключён мир"
+                  }
+                ]
+              }
+            },
+            {
+              "card": 0,
+              "visual": {
+                "kind": "map",
+                "map": "greece",
+                "points": [
+                  {
+                    "name": "Афины",
+                    "lon": 23.73,
+                    "lat": 37.98,
+                    "type": "city"
+                  },
+                  {
+                    "name": "Спарта",
+                    "lon": 22.43,
+                    "lat": 37.07,
+                    "type": "city",
+                    "label": "l"
+                  },
+                  {
+                    "name": "Марафон",
+                    "lon": 23.96,
+                    "lat": 38.15,
+                    "type": "city",
+                    "label": "t"
+                  },
+                  {
+                    "name": "Фермопилы",
+                    "lon": 22.54,
+                    "lat": 38.8,
+                    "type": "city",
+                    "label": "l"
+                  },
+                  {
+                    "name": "Саламин",
+                    "lon": 23.5,
+                    "lat": 37.93,
+                    "type": "spot",
+                    "label": "l"
                   }
                 ]
               }
@@ -18808,6 +19666,41 @@
                   {
                     "year": -404,
                     "label": "Афины пали"
+                  }
+                ]
+              }
+            },
+            {
+              "card": 0,
+              "visual": {
+                "kind": "map",
+                "map": "mediterranean",
+                "points": [
+                  {
+                    "name": "Афины",
+                    "lon": 23.73,
+                    "lat": 37.98,
+                    "type": "city"
+                  },
+                  {
+                    "name": "Спарта",
+                    "lon": 22.43,
+                    "lat": 37.07,
+                    "type": "city",
+                    "label": "l"
+                  },
+                  {
+                    "name": "Сиракузы",
+                    "lon": 15.29,
+                    "lat": 37.07,
+                    "type": "city",
+                    "label": "l"
+                  },
+                  {
+                    "name": "Средиземное море",
+                    "lon": 18.5,
+                    "lat": 34.6,
+                    "type": "water"
                   }
                 ]
               }
@@ -19358,6 +20251,51 @@
                   {
                     "year": -323,
                     "label": "смерть Александра"
+                  }
+                ]
+              }
+            },
+            {
+              "card": 0,
+              "visual": {
+                "kind": "map",
+                "map": "empire",
+                "points": [
+                  {
+                    "name": "Македония",
+                    "lon": 22.3,
+                    "lat": 40.9,
+                    "type": "area"
+                  },
+                  {
+                    "name": "Египет",
+                    "lon": 30.5,
+                    "lat": 27.3,
+                    "type": "area"
+                  },
+                  {
+                    "name": "Вавилон",
+                    "lon": 44.42,
+                    "lat": 32.54,
+                    "type": "city"
+                  },
+                  {
+                    "name": "Персеполь",
+                    "lon": 52.89,
+                    "lat": 29.93,
+                    "type": "city"
+                  },
+                  {
+                    "name": "Персия",
+                    "lon": 56.5,
+                    "lat": 34.3,
+                    "type": "area"
+                  },
+                  {
+                    "name": "Инд",
+                    "lon": 66.8,
+                    "lat": 30,
+                    "type": "water"
                   }
                 ]
               }
@@ -21308,6 +22246,30 @@
               }
             }
           ],
+          "visuals": [
+            {
+              "card": 4,
+              "visual": {
+                "kind": "map",
+                "map": "greece",
+                "points": [
+                  {
+                    "name": "Олимпия",
+                    "lon": 21.63,
+                    "lat": 37.64,
+                    "type": "city",
+                    "label": "l"
+                  },
+                  {
+                    "name": "Афины",
+                    "lon": 23.73,
+                    "lat": 37.98,
+                    "type": "city"
+                  }
+                ]
+              }
+            }
+          ],
           "pool": [
             {
               "id": "history-t43-q12",
@@ -22754,6 +23716,33 @@
                   {
                     "year": -509,
                     "label": "изгнан последний царь"
+                  }
+                ]
+              }
+            },
+            {
+              "card": 3,
+              "visual": {
+                "kind": "map",
+                "map": "mediterranean",
+                "points": [
+                  {
+                    "name": "Рим",
+                    "lon": 12.5,
+                    "lat": 41.9,
+                    "type": "city"
+                  },
+                  {
+                    "name": "Италия",
+                    "lon": 11.2,
+                    "lat": 44.6,
+                    "type": "area"
+                  },
+                  {
+                    "name": "Средиземное море",
+                    "lon": 18.5,
+                    "lat": 34.6,
+                    "type": "water"
                   }
                 ]
               }
@@ -24220,6 +25209,76 @@
                 "card": 6,
                 "quote": "Рим подчинил всё Средиземноморье."
               }
+            },
+            {
+              "id": "history-t49-m1",
+              "subject": "history",
+              "topicId": "history-t49",
+              "difficulty": "basic",
+              "type": "single",
+              "question": "Покажи на карте: Карфаген.",
+              "answer": "Карфаген",
+              "options": [
+                "Карфаген",
+                "Рим",
+                "Канны"
+              ],
+              "visual": {
+                "kind": "map",
+                "map": "mediterranean",
+                "pick": true,
+                "points": [
+                  {
+                    "name": "Македония",
+                    "lon": 22.3,
+                    "lat": 40.9,
+                    "type": "area"
+                  },
+                  {
+                    "name": "Малая Азия",
+                    "lon": 32.5,
+                    "lat": 39,
+                    "type": "area"
+                  },
+                  {
+                    "name": "Египет",
+                    "lon": 30.3,
+                    "lat": 29.6,
+                    "type": "area"
+                  },
+                  {
+                    "name": "Средиземное море",
+                    "lon": 18.5,
+                    "lat": 34.6,
+                    "type": "water"
+                  },
+                  {
+                    "name": "Карфаген",
+                    "lon": 10.32,
+                    "lat": 36.85,
+                    "type": "city"
+                  },
+                  {
+                    "name": "Рим",
+                    "lon": 12.5,
+                    "lat": 41.9,
+                    "type": "city"
+                  },
+                  {
+                    "name": "Канны",
+                    "lon": 16.15,
+                    "lat": 41.31,
+                    "type": "city"
+                  }
+                ]
+              },
+              "explanation": [
+                "Посмотри на карту ещё раз: теперь все точки на ней подписаны."
+              ],
+              "hints": [],
+              "ref": {
+                "card": 0
+              }
             }
           ],
           "bonus": [
@@ -24323,6 +25382,59 @@
                   {
                     "year": -146,
                     "label": "третья война окончена, Карфаген разрушен"
+                  }
+                ]
+              }
+            },
+            {
+              "card": 0,
+              "visual": {
+                "kind": "map",
+                "map": "mediterranean",
+                "points": [
+                  {
+                    "name": "Рим",
+                    "lon": 12.5,
+                    "lat": 41.9,
+                    "type": "city",
+                    "label": "l"
+                  },
+                  {
+                    "name": "Карфаген",
+                    "lon": 10.32,
+                    "lat": 36.85,
+                    "type": "city"
+                  },
+                  {
+                    "name": "Канны",
+                    "lon": 16.15,
+                    "lat": 41.31,
+                    "type": "city",
+                    "label": "b"
+                  },
+                  {
+                    "name": "Македония",
+                    "lon": 22.3,
+                    "lat": 40.9,
+                    "type": "area"
+                  },
+                  {
+                    "name": "Малая Азия",
+                    "lon": 32.5,
+                    "lat": 39,
+                    "type": "area"
+                  },
+                  {
+                    "name": "Египет",
+                    "lon": 30.3,
+                    "lat": 29.6,
+                    "type": "area"
+                  },
+                  {
+                    "name": "Средиземное море",
+                    "lon": 18.5,
+                    "lat": 34.6,
+                    "type": "water"
                   }
                 ]
               }
@@ -28777,6 +29889,28 @@
                   {
                     "year": 476,
                     "label": "конец Западной Римской империи"
+                  }
+                ]
+              }
+            },
+            {
+              "card": 3,
+              "visual": {
+                "kind": "map",
+                "map": "mediterranean",
+                "points": [
+                  {
+                    "name": "Рим",
+                    "lon": 12.5,
+                    "lat": 41.9,
+                    "type": "city",
+                    "label": "l"
+                  },
+                  {
+                    "name": "Константинополь",
+                    "lon": 28.98,
+                    "lat": 41.01,
+                    "type": "city"
                   }
                 ]
               }

@@ -27,3 +27,8 @@ export const allTopics = subjects.flatMap((s) => s.sections.flatMap((sec) => sec
 // Картинки уроков лежат в content/images; в уроке указывается путь относительно этой папки.
 const imageFiles = import.meta.glob<string>('../../content/images/**/*.jpg', { eager: true, import: 'default' });
 export const imageUrl = (file: string): string | undefined => imageFiles[`../../content/images/${file}`];
+
+/** Контурная карта: размеры, границы и готовые SVG-контуры (собираются командой scripts/build-maps.mjs). */
+export type MapData = { id: string; title: string; w: number; h: number; west: number; east: number; south: number; north: number; land: string; focus?: string; rivers: string };
+const mapFiles = import.meta.glob<MapData>('../../content/maps/*.json', { eager: true, import: 'default' });
+export const mapData = (id: string): MapData | undefined => mapFiles[`../../content/maps/${id}.json`];

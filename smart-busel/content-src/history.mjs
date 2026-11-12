@@ -26,11 +26,12 @@ import { hist2V } from './parts/hist2-v.mjs';
 import { hist2W } from './parts/hist2-w.mjs';
 import { hist2X } from './parts/hist2-x.mjs';
 import { historyTimelines } from './history-timeline.mjs';
+import { historyMaps } from './maps.mjs';
 
 const all = [...hist2A, ...hist2B, ...hist2C, ...hist2D, ...hist2E, ...hist2F, ...hist2G, ...hist2H, ...hist2I, ...hist2J, ...hist2K, ...hist2L, ...hist2M, ...hist2N, ...hist2O, ...hist2P, ...hist2Q, ...hist2R, ...hist2S, ...hist2T, ...hist2U, ...hist2V, ...hist2W, ...hist2X].flatMap(([, topics]) => topics);
 const group = (title, from, to) => [title, all.filter((t) => t.n >= from && t.n <= to)];
 
-export const subject = buildSubject({ id: 'history', title: 'История Древнего мира', language: 'ru', color: '#9a5314', icon: '🏺', review: false, extra: historyExtra, pool: historyPool, explain: historyExplain, drop: historyDrop, visuals: historyTimelines }, [
+export const subject = buildSubject({ id: 'history', title: 'История Древнего мира', language: 'ru', color: '#9a5314', icon: '🏺', review: false, extra: historyExtra, pool: historyPool, explain: historyExplain, drop: historyDrop, visuals: historyTimelines, maps: historyMaps }, [
   group('Часть 1. Введение', 1, 2),
   group('Часть 1. Раздел I. Первобытное общество', 3, 8),
   group('Часть 1. Глава 1. Древний Египет', 9, 14),
