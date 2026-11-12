@@ -14,6 +14,7 @@ import { Review } from './screens/Review';
 import { SubjectScreen } from './screens/Subject';
 import { Vocabulary } from './screens/Vocabulary';
 import { Warmup } from './screens/Warmup';
+import { resolveTheme } from './engine/theme';
 import { useApp } from './store/useApp';
 
 type Route =
@@ -34,9 +35,17 @@ export default function App() {
 
   useEffect(() => { void init(); }, [init]);
   useEffect(() => {
-    document.documentElement.dataset.theme = settings.theme;
+    // «Как в Windows»: берём тему системы и следим за её сменой
+    const mq = window.matchMedia('(prefers-color-scheme: dark)');
+    const apply = () => { document.documentElement.dataset.theme = resolveTheme(settings.theme, mq.matches); };
+    apply();
+    if (settings.theme !== 'system') return;
+    mq.addEventListener('change', apply);
+    return () => mq.removeEventListener('change', apply);
+  }, [settings.theme]);
+  useEffect(() => {
     document.documentElement.style.setProperty('--font-scale', String(settings.fontScale));
-  }, [settings.theme, settings.fontScale]);
+  }, [settings.fontScale]);
 
   if (!ready) return null;
   const home = () => setRoute({ name: 'home' });

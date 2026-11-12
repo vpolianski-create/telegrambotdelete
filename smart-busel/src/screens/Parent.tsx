@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import type { ThemeSetting } from '../engine/theme';
 import { allTopics, subjects } from '../content/loader';
 import { addDays } from '../engine/leitner';
 import { weekReport } from '../engine/report';
@@ -193,8 +194,10 @@ function SettingsTab() {
       </Card>
       <Card title="Вид">
         <div className="flex flex-col gap-3">
-          <label className="flex items-center justify-between">Тёмная тема
-            <input type="checkbox" checked={s.theme === 'dark'} onChange={(e) => updateSettings({ theme: e.target.checked ? 'dark' : 'light' })} className="h-6 w-6" />
+          <label className="flex items-center justify-between">Тема
+            <select value={s.theme} onChange={(e) => updateSettings({ theme: e.target.value as ThemeSetting })} className="rounded-xl2 border p-2">
+              <option value="system">Как в Windows</option><option value="light">Светлая</option><option value="dark">Тёмная</option>
+            </select>
           </label>
           <label className="flex items-center justify-between">Размер шрифта
             <select value={s.fontScale} onChange={(e) => updateSettings({ fontScale: Number(e.target.value) })} className="rounded-xl2 border p-2">
