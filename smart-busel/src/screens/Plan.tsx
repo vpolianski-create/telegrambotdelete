@@ -5,7 +5,7 @@ import { topicStatus } from '../engine/status';
 import { todayStr, useApp } from '../store/useApp';
 
 /** Выбор тем на сегодня: любые, из любых предметов. «По порядку» подсказывает, какая тема следующая. */
-export function Plan({ onBack, onTopic }: { onBack(): void; onTopic(subjectId: string, topicId: string): void }) {
+export function Plan({ onTopic }: { onTopic(subjectId: string, topicId: string): void }) {
   const { plan, togglePlan, topicResults, opened } = useApp();
   const today = planFor(plan, todayStr());
   const statusOf = (id: string) => topicStatus(topicResults[id], opened.includes(id));
@@ -13,7 +13,6 @@ export function Plan({ onBack, onTopic }: { onBack(): void; onTopic(subjectId: s
 
   return (
     <main className="mx-auto flex max-w-3xl flex-col gap-5 p-6">
-      <button onClick={onBack} className="self-start rounded-xl2 bg-card px-5 shadow">← Назад</button>
       <h1 className="text-3xl font-extrabold">🗓️ Что учим сегодня?</h1>
       <p className="text-mute">Отметь темы, которые хочешь пройти сегодня. Они появятся на главном экране. Выбирать можно любые, но по программе лучше идти по порядку — метка «По порядку» подскажет следующую тему.</p>
       {learnSubjects.map((sub) => {

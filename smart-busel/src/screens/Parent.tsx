@@ -253,7 +253,7 @@ function Backup() {
   );
 }
 
-export function Parent({ onBack }: { onBack(): void }) {
+export function Parent() {
   const { settings, updateSettings } = useApp();
   const [pin, setPin] = useState('');
   const [ok, setOk] = useState(false);
@@ -264,7 +264,6 @@ export function Parent({ onBack }: { onBack(): void }) {
   if (!ok) {
     return (
       <main className="mx-auto flex max-w-sm flex-col gap-4 p-8">
-        <button onClick={onBack} className="self-start rounded-xl2 bg-card px-5 shadow">← Назад</button>
         <Logo height={120} />
         <h1 className="text-2xl font-extrabold">Родительский режим</h1>
         <form className="flex flex-col gap-4" onSubmit={(e) => { e.preventDefault(); const good = pin === settings.pin; setOk(good); setWrong(!good); }}>
@@ -279,7 +278,6 @@ export function Parent({ onBack }: { onBack(): void }) {
 
   return (
     <main className="mx-auto flex max-w-3xl flex-col gap-5 p-6">
-      <button onClick={onBack} className="self-start rounded-xl2 bg-card px-5 shadow">← Назад</button>
       <h1 className="text-2xl font-extrabold">Родительский режим</h1>
       {!settings.pinChanged && (
         <div className="rounded-xl2 bg-accent/20 p-4">
