@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { Mascot } from '../components/Mascot';
 import { TaskView, type TaskResult } from '../components/TaskView';
+import { findTopic } from '../content/loader';
 import { reviewList } from '../content/review';
 import { useApp } from '../store/useApp';
 
@@ -38,5 +39,5 @@ export function Review({ onBack }: { onBack(): void }) {
     if (r.correct) { resolveMistake(m.topicId, m.question); setFixed((f) => f + 1); }
     setI(i + 1);
   };
-  return shell(<TaskView key={task.id} task={task} repeat={topicResults[m.topicId]?.done === true} onNext={answered} />);
+  return shell(<TaskView key={task.id} task={task} cards={findTopic(m.subject, m.topicId)?.topic.cards} repeat={topicResults[m.topicId]?.done === true} onNext={answered} />);
 }

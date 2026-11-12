@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { StatusChip } from '../components/StatusChip';
 import { subjects } from '../content/loader';
@@ -17,6 +18,10 @@ export function SubjectScreen({ id, onBack, onTopic, onVocab }: { id: string; on
   const recommended = ready.find((t) => statusOf(t.id) !== 'done')?.id;
   const counts = statusCounts(ready.map((t) => statusOf(t.id)));
   let index = 0;
+  // длинный предмет: открыт раздел со следующей темой, остальные свёрнуты
+  const currentSection = s.sections.find((sec) => sec.topics.some((t) => t.id === recommended))?.id ?? s.sections[0]?.id;
+  const [openSections, setOpenSections] = useState<string[]>(() => (s.sections.length <= 2 ? s.sections.map((x) => x.id) : currentSection ? [currentSection] : []));
+  const toggleSection = (sid: string) => setOpenSections((o) => (o.includes(sid) ? o.filter((x) => x !== sid) : [...o, sid]));
 
   return (
     <main className="mx-auto max-w-3xl p-6">
@@ -32,9 +37,24 @@ export function SubjectScreen({ id, onBack, onTopic, onVocab }: { id: string; on
           <span className="text-4xl">📒</span> Английские слова: карточки, слушание, письмо
         </button>
       )}
-      {s.sections.map((sec) => (
-        <section key={sec.id} className="mb-8">
-          <h2 className="mb-3 text-xl font-extrabold">{sec.title}</h2>
+      {s.sections.map((sec) => {
+        const secReady = sec.topics.filter((t) => t.status === 'ready');
+        const secDone = secReady.filter((t) => statusOf(t.id) === 'done').length;
+        const isOpen = openSections.includes(sec.id);
+        const first = index;
+        if (!isOpen) index += sec.topics.length;
+        return (
+        <section key={sec.id} className="mb-5">
+          <button onClick={() => toggleSection(sec.id)} aria-expanded={isOpen}
+            className="mb-3 flex min-h-touch w-full flex-wrap items-center gap-3 rounded-xl2 bg-card px-5 py-3 text-left shadow">
+            <span aria-hidden className="text-mute">{isOpen ? '▾' : '▸'}</span>
+            <span className="min-w-[200px] flex-1 text-xl font-extrabold">{sec.title}</span>
+            <span className="text-sm font-bold text-mute">{secDone === secReady.length && secReady.length > 0 ? '✓ ' : ''}{secDone} из {secReady.length}</span>
+            <span className="block h-2 w-full overflow-hidden rounded-full bg-soft">
+              <span className="block h-full rounded-full" style={{ background: s.color, width: `${secReady.length ? (secDone / secReady.length) * 100 : 0}%` }} />
+            </span>
+          </button>
+          {isOpen && first >= 0 && (
           <ol className="relative flex flex-col gap-3 border-l-4 border-dashed pl-0" style={{ borderColor: s.color + '55', marginLeft: 28 }}>
             {sec.topics.map((t) => {
               const r = topicResults[t.id];
@@ -75,8 +95,10 @@ export function SubjectScreen({ id, onBack, onTopic, onVocab }: { id: string; on
               );
             })}
           </ol>
+          )}
         </section>
-      ))}
+        );
+      })}
     </main>
   );
 }

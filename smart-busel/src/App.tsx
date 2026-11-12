@@ -13,6 +13,7 @@ import { Plan } from './screens/Plan';
 import { Review } from './screens/Review';
 import { SubjectScreen } from './screens/Subject';
 import { Vocabulary } from './screens/Vocabulary';
+import { Warmup } from './screens/Warmup';
 import { useApp } from './store/useApp';
 
 type Route =
@@ -24,6 +25,7 @@ type Route =
   | { name: 'certs' }
   | { name: 'plan' }
   | { name: 'review' }
+  | { name: 'warmup' }
   | { name: 'parent' };
 
 export default function App() {
@@ -45,7 +47,7 @@ export default function App() {
     <>
       <AnimatePresence mode="wait">
         <motion.div key={pageKey} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
-          {route.name === 'home' && <Home onSubject={(id) => setRoute({ name: 'subject', id })} onParent={() => setRoute({ name: 'parent' })} onTopic={lesson} onCollection={() => setRoute({ name: 'collection' })} onPlan={() => setRoute({ name: 'plan' })} onReview={() => setRoute({ name: 'review' })} />}
+          {route.name === 'home' && <Home onSubject={(id) => setRoute({ name: 'subject', id })} onParent={() => setRoute({ name: 'parent' })} onTopic={lesson} onCollection={() => setRoute({ name: 'collection' })} onPlan={() => setRoute({ name: 'plan' })} onReview={() => setRoute({ name: 'review' })} onWarmup={() => setRoute({ name: 'warmup' })} />}
           {route.name === 'subject' && (
             <SubjectScreen id={route.id} onBack={home} onTopic={(t) => lesson(route.id, t)} onVocab={() => setRoute({ name: 'vocab' })} />
           )}
@@ -58,6 +60,7 @@ export default function App() {
           {route.name === 'certs' && <Certificates onBack={() => setRoute({ name: 'collection' })} />}
           {route.name === 'plan' && <Plan onBack={home} onTopic={lesson} />}
           {route.name === 'review' && <Review onBack={home} />}
+          {route.name === 'warmup' && <Warmup onBack={home} />}
           {route.name === 'parent' && <Parent onBack={home} />}
         </motion.div>
       </AnimatePresence>

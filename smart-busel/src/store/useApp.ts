@@ -9,6 +9,7 @@ import { DAILY_GOAL_BONUS, TOPIC_PASS_BONUS, TOPIC_PASS_PERCENT } from '../engin
 import type { GeneratorRef } from '../content/schema';
 import { earnedCertificates } from '../engine/certificates';
 import { togglePlan as togglePlanFn, type Plan } from '../engine/plan';
+import { afterReview, WARMUP_BONUS } from '../engine/warmup';
 import { DEFAULT_REWARD_TEXT, DEFAULT_THRESHOLD, newRewards, type Reward, type RewardBase } from '../engine/rewards';
 
 export interface Settings {
@@ -26,10 +27,13 @@ export interface Settings {
   accessory: string; // надетый аксессуар Бусела
 }
 
-export interface TopicResult { bestPercent: number; attempts: number; done: boolean; passBonusGiven: boolean; chestOpened?: boolean; stars?: number }
+export interface TopicResult {
+  bestPercent: number; attempts: number; done: boolean; passBonusGiven: boolean; chestOpened?: boolean; stars?: number;
+  reviewed?: string; stage?: number; // «Разминка дня»: дата последнего повторения и ступень
+}
 export interface DayLog {
   sec: number; tasks: number; correct: number; goalDone: boolean; unlocked: boolean;
-  bySubject?: Record<string, number>; words?: number; topics?: number; quests?: string[]; questChest?: boolean; topicIds?: string[];
+  bySubject?: Record<string, number>; words?: number; topics?: number; quests?: string[]; questChest?: boolean; topicIds?: string[]; warmup?: boolean;
 }
 export interface Toast { icon: string; title: string; text: string }
 export interface Mistake { subject: string; topicId: string; question: string; date: string; taskId?: string; entry?: GeneratorRef }
@@ -137,6 +141,8 @@ interface Store extends Data {
   recordAnswer(a: AnswerInfo): number;
   /** Баллы за тему и звёзды; возвращает начисленные баллы и число новых звёзд. */
   finishTopic(topicId: string, percent: number, opts?: { noHints?: boolean }): { bonus: number; newStars: number; card?: string };
+  /** Итог «Разминки дня»: для каждой темы — все ли ответы верны. Возвращает бонус (один раз в день). */
+  finishWarmup(results: Record<string, boolean>): number;
   /** Сундук дня после всех трёх заданий дня. */
   openDayChest(): ChestResult | undefined;
   /** Сундук-сюрприз после темы; возвращает, что выпало. */
@@ -259,6 +265,8 @@ export const useApp = create<Store>((set, get) => {
           [topicId]: {
             ...prev, bestPercent: Math.max(prev.bestPercent, percent), attempts: prev.attempts + 1,
             done: prev.done || passed, passBonusGiven: prev.passBonusGiven || passed, stars,
+            // тема только что пройдена впервые — с этого дня отсчитываем первое повторение
+            ...(passed && !prev.done ? { reviewed: date, stage: 0 } : {}),
           },
         },
         albumCards: newCard ? [...s.albumCards, newCard] : s.albumCards,
@@ -266,6 +274,19 @@ export const useApp = create<Store>((set, get) => {
       }, extra);
       if (newCard && found?.card) set({ toasts: [...get().toasts, { icon: found.card.emoji, title: 'Новая карточка знаний!', text: found.card.title }] });
       return { bonus, newStars: stars - oldStars, card: newCard };
+    },
+
+    finishWarmup(results) {
+      const s = get();
+      const ids = Object.keys(results).filter((id) => s.topicResults[id]);
+      if (!ids.length) return 0;
+      const date = todayStr();
+      const d = day(s, date);
+      const bonus = d.warmup ? 0 : WARMUP_BONUS;
+      const topicResults = { ...s.topicResults };
+      ids.forEach((id) => { topicResults[id] = afterReview(topicResults[id], results[id], date); });
+      commit({ ...withPoints(s, bonus), topicResults, daily: { ...s.daily, [date]: { ...d, warmup: true } } });
+      return bonus;
     },
 
     openChest(topicId) {

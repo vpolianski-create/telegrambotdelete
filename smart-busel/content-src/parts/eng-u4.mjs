@@ -39,7 +39,7 @@ export const engU4 = [
       'Что делают на празднике: **invite relatives** (приглашать родственников), **decorate … with …** (украшать чем-то), **light candles** (зажигать свечи), **get presents** (получать подарки), **send cards** (посылать открытки), **watch a parade** (смотреть парад), **watch fireworks** (смотреть салют), **play jokes on …** (подшучивать над …), **wish happiness** (желать счастья), **paint eggs** (красить яйца).',
       'Про то, что **делаем каждый год**, используем **Present Simple**: **We invite our relatives. My mum decorates the house with lights. We watch fireworks.** С he / she / it добавляем **-s**: **decorates, lights, sends, gets**.',
       'Про то, что **было в прошлом году**, используем **Past Simple**: **We invited relatives. We lit candles (light — lit). We got presents. She sent cards. We watched a parade.** Light — lit, get — got, send — sent.',
-      'Рассказ: **On Easter we paint eggs. Last Easter we painted eggs and gave them to our relatives.** Здесь важно слово: **Last Easter, last year** — прошедшее время, **every year, always** — настоящее.',
+      'Рассказ: **At Easter we paint eggs. Last Easter we painted eggs and gave them to our relatives.** Здесь важно слово: **Last Easter, last year** — прошедшее время, **every year, always** — настоящее.',
     ],
     example: ['Расскажи, что ты делаешь на Новый год.', [
       ['Выбираем фразы: decorate the tree, get presents, watch fireworks.', 'Берём из учебника.'],
@@ -68,9 +68,9 @@ export const engU4 = [
   T(34, 'Unit 4, Lessons 3–4. Present Simple и Past Simple: Yes / No и Wh-вопросы', {
     cards: [
       '**Present Simple** — для привычек и фактов: **Do you celebrate Easter? — Yes, I do. Does she get presents? — Yes, she does.** Помощник — **do / does**; Past Simple — для событий в прошлом: **Did you celebrate Easter? — Yes, I did. Did she get presents? — No, she didn’t.** Помощник — **did**.',
-      'Wh-вопросы в Present Simple: **What do you do on Easter? Where does your family go? When do they celebrate it?** В Past Simple: **What did you do last Easter? Where did your family go? When did they celebrate it?** Меняем do / does на did.',
+      'Wh-вопросы в Present Simple: **What do you do at Easter? Where does your family go? When do they celebrate it?** В Past Simple: **What did you do last Easter? Where did your family go? When did they celebrate it?** Меняем do / does на did.',
       'Отрицание: Present — **don’t / doesn’t** (We **don’t** paint eggs. She **doesn’t** like jokes). Past — **didn’t** (We **didn’t** paint eggs last year). После вспомогательного глагола — всегда начальная форма: **don’t go, didn’t go**.',
-      'Сравнение: **Every Easter we paint eggs. Last Easter we painted eggs and ate cake.** Подсказки: **every year, usually, always** — Present; **last year, yesterday, ago** — Past. Символы Пасхи: **symbol, church, tradition**. Это слова урока 4 об Пасхе в Беларуси и других странах.',
+      'Сравнение: **Every Easter we paint eggs. Last Easter we painted eggs and ate cake.** Подсказки: **every year, usually, always** — Present; **last year, yesterday, ago** — Past. Слова урока 4 о Пасхе: **symbol** (символ), **church** (церковь, костёл), **tradition** (традиция).',
     ],
     example: ['Преврати «We go to church at Easter» в вопрос в Past Simple.', [
       ['Меняем время на прошедшее: last Easter.', 'Нужно слово-подсказка.'],

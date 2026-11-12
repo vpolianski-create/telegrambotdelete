@@ -9,7 +9,7 @@ export const engU1 = [
       'В классе нам нужны **вежливые фразы** (classroom language). Не понял слово: **Sorry, I don’t understand.** Хочешь узнать перевод: **What is “правило” in English?** / **What is it in Russian?** Нужна помощь: **Excuse me! Can you help me, please?** Как пишется слово: **How do you spell it?**',
       'Опоздал на урок: **Sorry, I’m late. May I take a seat?** Нужно выйти: **Can I go out?** Нет карандаша: **Could you give me a pencil, please?** Слова **please** и **sorry** делают просьбу вежливой.',
       'Новые слова урока: **rule** (правило), **polite** (вежливый), **hard** (усердно; трудно), **raise** (поднимать), **understand** (понимать). Например: **Raise your hand** — «Подними руку».',
-      'Правила класса пишем **короткими приказами**: **Speak English. Be kind. Do your homework. Listen, think, and learn.** Запрет: **No phones.** Приказ начинается с глагола, а слово **please** добавляем для вежливости.',
+      'Правила класса пишем **короткими приказами**: **Speak English** (говори по-английски). **Be kind** (будь добрым). **Do your homework** (делай домашнее задание). **Listen, think, and learn.** Запрет: **No phones.** Приказ начинается с глагола, а слово **please** добавляем для вежливости.',
     ],
     example: ['Что сказать, если ты опоздал на урок?', [
       ['Сначала извиняемся: Sorry, I’m late.', 'Слово sorry — «извините».'],
@@ -101,7 +101,7 @@ export const engU1 = [
     cards: [
       'Фразу **there is / there are** («есть, находится») в прошлом меняем на **there was / there were** («был, были, находился»). **There was** + один предмет или неисчисляемое: There **was** a tent on the beach. **There were** + много: There **were** many tourists at the seaside.',
       'Отрицание: **there wasn’t / there weren’t**: There **wasn’t** a storm. There **weren’t** any rocks. Вопрос: **Was there …? Were there …?** — **Was there** a sandcastle? Yes, there was. / No, there wasn’t.',
-      'Вопросы с **Wh-**: **What was** there on the beach? **Where were** the tourists? Слова урока: **beach** (пляж), **tourist**, **tent**, **rock** (скала), **sand**, **sandcastle**, **seaweed**, **storm**.',
+      'Вопросы с **Wh-**: **What was** there on the beach? **Where were** the tourists? Слова урока: **beach** (пляж), **tourist** (турист), **tent** (палатка), **rock** (скала), **sand** (песок), **sandcastle** (замок из песка), **seaweed** (водоросли), **storm** (шторм).',
       'После there was / were рассказываем, что **можно было увидеть**: There was a lot of sand. There were tents and a few rocks. Так удобно описывать фотографию прошлого лета.',
     ],
     example: ['Вставь was или were: «There ___ three tents on the beach».', [
@@ -225,9 +225,9 @@ export const engU1 = [
   T(21, 'Unit 1. Словарь лета (In Summer)', {
     cards: [
       'Места и природа: **seaside** (побережье), **beach** (пляж), **lake** (озеро), **river** (река), **mountain** (гора), **woods** (лес), **country** (местность за городом), **sand** (песок), **rock** (скала), **storm** (шторм), **seaweed** (водоросли).',
-      'Занятия: **go hiking**, **go sunbathing**, **go swimming**, **go for a picnic**, **cook over a campfire**, **watch birds**, **take photos (of)**, **have fun** (веселиться), **pick** (собирать), **travel**, **visit**, **stay**.',
-      'Что берём или находим: **tent** (палатка), **hotel** (гостиница), **camp** (лагерь), **berries** (ягоды), **flowers** (цветы), **mushrooms** (грибы), **sandcastle** (замок из песка). Люди: **tourist**.',
-      'Слова-помощники: **yesterday**, **last**, **ago**, **abroad** (за границей), **after**, **fall** (падать), **buy**, **say**, **spend** (проводить время), **understand**. Полный список слов юнита можно потренировать в разделе «Слова».',
+      'Занятия: **go hiking** (ходить в поход), **go sunbathing** (загорать), **go swimming** (идти купаться), **go for a picnic** (идти на пикник), **cook over a campfire** (готовить на костре), **watch birds** (наблюдать за птицами), **take photos (of)** (фотографировать), **have fun** (веселиться), **pick** (собирать), **travel** (путешествовать), **visit** (посещать), **stay** (останавливаться, жить).',
+      'Что берём или находим: **tent** (палатка), **hotel** (гостиница), **camp** (лагерь), **berries** (ягоды), **flowers** (цветы), **mushrooms** (грибы), **sandcastle** (замок из песка). Люди: **tourist** (турист).',
+      'Слова-помощники: **yesterday** (вчера), **last** (прошлый), **ago** (тому назад), **abroad** (за границей), **after** (после), **fall** (падать), **buy** (покупать), **say** (сказать), **spend** (проводить время), **understand** (понимать). Полный список слов юнита можно потренировать в разделе «Слова».',
     ],
     example: ['Составь рассказ из 3 предложений о лете.', [
       ['Выбираем место: Last summer we were at the seaside.', 'Was / were — о месте.'],

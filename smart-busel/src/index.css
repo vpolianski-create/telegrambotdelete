@@ -19,12 +19,15 @@
   --brand: #0b5fc2; --accent: #c2410c; --ok: #15803d;
   --brand-ink: #0b5fc2; --accent-ink: #b43c0a; --ok-ink: #15803d;
   --soft: rgba(19, 36, 79, 0.07); --line: rgba(19, 36, 79, 0.18);
+  /* контурные карты */
+  --map-sea: #cfe6fb; --map-land: #f6efd8; --map-edge: #a59a72; --map-focus: #ffd766; --map-river: #1d8cee; --map-water-ink: #0b5fc2;
 }
 [data-theme='dark'] {
   --bg: #0b1733; --card: #132549; --ink: #eef4ff; --mute: #a9bbdc;
   --brand: #1f74dc;
   --brand-ink: #7cb7ff; --accent-ink: #ffb27a; --ok-ink: #5fd69a;
   --soft: rgba(255, 255, 255, 0.12); --line: rgba(255, 255, 255, 0.28);
+  --map-sea: #0e2c5c; --map-land: #2c3f66; --map-edge: #60749f; --map-focus: #6f5d1f; --map-river: #4ea8ff; --map-water-ink: #9ccbff;
 }
 /* размер шрифта растёт вместе с окном: 1366 px → 16 px, 4K → ~27 px */
 html { font-size: calc(clamp(16px, 10px + 0.45vw, 30px) * var(--font-scale, 1)); }

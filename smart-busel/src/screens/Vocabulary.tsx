@@ -5,15 +5,17 @@ import type { Task, Word } from '../content/schema';
 import { boxCounts, LEARNED_BOX, pickSession } from '../engine/leitner';
 import { shuffle } from '../engine/rng';
 import { hasEnglishVoice, speak } from '../audio/speech';
+import { sentenceTask } from '../engine/variety';
 import { todayStr, useApp } from '../store/useApp';
 import { Mascot } from '../components/Mascot';
 
-type Mode = 'cards' | 'choose' | 'listen' | 'spell' | 'match';
+type Mode = 'cards' | 'choose' | 'listen' | 'spell' | 'sentence' | 'match';
 const MODES: { id: Mode; icon: string; title: string }[] = [
   { id: 'cards', icon: '🃏', title: 'Карточки' },
   { id: 'choose', icon: '🔤', title: 'Выбери перевод' },
   { id: 'listen', icon: '🎧', title: 'Послушай и выбери' },
   { id: 'spell', icon: '✍️', title: 'Напиши слово' },
+  { id: 'sentence', icon: '🧱', title: 'Собери предложение' },
   { id: 'match', icon: '🧩', title: 'Найди пару' },
 ];
 const allWords = wordSets.flatMap((s) => s.words);
@@ -25,6 +27,10 @@ function wordTask(mode: Exclude<Mode, 'cards' | 'match'>, w: Word, pool: Word[])
   const base = { id: `${mode}:${w.id}:${Math.random()}`, subject: 'english', topicId: 'vocab', difficulty: 'basic' as const, explanation };
   if (mode === 'choose') {
     return { ...base, type: 'single', question: `Как переводится «${w.en}»?`, options: shuffle(Math.random, [w.ru, ...others.slice(0, 3).map((x) => x.ru)]), answer: w.ru, hints: [`Первая буква перевода: «${w.ru[0]}»`] };
+  }
+  if (mode === 'sentence') {
+    // пример слишком короткий или длинный — тогда обычный выбор перевода
+    return sentenceTask(w, Math.random) ?? wordTask('choose', w, pool);
   }
   if (mode === 'listen') {
     return { ...base, type: 'single', question: 'Послушай и выбери слово', options: shuffle(Math.random, [w.en, ...others.slice(0, 3).map((x) => x.en)]), answer: w.en, hints: [`Слово начинается на «${w.en[0]}»`] };
@@ -172,7 +178,7 @@ function WordTraining({ mode, setId, onExit }: { mode: Mode; setId: string; onEx
   return (
     <div>
       <p className="mb-3 text-center text-mute">{i + 1} / {session.length}</p>
-      <TaskView key={task.id} task={task} speakWord={mode === 'listen' ? w.en : undefined}
+      <TaskView key={task.id} task={task} speakWord={mode === 'listen' ? w.en : mode === 'sentence' && task.type === 'order' ? w.example : undefined}
         onNext={(r) => {
           answerWord(w.id, r.correct);
           recordAnswer({ subject: 'english', topicId: 'vocab', question: task.question + ' ' + w.en, correct: r.correct, points: r.points });

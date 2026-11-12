@@ -66,7 +66,7 @@ export const engU2 = [
   T(24, 'Unit 2, Lesson 3. Out for a walk: приглашения', {
     cards: [
       'Чтобы **пригласить**, говорим: **Would you like to go for a walk?** **Let’s go for a swim!** **Do you want to go for a run?** Друг может **принять** приглашение: **Yes, I’d love to! Great idea! OK, let’s go.**',
-      'Чтобы **отказаться**, говорим вежливо: **Sorry, I can’t. I’m busy.** **I’d like to, but I can’t.** Не забываем **sorry** и **thank you**: Thank you, but I can’t.',
+      'Чтобы **отказаться**, говорим вежливо: **Sorry, I can’t. I’m busy.** I’m busy значит «я занят». **I’d like to, but I can’t.** Не забываем **sorry** и **thank you**: Thank you, but I can’t.',
       'Фразы со словом **go**: **go for a walk** (пойти погулять), **go for a swim** (пойти поплавать), **go for a run** (пойти побегать), **go for a bike ride** (поехать кататься на велосипеде), **go out** (выйти). Спросить, как дела: **What’s up?** (Как дела?)',
       'Пример диалога: — **What’s up?** — Hi! Would you like to go for a walk? — Yes, I’d love to! — Let’s go to the park. — Sorry, I can’t. I’m at school. Это вежливые разговорные фразы.',
     ],
@@ -128,7 +128,7 @@ export const engU2 = [
   T(26, 'Unit 2, Lesson 8. The Bright Autumn Festival: workshop и приглашение', {
     cards: [
       '**Workshop** — «мастер-класс»: люди собираются, чтобы научиться чему-то новому (например, плести или готовить). **Take part (in)** значит «принимать участие». **Free** — «бесплатный» или «свободный».',
-      'Приглашение на мастер-класс: **Come to our workshop! You can learn to paint eggs. Take part in the festival! Entrance is free.** Здесь используем приказы и **can** — «можешь».',
+      'Приглашение на мастер-класс: **Come to our workshop! You can learn to paint eggs. Take part in the festival! Entrance is free.** Entrance is free значит «вход бесплатный», festival — «фестиваль, праздник». Здесь используем приказы и **can** — «можешь».',
       'Для рассказа об участии в мероприятии в прошлом: **We took part in the workshop. We learnt to make a toy. It was free.** Take — took, learn — learnt (или learned).',
       'Афиша (плакат) отвечает на вопросы: **What?** (что), **Where?** (где), **When?** (когда), **How much?** (сколько стоит). Например: Workshop “Paint a pot”. Where? School hall. When? Saturday, 11 a.m. Free.',
     ],

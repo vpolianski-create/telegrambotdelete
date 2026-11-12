@@ -7,7 +7,7 @@ export const engU3 = [
     cards: [
       'Виды передач (TV programmes): **the news** (новости), **cartoon** (мультфильм), **documentary** (документальный фильм), **educational programme** (познавательная программа), **game show** (игровое шоу), **talk show** (ток-шоу), **music programme** (музыкальная программа), **nature programme** (передача о природе), **sports programme** (спортивная программа), **TV series** (сериал).',
       'Жанры фильмов (genre — жанр): **action film** (боевик), **adventure film** (приключенческий), **comedy** (комедия), **detective film** (детектив), **fantasy film** (фэнтези), **horror film** (фильм ужасов), **romantic film** (мелодрама), **science fiction film** (научная фантастика), **fairy tale** (сказка).',
-      'Чтобы высказать **мнение**, говорим: **I like / I love … I don’t like … My favourite programme is … I think … is exciting.** Спросить: **Do you like cartoons? What is your favourite film?** Ответ: Yes, I do. / No, I don’t.',
+      'Чтобы высказать **мнение**, говорим: **I like / I love … I don’t like … My favourite programme is … I think … is exciting.** Favourite значит «любимый». Спросить: **Do you like cartoons? What is your favourite film?** Ответ: Yes, I do. / No, I don’t.',
       '**To be on TV** значит «идти по телевизору»: **What’s on TV?** — «Что сейчас по ТВ?» **The news is on at seven.** Эти слова помогут составить идеальную телепрограмму (TV guide).',
     ],
     example: ['Расскажи, какую передачу ты любишь.', [
