@@ -77,7 +77,7 @@ const initial: Data = {
 
 declare global {
   interface Window {
-    busel?: { load(): Promise<Data | null>; save(d: Data): Promise<void> };
+    busel?: { load(): Promise<Data | null>; save(d: Data): Promise<void>; setTheme?(theme: string): void };
   }
 }
 

@@ -39,6 +39,7 @@ export default function App() {
     const mq = window.matchMedia('(prefers-color-scheme: dark)');
     const apply = () => { document.documentElement.dataset.theme = resolveTheme(settings.theme, mq.matches); };
     apply();
+    window.busel?.setTheme?.(settings.theme); // заголовок окна Windows — того же цвета
     if (settings.theme !== 'system') return;
     mq.addEventListener('change', apply);
     return () => mq.removeEventListener('change', apply);
