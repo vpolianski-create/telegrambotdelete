@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { Icon, type IconName } from '../components/Icon';
 import { TaskView } from '../components/TaskView';
 import { wordSets } from '../content/loader';
 import type { Task, Word } from '../content/schema';
@@ -10,13 +11,13 @@ import { todayStr, useApp } from '../store/useApp';
 import { Mascot } from '../components/Mascot';
 
 type Mode = 'cards' | 'choose' | 'listen' | 'spell' | 'sentence' | 'match';
-const MODES: { id: Mode; icon: string; title: string }[] = [
-  { id: 'cards', icon: '🃏', title: 'Карточки' },
-  { id: 'choose', icon: '🔤', title: 'Выбери перевод' },
-  { id: 'listen', icon: '🎧', title: 'Послушай и выбери' },
-  { id: 'spell', icon: '✍️', title: 'Напиши слово' },
-  { id: 'sentence', icon: '🧱', title: 'Собери предложение' },
-  { id: 'match', icon: '🧩', title: 'Найди пару' },
+const MODES: { id: Mode; icon: IconName; title: string }[] = [
+  { id: 'cards', icon: 'cards', title: 'Карточки' },
+  { id: 'choose', icon: 'translate', title: 'Выбери перевод' },
+  { id: 'listen', icon: 'headphones', title: 'Послушай и выбери' },
+  { id: 'spell', icon: 'edit', title: 'Напиши слово' },
+  { id: 'sentence', icon: 'list', title: 'Собери предложение' },
+  { id: 'match', icon: 'puzzle', title: 'Найди пару' },
 ];
 const allWords = wordSets.flatMap((s) => s.words);
 const SESSION = 10;
@@ -165,7 +166,7 @@ function WordTraining({ mode, setId, onExit }: { mode: Mode; setId: string; onEx
             </>
           )}
         </button>
-        <button onClick={() => speak(w.en)} className="rounded-xl2 bg-brand px-6 text-lg text-onbrand">🔊 Послушать</button>
+        <button onClick={() => speak(w.en)} className="rounded-xl2 bg-brand px-6 text-lg text-onbrand"><Icon name="sound" /> Послушать</button>
         <div className="flex gap-3">
           <button onClick={() => next(false)} className="rounded-xl2 bg-soft px-6 font-bold">Ещё повторю</button>
           <button onClick={() => next(true)} className="rounded-xl2 bg-ok px-6 font-bold text-onok">Знаю!</button>
@@ -207,16 +208,16 @@ export function Vocabulary({ onBack }: { onBack(): void }) {
 
   return (
     <main className="mx-auto flex max-w-4xl flex-col gap-5 p-6">
-      <button onClick={mode ? () => setMode(null) : onBack} className="self-start rounded-xl2 bg-card px-5 shadow">← Назад</button>
+      <button onClick={mode ? () => setMode(null) : onBack} className="self-start rounded-xl2 bg-card px-5 shadow"><Icon name="back" /> Назад</button>
       {mode ? <Training mode={mode} setId={set} onExit={() => setMode(null)} /> : (
         <>
           <div className="flex items-center gap-4">
             <Mascot size={96} mood="read" />
-            <h1 className="text-4xl font-extrabold">📒 Английские слова</h1>
+            <h1 className="text-4xl font-extrabold">Английские слова</h1>
           </div>
           {!voice && (
             <p className="rounded-xl2 bg-warn/15 p-3">
-              🔇 Английский голос не найден. Родителям: Параметры Windows → Время и язык → Язык и регион → добавить English (United States) → Речь.
+              <Icon name="soundOff" /> Английский голос не найден. Родителям: Параметры Windows → Время и язык → Язык и регион → добавить English (United States) → Речь.
             </p>
           )}
           <section className="rounded-xl3 bg-card p-5 shadow">
@@ -231,7 +232,7 @@ export function Vocabulary({ onBack }: { onBack(): void }) {
             </div>
           </section>
           <section className="flex flex-wrap gap-2" aria-label="Набор слов">
-            {[{ id: 'all', title: 'Все слова', icon: '📚' }, ...wordSets].map((s) => (
+            {[{ id: 'all', title: 'Все слова', icon: '' }, ...wordSets].map((s) => (
               <button key={s.id} onClick={() => setSet(s.id)}
                 className={`rounded-xl2 px-5 font-bold ${set === s.id ? 'bg-brand text-onbrand' : 'bg-card shadow'}`}>
                 {s.icon} {s.title}
@@ -242,7 +243,7 @@ export function Vocabulary({ onBack }: { onBack(): void }) {
             {MODES.map((m) => (
               <button key={m.id} onClick={() => setMode(m.id)}
                 className="flex min-h-[90px] items-center gap-4 rounded-xl3 bg-card p-5 text-left shadow active:scale-[0.99]">
-                <span className="text-4xl">{m.icon}</span>
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand/15 text-brandink"><Icon name={m.icon} size={24} /></span>
                 <span className="text-xl font-extrabold">{m.title}</span>
               </button>
             ))}

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Icon } from '../components/Icon';
 import { StatusChip } from '../components/StatusChip';
 import { SubjectArt } from '../components/SubjectArt';
 import { subjectTone } from '../content/subjectArt';
@@ -27,7 +28,7 @@ export function SubjectScreen({ id, onBack, onTopic, onVocab }: { id: string; on
 
   return (
     <main className="mx-auto max-w-3xl p-6">
-      <button onClick={onBack} className="mb-4 rounded-xl2 bg-card px-5 shadow">← Назад</button>
+      <button onClick={onBack} className="mb-4 rounded-xl2 bg-card px-5 shadow"><Icon name="back" /> Все предметы</button>
       <header className="relative mb-4 flex items-center gap-5 overflow-hidden rounded-panel p-5 pl-6 shadow" style={{ background: `linear-gradient(${tone.tint}, ${tone.tint}), var(--card)` }}>
         <span aria-hidden className="absolute inset-y-0 left-0 w-1" style={{ background: tone.mark }} />
         <SubjectArt subject={s} size={96} />
@@ -42,7 +43,7 @@ export function SubjectScreen({ id, onBack, onTopic, onVocab }: { id: string; on
       {id === 'english' && (
         <button onClick={onVocab} className="mb-6 flex min-h-[80px] w-full items-center gap-4 rounded-xl3 border border-line p-5 text-left text-xl font-extrabold shadow hover:brightness-[1.03]"
           style={{ background: `linear-gradient(${tone.tint}, ${tone.tint}), var(--card)` }}>
-          <span className="text-4xl">📒</span> Английские слова: карточки, слушание, письмо
+          <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-soft" style={{ color: tone.mark }}><Icon name="cards" size={24} /></span> Английские слова: карточки, слушание, письмо
         </button>
       )}
       {s.sections.map((sec) => {
@@ -55,9 +56,9 @@ export function SubjectScreen({ id, onBack, onTopic, onVocab }: { id: string; on
         <section key={sec.id} className="mb-5">
           <button onClick={() => toggleSection(sec.id)} aria-expanded={isOpen}
             className="mb-3 flex min-h-touch w-full flex-wrap items-center gap-3 rounded-xl2 bg-card px-5 py-3 text-left shadow">
-            <span aria-hidden className="text-mute">{isOpen ? '▾' : '▸'}</span>
+            <Icon name={isOpen ? 'chevronDown' : 'chevronRight'} className="text-mute" />
             <span className="min-w-[200px] flex-1 text-xl font-extrabold">{sec.title}</span>
-            <span className="text-sm font-bold text-mute">{secDone === secReady.length && secReady.length > 0 ? '✓ ' : ''}{secDone} из {secReady.length}</span>
+            <span className="text-sm font-bold text-mute">{secDone === secReady.length && secReady.length > 0 && <Icon name="check" className="text-okink" />} {secDone} из {secReady.length}</span>
             <span className="block h-2 w-full overflow-hidden rounded-full bg-soft">
               <span className="block h-full rounded-full" style={{ background: tone.mark, width: `${secReady.length ? (secDone / secReady.length) * 100 : 0}%` }} />
             </span>
@@ -77,7 +78,7 @@ export function SubjectScreen({ id, onBack, onTopic, onVocab }: { id: string; on
                     style={isReady
                       ? { background: st === 'done' ? 'var(--ok)' : st === 'failed' ? 'var(--warn)' : tone.mark, color: 'var(--on-brand)' }
                       : { background: 'var(--hover)', color: 'var(--mute)' }}>
-                    {st === 'done' ? '✓' : n}
+                    {st === 'done' ? <Icon name="check" label="Пройдена" /> : n}
                   </span>
                   <button disabled={!isReady} onClick={() => onTopic(t.id)}
                     className={`flex min-h-touch flex-1 flex-wrap items-center justify-between gap-2 rounded-xl2 bg-card px-5 py-2 text-left shadow ${isReady ? 'active:scale-[0.99]' : 'opacity-60'}`}
@@ -86,9 +87,9 @@ export function SubjectScreen({ id, onBack, onTopic, onVocab }: { id: string; on
                     <span className="flex items-center gap-2">
                       {!isReady ? <span className="text-sm font-bold text-mute">Скоро</span> : (
                         <>
-                          {st === 'done' && <span aria-label={`Звёзд: ${r?.stars ?? 1} из 3`}>{'⭐'.repeat(r?.stars ?? 1)}{'☆'.repeat(3 - (r?.stars ?? 1))}</span>}
+                          {st === 'done' && <span role="img" aria-label={`Звёзд: ${r?.stars ?? 1} из 3`} className="flex">{[1, 2, 3].map((k) => <Icon key={k} name={k <= (r?.stars ?? 1) ? 'star' : 'starOff'} className={k <= (r?.stars ?? 1) ? 'text-sun' : 'text-mute opacity-60'} />)}</span>}
                           {r && r.bestPercent > 0 && <span className="text-sm font-bold text-mute">{r.bestPercent}%</span>}
-                          {current && st !== 'done' && <span className="text-sm font-extrabold" style={{ color: tone.mark }}>▶ Дальше</span>}
+                          {current && st !== 'done' && <span className="text-sm font-extrabold" style={{ color: tone.mark }}><Icon name="play" /> Дальше</span>}
                           <StatusChip status={st} />
                         </>
                       )}
@@ -97,7 +98,7 @@ export function SubjectScreen({ id, onBack, onTopic, onVocab }: { id: string; on
                   {isReady && (
                     <button onClick={() => togglePlan(t.id)} aria-pressed={planned}
                       className={`min-h-touch whitespace-nowrap rounded-xl2 px-3 text-sm font-extrabold ${planned ? 'bg-brand text-onbrand' : 'bg-soft'}`}>
-                      {planned ? '✓ В плане' : '+ В план'}
+                      <Icon name={planned ? 'check' : 'add'} /> {planned ? 'В плане' : 'В план'}
                     </button>
                   )}
                 </li>

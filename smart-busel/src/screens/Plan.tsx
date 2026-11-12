@@ -1,4 +1,5 @@
 import { StatusChip } from '../components/StatusChip';
+import { Icon } from '../components/Icon';
 import { SubjectArt } from '../components/SubjectArt';
 import { allTopics, learnSubjects } from '../content/loader';
 import { planFor } from '../engine/plan';
@@ -14,7 +15,7 @@ export function Plan({ onTopic }: { onTopic(subjectId: string, topicId: string):
 
   return (
     <main className="mx-auto flex max-w-3xl flex-col gap-5 p-6">
-      <h1 className="text-4xl font-extrabold">🗓️ Что учим сегодня?</h1>
+      <h1 className="text-4xl font-extrabold">Что учим сегодня?</h1>
       <p className="text-mute">Отметь темы, которые хочешь пройти сегодня. Они появятся на главном экране. Выбирать можно любые, но по программе лучше идти по порядку — метка «По порядку» подскажет следующую тему.</p>
       {learnSubjects.map((sub) => {
         const ready = bySubject(sub.id).filter((x) => x.topic.status === 'ready');
@@ -32,13 +33,13 @@ export function Plan({ onTopic }: { onTopic(subjectId: string, topicId: string):
                   <li key={x.topic.id} className="flex items-center gap-2">
                     <button onClick={() => togglePlan(x.topic.id)} aria-pressed={on}
                       className={`flex min-h-touch flex-1 flex-wrap items-center justify-between gap-2 rounded-xl2 px-4 py-2 text-left ${on ? 'bg-brand text-onbrand' : 'bg-bg'}`}>
-                      <span><b>{on ? '☑' : '☐'}</b> {k + 1}. {x.topic.title}</span>
+                      <span><Icon name={on ? 'checkboxOn' : 'checkboxOff'} size={24} /> {k + 1}. {x.topic.title}</span>
                       <span className="flex items-center gap-2">
                         {x.topic.id === next && <span className={`text-sm font-extrabold ${on ? 'text-onbrand' : 'text-brandink'}`}>По порядку</span>}
                         <StatusChip status={statusOf(x.topic.id)} />
                       </span>
                     </button>
-                    <button onClick={() => onTopic(sub.id, x.topic.id)} aria-label={`Начать: ${x.topic.title}`} className="min-h-touch rounded-xl2 bg-soft px-3 font-extrabold">▶</button>
+                    <button onClick={() => onTopic(sub.id, x.topic.id)} aria-label={`Начать: ${x.topic.title}`} title="Начать тему" className="min-h-touch rounded-xl2 bg-soft px-3 font-extrabold"><Icon name="play" /></button>
                   </li>
                 );
               })}

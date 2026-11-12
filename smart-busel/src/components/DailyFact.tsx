@@ -1,4 +1,5 @@
 import { allTopics } from '../content/loader';
+import { Icon } from './Icon';
 
 const hash = (s: string) => [...s].reduce((h, c) => (h * 33 + c.charCodeAt(0)) >>> 0, 5381);
 
@@ -12,7 +13,7 @@ export function DailyFact({ date, onOpen }: { date: string; onOpen(subjectId: st
       <h2 className="text-xl font-extrabold">Знаешь ли ты?</h2>
       <p className="text-5xl" aria-hidden>{topic.card!.emoji}</p>
       <p className="text-lg"><b>{topic.card!.title}.</b> {topic.card!.fact}</p>
-      <button onClick={() => onOpen(subject.id, topic.id)} className="self-start rounded-xl2 bg-soft px-5 font-bold">Узнать больше: {subject.title} →</button>
+      <button onClick={() => onOpen(subject.id, topic.id)} className="self-start rounded-xl2 bg-soft px-5 font-bold">Узнать больше: {subject.title} <Icon name="next" /></button>
     </section>
   );
 }

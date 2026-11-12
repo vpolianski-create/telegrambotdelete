@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Icon, type IconName } from '../components/Icon';
 import type { ThemeSetting } from '../engine/theme';
 import { allTopics, subjects } from '../content/loader';
 import { addDays } from '../engine/leitner';
@@ -48,7 +49,7 @@ function Stats() {
       <Card title="Правильные ответы по предметам">
         {subjects.filter((s) => subjectStats[s.id]).map((s) => {
           const st = subjectStats[s.id];
-          return <p key={s.id}>{s.icon} {s.title}: {Math.round((st.correct / st.tasks) * 100)}% ({st.correct} из {st.tasks})</p>;
+          return <p key={s.id}>{s.title}: {Math.round((st.correct / st.tasks) * 100)}% ({st.correct} из {st.tasks})</p>;
         })}
         {Object.keys(subjectStats).length === 0 && <p className="text-mute">Пока нет данных.</p>}
       </Card>
@@ -56,7 +57,7 @@ function Stats() {
         {subjects.filter((x) => x.sections.some((sec) => sec.topics.some((t) => t.status === 'ready'))).map((sub) => {
           const ready = sub.sections.flatMap((sec) => sec.topics).filter((t) => t.status === 'ready');
           const c = statusCounts(ready.map((t) => topicStatus(topicResults[t.id], opened.includes(t.id))));
-          return <p key={sub.id}>{sub.icon} {sub.title}: пройдено {c.done}, начато {c.started}, не пройдено {c.failed}, не начато {c.new}</p>;
+          return <p key={sub.id}>{sub.title}: пройдено {c.done}, начато {c.started}, не пройдено {c.failed}, не начато {c.new}</p>;
         })}
       </Card>
       <Card title="Темы">
@@ -104,16 +105,16 @@ function Report() {
   return (
     <>
       <div className="no-print flex flex-wrap items-center gap-2">
-        <button onClick={() => setShift(shift + 1)} className="rounded-xl2 bg-card px-4 shadow">← Раньше</button>
-        <button disabled={shift === 0} onClick={() => setShift(shift - 1)} className="rounded-xl2 bg-card px-4 shadow disabled:opacity-40">Позже →</button>
-        <button onClick={() => window.print()} className="rounded-xl2 bg-brand px-5 text-onbrand">🖨️ Распечатать</button>
-        <button onClick={() => { void navigator.clipboard?.writeText(text).then(() => setCopied(true)); }} className="rounded-xl2 bg-soft px-5">{copied ? 'Скопировано ✓' : 'Скопировать текст'}</button>
+        <button onClick={() => setShift(shift + 1)} className="rounded-xl2 bg-card px-4 shadow"><Icon name="back" /> Раньше</button>
+        <button disabled={shift === 0} onClick={() => setShift(shift - 1)} className="rounded-xl2 bg-card px-4 shadow disabled:opacity-40">Позже <Icon name="next" /></button>
+        <button onClick={() => window.print()} className="rounded-xl2 bg-brand px-5 text-onbrand"><Icon name="print" /> Распечатать</button>
+        <button onClick={() => { void navigator.clipboard?.writeText(text).then(() => setCopied(true)); }} className="rounded-xl2 bg-soft px-5">{copied ? <><Icon name="check" /> Скопировано</> : 'Скопировать текст'}</button>
       </div>
       <div className="print-area flex flex-col gap-4 rounded-xl3 bg-card p-5 shadow">
         <h2 className="text-xl font-extrabold">Отчёт за неделю: {dm(r.from)} — {dm(r.to)}</h2>
         <div className="grid gap-3 sm:grid-cols-4">
-          {[['⏱️', `${r.minutes} мин.`, diff === 0 ? 'как неделей раньше' : `${diff > 0 ? '+' : ''}${diff} мин. к прошлой неделе`], ['📅', `${r.activeDays} из 7`, 'дней с занятиями'], ['✍️', `${r.tasks}`, 'заданий'], ['🎯', `${r.percent}%`, 'верно с первого раза']].map(([i, v, l]) => (
-            <div key={l} className="rounded-xl2 bg-soft p-3 text-center"><p className="text-2xl">{i}</p><p className="text-xl font-extrabold">{v}</p><p className="text-sm text-mute">{l}</p></div>
+          {[['clock', `${r.minutes} мин.`, diff === 0 ? 'как неделей раньше' : `${diff > 0 ? '+' : ''}${diff} мин. к прошлой неделе`], ['calendar', `${r.activeDays} из 7`, 'дней с занятиями'], ['edit', `${r.tasks}`, 'заданий'], ['target', `${r.percent}%`, 'верно с первого раза']].map(([i, v, l]) => (
+            <div key={l} className="rounded-xl2 bg-soft p-3 text-center"><p className="text-mute"><Icon name={i as IconName} size={24} /></p><p className="text-xl font-extrabold">{v}</p><p className="text-sm text-mute">{l}</p></div>
           ))}
         </div>
         <div className="flex h-24 items-end gap-2">
@@ -151,7 +152,7 @@ function Rewards() {
         <ul className="flex flex-col gap-2">
           {[...rewards].reverse().map((r) => (
             <li key={r.id} className="flex items-center justify-between rounded-xl2 bg-soft px-4 py-2">
-              <span>{r.points} баллов — {r.text} · {r.status === 'given' ? 'Выдана ✓' : 'Ожидает'}</span>
+              <span>{r.points} баллов — {r.text} · {r.status === 'given' ? 'Выдана' : 'Ожидает'}</span>
               {r.status === 'pending' && <button onClick={() => giveReward(r.id)} className="rounded-xl2 bg-ok px-4 text-onok">Выдана</button>}
             </li>
           ))}
@@ -236,7 +237,7 @@ function Backup() {
       const raw = JSON.parse(await f.text());
       if (typeof raw.points !== 'number') throw new Error('bad');
       store.importData(raw);
-      setMsg('Прогресс загружен ✓');
+      setMsg('Прогресс загружен');
     } catch { setMsg('Не получилось прочитать файл'); }
   };
   return (

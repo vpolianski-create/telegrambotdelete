@@ -1,4 +1,5 @@
 import { useMemo, useRef, useState } from 'react';
+import { Icon } from '../components/Icon';
 import { Mascot } from '../components/Mascot';
 import { TaskView, type TaskResult } from '../components/TaskView';
 import { warmupItems } from '../content/warmup';
@@ -17,8 +18,8 @@ export function Warmup({ onBack }: { onBack(): void }) {
   const shell = (body: React.ReactNode) => (
     <main className="mx-auto flex max-w-3xl flex-col gap-5 p-6">
       <div className="flex items-center gap-3">
-        <button onClick={onBack} className="rounded-xl2 bg-card px-5 shadow">✕ Выйти</button>
-        <h1 className="flex-1 text-lg font-extrabold text-mute">🧠 Разминка дня{i < list.length ? ` · ${i + 1}/${list.length}` : ''}</h1>
+        <button onClick={onBack} className="rounded-xl2 bg-card px-5 shadow"><Icon name="close" /> Выйти</button>
+        <h1 className="flex-1 text-lg font-extrabold text-mute">Разминка дня{i < list.length ? ` · ${i + 1}/${list.length}` : ''}</h1>
       </div>
       {body}
     </main>
@@ -47,7 +48,7 @@ export function Warmup({ onBack }: { onBack(): void }) {
   };
   return shell(
     <>
-      <p className="text-center text-sm font-bold text-mute">{it.subject.icon} {it.subject.title} · {it.topic.title}</p>
+      <p className="text-center text-sm font-bold text-mute">{it.subject.title} · {it.topic.title}</p>
       <TaskView key={`${i}-${it.task.id}`} task={it.task} repeat cards={it.topic.cards} onNext={answered} />
     </>);
 }

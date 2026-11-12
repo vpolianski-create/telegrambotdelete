@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { Icon } from '../components/Icon';
 import { Mascot } from '../components/Mascot';
 import { TaskView, type TaskResult } from '../components/TaskView';
 import { findTopic } from '../content/loader';
@@ -15,8 +16,8 @@ export function Review({ onBack }: { onBack(): void }) {
   const shell = (body: React.ReactNode) => (
     <main className="mx-auto flex max-w-3xl flex-col gap-5 p-6">
       <div className="flex items-center gap-3">
-        <button onClick={onBack} className="rounded-xl2 bg-card px-5 shadow">✕ Выйти</button>
-        <h1 className="flex-1 text-lg font-extrabold text-mute">🔁 Работа над ошибками{i < list.length ? ` · ${i + 1}/${list.length}` : ''}</h1>
+        <button onClick={onBack} className="rounded-xl2 bg-card px-5 shadow"><Icon name="close" /> Выйти</button>
+        <h1 className="flex-1 text-lg font-extrabold text-mute">Работа над ошибками{i < list.length ? ` · ${i + 1}/${list.length}` : ''}</h1>
       </div>
       {body}
     </main>

@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { Icon } from './Icon';
 import { motion } from 'framer-motion';
 import { imageUrl } from '../content/loader';
 import { Visual } from './Visual';
@@ -78,24 +79,28 @@ export function TaskView({ task, scored = true, speakWord, extraBonus = 0, repea
 
   /** Оформление варианта после ответа: верный — зелёный с ✓, выбранный неверный — с ✗. */
   const mark = (value: string | boolean) => {
-    if (!done) return { cls: 'border-line bg-bg hover:border-brand', sign: '' };
-    if (checkAnswer(task, value)) return { cls: 'border-ok bg-ok/15', sign: '✓' };
-    if (picked === value) return { cls: 'border-accent bg-accent/10', sign: '✗' };
-    return { cls: 'border-line bg-bg opacity-60', sign: '' };
+    if (!done) return { cls: 'border-line bg-bg hover:border-brand', sign: '' as const };
+    if (checkAnswer(task, value)) return { cls: 'border-ok bg-ok/15', sign: 'check' as const };
+    if (picked === value) return { cls: 'border-accent bg-accent/10', sign: 'close' as const };
+    return { cls: 'border-line bg-bg opacity-60', sign: '' as const };
   };
   const Key = ({ n }: { n: number }) => (
     <span aria-hidden className="mr-2 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-soft text-sm font-bold text-mute">{n}</span>
   );
-  const label = { basic: '', advanced: '⭐ Повышенная', bonus: '🏆 Бонус' }[task.difficulty];
+  const label = { basic: '', advanced: 'Повышенная сложность', bonus: 'Бонус' }[task.difficulty];
 
   return (
     <div data-task={task.type} {...(import.meta.env.DEV ? { 'data-answer': Array.isArray(task.answer) ? JSON.stringify(task.answer) : String(task.answer) } : {})}
       className="mx-auto flex w-full max-w-2xl flex-col gap-5 rounded-xl3 bg-card p-6 shadow">
-      {(label || note) && <span className="text-sm font-extrabold text-accentink">{[note, label].filter(Boolean).join(' · ')}</span>}
+      {(label || note) && (
+        <span className="text-sm font-extrabold text-accentink">
+          <Icon name={note ? 'review' : task.difficulty === 'bonus' ? 'collection' : 'star'} /> {[note, label].filter(Boolean).join(' · ')}
+        </span>
+      )}
       <div className="flex items-start gap-3">
         <h2 className="flex-1 text-2xl font-extrabold leading-snug">{task.question}</h2>
         {speakWord && (
-          <button onClick={() => speak(speakWord)} aria-label="Послушать" className="rounded-xl2 bg-brand px-4 text-2xl text-onbrand">🔊</button>
+          <button onClick={() => speak(speakWord)} aria-label="Послушать" title="Послушать" className="rounded-xl2 bg-brand px-4 text-onbrand"><Icon name="sound" size={24} /></button>
         )}
       </div>
 
@@ -114,7 +119,7 @@ export function TaskView({ task, scored = true, speakWord, extraBonus = 0, repea
             <button key={o} data-option={o} disabled={done} onClick={() => submit(o)}
               className={`flex min-h-touch items-center rounded-xl2 border-2 px-4 py-3 text-left text-lg font-bold transition-transform active:scale-95 ${mark(o).cls}`}>
               <Key n={k + 1} /><span className="flex-1">{o}</span>
-              {mark(o).sign && <span aria-hidden className="ml-2 text-xl">{mark(o).sign}</span>}
+              {mark(o).sign && <Icon name={mark(o).sign || 'check'} size={24} className="ml-2" label={mark(o).sign === 'check' ? 'верно' : 'неверно'} />}
             </button>
           ))}
         </div>
@@ -126,7 +131,7 @@ export function TaskView({ task, scored = true, speakWord, extraBonus = 0, repea
             <button key={String(v)} data-option={String(v)} disabled={done} onClick={() => submit(v)}
               className={`flex min-h-touch items-center rounded-xl2 border-2 px-4 py-3 text-left text-lg font-bold active:scale-95 ${mark(v).cls}`}>
               <Key n={k + 1} /><span className="flex-1">{v ? 'Верно' : 'Неверно'}</span>
-              {mark(v).sign && <span aria-hidden className="ml-2 text-xl">{mark(v).sign}</span>}
+              {mark(v).sign && <Icon name={mark(v).sign || 'check'} size={24} className="ml-2" label={mark(v).sign === 'check' ? 'верно' : 'неверно'} />}
             </button>
           ))}
         </div>
@@ -156,12 +161,12 @@ export function TaskView({ task, scored = true, speakWord, extraBonus = 0, repea
           {hints > 0 && <div className="flex items-center gap-3"><Mascot size={88} mood="think" /><p className="font-bold text-mute">Бусел подсказывает:</p></div>}
           {hintList.slice(0, hints).map((h, i) => (
             h.kind === 'card'
-              ? <div key={i} className="rounded-xl2 bg-warn/15 px-4 py-3"><p className="mb-1 text-sm font-extrabold text-accentink">📖 Из урока</p><p><Rich text={h.text} /></p></div>
-              : <p key={i} className="rounded-xl2 bg-warn/15 px-4 py-2">💡 {h.text}</p>
+              ? <div key={i} className="rounded-xl2 bg-warn/15 px-4 py-3"><p className="mb-1 text-sm font-extrabold text-accentink"><Icon name="book" /> Из урока</p><p><Rich text={h.text} /></p></div>
+              : <p key={i} className="rounded-xl2 bg-warn/15 px-4 py-2"><Icon name="hint" className="text-accentink" /> {h.text}</p>
           ))}
           {hints < hintList.length && (
             <button onClick={() => setHints(hints + 1)} className="self-start rounded-xl2 bg-soft px-4 font-bold">
-              {hintList[hints].kind === 'card' ? '📖 Заглянуть в урок' : '💡 Подсказка'}{hints > 0 && ' (баллов станет вдвое меньше)'}
+              {hintList[hints].kind === 'card' ? <><Icon name="book" /> Заглянуть в урок</> : <><Icon name="hint" /> Подсказка</>}{hints > 0 && ' (баллов станет вдвое меньше)'}
             </button>
           )}
         </div>
@@ -189,7 +194,7 @@ export function TaskView({ task, scored = true, speakWord, extraBonus = 0, repea
                   : task.type === 'truefalse' ? (task.answer ? 'Верно' : 'Неверно') : String(task.answer)}</p>
               )}
               {task.ref?.quote && (
-                <div className="rounded-xl2 bg-bg px-4 py-3"><p className="mb-1 text-sm font-extrabold text-mute">📖 В уроке об этом</p><p><Rich text={task.ref.quote} /></p></div>
+                <div className="rounded-xl2 bg-bg px-4 py-3"><p className="mb-1 text-sm font-extrabold text-mute"><Icon name="book" /> В уроке об этом</p><p><Rich text={task.ref.quote} /></p></div>
               )}
               {task.explanation.length > 1
                 ? <ol className="list-decimal space-y-1 pl-6">{task.explanation.map((e, i) => <li key={i}>{e}</li>)}</ol>
@@ -198,7 +203,7 @@ export function TaskView({ task, scored = true, speakWord, extraBonus = 0, repea
           )}
           <button autoFocus onClick={() => onNext({ correct: status === 'right', hints, points: status === 'right' ? points : 0 })}
             className="self-end rounded-xl2 bg-brand px-8 text-lg font-extrabold text-onbrand active:scale-95">
-            Дальше →
+            Дальше <Icon name="next" />
           </button>
         </motion.div>
       )}

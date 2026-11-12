@@ -3,8 +3,11 @@ import { motion } from 'framer-motion';
 import { learnSubjects } from '../content/loader';
 import type { ChestResult } from '../engine/chest';
 import { ChestArt, ChestButton, ChestPrize } from './Chest';
-import { questProgress, questsFor, QUEST_POINTS } from '../engine/quests';
+import { questProgress, questsFor, QUEST_POINTS, type Quest } from '../engine/quests';
+import { Icon, type IconName } from './Icon';
 import { todayStr, useApp } from '../store/useApp';
+
+const QUEST_ICON: Record<Quest['kind'], IconName> = { tasks: 'target', subject: 'subjects', words: 'cards', topic: 'star' };
 
 /** Три задания дня и сундук дня. Задания меняются каждый день; пропущенный день ничего не отнимает. */
 export function Quests() {
@@ -29,7 +32,9 @@ export function Quests() {
           const done = doneIds.includes(q.id);
           return (
             <li key={q.id} className="flex items-center gap-3">
-              <span className="text-2xl" aria-hidden>{done ? '✅' : q.icon}</span>
+              <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${done ? 'bg-ok/15 text-okink' : 'bg-soft text-mute'}`}>
+                <Icon name={done ? 'check' : QUEST_ICON[q.kind]} label={done ? 'Выполнено' : undefined} />
+              </span>
               <span className="flex-1">
                 <span className={done ? 'text-mute line-through' : ''}>{q.text}</span>
                 <span className="mt-1 block h-2 overflow-hidden rounded-full bg-soft">
@@ -44,7 +49,7 @@ export function Quests() {
       <p className="text-sm text-mute">За каждое задание +{QUEST_POINTS} баллов. Выполни все три — откроется сундук дня.</p>
       {all && !chestOpened && !res && <ChestButton label="Открыть сундук дня" onOpen={() => setRes(openDayChest())} />}
       {res && <ChestPrize result={res} />}
-      {all && chestOpened && !res && <p className="font-bold text-okink">Сегодня всё выполнено. Отличная работа!</p>}
+      {all && chestOpened && !res && <p className="font-bold text-okink"><Icon name="check" /> Сегодня всё выполнено. Отличная работа!</p>}
     </section>
   );
 }

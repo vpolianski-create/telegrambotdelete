@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { Icon } from '../components/Icon';
 import { motion } from 'framer-motion';
 import { ChestButton, ChestPrize } from '../components/Chest';
 import { Mascot } from '../components/Mascot';
@@ -106,7 +107,7 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
   const shell = (title: string, body: React.ReactNode) => (
     <main className="mx-auto flex max-w-3xl flex-col gap-5 p-6">
       <div className="flex items-center gap-3">
-        <button onClick={onExit} className="rounded-xl2 bg-card px-5 shadow">✕ Выйти</button>
+        <button onClick={onExit} className="rounded-xl2 bg-card px-5 shadow"><Icon name="close" /> Выйти</button>
         <h1 className="flex-1 text-lg font-extrabold text-mute">{topic.title} · {title}</h1>
       </div>
       {body}
@@ -138,8 +139,8 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
         ))}
         {(topic.visuals ?? []).filter((x) => x.card === cur.index).map((x, i) => <Visual key={i} v={x.visual} />)}
         <div className="flex justify-between">
-          <Btn ghost onClick={() => card > 0 && setCard(card - 1)}>← Назад</Btn>
-          <Btn onClick={forward}>{last ? 'Дальше →' : 'Понятно →'}</Btn>
+          <Btn ghost onClick={() => card > 0 && setCard(card - 1)}><Icon name="back" /> Назад</Btn>
+          <Btn onClick={forward}>{last ? 'Дальше' : 'Понятно'} <Icon name="next" /></Btn>
         </div>
       </motion.div>);
   }
@@ -157,7 +158,7 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
           </motion.div>
         ))}
         <div className="self-end">
-          <Btn onClick={() => (all ? afterList(afterIntro) : setStep(step + 1))}>{all ? 'Проверь себя →' : 'Следующий шаг'}</Btn>
+          <Btn onClick={() => (all ? afterList(afterIntro) : setStep(step + 1))}>{all ? <>Проверь себя <Icon name="next" /></> : 'Следующий шаг'}</Btn>
         </div>
       </div>);
   }
@@ -175,7 +176,7 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
     const label = it.retry ? 'Исправляем ошибки' : phase === 'practice' ? `Практика ${Math.min(i + 1, total)}/${total}` : 'Бонус';
     return shell(label,
       <TaskView key={`${i}-${it.task.id}`} task={it.task} extraBonus={comboBonus(streak + 1)} cards={topic.cards}
-        repeat={topicResults[topic.id]?.done === true || it.retry === true} note={it.retry ? '🔁 Вернёмся к этому вопросу' : undefined} onNext={answered} />);
+        repeat={topicResults[topic.id]?.done === true || it.retry === true} note={it.retry ? 'Вернёмся к этому вопросу' : undefined} onNext={answered} />);
   }
 
   if (phase === 'bonusAsk') {
@@ -186,7 +187,7 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
         <p className="text-mute">Они посложнее, зато дают по 30 баллов. Можно пропустить.</p>
         <div className="flex gap-3">
           <Btn ghost onClick={() => afterList('result')}>Пропустить</Btn>
-          <Btn onClick={() => { setItems(build(topic.bonus, false)); afterList('bonus'); }}>Давай! 🏆</Btn>
+          <Btn onClick={() => { setItems(build(topic.bonus, false)); afterList('bonus'); }}>Давай!</Btn>
         </div>
       </div>);
   }
@@ -202,7 +203,7 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
       <div className="flex gap-2 text-5xl" aria-label={`Звёзд: ${starsFor(percent)} из 3`}>
         {[1, 2, 3].map((k) => (
           <motion.span key={k} initial={{ scale: 0, rotate: -40 }} animate={{ scale: 1, rotate: 0 }} transition={{ delay: 0.2 + k * 0.12, duration: 0.22 }}
-            style={{ filter: starsFor(percent) >= k ? 'none' : 'grayscale(1) opacity(.35)' }}>⭐</motion.span>
+            className={starsFor(percent) >= k ? 'text-sun' : 'text-mute opacity-50'}><Icon name={starsFor(percent) >= k ? 'star' : 'starOff'} size={24} style={{ width: '3rem', height: '3rem' }} /></motion.span>
         ))}
       </div>
       <p className="text-xl">Правильно с первого раза: <b>{percent}%</b></p>
@@ -217,7 +218,7 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
         </motion.div>
       )}
       <p className="text-xl">Заработано баллов: <b>{stats.gained + topicBonus}</b>{topicBonus > 0 && ` (в том числе +${topicBonus} за тему)`}</p>
-      {fixed > 0 && <p className="font-bold text-okink">Исправлено ошибок в конце урока: {fixed} 💪</p>}
+      {fixed > 0 && <p className="font-bold text-okink">Исправлено ошибок в конце урока: {fixed}</p>}
       {!passed && <p className="text-mute">Попробуй ещё раз — с каждым разом получается лучше.</p>}
       {stats.wrong.length > 0 && (
         <div className="w-full rounded-xl2 bg-bg p-4 text-left">
