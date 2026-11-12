@@ -75,7 +75,7 @@ export default function App() {
         <div ref={scroller} className="h-full min-w-0 flex-1 overflow-y-auto">
           <AnimatePresence mode="wait">
             <motion.div key={pageKey} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.16 }}>
-              {route.name === 'home' && <Home onSubject={(id) => setRoute({ name: 'subject', id })} onParent={() => setRoute({ name: 'parent' })} onTopic={lesson} onCollection={() => setRoute({ name: 'collection' })} onPlan={() => setRoute({ name: 'plan' })} onReview={() => setRoute({ name: 'review' })} onWarmup={() => setRoute({ name: 'warmup' })} />}
+              {route.name === 'home' && <Home reviewCount={reviewCount} onSubject={(id) => setRoute({ name: 'subject', id })} onSubjects={subjectsList} onTopic={lesson} onPlan={() => setRoute({ name: 'plan' })} onReview={() => setRoute({ name: 'review' })} onWarmup={() => setRoute({ name: 'warmup' })} />}
               {route.name === 'subjects' && <Subjects onSubject={(id) => setRoute({ name: 'subject', id })} />}
               {route.name === 'subject' && (
                 <SubjectScreen id={route.id} onBack={subjectsList} onTopic={(t) => lesson(route.id, t)} onVocab={() => setRoute({ name: 'vocab' })} />
