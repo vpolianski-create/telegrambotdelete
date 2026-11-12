@@ -271,6 +271,18 @@ const angleType: Generator = (rng) => {
   return { type: 'single', question: `Какой это угол: ${m}°?`, options: ['острый', 'прямой', 'тупой', 'развёрнутый'], answer: ans, explanation: ['Острый угол меньше 90°, прямой равен 90°, тупой больше 90°, но меньше 180°, развёрнутый равен 180°.', `${m}° — это ${ans} угол.`], hints: ['Сравни градусную меру с 90° и 180°.'] };
 };
 
+/** Рисунок угла без подписи градусов: нужно определить вид угла на глаз. */
+const anglePicture: Generator = (rng) => {
+  const m = pick(rng, [25, 40, 55, 70, 90, 105, 125, 145, 165, 180]);
+  const ans = m < 90 ? 'острый' : m === 90 ? 'прямой' : m < 180 ? 'тупой' : 'развёрнутый';
+  return {
+    type: 'single', question: 'Посмотри на рисунок. Какой это угол?', visual: { kind: 'angles', items: [{ deg: m }] },
+    options: ['острый', 'прямой', 'тупой', 'развёрнутый'], answer: ans,
+    explanation: ['Сравниваем с прямым углом (как угол листа бумаги): острый меньше прямого, тупой — больше прямого, но меньше развёрнутого. У развёрнутого угла стороны лежат на одной прямой.', `На рисунке ${ans} угол.`],
+    hints: ['Сравни угол с прямым углом — углом листа бумаги.'],
+  };
+};
+
 const angleAdjacent: Generator = (rng) => {
   const x = randInt(rng, 10, 170);
   return { type: 'input', question: `Развёрнутый угол разделили лучом на два угла. Один из них равен ${x}°. Найди второй (в градусах).`, answer: 180 - x, explanation: ['Два угла вместе составляют развёрнутый угол, то есть 180°.', `180° − ${x}° = ${180 - x}°.`], hints: ['Развёрнутый угол равен 180°.'] };
@@ -322,6 +334,7 @@ export const math4Generators: Record<string, Generator> = {
   'math.eqword.two': eqWordTwo,
   'math.eqword.ratio': eqWordRatio,
   'math.angle.type': angleType,
+  'math.angle.picture': anglePicture,
   'math.angle.adjacent': angleAdjacent,
   'math.angle.sum': angleSum,
   'math.angle.half': angleHalf,

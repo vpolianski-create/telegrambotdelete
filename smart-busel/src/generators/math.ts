@@ -1,7 +1,7 @@
 import type { Task } from '../content/schema';
 import { pick, randInt, shuffle, type Rng } from '../engine/rng';
 
-export type Generated = Pick<Task, 'type' | 'question' | 'options' | 'answer' | 'explanation' | 'hints'>;
+export type Generated = Pick<Task, 'type' | 'question' | 'options' | 'answer' | 'explanation' | 'hints'> & Pick<Partial<Task>, 'visual' | 'visualAfter'>;
 export type Generator = (rng: Rng, difficulty: Task['difficulty']) => Generated;
 
 /** 3847 → «3 847» (неразрывный пробел). Проверка ответа пробелы игнорирует. */

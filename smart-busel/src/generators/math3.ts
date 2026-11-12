@@ -323,10 +323,51 @@ const rayRight: Generator = (rng) => {
   const a = randInt(rng, 1, 40);
   let b = a;
   while (b === a) b = randInt(rng, 1, 40);
-  return { type: 'single', question: `На координатном луче отмечены точки M(${a}) и N(${b}). Какая точка лежит правее?`, options: ['M', 'N'], answer: a > b ? 'M' : 'N', explanation: ['На координатном луче чем больше число, тем правее лежит точка.', `${Math.max(a, b)} больше ${Math.min(a, b)}, значит, правее ${a > b ? 'M' : 'N'}.`], hints: ['Луч направлен вправо: числа растут слева направо.'] };
+  const to = Math.ceil((Math.max(a, b) + 1) / 5) * 5;
+  return { visual: { kind: 'ray', to, step: 1, labels: Array.from({ length: to / 5 + 1 }, (_, i) => i * 5), points: [{ at: a, name: 'M' }, { at: b, name: 'N' }] }, visualAfter: true, type: 'single', question: `На координатном луче отмечены точки M(${a}) и N(${b}). Какая точка лежит правее?`, options: ['M', 'N'], answer: a > b ? 'M' : 'N', explanation: ['На координатном луче чем больше число, тем правее лежит точка.', `${Math.max(a, b)} больше ${Math.min(a, b)}, значит, правее ${a > b ? 'M' : 'N'}.`], hints: ['Луч направлен вправо: числа растут слева направо.'] };
+};
+
+/** Рисунок: координатный луч с точкой A на неподписанном делении. Нужно прочитать её координату. */
+const rayRead: Generator = (rng, d) => {
+  const u = d === 'basic' ? 1 : pick(rng, [2, 5, 10]);
+  const n = d === 'basic' ? randInt(rng, 10, 14) : 10; // сколько делений на рисунке
+  const labelAt = d === 'basic' ? [0, 1, 5, 10] : d === 'advanced' ? [0, 1] : [0, 5]; // номера подписанных делений
+  let k = 0;
+  do k = randInt(rng, 2, n - 1); while (labelAt.includes(k));
+  const first = labelAt[1] * u;
+  return {
+    type: 'input',
+    question: 'Посмотри на рисунок. Какая координата у точки A?',
+    visual: { kind: 'ray', to: n * u, step: u, labels: labelAt.filter((x) => x <= n).map((x) => x * u), points: [{ at: k * u, name: 'A' }] },
+    answer: k * u,
+    explanation: [
+      u === 1 ? 'Одно деление — это единичный отрезок, то есть 1.' : `Найдём, сколько единиц в одном делении: от 0 до ${first} — ${labelAt[1] === 1 ? 'одно деление' : `${labelAt[1]} делений`}, значит, одно деление — это ${u}.`,
+      `Точка A стоит на ${k}-м делении от начала: ${u === 1 ? `её координата ${k}` : `${k} · ${u} = ${k * u}`}.`,
+    ],
+    hints: ['Посмотри на подписанные числа и пойми, сколько единиц в одном делении. Потом сосчитай деления от нуля до точки A.'],
+  };
+};
+
+/** Рисунок: отрезок AB над линейкой. Нужно найти его длину. */
+const lenRuler: Generator = (rng, d) => {
+  const length = 12;
+  const a = d === 'basic' ? 0 : randInt(rng, 1, 5);
+  const b = randInt(rng, a + 2, length - 1);
+  return {
+    type: 'input',
+    question: 'Посмотри на рисунок. Чему равна длина отрезка AB (в см)?',
+    visual: { kind: 'ruler', length, a, b },
+    answer: b - a,
+    explanation: a === 0
+      ? [`Конец A стоит у нулевого деления линейки, конец B — у отметки ${b}.`, `Значит, длина отрезка AB равна ${b} см.`]
+      : [`Конец A стоит у отметки ${a}, конец B — у отметки ${b}.`, `Отрезок начинается не с нуля, поэтому вычитаем: ${b} − ${a} = ${b - a} (см).`],
+    hints: ['Посмотри, у каких отметок линейки стоят концы отрезка.'],
+  };
 };
 
 export const math3Generators: Record<string, Generator> = {
+  'math.ray.read': rayRead,
+  'math.len.ruler': lenRuler,
   'math.word.shop': wordShop,
   'math.word.motion': wordMotion,
   'math.word.diff': wordDiff,

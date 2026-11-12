@@ -671,6 +671,14 @@
               "difficulty": "bonus"
             }
           ],
+          "visuals": [
+            {
+              "card": 2,
+              "visual": {
+                "kind": "lines"
+              }
+            }
+          ],
           "card": {
             "emoji": "📐",
             "title": "Евклид",
@@ -753,7 +761,11 @@
           ],
           "practice": [
             {
-              "generator": "math.len.convert",
+              "generator": "math.len.ruler",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "math.len.ruler",
               "difficulty": "basic"
             },
             {
@@ -813,6 +825,10 @@
               }
             },
             {
+              "generator": "math.len.ruler",
+              "difficulty": "advanced"
+            },
+            {
               "generator": "math.len.convert",
               "difficulty": "advanced"
             },
@@ -833,6 +849,17 @@
             {
               "generator": "math.len.segments",
               "difficulty": "bonus"
+            }
+          ],
+          "visuals": [
+            {
+              "card": 3,
+              "visual": {
+                "kind": "ruler",
+                "length": 12,
+                "a": 0,
+                "b": 7
+              }
             }
           ],
           "card": {
@@ -913,15 +940,15 @@
           ],
           "practice": [
             {
-              "generator": "math.ray.coord",
+              "generator": "math.ray.read",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "math.ray.read",
               "difficulty": "basic"
             },
             {
               "generator": "math.ray.coord",
-              "difficulty": "basic"
-            },
-            {
-              "generator": "math.ray.step",
               "difficulty": "basic"
             },
             {
@@ -943,6 +970,10 @@
             {
               "generator": "math.ray.right",
               "difficulty": "basic"
+            },
+            {
+              "generator": "math.ray.read",
+              "difficulty": "advanced"
             },
             {
               "generator": "math.ray.distance",
@@ -955,6 +986,10 @@
           ],
           "bonus": [
             {
+              "generator": "math.ray.read",
+              "difficulty": "bonus"
+            },
+            {
               "generator": "math.ray.mid",
               "difficulty": "bonus"
             },
@@ -965,6 +1000,66 @@
             {
               "generator": "math.ray.distance",
               "difficulty": "bonus"
+            }
+          ],
+          "visuals": [
+            {
+              "card": 1,
+              "visual": {
+                "kind": "ray",
+                "to": 10,
+                "step": 1,
+                "labels": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9,
+                  10
+                ],
+                "points": [
+                  {
+                    "at": 5,
+                    "name": "A"
+                  }
+                ]
+              }
+            },
+            {
+              "card": 3,
+              "visual": {
+                "kind": "ray",
+                "to": 10,
+                "step": 1,
+                "labels": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9,
+                  10
+                ],
+                "points": [
+                  {
+                    "at": 3,
+                    "name": "A"
+                  },
+                  {
+                    "at": 8,
+                    "name": "B"
+                  }
+                ]
+              }
             }
           ],
           "card": {
@@ -1102,6 +1197,28 @@
             {
               "generator": "math.round.nearest",
               "difficulty": "bonus"
+            }
+          ],
+          "visuals": [
+            {
+              "card": 3,
+              "visual": {
+                "kind": "ray",
+                "from": 2400,
+                "to": 2500,
+                "step": 10,
+                "labels": [
+                  2400,
+                  2450,
+                  2500
+                ],
+                "points": [
+                  {
+                    "at": 2468,
+                    "name": "2 468"
+                  }
+                ]
+              }
             }
           ],
           "card": {
@@ -1386,6 +1503,16 @@
               "difficulty": "bonus"
             }
           ],
+          "visuals": [
+            {
+              "card": 0,
+              "visual": {
+                "kind": "dots",
+                "total": 12,
+                "perRow": 4
+              }
+            }
+          ],
           "card": {
             "emoji": "✖️",
             "title": "Знак умножения",
@@ -1648,6 +1775,16 @@
             {
               "generator": "math.divRem.pack",
               "difficulty": "bonus"
+            }
+          ],
+          "visuals": [
+            {
+              "card": 0,
+              "visual": {
+                "kind": "dots",
+                "total": 17,
+                "perRow": 3
+              }
             }
           ],
           "card": {
@@ -2904,7 +3041,11 @@
           ],
           "practice": [
             {
-              "generator": "math.angle.type",
+              "generator": "math.angle.picture",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "math.angle.picture",
               "difficulty": "basic"
             },
             {
@@ -2956,6 +3097,32 @@
             {
               "generator": "math.angle.sum",
               "difficulty": "bonus"
+            }
+          ],
+          "visuals": [
+            {
+              "card": 2,
+              "visual": {
+                "kind": "angles",
+                "items": [
+                  {
+                    "deg": 40,
+                    "label": "острый"
+                  },
+                  {
+                    "deg": 90,
+                    "label": "прямой"
+                  },
+                  {
+                    "deg": 130,
+                    "label": "тупой"
+                  },
+                  {
+                    "deg": 180,
+                    "label": "развёрнутый"
+                  }
+                ]
+              }
             }
           ],
           "card": {

@@ -15,6 +15,7 @@ const yearsBetween: Generator = (rng) => {
   const b = a - randInt(rng, 2, 15) * 100;
   return {
     type: 'input',
+    visual: { kind: 'timeline', events: [{ year: -a }, { year: -b }] },
     question: `Одно событие произошло в ${a} г. до н. э., другое — в ${b} г. до н. э. Сколько лет прошло между ними?`,
     answer: a - b,
     explanation: ['Годы до нашей эры считают «в обратную сторону»: чем число больше, тем событие древнее.', `Чтобы найти промежуток, из большего числа вычитаем меньшее: ${a} − ${b} = ${a - b}.`],
@@ -30,6 +31,8 @@ const whichEarlier: Generator = (rng) => {
   const opts = [`${a} г. до н. э.`, `${b} г. до н. э.`];
   return {
     type: 'single',
+    visual: { kind: 'timeline', events: [{ year: -a }, { year: -b }] },
+    visualAfter: true,
     question: 'Какое событие произошло раньше?',
     options: shuffle(rng, opts),
     answer: `${earlier} г. до н. э.`,

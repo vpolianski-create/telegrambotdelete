@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { imageUrl } from '../content/loader';
+import { Visual } from './Visual';
 import type { Task } from '../content/schema';
 import { checkAnswer } from '../engine/answers';
 import { almost, effort, praise } from '../engine/feedback';
@@ -100,6 +101,8 @@ export function TaskView({ task, scored = true, speakWord, extraBonus = 0, repea
         <img src={imageUrl(task.image)} alt="Картина к заданию" draggable={false}
           className="mx-auto max-h-[300px] w-auto max-w-full rounded-xl2 shadow" />
       )}
+
+      {task.visual && (!task.visualAfter || done) && <Visual v={task.visual} />}
 
       {(task.type === 'single') && (
         <div className="grid gap-3 sm:grid-cols-2">

@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Mascot } from '../components/Mascot';
 import { Rich } from '../components/Rich';
 import { TaskView, type TaskResult } from '../components/TaskView';
+import { Visual } from '../components/Visual';
 import { findTopic, imageUrl } from '../content/loader';
 import { isGeneratorRef, type Entry, type Task } from '../content/schema';
 import { ACCESSORIES, type ChestResult } from '../engine/chest';
@@ -137,6 +138,7 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
             <figcaption className="text-center font-bold text-mute">{im.author}. «{im.title}»</figcaption>
           </figure>
         ))}
+        {(topic.visuals ?? []).filter((x) => x.card === cur.index).map((x, i) => <Visual key={i} v={x.visual} />)}
         <div className="flex justify-between">
           <Btn ghost onClick={() => card > 0 && setCard(card - 1)}>← Назад</Btn>
           <Btn onClick={forward}>{last ? 'Дальше →' : 'Понятно →'}</Btn>

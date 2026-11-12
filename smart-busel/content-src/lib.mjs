@@ -27,6 +27,8 @@ export const O = (question, items, explanation, hints) => {
  * Сборка остановится, если такой фразы в уроке нет.
  */
 export const R = (phrase, task) => ({ ...task, at: phrase });
+/** Задание с рисунком: V({ kind: 'ray', … }, S(…)). */
+export const V = (visual, task) => ({ ...task, visual });
 /** Пометить статическое задание как «повышенной сложности». */
 export const adv = (task) => ({ ...task, adv: true });
 
@@ -97,6 +99,14 @@ export function buildSubject(meta, sections) {
         topic.selfCheck = kept((spec.check ?? []).map((t) => fix(t, 'basic', 'sc')));
         topic.practice = kept((spec.practice ?? []).map((t) => fix(t, 'basic', 'p')));
         topic.bonus = kept([...(spec.bonus ?? []), ...(meta.extra?.[n] ?? [])].map((t) => fix(t, 'bonus', 'x')));
+        // рисунки к уроку: каждый привязан к карточке, где стоит фраза at
+        if (spec.visuals?.length) {
+          topic.visuals = spec.visuals.map(({ at, ...visual }) => {
+            const card = cards.findIndex((c) => c.replace(/\*\*/g, '').includes(at));
+            if (card < 0) throw new Error(`${id}: в карточках нет фразы «${at}» для рисунка ${visual.kind}`);
+            return { card, visual };
+          });
+        }
         // картины: показываются у своей карточки и приходят заданием «узнай картину»
         const mine = pictures.filter((x) => x.n === n);
         if (mine.length) {

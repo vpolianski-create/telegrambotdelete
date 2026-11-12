@@ -760,6 +760,18 @@
                 "card": 7,
                 "quote": "I век до н. э. — с 100 до 1 года до н. э., I век н. э. — с 1 до 100 года."
               }
+            },
+            {
+              "generator": "history.era.earlier",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "history.era.between",
+              "difficulty": "basic"
+            },
+            {
+              "generator": "history.era.century",
+              "difficulty": "basic"
             }
           ],
           "bonus": [
@@ -800,6 +812,24 @@
               "ref": {
                 "card": 2,
                 "quote": "Счёт вели от памятных событий, поэтому у каждой страны был свой: в Египте считали годы от начала правления нового фараона, римляне — от легендарного основания Рима (753 год до н. э.)."
+              }
+            }
+          ],
+          "visuals": [
+            {
+              "card": 6,
+              "visual": {
+                "kind": "timeline",
+                "events": [
+                  {
+                    "year": -753,
+                    "label": "по легенде основан Рим"
+                  },
+                  {
+                    "year": 1,
+                    "label": "начало нашей эры"
+                  }
+                ]
               }
             }
           ],
