@@ -88,7 +88,7 @@ export function Collection({ onBack, onCerts }: { onBack(): void; onCerts(): voi
               const on = settings.accessory === a.id;
               return (
                 <button key={a.id} disabled={!has} onClick={() => updateSettings({ accessory: on ? '' : a.id })}
-                  className={`flex min-h-touch items-center gap-3 rounded-xl2 p-3 text-left ${on ? 'bg-brand text-white' : has ? 'bg-bg' : 'bg-soft opacity-60'}`}>
+                  className={`flex min-h-touch items-center gap-3 rounded-xl2 p-3 text-left ${on ? 'bg-brand text-onbrand' : has ? 'bg-bg' : 'bg-soft opacity-60'}`}>
                   <span className="text-3xl">{has ? a.emoji : '🔒'}</span>
                   <span><b>{a.name}</b><br /><span className="text-sm">{has ? (on ? 'Надето — нажми, чтобы снять' : 'Надеть') : a.level ? `Откроется на ${a.level} уровне` : 'Можно найти в сундуке'}</span></span>
                 </button>

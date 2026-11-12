@@ -29,7 +29,7 @@ export function Review({ onBack }: { onBack(): void }) {
         <h2 className="text-3xl font-extrabold">{list.length === 0 ? 'Ошибок для повторения нет!' : `${settings.name}, готово!`}</h2>
         {list.length > 0 && <p className="text-xl">Исправлено: <b>{fixed}</b> из {list.length}</p>}
         {list.length > 0 && fixed < list.length && <p className="text-mute">То, что пока не вышло, останется в списке — вернёмся к этому позже.</p>}
-        <button onClick={onBack} className="rounded-xl2 bg-brand px-8 text-lg font-extrabold text-white">Готово</button>
+        <button onClick={onBack} className="rounded-xl2 bg-brand px-8 text-lg font-extrabold text-onbrand">Готово</button>
       </div>);
   }
 

@@ -91,7 +91,7 @@ function MatchGame({ setId, onExit }: { setId: string; onExit(): void }) {
         <h2 className="text-3xl font-extrabold">Все пары найдены!</h2>
         <p className="text-xl">Время: <b>{sec} с</b>{records.matchBest !== undefined && <> · рекорд: <b>{Math.min(records.matchBest, sec)} с</b></>}</p>
         <p className="text-mute">+20 баллов</p>
-        <button onClick={onExit} className="rounded-xl2 bg-brand px-8 text-lg font-extrabold text-white">Готово</button>
+        <button onClick={onExit} className="rounded-xl2 bg-brand px-8 text-lg font-extrabold text-onbrand">Готово</button>
       </div>
     );
   }
@@ -139,7 +139,7 @@ function WordTraining({ mode, setId, onExit }: { mode: Mode; setId: string; onEx
         <Mascot size={120} cheer />
         <h2 className="text-3xl font-extrabold">Отличная тренировка!</h2>
         <p className="text-xl">Верных ответов: <b>{right}</b> из {session.length}</p>
-        <button onClick={onExit} className="rounded-xl2 bg-brand px-8 text-lg font-extrabold text-white">Готово</button>
+        <button onClick={onExit} className="rounded-xl2 bg-brand px-8 text-lg font-extrabold text-onbrand">Готово</button>
       </div>
     );
   }
@@ -165,10 +165,10 @@ function WordTraining({ mode, setId, onExit }: { mode: Mode; setId: string; onEx
             </>
           )}
         </button>
-        <button onClick={() => speak(w.en)} className="rounded-xl2 bg-brand px-6 text-lg text-white">🔊 Послушать</button>
+        <button onClick={() => speak(w.en)} className="rounded-xl2 bg-brand px-6 text-lg text-onbrand">🔊 Послушать</button>
         <div className="flex gap-3">
           <button onClick={() => next(false)} className="rounded-xl2 bg-soft px-6 font-bold">Ещё повторю</button>
-          <button onClick={() => next(true)} className="rounded-xl2 bg-ok px-6 font-bold text-white">Знаю!</button>
+          <button onClick={() => next(true)} className="rounded-xl2 bg-ok px-6 font-bold text-onok">Знаю!</button>
         </div>
       </div>
     );
@@ -230,7 +230,7 @@ export function Vocabulary({ onBack }: { onBack(): void }) {
           <section className="flex flex-wrap gap-2">
             {[{ id: 'all', title: 'Все слова', icon: '📚' }, ...wordSets].map((s) => (
               <button key={s.id} onClick={() => setSet(s.id)}
-                className={`rounded-xl2 px-5 font-bold ${set === s.id ? 'bg-brand text-white' : 'bg-card shadow'}`}>
+                className={`rounded-xl2 px-5 font-bold ${set === s.id ? 'bg-brand text-onbrand' : 'bg-card shadow'}`}>
                 {s.icon} {s.title}
               </button>
             ))}

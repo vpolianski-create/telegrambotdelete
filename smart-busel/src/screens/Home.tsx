@@ -44,12 +44,12 @@ export function Home({ onSubject, onParent, onTopic, onCollection, onPlan, onRev
   /** Один шаг дня: номер или галочка, текст и кнопка. */
   const Step = ({ n, done, icon, title, note, action, onClick, primary }: { n: number; done?: boolean; icon: string; title: string; note?: string; action: string; onClick(): void; primary?: boolean }) => (
     <li className="flex flex-wrap items-center gap-3 rounded-xl2 bg-bg px-4 py-3">
-      <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full font-extrabold ${done ? 'bg-ok text-white' : 'bg-soft text-mute'}`}>{done ? '✓' : n}</span>
+      <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full font-extrabold ${done ? 'bg-ok text-onok' : 'bg-soft text-mute'}`}>{done ? '✓' : n}</span>
       <span className="min-w-[200px] flex-1">
         <span className={`block text-lg font-extrabold ${done ? 'text-mute' : ''}`}><span aria-hidden>{icon}</span> {title}</span>
         {note && <span className="block text-sm text-mute">{note}</span>}
       </span>
-      <button onClick={onClick} className={`min-h-touch rounded-xl2 px-5 font-extrabold active:scale-95 ${primary ? 'bg-brand text-white shadow' : 'bg-soft'}`}>{action}</button>
+      <button onClick={onClick} className={`min-h-touch rounded-xl2 px-5 font-extrabold active:scale-95 ${primary ? 'bg-brand text-onbrand shadow' : 'bg-soft'}`}>{action}</button>
     </li>
   );
   const steps: React.ReactNode[] = [];

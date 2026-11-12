@@ -20,7 +20,7 @@ type Phase = 'cards' | 'example' | 'selfcheck' | 'practice' | 'bonusAsk' | 'bonu
 
 const Btn = ({ children, onClick, ghost }: { children: React.ReactNode; onClick(): void; ghost?: boolean }) => (
   <button onClick={onClick}
-    className={`rounded-xl2 px-8 text-lg font-extrabold active:scale-95 ${ghost ? 'bg-soft' : 'bg-brand text-white'}`}>
+    className={`rounded-xl2 px-8 text-lg font-extrabold active:scale-95 ${ghost ? 'bg-soft' : 'bg-brand text-onbrand'}`}>
     {children}
   </button>
 );
@@ -230,7 +230,7 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
       {passed && !chest && topicResults[topic.id]?.done && !topicResults[topic.id]?.chestOpened && (
         <motion.button whileTap={{ scale: 0.9 }} animate={{ rotate: [0, -6, 6, 0] }} transition={{ repeat: Infinity, duration: 1.4 }}
           onClick={() => setChest(openChest(topic.id))}
-          className="rounded-xl3 bg-accent px-8 py-4 text-2xl font-extrabold text-white shadow">🎁 Открыть сундук-сюрприз!</motion.button>
+          className="rounded-xl3 bg-accent px-8 py-4 text-2xl font-extrabold text-onaccent shadow">🎁 Открыть сундук-сюрприз!</motion.button>
       )}
       {chest && (
         <motion.p initial={{ scale: 0.5, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="rounded-xl3 bg-ok/15 px-6 py-3 text-2xl font-extrabold">

@@ -31,10 +31,10 @@ export function Plan({ onBack, onTopic }: { onBack(): void; onTopic(subjectId: s
                 return (
                   <li key={x.topic.id} className="flex items-center gap-2">
                     <button onClick={() => togglePlan(x.topic.id)} aria-pressed={on}
-                      className={`flex min-h-touch flex-1 flex-wrap items-center justify-between gap-2 rounded-xl2 px-4 py-2 text-left ${on ? 'bg-brand text-white' : 'bg-bg'}`}>
+                      className={`flex min-h-touch flex-1 flex-wrap items-center justify-between gap-2 rounded-xl2 px-4 py-2 text-left ${on ? 'bg-brand text-onbrand' : 'bg-bg'}`}>
                       <span><b>{on ? '☑' : '☐'}</b> {k + 1}. {x.topic.title}</span>
                       <span className="flex items-center gap-2">
-                        {x.topic.id === next && <span className={`text-sm font-extrabold ${on ? 'text-white' : 'text-brand'}`}>По порядку</span>}
+                        {x.topic.id === next && <span className={`text-sm font-extrabold ${on ? 'text-onbrand' : 'text-brandink'}`}>По порядку</span>}
                         <StatusChip status={statusOf(x.topic.id)} />
                       </span>
                     </button>

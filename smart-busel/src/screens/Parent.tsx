@@ -106,7 +106,7 @@ function Report() {
       <div className="no-print flex flex-wrap items-center gap-2">
         <button onClick={() => setShift(shift + 1)} className="rounded-xl2 bg-card px-4 shadow">← Раньше</button>
         <button disabled={shift === 0} onClick={() => setShift(shift - 1)} className="rounded-xl2 bg-card px-4 shadow disabled:opacity-40">Позже →</button>
-        <button onClick={() => window.print()} className="rounded-xl2 bg-brand px-5 text-white">🖨️ Распечатать</button>
+        <button onClick={() => window.print()} className="rounded-xl2 bg-brand px-5 text-onbrand">🖨️ Распечатать</button>
         <button onClick={() => { void navigator.clipboard?.writeText(text).then(() => setCopied(true)); }} className="rounded-xl2 bg-soft px-5">{copied ? 'Скопировано ✓' : 'Скопировать текст'}</button>
       </div>
       <div className="print-area flex flex-col gap-4 rounded-xl2 bg-card p-4 shadow">
@@ -152,7 +152,7 @@ function Rewards() {
           {[...rewards].reverse().map((r) => (
             <li key={r.id} className="flex items-center justify-between rounded-xl2 bg-soft px-4 py-2">
               <span>{r.points} баллов — {r.text} · {r.status === 'given' ? 'Выдана ✓' : 'Ожидает'}</span>
-              {r.status === 'pending' && <button onClick={() => giveReward(r.id)} className="rounded-xl2 bg-ok px-4 text-white">Выдана</button>}
+              {r.status === 'pending' && <button onClick={() => giveReward(r.id)} className="rounded-xl2 bg-ok px-4 text-onok">Выдана</button>}
             </li>
           ))}
         </ul>
@@ -164,7 +164,7 @@ function Rewards() {
           <input placeholder="Баллы (300)" value={p} onChange={(e) => setP(e.target.value.replace(/\D/g, ''))} aria-label="Баллы" className="w-32 rounded-xl2 border p-2" />
           <input placeholder="Награда" value={t} onChange={(e) => setT(e.target.value)} aria-label="Награда" className="flex-1 rounded-xl2 border p-2" />
           <button disabled={!p || !t} onClick={() => { updateSettings({ rewardTexts: { ...settings.rewardTexts, [p]: t } }); setP(''); setT(''); }}
-            className="rounded-xl2 bg-brand px-4 text-white disabled:opacity-40">Добавить</button>
+            className="rounded-xl2 bg-brand px-4 text-onbrand disabled:opacity-40">Добавить</button>
         </div>
       </Card>
     </>
@@ -213,7 +213,7 @@ function SettingsTab() {
       <Card title="Смена PIN">
         <div className="flex gap-2">
           <input value={pin} onChange={(e) => setPin(e.target.value.replace(/\D/g, '').slice(0, 6))} aria-label="Новый PIN" placeholder="4–6 цифр" className="rounded-xl2 border p-2" />
-          <button disabled={pin.length < 4} onClick={() => { updateSettings({ pin, pinChanged: true }); setPin(''); }} className="rounded-xl2 bg-brand px-4 text-white disabled:opacity-40">Сохранить</button>
+          <button disabled={pin.length < 4} onClick={() => { updateSettings({ pin, pinChanged: true }); setPin(''); }} className="rounded-xl2 bg-brand px-4 text-onbrand disabled:opacity-40">Сохранить</button>
         </div>
       </Card>
     </>
@@ -243,7 +243,7 @@ function Backup() {
     <Card title="Резервная копия прогресса">
       <p className="mb-3 text-sm text-mute">Копия также создаётся автоматически при каждом запуске приложения.</p>
       <div className="flex flex-wrap items-center gap-3">
-        <button onClick={exportData} className="rounded-xl2 bg-brand px-5 text-white">Сохранить в файл</button>
+        <button onClick={exportData} className="rounded-xl2 bg-brand px-5 text-onbrand">Сохранить в файл</button>
         <label className="cursor-pointer rounded-xl2 bg-soft px-5 py-3">Загрузить из файла
           <input type="file" accept=".json" className="hidden" onChange={(e) => void importData(e.target.files?.[0])} />
         </label>
@@ -271,7 +271,7 @@ export function Parent({ onBack }: { onBack(): void }) {
           <input type="password" inputMode="numeric" value={pin} onChange={(e) => setPin(e.target.value)} aria-label="PIN" autoFocus
             className="rounded-xl2 border p-3 text-center text-2xl tracking-widest" />
           {wrong && <p className="text-center text-mute">PIN не подошёл</p>}
-          <button type="submit" className="rounded-xl2 bg-brand text-white">Войти</button>
+          <button type="submit" className="rounded-xl2 bg-brand text-onbrand">Войти</button>
         </form>
       </main>
     );
@@ -285,13 +285,13 @@ export function Parent({ onBack }: { onBack(): void }) {
         <div className="rounded-xl2 bg-accent/20 p-4">
           <p className="mb-2 font-bold">Смените PIN по умолчанию (0000)</p>
           <input value={newPin} onChange={(e) => setNewPin(e.target.value.replace(/\D/g, '').slice(0, 6))} aria-label="Новый PIN" className="mr-2 rounded-xl2 border p-2" />
-          <button disabled={newPin.length < 4} className="rounded-xl2 bg-brand px-4 text-white disabled:opacity-40"
+          <button disabled={newPin.length < 4} className="rounded-xl2 bg-brand px-4 text-onbrand disabled:opacity-40"
             onClick={() => updateSettings({ pin: newPin, pinChanged: true })}>Сохранить</button>
         </div>
       )}
       <nav className="flex gap-2">
         {TABS.map(([id, label]) => (
-          <button key={id} onClick={() => setTab(id)} className={`rounded-xl2 px-5 font-bold ${tab === id ? 'bg-brand text-white' : 'bg-card shadow'}`}>{label}</button>
+          <button key={id} onClick={() => setTab(id)} className={`rounded-xl2 px-5 font-bold ${tab === id ? 'bg-brand text-onbrand' : 'bg-card shadow'}`}>{label}</button>
         ))}
       </nav>
       {tab === 'stats' && <Stats />}

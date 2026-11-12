@@ -62,7 +62,7 @@ export function MatchInput({ left, right, disabled, answer, onSubmit }: Props) {
             ))}
           </div>
           <button type="button" onClick={() => onSubmit(pairs.map((r) => right[r!]))} disabled={!complete}
-            className="self-end rounded-xl2 bg-brand px-6 text-lg font-extrabold text-white disabled:opacity-40">Проверить</button>
+            className="self-end rounded-xl2 bg-brand px-6 text-lg font-extrabold text-onbrand disabled:opacity-40">Проверить</button>
         </>
       )}
     </div>

@@ -18,7 +18,7 @@ export function Certificates({ onBack }: { onBack(): void }) {
       <div className="no-print flex items-center gap-3">
         <button onClick={() => (open ? setOpenId(undefined) : onBack())} className="rounded-xl2 bg-card px-5 shadow">← Назад</button>
         <h1 className="flex-1 text-3xl font-extrabold">📜 Мои грамоты</h1>
-        {open && <button onClick={() => window.print()} className="rounded-xl2 bg-brand px-6 font-extrabold text-white">🖨️ Распечатать</button>}
+        {open && <button onClick={() => window.print()} className="rounded-xl2 bg-brand px-6 font-extrabold text-onbrand">🖨️ Распечатать</button>}
       </div>
 
       {open ? (
@@ -27,7 +27,7 @@ export function Certificates({ onBack }: { onBack(): void }) {
           <p className="text-lg font-extrabold uppercase tracking-widest">Грамота</p>
           <p className="text-6xl" aria-hidden>{open.icon}</p>
           <p className="text-xl">награждается</p>
-          <p className="text-4xl font-extrabold" style={{ fontFamily: 'Rubik, sans-serif' }}>{settings.name}</p>
+          <p className="text-4xl font-extrabold">{settings.name}</p>
           <p className="max-w-xl text-2xl font-extrabold">{open.title}</p>
           <p className="max-w-xl text-lg">{open.text}</p>
           <p className="mt-4 text-lg">Дата: {fmt(certificates[open.id])}</p>

@@ -33,7 +33,7 @@ export function Warmup({ onBack }: { onBack(): void }) {
         {list.length > 0 && <p className="text-xl">Вспомнил верно: <b>{right}</b> из {list.length}</p>}
         {bonus > 0 && <p className="font-bold text-okink">+{bonus} баллов за разминку</p>}
         {list.length > 0 && right < list.length && <p className="text-mute">Темы, где была ошибка, придут ещё раз через три дня.</p>}
-        <button onClick={onBack} className="rounded-xl2 bg-brand px-8 text-lg font-extrabold text-white">Готово</button>
+        <button onClick={onBack} className="rounded-xl2 bg-brand px-8 text-lg font-extrabold text-onbrand">Готово</button>
       </div>);
   }
 

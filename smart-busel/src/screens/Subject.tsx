@@ -66,7 +66,7 @@ export function SubjectScreen({ id, onBack, onTopic, onVocab }: { id: string; on
               return (
                 <li key={t.id} className="relative flex items-center gap-2 pl-8">
                   <span className="absolute -left-[22px] top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full text-lg font-extrabold text-white"
-                    style={{ background: st === 'done' ? 'var(--ok)' : st === 'failed' ? '#b45309' : isReady ? s.color : '#64748b' }}>
+                    style={{ background: st === 'done' ? 'var(--ok)' : st === 'failed' ? '#b45309' : isReady ? s.color : '#64748b', color: st === 'done' ? 'var(--on-ok)' : '#fff' }}>
                     {st === 'done' ? '✓' : n}
                   </span>
                   <motion.button disabled={!isReady} onClick={() => onTopic(t.id)}
@@ -87,7 +87,7 @@ export function SubjectScreen({ id, onBack, onTopic, onVocab }: { id: string; on
                   </motion.button>
                   {isReady && (
                     <button onClick={() => togglePlan(t.id)} aria-pressed={planned}
-                      className={`min-h-touch whitespace-nowrap rounded-xl2 px-3 text-sm font-extrabold ${planned ? 'bg-brand text-white' : 'bg-soft'}`}>
+                      className={`min-h-touch whitespace-nowrap rounded-xl2 px-3 text-sm font-extrabold ${planned ? 'bg-brand text-onbrand' : 'bg-soft'}`}>
                       {planned ? '✓ В плане' : '+ В план'}
                     </button>
                   )}

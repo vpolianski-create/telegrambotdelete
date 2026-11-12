@@ -64,8 +64,6 @@
     "wait-on": "^9.5.1"
   },
   "dependencies": {
-    "@fontsource/nunito": "^5.3.0",
-    "@fontsource/rubik": "^5.3.0",
     "canvas-confetti": "^1.9.4",
     "framer-motion": "^14.0.0",
     "react": "^19.3.0",

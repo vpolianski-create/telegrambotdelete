@@ -28,7 +28,7 @@ export function RewardOverlay() {
       <p className="max-w-xl text-2xl">Подойди к родителям и попроси свою награду: {next.text}</p>
       <p className="opacity-80">Всего баллов: {points}</p>
       <button onClick={() => markCelebrated(next.id)}
-        className="rounded-xl2 bg-white px-10 py-3 text-xl font-extrabold text-brand">Ура!</button>
+        className="rounded-xl2 bg-white px-10 py-3 text-xl font-extrabold text-navy">Ура!</button>
     </motion.div>
   );
 }

@@ -6,9 +6,9 @@ import { projectMap, scale, timelineRange, yearLabel, yearPos } from '../engine/
 const INK = 'var(--ink)';
 const MUTE = 'var(--mute)';
 const BRAND = 'var(--brand-ink)';
-const ACCENT = 'var(--accent-ink)';
+const ACCENT = 'var(--accent)';
 const LINE = 'var(--line)';
-const font = { fontFamily: 'inherit', fontWeight: 800 } as const;
+const font = { fontFamily: 'inherit', fontWeight: 600 } as const;
 
 type Of<K extends V['kind']> = Extract<V, { kind: K }>;
 
@@ -177,7 +177,7 @@ function Timeline({ v }: { v: Of<'timeline'> }) {
               {level[i] > 0 && <line x1={x(e.year)} y1={cy} x2={x(e.year)} y2={ay} stroke={ACCENT} strokeWidth={2} />}
               <circle cx={x(e.year)} cy={cy} r={labelled ? 13 : 9} fill={ACCENT} />
               {labelled
-                ? <text x={x(e.year)} y={cy + 6} textAnchor="middle" fontSize={16} fill="#fff" style={font}>{i + 1}</text>
+                ? <text x={x(e.year)} y={cy + 6} textAnchor="middle" fontSize={16} fill="var(--on-accent)" style={font}>{i + 1}</text>
                 : <text x={x(e.year)} y={i % 2 ? ay - 38 : ay - 20} textAnchor="middle" fontSize={16} fill={ACCENT} style={font}>{yearLabel(e.year)}</text>}
             </g>
           );
@@ -187,7 +187,7 @@ function Timeline({ v }: { v: Of<'timeline'> }) {
         <ol className="flex flex-col gap-1 px-2 text-base">
           {events.map((e, i) => (
             <li key={i} className="flex gap-2">
-              <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent text-sm font-extrabold text-white">{i + 1}</span>
+              <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent text-sm font-extrabold text-onaccent">{i + 1}</span>
               <span><b>{yearLabel(e.year)}</b>{e.label ? ` — ${e.label}` : ''}</span>
             </li>
           ))}
@@ -239,7 +239,7 @@ function MapView({ v, pick }: { v: Of<'map'>; pick?: MapPick }) {
               onKeyDown={(e) => { if (asking && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); pick?.onPick(p.name); } }}>
               <circle cx={x} cy={y} r={20} fill="transparent" />
               <circle cx={x} cy={y} r={11} fill={fill} stroke="#fff" strokeWidth={2.5} />
-              {(right || wrong) && <text x={x} y={y + 5} textAnchor="middle" fontSize={14} fill="#fff" style={font}>{right ? '✓' : '✗'}</text>}
+              {(right || wrong) && <text x={x} y={y + 5} textAnchor="middle" fontSize={14} fill="var(--on-brand)" style={font}>{right ? '✓' : '✗'}</text>}
               {!asking && <text x={l.x} y={l.y} textAnchor={l.anchor} fontSize={15} fill={INK} style={{ ...font, ...halo }}>{p.name}</text>}
             </g>
           );

@@ -44,7 +44,7 @@ export function OrderInput({ options, kind, disabled, correct, onSubmit }: Props
         <div className="flex justify-between gap-3">
           <button type="button" onClick={() => setSeq([])} disabled={!seq.length} className="rounded-xl2 bg-soft px-4 font-bold disabled:opacity-40">Сбросить</button>
           <button type="button" onClick={() => onSubmit(seq.map((i) => options[i]))} disabled={rest.length > 0}
-            className="rounded-xl2 bg-brand px-6 text-lg font-extrabold text-white disabled:opacity-40">Проверить</button>
+            className="rounded-xl2 bg-brand px-6 text-lg font-extrabold text-onbrand disabled:opacity-40">Проверить</button>
         </div>
       )}
     </div>

@@ -95,7 +95,7 @@ export function TaskView({ task, scored = true, speakWord, extraBonus = 0, repea
       <div className="flex items-start gap-3">
         <h2 className="flex-1 text-2xl font-extrabold leading-snug">{task.question}</h2>
         {speakWord && (
-          <button onClick={() => speak(speakWord)} aria-label="Послушать" className="rounded-xl2 bg-brand px-4 text-2xl text-white">🔊</button>
+          <button onClick={() => speak(speakWord)} aria-label="Послушать" className="rounded-xl2 bg-brand px-4 text-2xl text-onbrand">🔊</button>
         )}
       </div>
 
@@ -137,7 +137,7 @@ export function TaskView({ task, scored = true, speakWord, extraBonus = 0, repea
           <input ref={inputRef} value={text} onChange={(e) => setText(e.target.value)} disabled={done}
             aria-label="Ответ" autoComplete="off" spellCheck={false}
             className="min-h-touch flex-1 rounded-xl2 border-2 border-line bg-bg px-4 text-xl font-bold focus:border-brand focus:outline-none" />
-          <button type="submit" disabled={done || !text.trim()} className="rounded-xl2 bg-brand px-6 text-lg font-extrabold text-white disabled:opacity-40">
+          <button type="submit" disabled={done || !text.trim()} className="rounded-xl2 bg-brand px-6 text-lg font-extrabold text-onbrand disabled:opacity-40">
             Проверить
           </button>
         </form>
@@ -196,7 +196,7 @@ export function TaskView({ task, scored = true, speakWord, extraBonus = 0, repea
             </>
           )}
           <button autoFocus onClick={() => onNext({ correct: status === 'right', hints, points: status === 'right' ? points : 0 })}
-            className="self-end rounded-xl2 bg-brand px-8 text-lg font-extrabold text-white active:scale-95">
+            className="self-end rounded-xl2 bg-brand px-8 text-lg font-extrabold text-onbrand active:scale-95">
             Дальше →
           </button>
         </motion.div>
