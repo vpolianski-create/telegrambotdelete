@@ -25,12 +25,12 @@
     "files": [
       "dist/**",
       "dist-electron/**",
-      "resources/icon.png",
+      "resources/brand/icon.png",
       "package.json"
     ],
     "win": {
       "target": "nsis",
-      "icon": "resources/icon.ico",
+      "icon": "resources/brand/icon.ico",
       "artifactName": "Umny-Busel-Setup-${version}.exe"
     },
     "nsis": {
@@ -39,9 +39,9 @@
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
       "shortcutName": "Умный Бусел",
-      "installerIcon": "resources/icon.ico",
-      "uninstallerIcon": "resources/icon.ico",
-      "installerHeaderIcon": "resources/icon.ico"
+      "installerIcon": "resources/brand/icon.ico",
+      "uninstallerIcon": "resources/brand/icon.ico",
+      "installerHeaderIcon": "resources/brand/icon.ico"
     }
   },
   "devDependencies": {
