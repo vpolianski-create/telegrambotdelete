@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Icon } from './Icon';
 
 interface Props {
   left: string[];
@@ -44,7 +45,7 @@ export function MatchInput({ left, right, disabled, answer, onSubmit }: Props) {
                 answer ? (ok ? 'border-ok bg-ok/15' : 'border-accent bg-accent/10') : l === active ? 'border-brand bg-brand/10' : 'border-line bg-bg'}`}>
               <span className="flex-1 font-bold">{q}</span>
               <span className={`rounded-xl2 px-3 py-1 font-extrabold ${r === undefined ? 'bg-soft text-mute' : 'bg-card shadow'}`}>
-                {r === undefined ? '?' : right[r]}{answer && (ok ? ' ✓' : ' ✗')}
+                {r === undefined ? '?' : right[r]}{answer && <> <Icon name={ok ? 'check' : 'close'} label={ok ? 'верно' : 'неверно'} /></>}
               </span>
               {answer && !ok && <span className="w-full text-sm font-bold text-okink">Верно: {answer[l]}</span>}
             </button>
@@ -62,7 +63,7 @@ export function MatchInput({ left, right, disabled, answer, onSubmit }: Props) {
             ))}
           </div>
           <button type="button" onClick={() => onSubmit(pairs.map((r) => right[r!]))} disabled={!complete}
-            className="self-end rounded-xl2 bg-brand px-6 text-lg font-extrabold text-white disabled:opacity-40">Проверить</button>
+            className="self-end rounded-xl2 bg-brand px-6 text-lg font-extrabold text-onbrand disabled:opacity-40">Проверить</button>
         </>
       )}
     </div>

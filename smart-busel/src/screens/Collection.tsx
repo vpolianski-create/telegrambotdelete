@@ -1,12 +1,15 @@
 import { useState } from 'react';
+import { Icon } from '../components/Icon';
 import { Mascot } from '../components/Mascot';
+import { SubjectArt } from '../components/SubjectArt';
+import { subjectTone } from '../content/subjectArt';
 import { allTopics, learnSubjects } from '../content/loader';
 import { BADGES } from '../engine/badges';
 import { ACCESSORIES, STICKERS, unlockedAccessories } from '../engine/chest';
 import { levelFor } from '../engine/level';
 import { useApp } from '../store/useApp';
 
-export function Collection({ onBack, onCerts }: { onBack(): void; onCerts(): void }) {
+export function Collection({ onCerts }: { onCerts(): void }) {
   const { badges, stickers, chestAccessories, points, settings, updateSettings, albumCards } = useApp();
   const [open, setOpen] = useState<string>();
   const cards = allTopics.filter((x) => x.topic.card);
@@ -16,11 +19,10 @@ export function Collection({ onBack, onCerts }: { onBack(): void; onCerts(): voi
 
   return (
     <main className="mx-auto flex max-w-4xl flex-col gap-6 p-6">
-      <button onClick={onBack} className="self-start rounded-xl2 bg-card px-5 shadow">← Назад</button>
-      <h1 className="text-3xl font-extrabold">🏅 Моя коллекция</h1>
+      <h1 className="text-4xl font-extrabold">Моя коллекция</h1>
 
       <button onClick={onCerts} className="flex min-h-[72px] items-center gap-4 rounded-xl3 bg-sun px-5 text-left text-xl font-extrabold text-navy shadow">
-        <span className="text-4xl">📜</span> Мои грамоты — посмотреть и распечатать
+        <Icon name="certificate" size={24} /> Мои грамоты — посмотреть и распечатать
       </button>
 
       <section className="rounded-xl3 bg-card p-5 shadow">
@@ -30,7 +32,7 @@ export function Collection({ onBack, onCerts }: { onBack(): void; onCerts(): voi
             const has = badges.includes(b.id);
             return (
               <div key={b.id} className={`flex items-center gap-3 rounded-xl2 p-3 ${has ? 'bg-ok/15' : 'bg-soft opacity-60'}`}>
-                <span className="text-4xl" aria-hidden>{has ? b.icon : '🔒'}</span>
+                {has ? <span className="text-4xl" aria-hidden>{b.icon}</span> : <span className="flex h-10 w-10 shrink-0 items-center justify-center text-mute"><Icon name="lock" size={24} label="Ещё не получен" /></span>}
                 <span><b>{b.title}</b><br /><span className="text-sm text-mute">{b.desc}</span></span>
               </div>
             );
@@ -48,9 +50,9 @@ export function Collection({ onBack, onCerts }: { onBack(): void; onCerts(): voi
           const locked = list.filter((x) => !albumCards.includes(x.topic.id));
           return (
             <div key={sub.id} className="mb-5">
-              <h3 className="mb-1 font-extrabold" style={{ color: sub.color }}>{sub.icon} {sub.title} · {got.length} из {list.length}</h3>
+              <h3 className="mb-1 flex items-center gap-2 font-extrabold"><SubjectArt subject={sub} size={28} /> {sub.title} · {got.length} из {list.length}</h3>
               <div className="mb-2 h-2 overflow-hidden rounded-full bg-soft">
-                <div className="h-full rounded-full" style={{ background: sub.color, width: `${(got.length / list.length) * 100}%` }} />
+                <div className="h-full rounded-full" style={{ background: subjectTone(sub.id, sub.color).mark, width: `${(got.length / list.length) * 100}%` }} />
               </div>
               <div className="flex flex-wrap items-center gap-2">
                 {got.map((x) => (
@@ -61,7 +63,7 @@ export function Collection({ onBack, onCerts }: { onBack(): void; onCerts(): voi
                 ))}
                 {locked.slice(0, 3).map((x) => (
                   <span key={x.topic.id} title={`Откроется за тему «${x.topic.title}»`} aria-label="Закрытая карточка"
-                    className="flex h-14 w-14 items-center justify-center rounded-xl2 bg-soft text-3xl opacity-50">❔</span>
+                    className="flex h-14 w-14 items-center justify-center rounded-xl2 border border-dashed border-line text-xl font-bold text-mute">?</span>
                 ))}
                 {locked.length > 3 && <span className="text-sm font-bold text-mute">и ещё {locked.length - 3}</span>}
               </div>
@@ -70,7 +72,7 @@ export function Collection({ onBack, onCerts }: { onBack(): void; onCerts(): voi
           );
         })}
         {openCard && (
-          <div className="mt-2 rounded-xl2 border-2 border-sun bg-sun/15 p-4">
+          <div className="mt-2 rounded-xl3 border border-sun bg-sun/15 p-4">
             <p className="text-2xl font-extrabold">{openCard.topic.card!.emoji} {openCard.topic.card!.title}</p>
             <p className="mt-1 text-lg">{openCard.topic.card!.fact}</p>
             <p className="mt-1 text-sm text-mute">Тема: {openCard.topic.title}</p>
@@ -88,8 +90,8 @@ export function Collection({ onBack, onCerts }: { onBack(): void; onCerts(): voi
               const on = settings.accessory === a.id;
               return (
                 <button key={a.id} disabled={!has} onClick={() => updateSettings({ accessory: on ? '' : a.id })}
-                  className={`flex min-h-touch items-center gap-3 rounded-xl2 p-3 text-left ${on ? 'bg-brand text-white' : has ? 'bg-bg' : 'bg-soft opacity-60'}`}>
-                  <span className="text-3xl">{has ? a.emoji : '🔒'}</span>
+                  className={`flex min-h-touch items-center gap-3 rounded-xl2 p-3 text-left ${on ? 'bg-brand text-onbrand' : has ? 'bg-bg' : 'bg-soft opacity-60'}`}>
+                  {has ? <span className="text-3xl">{a.emoji}</span> : <span className="flex h-9 w-9 shrink-0 items-center justify-center text-mute"><Icon name="lock" size={24} /></span>}
                   <span><b>{a.name}</b><br /><span className="text-sm">{has ? (on ? 'Надето — нажми, чтобы снять' : 'Надеть') : a.level ? `Откроется на ${a.level} уровне` : 'Можно найти в сундуке'}</span></span>
                 </button>
               );
@@ -101,7 +103,9 @@ export function Collection({ onBack, onCerts }: { onBack(): void; onCerts(): voi
       <section className="rounded-xl3 bg-card p-5 shadow">
         <h2 className="mb-3 text-xl font-extrabold">Стикеры: {stickers.length} из {STICKERS.length}</h2>
         <div className="flex flex-wrap gap-3 text-4xl">
-          {STICKERS.map((s) => <span key={s} className={stickers.includes(s) ? '' : 'opacity-30 grayscale'}>{stickers.includes(s) ? s : '❔'}</span>)}
+          {STICKERS.map((s) => (stickers.includes(s)
+            ? <span key={s}>{s}</span>
+            : <span key={s} aria-label="Стикер ещё не найден" className="flex h-11 w-11 items-center justify-center rounded-full border border-dashed border-line text-xl font-bold text-mute">?</span>))}
         </div>
         <p className="mt-2 text-sm text-mute">Стикеры, украшения и баллы можно найти в сундуке после каждой пройденной темы.</p>
       </section>

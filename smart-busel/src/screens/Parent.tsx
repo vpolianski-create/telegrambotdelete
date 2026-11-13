@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { Icon, type IconName } from '../components/Icon';
+import type { ThemeSetting } from '../engine/theme';
 import { allTopics, subjects } from '../content/loader';
 import { addDays } from '../engine/leitner';
 import { weekReport } from '../engine/report';
@@ -11,7 +13,7 @@ type Tab = 'stats' | 'report' | 'rewards' | 'settings' | 'backup';
 const TABS: [Tab, string][] = [['stats', 'Статистика'], ['report', 'Отчёт за неделю'], ['rewards', 'Награды'], ['settings', 'Настройки'], ['backup', 'Копия']];
 
 const Card = ({ title, children }: { title: string; children: React.ReactNode }) => (
-  <section className="rounded-xl2 bg-card p-4 shadow">
+  <section className="rounded-xl3 bg-card p-5 shadow">
     <h2 className="mb-3 text-xl font-extrabold">{title}</h2>
     {children}
   </section>
@@ -36,9 +38,9 @@ function Stats() {
             const sec = daily[d]?.sec ?? 0;
             return (
               <div key={d} className="flex flex-1 flex-col items-center gap-1">
-                <span className="text-xs">{Math.round(sec / 60)}</span>
-                <div className="w-full rounded-t-lg bg-brand" style={{ height: 4 + (sec / max) * 90 }} />
-                <span className="text-xs text-mute">{d.slice(8)}.{d.slice(5, 7)}</span>
+                <span className="text-sm">{Math.round(sec / 60)}</span>
+                <div className="w-full rounded-t bg-brand" style={{ height: 4 + (sec / max) * 90 }} />
+                <span className="text-sm text-mute">{d.slice(8)}.{d.slice(5, 7)}</span>
               </div>
             );
           })}
@@ -47,7 +49,7 @@ function Stats() {
       <Card title="Правильные ответы по предметам">
         {subjects.filter((s) => subjectStats[s.id]).map((s) => {
           const st = subjectStats[s.id];
-          return <p key={s.id}>{s.icon} {s.title}: {Math.round((st.correct / st.tasks) * 100)}% ({st.correct} из {st.tasks})</p>;
+          return <p key={s.id}>{s.title}: {Math.round((st.correct / st.tasks) * 100)}% ({st.correct} из {st.tasks})</p>;
         })}
         {Object.keys(subjectStats).length === 0 && <p className="text-mute">Пока нет данных.</p>}
       </Card>
@@ -55,7 +57,7 @@ function Stats() {
         {subjects.filter((x) => x.sections.some((sec) => sec.topics.some((t) => t.status === 'ready'))).map((sub) => {
           const ready = sub.sections.flatMap((sec) => sec.topics).filter((t) => t.status === 'ready');
           const c = statusCounts(ready.map((t) => topicStatus(topicResults[t.id], opened.includes(t.id))));
-          return <p key={sub.id}>{sub.icon} {sub.title}: пройдено {c.done}, начато {c.started}, не пройдено {c.failed}, не начато {c.new}</p>;
+          return <p key={sub.id}>{sub.title}: пройдено {c.done}, начато {c.started}, не пройдено {c.failed}, не начато {c.new}</p>;
         })}
       </Card>
       <Card title="Темы">
@@ -103,23 +105,23 @@ function Report() {
   return (
     <>
       <div className="no-print flex flex-wrap items-center gap-2">
-        <button onClick={() => setShift(shift + 1)} className="rounded-xl2 bg-card px-4 shadow">← Раньше</button>
-        <button disabled={shift === 0} onClick={() => setShift(shift - 1)} className="rounded-xl2 bg-card px-4 shadow disabled:opacity-40">Позже →</button>
-        <button onClick={() => window.print()} className="rounded-xl2 bg-brand px-5 text-white">🖨️ Распечатать</button>
-        <button onClick={() => { void navigator.clipboard?.writeText(text).then(() => setCopied(true)); }} className="rounded-xl2 bg-soft px-5">{copied ? 'Скопировано ✓' : 'Скопировать текст'}</button>
+        <button onClick={() => setShift(shift + 1)} className="rounded-xl2 bg-card px-4 shadow"><Icon name="back" /> Раньше</button>
+        <button disabled={shift === 0} onClick={() => setShift(shift - 1)} className="rounded-xl2 bg-card px-4 shadow disabled:opacity-40">Позже <Icon name="next" /></button>
+        <button onClick={() => window.print()} className="rounded-xl2 bg-brand px-5 text-onbrand"><Icon name="print" /> Распечатать</button>
+        <button onClick={() => { void navigator.clipboard?.writeText(text).then(() => setCopied(true)); }} className="rounded-xl2 bg-soft px-5">{copied ? <><Icon name="check" /> Скопировано</> : 'Скопировать текст'}</button>
       </div>
-      <div className="print-area flex flex-col gap-4 rounded-xl2 bg-card p-4 shadow">
+      <div className="print-area flex flex-col gap-4 rounded-xl3 bg-card p-5 shadow">
         <h2 className="text-xl font-extrabold">Отчёт за неделю: {dm(r.from)} — {dm(r.to)}</h2>
         <div className="grid gap-3 sm:grid-cols-4">
-          {[['⏱️', `${r.minutes} мин.`, diff === 0 ? 'как неделей раньше' : `${diff > 0 ? '+' : ''}${diff} мин. к прошлой неделе`], ['📅', `${r.activeDays} из 7`, 'дней с занятиями'], ['✍️', `${r.tasks}`, 'заданий'], ['🎯', `${r.percent}%`, 'верно с первого раза']].map(([i, v, l]) => (
-            <div key={l} className="rounded-xl2 bg-soft p-3 text-center"><p className="text-2xl">{i}</p><p className="text-xl font-extrabold">{v}</p><p className="text-sm text-mute">{l}</p></div>
+          {[['clock', `${r.minutes} мин.`, diff === 0 ? 'как неделей раньше' : `${diff > 0 ? '+' : ''}${diff} мин. к прошлой неделе`], ['calendar', `${r.activeDays} из 7`, 'дней с занятиями'], ['edit', `${r.tasks}`, 'заданий'], ['target', `${r.percent}%`, 'верно с первого раза']].map(([i, v, l]) => (
+            <div key={l} className="rounded-xl2 bg-soft p-3 text-center"><p className="text-mute"><Icon name={i as IconName} size={24} /></p><p className="text-xl font-extrabold">{v}</p><p className="text-sm text-mute">{l}</p></div>
           ))}
         </div>
         <div className="flex h-24 items-end gap-2">
           {r.days.map((d) => (
             <div key={d.date} className="flex flex-1 flex-col items-center gap-1">
-              <div className="w-full rounded-t-lg bg-brand" style={{ height: 4 + (d.sec / max) * 70 }} />
-              <span className="text-xs text-mute">{dm(d.date)}</span>
+              <div className="w-full rounded-t bg-brand" style={{ height: 4 + (d.sec / max) * 70 }} />
+              <span className="text-sm text-mute">{dm(d.date)}</span>
             </div>
           ))}
         </div>
@@ -150,8 +152,8 @@ function Rewards() {
         <ul className="flex flex-col gap-2">
           {[...rewards].reverse().map((r) => (
             <li key={r.id} className="flex items-center justify-between rounded-xl2 bg-soft px-4 py-2">
-              <span>{r.points} баллов — {r.text} · {r.status === 'given' ? 'Выдана ✓' : 'Ожидает'}</span>
-              {r.status === 'pending' && <button onClick={() => giveReward(r.id)} className="rounded-xl2 bg-ok px-4 text-white">Выдана</button>}
+              <span>{r.points} баллов — {r.text} · {r.status === 'given' ? 'Выдана' : 'Ожидает'}</span>
+              {r.status === 'pending' && <button onClick={() => giveReward(r.id)} className="rounded-xl2 bg-ok px-4 text-onok">Выдана</button>}
             </li>
           ))}
         </ul>
@@ -163,7 +165,7 @@ function Rewards() {
           <input placeholder="Баллы (300)" value={p} onChange={(e) => setP(e.target.value.replace(/\D/g, ''))} aria-label="Баллы" className="w-32 rounded-xl2 border p-2" />
           <input placeholder="Награда" value={t} onChange={(e) => setT(e.target.value)} aria-label="Награда" className="flex-1 rounded-xl2 border p-2" />
           <button disabled={!p || !t} onClick={() => { updateSettings({ rewardTexts: { ...settings.rewardTexts, [p]: t } }); setP(''); setT(''); }}
-            className="rounded-xl2 bg-brand px-4 text-white disabled:opacity-40">Добавить</button>
+            className="rounded-xl2 bg-brand px-4 text-onbrand disabled:opacity-40">Добавить</button>
         </div>
       </Card>
     </>
@@ -193,8 +195,10 @@ function SettingsTab() {
       </Card>
       <Card title="Вид">
         <div className="flex flex-col gap-3">
-          <label className="flex items-center justify-between">Тёмная тема
-            <input type="checkbox" checked={s.theme === 'dark'} onChange={(e) => updateSettings({ theme: e.target.checked ? 'dark' : 'light' })} className="h-6 w-6" />
+          <label className="flex items-center justify-between">Тема
+            <select value={s.theme} onChange={(e) => updateSettings({ theme: e.target.value as ThemeSetting })} className="rounded-xl2 border p-2">
+              <option value="system">Как в Windows</option><option value="light">Светлая</option><option value="dark">Тёмная</option>
+            </select>
           </label>
           <label className="flex items-center justify-between">Размер шрифта
             <select value={s.fontScale} onChange={(e) => updateSettings({ fontScale: Number(e.target.value) })} className="rounded-xl2 border p-2">
@@ -210,7 +214,7 @@ function SettingsTab() {
       <Card title="Смена PIN">
         <div className="flex gap-2">
           <input value={pin} onChange={(e) => setPin(e.target.value.replace(/\D/g, '').slice(0, 6))} aria-label="Новый PIN" placeholder="4–6 цифр" className="rounded-xl2 border p-2" />
-          <button disabled={pin.length < 4} onClick={() => { updateSettings({ pin, pinChanged: true }); setPin(''); }} className="rounded-xl2 bg-brand px-4 text-white disabled:opacity-40">Сохранить</button>
+          <button disabled={pin.length < 4} onClick={() => { updateSettings({ pin, pinChanged: true }); setPin(''); }} className="rounded-xl2 bg-brand px-4 text-onbrand disabled:opacity-40">Сохранить</button>
         </div>
       </Card>
     </>
@@ -233,14 +237,14 @@ function Backup() {
       const raw = JSON.parse(await f.text());
       if (typeof raw.points !== 'number') throw new Error('bad');
       store.importData(raw);
-      setMsg('Прогресс загружен ✓');
+      setMsg('Прогресс загружен');
     } catch { setMsg('Не получилось прочитать файл'); }
   };
   return (
     <Card title="Резервная копия прогресса">
       <p className="mb-3 text-sm text-mute">Копия также создаётся автоматически при каждом запуске приложения.</p>
       <div className="flex flex-wrap items-center gap-3">
-        <button onClick={exportData} className="rounded-xl2 bg-brand px-5 text-white">Сохранить в файл</button>
+        <button onClick={exportData} className="rounded-xl2 bg-brand px-5 text-onbrand">Сохранить в файл</button>
         <label className="cursor-pointer rounded-xl2 bg-soft px-5 py-3">Загрузить из файла
           <input type="file" accept=".json" className="hidden" onChange={(e) => void importData(e.target.files?.[0])} />
         </label>
@@ -250,7 +254,7 @@ function Backup() {
   );
 }
 
-export function Parent({ onBack }: { onBack(): void }) {
+export function Parent() {
   const { settings, updateSettings } = useApp();
   const [pin, setPin] = useState('');
   const [ok, setOk] = useState(false);
@@ -260,15 +264,15 @@ export function Parent({ onBack }: { onBack(): void }) {
 
   if (!ok) {
     return (
-      <main className="mx-auto flex max-w-sm flex-col gap-4 p-8">
-        <button onClick={onBack} className="self-start rounded-xl2 bg-card px-5 shadow">← Назад</button>
-        <Logo height={120} />
+      <main className="mx-auto mt-10 flex max-w-sm flex-col items-stretch gap-4 rounded-panel bg-card p-8 shadow">
+        <Logo height={64} />
         <h1 className="text-2xl font-extrabold">Родительский режим</h1>
+        <p className="text-mute">Введите PIN, чтобы открыть статистику, награды и настройки.</p>
         <form className="flex flex-col gap-4" onSubmit={(e) => { e.preventDefault(); const good = pin === settings.pin; setOk(good); setWrong(!good); }}>
           <input type="password" inputMode="numeric" value={pin} onChange={(e) => setPin(e.target.value)} aria-label="PIN" autoFocus
             className="rounded-xl2 border p-3 text-center text-2xl tracking-widest" />
           {wrong && <p className="text-center text-mute">PIN не подошёл</p>}
-          <button type="submit" className="rounded-xl2 bg-brand text-white">Войти</button>
+          <button type="submit" className="rounded-xl2 bg-brand font-bold text-onbrand">Войти</button>
         </form>
       </main>
     );
@@ -276,19 +280,18 @@ export function Parent({ onBack }: { onBack(): void }) {
 
   return (
     <main className="mx-auto flex max-w-3xl flex-col gap-5 p-6">
-      <button onClick={onBack} className="self-start rounded-xl2 bg-card px-5 shadow">← Назад</button>
-      <h1 className="text-2xl font-extrabold">Родительский режим</h1>
+      <h1 className="text-4xl font-extrabold">Родительский режим</h1>
       {!settings.pinChanged && (
-        <div className="rounded-xl2 bg-accent/20 p-4">
+        <div className="rounded-xl3 border border-line bg-warn/15 p-4">
           <p className="mb-2 font-bold">Смените PIN по умолчанию (0000)</p>
           <input value={newPin} onChange={(e) => setNewPin(e.target.value.replace(/\D/g, '').slice(0, 6))} aria-label="Новый PIN" className="mr-2 rounded-xl2 border p-2" />
-          <button disabled={newPin.length < 4} className="rounded-xl2 bg-brand px-4 text-white disabled:opacity-40"
+          <button disabled={newPin.length < 4} className="rounded-xl2 bg-brand px-4 text-onbrand disabled:opacity-40"
             onClick={() => updateSettings({ pin: newPin, pinChanged: true })}>Сохранить</button>
         </div>
       )}
-      <nav className="flex gap-2">
+      <nav className="flex flex-wrap gap-2" aria-label="Разделы родительского режима">
         {TABS.map(([id, label]) => (
-          <button key={id} onClick={() => setTab(id)} className={`rounded-xl2 px-5 font-bold ${tab === id ? 'bg-brand text-white' : 'bg-card shadow'}`}>{label}</button>
+          <button key={id} onClick={() => setTab(id)} className={`rounded-xl2 px-5 font-bold ${tab === id ? 'bg-brand text-onbrand' : 'bg-card shadow'}`}>{label}</button>
         ))}
       </nav>
       {tab === 'stats' && <Stats />}

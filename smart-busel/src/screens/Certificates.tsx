@@ -1,5 +1,7 @@
 import { useState } from 'react';
+import { Icon } from '../components/Icon';
 import { Logo } from '../components/Logo';
+import { Mascot } from '../components/Mascot';
 import { learnSubjects } from '../content/loader';
 import { earnedCertificates } from '../engine/certificates';
 import { todayStr, useApp } from '../store/useApp';
@@ -16,18 +18,18 @@ export function Certificates({ onBack }: { onBack(): void }) {
   return (
     <main className="mx-auto flex max-w-4xl flex-col gap-5 p-6">
       <div className="no-print flex items-center gap-3">
-        <button onClick={() => (open ? setOpenId(undefined) : onBack())} className="rounded-xl2 bg-card px-5 shadow">← Назад</button>
-        <h1 className="flex-1 text-3xl font-extrabold">📜 Мои грамоты</h1>
-        {open && <button onClick={() => window.print()} className="rounded-xl2 bg-brand px-6 font-extrabold text-white">🖨️ Распечатать</button>}
+        <button onClick={() => (open ? setOpenId(undefined) : onBack())} className="rounded-xl2 bg-card px-5 shadow"><Icon name="back" /> Назад</button>
+        <h1 className="flex-1 text-4xl font-extrabold">Мои грамоты</h1>
+        {open && <button onClick={() => window.print()} className="rounded-xl2 bg-brand px-6 font-extrabold text-onbrand"><Icon name="print" /> Распечатать</button>}
       </div>
 
       {open ? (
         <div className="print-area flex flex-col items-center gap-4 rounded-xl3 border-8 border-double border-sun bg-white p-10 text-center text-navy shadow">
-          <Logo height={120} />
+          <Logo height={72} />
           <p className="text-lg font-extrabold uppercase tracking-widest">Грамота</p>
           <p className="text-6xl" aria-hidden>{open.icon}</p>
           <p className="text-xl">награждается</p>
-          <p className="text-4xl font-extrabold" style={{ fontFamily: 'Rubik, sans-serif' }}>{settings.name}</p>
+          <p className="text-4xl font-extrabold">{settings.name}</p>
           <p className="max-w-xl text-2xl font-extrabold">{open.title}</p>
           <p className="max-w-xl text-lg">{open.text}</p>
           <p className="mt-4 text-lg">Дата: {fmt(certificates[open.id])}</p>
@@ -36,7 +38,12 @@ export function Certificates({ onBack }: { onBack(): void }) {
       ) : (
         <>
           <p className="text-mute">Грамоты выдаются за отличные темы (3 звезды), пройденные разделы и предметы и за долгую серию занятий. Нажми на грамоту, чтобы открыть её и распечатать.</p>
-          {earned.length === 0 && <p className="rounded-xl3 bg-card p-6 shadow">Пока грамот нет. Пройди тему на 100% — и первая грамота твоя! 🌟</p>}
+          {earned.length === 0 && (
+            <div className="flex items-center gap-5 rounded-xl3 bg-card p-6 shadow">
+              <Mascot size={110} mood="read" />
+              <p className="text-lg">Пока грамот нет. Пройди тему на 100% — и первая грамота твоя!</p>
+            </div>
+          )}
           <ul className="grid gap-3 sm:grid-cols-2">
             {earned.map((c) => (
               <li key={c.id}>

@@ -10,6 +10,7 @@ import type { GeneratorRef } from '../content/schema';
 import { earnedCertificates } from '../engine/certificates';
 import { togglePlan as togglePlanFn, type Plan } from '../engine/plan';
 import { afterReview, WARMUP_BONUS } from '../engine/warmup';
+import type { ThemeSetting } from '../engine/theme';
 import { DEFAULT_REWARD_TEXT, DEFAULT_THRESHOLD, newRewards, type Reward, type RewardBase } from '../engine/rewards';
 
 export interface Settings {
@@ -21,7 +22,7 @@ export interface Settings {
   dailyGoal: number; // заданий в день
   dailyLimitMin: number; // 0 = без лимита
   breakEveryMin: number;
-  theme: 'light' | 'dark';
+  theme: ThemeSetting; // 'system' — как в Windows
   fontScale: number;
   sound: boolean;
   accessory: string; // надетый аксессуар Бусела
@@ -70,13 +71,13 @@ const initial: Data = {
     name: 'Женя', pin: '0000', pinChanged: false,
     rewardThreshold: DEFAULT_THRESHOLD, rewardTexts: {},
     dailyGoal: 10, dailyLimitMin: 0, breakEveryMin: 30,
-    theme: 'light', fontScale: 1, sound: true, accessory: '',
+    theme: 'system', fontScale: 1, sound: true, accessory: '',
   },
 };
 
 declare global {
   interface Window {
-    busel?: { load(): Promise<Data | null>; save(d: Data): Promise<void> };
+    busel?: { load(): Promise<Data | null>; save(d: Data): Promise<void>; setTheme?(theme: string): void };
   }
 }
 

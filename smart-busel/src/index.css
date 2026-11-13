@@ -1,52 +1,102 @@
-@import '@fontsource/nunito/cyrillic-400.css';
-@import '@fontsource/nunito/cyrillic-600.css';
-@import '@fontsource/nunito/cyrillic-800.css';
-@import '@fontsource/nunito/latin-400.css';
-@import '@fontsource/nunito/latin-600.css';
-@import '@fontsource/nunito/latin-800.css';
-@import '@fontsource/rubik/cyrillic-700.css';
-@import '@fontsource/rubik/cyrillic-800.css';
-@import '@fontsource/rubik/latin-700.css';
-@import '@fontsource/rubik/latin-800.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * Дизайн-токены «Умного Бусела» (стиль Aurora Play, см. BRANDBOOK.md и DESIGN_PLAN.md).
+ * Цвета задаются только здесь; в экранах — классы Tailwind (bg-card, text-mute, bg-brand …).
+ * Тройки чисел (--*-rgb) нужны, чтобы работали полупрозрачные варианты вроде bg-ok/15.
+ */
 :root {
-  /* Фирменные цвета «Умного Бусела» (см. BRANDBOOK.md) */
-  --navy: #13244f; --sky: #1d8cee; --sun: #ffc21a; --beak: #fa5e21;
-  --bg: #eef6ff; --card: #ffffff; --ink: #13244f; --mute: #4a5a7a;
-  --brand: #0b5fc2; --accent: #c2410c; --ok: #15803d;
-  --brand-ink: #0b5fc2; --accent-ink: #b43c0a; --ok-ink: #15803d;
-  --soft: rgba(19, 36, 79, 0.07); --line: rgba(19, 36, 79, 0.18);
+  color-scheme: light;
+  /* поверхности */
+  --bg: #f4f6fc; --side: #edf0f8; --surface: #ffffff; --card: #ffffff; --hover: #eef1f9; --line: #d9dfec;
+  --ink: #171c2e; --mute: #536079;
+  --soft: rgba(23, 28, 46, 0.06);
+  /* акцент */
+  --brand-rgb: 91 69 207; --brand-hover: #4d38b8; --brand-press: #402da4; --on-brand: #ffffff;
+  /* успех / предупреждение / ошибка */
+  --ok-rgb: 20 117 82; --on-ok: #ffffff;
+  --warn-rgb: 128 86 0;
+  --accent-rgb: 183 46 68; --on-accent: #ffffff;
+  /* награда и прогресс */
+  --sun-rgb: 246 196 83; --navy: #11152a; --beak: #fa5e21;
+  /* градиент бренда и свечение: только знак и крупные декоративные зоны, не под текстом */
+  --brand-gradient: linear-gradient(135deg, #8b7cf6 0%, #5b8def 55%, #45d7f2 100%);
+  --aurora: radial-gradient(ellipse at 78% 30%, rgba(108, 92, 231, 0.2) 0%, rgba(69, 215, 242, 0.12) 45%, transparent 75%);
+  --shadow: 0 1px 2px rgba(23, 28, 46, 0.05), 0 6px 18px rgba(23, 28, 46, 0.05);
+  --shadow-pop: 0 2px 6px rgba(23, 28, 46, 0.08), 0 16px 40px rgba(23, 28, 46, 0.14);
+  /* предметы: насыщенная метка (подложка — она же с прозрачностью 10–16 %) */
+  --subj-math: 109 77 214; --subj-history: 128 86 0; --subj-world: 10 106 84;
+  --subj-english: 8 100 138; --subj-art: 168 38 104; --subj-krugozor: 42 92 200;
   /* контурные карты */
   --map-sea: #cfe6fb; --map-land: #f6efd8; --map-edge: #a59a72; --map-focus: #ffd766; --map-river: #1d8cee; --map-water-ink: #0b5fc2;
 }
 [data-theme='dark'] {
-  --bg: #0b1733; --card: #132549; --ink: #eef4ff; --mute: #a9bbdc;
-  --brand: #1f74dc;
-  --brand-ink: #7cb7ff; --accent-ink: #ffb27a; --ok-ink: #5fd69a;
-  --soft: rgba(255, 255, 255, 0.12); --line: rgba(255, 255, 255, 0.28);
-  --map-sea: #0e2c5c; --map-land: #2c3f66; --map-edge: #60749f; --map-focus: #6f5d1f; --map-river: #4ea8ff; --map-water-ink: #9ccbff;
+  color-scheme: dark;
+  --bg: #0b1020; --side: #10172b; --surface: #151d33; --card: #1b2540; --hover: #24304e; --line: #303b58;
+  --ink: #f7f8ff; --mute: #bbc4d9;
+  --soft: rgba(255, 255, 255, 0.08);
+  --brand-rgb: 164 149 255; --brand-hover: #b8acff; --brand-press: #8d7bed; --on-brand: #11152a;
+  --ok-rgb: 100 221 176; --on-ok: #11152a;
+  --warn-rgb: 255 211 122;
+  --accent-rgb: 255 140 156; --on-accent: #11152a;
+  --aurora: radial-gradient(ellipse at 78% 30%, rgba(139, 124, 246, 0.42) 0%, rgba(69, 215, 242, 0.18) 45%, transparent 75%);
+  /* в тёмной теме карточки отделяются границей и фоном, а не тенью */
+  --shadow: 0 0 0 1px var(--line);
+  --shadow-pop: 0 0 0 1px var(--line), 0 16px 40px rgba(0, 0, 0, 0.45);
+  --subj-math: 164 149 255; --subj-history: 246 196 83; --subj-world: 100 221 176;
+  --subj-english: 69 215 242; --subj-art: 255 143 190; --subj-krugozor: 110 160 255;
+  --map-sea: #0f1a36; --map-land: #26314f; --map-edge: #55637f; --map-focus: #5e5222; --map-river: #5b8def; --map-water-ink: #9cc3ff;
 }
-/* размер шрифта растёт вместе с окном: 1366 px → 16 px, 4K → ~27 px */
+:root, [data-theme='dark'] {
+  --brand: rgb(var(--brand-rgb)); --brand-ink: rgb(var(--brand-rgb));
+  --ok: rgb(var(--ok-rgb)); --ok-ink: rgb(var(--ok-rgb));
+  --warn: rgb(var(--warn-rgb));
+  --accent: rgb(var(--accent-rgb)); --accent-ink: rgb(var(--warn-rgb));
+  --sun: rgb(var(--sun-rgb));
+}
+
+/* размер шрифта растёт вместе с окном: 1366 px → 16 px, 4K → ~27 px; множитель — из родительского режима */
 html { font-size: calc(clamp(16px, 10px + 0.45vw, 30px) * var(--font-scale, 1)); }
-[data-theme='dark'] .shadow { box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12); }
-:focus-visible { outline: 3px solid var(--brand-ink); outline-offset: 2px; }
 html, body, #root { height: 100%; }
-body { margin: 0; background: var(--bg); color: var(--ink); font-family: Nunito, system-ui, sans-serif; }
-button { min-height: 48px; cursor: pointer; }
-/* заголовки — крупный округлый шрифт, как в логотипе */
-h1, h2 { font-family: Rubik, Nunito, system-ui, sans-serif; letter-spacing: 0.005em; }
-/* главные кнопки «выпуклые», как иконка приложения */
-button.bg-brand, button.bg-ok, button.bg-sun { box-shadow: 0 3px 0 rgba(0, 0, 0, 0.22); transition: transform 0.08s, box-shadow 0.08s; }
-button.bg-brand:active, button.bg-ok:active, button.bg-sun:active { transform: translateY(2px) scale(0.98); box-shadow: 0 1px 0 rgba(0, 0, 0, 0.22); }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: 'Segoe UI Variable Text', 'Segoe UI Variable', 'Segoe UI', system-ui, sans-serif;
+}
+h1, h2 { font-family: 'Segoe UI Variable Display', 'Segoe UI Variable', 'Segoe UI', system-ui, sans-serif; letter-spacing: -0.01em; }
+b, strong { font-weight: 600; }
+
+/* фокус с клавиатуры виден всегда */
+:focus-visible { outline: 3px solid var(--brand-ink); outline-offset: 2px; }
+
+/* кнопки плоские: без «выпуклой» тени и градиента */
+button { min-height: 48px; cursor: pointer; transition: background-color 0.1s, border-color 0.1s, color 0.1s, transform 0.1s, opacity 0.1s; }
+button:disabled { cursor: default; }
+button.bg-brand:hover:not(:disabled) { background-color: var(--brand-hover); }
+button.bg-brand:active:not(:disabled) { background-color: var(--brand-press); }
+button.bg-ok:hover:not(:disabled), button.bg-sun:hover:not(:disabled), button.bg-accent:hover:not(:disabled) { filter: brightness(1.06); }
+button.bg-ok:active:not(:disabled), button.bg-sun:active:not(:disabled), button.bg-accent:active:not(:disabled) { filter: brightness(0.94); }
+/* вторичная кнопка: карточка + граница */
+button.bg-soft, button.bg-card { border: 1px solid var(--line); }
+button.bg-soft:hover:not(:disabled), button.bg-card:hover:not(:disabled) { background-color: var(--hover); }
+
+/* поля ввода в цветах темы */
+input, select, textarea { background-color: var(--card); color: var(--ink); border-color: var(--line); }
+input::placeholder { color: var(--mute); opacity: 0.8; }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
 
-/* Печать: грамоты и недельный отчёт */
+/* Печать: грамоты и недельный отчёт — всегда на светлом фоне */
 @media print {
+  :root, [data-theme='dark'] {
+    color-scheme: light;
+    --bg: #ffffff; --card: #ffffff; --surface: #ffffff; --line: #d9dfec; --ink: #171c2e; --mute: #536079;
+    --soft: rgba(23, 28, 46, 0.06); --brand-rgb: 91 69 207; --ok-rgb: 20 117 82; --warn-rgb: 128 86 0; --accent-rgb: 183 46 68;
+    --shadow: none;
+  }
   body * { visibility: hidden; }
   .print-area, .print-area * { visibility: visible; }
   .print-area { position: absolute; left: 0; top: 0; width: 100%; box-shadow: none !important; }
