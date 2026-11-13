@@ -31,7 +31,34 @@ jobs:
         with:
           name: umny-busel-installer
           path: smart-busel/release/Umny-Busel-Setup-*.exe
-      # По метке busel-v* установщик ещё и выкладывается на страницу Releases
+      # Автовыпуск: при слиянии в main, если выпуска с номером версии из package.json ещё нет,
+      # он создаётся сам (вместе с меткой busel-vX.Y.Z), и к нему прикладывается установщик.
+      - id: auto
+        if: github.ref == 'refs/heads/main'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          version=$(node -p "require('./package.json').version")
+          tag="busel-v$version"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          if gh release view "$tag" --repo "$GITHUB_REPOSITORY" > /dev/null 2>&1; then
+            echo "Выпуск $tag уже есть — новый не создаётся."
+            echo "create=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "Выпуска $tag ещё нет — создаётся."
+            echo "create=true" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: softprops/action-gh-release@v2
+        if: steps.auto.outputs.create == 'true'
+        with:
+          tag_name: ${{ steps.auto.outputs.tag }}
+          target_commitish: ${{ github.sha }}
+          name: Умный Бусел ${{ steps.auto.outputs.version }}
+          body: Что нового — в файле smart-busel/README_ДЛЯ_РОДИТЕЛЯ.md, раздел «Что нового в версии ${{ steps.auto.outputs.version }}».
+          files: smart-busel/release/Umny-Busel-Setup-*.exe
+      # Выпуск вручную по метке busel-v* работает, как раньше
       - uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/busel-v')
         with:
