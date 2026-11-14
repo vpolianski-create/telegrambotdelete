@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Android 12+: что попадает в резервную копию Google и при переносе на новый телефон.
+     Только прогресс и его копии. Семейный код синхронизации и данные входа — нет. -->
+<data-extraction-rules>
+    <cloud-backup disableIfNoEncryptionCapabilities="true">
+        <include domain="file" path="data.json" />
+        <include domain="file" path="backups/" />
+    </cloud-backup>
+    <device-transfer>
+        <include domain="file" path="data.json" />
+        <include domain="file" path="backups/" />
+    </device-transfer>
+</data-extraction-rules>

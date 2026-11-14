@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Android 11 и старше: то же, что data_extraction_rules.xml -->
+<full-backup-content>
+    <include domain="file" path="data.json" />
+    <include domain="file" path="backups/" />
+</full-backup-content>

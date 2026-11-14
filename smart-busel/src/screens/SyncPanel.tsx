@@ -44,7 +44,7 @@ export function SyncPanel() {
   const [enabled, setEnabled] = useState<boolean | null>(null);
   const [busy, setBusy] = useState(false);
   const [msg, setMsg] = useState('');
-  const [newCode, setNewCode] = useState<string | null>(null);
+  const [created, setCreated] = useState(false);
   const [shownCode, setShownCode] = useState<string | null>(null);
   const [mode, setMode] = useState<'menu' | 'join'>('menu');
   const [input, setInput] = useState('');
@@ -95,8 +95,12 @@ export function SyncPanel() {
           </div>
           {shownCode && (
             <div className="mt-4">
+              {created && <p className="mb-2 font-bold">Готово! Ваш семейный код:</p>}
               <CodeBox code={shownCode} />
-              <p className="mt-2 text-sm text-mute">Введите этот код на другом устройстве: Родительский режим → Синхронизация → «Подключиться по коду». Храните его как пароль.</p>
+              <p className="mt-2 text-sm text-mute">
+                На другом устройстве откройте «Умный Бусел» → Родительский режим → Синхронизация → «Подключиться по коду» и введите этот код.
+                Храните код как пароль: по нему можно получить прогресс. Посмотреть код ещё раз можно здесь же.
+              </p>
             </div>
           )}
           {msg && <p className="mt-3 font-bold">{msg}</p>}
@@ -114,7 +118,7 @@ export function SyncPanel() {
           {confirm === 'change' && (
             <Confirm busy={busy} onNo={() => setConfirm(null)} yes="Сменить код"
               text="Будет создан новый семейный код, старые данные в облаке удалятся. Потерянное устройство больше ничего не получит. На остальных своих устройствах введите новый код заново (выберите «Заменить»)."
-              onYes={() => void run(async () => { const c = await syncService.changeCode(); setShownCode(c); setConfirm(null); })} />
+              onYes={() => void run(async () => { const c = await syncService.changeCode(); setShownCode(c); setCreated(true); setConfirm(null); })} />
           )}
           {confirm === 'off' && (
             <Confirm busy={busy} onNo={() => setConfirm(null)} yes="Отключить"
@@ -147,19 +151,9 @@ export function SyncPanel() {
         Нужен интернет; без него всё работает как обычно и синхронизируется позже.
       </p>
 
-      {newCode ? (
-        <div>
-          <p className="mb-2 font-bold">Семья создана. Ваш семейный код:</p>
-          <CodeBox code={newCode} />
-          <p className="mt-3 text-sm text-mute">
-            На другом устройстве откройте «Умный Бусел» → Родительский режим → Синхронизация → «Подключиться по коду» и введите этот код.
-            Храните код как пароль: по нему можно получить прогресс. Посмотреть код ещё раз можно здесь же.
-          </p>
-          <button className={`${btn} mt-3 bg-brand text-onbrand`} onClick={() => setNewCode(null)}>Готово</button>
-        </div>
-      ) : mode === 'menu' ? (
+      {mode === 'menu' ? (
         <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-          <button disabled={busy} className={`${btn} bg-brand text-onbrand`} onClick={() => void run(async () => setNewCode(await syncService.createFamily()))}>
+          <button disabled={busy} className={`${btn} bg-brand text-onbrand`} onClick={() => void run(async () => { setShownCode(await syncService.createFamily()); setCreated(true); })}>
             Это первое устройство — создать код
           </button>
           <button disabled={busy} className={`${btn} bg-soft`} onClick={() => { setMode('join'); setMsg(''); }}>Подключиться по коду</button>

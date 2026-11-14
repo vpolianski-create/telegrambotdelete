@@ -97,9 +97,9 @@ export default function App() {
 
   return (
     <>
-      <div className="flex h-full">
+      <div className="flex h-full max-sm:flex-col">
         <Sidebar active={NAV[route.name]} reviewCount={reviewCount} onNavigate={(id) => setRoute({ name: id } as Route)} />
-        <div ref={scroller} className="h-full min-w-0 flex-1 overflow-y-auto">
+        <div ref={scroller} className="h-full min-w-0 flex-1 overflow-y-auto overscroll-contain max-sm:min-h-0">
           <AnimatePresence mode="wait">
             <motion.div key={pageKey} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.16 }}>
               {route.name === 'home' && <Home reviewCount={reviewCount} onSubject={(id) => setRoute({ name: 'subject', id })} onSubjects={subjectsList} onTopic={lesson} onPlan={() => setRoute({ name: 'plan' })} onReview={() => setRoute({ name: 'review' })} onWarmup={() => setRoute({ name: 'warmup' })} />}

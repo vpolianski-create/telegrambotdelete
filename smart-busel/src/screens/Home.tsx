@@ -92,15 +92,15 @@ export function Home({ onSubject, onSubjects, onTopic, onPlan, onReview, onWarmu
     <main className="mx-auto flex max-w-6xl flex-col gap-5 p-6">
       {/* Блок «Продолжить»: всегда тёмный, как картинка; свечение — только здесь */}
       <section data-theme="dark" aria-label="Продолжить занятие"
-        className="relative flex min-h-[max(260px,36vh)] items-center overflow-hidden rounded-hero text-ink shadow" style={{ background: '#070e1d' }}>
-        <img src={heroUrl} alt="" draggable={false} className="absolute inset-y-0 right-0 h-full w-auto max-w-none object-cover" />
+        className="relative flex min-h-[max(260px,36vh)] items-center overflow-hidden rounded-hero text-ink shadow max-sm:min-h-0" style={{ background: '#070e1d' }}>
+        <img src={heroUrl} alt="" draggable={false} className="absolute inset-y-0 right-0 h-full w-auto max-w-none object-cover max-sm:opacity-40" />
         <div aria-hidden className="absolute inset-0" style={{ background: 'var(--aurora)' }} />
         <div aria-hidden className="absolute inset-0" style={{ background: 'linear-gradient(90deg, #070e1d 0%, #070e1d 46%, rgba(7,14,29,0.78) 62%, transparent 82%)' }} />
-        <div className="relative flex w-full max-w-[min(36rem,62%)] flex-col gap-3 p-8">
+        <div className="relative flex w-full max-w-[min(36rem,62%)] flex-col gap-3 p-8 max-sm:max-w-full max-sm:p-5">
           <div className="flex items-center gap-4">
             <Mascot size={104} />
             <div>
-              <h1 className="text-4xl font-bold">Привет, {settings.name}!</h1>
+              <h1 className="text-4xl font-bold max-sm:text-3xl">Привет, {settings.name}!</h1>
               <p className="text-mute">Уровень {lvl.level} · {levelTitle(lvl.level)} · {points} {plural(points, 'балл', 'балла', 'баллов')}</p>
             </div>
           </div>
