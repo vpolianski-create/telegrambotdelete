@@ -1,6 +1,7 @@
 import { app, BrowserWindow, ipcMain, nativeTheme } from 'electron';
 import path from 'node:path';
 import { backupOnStart, loadData, writeJson } from './store';
+import { getSecret, setSecret } from './secret';
 
 const DATA = 'data.json';
 type Theme = 'system' | 'light' | 'dark';
@@ -19,8 +20,11 @@ function createWindow() {
     width: 1280, height: 800, minWidth: 1024, minHeight: 640,
     title: 'Умный Бусел', autoHideMenuBar: true, backgroundColor: windowBg(),
     icon: path.join(__dirname, '../resources/brand/icon.png'),
-    webPreferences: { preload: path.join(__dirname, 'preload.js'), contextIsolation: true },
+    webPreferences: { preload: path.join(__dirname, 'preload.js'), contextIsolation: true, sandbox: true, nodeIntegration: false },
   });
+  // приложение никуда не переходит и не открывает новых окон (защита от подмены страницы)
+  win.webContents.setWindowOpenHandler(() => ({ action: 'deny' }));
+  win.webContents.on('will-navigate', (e, url) => { if (!url.startsWith('file://') && !url.startsWith(process.env.VITE_DEV_SERVER_URL ?? '\0')) e.preventDefault(); });
   const dev = process.env.VITE_DEV_SERVER_URL;
   if (dev) win.loadURL(dev);
   else win.loadFile(path.join(__dirname, '../dist/index.html'));
@@ -33,6 +37,8 @@ app.whenReady().then(() => {
   ipcMain.handle('data:load', () => loadData<unknown>(DATA));
   ipcMain.handle('data:save', (_e, data: unknown) => writeJson(DATA, data));
   ipcMain.on('theme:set', (_e, theme: unknown) => applyTheme(theme));
+  ipcMain.handle('secret:get', () => getSecret());
+  ipcMain.handle('secret:set', (_e, value: unknown) => setSecret(value));
   nativeTheme.on('updated', () => BrowserWindow.getAllWindows().forEach((w) => w.setBackgroundColor(windowBg())));
   createWindow();
 });

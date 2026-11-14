@@ -13,6 +13,7 @@ import { afterReview, WARMUP_BONUS } from '../engine/warmup';
 import type { ThemeSetting } from '../engine/theme';
 import { DEFAULT_REWARD_TEXT, DEFAULT_THRESHOLD, newRewards, type Reward, type RewardBase } from '../engine/rewards';
 import { changedStamps, mistakeKey, withoutSync, type SyncMeta } from '../sync/merge';
+import { loadData, saveData } from '../platform';
 
 export interface Settings {
   name: string;
@@ -80,11 +81,14 @@ const initial: Data = {
 
 declare global {
   interface Window {
-    busel?: { load(): Promise<Data | null>; save(d: Data): Promise<void>; setTheme?(theme: string): void };
+    busel?: {
+      load(): Promise<Data | null>; save(d: Data): Promise<void>; setTheme?(theme: string): void;
+      /** Секреты синхронизации, зашифрованные средствами Windows. */
+      secretGet?(): Promise<string | null>; secretSet?(value: string | null): Promise<void>;
+    };
   }
 }
 
-const LS_KEY = 'smart-busel-data';
 export const todayStr = () => {
   const d = new Date();
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
@@ -120,14 +124,12 @@ export function merge(raw: Partial<Data> | null, keepAllProgress = false): Data 
 
 async function load(): Promise<Data> {
   try {
-    const raw = window.busel ? await window.busel.load() : JSON.parse(localStorage.getItem(LS_KEY) ?? 'null');
-    return merge(raw);
+    return merge((await loadData()) as Partial<Data> | null);
   } catch { return initial; /* повреждённый файл — копия лежит в папке backups */ }
 }
 
 function persist(d: Data) {
-  if (window.busel) void window.busel.save(d);
-  else localStorage.setItem(LS_KEY, JSON.stringify(d));
+  saveData(d);
 }
 
 export interface AnswerInfo {

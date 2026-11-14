@@ -1,16 +1,19 @@
 import { useState } from 'react';
+import { printPage, saveTextFile } from '../platform';
+import { SyncPanel } from './SyncPanel';
+import { syncService } from '../sync';
 import { Icon, type IconName } from '../components/Icon';
 import type { ThemeSetting } from '../engine/theme';
 import { allTopics, subjects } from '../content/loader';
 import { addDays } from '../engine/leitner';
 import { weekReport } from '../engine/report';
 import { statusCounts, topicStatus } from '../engine/status';
-import { hasEnglishVoice } from '../audio/speech';
+import { hasEnglishVoice, voiceHint } from '../audio/speech';
 import { Logo } from '../components/Logo';
 import { snapshot, todayStr, useApp } from '../store/useApp';
 
-type Tab = 'stats' | 'report' | 'rewards' | 'settings' | 'backup';
-const TABS: [Tab, string][] = [['stats', 'Статистика'], ['report', 'Отчёт за неделю'], ['rewards', 'Награды'], ['settings', 'Настройки'], ['backup', 'Копия']];
+type Tab = 'stats' | 'report' | 'rewards' | 'settings' | 'sync' | 'backup';
+const TABS: [Tab, string][] = [['stats', 'Статистика'], ['report', 'Отчёт за неделю'], ['rewards', 'Награды'], ['settings', 'Настройки'], ['sync', 'Синхронизация'], ['backup', 'Копия']];
 
 const Card = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <section className="rounded-xl3 bg-card p-5 shadow">
@@ -107,7 +110,7 @@ function Report() {
       <div className="no-print flex flex-wrap items-center gap-2">
         <button onClick={() => setShift(shift + 1)} className="rounded-xl2 bg-card px-4 shadow"><Icon name="back" /> Раньше</button>
         <button disabled={shift === 0} onClick={() => setShift(shift - 1)} className="rounded-xl2 bg-card px-4 shadow disabled:opacity-40">Позже <Icon name="next" /></button>
-        <button onClick={() => window.print()} className="rounded-xl2 bg-brand px-5 text-onbrand"><Icon name="print" /> Распечатать</button>
+        <button onClick={() => void printPage()} className="rounded-xl2 bg-brand px-5 text-onbrand"><Icon name="print" /> Распечатать</button>
         <button onClick={() => { void navigator.clipboard?.writeText(text).then(() => setCopied(true)); }} className="rounded-xl2 bg-soft px-5">{copied ? <><Icon name="check" /> Скопировано</> : 'Скопировать текст'}</button>
       </div>
       <div className="print-area flex flex-col gap-4 rounded-xl3 bg-card p-5 shadow">
@@ -208,7 +211,7 @@ function SettingsTab() {
           <label className="flex items-center justify-between">Звук
             <input type="checkbox" checked={s.sound} onChange={(e) => updateSettings({ sound: e.target.checked })} className="h-6 w-6" />
           </label>
-          {!hasEnglishVoice() && <p className="text-sm text-mute">Английский голос не найден: Параметры Windows → Время и язык → Язык и регион → добавить English (United States).</p>}
+          {!hasEnglishVoice() && <p className="text-sm text-mute">{voiceHint()}</p>}
         </div>
       </Card>
       <Card title="Смена PIN">
@@ -225,14 +228,11 @@ function Backup() {
   const store = useApp();
   const [msg, setMsg] = useState('');
   const exportData = () => {
-    const data = snapshot();
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' }));
-    a.download = `umny-busel-${todayStr()}.json`;
-    a.click();
+    void saveTextFile(`umny-busel-${todayStr()}.json`, JSON.stringify(snapshot(), null, 2)).catch(() => setMsg('Не получилось сохранить файл'));
   };
   const importData = async (f: File | undefined) => {
     if (!f) return;
+    if (await syncService.enabled()) { setMsg('Сначала отключите синхронизацию (раздел «Синхронизация»), потом загрузите копию.'); return; }
     try {
       const raw = JSON.parse(await f.text());
       if (typeof raw.points !== 'number') throw new Error('bad');
@@ -298,6 +298,7 @@ export function Parent() {
       {tab === 'report' && <Report />}
       {tab === 'rewards' && <Rewards />}
       {tab === 'settings' && <SettingsTab />}
+      {tab === 'sync' && <SyncPanel />}
       {tab === 'backup' && <Backup />}
     </main>
   );
