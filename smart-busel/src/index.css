@@ -102,3 +102,78 @@ input::placeholder { color: var(--mute); opacity: 0.8; }
   .print-area { position: absolute; left: 0; top: 0; width: 100%; box-shadow: none !important; }
   .no-print { display: none !important; }
 }
+
+/*
+ * Грамоты (components/Certificate.tsx). Размеры в em от ширины листа, поэтому грамота одинаково
+ * выглядит в окне и на бумаге. На экране лист тёмный со свечением, при печати — светлый.
+ * Цвета вида: --c-a → --c-b (градиент рамки, медали и имени), --c-accent (подписи).
+ */
+.cert {
+  container-type: inline-size; width: 100%;
+  --c-bg: #0b1020; --c-bg2: #151d33; --c-seal: #10172b; --c-ink: #f7f8ff; --c-mute: #bbc4d9;
+  --c-a: #a495ff; --c-b: #5b8def; --c-accent: #c9c0ff; --c-glow: rgba(139, 124, 246, 0.5);
+}
+.cert[data-tier='explorer'] { --c-a: #45d7f2; --c-b: #64ddb0; --c-accent: #9eeaf7; --c-glow: rgba(69, 215, 242, 0.42); }
+.cert[data-tier='master'] { --c-a: #ffe08a; --c-b: #f6a93b; --c-accent: #ffe08a; --c-glow: rgba(246, 196, 83, 0.45); }
+.cert[data-tier='fire'] { --c-a: #ffb56b; --c-b: #ff6f61; --c-accent: #ffc9a3; --c-glow: rgba(255, 126, 97, 0.45); }
+.cert-body {
+  position: relative; overflow: hidden; aspect-ratio: 1.414 / 1; font-size: 1.72cqw; color: var(--c-ink);
+  border-radius: 1em; background: radial-gradient(ellipse at 50% 120%, var(--c-bg2) 0%, var(--c-bg) 60%);
+  box-shadow: var(--shadow-pop); display: flex; flex-direction: column;
+  -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.cert-glow { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 22%, var(--c-glow) 0%, rgba(69, 215, 242, 0.12) 38%, transparent 68%); }
+.cert-spark { position: absolute; color: var(--c-a); opacity: 0.75; }
+.cert-frame { position: absolute; inset: 1.1em; border-radius: 0.7em; padding: 0.22em; background: linear-gradient(135deg, var(--c-a), var(--c-b)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; }
+.cert-frame-2 { inset: 1.75em; padding: 0.07em; opacity: 0.6; border-radius: 0.4em; }
+.cert-corner { position: absolute; width: 4.2em; height: 4.2em; color: var(--c-a); }
+.cert-corner-tl { left: 2.2em; top: 2.2em; }
+.cert-corner-tr { right: 2.2em; top: 2.2em; transform: scaleX(-1); }
+.cert-corner-bl { left: 2.2em; bottom: 2.2em; transform: scaleY(-1); }
+.cert-corner-br { right: 2.2em; bottom: 2.2em; transform: scale(-1); }
+.cert-content { position: relative; flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2.8em 13em 0.2em; }
+.cert-content p { margin: 0; }
+.cert-brand { display: flex; align-items: center; gap: 0.5em; font-weight: 600; font-size: 1em; color: var(--c-mute); }
+.cert-brand img { width: 1.9em; height: 1.9em; border-radius: 0.45em; }
+.cert-word { font-family: 'Segoe UI Variable Display', 'Segoe UI', system-ui, sans-serif; font-size: 2.6em; font-weight: 600; letter-spacing: 0.34em; margin-right: -0.34em !important; text-transform: uppercase; line-height: 1.15; }
+.cert-tier { font-size: 0.95em; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--c-accent); }
+.cert-medal { position: relative; width: 13em; margin: 0.1em 0 0.5em; }
+.cert-medal svg { display: block; width: 100%; height: auto; }
+.cert-emblem { position: absolute; left: 50%; top: 48.3%; transform: translate(-50%, -50%); display: flex; align-items: center; justify-content: center; }
+.cert-emblem img { width: 4.6em !important; height: 4.6em !important; }
+.cert-days { display: flex; flex-direction: column; align-items: center; line-height: 1; }
+.cert-days b { font-size: 2.7em; font-weight: 600; }
+.cert-days small { font-size: 0.8em; color: var(--c-mute); }
+.cert-given { font-size: 1em; color: var(--c-mute); }
+.cert-name { font-family: 'Segoe UI Variable Display', 'Segoe UI', system-ui, sans-serif; font-size: 3.3em; font-weight: 600; line-height: 1.15; background: linear-gradient(90deg, var(--c-a), var(--c-b)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.cert-title { font-size: 1.45em; font-weight: 600; line-height: 1.25; max-width: 30em; margin-top: 0.15em !important; }
+.cert-text { font-size: 1em; color: var(--c-mute); max-width: 34em; margin-top: 0.3em !important; }
+.cert-mascot { position: absolute; left: 1.3em; bottom: 2.2em; height: 11em; width: 11em; object-fit: contain; }
+.cert-foot { position: relative; display: flex; justify-content: center; gap: 4em; padding: 0.6em 0 3em; font-size: 1.05em; font-weight: 600; }
+.cert-foot span { display: flex; flex-direction: column; align-items: center; min-width: 7em; border-top: 0.08em solid var(--c-mute); padding-top: 0.3em; }
+.cert-foot small { order: 2; font-size: 0.72em; font-weight: 400; color: var(--c-mute); }
+.cert-sign i { font-family: 'Segoe Script', 'Segoe Print', 'Comic Sans MS', cursive; font-style: normal; color: var(--c-accent); }
+
+/* маленькая медаль в списке грамот */
+.cert-mini { --c-seal: var(--card); --c-ink: var(--ink); --c-mute: var(--mute); --c-a: #a495ff; --c-b: #5b8def; font-size: 0.4rem; }
+.cert-mini[data-tier='explorer'] { --c-a: #45d7f2; --c-b: #64ddb0; }
+.cert-mini[data-tier='master'] { --c-a: #ffe08a; --c-b: #f6a93b; }
+.cert-mini[data-tier='fire'] { --c-a: #ffb56b; --c-b: #ff6f61; }
+.cert-mini .cert-medal { margin: 0; }
+.cert-mini .cert-days small { display: none; }
+
+@media print {
+  /* на бумаге — светлый лист и более тёмные цвета подписей */
+  .cert { --c-bg: #ffffff; --c-bg2: #fbf9f2; --c-seal: #ffffff; --c-ink: #171c2e; --c-mute: #536079; --c-a: #7b68ee; --c-b: #3f74d9; --c-accent: #5b45cf; }
+  .cert[data-tier='explorer'] { --c-a: #12a5c4; --c-b: #1f9d78; --c-accent: #0a6a54; }
+  .cert[data-tier='master'] { --c-a: #e8b530; --c-b: #d98a12; --c-accent: #805600; }
+  .cert[data-tier='fire'] { --c-a: #f08a2e; --c-b: #dc4f3f; --c-accent: #a8431b; }
+  /* чуть уже листа, чтобы грамота целиком помещалась на одну альбомную страницу A4 */
+  .cert.print-area { width: 94%; left: 3%; }
+  .cert-body { box-shadow: none; border-radius: 0; break-inside: avoid; }
+  .cert-glow { opacity: 0.35; }
+  /* маска рамки при печати не работает — рисуем рамку обычной линией */
+  .cert-frame { background: none; -webkit-mask: none; mask: none; padding: 0; border: 0.2em solid var(--c-a); }
+  .cert-frame-2 { border-width: 0.07em; }
+  .cert-name { background: none; color: var(--c-accent); }
+}
