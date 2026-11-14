@@ -6,4 +6,5 @@ contextBridge.exposeInMainWorld('busel', {
   setTheme: (theme: string) => ipcRenderer.send('theme:set', theme),
   secretGet: () => ipcRenderer.invoke('secret:get'),
   secretSet: (value: string | null) => ipcRenderer.invoke('secret:set', value),
+  openExternal: (url: string) => ipcRenderer.invoke('open:external', url),
 });

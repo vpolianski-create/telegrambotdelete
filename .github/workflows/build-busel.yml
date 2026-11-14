@@ -102,8 +102,9 @@ jobs:
           path: smart-busel/release-android/*
 
   # ——— Выпуск на странице Releases: установщик для Windows и APK для Android ———
-  # Автовыпуск: при слиянии в main, если выпуска с номером версии из package.json ещё нет,
-  # он создаётся сам (вместе с меткой busel-vX.Y.Z). Выпуск вручную по метке busel-v* работает, как раньше.
+  # При слиянии в main: если выпуска busel-vX.Y.Z (версия из package.json) ещё нет — он создаётся;
+  # если есть, но в нём не хватает файла (например, APK — ключ подписи добавили позже), файл дописывается.
+  # Уже выложенные файлы не заменяются. Выпуск вручную по метке busel-v* работает так же.
   release:
     needs: [build, android]
     if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/busel-v')
@@ -114,37 +115,24 @@ jobs:
         with:
           path: out
           merge-multiple: true
-      - id: auto
-        shell: bash
+      - shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           version=$(node -p "require('./smart-busel/package.json').version")
-          echo "version=$version" >> "$GITHUB_OUTPUT"
-          ls -la out
-          # в выпуск — только подписанный APK (пробную версию людям не раздаём)
-          rm -f out/*-test.apk out/*.aab
-          if [ "${GITHUB_REF}" != "refs/heads/main" ]; then echo "create=false" >> "$GITHUB_OUTPUT"; exit 0; fi
           tag="busel-v$version"
-          echo "tag=$tag" >> "$GITHUB_OUTPUT"
-          if gh release view "$tag" --repo "$GITHUB_REPOSITORY" > /dev/null 2>&1; then
-            echo "Выпуск $tag уже есть — новый не создаётся."
-            echo "create=false" >> "$GITHUB_OUTPUT"
-          else
+          # в выпуск — только установщик и подписанный APK (пробную версию и AAB людям не раздаём)
+          rm -f out/*-test.apk out/*.aab
+          ls -la out
+          if ! gh release view "$tag" --repo "$GITHUB_REPOSITORY" > /dev/null 2>&1; then
             echo "Выпуска $tag ещё нет — создаётся."
-            echo "create=true" >> "$GITHUB_OUTPUT"
+            gh release create "$tag" out/* --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
+              --title "Умный Бусел $version" \
+              --notes "Что нового — в файле smart-busel/README_ДЛЯ_РОДИТЕЛЯ.md, раздел «Что нового в версии $version». Windows — Umny-Busel-Setup-$version.exe, Android — Umny-Busel-$version.apk."
+          else
+            have=$(gh release view "$tag" --repo "$GITHUB_REPOSITORY" --json assets --jq '.assets[].name')
+            for f in out/*; do
+              name=$(basename "$f")
+              if echo "$have" | grep -qxF "$name"; then echo "Уже есть: $name"; else echo "Дописывается: $name"; gh release upload "$tag" "$f" --repo "$GITHUB_REPOSITORY"; fi
+            done
           fi
-      - uses: softprops/action-gh-release@v2
-        if: steps.auto.outputs.create == 'true'
-        with:
-          tag_name: ${{ steps.auto.outputs.tag }}
-          target_commitish: ${{ github.sha }}
-          name: Умный Бусел ${{ steps.auto.outputs.version }}
-          body: |
-            Что нового — в файле smart-busel/README_ДЛЯ_РОДИТЕЛЯ.md, раздел «Что нового в версии ${{ steps.auto.outputs.version }}».
-            Windows — файл Umny-Busel-Setup-${{ steps.auto.outputs.version }}.exe. Android — файл Umny-Busel-${{ steps.auto.outputs.version }}.apk (если его нет, ключ подписи ещё не добавлен).
-          files: out/*
-      - uses: softprops/action-gh-release@v2
-        if: startsWith(github.ref, 'refs/tags/busel-v')
-        with:
-          files: out/*

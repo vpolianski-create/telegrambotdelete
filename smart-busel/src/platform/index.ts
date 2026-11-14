@@ -141,6 +141,16 @@ export function onAppState(handler: (active: boolean) => void): void {
   document.addEventListener('visibilitychange', () => handler(document.visibilityState === 'visible'));
 }
 
+// ——— скачать новую версию (только с GitHub этого репозитория) ———
+const RELEASES = 'https://github.com/vpolianski-create/telegrambotdelete/releases/';
+/** Windows — откроется браузер и скачает установщик; Android — браузер скачает APK, затем «Обновить». */
+export function openDownload(url: string): void {
+  if (!url.startsWith(RELEASES)) return;
+  if (window.busel?.openExternal) { void window.busel.openExternal(url); return; }
+  if (isAndroid()) { window.location.href = url; return; } // Capacitor открывает внешние адреса в браузере
+  window.open(url, '_blank', 'noopener');
+}
+
 // ——— цвет значков в строке состояния ———
 export function applySystemTheme(setting: string, dark: boolean): void {
   window.busel?.setTheme?.(setting); // Windows: заголовок окна того же цвета

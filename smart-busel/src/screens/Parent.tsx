@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { printPage, saveTextFile } from '../platform';
+import { isAndroid, openDownload, printPage, saveTextFile } from '../platform';
+import { useUpdate } from '../update/check';
 import { SyncPanel } from './SyncPanel';
 import { syncService } from '../sync';
 import { Icon, type IconName } from '../components/Icon';
@@ -254,6 +255,23 @@ function Backup() {
   );
 }
 
+/** «Вышла новая версия»: скачать с GitHub и установить поверх (прогресс сохраняется). */
+function UpdateBanner() {
+  const info = useUpdate((s) => s.info);
+  if (!info) return null;
+  return (
+    <section className="rounded-xl3 border border-line bg-ok/15 p-4" aria-live="polite">
+      <p className="mb-1 text-lg font-bold">Вышла новая версия «Умного Бусела»: {info.version}</p>
+      <p className="mb-3 text-sm text-mute">
+        {isAndroid()
+          ? 'Нажмите «Скачать», дождитесь загрузки, откройте файл и нажмите «Обновить». Прогресс сохранится.'
+          : 'Нажмите «Скачать», запустите скачанный установщик — он обновит программу. Прогресс сохранится.'}
+      </p>
+      <button className="min-h-touch rounded-xl2 bg-brand px-5 font-bold text-onbrand" onClick={() => openDownload(info.url)}>Скачать версию {info.version}</button>
+    </section>
+  );
+}
+
 export function Parent() {
   const { settings, updateSettings } = useApp();
   const [pin, setPin] = useState('');
@@ -281,6 +299,7 @@ export function Parent() {
   return (
     <main className="mx-auto flex max-w-3xl flex-col gap-5 p-6">
       <h1 className="text-4xl font-extrabold">Родительский режим</h1>
+      <UpdateBanner />
       {!settings.pinChanged && (
         <div className="rounded-xl3 border border-line bg-warn/15 p-4">
           <p className="mb-2 font-bold">Смените PIN по умолчанию (0000)</p>

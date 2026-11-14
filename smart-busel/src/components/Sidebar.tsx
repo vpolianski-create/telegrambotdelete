@@ -18,11 +18,12 @@ const PARENT: Item = { id: 'parent', icon: 'lock', title: 'Родителям', 
  * показывается подсказкой при наведении и при переходе клавишей Tab.
  * На телефоне (уже 640 px) меню — панель внизу экрана со значками и короткими подписями.
  */
-export function Sidebar({ active, reviewCount, onNavigate }: { active: NavId; reviewCount: number; onNavigate(id: NavId): void }) {
+export function Sidebar({ active, reviewCount, parentBadge, onNavigate }: { active: NavId; reviewCount: number; parentBadge?: boolean; onNavigate(id: NavId): void }) {
   const link = (it: Item) => {
     const on = active === it.id;
     const count = it.id === 'review' && reviewCount > 0 ? reviewCount : 0;
-    const label = count ? `${it.title}: ${count}` : it.title;
+    const dot = it.id === 'parent' && parentBadge; // родителям: вышла новая версия
+    const label = count ? `${it.title}: ${count}` : dot ? `${it.title}: есть новая версия` : it.title;
     return (
       <li key={it.id} className="max-sm:flex-1">
         <button type="button" onClick={() => onNavigate(it.id)} aria-current={on ? 'page' : undefined} aria-label={label}
@@ -30,6 +31,7 @@ export function Sidebar({ active, reviewCount, onNavigate }: { active: NavId; re
           {on && <span aria-hidden className="absolute bottom-3 left-0 top-3 w-[3px] rounded-full bg-brand max-sm:hidden" />}
           <span className="relative flex">
             <Icon name={it.icon} size={24} className={on ? 'text-brandink' : ''} />
+            {dot && <span aria-hidden className="absolute -right-1 -top-1 h-2.5 w-2.5 rounded-full bg-sun" />}
             {count > 0 && <span aria-hidden className="absolute -right-1.5 -top-1.5 hidden h-4 min-w-4 items-center justify-center rounded-full bg-sun px-1 text-[0.65rem] leading-none text-navy max-[1099px]:flex">{count}</span>}
           </span>
           <span className="flex-1 max-[1099px]:hidden">{it.title}</span>

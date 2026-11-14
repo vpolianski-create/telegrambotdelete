@@ -3,8 +3,8 @@ import react from '@vitejs/plugin-react';
 import { readFileSync } from 'node:fs';
 
 const pkg = JSON.parse(readFileSync(new URL('./package.json', import.meta.url), 'utf8')) as { version: string };
-/** Связь наружу — только с Google Firebase (синхронизация; все данные зашифрованы на устройстве). */
-const CONNECT = ['https://identitytoolkit.googleapis.com', 'https://securetoken.googleapis.com', 'https://firestore.googleapis.com'];
+/** Связь наружу — только Google Firebase (синхронизация; данные зашифрованы на устройстве) и GitHub (есть ли новая версия). */
+const CONNECT = ['https://identitytoolkit.googleapis.com', 'https://securetoken.googleapis.com', 'https://firestore.googleapis.com', 'https://api.github.com'];
 
 // В собранном приложении разрешаем загрузку только своих файлов и связь только с Firebase (в режиме разработки политика не нужна).
 const csp = {

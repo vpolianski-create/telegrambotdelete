@@ -85,6 +85,8 @@ declare global {
       load(): Promise<Data | null>; save(d: Data): Promise<void>; setTheme?(theme: string): void;
       /** Секреты синхронизации, зашифрованные средствами Windows. */
       secretGet?(): Promise<string | null>; secretSet?(value: string | null): Promise<void>;
+      /** Открыть ссылку на скачивание новой версии в браузере (только страница выпусков GitHub). */
+      openExternal?(url: string): Promise<void>;
     };
   }
 }

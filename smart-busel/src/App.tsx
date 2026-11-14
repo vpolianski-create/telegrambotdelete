@@ -19,7 +19,8 @@ import { Vocabulary } from './screens/Vocabulary';
 import { Warmup } from './screens/Warmup';
 import { resolveTheme } from './engine/theme';
 import { useApp } from './store/useApp';
-import { applySystemTheme, onBackButton } from './platform';
+import { applySystemTheme, onBackButton, platformName } from './platform';
+import { checkForUpdate, useUpdate } from './update/check';
 import { startAutoSync } from './sync';
 
 type Route =
@@ -57,6 +58,12 @@ export default function App() {
 
   useEffect(() => { void init(); }, [init]);
   useEffect(() => { if (ready) startAutoSync(); }, [ready]);
+  // есть ли новая версия на GitHub (раз в 12 часов; в режиме разработки не проверяем)
+  useEffect(() => {
+    const p = platformName();
+    if (ready && p !== 'web') void checkForUpdate(__APP_VERSION__, p);
+  }, [ready]);
+  const update = useUpdate((s) => s.info);
   useEffect(() => {
     // «Как в Windows»: берём тему системы и следим за её сменой
     const mq = window.matchMedia('(prefers-color-scheme: dark)');
@@ -98,7 +105,7 @@ export default function App() {
   return (
     <>
       <div className="flex h-full max-sm:flex-col">
-        <Sidebar active={NAV[route.name]} reviewCount={reviewCount} onNavigate={(id) => setRoute({ name: id } as Route)} />
+        <Sidebar active={NAV[route.name]} reviewCount={reviewCount} parentBadge={!!update} onNavigate={(id) => setRoute({ name: id } as Route)} />
         <div ref={scroller} className="h-full min-w-0 flex-1 overflow-y-auto overscroll-contain max-sm:min-h-0">
           <AnimatePresence mode="wait">
             <motion.div key={pageKey} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.16 }}>

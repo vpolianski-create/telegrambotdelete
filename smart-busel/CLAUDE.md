@@ -31,6 +31,7 @@ Android: Capacitor 8 (`@capacitor/core|android|filesystem|app|share`, `@capacito
 - `Data.sync` (служебное: deviceId, familyId, baseline, stamps, removed, lastSync) хранится в data.json; в экспорт (`snapshot()`) и в облако не попадает; `importData` его сбрасывает. Новые поля прогресса: решить, как они сливаются (merge.ts), и добавить тест в `tests/sync-merge.test.ts`.
 - Вид на телефоне: всё под `max-sm:` (уже 640 px) — меню внизу (`Sidebar`), поля 1rem, вырезы экрана (`--sat/--sab`… в index.css). Внешний вид на компьютере не менять.
 - Значки Android: `python3 scripts/android-icons.py` (из resources/brand/icon.png).
+- Новая версия: `src/update/check.ts` раз в 12 ч спрашивает GitHub API о выпусках `busel-v*` (репозиторий публичный), родителю — точка на «Родителям» и «Скачать» в родительском режиме; ссылки только `https://github.com/vpolianski-create/telegrambotdelete/releases/` (`openDownload` в platform, IPC `open:external` в Electron). Тест — `tests/update.test.ts`. Job `release` дописывает недостающие файлы в уже созданный выпуск.
 - Сборка APK: `npm run build && npx cap sync android && cd android && ./gradlew assembleDebug` (нужны JDK 21 и Android SDK). Основной путь — GitHub Actions (job `android`): подпись — секреты `ANDROID_KEYSTORE_BASE64`, `ANDROID_KEYSTORE_PASSWORD`, `ANDROID_KEY_ALIAS`, `ANDROID_KEY_PASSWORD`; без них — `…-test.apk`. Версия Android (`versionCode` = мажор·10000 + минор·100 + патч) — из package.json.
 
 ## Команды (из папки smart-busel)
