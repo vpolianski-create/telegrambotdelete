@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Icon } from './Icon';
+import { phoneBottomBar } from './AppBar';
 import { motion } from 'framer-motion';
 import { imageUrl } from '../content/loader';
 import { Visual } from './Visual';
@@ -91,7 +92,7 @@ export function TaskView({ task, scored = true, speakWord, extraBonus = 0, repea
 
   return (
     <div data-task={task.type} {...(import.meta.env.DEV ? { 'data-answer': Array.isArray(task.answer) ? JSON.stringify(task.answer) : String(task.answer) } : {})}
-      className="mx-auto flex w-full max-w-2xl flex-col gap-5 rounded-xl3 bg-card p-6 shadow">
+      className="mx-auto flex w-full max-w-2xl flex-col gap-5 rounded-xl3 bg-card p-6 shadow max-sm:gap-4 max-sm:p-5">
       {(label || note) && (
         <span className="text-sm font-extrabold text-accentink">
           <Icon name={note ? 'review' : task.difficulty === 'bonus' ? 'collection' : 'star'} /> {[note, label].filter(Boolean).join(' · ')}
@@ -158,7 +159,7 @@ export function TaskView({ task, scored = true, speakWord, extraBonus = 0, repea
 
       {!done && hintList.length > 0 && (
         <div className="flex flex-col gap-2">
-          {hints > 0 && <div className="flex items-center gap-3"><Mascot size={88} mood="think" /><p className="font-bold text-mute">Бусел подсказывает:</p></div>}
+          {hints > 0 && <div className="flex items-center gap-3"><span className="max-sm:hidden"><Mascot size={88} mood="think" /></span><span className="sm:hidden"><Mascot size={48} mood="think" /></span><p className="font-bold text-mute">Бусел подсказывает:</p></div>}
           {hintList.slice(0, hints).map((h, i) => (
             h.kind === 'card'
               ? <div key={i} className="rounded-xl2 bg-warn/15 px-4 py-3"><p className="mb-1 text-sm font-extrabold text-accentink"><Icon name="book" /> Из урока</p><p><Rich text={h.text} /></p></div>
@@ -175,7 +176,8 @@ export function TaskView({ task, scored = true, speakWord, extraBonus = 0, repea
       {done && (
         <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col gap-3" role="status">
           <div className="flex items-center gap-3">
-            <Mascot size={96} mood={status === 'right' ? 'cheer' : 'support'} />
+            <span className="max-sm:hidden"><Mascot size={96} mood={status === 'right' ? 'cheer' : 'support'} /></span>
+            <span className="sm:hidden"><Mascot size={56} mood={status === 'right' ? 'cheer' : 'support'} /></span>
             <div>
               <p className="text-xl font-extrabold" style={{ color: status === 'right' ? 'var(--ok-ink)' : 'var(--accent-ink)' }}>
                 {status === 'right' ? phrase.ok : phrase.no}
@@ -201,10 +203,12 @@ export function TaskView({ task, scored = true, speakWord, extraBonus = 0, repea
                 : <p>{task.explanation[0]}</p>}
             </>
           )}
-          <button autoFocus onClick={() => onNext({ correct: status === 'right', hints, points: status === 'right' ? points : 0 })}
-            className="self-end rounded-xl2 bg-brand px-8 text-lg font-extrabold text-onbrand active:scale-95">
-            Дальше <Icon name="next" />
-          </button>
+          <div className={`flex justify-end ${phoneBottomBar}`}>
+            <button autoFocus onClick={() => onNext({ correct: status === 'right', hints, points: status === 'right' ? points : 0 })}
+              className="rounded-xl2 bg-brand px-8 text-lg font-extrabold text-onbrand active:scale-95 max-sm:min-h-[56px] max-sm:flex-1">
+              Дальше <Icon name="next" />
+            </button>
+          </div>
         </motion.div>
       )}
     </div>

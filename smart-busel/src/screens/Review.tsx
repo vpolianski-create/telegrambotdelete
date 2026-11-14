@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { Icon } from '../components/Icon';
+import { AppBar } from '../components/AppBar';
 import { Mascot } from '../components/Mascot';
 import { TaskView, type TaskResult } from '../components/TaskView';
 import { findTopic } from '../content/loader';
@@ -14,8 +15,10 @@ export function Review({ onBack }: { onBack(): void }) {
   const [fixed, setFixed] = useState(0);
 
   const shell = (body: React.ReactNode) => (
-    <main className="mx-auto flex max-w-3xl flex-col gap-5 p-6">
-      <div className="flex items-center gap-3">
+    <main className="mx-auto flex max-w-3xl flex-col gap-5 p-6 max-sm:gap-4">
+      <AppBar title="Работа над ошибками" subtitle={i < list.length ? `${i + 1} из ${list.length}` : undefined} onBack={onBack} close
+        progress={list.length ? Math.min(1, i / list.length) : 1} />
+      <div className="flex items-center gap-3 max-sm:hidden">
         <button onClick={onBack} className="rounded-xl2 bg-card px-5 shadow"><Icon name="close" /> Выйти</button>
         <h1 className="flex-1 text-lg font-extrabold text-mute">Работа над ошибками{i < list.length ? ` · ${i + 1}/${list.length}` : ''}</h1>
       </div>
@@ -25,7 +28,7 @@ export function Review({ onBack }: { onBack(): void }) {
 
   if (list.length === 0 || i >= list.length) {
     return shell(
-      <div className="flex flex-col items-center gap-4 rounded-xl3 bg-card p-8 text-center shadow">
+      <div className="flex flex-col items-center gap-4 rounded-xl3 bg-card p-8 text-center shadow max-sm:p-5">
         <Mascot size={140} mood={list.length === 0 ? 'read' : 'cheer'} />
         <h2 className="text-3xl font-extrabold">{list.length === 0 ? 'Ошибок для повторения нет!' : `${settings.name}, готово!`}</h2>
         {list.length > 0 && <p className="text-xl">Исправлено: <b>{fixed}</b> из {list.length}</p>}

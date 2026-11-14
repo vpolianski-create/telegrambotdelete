@@ -1,5 +1,6 @@
 import { useMemo, useRef, useState } from 'react';
 import { Icon } from '../components/Icon';
+import { AppBar } from '../components/AppBar';
 import { Mascot } from '../components/Mascot';
 import { TaskView, type TaskResult } from '../components/TaskView';
 import { warmupItems } from '../content/warmup';
@@ -16,8 +17,10 @@ export function Warmup({ onBack }: { onBack(): void }) {
   const byTopic = useRef<Record<string, boolean>>({});
 
   const shell = (body: React.ReactNode) => (
-    <main className="mx-auto flex max-w-3xl flex-col gap-5 p-6">
-      <div className="flex items-center gap-3">
+    <main className="mx-auto flex max-w-3xl flex-col gap-5 p-6 max-sm:gap-4">
+      <AppBar title="Разминка дня" subtitle={i < list.length ? `${i + 1} из ${list.length}` : undefined} onBack={onBack} close
+        progress={list.length ? Math.min(1, i / list.length) : 1} />
+      <div className="flex items-center gap-3 max-sm:hidden">
         <button onClick={onBack} className="rounded-xl2 bg-card px-5 shadow"><Icon name="close" /> Выйти</button>
         <h1 className="flex-1 text-lg font-extrabold text-mute">Разминка дня{i < list.length ? ` · ${i + 1}/${list.length}` : ''}</h1>
       </div>
@@ -27,7 +30,7 @@ export function Warmup({ onBack }: { onBack(): void }) {
 
   if (list.length === 0 || i >= list.length) {
     return shell(
-      <div className="flex flex-col items-center gap-4 rounded-xl3 bg-card p-8 text-center shadow">
+      <div className="flex flex-col items-center gap-4 rounded-xl3 bg-card p-8 text-center shadow max-sm:p-5">
         <Mascot size={140} mood={list.length === 0 ? 'read' : 'cheer'} />
         <h2 className="text-3xl font-extrabold">{list.length === 0 ? 'Сегодня повторять нечего!' : `${settings.name}, разминка готова!`}</h2>
         {list.length === 0 && <p className="text-mute">Пройденные темы вернутся сюда через несколько дней — так знания запоминаются надолго.</p>}

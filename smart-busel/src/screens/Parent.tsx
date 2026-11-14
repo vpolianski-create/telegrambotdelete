@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { openDownload, printPage, saveTextFile } from '../platform';
+import { isAndroid, openDownload, printPage, saveTextFile } from '../platform';
 import { useAutoUpdate } from '../update/auto';
 import { autoUpdateActions } from '../update';
 import { SyncPanel } from './SyncPanel';
@@ -202,7 +202,7 @@ function SettingsTab() {
         <div className="flex flex-col gap-3">
           <label className="flex items-center justify-between">Тема
             <select value={s.theme} onChange={(e) => updateSettings({ theme: e.target.value as ThemeSetting })} className="rounded-xl2 border p-2">
-              <option value="system">Как в Windows</option><option value="light">Светлая</option><option value="dark">Тёмная</option>
+              <option value="system">{isAndroid() ? 'Как в системе' : 'Как в Windows'}</option><option value="light">Светлая</option><option value="dark">Тёмная</option>
             </select>
           </label>
           <label className="flex items-center justify-between">Размер шрифта

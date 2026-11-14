@@ -37,6 +37,9 @@ type Route =
   | { name: 'warmup' }
   | { name: 'parent' };
 
+/** На телефоне во время урока и повторения нижнее меню скрыто — больше места, ничего не нажать случайно. */
+const IMMERSIVE: Route['name'][] = ['lesson', 'warmup', 'review'];
+
 /** Куда ведёт «Назад» с каждого экрана (главный экран — некуда). */
 const BACK: Partial<Record<Route['name'], (r: Route) => Route>> = {
   subjects: () => ({ name: 'home' }),
@@ -103,7 +106,7 @@ export default function App() {
   return (
     <>
       <div className="flex h-full max-sm:flex-col">
-        <Sidebar active={NAV[route.name]} reviewCount={reviewCount} parentBadge={parentBadge} onNavigate={(id) => setRoute({ name: id } as Route)} />
+        <Sidebar hiddenOnPhone={IMMERSIVE.includes(route.name)} active={NAV[route.name]} reviewCount={reviewCount} parentBadge={parentBadge} onNavigate={(id) => setRoute({ name: id } as Route)} />
         <div ref={scroller} className="h-full min-w-0 flex-1 overflow-y-auto overscroll-contain max-sm:min-h-0">
           <AnimatePresence mode="wait">
             <motion.div key={pageKey} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.16 }}>

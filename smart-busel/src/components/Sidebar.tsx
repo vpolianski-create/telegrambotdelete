@@ -18,7 +18,7 @@ const PARENT: Item = { id: 'parent', icon: 'lock', title: 'Родителям', 
  * показывается подсказкой при наведении и при переходе клавишей Tab.
  * На телефоне (уже 640 px) меню — панель внизу экрана со значками и короткими подписями.
  */
-export function Sidebar({ active, reviewCount, parentBadge, onNavigate }: { active: NavId; reviewCount: number; parentBadge?: boolean; onNavigate(id: NavId): void }) {
+export function Sidebar({ active, reviewCount, parentBadge, hiddenOnPhone, onNavigate }: { active: NavId; reviewCount: number; parentBadge?: boolean; hiddenOnPhone?: boolean; onNavigate(id: NavId): void }) {
   const link = (it: Item) => {
     const on = active === it.id;
     const count = it.id === 'review' && reviewCount > 0 ? reviewCount : 0;
@@ -44,7 +44,7 @@ export function Sidebar({ active, reviewCount, parentBadge, onNavigate }: { acti
     );
   };
   return (
-    <nav aria-label="Главное меню" className="safe-bottom no-print flex h-full w-[17rem] shrink-0 flex-col gap-4 border-r border-line bg-side p-3 max-[1099px]:w-[4.5rem] max-sm:order-last max-sm:h-auto max-sm:w-full max-sm:flex-row max-sm:gap-0 max-sm:border-r-0 max-sm:border-t max-sm:px-1 max-sm:pt-1">
+    <nav aria-label="Главное меню" className={`${hiddenOnPhone ? 'max-sm:hidden ' : ''}safe-bottom no-print flex h-full w-[17rem] shrink-0 flex-col gap-4 border-r border-line bg-side p-3 max-[1099px]:w-[4.5rem] max-sm:order-last max-sm:h-auto max-sm:w-full max-sm:flex-row max-sm:gap-0 max-sm:border-r-0 max-sm:border-t max-sm:px-1 max-sm:pt-1`}>
       <div className="flex items-center gap-3 px-1 py-2 max-[1099px]:justify-center max-[1099px]:px-0 max-sm:hidden">
         <img src={markUrl} alt="" width={40} height={40} draggable={false} className="h-10 w-10 shrink-0 rounded-xl2" />
         <span className="font-display text-lg font-bold leading-tight max-[1099px]:hidden">Умный Бусел</span>
