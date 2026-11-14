@@ -5,7 +5,7 @@ import { wordSets } from '../content/loader';
 import type { Task, Word } from '../content/schema';
 import { boxCounts, LEARNED_BOX, pickSession } from '../engine/leitner';
 import { shuffle } from '../engine/rng';
-import { hasEnglishVoice, speak } from '../audio/speech';
+import { checkVoice, hasEnglishVoice, speak, voiceHint } from '../audio/speech';
 import { sentenceTask } from '../engine/variety';
 import { todayStr, useApp } from '../store/useApp';
 import { Mascot } from '../components/Mascot';
@@ -199,6 +199,7 @@ export function Vocabulary({ onBack }: { onBack(): void }) {
   useEffect(() => {
     const check = () => setVoice(hasEnglishVoice());
     check();
+    void checkVoice().then(setVoice);
     window.speechSynthesis?.addEventListener('voiceschanged', check);
     return () => window.speechSynthesis?.removeEventListener('voiceschanged', check);
   }, []);
@@ -217,7 +218,7 @@ export function Vocabulary({ onBack }: { onBack(): void }) {
           </div>
           {!voice && (
             <p className="rounded-xl2 bg-warn/15 p-3">
-              <Icon name="soundOff" /> Английский голос не найден. Родителям: Параметры Windows → Время и язык → Язык и регион → добавить English (United States) → Речь.
+              <Icon name="soundOff" /> Родителям: {voiceHint()}
             </p>
           )}
           <section className="rounded-xl3 bg-card p-5 shadow">

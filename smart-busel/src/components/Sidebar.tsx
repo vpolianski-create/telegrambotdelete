@@ -3,50 +3,54 @@ import { Icon, type IconName } from './Icon';
 
 export type NavId = 'home' | 'subjects' | 'plan' | 'review' | 'collection' | 'parent';
 
-interface Item { id: NavId; icon: IconName; title: string }
+interface Item { id: NavId; icon: IconName; title: string; short: string }
 const MAIN: Item[] = [
-  { id: 'home', icon: 'home', title: 'Главная' },
-  { id: 'subjects', icon: 'subjects', title: 'Предметы' },
-  { id: 'plan', icon: 'plan', title: 'Мой план' },
-  { id: 'review', icon: 'review', title: 'Работа над ошибками' },
-  { id: 'collection', icon: 'collection', title: 'Коллекция' },
+  { id: 'home', icon: 'home', title: 'Главная', short: 'Главная' },
+  { id: 'subjects', icon: 'subjects', title: 'Предметы', short: 'Предметы' },
+  { id: 'plan', icon: 'plan', title: 'Мой план', short: 'План' },
+  { id: 'review', icon: 'review', title: 'Работа над ошибками', short: 'Ошибки' },
+  { id: 'collection', icon: 'collection', title: 'Коллекция', short: 'Коллекция' },
 ];
-const PARENT: Item = { id: 'parent', icon: 'lock', title: 'Родителям' };
+const PARENT: Item = { id: 'parent', icon: 'lock', title: 'Родителям', short: 'Родителям' };
 
 /**
  * Боковое меню. В окне уже 1100 px сворачивается до значков: название пункта
  * показывается подсказкой при наведении и при переходе клавишей Tab.
+ * На телефоне (уже 640 px) меню — панель внизу экрана со значками и короткими подписями.
  */
-export function Sidebar({ active, reviewCount, onNavigate }: { active: NavId; reviewCount: number; onNavigate(id: NavId): void }) {
+export function Sidebar({ active, reviewCount, parentBadge, onNavigate }: { active: NavId; reviewCount: number; parentBadge?: boolean; onNavigate(id: NavId): void }) {
   const link = (it: Item) => {
     const on = active === it.id;
     const count = it.id === 'review' && reviewCount > 0 ? reviewCount : 0;
-    const label = count ? `${it.title}: ${count}` : it.title;
+    const dot = it.id === 'parent' && parentBadge; // родителям: нужно разрешить автообновление или подтвердить его
+    const label = count ? `${it.title}: ${count}` : dot ? `${it.title}: нужно ваше действие` : it.title;
     return (
-      <li key={it.id}>
+      <li key={it.id} className="max-sm:flex-1">
         <button type="button" onClick={() => onNavigate(it.id)} aria-current={on ? 'page' : undefined} aria-label={label}
-          className={`group relative flex w-full items-center gap-3 rounded-xl2 px-3 text-left font-bold max-[1099px]:justify-center max-[1099px]:px-0 ${on ? 'bg-hover text-ink' : 'text-mute hover:bg-hover hover:text-ink'}`}>
-          {on && <span aria-hidden className="absolute bottom-3 left-0 top-3 w-[3px] rounded-full bg-brand" />}
+          className={`group relative flex w-full items-center gap-3 rounded-xl2 px-3 text-left font-bold max-[1099px]:justify-center max-[1099px]:px-0 max-sm:flex-col max-sm:gap-0.5 max-sm:py-1.5 ${on ? 'bg-hover text-ink' : 'text-mute hover:bg-hover hover:text-ink'}`}>
+          {on && <span aria-hidden className="absolute bottom-3 left-0 top-3 w-[3px] rounded-full bg-brand max-sm:hidden" />}
           <span className="relative flex">
             <Icon name={it.icon} size={24} className={on ? 'text-brandink' : ''} />
+            {dot && <span aria-hidden className="absolute -right-1 -top-1 h-2.5 w-2.5 rounded-full bg-sun" />}
             {count > 0 && <span aria-hidden className="absolute -right-1.5 -top-1.5 hidden h-4 min-w-4 items-center justify-center rounded-full bg-sun px-1 text-[0.65rem] leading-none text-navy max-[1099px]:flex">{count}</span>}
           </span>
           <span className="flex-1 max-[1099px]:hidden">{it.title}</span>
+          <span aria-hidden className={`hidden max-w-full truncate text-[0.62rem] leading-tight max-sm:block ${on ? 'text-brandink' : ''}`}>{it.short}</span>
           {count > 0 && <span aria-hidden className="rounded-full bg-sun px-2 py-0.5 text-sm text-navy max-[1099px]:hidden">{count}</span>}
           {/* подсказка в свёрнутом меню */}
-          <span aria-hidden className="pointer-events-none absolute left-full top-1/2 z-30 ml-2 hidden -translate-y-1/2 whitespace-nowrap rounded-xl2 border border-line bg-card px-3 py-2 text-sm text-ink shadow-xl max-[1099px]:group-hover:block max-[1099px]:group-focus-visible:block">{label}</span>
+          <span aria-hidden className="pointer-events-none absolute left-full top-1/2 z-30 ml-2 hidden -translate-y-1/2 whitespace-nowrap rounded-xl2 border border-line bg-card px-3 py-2 text-sm text-ink shadow-xl max-[1099px]:group-hover:block max-[1099px]:group-focus-visible:block max-sm:!hidden">{label}</span>
         </button>
       </li>
     );
   };
   return (
-    <nav aria-label="Главное меню" className="no-print flex h-full w-[17rem] shrink-0 flex-col gap-4 border-r border-line bg-side p-3 max-[1099px]:w-[4.5rem]">
-      <div className="flex items-center gap-3 px-1 py-2 max-[1099px]:justify-center max-[1099px]:px-0">
+    <nav aria-label="Главное меню" className="safe-bottom no-print flex h-full w-[17rem] shrink-0 flex-col gap-4 border-r border-line bg-side p-3 max-[1099px]:w-[4.5rem] max-sm:order-last max-sm:h-auto max-sm:w-full max-sm:flex-row max-sm:gap-0 max-sm:border-r-0 max-sm:border-t max-sm:px-1 max-sm:pt-1">
+      <div className="flex items-center gap-3 px-1 py-2 max-[1099px]:justify-center max-[1099px]:px-0 max-sm:hidden">
         <img src={markUrl} alt="" width={40} height={40} draggable={false} className="h-10 w-10 shrink-0 rounded-xl2" />
         <span className="font-display text-lg font-bold leading-tight max-[1099px]:hidden">Умный Бусел</span>
       </div>
-      <ul className="flex flex-1 flex-col gap-1">{MAIN.map(link)}</ul>
-      <ul className="flex flex-col gap-1 border-t border-line pt-3">{link(PARENT)}</ul>
+      <ul className="flex flex-1 flex-col gap-1 max-sm:flex-[5] max-sm:flex-row max-sm:gap-0">{MAIN.map(link)}</ul>
+      <ul className="flex flex-col gap-1 border-t border-line pt-3 max-sm:flex-1 max-sm:flex-row max-sm:border-t-0 max-sm:pt-0">{link(PARENT)}</ul>
     </nav>
   );
 }

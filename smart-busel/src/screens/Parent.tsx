@@ -1,16 +1,21 @@
 import { useState } from 'react';
+import { openDownload, printPage, saveTextFile } from '../platform';
+import { useAutoUpdate } from '../update/auto';
+import { autoUpdateActions } from '../update';
+import { SyncPanel } from './SyncPanel';
+import { syncService } from '../sync';
 import { Icon, type IconName } from '../components/Icon';
 import type { ThemeSetting } from '../engine/theme';
 import { allTopics, subjects } from '../content/loader';
 import { addDays } from '../engine/leitner';
 import { weekReport } from '../engine/report';
 import { statusCounts, topicStatus } from '../engine/status';
-import { hasEnglishVoice } from '../audio/speech';
+import { hasEnglishVoice, voiceHint } from '../audio/speech';
 import { Logo } from '../components/Logo';
 import { snapshot, todayStr, useApp } from '../store/useApp';
 
-type Tab = 'stats' | 'report' | 'rewards' | 'settings' | 'backup';
-const TABS: [Tab, string][] = [['stats', 'Статистика'], ['report', 'Отчёт за неделю'], ['rewards', 'Награды'], ['settings', 'Настройки'], ['backup', 'Копия']];
+type Tab = 'stats' | 'report' | 'rewards' | 'settings' | 'sync' | 'backup';
+const TABS: [Tab, string][] = [['stats', 'Статистика'], ['report', 'Отчёт за неделю'], ['rewards', 'Награды'], ['settings', 'Настройки'], ['sync', 'Синхронизация'], ['backup', 'Копия']];
 
 const Card = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <section className="rounded-xl3 bg-card p-5 shadow">
@@ -107,7 +112,7 @@ function Report() {
       <div className="no-print flex flex-wrap items-center gap-2">
         <button onClick={() => setShift(shift + 1)} className="rounded-xl2 bg-card px-4 shadow"><Icon name="back" /> Раньше</button>
         <button disabled={shift === 0} onClick={() => setShift(shift - 1)} className="rounded-xl2 bg-card px-4 shadow disabled:opacity-40">Позже <Icon name="next" /></button>
-        <button onClick={() => window.print()} className="rounded-xl2 bg-brand px-5 text-onbrand"><Icon name="print" /> Распечатать</button>
+        <button onClick={() => void printPage()} className="rounded-xl2 bg-brand px-5 text-onbrand"><Icon name="print" /> Распечатать</button>
         <button onClick={() => { void navigator.clipboard?.writeText(text).then(() => setCopied(true)); }} className="rounded-xl2 bg-soft px-5">{copied ? <><Icon name="check" /> Скопировано</> : 'Скопировать текст'}</button>
       </div>
       <div className="print-area flex flex-col gap-4 rounded-xl3 bg-card p-5 shadow">
@@ -208,7 +213,7 @@ function SettingsTab() {
           <label className="flex items-center justify-between">Звук
             <input type="checkbox" checked={s.sound} onChange={(e) => updateSettings({ sound: e.target.checked })} className="h-6 w-6" />
           </label>
-          {!hasEnglishVoice() && <p className="text-sm text-mute">Английский голос не найден: Параметры Windows → Время и язык → Язык и регион → добавить English (United States).</p>}
+          {!hasEnglishVoice() && <p className="text-sm text-mute">{voiceHint()}</p>}
         </div>
       </Card>
       <Card title="Смена PIN">
@@ -225,14 +230,11 @@ function Backup() {
   const store = useApp();
   const [msg, setMsg] = useState('');
   const exportData = () => {
-    const data = snapshot();
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' }));
-    a.download = `umny-busel-${todayStr()}.json`;
-    a.click();
+    void saveTextFile(`umny-busel-${todayStr()}.json`, JSON.stringify(snapshot(), null, 2)).catch(() => setMsg('Не получилось сохранить файл'));
   };
   const importData = async (f: File | undefined) => {
     if (!f) return;
+    if (await syncService.enabled()) { setMsg('Сначала отключите синхронизацию (раздел «Синхронизация»), потом загрузите копию.'); return; }
     try {
       const raw = JSON.parse(await f.text());
       if (typeof raw.points !== 'number') throw new Error('bad');
@@ -251,6 +253,61 @@ function Backup() {
         {msg && <span className="font-bold">{msg}</span>}
       </div>
     </Card>
+  );
+}
+
+/**
+ * «Обновления»: всё происходит само; родителю — состояние и, на Android, один раз «Разрешить».
+ * Показывается вверху родительского режима, только когда есть что сказать.
+ */
+function AutoUpdateCard() {
+  const u = useAutoUpdate();
+  if (u.kind === 'none') return null;
+  const box = (tone: string, children: React.ReactNode) => (
+    <section className={`rounded-xl3 border border-line p-4 ${tone}`} aria-live="polite">{children}</section>
+  );
+  const btn = 'min-h-touch rounded-xl2 px-5 font-bold';
+  if (u.kind === 'android' && u.canInstall === false) {
+    return box('bg-warn/15', <>
+      <p className="mb-1 text-lg font-bold">Включите автообновление (один раз)</p>
+      <p className="mb-3 text-sm text-mute">Нажмите «Разрешить», включите переключатель «Разрешить установку из этого источника» и вернитесь назад. После этого новые версии будут ставиться сами, когда приложение свёрнуто.</p>
+      <button className={`${btn} bg-brand text-onbrand`} onClick={() => void autoUpdateActions.openPermission()}>Разрешить</button>
+    </>);
+  }
+  if (u.state === 'ready') {
+    return box('bg-ok/15', <>
+      <p className="mb-1 text-lg font-bold">Новая версия {u.version} готова к установке</p>
+      <p className="mb-3 text-sm text-mute">
+        {u.kind === 'windows'
+          ? 'Она установится сама, когда программу закроют. Можно и сейчас — программа перезапустится. Прогресс сохранится.'
+          : u.needsConfirm
+            ? 'Телефон просит подтвердить: нажмите «Обновить сейчас», затем «Обновить». Прогресс сохранится.'
+            : 'Она установится сама, когда приложение свернут. Можно и сейчас — приложение закроется, откройте его снова. Прогресс сохранится.'}
+      </p>
+      <button className={`${btn} bg-brand text-onbrand`} onClick={() => void autoUpdateActions.installNow()}>{u.kind === 'windows' ? 'Перезапустить и обновить' : 'Обновить сейчас'}</button>
+    </>);
+  }
+  if (u.state === 'downloading') {
+    return box('bg-soft', <p className="font-bold">Скачивается новая версия {u.version}{u.percent ? ` — ${u.percent}%` : ''}…</p>);
+  }
+  if (u.state === 'error' && u.kind === 'android' && u.url) {
+    return box('bg-soft', <>
+      <p className="mb-2">Новую версию {u.version} не удалось скачать автоматически (попробуем ещё раз позже).</p>
+      <button className={`${btn} bg-soft`} onClick={() => openDownload(u.url!)}>Скачать вручную</button>
+    </>);
+  }
+  return null;
+}
+
+/** Версия программы и «Проверить обновления» (обновления ставятся сами). */
+function VersionLine() {
+  const u = useAutoUpdate();
+  if (u.kind === 'none') return <p className="text-sm text-mute">Версия {__APP_VERSION__}</p>;
+  return (
+    <p className="flex flex-wrap items-center gap-3 text-sm text-mute">
+      Версия {__APP_VERSION__} · обновления ставятся автоматически{u.state === 'latest' ? ' · установлена последняя версия' : ''}
+      {u.kind === 'android' && <button className="underline" onClick={() => void autoUpdateActions.checkNow()}>Проверить сейчас</button>}
+    </p>
   );
 }
 
@@ -281,6 +338,7 @@ export function Parent() {
   return (
     <main className="mx-auto flex max-w-3xl flex-col gap-5 p-6">
       <h1 className="text-4xl font-extrabold">Родительский режим</h1>
+      <AutoUpdateCard />
       {!settings.pinChanged && (
         <div className="rounded-xl3 border border-line bg-warn/15 p-4">
           <p className="mb-2 font-bold">Смените PIN по умолчанию (0000)</p>
@@ -298,7 +356,9 @@ export function Parent() {
       {tab === 'report' && <Report />}
       {tab === 'rewards' && <Rewards />}
       {tab === 'settings' && <SettingsTab />}
+      {tab === 'sync' && <SyncPanel />}
       {tab === 'backup' && <Backup />}
+      <VersionLine />
     </main>
   );
 }

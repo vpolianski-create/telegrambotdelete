@@ -1,0 +1,19 @@
+{
+  "appId": "by.smartbusel.app",
+  "appName": "Умный Бусел",
+  "webDir": "dist",
+  "loggingBehavior": "debug",
+  "android": {
+    "allowMixedContent": false,
+    "captureInput": false,
+    "webContentsDebuggingEnabled": false,
+    "minWebViewVersion": 100,
+    "backgroundColor": "#f4f6fc"
+  },
+  "plugins": {
+    "SystemBars": {
+      "insetsHandling": "css",
+      "initialViewportFitValueHint": "cover"
+    }
+  }
+}

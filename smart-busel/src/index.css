@@ -102,3 +102,22 @@ input::placeholder { color: var(--mute); opacity: 0.8; }
   .print-area { position: absolute; left: 0; top: 0; width: 100%; box-shadow: none !important; }
   .no-print { display: none !important; }
 }
+
+/* ——— Телефоны и планшеты (Android): вырезы экрана и системные панели ———
+   Capacitor передаёт отступы в --safe-area-inset-*; в Windows они равны нулю, и ничего не меняется. */
+:root {
+  --sat: var(--safe-area-inset-top, env(safe-area-inset-top, 0px));
+  --sar: var(--safe-area-inset-right, env(safe-area-inset-right, 0px));
+  --sab: var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px));
+  --sal: var(--safe-area-inset-left, env(safe-area-inset-left, 0px));
+}
+#root { padding: var(--sat) var(--sar) var(--sab) var(--sal); box-sizing: border-box; }
+@media (max-width: 639px) {
+  /* нижняя панель меню сама уходит под системную полоску жестов */
+  #root { padding-bottom: 0; }
+  .safe-bottom { padding-bottom: calc(var(--sab) + 0.25rem); }
+  /* на узком экране — поуже поля у экранов */
+  #root main { padding: 1rem; }
+}
+/* касания: без серой вспышки и без масштабирования двойным касанием */
+html { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }

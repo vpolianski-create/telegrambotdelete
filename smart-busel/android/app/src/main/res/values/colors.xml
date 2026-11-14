@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- как цвета фона (bg) и бренда (brand) в src/index.css -->
+    <color name="app_background">#F4F6FC</color>
+    <color name="colorPrimary">#101E50</color>
+    <color name="colorPrimaryDark">#101E50</color>
+    <color name="colorAccent">#F59E0B</color>
+</resources>
