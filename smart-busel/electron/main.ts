@@ -2,6 +2,7 @@ import { app, BrowserWindow, ipcMain, nativeTheme, shell } from 'electron';
 import path from 'node:path';
 import { backupOnStart, loadData, writeJson } from './store';
 import { getSecret, setSecret } from './secret';
+import { startAutoUpdate } from './updater';
 
 const DATA = 'data.json';
 const RELEASES = 'https://github.com/vpolianski-create/telegrambotdelete/releases/';
@@ -46,6 +47,7 @@ app.whenReady().then(() => {
   });
   nativeTheme.on('updated', () => BrowserWindow.getAllWindows().forEach((w) => w.setBackgroundColor(windowBg())));
   createWindow();
+  startAutoUpdate(); // автообновление с GitHub (только в установленной программе)
 });
 
 app.on('window-all-closed', () => app.quit());

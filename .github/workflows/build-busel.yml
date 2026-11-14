@@ -31,7 +31,11 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: umny-busel-installer
-          path: smart-busel/release/Umny-Busel-Setup-*.exe
+          # latest.yml — для автообновления на Windows (версия, имя файла и контрольная сумма SHA-512)
+          path: |
+            smart-busel/release/Umny-Busel-Setup-*.exe
+            smart-busel/release/latest.yml
+          if-no-files-found: error
 
   # ——— Android: APK (установить на телефон) и AAB (для Google Play) ———
   android:

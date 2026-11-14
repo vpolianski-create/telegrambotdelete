@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { isAndroid, openDownload, printPage, saveTextFile } from '../platform';
-import { useUpdate } from '../update/check';
+import { openDownload, printPage, saveTextFile } from '../platform';
+import { useAutoUpdate } from '../update/auto';
+import { autoUpdateActions } from '../update';
 import { SyncPanel } from './SyncPanel';
 import { syncService } from '../sync';
 import { Icon, type IconName } from '../components/Icon';
@@ -255,20 +256,58 @@ function Backup() {
   );
 }
 
-/** «Вышла новая версия»: скачать с GitHub и установить поверх (прогресс сохраняется). */
-function UpdateBanner() {
-  const info = useUpdate((s) => s.info);
-  if (!info) return null;
-  return (
-    <section className="rounded-xl3 border border-line bg-ok/15 p-4" aria-live="polite">
-      <p className="mb-1 text-lg font-bold">Вышла новая версия «Умного Бусела»: {info.version}</p>
+/**
+ * «Обновления»: всё происходит само; родителю — состояние и, на Android, один раз «Разрешить».
+ * Показывается вверху родительского режима, только когда есть что сказать.
+ */
+function AutoUpdateCard() {
+  const u = useAutoUpdate();
+  if (u.kind === 'none') return null;
+  const box = (tone: string, children: React.ReactNode) => (
+    <section className={`rounded-xl3 border border-line p-4 ${tone}`} aria-live="polite">{children}</section>
+  );
+  const btn = 'min-h-touch rounded-xl2 px-5 font-bold';
+  if (u.kind === 'android' && u.canInstall === false) {
+    return box('bg-warn/15', <>
+      <p className="mb-1 text-lg font-bold">Включите автообновление (один раз)</p>
+      <p className="mb-3 text-sm text-mute">Нажмите «Разрешить», включите переключатель «Разрешить установку из этого источника» и вернитесь назад. После этого новые версии будут ставиться сами, когда приложение свёрнуто.</p>
+      <button className={`${btn} bg-brand text-onbrand`} onClick={() => void autoUpdateActions.openPermission()}>Разрешить</button>
+    </>);
+  }
+  if (u.state === 'ready') {
+    return box('bg-ok/15', <>
+      <p className="mb-1 text-lg font-bold">Новая версия {u.version} готова к установке</p>
       <p className="mb-3 text-sm text-mute">
-        {isAndroid()
-          ? 'Нажмите «Скачать», дождитесь загрузки, откройте файл и нажмите «Обновить». Прогресс сохранится.'
-          : 'Нажмите «Скачать», запустите скачанный установщик — он обновит программу. Прогресс сохранится.'}
+        {u.kind === 'windows'
+          ? 'Она установится сама, когда программу закроют. Можно и сейчас — программа перезапустится. Прогресс сохранится.'
+          : u.needsConfirm
+            ? 'Телефон просит подтвердить: нажмите «Обновить сейчас», затем «Обновить». Прогресс сохранится.'
+            : 'Она установится сама, когда приложение свернут. Можно и сейчас — приложение закроется, откройте его снова. Прогресс сохранится.'}
       </p>
-      <button className="min-h-touch rounded-xl2 bg-brand px-5 font-bold text-onbrand" onClick={() => openDownload(info.url)}>Скачать версию {info.version}</button>
-    </section>
+      <button className={`${btn} bg-brand text-onbrand`} onClick={() => void autoUpdateActions.installNow()}>{u.kind === 'windows' ? 'Перезапустить и обновить' : 'Обновить сейчас'}</button>
+    </>);
+  }
+  if (u.state === 'downloading') {
+    return box('bg-soft', <p className="font-bold">Скачивается новая версия {u.version}{u.percent ? ` — ${u.percent}%` : ''}…</p>);
+  }
+  if (u.state === 'error' && u.kind === 'android' && u.url) {
+    return box('bg-soft', <>
+      <p className="mb-2">Новую версию {u.version} не удалось скачать автоматически (попробуем ещё раз позже).</p>
+      <button className={`${btn} bg-soft`} onClick={() => openDownload(u.url!)}>Скачать вручную</button>
+    </>);
+  }
+  return null;
+}
+
+/** Версия программы и «Проверить обновления» (обновления ставятся сами). */
+function VersionLine() {
+  const u = useAutoUpdate();
+  if (u.kind === 'none') return <p className="text-sm text-mute">Версия {__APP_VERSION__}</p>;
+  return (
+    <p className="flex flex-wrap items-center gap-3 text-sm text-mute">
+      Версия {__APP_VERSION__} · обновления ставятся автоматически{u.state === 'latest' ? ' · установлена последняя версия' : ''}
+      {u.kind === 'android' && <button className="underline" onClick={() => void autoUpdateActions.checkNow()}>Проверить сейчас</button>}
+    </p>
   );
 }
 
@@ -299,7 +338,7 @@ export function Parent() {
   return (
     <main className="mx-auto flex max-w-3xl flex-col gap-5 p-6">
       <h1 className="text-4xl font-extrabold">Родительский режим</h1>
-      <UpdateBanner />
+      <AutoUpdateCard />
       {!settings.pinChanged && (
         <div className="rounded-xl3 border border-line bg-warn/15 p-4">
           <p className="mb-2 font-bold">Смените PIN по умолчанию (0000)</p>
@@ -319,6 +358,7 @@ export function Parent() {
       {tab === 'settings' && <SettingsTab />}
       {tab === 'sync' && <SyncPanel />}
       {tab === 'backup' && <Backup />}
+      <VersionLine />
     </main>
   );
 }

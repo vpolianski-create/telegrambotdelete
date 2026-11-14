@@ -7,4 +7,12 @@ contextBridge.exposeInMainWorld('busel', {
   secretGet: () => ipcRenderer.invoke('secret:get'),
   secretSet: (value: string | null) => ipcRenderer.invoke('secret:set', value),
   openExternal: (url: string) => ipcRenderer.invoke('open:external', url),
+  // автообновление: состояние и «перезапустить и обновить»
+  updateGet: () => ipcRenderer.invoke('update:get'),
+  updateInstall: () => ipcRenderer.invoke('update:install'),
+  onUpdateState: (cb: (s: unknown) => void) => {
+    const h = (_e: unknown, s: unknown) => cb(s);
+    ipcRenderer.on('update:state', h);
+    return () => { ipcRenderer.removeListener('update:state', h); };
+  },
 });

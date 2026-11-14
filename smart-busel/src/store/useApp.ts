@@ -87,6 +87,8 @@ declare global {
       secretGet?(): Promise<string | null>; secretSet?(value: string | null): Promise<void>;
       /** Открыть ссылку на скачивание новой версии в браузере (только страница выпусков GitHub). */
       openExternal?(url: string): Promise<void>;
+      /** Автообновление Windows (electron/updater.ts). */
+      updateGet?(): Promise<unknown>; updateInstall?(): Promise<void>; onUpdateState?(cb: (s: unknown) => void): () => void;
     };
   }
 }

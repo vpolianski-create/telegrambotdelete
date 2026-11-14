@@ -22,8 +22,8 @@ export function Sidebar({ active, reviewCount, parentBadge, onNavigate }: { acti
   const link = (it: Item) => {
     const on = active === it.id;
     const count = it.id === 'review' && reviewCount > 0 ? reviewCount : 0;
-    const dot = it.id === 'parent' && parentBadge; // родителям: вышла новая версия
-    const label = count ? `${it.title}: ${count}` : dot ? `${it.title}: есть новая версия` : it.title;
+    const dot = it.id === 'parent' && parentBadge; // родителям: нужно разрешить автообновление или подтвердить его
+    const label = count ? `${it.title}: ${count}` : dot ? `${it.title}: нужно ваше действие` : it.title;
     return (
       <li key={it.id} className="max-sm:flex-1">
         <button type="button" onClick={() => onNavigate(it.id)} aria-current={on ? 'page' : undefined} aria-label={label}

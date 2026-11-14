@@ -5,8 +5,15 @@
       Безопасность:
       - резервная копия Google включает только файл прогресса и его копии, семейный код (sync-secret.json) — никогда;
       - связь только по HTTPS (network_security_config), без незашифрованного HTTP;
-      - из разрешений — только Интернет (синхронизация). Ни камеры, ни геолокации, ни контактов.
+      - разрешения: Интернет (синхронизация, проверка обновлений) и установка обновлений самого «Умного Бусела»
+        (REQUEST_INSTALL_PACKAGES, UPDATE_PACKAGES_WITHOUT_USER_ACTION). Ни камеры, ни геолокации, ни контактов.
+        Ставится только APK этого же приложения с той же подписью (проверка — UpdaterPlugin.java).
     -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- автообновление без Google Play: установить новую версию «Умного Бусела» -->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.UPDATE_PACKAGES_WITHOUT_USER_ACTION" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -37,6 +44,11 @@
 
         </activity>
 
+        <!-- Ответ системного установщика при автообновлении (только внутри приложения) -->
+        <receiver
+            android:name=".UpdateResultReceiver"
+            android:exported="false" />
+
         <!-- Только для «Поделиться» файлом копии прогресса (папка cache/export) -->
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -49,5 +61,4 @@
         </provider>
     </application>
 
-    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
