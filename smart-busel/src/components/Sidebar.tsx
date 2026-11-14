@@ -27,15 +27,16 @@ export function Sidebar({ active, reviewCount, parentBadge, hiddenOnPhone, onNav
     return (
       <li key={it.id} className="max-sm:flex-1">
         <button type="button" onClick={() => onNavigate(it.id)} aria-current={on ? 'page' : undefined} aria-label={label}
-          className={`group relative flex w-full items-center gap-3 rounded-xl2 px-3 text-left font-bold max-[1099px]:justify-center max-[1099px]:px-0 max-sm:flex-col max-sm:gap-0.5 max-sm:py-1.5 ${on ? 'bg-hover text-ink' : 'text-mute hover:bg-hover hover:text-ink'}`}>
+          className={`group relative flex w-full items-center gap-3 rounded-xl2 px-3 text-left font-bold max-[1099px]:justify-center max-[1099px]:px-0 max-sm:min-h-[64px] max-sm:flex-col max-sm:gap-1 max-sm:!bg-transparent max-sm:py-1.5 ${on ? 'bg-hover text-ink' : 'text-mute hover:bg-hover hover:text-ink'}`}>
           {on && <span aria-hidden className="absolute bottom-3 left-0 top-3 w-[3px] rounded-full bg-brand max-sm:hidden" />}
-          <span className="relative flex">
+          {/* телефон: как в Android — подсвечивается «пилюля» вокруг значка */}
+          <span className={`relative flex max-sm:h-8 max-sm:w-14 max-sm:items-center max-sm:justify-center max-sm:rounded-full ${on ? 'max-sm:bg-brand/25' : ''}`}>
             <Icon name={it.icon} size={24} className={on ? 'text-brandink' : ''} />
-            {dot && <span aria-hidden className="absolute -right-1 -top-1 h-2.5 w-2.5 rounded-full bg-sun" />}
-            {count > 0 && <span aria-hidden className="absolute -right-1.5 -top-1.5 hidden h-4 min-w-4 items-center justify-center rounded-full bg-sun px-1 text-[0.65rem] leading-none text-navy max-[1099px]:flex">{count}</span>}
+            {dot && <span aria-hidden className="absolute -right-1 -top-1 h-2.5 w-2.5 rounded-full bg-sun max-sm:right-2.5 max-sm:top-0" />}
+            {count > 0 && <span aria-hidden className="absolute -right-1.5 -top-1.5 hidden h-4 min-w-4 items-center justify-center rounded-full bg-sun px-1 text-[0.65rem] leading-none text-navy max-[1099px]:flex max-sm:-top-1 max-sm:right-0">{count > 99 ? '99+' : count}</span>}
           </span>
           <span className="flex-1 max-[1099px]:hidden">{it.title}</span>
-          <span aria-hidden className={`hidden max-w-full truncate text-[0.62rem] leading-tight max-sm:block ${on ? 'text-brandink' : ''}`}>{it.short}</span>
+          <span aria-hidden className={`hidden max-w-full truncate text-[0.6875rem] font-medium leading-tight max-sm:block ${on ? 'font-semibold text-ink' : ''}`}>{it.short}</span>
           {count > 0 && <span aria-hidden className="rounded-full bg-sun px-2 py-0.5 text-sm text-navy max-[1099px]:hidden">{count}</span>}
           {/* подсказка в свёрнутом меню */}
           <span aria-hidden className="pointer-events-none absolute left-full top-1/2 z-30 ml-2 hidden -translate-y-1/2 whitespace-nowrap rounded-xl2 border border-line bg-card px-3 py-2 text-sm text-ink shadow-xl max-[1099px]:group-hover:block max-[1099px]:group-focus-visible:block max-sm:!hidden">{label}</span>
@@ -49,8 +50,9 @@ export function Sidebar({ active, reviewCount, parentBadge, hiddenOnPhone, onNav
         <img src={markUrl} alt="" width={40} height={40} draggable={false} className="h-10 w-10 shrink-0 rounded-xl2" />
         <span className="font-display text-lg font-bold leading-tight max-[1099px]:hidden">Умный Бусел</span>
       </div>
-      <ul className="flex flex-1 flex-col gap-1 max-sm:flex-[5] max-sm:flex-row max-sm:gap-0">{MAIN.map(link)}</ul>
-      <ul className="flex flex-col gap-1 border-t border-line pt-3 max-sm:flex-1 max-sm:flex-row max-sm:border-t-0 max-sm:pt-0">{link(PARENT)}</ul>
+      <ul className="flex flex-1 flex-col gap-1 max-sm:flex-row max-sm:gap-0">{MAIN.map(link)}</ul>
+      {/* телефон: в нижнем меню 5 пунктов (правило Android); «Родителям» — значок 🔒 на главном экране */}
+      <ul className="flex flex-col gap-1 border-t border-line pt-3 max-sm:hidden">{link(PARENT)}</ul>
     </nav>
   );
 }
