@@ -1,0 +1,41 @@
+rules_version = '2';
+
+// Правила доступа к базе Firestore для синхронизации «Умного Бусела».
+// Вставляются в Firebase: Firestore Database → Rules (Правила) → Publish (Опубликовать).
+//
+// Что разрешено:
+//  - только приложению, вошедшему анонимно (без почты и паролей);
+//  - только в папке families/{семья}/devices/{устройство};
+//  - номер семьи — 32 шестнадцатеричных знака, вычисляется из семейного кода; без кода его не узнать;
+//  - список всех семей получить нельзя;
+//  - в документе — только шифр (iv, ct), номер формата (v) и время (at), не больше ~900 КБ.
+// Всё остальное запрещено.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isId(x) {
+      return x is string && x.matches('^[0-9a-f]{32}$');
+    }
+
+    function validDoc(d) {
+      return d.keys().hasOnly(['v', 'iv', 'ct', 'at'])
+        && d.keys().hasAll(['v', 'iv', 'ct', 'at'])
+        && d.v == 1
+        && d.iv is string && d.iv.size() == 16
+        && d.ct is string && d.ct.size() > 0 && d.ct.size() < 900000
+        && d.at is timestamp;
+    }
+
+    match /families/{familyId}/devices/{deviceId} {
+      allow get, list: if request.auth != null && isId(familyId);
+      allow create, update: if request.auth != null && isId(familyId) && isId(deviceId)
+        && validDoc(request.resource.data);
+      allow delete: if request.auth != null && isId(familyId) && isId(deviceId);
+    }
+
+    // всё остальное — запрещено
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
