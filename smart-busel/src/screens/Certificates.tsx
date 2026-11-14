@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Icon } from '../components/Icon';
 import { Certificate, Medal, TIERS, tierOf, type Tier } from '../components/Certificate';
+import { CertificatePoster, Seal } from '../components/CertificatePoster';
 import { Mascot } from '../components/Mascot';
 import { learnSubjects } from '../content/loader';
 import { earnedCertificates, type Cert } from '../engine/certificates';
@@ -16,6 +17,9 @@ const SAMPLE: Record<Tier, Cert> = {
 const fmt = (d: string) => `${d.slice(8)}.${d.slice(5, 7)}.${d.slice(0, 4)}`;
 
 /** Грамоты: список заслуженных и красивый лист для печати (Ctrl+P или кнопка «Распечатать»). */
+/** ВРЕМЕННО, пока выбираем вид грамот: вариант Б включается записью cert-variant=b в localStorage. */
+const VARIANT_B = (() => { try { return localStorage.getItem('cert-variant') === 'b'; } catch { return false; } })();
+
 export function Certificates({ onBack }: { onBack(): void }) {
   const { certificates, settings, topicResults, daily } = useApp();
   const earned = earnedCertificates({ topicResults, daily }, learnSubjects, todayStr()).filter((c) => certificates[c.id]);
@@ -34,7 +38,43 @@ export function Certificates({ onBack }: { onBack(): void }) {
         {open && <button onClick={() => window.print()} className="rounded-xl2 bg-brand px-6 font-extrabold text-onbrand"><Icon name="print" /> Распечатать</button>}
       </div>
 
-      {open ? (
+      {open && VARIANT_B ? (
+        <CertificatePoster cert={open} name={settings.name} date={certificates[open.id]} number={numberOf(open.id)} />
+      ) : VARIANT_B ? (
+        <>
+          <p className="text-mute">Это твоя стена грамот. Чем больше достижение, тем ярче лист. Нажми на грамоту, чтобы открыть её и распечатать.</p>
+          {earned.length === 0 && (
+            <div className="flex items-center gap-5 rounded-xl3 bg-card p-6 shadow">
+              <Mascot size={110} mood="read" />
+              <p className="text-lg">Пока грамот нет. Пройди тему на 100% — и первая грамота твоя!</p>
+            </div>
+          )}
+          <ul className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+            {sorted.map((c) => (
+              <li key={c.id}>
+                <button onClick={() => setOpenId(c.id)} aria-label={`${TIERS[tierOf(c)].name} № ${numberOf(c.id)}: ${c.title}`}
+                  className="block w-full rounded-xl3 p-0 text-left hover:-translate-y-0.5 active:scale-[0.99]">
+                  <CertificatePoster mini cert={c} name={settings.name} date={certificates[c.id]} number={numberOf(c.id)} />
+                </button>
+              </li>
+            ))}
+          </ul>
+          <h2 className="text-2xl font-bold">Какие бывают грамоты</h2>
+          <ul className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+            {(Object.keys(TIERS) as Tier[]).map((t) => {
+              const n = earned.filter((c) => tierOf(c) === t).length;
+              return (
+                <li key={t} className={`flex flex-col items-center gap-2 rounded-xl3 p-4 text-center ${n ? 'bg-card shadow' : 'border border-dashed border-line'}`}>
+                  <div className={`cb-seal-solo ${n ? '' : 'opacity-40 grayscale'}`}><Seal cert={SAMPLE[t]} uid={`tier-${t}`} /></div>
+                  <b>{TIERS[t].name}</b>
+                  <span className="text-sm text-mute">{TIERS[t].how}</span>
+                  <span className={`mt-auto rounded-full px-3 py-1 text-sm font-bold ${n ? 'bg-sun text-navy' : 'bg-soft text-mute'}`}>{n ? `Получено: ${n}` : 'Ещё впереди'}</span>
+                </li>
+              );
+            })}
+          </ul>
+        </>
+      ) : open ? (
         <Certificate cert={open} name={settings.name} date={certificates[open.id]} number={numberOf(open.id)} />
       ) : (
         <>
