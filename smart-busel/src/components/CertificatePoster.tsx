@@ -31,7 +31,7 @@ const plural = (n: number, one: string, few: string, many: string) => {
 };
 
 /** Предмет грамоты и короткие факты о достижении — по id грамоты: t:тема, s:раздел, j:предмет, k:дни. */
-function details(c: Cert) {
+export function details(c: Cert) {
   const key = c.id.slice(2);
   const ready = (ts: { status: string }[]) => ts.filter((t) => t.status === 'ready').length;
   if (c.kind === 'streak') return { subject: undefined, facts: [`${streakDays(c)} ${plural(streakDays(c), 'день', 'дня', 'дней')} подряд`, 'ни одного пропуска'] };
