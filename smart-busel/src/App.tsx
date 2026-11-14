@@ -19,7 +19,7 @@ import { Vocabulary } from './screens/Vocabulary';
 import { Warmup } from './screens/Warmup';
 import { resolveTheme } from './engine/theme';
 import { useApp } from './store/useApp';
-import { applySystemTheme, onBackButton } from './platform';
+import { applySystemTheme, onBackButton, runBackInterceptors } from './platform';
 import { needsParent, useAutoUpdate } from './update/auto';
 import { startAutoUpdates } from './update';
 import { startAutoSync } from './sync';
@@ -36,6 +36,9 @@ type Route =
   | { name: 'review' }
   | { name: 'warmup' }
   | { name: 'parent' };
+
+/** На телефоне во время урока и повторения нижнее меню скрыто — больше места, ничего не нажать случайно. */
+const IMMERSIVE: Route['name'][] = ['lesson', 'warmup', 'review'];
 
 /** Куда ведёт «Назад» с каждого экрана (главный экран — некуда). */
 const BACK: Partial<Record<Route['name'], (r: Route) => Route>> = {
@@ -84,6 +87,7 @@ export default function App() {
   useEffect(() => { scroller.current?.scrollTo(0, 0); }, [pageKey]);
   // Android: системная кнопка/жест «Назад» ведёт на предыдущий экран, с главного — сворачивает приложение
   useEffect(() => onBackButton(() => {
+    if (runBackInterceptors()) return true; // сначала — сам экран (закрыть раздел, грамоту…)
     const back = BACK[route.name];
     if (!back) return false;
     setRoute(back(route));
@@ -103,11 +107,11 @@ export default function App() {
   return (
     <>
       <div className="flex h-full max-sm:flex-col">
-        <Sidebar active={NAV[route.name]} reviewCount={reviewCount} parentBadge={parentBadge} onNavigate={(id) => setRoute({ name: id } as Route)} />
+        <Sidebar hiddenOnPhone={IMMERSIVE.includes(route.name)} active={NAV[route.name]} reviewCount={reviewCount} parentBadge={parentBadge} onNavigate={(id) => setRoute({ name: id } as Route)} />
         <div ref={scroller} className="h-full min-w-0 flex-1 overflow-y-auto overscroll-contain max-sm:min-h-0">
           <AnimatePresence mode="wait">
             <motion.div key={pageKey} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.16 }}>
-              {route.name === 'home' && <Home reviewCount={reviewCount} onSubject={(id) => setRoute({ name: 'subject', id })} onSubjects={subjectsList} onTopic={lesson} onPlan={() => setRoute({ name: 'plan' })} onReview={() => setRoute({ name: 'review' })} onWarmup={() => setRoute({ name: 'warmup' })} />}
+              {route.name === 'home' && <Home reviewCount={reviewCount} onSubject={(id) => setRoute({ name: 'subject', id })} onSubjects={subjectsList} onTopic={lesson} onPlan={() => setRoute({ name: 'plan' })} onReview={() => setRoute({ name: 'review' })} onWarmup={() => setRoute({ name: 'warmup' })} onParent={() => setRoute({ name: 'parent' })} />}
               {route.name === 'subjects' && <Subjects onSubject={(id) => setRoute({ name: 'subject', id })} />}
               {route.name === 'subject' && (
                 <SubjectScreen id={route.id} onBack={subjectsList} onTopic={(t) => lesson(route.id, t)} onVocab={() => setRoute({ name: 'vocab' })} />
@@ -122,7 +126,7 @@ export default function App() {
               {route.name === 'plan' && <Plan onTopic={lesson} />}
               {route.name === 'review' && <Review onBack={home} />}
               {route.name === 'warmup' && <Warmup onBack={home} />}
-              {route.name === 'parent' && <Parent />}
+              {route.name === 'parent' && <Parent onBack={home} />}
             </motion.div>
           </AnimatePresence>
         </div>

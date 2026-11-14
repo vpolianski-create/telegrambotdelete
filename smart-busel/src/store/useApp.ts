@@ -27,6 +27,8 @@ export interface Settings {
   theme: ThemeSetting; // 'system' — как в Windows
   fontScale: number;
   sound: boolean;
+  /** Лёгкая вибрация на телефоне (правильный ответ, награды). У каждого устройства своя. */
+  vibration: boolean;
   accessory: string; // надетый аксессуар Бусела
 }
 
@@ -75,7 +77,7 @@ const initial: Data = {
     name: 'Женя', pin: '0000', pinChanged: false,
     rewardThreshold: DEFAULT_THRESHOLD, rewardTexts: {},
     dailyGoal: 10, dailyLimitMin: 0, breakEveryMin: 30,
-    theme: 'system', fontScale: 1, sound: true, accessory: '',
+    theme: 'system', fontScale: 1, sound: true, vibration: true, accessory: '',
   },
 };
 

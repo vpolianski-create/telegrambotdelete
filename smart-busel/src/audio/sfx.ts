@@ -1,4 +1,10 @@
 import { useApp } from '../store/useApp';
+import { haptic } from '../platform';
+
+/** Вибрация к событиям: только радостные (за ошибку — ничего, без «наказаний»). */
+export const HAPTIC: Partial<Record<string, 'success' | 'celebrate'>> = {
+  correct: 'success', combo: 'celebrate', badge: 'celebrate', level: 'celebrate', reward: 'celebrate',
+};
 
 /** Короткие приятные звуки, синтезируются на лету (без файлов, работают офлайн). Выключаются в настройках. */
 type Note = [freq: number, start: number, dur: number];
@@ -17,7 +23,10 @@ let ctx: AudioContext | undefined;
 export type SfxName = keyof typeof SOUNDS;
 
 export function play(name: SfxName) {
-  if (!useApp.getState().settings.sound) return;
+  const { sound, vibration } = useApp.getState().settings;
+  const h = HAPTIC[name];
+  if (vibration && h) haptic(h);
+  if (!sound) return;
   try {
     ctx ??= new AudioContext();
     if (ctx.state === 'suspended') void ctx.resume();

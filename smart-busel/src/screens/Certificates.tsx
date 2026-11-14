@@ -1,6 +1,8 @@
-import { useState } from 'react';
-import { printPage } from '../platform';
+import { useEffect, useState } from 'react';
+import { interceptBack, printPage } from '../platform';
 import { Icon } from '../components/Icon';
+import { AppBar } from '../components/AppBar';
+import { isAndroid } from '../platform';
 import { Logo } from '../components/Logo';
 import { Mascot } from '../components/Mascot';
 import { learnSubjects } from '../content/loader';
@@ -15,17 +17,22 @@ export function Certificates({ onBack }: { onBack(): void }) {
   const earned = earnedCertificates({ topicResults, daily }, learnSubjects, todayStr()).filter((c) => certificates[c.id]);
   const [openId, setOpenId] = useState<string>();
   const open = earned.find((c) => c.id === openId);
+  useEffect(() => (open ? interceptBack(() => { setOpenId(undefined); return true; }) : undefined), [open]);
 
   return (
-    <main className="mx-auto flex max-w-4xl flex-col gap-5 p-6">
-      <div className="no-print flex items-center gap-3">
+    <main className="mx-auto flex max-w-4xl flex-col gap-5 p-6 max-sm:gap-4">
+      <div className="no-print contents">
+        <AppBar title={open ? 'Грамота' : 'Мои грамоты'} onBack={() => (open ? setOpenId(undefined) : onBack())}
+          actions={open ? [{ icon: 'print', label: isAndroid() ? 'Печать или PDF' : 'Распечатать', onClick: () => void printPage() }] : undefined} />
+      </div>
+      <div className="no-print flex items-center gap-3 max-sm:hidden">
         <button onClick={() => (open ? setOpenId(undefined) : onBack())} className="rounded-xl2 bg-card px-5 shadow"><Icon name="back" /> Назад</button>
         <h1 className="flex-1 text-4xl font-extrabold">Мои грамоты</h1>
         {open && <button onClick={() => void printPage()} className="rounded-xl2 bg-brand px-6 font-extrabold text-onbrand"><Icon name="print" /> Распечатать</button>}
       </div>
 
       {open ? (
-        <div className="print-area flex flex-col items-center gap-4 rounded-xl3 border-8 border-double border-sun bg-white p-10 text-center text-navy shadow">
+        <div className="print-area flex flex-col items-center gap-4 rounded-xl3 border-8 border-double border-sun bg-white p-10 text-center text-navy shadow max-sm:border-4 max-sm:p-5">
           <Logo height={72} />
           <p className="text-lg font-extrabold uppercase tracking-widest">Грамота</p>
           <p className="text-6xl" aria-hidden>{open.icon}</p>

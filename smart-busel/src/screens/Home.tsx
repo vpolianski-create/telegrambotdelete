@@ -1,4 +1,6 @@
 import heroUrl from '../assets/brand/hero-continue.webp';
+import markUrl from '../assets/brand/app-mark.png';
+import { needsParent, useAutoUpdate } from '../update/auto';
 import { DailyFact } from '../components/DailyFact';
 import { Icon, type IconName } from '../components/Icon';
 import { Mascot } from '../components/Mascot';
@@ -27,10 +29,11 @@ const Tile = ({ icon, title, children }: { icon: IconName; title: string; childr
   </section>
 );
 
-export function Home({ onSubject, onSubjects, onTopic, onPlan, onReview, onWarmup, reviewCount }: {
+export function Home({ onSubject, onSubjects, onTopic, onPlan, onReview, onWarmup, onParent, reviewCount }: {
   onSubject(id: string): void; onSubjects(): void; onTopic(subjectId: string, topicId: string): void;
-  onPlan(): void; onReview(): void; onWarmup(): void; reviewCount: number;
+  onPlan(): void; onReview(): void; onWarmup(): void; onParent(): void; reviewCount: number;
 }) {
+  const parentDot = useAutoUpdate(needsParent);
   const { settings, points, rewards, rewardBase, topicResults, daily, lastTopic, plan, opened, albumCards } = useApp();
   const p = progressToNext(points, settings.rewardThreshold, rewardBase);
   const lvl = levelFor(points);
@@ -90,10 +93,20 @@ export function Home({ onSubject, onSubjects, onTopic, onPlan, onReview, onWarmu
 
   return (
     <main className="mx-auto flex max-w-6xl flex-col gap-5 p-6">
+      {/* телефон: верхняя строка с названием и входом для родителей (в нижнем меню его нет) */}
+      <div className="-mx-1 -mt-2 -mb-2 flex items-center gap-3 sm:hidden">
+        <img src={markUrl} alt="" width={32} height={32} draggable={false} className="h-8 w-8 rounded-lg" />
+        <span className="flex-1 text-lg font-semibold">Умный Бусел</span>
+        <button type="button" onClick={onParent} aria-label={parentDot ? 'Родителям: нужно ваше действие' : 'Родителям'}
+          className="relative flex h-12 w-12 items-center justify-center rounded-full text-mute active:bg-hover">
+          <Icon name="lock" size={24} />
+          {parentDot && <span aria-hidden className="absolute right-2.5 top-2.5 h-2.5 w-2.5 rounded-full bg-sun" />}
+        </button>
+      </div>
       {/* Блок «Продолжить»: всегда тёмный, как картинка; свечение — только здесь */}
       <section data-theme="dark" aria-label="Продолжить занятие"
         className="relative flex min-h-[max(260px,36vh)] items-center overflow-hidden rounded-hero text-ink shadow max-sm:min-h-0" style={{ background: '#070e1d' }}>
-        <img src={heroUrl} alt="" draggable={false} className="absolute inset-y-0 right-0 h-full w-auto max-w-none object-cover max-sm:opacity-40" />
+        <img src={heroUrl} alt="" draggable={false} className="absolute inset-y-0 right-0 h-full w-auto max-w-none object-cover max-sm:hidden" />
         <div aria-hidden className="absolute inset-0" style={{ background: 'var(--aurora)' }} />
         <div aria-hidden className="absolute inset-0" style={{ background: 'linear-gradient(90deg, #070e1d 0%, #070e1d 46%, rgba(7,14,29,0.78) 62%, transparent 82%)' }} />
         <div className="relative flex w-full max-w-[min(36rem,62%)] flex-col gap-3 p-8 max-sm:max-w-full max-sm:p-5">

@@ -121,3 +121,35 @@ input::placeholder { color: var(--mute); opacity: 0.8; }
 }
 /* касания: без серой вспышки и без масштабирования двойным касанием */
 html { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+
+/* ——— Android: «как в Android-приложениях» (Material 3) ———
+   Только для класса platform-android (ставится в main.tsx); на Windows ничего не меняется. */
+html.platform-android body,
+html.platform-android h1, html.platform-android h2, html.platform-android h3,
+html.platform-android .font-sans, html.platform-android .font-display {
+  font-family: Roboto, 'Google Sans', system-ui, sans-serif;
+  letter-spacing: 0;
+}
+/* на телефоне базовый размер 16 px (системное увеличение Android — не больше +15%, MainActivity.java) */
+html.platform-android { font-size: calc(16px * var(--font-scale, 1)); }
+
+/* Шкала размеров для узкого экрана (Material 3): заголовки меньше, текст читается строкой, а не по слову */
+@media (max-width: 639px) {
+  .text-5xl { font-size: 2rem; line-height: 2.5rem; }
+  .text-4xl { font-size: 1.75rem; line-height: 2.25rem; }
+  .text-3xl { font-size: 1.5rem; line-height: 2rem; }
+  .text-2xl { font-size: 1.25rem; line-height: 1.75rem; }
+  .text-xl { font-size: 1.125rem; line-height: 1.625rem; }
+  h1 { letter-spacing: 0; }
+  /* длинные слова переносятся по слогам и не вылезают за край */
+  main p, main li, main h1, main h2, main h3, main span, main button, main label {
+    overflow-wrap: break-word; hyphens: auto; -webkit-hyphens: auto;
+  }
+  /* отклик на касание, как у кнопок Android */
+  button:active:not(:disabled) { transform: scale(0.97); }
+  /* интерфейс не выделяется долгим нажатием (текст уроков — можно) */
+  button, nav, label, select { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+  /* поля ввода: на всю ширину, кнопки под ними */
+  .phone-stack { flex-direction: column; align-items: stretch; }
+  .phone-stack > * { width: 100%; }
+}
