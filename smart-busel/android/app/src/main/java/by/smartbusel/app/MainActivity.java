@@ -10,6 +10,7 @@ public class MainActivity extends BridgeActivity {
     public void onCreate(Bundle savedInstanceState) {
         registerPlugin(PrintPlugin.class); // печать грамот (см. PrintPlugin.java)
         registerPlugin(UpdaterPlugin.class); // автообновление с GitHub (см. UpdaterPlugin.java)
+        registerPlugin(HapticsPlugin.class); // лёгкая вибрация (см. HapticsPlugin.java)
         super.onCreate(savedInstanceState);
         // телефон — только вертикально (интерфейс рассчитан на портрет); планшет — как удобно
         if (getResources().getConfiguration().smallestScreenWidthDp < 600) {

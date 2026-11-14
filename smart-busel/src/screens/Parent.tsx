@@ -224,6 +224,11 @@ function SettingsTab() {
           <label className="flex items-center justify-between">Звук
             <input type="checkbox" checked={s.sound} onChange={(e) => updateSettings({ sound: e.target.checked })} className="h-6 w-6" />
           </label>
+          {isAndroid() && (
+            <label className="flex items-center justify-between">Вибрация (правильный ответ, награды)
+              <input type="checkbox" checked={s.vibration} onChange={(e) => updateSettings({ vibration: e.target.checked })} className="h-6 w-6" />
+            </label>
+          )}
           {!hasEnglishVoice() && <p className="text-sm text-mute">{voiceHint()}</p>}
         </div>
       </Card>

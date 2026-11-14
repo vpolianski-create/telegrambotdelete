@@ -162,6 +162,17 @@ export function openDownload(url: string): void {
   window.open(url, '_blank', 'noopener');
 }
 
+// ——— лёгкая вибрация (Android) ———
+interface HapticsPlugin { feedback(o: { kind: 'tap' | 'success' | 'celebrate' }): Promise<void> }
+let haptics: HapticsPlugin | null = null;
+export function haptic(kind: 'tap' | 'success' | 'celebrate'): void {
+  if (!isAndroid()) return;
+  void (async () => {
+    if (!haptics) { const { registerPlugin } = await import('@capacitor/core'); haptics = registerPlugin<HapticsPlugin>('BuselHaptics'); }
+    await haptics.feedback({ kind });
+  })().catch(() => undefined);
+}
+
 // ——— цвет значков в строке состояния ———
 export function applySystemTheme(setting: string, dark: boolean): void {
   window.busel?.setTheme?.(setting); // Windows: заголовок окна того же цвета
