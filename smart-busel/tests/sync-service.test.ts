@@ -75,10 +75,20 @@ describe('служба синхронизации (поддельное обла
     const cloud = fakeCloud();
     const pc = device(cloud, { points: 777, settings: { ...merge(null).settings, name: 'Женя', pin: '4321' } });
     await pc.svc.createFamily();
+    // В документе — только номер формата, время и шифр; шифр — только из знаков base64.
+    // (Короткие числа вроде «777» искать в шифре нельзя: случайные буквы и цифры иногда
+    // совпадают с ними — примерно 1 раз на 450. Поэтому ищем фрагменты с кавычками и двоеточием,
+    // которых в шифре не бывает, и русские буквы.)
+    for (const fields of cloud.docs.values()) {
+      expect(Object.keys(fields).sort()).toEqual(['at', 'ct', 'iv', 'v']);
+      expect(fields.ct.stringValue).toMatch(/^[A-Za-z0-9+/]+=*$/);
+      expect(fields.iv.stringValue).toMatch(/^[A-Za-z0-9+/]{16}$/);
+    }
     const stored = JSON.stringify([...cloud.docs]);
     expect(stored).not.toContain('Женя');
-    expect(stored).not.toContain('4321');
-    expect(stored).not.toContain('777');
+    expect(stored).not.toContain('"pin"');
+    expect(stored).not.toContain('"points"');
+    expect(stored).not.toContain('"settings"');
     // в адресах — только номера из 32 знаков, сам код туда не попадает
     const code = (await pc.svc.code())!;
     expect(cloud.seen.join('\n')).not.toContain(normalizeCode(code)!);
