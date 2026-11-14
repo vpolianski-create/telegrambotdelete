@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Icon, type IconName } from '../components/Icon';
 import { AppBar } from '../components/AppBar';
+import { interceptBack } from '../platform';
 import { TaskView } from '../components/TaskView';
 import { wordSets } from '../content/loader';
 import type { Task, Word } from '../content/schema';
@@ -195,6 +196,7 @@ export function Vocabulary({ onBack }: { onBack(): void }) {
   const { leitner } = useApp();
   const [set, setSet] = useState('all');
   const [mode, setMode] = useState<Mode | null>(null);
+  useEffect(() => (mode ? interceptBack(() => { setMode(null); return true; }) : undefined), [mode]);
   const [voice, setVoice] = useState(true);
 
   useEffect(() => {

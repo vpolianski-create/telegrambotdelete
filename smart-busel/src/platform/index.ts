@@ -120,6 +120,17 @@ export async function printPage(name = 'Умный Бусел'): Promise<void> {
 }
 
 // ——— системная кнопка «Назад» на Android ———
+/** Экран может сам обработать «Назад» (закрыть раздел, грамоту, тренировку) — последний добавленный первым. */
+const backInterceptors: (() => boolean)[] = [];
+export function interceptBack(handler: () => boolean): () => void {
+  backInterceptors.push(handler);
+  return () => { const i = backInterceptors.lastIndexOf(handler); if (i >= 0) backInterceptors.splice(i, 1); };
+}
+export function runBackInterceptors(): boolean {
+  for (let i = backInterceptors.length - 1; i >= 0; i--) if (backInterceptors[i]()) return true;
+  return false;
+}
+
 /** handler возвращает true, если «назад» обработан в приложении; иначе приложение сворачивается (как принято на Android). */
 export function onBackButton(handler: () => boolean): () => void {
   if (!isAndroid()) return () => undefined;

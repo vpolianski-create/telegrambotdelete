@@ -19,7 +19,7 @@ import { Vocabulary } from './screens/Vocabulary';
 import { Warmup } from './screens/Warmup';
 import { resolveTheme } from './engine/theme';
 import { useApp } from './store/useApp';
-import { applySystemTheme, onBackButton } from './platform';
+import { applySystemTheme, onBackButton, runBackInterceptors } from './platform';
 import { needsParent, useAutoUpdate } from './update/auto';
 import { startAutoUpdates } from './update';
 import { startAutoSync } from './sync';
@@ -87,6 +87,7 @@ export default function App() {
   useEffect(() => { scroller.current?.scrollTo(0, 0); }, [pageKey]);
   // Android: системная кнопка/жест «Назад» ведёт на предыдущий экран, с главного — сворачивает приложение
   useEffect(() => onBackButton(() => {
+    if (runBackInterceptors()) return true; // сначала — сам экран (закрыть раздел, грамоту…)
     const back = BACK[route.name];
     if (!back) return false;
     setRoute(back(route));
@@ -125,7 +126,7 @@ export default function App() {
               {route.name === 'plan' && <Plan onTopic={lesson} />}
               {route.name === 'review' && <Review onBack={home} />}
               {route.name === 'warmup' && <Warmup onBack={home} />}
-              {route.name === 'parent' && <Parent />}
+              {route.name === 'parent' && <Parent onBack={home} />}
             </motion.div>
           </AnimatePresence>
         </div>

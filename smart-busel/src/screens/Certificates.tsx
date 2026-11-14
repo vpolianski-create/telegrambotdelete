@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { printPage } from '../platform';
+import { useEffect, useState } from 'react';
+import { interceptBack, printPage } from '../platform';
 import { Icon } from '../components/Icon';
 import { AppBar } from '../components/AppBar';
 import { isAndroid } from '../platform';
@@ -17,6 +17,7 @@ export function Certificates({ onBack }: { onBack(): void }) {
   const earned = earnedCertificates({ topicResults, daily }, learnSubjects, todayStr()).filter((c) => certificates[c.id]);
   const [openId, setOpenId] = useState<string>();
   const open = earned.find((c) => c.id === openId);
+  useEffect(() => (open ? interceptBack(() => { setOpenId(undefined); return true; }) : undefined), [open]);
 
   return (
     <main className="mx-auto flex max-w-4xl flex-col gap-5 p-6 max-sm:gap-4">
