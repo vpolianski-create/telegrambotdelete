@@ -43,9 +43,10 @@ export function Warmup({ onBack }: { onBack(): void }) {
 
   const it = list[i];
   const answered = (r: TaskResult) => {
-    recordAnswer({ subject: it.subject.id, topicId: it.topic.id, question: it.task.question, correct: r.correct, points: r.points, taskId: it.task.id, entry: it.entry });
-    byTopic.current[it.topic.id] = (byTopic.current[it.topic.id] ?? true) && r.correct;
-    if (r.correct) setRight((x) => x + 1);
+    recordAnswer({ subject: it.subject.id, topicId: it.topic.id, question: it.task.question, correct: r.firstTry, points: r.points, taskId: it.task.id, entry: it.entry, secondTry: r.correct && !r.firstTry, guess: r.guess });
+    // для расписания повторений важна память, поэтому учитываем только «верно с первого раза»
+    byTopic.current[it.topic.id] = (byTopic.current[it.topic.id] ?? true) && r.firstTry;
+    if (r.firstTry) setRight((x) => x + 1);
     if (i + 1 >= list.length) setBonus(finishWarmup(byTopic.current));
     setI(i + 1);
   };

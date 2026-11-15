@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { earnedCertificates } from '../src/engine/certificates';
+import { earnedCertificates, ownedCertificates, STREAK_CERTS } from '../src/engine/certificates';
 import { inProgramOrder, togglePlan, planFor } from '../src/engine/plan';
 import { weekReport } from '../src/engine/report';
 import { statusCounts, topicStatus } from '../src/engine/status';
@@ -37,18 +37,33 @@ describe('план на сегодня', () => {
   });
 });
 
-describe('грамоты', () => {
+describe('грамоты — редкие, за очень хорошую работу', () => {
   const s = [subj(['t1', 't2'])];
-  it('за три звезды, раздел и предмет', () => {
-    const none = earnedCertificates({ topicResults: { t1: { done: true, stars: 3 } }, daily: {} }, s, '2026-01-05');
-    expect(none.map((c) => c.id)).toEqual(['t:t1']);
-    const all = earnedCertificates({ topicResults: { t1: { done: true, stars: 3 }, t2: { done: true, stars: 1 } }, daily: {} }, s, '2026-01-05');
-    expect(all.map((c) => c.id)).toEqual(expect.arrayContaining(['t:t1', 's:x-s1', 'j:x']));
+  it('за одну тему, даже на 100%, грамоты нет (за неё — звёзды и значки)', () => {
+    expect(earnedCertificates({ topicResults: { t1: { done: true, stars: 3 } }, daily: {} }, s, '2026-01-05')).toEqual([]);
   });
-  it('за серию 7 дней', () => {
+  it('раздел — только если каждая тема пройдена минимум на 2 звезды (90%+)', () => {
+    const weak = earnedCertificates({ topicResults: { t1: { done: true, stars: 3 }, t2: { done: true, stars: 1 } }, daily: {} }, s, '2026-01-05');
+    expect(weak.map((c) => c.id)).not.toContain('s:x-s1');
+    const strong = earnedCertificates({ topicResults: { t1: { done: true, stars: 3 }, t2: { done: true, stars: 2 } }, daily: {} }, s, '2026-01-05');
+    expect(strong.map((c) => c.id)).toContain('s:x-s1');
+  });
+  it('предмет — когда пройдены все его темы', () => {
+    const all = earnedCertificates({ topicResults: { t1: { done: true, stars: 1 }, t2: { done: true, stars: 1 } }, daily: {} }, s, '2026-01-05');
+    expect(all.map((c) => c.id)).toEqual(['j:x']);
+  });
+  it('серия — только 30 и 100 дней подряд (7 и 14 — уже нет)', () => {
+    expect(STREAK_CERTS).toEqual([30, 100]);
     const daily: Record<string, { tasks: number }> = {};
-    for (let d = 1; d <= 7; d++) daily[`2026-01-0${d}`] = { tasks: 3 };
-    expect(earnedCertificates({ topicResults: {}, daily }, s, '2026-01-07').map((c) => c.id)).toContain('k:7');
+    for (let d = 1; d <= 30; d++) daily[`2026-01-${String(d).padStart(2, '0')}`] = { tasks: 3 };
+    expect(earnedCertificates({ topicResults: {}, daily }, s, '2026-01-14').map((c) => c.id)).toEqual([]);
+    expect(earnedCertificates({ topicResults: {}, daily }, s, '2026-01-30').map((c) => c.id)).toEqual(['k:30']);
+  });
+  it('грамоты, полученные по прежним правилам, остаются в коллекции и узнаются по номеру', () => {
+    const owned = ownedCertificates({ 't:t1': '2025-01-01', 's:x-s1': '2025-01-02', 'j:x': '2025-01-03', 'k:7': '2025-01-04', 'k:14': '2025-01-05', 't:удалённая-тема': '2025-01-06' }, s);
+    expect(owned.map((c) => c.id)).toEqual(['t:t1', 's:x-s1', 'j:x', 'k:7', 'k:14']);
+    expect(owned[0]).toMatchObject({ kind: 'topic', title: 'Отличное знание темы «t1»' });
+    expect(owned[3]).toMatchObject({ kind: 'streak', title: '7 дней занятий подряд' });
   });
 });
 

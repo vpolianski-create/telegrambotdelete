@@ -39,9 +39,9 @@ export function Review({ onBack }: { onBack(): void }) {
 
   const { m, task } = list[i];
   const answered = (r: TaskResult) => {
-    recordAnswer({ subject: m.subject, topicId: m.topicId, question: m.question, correct: r.correct, points: r.points, taskId: m.taskId, entry: m.entry });
+    recordAnswer({ subject: m.subject, topicId: m.topicId, question: m.question, correct: r.firstTry, points: r.points, taskId: m.taskId, entry: m.entry, secondTry: r.correct && !r.firstTry, guess: r.guess });
     if (r.correct) { resolveMistake(m.topicId, m.question); setFixed((f) => f + 1); }
     setI(i + 1);
   };
-  return shell(<TaskView key={task.id} task={task} cards={findTopic(m.subject, m.topicId)?.topic.cards} repeat={topicResults[m.topicId]?.done === true} onNext={answered} />);
+  return shell(<TaskView key={task.id} task={task} cards={findTopic(m.subject, m.topicId)?.topic.cards} repeat={topicResults[m.topicId]?.done === true} pastMistake nextAfterWrong="review" onNext={answered} />);
 }

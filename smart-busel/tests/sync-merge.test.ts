@@ -44,6 +44,20 @@ describe('синхронизация: баллы и счётчики склад�
     expect(phone.data.points).toBe(50);
   });
 
+  it('показатели для родителя (исправлено, со второй попытки, наугад, брошено, посложнее) складываются и не удваиваются', () => {
+    const cloud: Cloud = {};
+    const pc = device('pc'); const phone = device('phone');
+    const add = (dev: Device, extra: Record<string, number>) => {
+      earn(dev, 10);
+      const day = dev.data.daily['2026-11-14'];
+      dev.data = { ...dev.data, daily: { ...dev.data.daily, '2026-11-14': { ...day, ...extra } } };
+    };
+    add(pc, { fixed: 2, secondTry: 1, harder: 1 });
+    add(phone, { fixed: 3, guesses: 4, abandoned: 1 });
+    for (let i = 0; i < 3; i++) { sync(pc, cloud); sync(phone, cloud); }
+    for (const dev of [pc, phone]) expect(dev.data.daily['2026-11-14']).toMatchObject({ fixed: 5, secondTry: 1, guesses: 4, abandoned: 1, harder: 1, tasks: 2 });
+  });
+
   it('повторные синхронизации ничего не удваивают', () => {
     const cloud: Cloud = {};
     const pc = device('pc'); const phone = device('phone');

@@ -62,6 +62,8 @@ const LWW_FIELDS = ['plan', 'lastTopic', 'rewardBase'] as const;
 export const STAMP_KEYS: string[] = [...LWW_FIELDS, ...SHARED_SETTINGS.map((k) => `settings.${k}`)];
 
 const DAY_COUNTERS = ['sec', 'tasks', 'correct', 'words', 'topics'] as const;
+/** Показатели для родителя (v1.8.0): тоже складываются между устройствами; в данных дня появляются, только если не ноль. */
+const DAY_EXTRA = ['fixed', 'secondTry', 'guesses', 'abandoned', 'harder'] as const;
 const MAX_REMOVED = 400;
 
 /** Все счётчики, которые складываются между устройствами. */
@@ -76,6 +78,7 @@ export function counters(d: Pick<Data, 'points' | 'fixedMistakes' | 'subjectStat
   }
   for (const [date, day] of Object.entries(d.daily ?? {})) {
     for (const f of DAY_COUNTERS) put(key('daily', date, f), day[f]);
+    for (const f of DAY_EXTRA) put(key('daily', date, f), day[f]);
     for (const [s, n] of Object.entries(day.bySubject ?? {})) put(key('daily', date, 'bySubject', s), n);
   }
   for (const [id, r] of Object.entries(d.topicResults ?? {})) put(key('topicResults', id, 'attempts'), r.attempts);
@@ -129,6 +132,7 @@ export function applyCounters<T extends Data>(d: T, c: Counters): T {
     for (const s of subs) { const v = n(key('daily', date, 'bySubject', s)); if (v) bySubject[s] = v; }
     const day: DayLog = { ...prev, bySubject };
     for (const f of DAY_COUNTERS) day[f] = n(key('daily', date, f));
+    for (const f of DAY_EXTRA) { const v = n(key('daily', date, f)); if (v) day[f] = v; else delete day[f]; }
     daily[date] = day;
   }
   const topicResults: Data['topicResults'] = {};

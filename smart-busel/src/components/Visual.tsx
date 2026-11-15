@@ -198,7 +198,7 @@ function Timeline({ v }: { v: Of<'timeline'> }) {
 }
 
 /** Для задания «покажи на карте»: что выбрано, какой ответ верный и что делать при нажатии на точку. */
-export type MapPick = { done: boolean; picked?: string; answer: string; onPick: (name: string) => void };
+export type MapPick = { done: boolean; picked?: string; answer: string; onPick: (name: string) => void; excluded?: string[] /* неверные точки первой попытки */ };
 
 /** Контурная карта с городами, областями, морями и реками. В задании точки без подписей — по ним нажимают. */
 function MapView({ v, pick }: { v: Of<'map'>; pick?: MapPick }) {
@@ -229,14 +229,15 @@ function MapView({ v, pick }: { v: Of<'map'>; pick?: MapPick }) {
         const { x, y } = projectMap(m, p.lon, p.lat);
         if (v.pick) {
           const right = pick?.done && p.name === pick.answer;
-          const wrong = pick?.done && p.name === pick.picked && !right;
+          const out = !pick?.done && !!pick?.excluded?.includes(p.name); // уже выбрана неверно — второй раз нажать нельзя
+          const wrong = (pick?.done && p.name === pick.picked && !right) || out || (pick?.done && !!pick.excluded?.includes(p.name));
           const fill = right ? 'var(--ok)' : wrong ? 'var(--accent)' : pick?.done ? MUTE : 'var(--brand)';
           const l = labelAt(p, x, y, 16);
           return (
-            <g key={p.name} data-option={p.name} role="button" tabIndex={asking ? 0 : -1} aria-label={asking ? 'Точка на карте' : p.name}
-              style={{ cursor: asking ? 'pointer' : 'default' }}
-              onClick={() => asking && pick?.onPick(p.name)}
-              onKeyDown={(e) => { if (asking && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); pick?.onPick(p.name); } }}>
+            <g key={p.name} data-option={p.name} role="button" tabIndex={asking && !out ? 0 : -1} aria-label={asking ? (out ? 'Точка на карте: неверно' : 'Точка на карте') : p.name}
+              style={{ cursor: asking && !out ? 'pointer' : 'default' }}
+              onClick={() => asking && !out && pick?.onPick(p.name)}
+              onKeyDown={(e) => { if (asking && !out && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); pick?.onPick(p.name); } }}>
               <circle cx={x} cy={y} r={20} fill="transparent" />
               <circle cx={x} cy={y} r={11} fill={fill} stroke="#fff" strokeWidth={2.5} />
               {(right || wrong) && <text x={x} y={y + 5} textAnchor="middle" fontSize={14} fill="var(--on-brand)" style={font}>{right ? '✓' : '✗'}</text>}

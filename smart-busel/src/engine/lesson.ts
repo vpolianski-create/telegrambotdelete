@@ -1,7 +1,11 @@
 import type { Entry, GeneratorRef, Task } from '../content/schema';
 import { shuffle, type Rng } from './rng';
 
-export interface LessonItem { task: Task; counted: boolean; entry?: GeneratorRef; similar?: boolean; retry?: boolean }
+export interface LessonItem {
+  task: Task; counted: boolean; entry?: GeneratorRef; similar?: boolean; retry?: boolean;
+  harder?: boolean; // вопрос посложнее, который ребёнок выбрал сам
+  finale?: boolean; // «финиш на успехе»: уже решённый верно вопрос, без баллов
+}
 
 /** Не больше стольких «похожих» заданий за урок, чтобы он не растягивался бесконечно. */
 export const MAX_SIMILAR = 3;
@@ -22,6 +26,24 @@ export function queueAfterAnswer(items: LessonItem[], i: number, correct: boolea
   }
   if (item.retry || items.filter((x) => x.retry).length >= MAX_RETRY) return items;
   return [...items, { task: item.task, counted: false, retry: true }];
+}
+
+/** Что будет после ошибки в items[i]: похожее задание следом, этот вопрос в конце урока или — в «Работе над ошибками». */
+export function afterWrong(items: LessonItem[], i: number): 'similar' | 'end' | 'review' {
+  const item = items[i];
+  if (item.entry) return items.filter((x) => x.similar).length >= MAX_SIMILAR ? 'review' : 'similar';
+  if (item.retry || items.filter((x) => x.retry).length >= MAX_RETRY) return 'review';
+  return 'end';
+}
+
+/**
+ * Есть ли у задания вторая попытка после ошибки. Нет у «верно/неверно» и у выбора из двух вариантов:
+ * там второй ответ угадывается без размышлений.
+ */
+export function canRetry(task: Pick<Task, 'type' | 'options'>): boolean {
+  if (task.type === 'truefalse') return false;
+  if (task.type === 'single') return (task.options?.length ?? 0) >= 3;
+  return true;
 }
 
 export type Hint = { kind: 'text' | 'card'; text: string };
