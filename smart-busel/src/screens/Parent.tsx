@@ -3,7 +3,7 @@ import { Icon, type IconName } from '../components/Icon';
 import type { ThemeSetting } from '../engine/theme';
 import { allTopics, subjects } from '../content/loader';
 import { addDays } from '../engine/leitner';
-import { weekReport } from '../engine/report';
+import { praiseIdeas, weekReport } from '../engine/report';
 import { statusCounts, topicStatus } from '../engine/status';
 import { hasEnglishVoice } from '../audio/speech';
 import { Logo } from '../components/Logo';
@@ -85,18 +85,24 @@ function Report() {
   const dm = (d: string) => `${d.slice(8)}.${d.slice(5, 7)}`;
   const notDone = allTopics.filter((x) => x.topic.status === 'ready' && topicResults[x.topic.id] && !topicResults[x.topic.id].done);
   const diff = r.minutes - r.prevMinutes;
+  const praise = praiseIdeas(r, { title });
+  // темы, которые не даются: пройдены 3+ раза без успеха
+  const stubborn = allTopics.filter((x) => (topicResults[x.topic.id]?.attempts ?? 0) >= 3 && !topicResults[x.topic.id]?.done);
   const tips: string[] = [];
   if (r.activeDays === 0) tips.push('На этой неделе занятий не было. Можно начать с одной короткой темы.');
   else if (r.activeDays < 4) tips.push('Лучше заниматься понемногу, но чаще: 15–20 минут 4–5 дней в неделю.');
   else tips.push('Отличный ритм занятий — отметьте это ребёнку.');
   if (r.tasks >= 10 && r.percent < 60) tips.push('Много ошибок: стоит вместе разобрать трудные темы и запустить «Работу над ошибками».');
   if (r.weakTopics.length) tips.push(`Чаще всего ошибки в теме «${title(r.weakTopics[0][0])}» — вернитесь к ней.`);
+  if (r.guesses >= 10) tips.push('Много ответов наугад: возможно, ребёнок устаёт или спешит к награде. Помогают короткие занятия и похвала за старание, а не за скорость.');
+  if (r.abandoned >= 3) tips.push('Несколько уроков брошено на середине. Стоит спросить, что было трудно, — и начать с более лёгкой темы.');
   if (notDone.length) tips.push(`Темы, которые ещё не пройдены: ${notDone.slice(0, 3).map((x) => x.topic.title).join('; ')}.`);
   const text = [
     `Отчёт Умного Бусела: ${dm(r.from)} — ${dm(r.to)}`,
     `Занятия: ${r.minutes} мин., дней с занятиями: ${r.activeDays} из 7`,
     `Заданий: ${r.tasks}, верно с первого раза: ${r.percent}%`,
     `Пройдено тем: ${r.topicsPassed.length ? r.topicsPassed.map(title).join('; ') : '—'}`,
+    `За что похвалить: ${praise.join(' ')}`,
     ...tips.map((t) => `• ${t}`),
   ].join('\n');
   const [copied, setCopied] = useState(false);
@@ -125,7 +131,24 @@ function Report() {
             </div>
           ))}
         </div>
+        <div className="rounded-xl2 border border-sun bg-sun/15 p-4">
+          <p className="mb-1 font-extrabold">За что похвалить на этой неделе</p>
+          <p className="mb-2 text-sm text-mute">Готовые фразы о настоящих успехах. Похвала родителя действует сильнее любой похвалы приложения — скажите своими словами.</p>
+          <ul className="list-disc space-y-1 pl-6">{praise.map((t) => <li key={t}>«{t}»</li>)}</ul>
+        </div>
+        <div className="grid gap-3 sm:grid-cols-5">
+          {([
+            ['Исправлено ошибок', r.fixed, 'в конце урока и в «Работе над ошибками»'],
+            ['Нашёл сам', r.secondTry, 'верно со второй попытки'],
+            ['Выбрал посложнее', r.harder, 'вопросов по своему желанию'],
+            ['Ответы наугад', r.guesses, 'быстрее, чем можно прочитать'],
+            ['Брошено уроков', r.abandoned, 'вышел с середины'],
+          ] as const).map(([l, v, h]) => (
+            <div key={l} className="rounded-xl2 bg-soft p-3 text-center"><p className="text-xl font-extrabold">{v}</p><p className="text-sm font-bold">{l}</p><p className="text-sm text-mute">{h}</p></div>
+          ))}
+        </div>
         <p><b>Пройдено тем:</b> {r.topicsPassed.length ? r.topicsPassed.map(title).join('; ') : '—'}</p>
+        {stubborn.length > 0 && <p><b>Темы, которые пока не даются (3 попытки и больше):</b> {stubborn.slice(0, 5).map((x) => x.topic.title).join('; ')} — стоит разобрать вместе.</p>}
         <p><b>Чаще всего ошибки:</b> {r.weakTopics.length ? r.weakTopics.map(([id, n]) => `${title(id)} (${n})`).join('; ') : 'ошибок почти не было'}</p>
         <div>
           <p className="font-extrabold">Что можно сделать:</p>

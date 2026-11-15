@@ -35,6 +35,8 @@ export interface TopicResult {
 export interface DayLog {
   sec: number; tasks: number; correct: number; goalDone: boolean; unlocked: boolean;
   bySubject?: Record<string, number>; words?: number; topics?: number; quests?: string[]; questChest?: boolean; topicIds?: string[]; warmup?: boolean;
+  // показатели для родителя (v1.7.0): исправлено ошибок, найдено со второй попытки, ответов наугад, брошено уроков, выбрано «посложнее»
+  fixed?: number; secondTry?: number; guesses?: number; abandoned?: number; harder?: number;
 }
 export interface Toast { icon: string; title: string; text: string }
 export interface Mistake { subject: string; topicId: string; question: string; date: string; taskId?: string; entry?: GeneratorRef }
@@ -132,6 +134,9 @@ export interface AnswerInfo {
   correct: boolean; points: number; // points уже с учётом подсказок и комбо
   combo?: boolean;
   taskId?: string; entry?: GeneratorRef;
+  fixed?: boolean; // верно ответил на вопрос, где ошибся раньше в этом уроке
+  secondTry?: boolean; // верно со второй попытки (correct при этом false: «верно с первого раза» не засчитывается)
+  guess?: boolean; // ответил быстрее, чем можно прочитать вопрос
 }
 
 interface Store extends Data {
@@ -155,6 +160,8 @@ interface Store extends Data {
   togglePlan(topicId: string): void;
   /** Ошибка исправлена в «Работе над ошибками». */
   resolveMistake(topicId: string, question: string): void;
+  /** Показатели для родителя: брошенный урок, выбор вопроса посложнее. Баллы не меняет. */
+  markEvent(kind: 'abandoned' | 'harder'): void;
   popToast(): void;
   answerWord(wordId: string, correct: boolean): void;
   tick(sec: number): void;
@@ -239,7 +246,10 @@ export const useApp = create<Store>((set, get) => {
           ...s.mistakes.filter((m) => !(m.topicId === a.topicId && m.question === a.question))].slice(0, 100);
       commit({
         ...withPoints(s, a.points + bonus),
-        daily: { ...s.daily, [date]: { ...d, tasks, correct: d.correct + (a.correct ? 1 : 0), goalDone, bySubject: { ...d.bySubject, [a.subject]: (d.bySubject?.[a.subject] ?? 0) + 1 } } },
+        daily: { ...s.daily, [date]: {
+          ...d, tasks, correct: d.correct + (a.correct ? 1 : 0), goalDone, bySubject: { ...d.bySubject, [a.subject]: (d.bySubject?.[a.subject] ?? 0) + 1 },
+          ...(a.fixed ? { fixed: (d.fixed ?? 0) + 1 } : {}), ...(a.secondTry ? { secondTry: (d.secondTry ?? 0) + 1 } : {}), ...(a.guess ? { guesses: (d.guesses ?? 0) + 1 } : {}),
+        } },
         subjectStats: { ...s.subjectStats, [a.subject]: { tasks: st.tasks + 1, correct: st.correct + (a.correct ? 1 : 0) } },
         mistakes,
       }, a.combo ? ['combo'] : []);
@@ -328,7 +338,18 @@ export const useApp = create<Store>((set, get) => {
     togglePlan(topicId) { commit({ plan: togglePlanFn(get().plan, todayStr(), topicId) }); },
     resolveMistake(topicId, question) {
       const s = get();
-      commit({ mistakes: s.mistakes.filter((m) => !(m.topicId === topicId && m.question === question)), fixedMistakes: s.fixedMistakes + 1 });
+      const date = todayStr();
+      const d = day(s, date);
+      commit({
+        mistakes: s.mistakes.filter((m) => !(m.topicId === topicId && m.question === question)), fixedMistakes: s.fixedMistakes + 1,
+        daily: { ...s.daily, [date]: { ...d, fixed: (d.fixed ?? 0) + 1 } },
+      });
+    },
+    markEvent(kind) {
+      const s = get();
+      const date = todayStr();
+      const d = day(s, date);
+      commit({ daily: { ...s.daily, [date]: { ...d, [kind]: (d[kind] ?? 0) + 1 } } });
     },
     popToast() { set({ toasts: get().toasts.slice(1) }); },
 

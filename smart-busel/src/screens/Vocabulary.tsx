@@ -181,8 +181,8 @@ function WordTraining({ mode, setId, onExit }: { mode: Mode; setId: string; onEx
       <p className="mb-3 text-center text-mute">{i + 1} / {session.length}</p>
       <TaskView key={task.id} task={task} speakWord={mode === 'listen' ? w.en : mode === 'sentence' && task.type === 'order' ? w.example : undefined}
         onNext={(r) => {
-          answerWord(w.id, r.correct);
-          recordAnswer({ subject: 'english', topicId: 'vocab', question: task.question + ' ' + w.en, correct: r.correct, points: r.points });
+          answerWord(w.id, r.firstTry);
+          recordAnswer({ subject: 'english', topicId: 'vocab', question: task.question + ' ' + w.en, correct: r.firstTry, points: r.points, secondTry: r.correct && !r.firstTry, guess: r.guess });
           if (r.correct) setRight(right + 1);
           setI(i + 1);
         }} />

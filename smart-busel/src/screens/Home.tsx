@@ -39,6 +39,9 @@ export function Home({ onSubject, onSubjects, onTopic, onPlan, onReview, onWarmu
   const today = daily[todayStr()];
   const goalDone = today?.tasks ?? 0;
   const streak = currentStreak((d) => (daily[d]?.tasks ?? 0) > 0, todayStr());
+  // вернулся после перерыва в 2+ дня — встречаем тепло, без упрёков
+  const lastActive = Object.keys(daily).filter((d) => d < todayStr() && (daily[d]?.tasks ?? 0) > 0).sort().pop();
+  const welcomeBack = !today?.tasks && !!lastActive && (Date.parse(todayStr()) - Date.parse(lastActive)) / 86400000 >= 2;
 
   // План на сегодня (в порядке программы) и «Продолжить»
   const order = allTopics.map((x) => x.topic.id);
@@ -102,6 +105,7 @@ export function Home({ onSubject, onSubjects, onTopic, onPlan, onReview, onWarmu
             <div>
               <h1 className="text-4xl font-bold">Привет, {settings.name}!</h1>
               <p className="text-mute">Уровень {lvl.level} · {levelTitle(lvl.level)} · {points} {plural(points, 'балл', 'балла', 'баллов')}</p>
+              {welcomeBack && <p className="mt-1 font-bold">С возвращением! Я скучал. Начнём с короткой разминки — вспомним, что ты уже знаешь.</p>}
             </div>
           </div>
           {next ? (
