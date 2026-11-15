@@ -9,16 +9,16 @@ import { SubjectArt } from './SubjectArt';
 
 /**
  * Внешний вид грамот. За что и когда грамота выдаётся, решает engine/certificates.ts — здесь только рисунок.
- * Четыре вида, каждый следующий наряднее: звёздная (тема на 100%), исследователя (раздел),
- * мастера (весь предмет) и упорства (серия дней: 7, 14, 30).
+ * Виды, каждый следующий наряднее: исследователя (раздел, пройденный отлично), мастера (весь предмет)
+ * и упорства (серия 30 и 100 дней). Звёздная (тема на 100%) больше не выдаётся, но полученные раньше остаются.
  */
 export type Tier = 'star' | 'explorer' | 'master' | 'fire';
 
 export const TIERS: Record<Tier, { name: string; how: string }> = {
-  star: { name: 'Звёздная грамота', how: 'Пройди тему на 100% — три звезды' },
-  explorer: { name: 'Грамота исследователя', how: 'Пройди все темы одного раздела' },
+  star: { name: 'Звёздная грамота', how: 'Выдавалась раньше за тему на 100%' },
+  explorer: { name: 'Грамота исследователя', how: 'Пройди все темы раздела, каждую минимум на 2 звезды' },
   master: { name: 'Грамота мастера', how: 'Пройди все темы предмета' },
-  fire: { name: 'Грамота упорства', how: 'Занимайся 7, 14 или 30 дней подряд' },
+  fire: { name: 'Грамота упорства', how: 'Занимайся 30 или 100 дней подряд' },
 };
 const KIND_TIER: Record<Cert['kind'], Tier> = { topic: 'star', section: 'explorer', subject: 'master', streak: 'fire' };
 export const tierOf = (c: Cert): Tier => KIND_TIER[c.kind];
@@ -33,7 +33,7 @@ function subjectOf(c: Cert) {
 }
 const streakDays = (c: Cert) => Number(c.id.slice(2)) || 0;
 /** Насколько нарядна грамота: 1 — звёзды, 2 — лавровый венок, 3 — венок и корона. */
-const splendour = (c: Cert) => (c.kind === 'subject' ? 3 : c.kind === 'section' ? 2 : c.kind === 'streak' ? (streakDays(c) >= 30 ? 3 : streakDays(c) >= 14 ? 2 : 1) : 1);
+const splendour = (c: Cert) => (c.kind === 'subject' ? 3 : c.kind === 'section' ? 2 : c.kind === 'streak' ? (streakDays(c) >= 100 ? 3 : streakDays(c) >= 14 ? 2 : 1) : 1);
 
 const pt = (r: number, deg: number) => `${(r * Math.cos((deg * Math.PI) / 180)).toFixed(1)},${(r * Math.sin((deg * Math.PI) / 180)).toFixed(1)}`;
 const SCALLOP = Array.from({ length: 48 }, (_, i) => pt(i % 2 ? 73 : 80, i * 7.5)).join(' ');

@@ -6,8 +6,8 @@ import { AppBar } from '../components/AppBar';
 import { isAndroid } from '../platform';
 import { Mascot } from '../components/Mascot';
 import { learnSubjects } from '../content/loader';
-import { earnedCertificates, type Cert } from '../engine/certificates';
-import { todayStr, useApp } from '../store/useApp';
+import { ownedCertificates, type Cert } from '../engine/certificates';
+import { useApp } from '../store/useApp';
 
 /** Образцы для витрины видов грамот (только рисунок медали). */
 const SAMPLE: Record<Tier, Cert> = {
@@ -20,8 +20,9 @@ const fmt = (d: string) => `${d.slice(8)}.${d.slice(5, 7)}.${d.slice(0, 4)}`;
 
 /** Грамоты: список заслуженных и красивый лист для печати (Ctrl+P или кнопка «Распечатать»). */
 export function Certificates({ onBack }: { onBack(): void }) {
-  const { certificates, settings, topicResults, daily } = useApp();
-  const earned = earnedCertificates({ topicResults, daily }, learnSubjects, todayStr()).filter((c) => certificates[c.id]);
+  const { certificates, settings } = useApp();
+  // все полученные грамоты, в том числе по прежним правилам
+  const earned = ownedCertificates(certificates, learnSubjects);
   const [openId, setOpenId] = useState<string>();
   const open = earned.find((c) => c.id === openId);
   // номер грамоты — по порядку получения; в списке новые сверху
@@ -46,9 +47,9 @@ export function Certificates({ onBack }: { onBack(): void }) {
         <Certificate cert={open} name={settings.name} date={certificates[open.id]} number={numberOf(open.id)} />
       ) : (
         <>
-          <p className="text-mute">Грамот четыре вида, и каждая следующая наряднее. Нажми на грамоту, чтобы открыть её и распечатать.</p>
+          <p className="text-mute">Грамота — редкая награда за очень хорошую работу: отлично пройденный раздел, весь предмет или долгая серия занятий. Нажми на грамоту, чтобы открыть её и распечатать.</p>
           <ul className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-            {(Object.keys(TIERS) as Tier[]).map((t) => {
+            {(Object.keys(TIERS) as Tier[]).filter((t) => t !== 'star' || earned.some((c) => tierOf(c) === 'star')).map((t) => {
               const n = earned.filter((c) => tierOf(c) === t).length;
               return (
                 <li key={t} className={`flex flex-col items-center gap-1 rounded-xl3 bg-card p-4 text-center shadow ${n ? '' : 'opacity-70'}`}>
@@ -63,7 +64,7 @@ export function Certificates({ onBack }: { onBack(): void }) {
           {earned.length === 0 && (
             <div className="flex items-center gap-5 rounded-xl3 bg-card p-6 shadow">
               <Mascot size={110} mood="read" />
-              <p className="text-lg">Пока грамот нет. Пройди тему на 100% — и первая грамота твоя!</p>
+              <p className="text-lg">Пока грамот нет. Пройди все темы раздела хотя бы на 2 звезды — и первая грамота твоя!</p>
             </div>
           )}
           {earned.length > 0 && <h2 className="text-2xl font-bold">Мои грамоты: {earned.length}</h2>}
