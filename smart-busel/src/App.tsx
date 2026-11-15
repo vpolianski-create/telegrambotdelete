@@ -19,6 +19,10 @@ import { Vocabulary } from './screens/Vocabulary';
 import { Warmup } from './screens/Warmup';
 import { resolveTheme } from './engine/theme';
 import { useApp } from './store/useApp';
+import { applySystemTheme, onBackButton, runBackInterceptors } from './platform';
+import { needsParent, useAutoUpdate } from './update/auto';
+import { startAutoUpdates } from './update';
+import { startAutoSync } from './sync';
 
 type Route =
   | { name: 'home' }
@@ -33,6 +37,23 @@ type Route =
   | { name: 'warmup' }
   | { name: 'parent' };
 
+/** На телефоне во время урока и повторения нижнее меню скрыто — больше места, ничего не нажать случайно. */
+const IMMERSIVE: Route['name'][] = ['lesson', 'warmup', 'review'];
+
+/** Куда ведёт «Назад» с каждого экрана (главный экран — некуда). */
+const BACK: Partial<Record<Route['name'], (r: Route) => Route>> = {
+  subjects: () => ({ name: 'home' }),
+  subject: () => ({ name: 'subjects' }),
+  lesson: (r) => ({ name: 'subject', id: (r as Extract<Route, { name: 'lesson' }>).subject }),
+  vocab: () => ({ name: 'subject', id: 'english' }),
+  collection: () => ({ name: 'home' }),
+  certs: () => ({ name: 'collection' }),
+  plan: () => ({ name: 'home' }),
+  review: () => ({ name: 'home' }),
+  warmup: () => ({ name: 'home' }),
+  parent: () => ({ name: 'home' }),
+};
+
 export default function App() {
   const { init, ready, settings, mistakes } = useApp();
   const reviewCount = useMemo(() => reviewList(mistakes, 99).length, [mistakes]);
@@ -40,12 +61,19 @@ export default function App() {
   const [route, setRoute] = useState<Route>({ name: 'home' });
 
   useEffect(() => { void init(); }, [init]);
+  useEffect(() => { if (ready) startAutoSync(); }, [ready]);
+  // автообновление: Windows — сама программа, Android — свой модуль (в режиме разработки не работает)
+  useEffect(() => { if (ready) startAutoUpdates(); }, [ready]);
+  const parentBadge = useAutoUpdate(needsParent);
   useEffect(() => {
     // «Как в Windows»: берём тему системы и следим за её сменой
     const mq = window.matchMedia('(prefers-color-scheme: dark)');
-    const apply = () => { document.documentElement.dataset.theme = resolveTheme(settings.theme, mq.matches); };
+    const apply = () => {
+      const theme = resolveTheme(settings.theme, mq.matches);
+      document.documentElement.dataset.theme = theme;
+      applySystemTheme(settings.theme, theme === 'dark'); // заголовок окна Windows / строка состояния Android — того же цвета
+    };
     apply();
-    window.busel?.setTheme?.(settings.theme); // заголовок окна Windows — того же цвета
     if (settings.theme !== 'system') return;
     mq.addEventListener('change', apply);
     return () => mq.removeEventListener('change', apply);
@@ -57,6 +85,14 @@ export default function App() {
   const pageKey = route.name === 'lesson' ? `lesson-${route.topic}-${route.attempt}` : route.name === 'subject' ? `subject-${route.id}` : route.name;
   // новый экран всегда открывается сверху
   useEffect(() => { scroller.current?.scrollTo(0, 0); }, [pageKey]);
+  // Android: системная кнопка/жест «Назад» ведёт на предыдущий экран, с главного — сворачивает приложение
+  useEffect(() => onBackButton(() => {
+    if (runBackInterceptors()) return true; // сначала — сам экран (закрыть раздел, грамоту…)
+    const back = BACK[route.name];
+    if (!back) return false;
+    setRoute(back(route));
+    return true;
+  }), [route]);
 
   if (!ready) return null;
   const home = () => setRoute({ name: 'home' });
@@ -70,12 +106,12 @@ export default function App() {
 
   return (
     <>
-      <div className="flex h-full">
-        <Sidebar active={NAV[route.name]} reviewCount={reviewCount} onNavigate={(id) => setRoute({ name: id } as Route)} />
-        <div ref={scroller} className="h-full min-w-0 flex-1 overflow-y-auto">
+      <div className="flex h-full max-sm:flex-col">
+        <Sidebar hiddenOnPhone={IMMERSIVE.includes(route.name)} active={NAV[route.name]} reviewCount={reviewCount} parentBadge={parentBadge} onNavigate={(id) => setRoute({ name: id } as Route)} />
+        <div ref={scroller} className="h-full min-w-0 flex-1 overflow-y-auto overscroll-contain max-sm:min-h-0">
           <AnimatePresence mode="wait">
             <motion.div key={pageKey} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.16 }}>
-              {route.name === 'home' && <Home reviewCount={reviewCount} onSubject={(id) => setRoute({ name: 'subject', id })} onSubjects={subjectsList} onTopic={lesson} onPlan={() => setRoute({ name: 'plan' })} onReview={() => setRoute({ name: 'review' })} onWarmup={() => setRoute({ name: 'warmup' })} />}
+              {route.name === 'home' && <Home reviewCount={reviewCount} onSubject={(id) => setRoute({ name: 'subject', id })} onSubjects={subjectsList} onTopic={lesson} onPlan={() => setRoute({ name: 'plan' })} onReview={() => setRoute({ name: 'review' })} onWarmup={() => setRoute({ name: 'warmup' })} onParent={() => setRoute({ name: 'parent' })} />}
               {route.name === 'subjects' && <Subjects onSubject={(id) => setRoute({ name: 'subject', id })} />}
               {route.name === 'subject' && (
                 <SubjectScreen id={route.id} onBack={subjectsList} onTopic={(t) => lesson(route.id, t)} onVocab={() => setRoute({ name: 'vocab' })} />
@@ -90,7 +126,7 @@ export default function App() {
               {route.name === 'plan' && <Plan onTopic={lesson} />}
               {route.name === 'review' && <Review onBack={home} />}
               {route.name === 'warmup' && <Warmup onBack={home} />}
-              {route.name === 'parent' && <Parent />}
+              {route.name === 'parent' && <Parent onBack={home} />}
             </motion.div>
           </AnimatePresence>
         </div>

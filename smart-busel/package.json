@@ -1,7 +1,7 @@
 {
   "name": "smart-busel",
   "productName": "Умный Бусел",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "description": "Обучающее приложение для 5 класса",
   "author": "Smart Busel",
   "private": true,
@@ -42,9 +42,16 @@
       "installerIcon": "resources/brand/icon.ico",
       "uninstallerIcon": "resources/brand/icon.ico",
       "installerHeaderIcon": "resources/brand/icon.ico"
-    }
+    },
+    "publish": [
+      {
+        "provider": "generic",
+        "url": "https://github.com/vpolianski-create/telegrambotdelete/releases/latest/download"
+      }
+    ]
   },
   "devDependencies": {
+    "@capacitor/cli": "8.6.2",
     "@types/canvas-confetti": "^1.9.0",
     "@types/node": "^26.6.4",
     "@types/react": "^19.3.0",
@@ -64,7 +71,14 @@
     "wait-on": "^9.5.1"
   },
   "dependencies": {
+    "@capacitor-community/text-to-speech": "8.0.2",
+    "@capacitor/android": "8.6.2",
+    "@capacitor/app": "8.1.2",
+    "@capacitor/core": "8.6.2",
+    "@capacitor/filesystem": "8.1.5",
+    "@capacitor/share": "8.0.3",
     "canvas-confetti": "^1.9.4",
+    "electron-updater": "6.8.11",
     "framer-motion": "^14.0.0",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",

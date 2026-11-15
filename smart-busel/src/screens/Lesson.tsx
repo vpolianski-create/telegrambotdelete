@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Icon } from '../components/Icon';
+import { AppBar, phoneBottomBar } from '../components/AppBar';
 import { motion } from 'framer-motion';
 import { ChestButton, ChestPrize } from '../components/Chest';
 import { Mascot } from '../components/Mascot';
@@ -21,9 +22,9 @@ import { useApp } from '../store/useApp';
 type Item = LessonItem;
 type Phase = 'cards' | 'example' | 'selfcheck' | 'practice' | 'bonusAsk' | 'bonus' | 'result';
 
-const Btn = ({ children, onClick, ghost }: { children: React.ReactNode; onClick(): void; ghost?: boolean }) => (
+const Btn = ({ children, onClick, ghost, grow }: { children: React.ReactNode; onClick(): void; ghost?: boolean; grow?: boolean }) => (
   <button onClick={onClick}
-    className={`rounded-xl2 px-8 text-lg font-extrabold active:scale-95 ${ghost ? 'bg-soft' : 'bg-brand text-onbrand'}`}>
+    className={`rounded-xl2 px-8 text-lg font-extrabold active:scale-95 max-sm:min-h-[56px] max-sm:px-5 ${grow ? 'max-sm:flex-1' : ''} ${ghost ? 'bg-soft' : 'bg-brand text-onbrand'}`}>
     {children}
   </button>
 );
@@ -185,10 +186,20 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
       )}
     </motion.div>
   );
+  /** Насколько пройден урок (0…1) — для полоски вверху на телефоне. */
+  const progress = (() => {
+    if (phase === 'cards') return 0.3 * (card / Math.max(1, intro.steps.length));
+    if (phase === 'example') return 0.32;
+    if (phase === 'selfcheck') return 0.35 + 0.1 * (i / Math.max(1, selfItems.length));
+    if (phase === 'practice') return 0.45 + 0.5 * (i / Math.max(1, items.length));
+    if (phase === 'bonus' || phase === 'bonusAsk') return 0.95;
+    return 1;
+  })();
 
   const shell = (title: string, body: React.ReactNode) => (
-    <main className="mx-auto flex max-w-3xl flex-col gap-5 p-6">
-      <div className="flex items-center gap-3">
+    <main className="mx-auto flex max-w-3xl flex-col gap-5 p-6 max-sm:gap-4">
+      <AppBar title={topic.title} subtitle={title} onBack={onExit} close progress={progress} />
+      <div className="flex items-center gap-3 max-sm:hidden">
         <button onClick={onExit} className="rounded-xl2 bg-card px-5 shadow"><Icon name="close" /> Выйти</button>
         <h1 className="flex-1 text-lg font-extrabold text-mute">{topic.title} · {title}</h1>
       </div>
@@ -207,10 +218,11 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
     const shown = intro.steps.slice(0, card + 1).filter((x) => x.kind === 'card').length;
     return shell(`Объяснение ${shown}/${topic.cards.length}`,
       <motion.div key={card} initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }}
-        className="flex flex-col gap-6 rounded-xl3 bg-card p-8 shadow">
-        <div className="flex items-start gap-5">
-          <Mascot size={132} mood="read" />
-          <p className="text-2xl leading-relaxed"><Rich text={topic.cards[cur.index]} /></p>
+        className="flex flex-col gap-6 rounded-xl3 bg-card p-8 shadow max-sm:gap-4 max-sm:p-5">
+        <div className="flex items-start gap-5 max-sm:flex-col max-sm:gap-2">
+          <div className="max-sm:hidden"><Mascot size={132} mood="read" /></div>
+          <div className="sm:hidden"><Mascot size={64} mood="read" /></div>
+          <p className="text-2xl leading-relaxed max-sm:text-[1.125rem] max-sm:leading-[1.65]"><Rich text={topic.cards[cur.index]} /></p>
         </div>
         {(topic.images ?? []).filter((im) => im.card === cur.index && imageUrl(im.file)).map((im) => (
           <figure key={im.file} className="flex flex-col items-center gap-2">
@@ -220,9 +232,9 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
           </figure>
         ))}
         {(topic.visuals ?? []).filter((x) => x.card === cur.index).map((x, i) => <Visual key={i} v={x.visual} />)}
-        <div className="flex justify-between">
-          <Btn ghost onClick={() => card > 0 && setCard(card - 1)}><Icon name="back" /> Назад</Btn>
-          <Btn onClick={forward}>{last ? 'Дальше' : 'Понятно'} <Icon name="next" /></Btn>
+        <div className={`flex justify-between gap-3 ${phoneBottomBar}`}>
+          <Btn ghost onClick={() => card > 0 && setCard(card - 1)}><Icon name="back" label="Назад" /><span className="max-sm:hidden"> Назад</span></Btn>
+          <Btn grow onClick={forward}>{last ? 'Дальше' : 'Понятно'} <Icon name="next" /></Btn>
         </div>
       </motion.div>);
   }
@@ -231,7 +243,7 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
     const ex = topic.example;
     const all = step >= ex.steps.length;
     return shell('Разберём пример',
-      <div className="flex flex-col gap-4 rounded-xl3 bg-card p-8 shadow">
+      <div className="flex flex-col gap-4 rounded-xl3 bg-card p-8 shadow max-sm:p-5">
         <h2 className="text-2xl font-extrabold">{ex.title}</h2>
         {ex.steps.slice(0, step).map((s, k) => (
           <motion.div key={k} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="rounded-xl2 bg-bg p-4">
@@ -239,8 +251,8 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
             <p className="mt-1 text-mute">Почему так: {s.why}</p>
           </motion.div>
         ))}
-        <div className="self-end">
-          <Btn onClick={() => (all ? afterList(afterIntro) : setStep(step + 1))}>{all ? <>Проверь себя <Icon name="next" /></> : 'Следующий шаг'}</Btn>
+        <div className={`flex self-end max-sm:self-stretch ${phoneBottomBar}`}>
+          <Btn grow onClick={() => (all ? afterList(afterIntro) : setStep(step + 1))}>{all ? <>Проверь себя <Icon name="next" /></> : 'Следующий шаг'}</Btn>
         </div>
       </div>);
   }
@@ -269,13 +281,13 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
 
   if (phase === 'bonusAsk') {
     return shell('Бонус',
-      <div className="flex flex-col items-center gap-5 rounded-xl3 bg-card p-8 text-center shadow">
+      <div className="flex flex-col items-center gap-5 rounded-xl3 bg-card p-8 text-center shadow max-sm:p-5">
         <Mascot size={130} cheer />
         <h2 className="text-2xl font-extrabold">Хочешь бонусные задания?</h2>
         <p className="text-mute">Они посложнее, зато дают по 30 баллов. Можно пропустить.</p>
-        <div className="flex gap-3">
-          <Btn ghost onClick={() => afterList('result')}>Пропустить</Btn>
-          <Btn onClick={() => { setItems(build(bonusLeft, false)); afterList('bonus'); }}>Давай!</Btn>
+        <div className="flex gap-3 max-sm:w-full">
+          <Btn grow ghost onClick={() => afterList('result')}>Пропустить</Btn>
+          <Btn grow onClick={() => { setItems(build(bonusLeft, false)); afterList('bonus'); }}>Давай!</Btn>
         </div>
       </div>);
   }
@@ -290,7 +302,7 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
   const stubborn = !passed && (before?.attempts ?? 0) + 1 >= 3; // тема не идёт третий раз
   return shell('Итог',
     <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}
-      className="flex flex-col items-center gap-4 rounded-xl3 bg-card p-8 text-center shadow">
+      className="flex flex-col items-center gap-4 rounded-xl3 bg-card p-8 text-center shadow max-sm:p-5">
       <Spark fire={passed}><Mascot size={150} mood={passed ? 'cheer' : 'support'} /></Spark>
       <h2 className="text-3xl font-extrabold">
         {passed ? `${settings.name}, тема пройдена!` : 'Сегодня было трудно, а ты дошёл до конца.'}
@@ -330,9 +342,9 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
         <ChestButton label="Открыть сундук-сюрприз" onOpen={() => setChest(openChest(topic.id))} />
       )}
       {chest && <ChestPrize result={chest} mascot />}
-      <div className="flex gap-3">
-        <Btn ghost onClick={onExit}>К темам</Btn>
-        <Btn onClick={() => onRetry()}>Ещё раз</Btn>
+      <div className="flex gap-3 max-sm:w-full">
+        <Btn grow ghost onClick={onExit}>К темам</Btn>
+        <Btn grow onClick={() => onRetry()}>Ещё раз</Btn>
       </div>
     </motion.div>);
 }

@@ -1,11 +1,13 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Icon, type IconName } from '../components/Icon';
+import { AppBar } from '../components/AppBar';
+import { interceptBack } from '../platform';
 import { TaskView } from '../components/TaskView';
 import { wordSets } from '../content/loader';
 import type { Task, Word } from '../content/schema';
 import { boxCounts, LEARNED_BOX, pickSession } from '../engine/leitner';
 import { shuffle } from '../engine/rng';
-import { hasEnglishVoice, speak } from '../audio/speech';
+import { checkVoice, hasEnglishVoice, speak, voiceHint } from '../audio/speech';
 import { sentenceTask } from '../engine/variety';
 import { todayStr, useApp } from '../store/useApp';
 import { Mascot } from '../components/Mascot';
@@ -194,11 +196,13 @@ export function Vocabulary({ onBack }: { onBack(): void }) {
   const { leitner } = useApp();
   const [set, setSet] = useState('all');
   const [mode, setMode] = useState<Mode | null>(null);
+  useEffect(() => (mode ? interceptBack(() => { setMode(null); return true; }) : undefined), [mode]);
   const [voice, setVoice] = useState(true);
 
   useEffect(() => {
     const check = () => setVoice(hasEnglishVoice());
     check();
+    void checkVoice().then(setVoice);
     window.speechSynthesis?.addEventListener('voiceschanged', check);
     return () => window.speechSynthesis?.removeEventListener('voiceschanged', check);
   }, []);
@@ -208,16 +212,17 @@ export function Vocabulary({ onBack }: { onBack(): void }) {
 
   return (
     <main className="mx-auto flex max-w-4xl flex-col gap-5 p-6">
-      <button onClick={mode ? () => setMode(null) : onBack} className="self-start rounded-xl2 bg-card px-5 shadow"><Icon name="back" /> Назад</button>
+      <AppBar title="Английские слова" onBack={mode ? () => setMode(null) : onBack} />
+      <button onClick={mode ? () => setMode(null) : onBack} className="self-start rounded-xl2 bg-card px-5 shadow max-sm:hidden"><Icon name="back" /> Назад</button>
       {mode ? <Training mode={mode} setId={set} onExit={() => setMode(null)} /> : (
         <>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 max-sm:hidden">
             <Mascot size={96} mood="read" />
             <h1 className="text-4xl font-extrabold">Английские слова</h1>
           </div>
           {!voice && (
             <p className="rounded-xl2 bg-warn/15 p-3">
-              <Icon name="soundOff" /> Английский голос не найден. Родителям: Параметры Windows → Время и язык → Язык и регион → добавить English (United States) → Речь.
+              <Icon name="soundOff" /> Родителям: {voiceHint()}
             </p>
           )}
           <section className="rounded-xl3 bg-card p-5 shadow">
@@ -226,7 +231,7 @@ export function Vocabulary({ onBack }: { onBack(): void }) {
               {counts.map((c, k) => (
                 <div key={k} className="flex flex-1 flex-col items-center gap-1">
                   <div className="w-full rounded-t bg-brand" style={{ height: 8 + (c / Math.max(1, ...counts)) * 80 }} />
-                  <span className="text-sm text-mute">Коробка {k + 1}: {c}</span>
+                  <span className="whitespace-nowrap text-sm text-mute"><span className="max-sm:hidden">Коробка </span><span className="sm:hidden">№</span>{k + 1}: {c}</span>
                 </div>
               ))}
             </div>

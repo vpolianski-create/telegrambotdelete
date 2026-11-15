@@ -1,6 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { interceptBack, printPage } from '../platform';
 import { Icon } from '../components/Icon';
 import { Certificate, Medal, TIERS, tierOf, type Tier } from '../components/Certificate';
+import { AppBar } from '../components/AppBar';
+import { isAndroid } from '../platform';
 import { Mascot } from '../components/Mascot';
 import { learnSubjects } from '../content/loader';
 import { earnedCertificates, type Cert } from '../engine/certificates';
@@ -25,13 +28,18 @@ export function Certificates({ onBack }: { onBack(): void }) {
   const byDate = [...earned].sort((a, b) => certificates[a.id].localeCompare(certificates[b.id]));
   const numberOf = (id: string) => byDate.findIndex((c) => c.id === id) + 1;
   const sorted = [...byDate].reverse();
+  useEffect(() => (open ? interceptBack(() => { setOpenId(undefined); return true; }) : undefined), [open]);
 
   return (
-    <main className="mx-auto flex max-w-4xl flex-col gap-5 p-6">
-      <div className="no-print flex items-center gap-3">
+    <main className="mx-auto flex max-w-4xl flex-col gap-5 p-6 max-sm:gap-4">
+      <div className="no-print contents">
+        <AppBar title={open ? 'Грамота' : 'Мои грамоты'} onBack={() => (open ? setOpenId(undefined) : onBack())}
+          actions={open ? [{ icon: 'print', label: isAndroid() ? 'Печать или PDF' : 'Распечатать', onClick: () => void printPage() }] : undefined} />
+      </div>
+      <div className="no-print flex items-center gap-3 max-sm:hidden">
         <button onClick={() => (open ? setOpenId(undefined) : onBack())} className="rounded-xl2 bg-card px-5 shadow"><Icon name="back" /> Назад</button>
         <h1 className="flex-1 text-4xl font-extrabold">Мои грамоты</h1>
-        {open && <button onClick={() => window.print()} className="rounded-xl2 bg-brand px-6 font-extrabold text-onbrand"><Icon name="print" /> Распечатать</button>}
+        {open && <button onClick={() => void printPage()} className="rounded-xl2 bg-brand px-6 font-extrabold text-onbrand"><Icon name="print" /> Распечатать</button>}
       </div>
 
       {open ? (

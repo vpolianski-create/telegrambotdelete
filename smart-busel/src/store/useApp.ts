@@ -12,6 +12,8 @@ import { togglePlan as togglePlanFn, type Plan } from '../engine/plan';
 import { afterReview, WARMUP_BONUS } from '../engine/warmup';
 import type { ThemeSetting } from '../engine/theme';
 import { DEFAULT_REWARD_TEXT, DEFAULT_THRESHOLD, newRewards, type Reward, type RewardBase } from '../engine/rewards';
+import { changedStamps, mistakeKey, withoutSync, type SyncMeta } from '../sync/merge';
+import { loadData, saveData } from '../platform';
 
 export interface Settings {
   name: string;
@@ -25,6 +27,8 @@ export interface Settings {
   theme: ThemeSetting; // 'system' — как в Windows
   fontScale: number;
   sound: boolean;
+  /** Лёгкая вибрация на телефоне (правильный ответ, награды). У каждого устройства своя. */
+  vibration: boolean;
   accessory: string; // надетый аксессуар Бусела
 }
 
@@ -64,6 +68,8 @@ export interface Data {
   contentRev?: number; // версия набора уроков: при переписывании предметов сбрасываем отметки о прохождении тем
   lastTopic: { subjectId: string; topicId: string } | null;
   settings: Settings;
+  /** Синхронизация между устройствами (номер устройства, вклады других устройств, метки времени). Нет — синхронизация не включалась. */
+  sync?: SyncMeta;
 }
 
 const initial: Data = {
@@ -73,17 +79,24 @@ const initial: Data = {
     name: 'Женя', pin: '0000', pinChanged: false,
     rewardThreshold: DEFAULT_THRESHOLD, rewardTexts: {},
     dailyGoal: 10, dailyLimitMin: 0, breakEveryMin: 30,
-    theme: 'system', fontScale: 1, sound: true, accessory: '',
+    theme: 'system', fontScale: 1, sound: true, vibration: true, accessory: '',
   },
 };
 
 declare global {
   interface Window {
-    busel?: { load(): Promise<Data | null>; save(d: Data): Promise<void>; setTheme?(theme: string): void };
+    busel?: {
+      load(): Promise<Data | null>; save(d: Data): Promise<void>; setTheme?(theme: string): void;
+      /** Секреты синхронизации, зашифрованные средствами Windows. */
+      secretGet?(): Promise<string | null>; secretSet?(value: string | null): Promise<void>;
+      /** Открыть ссылку на скачивание новой версии в браузере (только страница выпусков GitHub). */
+      openExternal?(url: string): Promise<void>;
+      /** Автообновление Windows (electron/updater.ts). */
+      updateGet?(): Promise<unknown>; updateInstall?(): Promise<void>; onUpdateState?(cb: (s: unknown) => void): () => void;
+    };
   }
 }
 
-const LS_KEY = 'smart-busel-data';
 export const todayStr = () => {
   const d = new Date();
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
@@ -119,14 +132,12 @@ export function merge(raw: Partial<Data> | null, keepAllProgress = false): Data 
 
 async function load(): Promise<Data> {
   try {
-    const raw = window.busel ? await window.busel.load() : JSON.parse(localStorage.getItem(LS_KEY) ?? 'null');
-    return merge(raw);
+    return merge((await loadData()) as Partial<Data> | null);
   } catch { return initial; /* повреждённый файл — копия лежит в папке backups */ }
 }
 
 function persist(d: Data) {
-  if (window.busel) void window.busel.save(d);
-  else localStorage.setItem(LS_KEY, JSON.stringify(d));
+  saveData(d);
 }
 
 export interface AnswerInfo {
@@ -170,6 +181,10 @@ interface Store extends Data {
   giveReward(id: string): void;
   updateSettings(p: Partial<Settings>): void;
   importData(raw: unknown): void;
+  /** Включить/выключить синхронизацию на этом устройстве (служебные сведения). */
+  setSync(meta: SyncMeta | undefined): void;
+  /** Поставить общий прогресс, собранный с нескольких устройств (см. src/sync/merge.ts). */
+  applySynced(d: Data): void;
 }
 
 const dataOf = (s: Data): Data => ({
@@ -178,6 +193,7 @@ const dataOf = (s: Data): Data => ({
   badges: s.badges, albumCards: s.albumCards, stickers: s.stickers, chestAccessories: s.chestAccessories, records: s.records,
   opened: s.opened, plan: s.plan, certificates: s.certificates, fixedMistakes: s.fixedMistakes,
   levelSeen: s.levelSeen, contentRev: s.contentRev, lastTopic: s.lastTopic, settings: s.settings,
+  ...(s.sync ? { sync: s.sync } : {}),
 });
 
 /** Баллы → дозапись наград; награды создаются ровно при пересечении порога. */
@@ -190,6 +206,7 @@ function withPoints(s: Data, n: number): Pick<Data, 'points' | 'rewards'> {
 export const useApp = create<Store>((set, get) => {
   const day = (s: Data, date = todayStr()): DayLog => ({ ...emptyDay(), ...s.daily[date] });
   const commit = (p: Partial<Data>, extraBadges: string[] = []) => {
+    const before = dataOf(get());
     set(p);
     const s = get();
     const toasts: Toast[] = [];
@@ -217,6 +234,12 @@ export const useApp = create<Store>((set, get) => {
       certs.forEach((c) => toasts.push({ icon: '📜', title: 'Новая грамота!', text: c.title }));
     }
     if (toasts.length) set({ toasts: [...get().toasts, ...toasts] });
+    // синхронизация: отметить время изменения настроек, плана и т. п. (побеждает последнее изменение)
+    const sync = get().sync;
+    if (sync) {
+      const stamps = changedStamps(before, dataOf(get()), Date.now(), sync.stamps);
+      if (stamps !== sync.stamps) set({ sync: { ...sync, stamps } });
+    }
     persist(dataOf(get()));
   };
 
@@ -338,10 +361,13 @@ export const useApp = create<Store>((set, get) => {
     togglePlan(topicId) { commit({ plan: togglePlanFn(get().plan, todayStr(), topicId) }); },
     resolveMistake(topicId, question) {
       const s = get();
+      const fixed = (m: Mistake) => m.topicId === topicId && m.question === question;
+      // при синхронизации помним исправленные ошибки, чтобы они не вернулись с другого устройства
+      const sync = s.sync && { ...s.sync, removed: [...s.sync.removed, ...s.mistakes.filter(fixed).map(mistakeKey)] };
       const date = todayStr();
       const d = day(s, date);
       commit({
-        mistakes: s.mistakes.filter((m) => !(m.topicId === topicId && m.question === question)), fixedMistakes: s.fixedMistakes + 1,
+        mistakes: s.mistakes.filter((m) => !fixed(m)), fixedMistakes: s.fixedMistakes + 1, ...(sync ? { sync } : {}),
         daily: { ...s.daily, [date]: { ...d, fixed: (d.fixed ?? 0) + 1 } },
       });
     },
@@ -388,10 +414,22 @@ export const useApp = create<Store>((set, get) => {
       commit(withPoints(get(), 0));
     },
     importData(raw) {
-      commit(merge(raw as Partial<Data>, true));
+      // копия из файла: сведения о синхронизации (если были) не берём — иначе прогресс мог бы удвоиться
+      const { sync: _ignored, ...rest } = (raw ?? {}) as Partial<Data>;
+      void _ignored;
+      commit({ ...merge(rest, true), sync: undefined });
+    },
+    setSync(meta) {
+      commit({ sync: meta });
+    },
+    applySynced(d) {
+      set({ ...d });
+      commit(withPoints(get(), 0)); // дозаписать награды, значки, грамоты по общему счёту
     },
   };
 });
 
 /** Все сохраняемые данные (для экспорта резервной копии). */
-export const snapshot = (): Data => dataOf(useApp.getState());
+export const snapshot = (): Data => withoutSync(dataOf(useApp.getState())) as Data;
+/** Все данные вместе со служебными сведениями синхронизации. */
+export const snapshotWithSync = (): Data => dataOf(useApp.getState());
