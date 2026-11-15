@@ -32,14 +32,14 @@ export function Plan({ onTopic }: { onTopic(subjectId: string, topicId: string):
                 return (
                   <li key={x.topic.id} className="flex items-center gap-2">
                     <button onClick={() => togglePlan(x.topic.id)} aria-pressed={on}
-                      className={`flex min-h-touch flex-1 flex-wrap items-center justify-between gap-2 rounded-xl2 px-4 py-2 text-left ${on ? 'bg-brand text-onbrand' : 'bg-bg'}`}>
+                      className={`flex min-h-touch min-w-0 flex-1 flex-wrap items-center justify-between gap-2 rounded-xl2 px-4 py-2 text-left ${on ? 'bg-brand text-onbrand' : 'bg-bg'}`}>
                       <span><Icon name={on ? 'checkboxOn' : 'checkboxOff'} size={24} /> {k + 1}. {x.topic.title}</span>
                       <span className="flex items-center gap-2">
                         {x.topic.id === next && <span className={`text-sm font-extrabold ${on ? 'text-onbrand' : 'text-brandink'}`}>По порядку</span>}
                         <StatusChip status={statusOf(x.topic.id)} />
                       </span>
                     </button>
-                    <button onClick={() => onTopic(sub.id, x.topic.id)} aria-label={`Начать: ${x.topic.title}`} title="Начать тему" className="min-h-touch rounded-xl2 bg-soft px-3 font-extrabold"><Icon name="play" /></button>
+                    <button onClick={() => onTopic(sub.id, x.topic.id)} aria-label={`Начать: ${x.topic.title}`} title="Начать тему" className="min-h-touch shrink-0 rounded-xl2 bg-soft px-3 font-extrabold"><Icon name="play" /></button>
                   </li>
                 );
               })}

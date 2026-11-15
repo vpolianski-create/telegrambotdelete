@@ -53,10 +53,10 @@ function Stats() {
           {days.map((d) => {
             const sec = daily[d]?.sec ?? 0;
             return (
-              <div key={d} className="flex flex-1 flex-col items-center gap-1">
+              <div key={d} className="flex min-w-0 flex-1 flex-col items-center gap-1">
                 <span className="text-sm">{Math.round(sec / 60)}</span>
                 <div className="w-full rounded-t bg-brand" style={{ height: 4 + (sec / max) * 90 }} />
-                <span className="text-sm text-mute">{d.slice(8)}.{d.slice(5, 7)}</span>
+                <span className="text-sm text-mute">{d.slice(8)}<span className="max-sm:hidden">.{d.slice(5, 7)}</span></span>
               </div>
             );
           })}
@@ -141,9 +141,10 @@ function Report() {
         </div>
         <div className="flex h-24 items-end gap-2">
           {r.days.map((d) => (
-            <div key={d.date} className="flex flex-1 flex-col items-center gap-1">
+            <div key={d.date} className="flex min-w-0 flex-1 flex-col items-center gap-1">
               <div className="w-full rounded-t bg-brand" style={{ height: 4 + (d.sec / max) * 70 }} />
-              <span className="text-sm text-mute">{dm(d.date)}</span>
+              {/* на телефоне — только число месяца, чтобы семь дней поместились в ширину */}
+              <span className="text-sm text-mute"><span className="max-sm:hidden">{dm(d.date)}</span><span className="sm:hidden">{d.date.slice(8)}</span></span>
             </div>
           ))}
         </div>

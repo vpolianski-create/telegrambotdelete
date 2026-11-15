@@ -84,6 +84,8 @@ button.bg-soft:hover:not(:disabled), button.bg-card:hover:not(:disabled) { backg
 /* поля ввода в цветах темы */
 input, select, textarea { background-color: var(--card); color: var(--ink); border-color: var(--line); }
 input::placeholder { color: var(--mute); opacity: 0.8; }
+/* поле ввода в строке с кнопкой может сжиматься (по умолчанию у него ширина ~20 букв, и на телефоне оно выталкивает кнопку за край) */
+input { min-width: 0; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
@@ -193,6 +195,8 @@ input::placeholder { color: var(--mute); opacity: 0.8; }
   .safe-bottom { padding-bottom: calc(var(--sab) + 0.25rem); }
   /* на узком экране — поуже поля у экранов */
   #root main { padding: 1rem; }
+  /* страница не сдвигается вбок, даже если что-то окажется шире экрана */
+  #root { overflow-x: clip; }
 }
 /* касания: без серой вспышки и без масштабирования двойным касанием */
 html { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }

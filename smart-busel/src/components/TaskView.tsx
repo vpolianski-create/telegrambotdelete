@@ -197,11 +197,11 @@ export function TaskView({ task, scored = true, speakWord, extraBonus = 0, repea
       )}
 
       {(task.type === 'input' || task.type === 'fill') && (
-        <form className="flex gap-3" onSubmit={(e) => { e.preventDefault(); if (text.trim()) submit(text); }}>
+        <form className="phone-stack flex gap-3" onSubmit={(e) => { e.preventDefault(); if (text.trim()) submit(text); }}>
           <input ref={inputRef} value={text} onChange={(e) => setText(e.target.value)} disabled={done || !ready}
             aria-label="Ответ" autoComplete="off" spellCheck={false}
-            className="min-h-touch flex-1 rounded-xl2 border-2 border-line bg-bg px-4 text-xl font-bold focus:border-brand focus:outline-none" />
-          <button type="submit" disabled={done || !ready || !text.trim()} className="rounded-xl2 bg-brand px-6 text-lg font-extrabold text-onbrand disabled:opacity-40">
+            className="min-h-touch min-w-0 flex-1 rounded-xl2 border-2 border-line bg-bg px-4 text-xl font-bold focus:border-brand focus:outline-none" />
+          <button type="submit" disabled={done || !ready || !text.trim()} className="shrink-0 rounded-xl2 bg-brand px-6 text-lg font-extrabold text-onbrand disabled:opacity-40">
             Проверить
           </button>
         </form>

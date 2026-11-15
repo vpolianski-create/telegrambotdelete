@@ -25,12 +25,12 @@ export function Sidebar({ active, reviewCount, parentBadge, hiddenOnPhone, onNav
     const dot = it.id === 'parent' && parentBadge; // родителям: нужно разрешить автообновление или подтвердить его
     const label = count ? `${it.title}: ${count}` : dot ? `${it.title}: нужно ваше действие` : it.title;
     return (
-      <li key={it.id} className="max-sm:flex-1">
+      <li key={it.id} className="max-sm:min-w-0 max-sm:flex-1">
         <button type="button" onClick={() => onNavigate(it.id)} aria-current={on ? 'page' : undefined} aria-label={label}
           className={`group relative flex w-full items-center gap-3 rounded-xl2 px-3 text-left font-bold max-[1099px]:justify-center max-[1099px]:px-0 max-sm:min-h-[64px] max-sm:flex-col max-sm:gap-1 max-sm:!bg-transparent max-sm:py-1.5 ${on ? 'bg-hover text-ink' : 'text-mute hover:bg-hover hover:text-ink'}`}>
           {on && <span aria-hidden className="absolute bottom-3 left-0 top-3 w-[3px] rounded-full bg-brand max-sm:hidden" />}
           {/* телефон: как в Android — подсвечивается «пилюля» вокруг значка */}
-          <span className={`relative flex max-sm:h-8 max-sm:w-14 max-sm:items-center max-sm:justify-center max-sm:rounded-full ${on ? 'max-sm:bg-brand/25' : ''}`}>
+          <span className={`relative flex max-sm:h-8 max-sm:w-full max-sm:max-w-14 max-sm:items-center max-sm:justify-center max-sm:rounded-full ${on ? 'max-sm:bg-brand/25' : ''}`}>
             <Icon name={it.icon} size={24} className={on ? 'text-brandink' : ''} />
             {dot && <span aria-hidden className="absolute -right-1 -top-1 h-2.5 w-2.5 rounded-full bg-sun max-sm:right-2.5 max-sm:top-0" />}
             {count > 0 && <span aria-hidden className="absolute -right-1.5 -top-1.5 hidden h-4 min-w-4 items-center justify-center rounded-full bg-sun px-1 text-[0.65rem] leading-none text-navy max-[1099px]:flex max-sm:-top-1 max-sm:right-0">{count > 99 ? '99+' : count}</span>}

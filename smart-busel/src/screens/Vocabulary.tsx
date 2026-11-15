@@ -231,7 +231,7 @@ export function Vocabulary({ onBack }: { onBack(): void }) {
               {counts.map((c, k) => (
                 <div key={k} className="flex flex-1 flex-col items-center gap-1">
                   <div className="w-full rounded-t bg-brand" style={{ height: 8 + (c / Math.max(1, ...counts)) * 80 }} />
-                  <span className="whitespace-nowrap text-sm text-mute"><span className="max-sm:hidden">Коробка </span><span className="sm:hidden">№</span>{k + 1}: {c}</span>
+                  <span className="text-center text-sm text-mute"><span className="max-sm:hidden">Коробка </span><span className="sm:hidden">№</span>{k + 1}: {c}</span>
                 </div>
               ))}
             </div>
