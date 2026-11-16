@@ -3,11 +3,13 @@ import { Icon } from '../components/Icon';
 import { AppBar, phoneBottomBar } from '../components/AppBar';
 import { motion } from 'framer-motion';
 import { ChestButton, ChestPrize } from '../components/Chest';
+import { FilmPlayer } from '../components/FilmPlayer';
 import { Mascot } from '../components/Mascot';
 import { Rich } from '../components/Rich';
 import { Spark } from '../components/Spark';
 import { TaskView, type TaskResult } from '../components/TaskView';
 import { Visual } from '../components/Visual';
+import { filmBeat, filmFor } from '../content/films';
 import { findTopic, imageUrl } from '../content/loader';
 import { isGeneratorRef, type Entry, type Task } from '../content/schema';
 import type { ChestResult } from '../engine/chest';
@@ -65,6 +67,14 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
   const [hintsUsed, setHintsUsed] = useState(0);
   const [chest, setChest] = useState<ChestResult>();
   const finished = useRef(false);
+  // мультурок темы (если есть): открыт ли сейчас и с какой части; смотрел ли в этом уроке
+  const film = filmFor(topic.id);
+  const [watch, setWatch] = useState<{ beat?: string } | null>(null);
+  const [watched, setWatched] = useState(false);
+  const openFilm = (beat?: string) => { setWatch({ beat }); setWatched(true); };
+  const beatOf = (it: { task: Task; entry?: Entry }) => (film ? filmBeat(film, { generator: it.entry && isGeneratorRef(it.entry) ? it.entry.generator : undefined, question: it.task.question }) : undefined);
+  const filmFrom = (it: { task: Task; entry?: Entry }) => (film ? () => openFilm(beatOf(it)) : undefined);
+  const lastWrong = useRef<Item | undefined>(undefined);
 
   const intro = useMemo(() => introSteps(topic.cards, topic.selfCheck), []);
   const selfItems = useMemo(() => build(intro.rest, false), []);
@@ -126,6 +136,7 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
     if (item.retry && r.correct) setFixed((f) => f + 1);
     if (r.correct && !r.firstTry) setFoundSelf((f) => f + 1);
     if (r.firstTry && item.counted) rightIds.current.add(item.task.id);
+    if (!r.correct) lastWrong.current = item;
 
     // что сейчас с ребёнком — и нужно ли слово Бусела
     history.current.push({ correct: r.correct, firstTry: r.firstTry, hints: r.hints, guess: r.guess, ms: r.ms });
@@ -168,6 +179,7 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
         {nudge === 'guess' && <button onClick={() => setNudge(undefined)} className="rounded-xl2 bg-soft px-5 font-bold">Хорошо</button>}
         {nudge === 'stuck' && <>
           <button onClick={() => setShowCards((v) => !v)} className="rounded-xl2 bg-soft px-5 font-bold"><Icon name="book" /> {showCards ? 'Скрыть объяснение' : 'Открыть объяснение'}</button>
+          {film && <button onClick={() => openFilm(lastWrong.current && beatOf(lastWrong.current))} className="rounded-xl2 bg-soft px-5 font-bold"><Icon name="play" /> Мультурок</button>}
           <button onClick={() => setNudge(undefined)} className="rounded-xl2 bg-brand px-5 font-bold text-onbrand">Продолжить</button>
         </>}
         {nudge === 'tired' && <>
@@ -204,6 +216,7 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
         <h1 className="flex-1 text-lg font-extrabold text-mute">{topic.title} · {title}</h1>
       </div>
       {body}
+      {watch && film && <FilmPlayer film={film} beat={watch.beat} onClose={() => setWatch(null)} />}
     </main>
   );
 
@@ -213,10 +226,29 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
     const forward = () => (last ? (topic.example ? setPhase('example') : afterList(afterIntro)) : setCard(card + 1));
     if (cur.kind === 'check') {
       return shell('Проверь себя',
-        <TaskView key={cur.task.id} task={cur.task} scored={false} cards={topic.cards} onNext={forward} />);
+        <TaskView key={cur.task.id} task={cur.task} scored={false} cards={topic.cards} onFilm={filmFrom({ task: cur.task })} onNext={forward} />);
     }
     const shown = intro.steps.slice(0, card + 1).filter((x) => x.kind === 'card').length;
+    // мультурок: предлагаем в начале урока; посмотрел — карточки можно пропустить
+    const skipIntro = () => (topic.example ? setPhase('example') : afterList(afterIntro));
+    const filmBanner = film && (card === 0 || watched) && (
+      <div className="flex items-center gap-4 rounded-xl3 border border-line bg-card p-4 shadow max-sm:flex-col max-sm:items-stretch max-sm:gap-3">
+        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand text-onbrand max-sm:hidden"><Icon name="play" size={24} /></span>
+        <div className="flex-1">
+          <p className="text-lg font-extrabold">{watched ? 'Мультурок посмотрен' : `Есть мультурок по теме · ${film.minutes} мин`}</p>
+          <p className="text-mute">{watched ? 'Можно пропустить карточки и перейти к примеру и заданиям.' : 'Объяснение с картинками и озвучкой. Можно и просто читать карточки.'}</p>
+        </div>
+        <div className="flex gap-2">
+          {watched && <button onClick={() => openFilm()} className="min-h-touch rounded-xl2 bg-soft px-4 font-bold max-sm:flex-1">Ещё раз</button>}
+          <button onClick={watched ? skipIntro : () => openFilm()} className="min-h-touch rounded-xl2 bg-brand px-5 font-extrabold text-onbrand max-sm:flex-1">
+            {watched ? <>Дальше <Icon name="next" /></> : <><Icon name="play" /> Смотреть</>}
+          </button>
+        </div>
+      </div>
+    );
     return shell(`Объяснение ${shown}/${topic.cards.length}`,
+      <>
+      {filmBanner}
       <motion.div key={card} initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }}
         className="flex flex-col gap-6 rounded-xl3 bg-card p-8 shadow max-sm:gap-4 max-sm:p-5">
         <div className="flex items-start gap-5 max-sm:flex-col max-sm:gap-2">
@@ -236,7 +268,8 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
           <Btn ghost onClick={() => card > 0 && setCard(card - 1)}><Icon name="back" label="Назад" /><span className="max-sm:hidden"> Назад</span></Btn>
           <Btn grow onClick={forward}>{last ? 'Дальше' : 'Понятно'} <Icon name="next" /></Btn>
         </div>
-      </motion.div>);
+      </motion.div>
+      </>);
   }
 
   if (phase === 'example' && topic.example) {
@@ -260,7 +293,7 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
   if (phase === 'selfcheck') {
     const it = selfItems[i];
     return shell(`Проверь себя ${i + 1}/${selfItems.length}`,
-      <TaskView key={it.task.id} task={it.task} scored={false} cards={topic.cards}
+      <TaskView key={it.task.id} task={it.task} scored={false} cards={topic.cards} onFilm={filmFrom(it)}
         onNext={() => (i + 1 < selfItems.length ? setI(i + 1) : afterList('practice'))} />);
   }
 
@@ -275,7 +308,7 @@ export function Lesson({ subjectId, topicId, onExit, onRetry }: { subjectId: str
         <TaskView key={`${i}-${it.task.id}`} task={it.task} extraBonus={comboBonus(streak + 1)} cards={topic.cards} scored={!it.finale}
           repeat={topicResults[topic.id]?.done === true || it.retry === true} note={note}
           retryItem={!!it.retry} pastMistake={pastMistakes.has(it.task.question)} streakBefore={streak}
-          nextAfterWrong={it.finale ? 'none' : afterWrong(items, i)} slowStart={slowNext} onNext={answered} />
+          nextAfterWrong={it.finale ? 'none' : afterWrong(items, i)} slowStart={slowNext} onFilm={filmFrom(it)} onNext={answered} />
       </>);
   }
 
