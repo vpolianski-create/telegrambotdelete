@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Делители и кратные. НОД и НОК — Умный Бусел</title>
+<link rel="stylesheet" href="lib/engine.css">
+<link rel="expect" href="#bar" blocking="render">
+<style>#bHome { display: none; }</style>
+</head>
+<body>
+<script src="lib/engine.js"></script>
+<script src="audio/ru/timings.js"></script>
+<script>
+'use strict';
+// Мультурок к теме 12 «Делители числа. Кратные числа. НОД и НОК» приложения «Умный Бусел».
+// Без вопросов: задания остаются в приложении. Цвета: делитель — фиолетовый, кратное — голубой, общее и ответ — жёлтый.
+const CHAPTER = { number: 12, title: 'Делители и кратные. НОД и НОК', minutes: 4, language: 'ru' };
+
+const DIV = '#a495ff', MUL = '#45d7f2', GOLD = '#f6c453', REST = '#ff8c9c', CANDY = '#d9d3ff', COOKIE = '#e7b673', BUS2 = '#6ea0ff', SOFT = '#c9c0ff';
+
+/* ---------- помощники ---------- */
+const bT = (p, s, x, y, t, { size = 32, fill = COL.chalk, anchor = 'start', weight = 500 } = {}) => {
+  const e = T(p, s, { x, y, size, fill, anchor, weight, o: 0 }); show(e, t); return e;
+};
+const bTitle = (p, s, sub) => { bT(p, s, 100, 125, .15, { size: 46, weight: 600 }); if (sub) bT(p, sub, 100, 178, .3, { size: 28, fill: COL.dim }); };
+// строка из кусков разного цвета: [['12 : ', null], ['2', DIV], …]
+function bRich(p, parts, x, y, t, { size = 44, anchor = 'start', weight = 600 } = {}) {
+  const e = mk('text', { 'font-size': size, 'font-family': UI, 'font-weight': weight, 'text-anchor': anchor, fill: COL.chalk }, p);
+  e.style.whiteSpace = 'pre';
+  parts.forEach(([s, c]) => { const ts = document.createElementNS(NS, 'tspan'); ts.textContent = s; if (c) ts.setAttribute('fill', c); e.appendChild(ts); });
+  put(e, { x, y, o: 0 }); show(e, t); return e;
+}
+function bChip(p, v, x, y, t, color, { w = 84, h = 64, size = 34 } = {}) {
+  const g = G(p, { x, y, o: 0 });
+  g._r = mk('rect', { x: -w / 2, y: -h / 2, width: w, height: h, rx: 14, fill: COL.board, stroke: color, 'stroke-width': 3 }, g);
+  g._t = T(g, String(v), { y: size * .36, size, fill: color, anchor: 'middle', weight: 600 });
+  show(g, t, .35); return g;
+}
+const bGold = (g, t) => { tw(g._r, { c_stroke: GOLD }, t, .4); tw(g._t, { c_fill: GOLD }, t, .4); };
+function bDots(p, n, color, { cx, cy, cols, gap = 56, r = 15, t = .3 }) {
+  const rows = Math.ceil(n / cols);
+  return Array.from({ length: n }, (_, i) => {
+    const e = G(p, { x: cx + (i % cols - (cols - 1) / 2) * gap, y: cy + (Math.floor(i / cols) - (rows - 1) / 2) * gap, o: 0 });
+    e._c = mk('circle', { r, fill: color }, e);
+    mk('circle', { r: r * .3, cx: -r * .35, cy: -r * .35, fill: '#ffffff', 'fill-opacity': .55 }, e);
+    show(e, t + i * .03, .3); return e;
+  });
+}
+function bArrange(dots, cols, t, { cx, cy, gap = 56 }) {
+  const rows = Math.ceil(dots.length / cols);
+  dots.forEach((e, i) => tw(e, { x: cx + (i % cols - (cols - 1) / 2) * gap, y: cy + (Math.floor(i / cols) - (rows - 1) / 2) * gap }, t + i * .015, 1.1, io));
+}
+function bBusel(p, pose, x, y, size, t) {
+  const g = G(p, { x, y, o: 0, s: .94 });
+  mk('image', { href: `img/busel-${pose}.webp`, x: -size / 2, y: -size / 2, width: size, height: size }, g);
+  tw(g, { o: 1, s: 1 }, t, .7, out); return g;
+}
+// числовой луч от 0 до max: x(v) = x0 + v·u
+function bLine(p, y, max, x0, u, t, { labels = [], color = COL.faint } = {}) {
+  draw(path(p, `M${x0 - 20} ${y}H${x0 + max * u + 30}`, { stroke: COL.dim, 'stroke-width': 3, 'stroke-linecap': 'round' }, { d: 0 }), t, .6);
+  for (let v = 0; v <= max; v++) {
+    const k = mk('line', { x1: x0 + v * u, x2: x0 + v * u, y1: y - (v % 2 ? 7 : 11), y2: y + (v % 2 ? 7 : 11), stroke: COL.dim, 'stroke-width': 2 }, G(p, { o: 0 }));
+    show(k.parentNode, t + .2, .4);
+  }
+  labels.forEach(v => bT(p, String(v), x0 + v * u, y + 46, t + .3, { size: 24, fill: color, anchor: 'middle' }));
+}
+function bHop(p, y, x1, x2, t, color, h = 120) {
+  const mid = (x1 + x2) / 2;
+  draw(path(p, `M${x1} ${y - 6}Q${mid} ${y - h} ${x2} ${y - 6}`, { stroke: color, 'stroke-width': 4, fill: 'none', 'stroke-linecap': 'round' }, { d: 0 }), t, .45);
+  const d = G(p, { x: x2, y, o: 0, s: .4 }); mk('circle', { r: 10, fill: color }, d); tw(d, { o: 1, s: 1 }, t + .4, .3, back);
+}
+function bBus(p, x, y, color, t) {
+  const g = G(p, { x, y, o: 0, s: .6 });
+  mk('rect', { x: -34, y: -22, width: 68, height: 38, rx: 9, fill: color }, g);
+  mk('rect', { x: -26, y: -15, width: 16, height: 13, rx: 3, fill: COL.board }, g);
+  mk('rect', { x: -6, y: -15, width: 16, height: 13, rx: 3, fill: COL.board }, g);
+  mk('rect', { x: 14, y: -15, width: 13, height: 13, rx: 3, fill: COL.board }, g);
+  mk('circle', { cx: -18, cy: 17, r: 7, fill: COL.chalk }, g); mk('circle', { cx: 18, cy: 17, r: 7, fill: COL.chalk }, g);
+  tw(g, { o: 1, s: 1 }, t, .35, back); return g;
+}
+const DIVS12 = [1, 2, 3, 4, 6, 12], DIVS18 = [1, 2, 3, 6, 9, 18];
+
+/* ---------- такты: [id, заголовок, run(m, D), доп.] ---------- */
+const BEATS = [
+  ['intro', 'Начало', (m) => {
+    const p = panel(0);
+    bBusel(p, 'wave', 270, 470, 470, .3);
+    bT(p, 'МАТЕМАТИКА · ТЕМА 12', 580, 300, .2, { size: 26, fill: DIV, weight: 600 });
+    bT(p, 'Делители и кратные', 580, 400, .35, { size: 76, weight: 600 });
+    bT(p, 'НОД и НОК', 580, 495, .5, { size: 76, weight: 600, fill: GOLD });
+    bT(p, 'всё про деление без остатка', 582, 580, m('sub'), { size: 34, fill: COL.dim });
+  }],
+
+  ['divisors', 'Делители числа 12', (m) => {
+    const p = panel(0); bTitle(p, 'Делители числа 12', 'Раскладываем 12 конфет ровными рядами');
+    const C = { cx: 400, cy: 470 };
+    const d = bDots(p, 12, CANDY, { ...C, cols: 12, gap: 50 });
+    const steps = [['two', 2, '6 рядов по 2', '6', 50], ['three', 3, '4 ряда по 3', '4', 56], ['one', 1, '12 рядов по 1', '12', 36]];
+    let prev = null;
+    steps.forEach(([k, c, label, q, gap], i) => {
+      bArrange(d, c, m(k), { ...C, gap });
+      if (prev) hide(prev, m(k), .3);
+      prev = bT(p, label, C.cx, 790, m(k, .9), { size: 32, fill: COL.dim, anchor: 'middle' });
+      bRich(p, [['12 : ', null], [String(c), DIV], [' = ', null], [q, DIV]], 820, 320 + i * 100, m(k, 1));
+      bT(p, 'без остатка', 1140, 320 + i * 100, m(k, 1.4), { size: 30, fill: COL.good });
+    });
+    bT(p, 'Делители числа 12:', 820, 620, m('list'), { size: 30, fill: COL.dim });
+    DIVS12.forEach((v, i) => bChip(p, v, 860 + i * 104, 690, m('d' + (i + 1)), DIV));
+  }],
+
+  ['leftover', 'Если остаётся', (m) => {
+    const p = panel(0); bTitle(p, 'А если по 5?', 'В каждом ряду должно быть поровну');
+    const d = bDots(p, 12, CANDY, { cx: 400, cy: 450, cols: 4, gap: 56, t: .2 });
+    d.forEach((e, i) => tw(e, i < 10 ? { x: 400 + (i % 5 - 2) * 62, y: 380 + Math.floor(i / 5) * 62 } : { x: 369 + (i - 10) * 62, y: 590 }, m('five') + i * .02, 1.1, io));
+    bT(p, '2 ряда по 5', 400, 300, m('five', 1), { size: 30, fill: COL.dim, anchor: 'middle' });
+    d.slice(10).forEach(e => tw(e._c, { c_fill: REST }, m('left'), .4));
+    draw(path(p, 'M318 552H482V628H318Z', { stroke: REST, 'stroke-width': 3, fill: 'none', 'stroke-dasharray': '10 8', 'stroke-linejoin': 'round' }, { d: 0 }), m('left'), .6);
+    bT(p, 'лишние', 400, 685, m('left', .4), { size: 30, fill: REST, anchor: 'middle' });
+    bRich(p, [['12 : ', null], ['5', REST], [' = 2 ', null], ['(ост. 2)', REST]], 820, 400, m('left', .9), { size: 52 });
+    bRich(p, [['5', REST], [' — не делитель 12', null]], 820, 500, m('rule'), { size: 40, weight: 500 });
+    bT(p, 'Делитель делит число без остатка', 800, 790, m('rule', 3.6), { size: 40, fill: GOLD, anchor: 'middle', weight: 600 });
+  }],
+
+  ['pairs', 'Делители ходят парами', (m) => {
+    const p = panel(0); bTitle(p, 'Делители ходят парами');
+    const X = v => 300 + DIVS12.indexOf(v) * 200, Y = 520;
+    DIVS12.forEach((v, i) => bChip(p, v, X(v), Y, .3 + i * .08, DIV));
+    [['p1', 1, 12, 250], ['p2', 2, 6, 170], ['p3', 3, 4, 95]].forEach(([k, a, b, h]) => {
+      const x1 = X(a), x2 = X(b), top = Y - 36;
+      draw(path(p, `M${x1} ${top}C${x1} ${top - h * 1.33} ${x2} ${top - h * 1.33} ${x2} ${top}`, { stroke: SOFT, 'stroke-width': 3, fill: 'none' }, { d: 0 }), m(k), .6);
+      bRich(p, [[String(a), DIV], [' · ', null], [String(b), DIV], [' = 12', null]], (x1 + x2) / 2, top - h - 18, m(k, .4), { size: 32, anchor: 'middle', weight: 500 });
+    });
+    bRich(p, [['Знаешь ', null], ['3', DIV], [' — знаешь и ', null], ['4', DIV], [':  12 : 3 = 4', null]], 800, 700, m('tip'), { size: 36, anchor: 'middle', weight: 500 });
+    bT(p, 'Пары повторяются (4 · 3 = 3 · 4) — все делители найдены', 800, 780, m('tip', 3.3), { size: 32, fill: COL.dim, anchor: 'middle' });
+  }],
+
+  ['multiples', 'Кратные числа 4', (m) => {
+    const p = panel(0); bTitle(p, 'Кратные числа 4', '4 · 1,  4 · 2,  4 · 3,  …');
+    const x0 = 140, u = 55, y = 500, X = v => x0 + v * u;
+    bLine(p, y, 24, x0, u, .3, { labels: [0] });
+    [1, 2, 3, 4, 5].forEach(k => {
+      bHop(p, y, X(4 * (k - 1)), X(4 * k), m('j' + k), MUL);
+      bT(p, String(4 * k), X(4 * k), y + 50, m('j' + k, .35), { size: 34, fill: MUL, anchor: 'middle', weight: 700 });
+    });
+    bHop(p, y, X(20), X(24), m('more'), MUL);
+    bT(p, '24', X(24), y + 50, m('more', .35), { size: 34, fill: MUL, anchor: 'middle', weight: 700 });
+    draw(path(p, `M${X(24)} ${y - 6}Q${X(24) + 60} ${y - 120} ${X(24) + 110} ${y - 60}`, { stroke: MUL, 'stroke-width': 4, fill: 'none', 'stroke-dasharray': '8 9', 'stroke-linecap': 'round' }, { d: 0 }), m('more', .6), .5);
+    bT(p, 'и дальше без конца', 800, 650, m('more', 1), { size: 36, fill: MUL, anchor: 'middle', weight: 600 });
+    bRich(p, [['А делителей у 4 всего три: ', null], ['1, 2, 4', DIV]], 800, 770, m('few'), { size: 36, anchor: 'middle', weight: 500 });
+  }],
+
+  ['link', 'Делитель или кратное', (m) => {
+    const p = panel(0); bTitle(p, 'Как не перепутать', 'Одно деление — два слова');
+    const parts = [['12', 600], [':', 690], ['4', 770], ['=', 855], ['3', 940]].map(([s, x]) => bT(p, s, x, 360, m('div'), { size: 96, weight: 600, anchor: 'middle' }));
+    bT(p, 'без остатка', 1110, 350, m('div', 1.2), { size: 32, fill: COL.good });
+    tw(parts[2], { c_fill: DIV }, m('d'), .4);
+    draw(path(p, 'M790 400Q900 470 1010 520', { stroke: DIV, 'stroke-width': 4, fill: 'none', 'stroke-linecap': 'round' }, { d: 0 }), m('d', .1), .5);
+    bRich(p, [['4', DIV], [' — делитель 12', null]], 1080, 580, m('d', .4), { size: 42, anchor: 'middle' });
+    tw(parts[0], { c_fill: MUL }, m('k'), .4);
+    draw(path(p, 'M580 400Q480 470 420 520', { stroke: MUL, 'stroke-width': 4, fill: 'none', 'stroke-linecap': 'round' }, { d: 0 }), m('k', .1), .5);
+    bRich(p, [['12', MUL], [' — кратное 4', null]], 400, 580, m('k', .4), { size: 42, anchor: 'middle' });
+    const pill = (x, s, c, t) => { const g = G(p, { x, y: 740, o: 0 }); mk('rect', { x: -300, y: -42, width: 600, height: 84, rx: 42, fill: 'none', stroke: c, 'stroke-width': 3 }, g); T(g, s, { y: 12, size: 34, fill: c, anchor: 'middle', weight: 600 }); show(g, t, .4); };
+    pill(1080, 'делитель — не больше числа', DIV, m('size'));
+    pill(400, 'кратное — не меньше числа', MUL, m('size', 1.9));
+  }],
+
+  ['gcd', 'НОД', (m) => {
+    const p = panel(0); bTitle(p, 'НОД — наибольший общий делитель');
+    const U = [1, 2, 3, 4, 6, 9, 12, 18], X = v => 330 + U.indexOf(v) * 150;
+    bT(p, '12', 190, 312, m('a'), { size: 52, weight: 600, anchor: 'end' });
+    bT(p, '18', 190, 442, m('b'), { size: 52, weight: 600, anchor: 'end' });
+    const A = {}, B = {};
+    DIVS12.forEach((v, i) => A[v] = bChip(p, v, X(v), 300, m('a', .3 + i * .15), DIV));
+    DIVS18.forEach((v, i) => B[v] = bChip(p, v, X(v), 430, m('b', .3 + i * .15), DIV));
+    bT(p, 'общие', 190, 600, m('common'), { size: 32, fill: GOLD, anchor: 'end', weight: 600 });
+    const C = {};
+    [1, 2, 3, 6].forEach((v, i) => {
+      const t = m('c' + (i + 1));
+      bGold(A[v], t); bGold(B[v], t);
+      draw(path(p, `M${X(v)} 466V552`, { stroke: GOLD, 'stroke-width': 3, 'stroke-dasharray': '6 7' }, { d: 0 }), t, .3);
+      C[v] = bChip(p, v, X(v), 590, t + .2, GOLD);
+    });
+    const ring = G(p, { x: X(6), y: 590, o: 0, s: 1.3 }); mk('circle', { r: 58, fill: 'none', stroke: GOLD, 'stroke-width': 4 }, ring);
+    tw(ring, { o: 1, s: 1 }, m('max'), .45, out);
+    bT(p, 'наибольший', X(6), 690, m('max', .3), { size: 30, fill: GOLD, anchor: 'middle' });
+    bRich(p, [['НОД(12, 18) = ', null], ['6', GOLD]], 800, 800, m('res'), { size: 56, anchor: 'middle' });
+  }],
+
+  ['gifts', 'Зачем нужен НОД', (m) => {
+    const p = panel(0); bTitle(p, 'Одинаковые подарки', 'Разложить всё и поровну');
+    const boxes = G(p);   // коробки — слоем под конфетами и печеньем
+    const candies = bDots(p, 12, CANDY, { cx: 400, cy: 290, cols: 6, gap: 48, r: 15, t: m('have') });
+    const cookies = Array.from({ length: 18 }, (_, i) => {
+      const e = G(p, { x: 1060 + (i % 6 - 2.5) * 48, y: 268 + Math.floor(i / 6) * 44, o: 0 });
+      mk('rect', { x: -15, y: -15, width: 30, height: 30, rx: 6, fill: COOKIE }, e);
+      mk('circle', { r: 3, cx: -5, cy: -4, fill: '#8a5a2b' }, e); mk('circle', { r: 3, cx: 6, cy: 5, fill: '#8a5a2b' }, e);
+      show(e, m('have', 1.5) + i * .03, .3); return e;
+    });
+    const l1 = bT(p, '12 конфет', 400, 380, m('have', .6), { size: 32, fill: COL.dim, anchor: 'middle' });
+    const l2 = bT(p, '18 печений', 1060, 400, m('have', 1.8), { size: 32, fill: COL.dim, anchor: 'middle' });
+    const BX = i => 175 + i * 250;
+    for (let i = 0; i < 6; i++) {
+      const b = G(boxes, { x: BX(i), y: 590, o: 0, s: .8 });
+      mk('rect', { x: -100, y: -80, width: 200, height: 160, rx: 18, fill: '#1b2540', stroke: GOLD, 'stroke-width': 3 }, b);
+      mk('path', { d: 'M0 -80V80', stroke: GOLD, 'stroke-width': 2, 'stroke-opacity': .35 }, b);
+      tw(b, { o: 1, s: 1 }, m('boxes', i * .12), .4, back);
+    }
+    bRich(p, [['НОД(12, 18) = ', null], ['6', GOLD], [' подарков', null]], 800, 760, m('boxes', 1.2), { size: 44, anchor: 'middle' });
+    hide(l1, m('each'), .3); hide(l2, m('each'), .3);
+    candies.forEach((e, i) => { const b = Math.floor(i / 2); tw(e, { x: BX(b) - 40 + (i % 2) * 44, y: 560 }, m('each') + b * .25, .9, io); });
+    cookies.forEach((e, j) => { const b = Math.floor(j / 3); tw(e, { x: BX(b) - 54 + (j % 3) * 54, y: 622 }, m('each', .4) + b * .25, .9, io); });
+    bT(p, 'в каждом: 2 конфеты и 3 печенья', 800, 830, m('each', 2), { size: 34, fill: COL.dim, anchor: 'middle' });
+  }],
+
+  ['lcm', 'НОК', (m) => {
+    const p = panel(0); bTitle(p, 'НОК — наименьшее общее кратное', 'Ищем первое число, которое есть в обоих рядах');
+    const x0 = 230, u = 50, X = v => x0 + v * u, YA = 380, YB = 590;
+    bT(p, '4', 150, YA + 16, m('a'), { size: 52, weight: 600, anchor: 'end' });
+    bLine(p, YA, 24, x0, u, m('a'), { labels: [0] });
+    [4, 8, 12].forEach((v, i) => { bHop(p, YA, X(v - 4), X(v), m('a' + (i + 1)), MUL, 110); bT(p, String(v), X(v), YA + 50, m('a' + (i + 1), .35), { size: 34, fill: MUL, anchor: 'middle', weight: 700 }); });
+    bT(p, '6', 150, YB + 16, m('b'), { size: 52, weight: 600, anchor: 'end' });
+    bLine(p, YB, 24, x0, u, m('b'), { labels: [0] });
+    [6, 12].forEach((v, i) => { bHop(p, YB, X(v - 6), X(v), m('b' + (i + 1)), MUL, 140); bT(p, String(v), X(v), YB + 50, m('b' + (i + 1), .35), { size: 34, fill: MUL, anchor: 'middle', weight: 700 }); });
+    draw(path(p, `M${X(12)} ${YA + 72}V${YB - 30}`, { stroke: GOLD, 'stroke-width': 4, 'stroke-dasharray': '8 8' }, { d: 0 }), m('meet'), .5);
+    [YA, YB].forEach(y => { const r = G(p, { x: X(12), y: y + 38, o: 0, s: 1.3 }); mk('circle', { r: 36, fill: 'none', stroke: GOLD, 'stroke-width': 4 }, r); tw(r, { o: 1, s: 1 }, m('meet', .3), .45, out); });
+    bT(p, 'первое общее', X(12) + 60, (YA + YB) / 2 + 28, m('meet', .6), { size: 30, fill: GOLD });
+    bRich(p, [['НОК(4, 6) = ', null], ['12', GOLD]], 800, 800, m('res'), { size: 56, anchor: 'middle' });
+  }],
+
+  ['buses', 'Зачем нужен НОК', (m) => {
+    const p = panel(0); bTitle(p, 'Когда автобусы снова встретятся?');
+    const x0 = 220, u = 50, X = v => x0 + v * u, Y1 = 340, Y2 = 530, AX = 700;
+    draw(path(p, `M${x0 - 20} ${AX}H${X(24) + 30}`, { stroke: COL.dim, 'stroke-width': 3 }, { d: 0 }), .3, .6);
+    for (let v = 0; v <= 24; v += 2) bT(p, String(v), X(v), AX + 40, .5, { size: 24, fill: COL.faint, anchor: 'middle' });
+    bT(p, 'мин', X(24) + 50, AX + 8, .5, { size: 24, fill: COL.faint });
+    [[Y1, MUL], [Y2, BUS2]].forEach(([y, c]) => draw(path(p, `M${x0 - 20} ${y + 30}H${X(24) + 30}`, { stroke: c, 'stroke-width': 2, 'stroke-opacity': .35 }, { d: 0 }), .3, .6));
+    bBus(p, X(0), Y1, MUL, .6); bBus(p, X(0), Y2, BUS2, .7);
+    bT(p, 'Автобус 1 — каждые 4 минуты', x0 - 40, Y1 - 60, m('bus1'), { size: 32, fill: MUL, weight: 600 });
+    [4, 8, 12, 16, 20].forEach((v, i) => bBus(p, X(v), Y1, MUL, m('bus1', .3 + i * .25)));
+    bT(p, 'Автобус 2 — каждые 6 минут', x0 - 40, Y2 - 60, m('bus2'), { size: 32, fill: BUS2, weight: 600 });
+    [6, 12, 18].forEach((v, i) => bBus(p, X(v), Y2, BUS2, m('bus2', .3 + i * .3)));
+    const band = G(p, { x: X(12), y: 0, o: 0 }); mk('rect', { x: -48, y: 240, width: 96, height: 430, rx: 16, fill: GOLD, 'fill-opacity': .14, stroke: GOLD, 'stroke-width': 3 }, band); show(band, m('meet'), .5);
+    bRich(p, [['через ', null], ['12', GOLD], [' минут — снова вместе:  НОК(4, 6) = ', null], ['12', GOLD]], 800, 820, m('meet', .8), { size: 38, anchor: 'middle', weight: 500 });
+  }],
+
+  ['check', 'Проверь себя', (m) => {
+    const p = panel(0); bTitle(p, 'Проверь себя');
+    const card = (x, head, rule, ex, ok, t) => {
+      const g = G(p, { x, y: 0, o: 0 });
+      mk('rect', { x: -330, y: 230, width: 660, height: 380, rx: 24, fill: '#1b2540', stroke: COL.edge, 'stroke-width': 2 }, g);
+      T(g, head, { y: 320, size: 56, fill: GOLD, anchor: 'middle', weight: 700 });
+      T(g, rule, { y: 400, size: 34, anchor: 'middle' });
+      T(g, ex, { y: 490, size: 38, fill: COL.dim, anchor: 'middle' });
+      T(g, ok, { y: 560, size: 38, fill: COL.good, anchor: 'middle', weight: 600 });
+      tw(g, { o: 1 }, t, .5); return g;
+    };
+    card(420, 'НОД', 'не больше меньшего числа', 'НОД(12, 18) = 6', '6 ≤ 12  ✓', m('gcd'));
+    card(1180, 'НОК', 'не меньше большего числа', 'НОК(4, 6) = 12', '12 ≥ 6  ✓', m('lcm'));
+    bT(p, 'Вышло иначе — пересчитай ещё раз', 700, 740, m('redo'), { size: 38, fill: SOFT, anchor: 'middle', weight: 600 });
+    bBusel(p, 'think', 1400, 735, 250, m('redo', .2));
+  }],
+
+  ['wrap', 'Повторим', (m) => {
+    const p = panel(0); bTitle(p, 'Повторим');
+    [['Делитель делит число без остатка', 'w1', DIV], ['Кратное получается умножением', 'w2', MUL], ['НОД — наибольший общий делитель', 'w3', GOLD], ['НОК — наименьшее общее кратное', 'w4', GOLD]].forEach(([s, k, c], i) => {
+      const g = G(p, { x: -16, y: 290 + i * 130, o: 0 });
+      mk('circle', { cx: 150, cy: -12, r: 28, fill: c }, g);
+      T(g, String(i + 1), { x: 150, y: 0, size: 32, fill: '#11152a', weight: 700, anchor: 'middle' });
+      T(g, s, { x: 210, size: 40, weight: 600 });
+      tw(g, { o: 1, x: 0 }, m(k), .6);
+    });
+    bBusel(p, 'cheer', 1290, 520, 470, m('end'));
+  }],
+].map(([id, title, run, extra]) => ({ id, title, run, ...extra }));
+
+boot();
+</script>
+</body>
+</html>

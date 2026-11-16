@@ -37,13 +37,14 @@ interface Props {
   streakBefore?: number; // верных подряд до этого вопроса
   nextAfterWrong?: 'similar' | 'end' | 'review' | 'none'; // что будет, если ответ окажется неверным
   slowStart?: boolean; // после ответов наугад: варианты становятся доступны через 1,5 с
+  onFilm?(): void; // у темы есть мультурок: после ошибки можно посмотреть объяснение в ролике
   onNext(r: TaskResult): void;
 }
 
 type Status = 'idle' | 'retry' | 'right' | 'wrong';
 type Given = string | boolean | string[];
 
-export function TaskView({ task, scored = true, speakWord, extraBonus = 0, repeat = false, cards = [], note, retryItem = false, pastMistake = false, streakBefore = 0, nextAfterWrong = 'none', slowStart = false, onNext }: Props) {
+export function TaskView({ task, scored = true, speakWord, extraBonus = 0, repeat = false, cards = [], note, retryItem = false, pastMistake = false, streakBefore = 0, nextAfterWrong = 'none', slowStart = false, onFilm, onNext }: Props) {
   // у «порядка» варианты уже перемешаны; у «пар» перемешиваем правую колонку
   const options = useMemo(() => (task.options && task.type !== 'order' && task.type !== 'match' ? shuffle(Math.random, task.options) : task.options ?? []), [task.id]);
   const rightSide = useMemo(() => (task.type === 'match' ? shuffle(Math.random, task.answer as string[]) : []), [task.id]);
@@ -269,6 +270,9 @@ export function TaskView({ task, scored = true, speakWord, extraBonus = 0, repea
               )}
               {task.ref?.quote && (
                 <div className="rounded-xl2 bg-bg px-4 py-3"><p className="mb-1 text-sm font-extrabold text-mute"><Icon name="book" /> В уроке об этом</p><p><Rich text={task.ref.quote} /></p></div>
+              )}
+              {onFilm && (
+                <button onClick={onFilm} className="self-start rounded-xl2 bg-soft px-4 font-bold"><Icon name="play" /> Посмотреть объяснение в мультуроке</button>
               )}
               {task.explanation.length > 1
                 ? <ol className="list-decimal space-y-1 pl-6">{task.explanation.map((e, i) => <li key={i}>{e}</li>)}</ol>
