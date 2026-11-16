@@ -10,7 +10,7 @@
   },
   "words": [
     "Вадим: «Давай сделаем ролики для математики: тема 20, 17 и 19, 13, 14, 15… Делаем по очереди, начиная с 13» → тема 17 «Уравнение».",
-    "Стиль — как у пилота math-t12 (films-src/STYLE.md): без вопросов в ролике, Aurora Play, голос Edge ru-RU-DmitryNeural."
+    "Стиль — как у пилота math-t12 (films-src/STYLE.md): без вопросов в ролике, Aurora Play, голос Edge ru-RU-SvetlanaNeural (Дмитрий на сервере Edge почти перестал отвечать, родитель выбрал Светлану для роликов с темы 13)."
   ],
   "look": {
     "palette": {
@@ -37,7 +37,7 @@
   },
   "voice": {
     "engine": "edge",
-    "voice": "ru-RU-DmitryNeural",
+    "voice": "ru-RU-SvetlanaNeural",
     "rate": "-4%"
   },
   "pacing": {
