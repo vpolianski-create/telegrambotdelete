@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Простые и составные числа — Умный Бусел</title>
+<link rel="stylesheet" href="lib/engine.css">
+<link rel="expect" href="#bar" blocking="render">
+<style>#bHome { display: none; }</style>
+</head>
+<body>
+<script src="lib/engine.js"></script>
+<script src="audio/ru/timings.js"></script>
+<script>
+'use strict';
+// Мультурок к теме 14 «Простые и составные числа. Разложение числа на простые множители» приложения «Умный Бусел».
+// Стиль — films-src/STYLE.md (эталон math-t12). Без вопросов: задания остаются в приложении.
+// Цвета: простое число и простой множитель — фиолетовый, составное — голубой, ответ и НОД — жёлтый,
+// вычеркнутое и ловушка — розовый, подтверждение — мятный.
+const CHAPTER = { number: 14, title: 'Простые и составные числа', minutes: 4, language: 'ru' };
+
+const PRIME = '#a495ff', COMP = '#45d7f2', GOLD = '#f6c453', REST = '#ff8c9c', OK = '#64ddb0', SOFT = '#c9c0ff', CANDY = '#d9d3ff';
+
+/* ---------- помощники (как в math-t12 / math-t13) ---------- */
+const bT = (p, s, x, y, t, { size = 32, fill = COL.chalk, anchor = 'start', weight = 500 } = {}) => {
+  const e = T(p, s, { x, y, size, fill, anchor, weight, o: 0 }); show(e, t); return e;
+};
+const bTitle = (p, s, sub) => { bT(p, s, 100, 125, .15, { size: 46, weight: 600 }); if (sub) bT(p, sub, 100, 178, .3, { size: 28, fill: COL.dim }); };
+// строка из кусков разного цвета: [['12 : ', null], ['3', SUM], …]
+function bRich(p, parts, x, y, t, { size = 44, anchor = 'start', weight = 600 } = {}) {
+  const e = mk('text', { 'font-size': size, 'font-family': UI, 'font-weight': weight, 'text-anchor': anchor, fill: COL.chalk }, p);
+  e.style.whiteSpace = 'pre';
+  parts.forEach(([s, c]) => { const ts = document.createElementNS(NS, 'tspan'); ts.textContent = s; if (c) ts.setAttribute('fill', c); e.appendChild(ts); });
+  put(e, { x, y, o: 0 }); show(e, t); return e;
+}
+function bChip(p, v, x, y, t, color, { w = 84, h = 64, size = 34 } = {}) {
+  const g = G(p, { x, y, o: 0 });
+  g._r = mk('rect', { x: -w / 2, y: -h / 2, width: w, height: h, rx: 14, fill: COL.board, stroke: color, 'stroke-width': 3 }, g);
+  g._t = T(g, String(v), { y: size * .36, size, fill: color, anchor: 'middle', weight: 600 });
+  show(g, t, .35); return g;
+}
+const bPaint = (g, c, t) => { tw(g._r, { c_stroke: c }, t, .4); tw(g._t, { c_fill: c }, t, .4); };
+function bBusel(p, pose, x, y, size, t) {
+  const g = G(p, { x, y, o: 0, s: .94 });
+  mk('image', { href: `img/busel-${pose}.webp`, x: -size / 2, y: -size / 2, width: size, height: size }, g);
+  tw(g, { o: 1, s: 1 }, t, .7, out); return g;
+}
+// карточка с числом и проверкой (как «Проверь себя» в math-t12)
+function bCard(p, x, y, w, h, t) {
+  const g = G(p, { x, y, o: 0 });
+  mk('rect', { x: -w / 2, y: -h / 2, width: w, height: h, rx: 24, fill: '#1b2540', stroke: COL.edge, 'stroke-width': 2 }, g);
+  tw(g, { o: 1 }, t, .5); return g;
+}
+// квадратик-единица (для «десяток = девять и ещё один»)
+function bCell(p, x, y, color, t, s = 40) {
+  const g = G(p, { x, y, o: 0 });
+  g._r = mk('rect', { x: -s / 2, y: -s / 2, width: s, height: s, rx: 7, fill: color }, g);
+  show(g, t, .3); return g;
+}
+
+function bDots(p, n, color, { cx, cy, cols, gap = 56, r = 15, t = .3 }) {
+  const rows = Math.ceil(n / cols);
+  return Array.from({ length: n }, (_, i) => {
+    const e = G(p, { x: cx + (i % cols - (cols - 1) / 2) * gap, y: cy + (Math.floor(i / cols) - (rows - 1) / 2) * gap, o: 0 });
+    e._c = mk('circle', { r, fill: color }, e);
+    mk('circle', { r: r * .3, cx: -r * .35, cy: -r * .35, fill: '#ffffff', 'fill-opacity': .55 }, e);
+    show(e, t + i * .03, .3); return e;
+  });
+}
+function bArrange(dots, cols, t, { cx, cy, gap = 56 }) {
+  const rows = Math.ceil(dots.length / cols);
+  dots.forEach((e, i) => tw(e, { x: cx + (i % cols - (cols - 1) / 2) * gap, y: cy + (Math.floor(i / cols) - (rows - 1) / 2) * gap }, t + i * .015, 1.1, io));
+}
+// ряд чисел-множителей с точками «·» между ними
+function bRow(p, vals, x0, y, t, color, { step = 110, w = 84, h = 76, size = 40, stagger = .12 } = {}) {
+  return vals.map((v, i) => {
+    if (i) bT(p, '·', x0 + (i - .5) * step, y + 12, t + i * stagger, { size: 36, fill: COL.dim, anchor: 'middle' });
+    return bChip(p, v, x0 + i * step, y, t + i * stagger, color, { w, h, size });
+  });
+}
+const bEdge = (p, x1, y1, x2, y2, t) => draw(path(p, `M${x1} ${y1}L${x2} ${y2}`, { stroke: COL.dim, 'stroke-width': 3, 'stroke-linecap': 'round' }, { d: 0 }), t, .4);
+
+/* ---------- такты: [id, заголовок, run(m), доп.] ---------- */
+const BEATS = [
+  ['intro', 'Начало', (m) => {
+    const p = panel(0);
+    bBusel(p, 'wave', 270, 470, 470, .3);
+    bT(p, 'МАТЕМАТИКА · ТЕМА 14', 580, 280, .2, { size: 26, fill: PRIME, weight: 600 });
+    bT(p, 'Простые', 580, 380, .35, { size: 76, weight: 600, fill: PRIME });
+    bT(p, 'и составные числа', 580, 475, .5, { size: 76, weight: 600 });
+    bT(p, 'и разложение на простые множители', 582, 555, .65, { size: 32, fill: COL.dim });
+    bT(p, 'одни числа разбираются на части, другие — нет', 582, 640, m('sub'), { size: 32, fill: GOLD });
+  }],
+
+  ['rows', 'Конфеты прямоугольником', (m) => {
+    const p = panel(0); bTitle(p, 'Разложим конфеты ровным прямоугольником', '12 конфет и 7 конфет');
+    draw(path(p, 'M800 260V760', { stroke: COL.faint, 'stroke-width': 2 }, { d: 0 }), .4, .6);
+    const d12 = bDots(p, 12, CANDY, { cx: 420, cy: 470, cols: 12, gap: 52, t: .5 });
+    bArrange(d12, 6, m('r1'), { cx: 420, cy: 470, gap: 70 });
+    const l1 = bRich(p, [['2', COMP], [' ряда по ', null], ['6', COMP]], 420, 640, m('r1', .8), { size: 40, anchor: 'middle' });
+    hide(l1, m('r2'), .3);
+    bArrange(d12, 4, m('r2'), { cx: 420, cy: 470, gap: 70 });
+    bRich(p, [['3', COMP], [' ряда по ', null], ['4', COMP]], 420, 640, m('r2', .8), { size: 40, anchor: 'middle' });
+    const d7 = bDots(p, 7, CANDY, { cx: 1200, cy: 470, cols: 7, gap: 52, t: m('seven') });
+    bArrange(d7, 3, m('s1'), { cx: 1200, cy: 470, gap: 70 });
+    tw(d7[6]._c, { c_fill: REST }, m('s1', 1.1), .4);
+    const l2 = bT(p, 'одна лишняя', 1200, 640, m('s1', 1.3), { size: 36, fill: REST, anchor: 'middle', weight: 600 });
+    hide(l2, m('line'), .3);
+    bArrange(d7, 7, m('line'), { cx: 1200, cy: 470, gap: 62 });
+    tw(d7[6]._c, { c_fill: CANDY }, m('line', .4), .4);
+    bRich(p, [['только ', null], ['1', PRIME], [' ряд по ', null], ['7', PRIME]], 1200, 640, m('line', 1), { size: 40, anchor: 'middle' });
+  }],
+
+  ['defs', 'Простые и составные', (m) => {
+    const p = panel(0); bTitle(p, 'Простые и составные числа', 'Считаем делители');
+    const a = bCard(p, 420, 480, 620, 380, m('prime'));
+    bT(a, 'Простое', 0, -130, m('prime'), { size: 40, fill: PRIME, anchor: 'middle', weight: 600 });
+    bT(a, '7', 0, -40, m('prime', .4), { size: 72, anchor: 'middle', weight: 600 });
+    [1, 7].forEach((v, i) => bChip(a, v, -60 + i * 120, 60, m('prime', 1 + i * .3), PRIME));
+    bT(a, 'только 1 и само число', 0, 150, m('prime', 2), { size: 30, fill: COL.dim, anchor: 'middle' });
+    const b = bCard(p, 1180, 480, 620, 380, m('comp'));
+    bT(b, 'Составное', 0, -130, m('comp'), { size: 40, fill: COMP, anchor: 'middle', weight: 600 });
+    bT(b, '12', 0, -40, m('comp', .4), { size: 72, anchor: 'middle', weight: 600 });
+    [1, 2, 3, 4, 6, 12].forEach((v, i) => bChip(b, v, -225 + i * 90, 60, m('comp', 2 + i * .45), COMP, { w: 74 }));
+    bT(b, 'есть и другие делители', 0, 150, m('comp', 1), { size: 30, fill: COL.dim, anchor: 'middle' });
+    bChip(p, 1, 160, 770, m('one'), GOLD, { w: 76 });
+    bRich(p, [['— ни простое, ни составное: делитель ', null], ['всего один', GOLD]], 230, 782, m('one', .4), { size: 36, weight: 500 });
+  }],
+
+  ['two', 'Число 2', (m) => {
+    const p = panel(0); bTitle(p, 'Особое число 2', 'Чётные и нечётные');
+    bChip(p, 2, 200, 330, m('two'), GOLD, { w: 130, h: 130, size: 84 });
+    bT(p, 'единственное чётное простое число', 300, 345, m('two', .5), { size: 40, fill: GOLD, weight: 600 });
+    [4, 6, 8, 10, 12].forEach((v, i) => {
+      bChip(p, v, 200 + i * 170, 500, m('two', 2.5 + i * .25), COMP, { w: 90 });
+      bT(p, `2 · ${v / 2}`, 200 + i * 170, 580, m('two', 2.7 + i * .25), { size: 28, fill: COL.dim, anchor: 'middle' });
+    });
+    bT(p, 'составные', 1100, 512, m('two', 4), { size: 34, fill: COMP, weight: 600 });
+    bT(p, 'Не каждое нечётное число — простое', 100, 690, m('odd'), { size: 36, fill: REST, weight: 600 });
+    bRich(p, [['9', COMP], [' = ', null], ['3 · 3', PRIME]], 140, 790, m('nine'), { size: 50 });
+    bRich(p, [['15', COMP], [' = ', null], ['3 · 5', PRIME]], 560, 790, m('fif'), { size: 50 });
+  }],
+
+  ['sieve', 'Решето Эратосфена', (m) => {
+    const p = panel(0); bTitle(p, 'Решето Эратосфена', 'Все простые числа до 50');
+    const cell = [null];
+    for (let n = 1; n <= 50; n++) {
+      const i = n - 1;
+      cell.push(bChip(p, n, 330 + (i % 10) * 104, 270 + Math.floor(i / 10) * 96, m('grid') + i * .02, COL.dim, { w: 88, h: 74, size: 32 }));
+    }
+    tw(cell[1], { o: .25 }, m('grid', 1.4), .4);
+    const gone = new Set([1]);
+    for (const q of [2, 3, 5, 7]) {
+      const t = m('x' + q);
+      bPaint(cell[q], PRIME, t);
+      let j = 0;
+      for (let k = 2 * q; k <= 50; k += q) {
+        if (gone.has(k)) continue;
+        gone.add(k);
+        const tk = t + .5 + j++ * .05;
+        bPaint(cell[k], REST, tk); tw(cell[k], { o: .2 }, tk + .4, .4);
+      }
+    }
+    let j = 0;
+    for (let n = 11; n <= 50; n++) if (!gone.has(n)) bPaint(cell[n], PRIME, m('left') + j++ * .08);
+    bRich(p, [['Осталось ', null], ['15', GOLD], [' простых чисел', null]], 800, 790, m('left', 1.6), { size: 40, anchor: 'middle' });
+  }],
+
+  ['check', 'Как проверить число', (m) => {
+    const p = panel(0); bTitle(p, 'Как проверить одно число', 'Делим по очереди на 2, 3, 5, 7…');
+    const no = (x, y, d, t) => bRich(p, [[`: ${d}   `, null], ['✗', REST]], x, y, t, { size: 38, weight: 500 });
+    bT(p, '91', 140, 310, m('n91'), { size: 72, weight: 600 });
+    no(160, 390, 2, m('n91', 1.2)); no(160, 450, 3, m('n91', 2.2)); no(160, 510, 5, m('n91', 2.8));
+    bRich(p, [[': 7 = 13   ', null], ['✓', OK]], 160, 570, m('d7'), { size: 38, weight: 500 });
+    bRich(p, [['91 = 7 · 13', COMP], [' — составное', null]], 140, 670, m('d7', 2.4), { size: 40 });
+    bT(p, '97', 860, 310, m('n97'), { size: 72, weight: 600 });
+    [2, 3, 5, 7].forEach((d, i) => no(880, 390 + i * 60, d, m('n97', 1.4 + i * .7)));
+    bRich(p, [['11 · 11 = 121', GOLD], ['  больше 97', null]], 860, 670, m('stop'), { size: 40 });
+    bT(p, 'делители ходят парами', 860, 735, m('pair'), { size: 32, fill: COL.dim });
+    bRich(p, [['97', PRIME], [' — простое', null]], 860, 820, m('prime'), { size: 46 });
+  }],
+
+  ['factor', 'Разложение', (m) => {
+    const p = panel(0); bTitle(p, 'Разложение на простые множители', 'Делим на самое маленькое простое число');
+    const ys = [300, 380, 460, 540, 620], vs = [84, 42, 21, 7, 1], ds = [2, 2, 3, 7];
+    draw(path(p, 'M430 255V650', { stroke: COL.dim, 'stroke-width': 3 }, { d: 0 }), m('start', .3), .5);
+    bT(p, '84', 405, ys[0] + 18, m('start'), { size: 52, weight: 600, anchor: 'end' });
+    ds.forEach((d, i) => {
+      const t = m('s' + (i + 1));
+      bT(p, String(d), 455, ys[i] + 18, t, { size: 52, weight: 600, fill: PRIME });
+      bT(p, String(vs[i + 1]), 405, ys[i + 1] + 18, t + 1.1, { size: 52, weight: 600, anchor: 'end', fill: i === 3 ? GOLD : COL.chalk });
+    });
+    bRich(p, [['84 = ', null], ['2 · 2 · 3 · 7', PRIME]], 720, 480, m('res'), { size: 64 });
+  }],
+
+  ['tree', 'Разложение одно', (m) => {
+    const p = panel(0); bTitle(p, 'Разложение всегда одно', 'С чего ни начни');
+    const tree = (cx, a, b, la, lb, ta, tb) => {
+      bChip(p, 60, cx, 290, ta, COMP, { w: 110, h: 76, size: 40 });
+      const [xa, xb] = [cx - 130, cx + 130];
+      bEdge(p, cx - 30, 328, xa, 392, ta + .4); bEdge(p, cx + 30, 328, xb, 392, ta + .4);
+      bChip(p, a, xa, 430, ta + .6, COMP); bChip(p, b, xb, 430, ta + .8, COMP);
+      const leaves = [];
+      [[xa, la], [xb, lb]].forEach(([x, pair], k) => pair.forEach((v, i) => {
+        const lx = x + (i ? 60 : -60);
+        bEdge(p, x + (i ? 15 : -15), 468, lx, 532, tb + k * .6);
+        leaves.push(bChip(p, v, lx, 570, tb + k * .6 + .3, PRIME, { w: 76 }));
+      }));
+      return leaves;
+    };
+    const L = tree(430, 6, 10, [2, 3], [2, 5], m('a'), m('a2'));
+    const R = tree(1170, 4, 15, [2, 2], [3, 5], m('b'), m('b2'));
+    [...L, ...R].forEach((c, i) => bPaint(c, GOLD, m('res') + i * .06));
+    bRich(p, [['60 = ', null], ['2 · 2 · 3 · 5', GOLD]], 430, 720, m('res', .8), { size: 46, anchor: 'middle' });
+    bRich(p, [['60 = ', null], ['2 · 2 · 3 · 5', GOLD]], 1170, 720, m('res', .8), { size: 46, anchor: 'middle' });
+  }],
+
+  ['count', 'Сколько множителей', (m) => {
+    const p = panel(0); bTitle(p, 'Вопросы по разложению', '84 = 2 · 2 · 3 · 7');
+    bT(p, '84 =', 470, 380, .3, { size: 60, weight: 600, anchor: 'end' });
+    const f = bRow(p, [2, 2, 3, 7], 570, 360, .5, PRIME, { step: 140, w: 100, h: 100, size: 56 });
+    f.forEach((c, i) => {
+      const g = G(p, { x: 570 + i * 140, y: 480, o: 0 });
+      mk('circle', { r: 26, fill: GOLD }, g);
+      T(g, String(i + 1), { y: 11, size: 30, fill: '#11152a', anchor: 'middle', weight: 700 });
+      show(g, m('cnt', 2.2) + i * .5, .3);
+    });
+    bRich(p, [['Множителей: ', null], ['4', GOLD], ['  (повторяющиеся тоже считаем)', COL.dim]], 400, 620, m('four'), { size: 44 });
+    bPaint(f[3], GOLD, m('big'));
+    bRich(p, [['Наибольший простой множитель: ', null], ['7', GOLD]], 400, 720, m('big', .3), { size: 44 });
+  }],
+
+  ['gcd', 'НОД через разложение', (m) => {
+    const p = panel(0); bTitle(p, 'НОД через разложение', 'НОД(72; 162)');
+    bT(p, '72 =', 330, 335, m('a'), { size: 48, weight: 600, anchor: 'end' });
+    const A = bRow(p, [2, 2, 2, 3, 3], 430, 320, m('a', .4), PRIME, { step: 124 });
+    bT(p, '162 =', 330, 465, m('b'), { size: 48, weight: 600, anchor: 'end' });
+    const B = bRow(p, [2, 3, 3, 3, 3], 430, 450, m('b', .4), PRIME, { step: 124 });
+    const keepA = [0, 3, 4], keepB = [0, 1, 2];
+    A.forEach((c, i) => keepA.includes(i) ? bPaint(c, GOLD, m('common') + i * .1) : tw(c, { o: .35 }, m('common', .6), .4));
+    B.forEach((c, i) => keepB.includes(i) ? bPaint(c, GOLD, m('common') + i * .1) : tw(c, { o: .35 }, m('common', .6), .4));
+    bRich(p, [['НОД = ', null], ['2 · 3 · 3', GOLD], [' = ', null], ['18', GOLD]], 120, 610, m('res'), { size: 54 });
+    bRich(p, [['8 = 2 · 2 · 2', PRIME], ['     ', null], ['25 = 5 · 5', PRIME]], 120, 730, m('coprime'), { size: 38, weight: 500 });
+    bRich(p, [['общих нет → НОД = 1:  ', null], ['взаимно простые', GOLD]], 120, 810, m('coprime', 2), { size: 38, weight: 500 });
+  }],
+
+  ['wrap', 'Повторим', (m) => {
+    const p = panel(0); bTitle(p, 'Повторим');
+    [['Простое — делится только на 1 и на себя', 'w1', PRIME], ['1 — ни простое, ни составное; 2 — чётное простое', 'w2', GOLD],
+     ['Раскладываем: делим на маленькие простые', 'w3', PRIME], ['Общие множители дают НОД', 'w4', GOLD]].forEach(([s, k, c], i) => {
+      const g = G(p, { x: -16, y: 290 + i * 130, o: 0 });
+      mk('circle', { cx: 150, cy: -12, r: 28, fill: c }, g);
+      T(g, String(i + 1), { x: 150, y: 0, size: 32, fill: '#11152a', weight: 700, anchor: 'middle' });
+      T(g, s, { x: 210, size: 36, weight: 600 });
+      tw(g, { o: 1, x: 0 }, m(k), .6);
+    });
+    bBusel(p, 'cheer', 1340, 540, 420, m('end'));
+  }],
+].map(([id, title, run, extra]) => ({ id, title, run, ...extra }));
+
+boot();
+</script>
+</body>
+</html>

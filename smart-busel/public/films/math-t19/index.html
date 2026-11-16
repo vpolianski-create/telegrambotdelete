@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Задачи с помощью уравнений — Умный Бусел</title>
+<link rel="stylesheet" href="lib/engine.css">
+<link rel="expect" href="#bar" blocking="render">
+<style>#bHome { display: none; }</style>
+</head>
+<body>
+<script src="lib/engine.js"></script>
+<script src="audio/ru/timings.js"></script>
+<script>
+'use strict';
+// Мультурок к теме 19 «Решение задач с помощью уравнений» приложения «Умный Бусел».
+// Стиль — films-src/STYLE.md (эталон math-t12). Без вопросов: задания остаются в приложении.
+// Цвета: неизвестное x — фиолетовый, разница «на 4 больше» — голубой, ответ и номер шага — жёлтый,
+// проверка — мятный.
+const CHAPTER = { number: 19, title: 'Задачи с помощью уравнений', minutes: 4, language: 'ru' };
+
+const XC = '#a495ff', DIFF = '#45d7f2', GOLD = '#f6c453', REST = '#ff8c9c', OK = '#64ddb0', WEIGHT = '#c9c0ff';
+
+/* ---------- помощники (как в math-t12 / math-t13) ---------- */
+const bT = (p, s, x, y, t, { size = 32, fill = COL.chalk, anchor = 'start', weight = 500 } = {}) => {
+  const e = T(p, s, { x, y, size, fill, anchor, weight, o: 0 }); show(e, t); return e;
+};
+const bTitle = (p, s, sub) => { bT(p, s, 100, 125, .15, { size: 46, weight: 600 }); if (sub) bT(p, sub, 100, 178, .3, { size: 28, fill: COL.dim }); };
+// строка из кусков разного цвета: [['12 : ', null], ['3', SUM], …]
+function bRich(p, parts, x, y, t, { size = 44, anchor = 'start', weight = 600 } = {}) {
+  const e = mk('text', { 'font-size': size, 'font-family': UI, 'font-weight': weight, 'text-anchor': anchor, fill: COL.chalk }, p);
+  e.style.whiteSpace = 'pre';
+  parts.forEach(([s, c]) => { const ts = document.createElementNS(NS, 'tspan'); ts.textContent = s; if (c) ts.setAttribute('fill', c); e.appendChild(ts); });
+  put(e, { x, y, o: 0 }); show(e, t); return e;
+}
+function bChip(p, v, x, y, t, color, { w = 84, h = 64, size = 34 } = {}) {
+  const g = G(p, { x, y, o: 0 });
+  g._r = mk('rect', { x: -w / 2, y: -h / 2, width: w, height: h, rx: 14, fill: COL.board, stroke: color, 'stroke-width': 3 }, g);
+  g._t = T(g, String(v), { y: size * .36, size, fill: color, anchor: 'middle', weight: 600 });
+  show(g, t, .35); return g;
+}
+const bPaint = (g, c, t) => { tw(g._r, { c_stroke: c }, t, .4); tw(g._t, { c_fill: c }, t, .4); };
+function bBusel(p, pose, x, y, size, t) {
+  const g = G(p, { x, y, o: 0, s: .94 });
+  mk('image', { href: `img/busel-${pose}.webp`, x: -size / 2, y: -size / 2, width: size, height: size }, g);
+  tw(g, { o: 1, s: 1 }, t, .7, out); return g;
+}
+// карточка с числом и проверкой (как «Проверь себя» в math-t12)
+function bCard(p, x, y, w, h, t) {
+  const g = G(p, { x, y, o: 0 });
+  mk('rect', { x: -w / 2, y: -h / 2, width: w, height: h, rx: 24, fill: '#1b2540', stroke: COL.edge, 'stroke-width': 2 }, g);
+  tw(g, { o: 1 }, t, .5); return g;
+}
+// квадратик-единица (для «десяток = девять и ещё один»)
+function bCell(p, x, y, color, t, s = 40) {
+  const g = G(p, { x, y, o: 0 });
+  g._r = mk('rect', { x: -s / 2, y: -s / 2, width: s, height: s, rx: 7, fill: color }, g);
+  show(g, t, .3); return g;
+}
+
+function bDots(p, n, color, { cx, cy, cols, gap = 56, r = 15, t = .3 }) {
+  const rows = Math.ceil(n / cols);
+  return Array.from({ length: n }, (_, i) => {
+    const e = G(p, { x: cx + (i % cols - (cols - 1) / 2) * gap, y: cy + (Math.floor(i / cols) - (rows - 1) / 2) * gap, o: 0 });
+    e._c = mk('circle', { r, fill: color }, e);
+    mk('circle', { r: r * .3, cx: -r * .35, cy: -r * .35, fill: '#ffffff', 'fill-opacity': .55 }, e);
+    show(e, t + i * .03, .3); return e;
+  });
+}
+function bArrange(dots, cols, t, { cx, cy, gap = 56 }) {
+  const rows = Math.ceil(dots.length / cols);
+  dots.forEach((e, i) => tw(e, { x: cx + (i % cols - (cols - 1) / 2) * gap, y: cy + (Math.floor(i / cols) - (rows - 1) / 2) * gap }, t + i * .015, 1.1, io));
+}
+// выражение из кусочков: [['12', null], [' + ', null], …]; возвращает середины кусочков (для номеров действий)
+function bExpr(p, toks, x, y, t, { size = 64, anchor = 'start', weight = 600, stagger = 0 } = {}) {
+  ctx2d.font = `${weight} ${size}px ${UI}`;
+  const ws = toks.map(([s]) => ctx2d.measureText(s).width);
+  let cx = anchor === 'middle' ? x - ws.reduce((a, b) => a + b, 0) / 2 : x;
+  const xs = [], els = [];
+  toks.forEach(([s, c], i) => {
+    const e = T(p, s, { x: cx, y, size, weight, fill: c || COL.chalk, o: 0 }); e.style.whiteSpace = 'pre';
+    show(e, t + i * stagger, .4); els.push(e); xs.push(cx + ws[i] / 2); cx += ws[i];
+  });
+  return { els, xs, end: cx };
+}
+// номер действия над знаком
+function bBadge(p, n, x, y, t, c = GOLD) {
+  const g = G(p, { x, y, o: 0, s: .6 });
+  mk('circle', { r: 22, fill: c }, g);
+  T(g, String(n), { y: 9, size: 26, fill: '#11152a', anchor: 'middle', weight: 700 });
+  tw(g, { o: 1, s: 1 }, t, .4, back); return g;
+}
+const PL = ' + ', MI = ' − ', MU = ' · ', DV = ' : ';
+// полоска «целое» или «часть»
+function bBar(p, x, y, w, label, color, t, { h = 80, size = 40 } = {}) {
+  const g = G(p, { x, y, o: 0 });
+  mk('rect', { x: 0, y: -h / 2, width: w, height: h, rx: 14, fill: '#1b2540', stroke: color, 'stroke-width': 3 }, g);
+  T(g, label, { x: w / 2, y: size * .36, size, fill: color, anchor: 'middle', weight: 600 });
+  show(g, t, .5); return g;
+}
+const XT = ['x', XC], EQ = ' = ';
+// строки по шагам с номером шага слева
+const bStep = (p, n, y, t) => bBadge(p, n, 140, y - 14, t);
+
+/* ---------- такты: [id, заголовок, run(m), доп.] ---------- */
+const BEATS = [
+  ['intro', 'Начало', (m) => {
+    const p = panel(0);
+    bBusel(p, 'wave', 270, 470, 470, .3);
+    bT(p, 'МАТЕМАТИКА · ТЕМА 19', 580, 300, .2, { size: 26, fill: XC, weight: 600 });
+    bT(p, 'Задачи', 580, 400, .35, { size: 76, weight: 600 });
+    bT(p, 'с помощью уравнений', 580, 495, .5, { size: 76, weight: 600, fill: GOLD });
+    bT(p, 'пять шагов к решению', 582, 580, m('sub'), { size: 34, fill: COL.dim });
+  }],
+
+  ['plan', 'Пять шагов', (m) => {
+    const p = panel(0); bTitle(p, 'Пять шагов', 'Как решать задачу уравнением');
+    [['Обозначь неизвестное буквой x', XC], ['Запиши условие уравнением', COL.chalk], ['Реши уравнение', COL.chalk], ['Проверь ответ по условию', OK], ['Запиши ответ словами', GOLD]].forEach(([s, c], i) => {
+      bStep(p, i + 1, 300 + i * 105, m('s' + (i + 1)));
+      bT(p, s, 190, 300 + i * 105, m('s' + (i + 1)), { size: 40, weight: 600, fill: c });
+    });
+  }],
+
+  ['notebook', 'Блокноты', (m) => {
+    const p = panel(0); bTitle(p, 'Задача про блокноты');
+    bT(p, '«Антон купил 3 одинаковых блокнота и заплатил 36 руб.', 120, 260, m('q'), { size: 32, fill: COL.dim });
+    bT(p, 'Сколько стоит один блокнот?»', 120, 305, m('q', .3), { size: 32, fill: COL.dim });
+    for (let i = 0; i < 3; i++) {
+      const g = G(p, { x: 1180 + i * 120, y: 470, o: 0 });
+      mk('rect', { x: -45, y: -60, width: 90, height: 120, rx: 10, fill: '#241f45', stroke: XC, 'stroke-width': 3 }, g);
+      T(g, 'x', { y: 14, size: 44, fill: XC, anchor: 'middle', weight: 700 });
+      show(g, m('x', .5 + i * .2), .4);
+    }
+    bT(p, '36 руб.', 1300, 600, m('eq', 1), { size: 38, weight: 600, anchor: 'middle' });
+    bStep(p, 1, 420, m('x')); bRich(p, [['x', XC], [' руб. — цена блокнота', null]], 190, 420, m('x'), { size: 40, weight: 500 });
+    bStep(p, 2, 510, m('eq')); bExpr(p, [['3'], [MU], XT, [EQ], ['36']], 190, 510, m('eq'), { size: 48 });
+    bStep(p, 3, 600, m('res')); bExpr(p, [XT, [EQ], ['36'], [DV], ['3'], [EQ], ['12', GOLD]], 190, 600, m('res'), { size: 48 });
+    bStep(p, 4, 680, m('res', 2.5)); bRich(p, [['3 · 12 = 36  ', null], ['✓', OK]], 190, 680, m('res', 2.5), { size: 42, weight: 500 });
+    bStep(p, 5, 770, m('ans')); bRich(p, [['Ответ: блокнот стоит ', null], ['12 рублей', GOLD]], 190, 770, m('ans'), { size: 42 });
+  }],
+
+  ['before', 'Было и стало', (m) => {
+    const p = panel(0); bTitle(p, 'Было — стало', 'Неизвестно, сколько было сначала');
+    const col = (x, q1, q2, eq, res, kq, ke, kr) => {
+      bT(p, q1, x, 280, m(kq), { size: 32, fill: COL.dim });
+      bT(p, q2, x, 325, m(kq, .3), { size: 32, fill: COL.dim });
+      bExpr(p, eq, x, 450, m(ke), { size: 56 });
+      bRich(p, res, x, 560, m(kr), { size: 42 });
+    };
+    col(120, '«Было несколько марок, подарили 8,', 'стало 23»', [XT, [PL], ['8'], [EQ], ['23']], [['x = 23 − 8 = ', null], ['15', GOLD]], 'q1', 'e1', 'r1');
+    draw(path(p, 'M800 250V650', { stroke: COL.faint, 'stroke-width': 2 }, { d: 0 }), m('q2', -.3), .5);
+    col(860, '«Вышли 7 пассажиров,', 'осталось 18»', [XT, [MI], ['7'], [EQ], ['18']], [['x = 18 + 7 = ', null], ['25', GOLD]], 'q2', 'e2', 'r2');
+  }],
+
+  ['which', 'Что обозначить буквой', (m) => {
+    const p = panel(0); bTitle(p, 'Что обозначить буквой?');
+    bT(p, 'То, что нужно найти, или меньшую величину', 120, 270, m('rule'), { size: 38, fill: GOLD, weight: 600 });
+    bT(p, '«В первой коробке на 4 карандаша больше, чем во второй»', 120, 360, m('q'), { size: 32, fill: COL.dim });
+    bT(p, 'вторая', 330, 530, m('second'), { size: 34, anchor: 'end' });
+    bBar(p, 360, 518, 420, 'x', XC, m('second'));
+    bT(p, 'первая', 330, 650, m('first'), { size: 34, anchor: 'end' });
+    bBar(p, 360, 638, 420, 'x', XC, m('first'));
+    bBar(p, 790, 638, 150, '4', DIFF, m('first', .6));
+    bExpr(p, [XT, [PL], ['4', DIFF]], 990, 652, m('first', 1), { size: 48 });
+  }],
+
+  ['boxes', 'Уравнение', (m) => {
+    const p = panel(0); bTitle(p, 'Вместе — 20 карандашей');
+    bT(p, 'вторая', 330, 330, .2, { size: 34, anchor: 'end' }); bBar(p, 360, 318, 420, 'x', XC, .2);
+    bT(p, 'первая', 330, 450, .3, { size: 34, anchor: 'end' }); bBar(p, 360, 438, 420, 'x', XC, .3); bBar(p, 790, 438, 150, '4', DIFF, .4);
+    draw(path(p, 'M970 280Q990 280 990 300V365Q990 380 1005 380Q990 380 990 395V460Q990 478 970 478', { stroke: GOLD, 'stroke-width': 3, fill: 'none' }, { d: 0 }), m('q'), .5);
+    bT(p, 'вместе 20', 1020, 390, m('q', .4), { size: 38, fill: GOLD, weight: 600 });
+    bExpr(p, [XT, [PL], ['(', COL.dim], XT, [PL], ['4', DIFF], [')', COL.dim], [EQ], ['20']], 120, 620, m('sum'), { size: 52 });
+    bExpr(p, [['2'], [MU], XT, [PL], ['4', DIFF], [EQ], ['20']], 120, 730, m('two'), { size: 52 });
+  }],
+
+  ['solve', 'Решаем', (m) => {
+    const p = panel(0); bTitle(p, 'Решаем по цепочке', '2 · x + 4 = 20');
+    bStep(p, 3, 300, m('s1'));
+    bExpr(p, [['2 · x', XC], [EQ], ['20'], [MI], ['4'], [EQ], ['16']], 190, 300, m('s1'), { size: 50 });
+    bExpr(p, [XT, [EQ], ['16'], [DV], ['2'], [EQ], ['8', GOLD]], 190, 400, m('s2'), { size: 50 });
+    bRich(p, [['во второй:  ', COL.dim], ['8', GOLD]], 190, 540, m('s3'), { size: 44 });
+    bRich(p, [['в первой:  ', COL.dim], ['8 + 4 = ', null], ['12', GOLD]], 190, 630, m('s4'), { size: 44 });
+  }],
+
+  ['check', 'Проверка', (m) => {
+    const p = panel(0); bTitle(p, 'Проверяем по условию');
+    bStep(p, 4, 300, m('chk'));
+    bRich(p, [['8 + 12 = 20', null], ['   ✓ вместе 20', OK]], 190, 300, m('c1'), { size: 46 });
+    bRich(p, [['12 − 8 = 4', null], ['   ✓ на 4 больше', OK]], 190, 400, m('c2'), { size: 46 });
+    bStep(p, 5, 550, m('ans'));
+    bRich(p, [['Ответ: во второй коробке ', null], ['8', GOLD], [' карандашей,', null]], 190, 550, m('ans'), { size: 42 });
+    bRich(p, [['в первой — ', null], ['12', GOLD], ['.', null]], 190, 620, m('ans', .4), { size: 42 });
+    bBusel(p, 'think', 1340, 560, 340, m('chk', .5));
+  }],
+
+  ['ratio', 'Арбуз и дыня', (m) => {
+    const p = panel(0); bTitle(p, 'Арбуз и дыня', '«Арбуз в 3 раза тяжелее дыни, вместе 12 кг»');
+    bT(p, 'дыня', 330, 380, m('x'), { size: 34, anchor: 'end' });
+    bBar(p, 360, 368, 220, 'x', XC, m('x'));
+    bT(p, 'арбуз', 330, 510, m('w'), { size: 34, anchor: 'end' });
+    [0, 1, 2].forEach(i => bBar(p, 360 + i * 230, 498, 220, 'x', XC, m('w', .4 + i * .3)));
+    draw(path(p, 'M1080 320Q1100 320 1100 340V425Q1100 440 1115 440Q1100 440 1100 455V530Q1100 548 1080 548', { stroke: GOLD, 'stroke-width': 3, fill: 'none' }, { d: 0 }), m('all'), .5);
+    bT(p, '12 кг', 1130, 450, m('all', .3), { size: 40, fill: GOLD, weight: 600 });
+    bRich(p, [['всего ', null], ['4', GOLD], [' одинаковые части', null]], 360, 680, m('all', .8), { size: 44 });
+  }],
+
+  ['ratio2', 'Решаем', (m) => {
+    const p = panel(0); bTitle(p, 'Решаем', 'дыня — x, арбуз — 3 · x');
+    bExpr(p, [XT, [PL], ['3'], [MU], XT, [EQ], ['12']], 120, 310, m('eq'), { size: 54 });
+    bExpr(p, [['4'], [MU], XT, [EQ], ['12']], 120, 410, m('eq', 3), { size: 54 });
+    bExpr(p, [XT, [EQ], ['12'], [DV], ['4'], [EQ], ['3', GOLD]], 120, 510, m('res'), { size: 54 });
+    bRich(p, [['Дыня — ', null], ['3 кг', GOLD], [',  арбуз — 3 · 3 = ', null], ['9 кг', GOLD]], 120, 640, m('ans'), { size: 44 });
+    bRich(p, [['Проверка:  3 + 9 = 12  ', null], ['✓', OK]], 120, 740, m('chk'), { size: 42, weight: 500 });
+  }],
+
+  ['wrap', 'Повторим', (m) => {
+    const p = panel(0); bTitle(p, 'Повторим');
+    [['Обозначь неизвестное буквой — обычно меньшее', 'w1', XC], ['Запиши уравнение и реши его', 'w2', COL.chalk], ['Проверь ответ по условию', 'w3', OK], ['Ответ — словами', 'w4', GOLD]].forEach(([s, k, c], i) => {
+      const g = G(p, { x: -16, y: 290 + i * 130, o: 0 });
+      mk('circle', { cx: 150, cy: -12, r: 28, fill: c }, g);
+      T(g, String(i + 1), { x: 150, y: 0, size: 32, fill: '#11152a', weight: 700, anchor: 'middle' });
+      T(g, s, { x: 210, size: 38, weight: 600 });
+      tw(g, { o: 1, x: 0 }, m(k), .6);
+    });
+    bBusel(p, 'cheer', 1330, 520, 440, m('end'));
+  }],
+].map(([id, title, run, extra]) => ({ id, title, run, ...extra }));
+
+boot();
+</script>
+</body>
+</html>
