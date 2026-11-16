@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { Icon } from '../components/Icon';
 import { AppBar } from '../components/AppBar';
+import { FilmPlayer } from '../components/FilmPlayer';
 import { StatusChip } from '../components/StatusChip';
 import { SubjectArt } from '../components/SubjectArt';
+import { filmFor } from '../content/films';
 import { subjectTone } from '../content/subjectArt';
 import { subjects } from '../content/loader';
 import { planFor } from '../engine/plan';
@@ -27,6 +29,8 @@ export function SubjectScreen({ id, onBack, onTopic, onVocab }: { id: string; on
   const currentSection = s.sections.find((sec) => sec.topics.some((t) => t.id === recommended))?.id ?? s.sections[0]?.id;
   const [openSections, setOpenSections] = useState<string[]>(() => (s.sections.length <= 2 ? s.sections.map((x) => x.id) : currentSection ? [currentSection] : []));
   const toggleSection = (sid: string) => setOpenSections((o) => (o.includes(sid) ? o.filter((x) => x !== sid) : [...o, sid]));
+  const [watching, setWatching] = useState<string>(); // тема, чей мультурок открыт
+  const watchFilm = watching ? filmFor(watching) : undefined;
 
   return (
     <main className="mx-auto max-w-3xl p-6">
@@ -84,6 +88,7 @@ export function SubjectScreen({ id, onBack, onTopic, onVocab }: { id: string; on
               const current = t.id === recommended;
               const planned = today.includes(t.id);
               const n = ++index;
+              const film = isReady ? filmFor(t.id) : undefined;
               return (
                 <li key={t.id} className="relative flex items-center gap-2 pl-8 max-sm:pl-7">
                   <span className="absolute -left-[22px] top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full text-lg font-extrabold"
@@ -93,7 +98,7 @@ export function SubjectScreen({ id, onBack, onTopic, onVocab }: { id: string; on
                     {st === 'done' ? <Icon name="check" label="Пройдена" /> : n}
                   </span>
                   <button disabled={!isReady} onClick={() => onTopic(t.id)}
-                    className={`flex min-h-touch min-w-0 flex-1 flex-wrap items-center justify-between gap-2 rounded-xl2 bg-card px-5 py-2 text-left shadow max-sm:py-3 max-sm:pl-4 max-sm:pr-14 ${isReady ? 'active:scale-[0.99]' : 'opacity-60'}`}
+                    className={`flex min-h-touch min-w-0 flex-1 flex-wrap items-center justify-between gap-2 rounded-xl2 bg-card px-5 py-2 text-left shadow max-sm:py-3 max-sm:pl-4 ${film ? 'max-sm:pr-28' : 'max-sm:pr-14'} ${isReady ? 'active:scale-[0.99]' : 'opacity-60'}`}
                     style={current ? { borderColor: tone.mark, borderWidth: 2 } : undefined}>
                     <span className="max-sm:w-full max-sm:font-semibold">{t.title}</span>
                     <span className="flex flex-wrap items-center gap-2">
@@ -107,6 +112,12 @@ export function SubjectScreen({ id, onBack, onTopic, onVocab }: { id: string; on
                       )}
                     </span>
                   </button>
+                  {film && (
+                    <button onClick={() => setWatching(t.id)} aria-label={`Мультурок, ${film.minutes} мин`}
+                      className="min-h-touch whitespace-nowrap rounded-xl2 bg-soft px-3 text-sm font-extrabold max-sm:absolute max-sm:right-[3.5rem] max-sm:top-1/2 max-sm:h-11 max-sm:min-h-0 max-sm:w-11 max-sm:-translate-y-1/2 max-sm:rounded-full max-sm:border-0 max-sm:px-0">
+                      <Icon name="play" /> <span className="max-sm:sr-only">Мультурок</span>
+                    </button>
+                  )}
                   {isReady && (
                     <button onClick={() => togglePlan(t.id)} aria-pressed={planned} aria-label={planned ? 'В плане на сегодня' : 'Добавить в план на сегодня'}
                       className={`min-h-touch whitespace-nowrap rounded-xl2 px-3 text-sm font-extrabold max-sm:absolute max-sm:right-1.5 max-sm:top-1/2 max-sm:h-11 max-sm:min-h-0 max-sm:w-11 max-sm:-translate-y-1/2 max-sm:rounded-full max-sm:border-0 max-sm:px-0 ${planned ? 'bg-brand text-onbrand' : 'bg-soft'}`}>
@@ -121,6 +132,7 @@ export function SubjectScreen({ id, onBack, onTopic, onVocab }: { id: string; on
         </section>
         );
       })}
+      {watchFilm && <FilmPlayer film={watchFilm} onClose={() => setWatching(undefined)} />}
     </main>
   );
 }
