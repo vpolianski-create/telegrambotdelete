@@ -119,6 +119,26 @@ export async function printPage(name = 'Умный Бусел'): Promise<void> {
   window.print();
 }
 
+// ——— поворот экрана на время мультурока (Android) ———
+/**
+ * Ролик горизонтальный: на время просмотра экран поворачивается горизонтально.
+ * После ролика телефон снова только вертикальный (как задаёт MainActivity), планшет — как удобно.
+ * smallestWidth — меньшая сторона экрана в CSS-пикселях (у Android это smallestScreenWidthDp, телефон — меньше 600).
+ */
+export function orientationFor(film: boolean, smallestWidth: number): 'landscape' | 'portrait' | 'any' {
+  if (film) return 'landscape';
+  return smallestWidth < 600 ? 'portrait' : 'any';
+}
+export async function setFilmOrientation(film: boolean): Promise<void> {
+  if (!isAndroid()) return;
+  try {
+    const { ScreenOrientation } = await import('@capacitor/screen-orientation');
+    const o = orientationFor(film, Math.min(window.screen.width, window.screen.height));
+    if (o === 'any') await ScreenOrientation.unlock();
+    else await ScreenOrientation.lock({ orientation: o });
+  } catch { /* не повернулся — ролик всё равно покажется, просто мельче */ }
+}
+
 // ——— системная кнопка «Назад» на Android ———
 /** Экран может сам обработать «Назад» (закрыть раздел, грамоту, тренировку) — последний добавленный первым. */
 const backInterceptors: (() => boolean)[] = [];

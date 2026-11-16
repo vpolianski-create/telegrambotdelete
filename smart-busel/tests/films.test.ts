@@ -64,3 +64,14 @@ describe('мультуроки', () => {
     expect(filmFor('math-t01')).toBeUndefined();
   });
 });
+
+describe('поворот экрана для мультурока', () => {
+  it('на время ролика — горизонтально; после — телефон вертикально, планшет как удобно', async () => {
+    const { orientationFor } = await import('../src/platform');
+    expect(orientationFor(true, 390)).toBe('landscape');
+    expect(orientationFor(true, 800)).toBe('landscape');
+    expect(orientationFor(false, 390)).toBe('portrait');
+    expect(orientationFor(false, 599)).toBe('portrait');
+    expect(orientationFor(false, 600)).toBe('any');
+  });
+});
