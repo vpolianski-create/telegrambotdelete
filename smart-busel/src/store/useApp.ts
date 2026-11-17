@@ -7,7 +7,7 @@ import { levelFor, STAR_BONUS, starsFor } from '../engine/level';
 import { questProgress, questsFor, QUEST_POINTS } from '../engine/quests';
 import { DAILY_GOAL_BONUS, TOPIC_PASS_BONUS, TOPIC_PASS_PERCENT } from '../engine/points';
 import type { GeneratorRef } from '../content/schema';
-import { earnedCertificates } from '../engine/certificates';
+import { earnedCertificates, keepCertificates } from '../engine/certificates';
 import { togglePlan as togglePlanFn, type Plan } from '../engine/plan';
 import { afterReview, WARMUP_BONUS } from '../engine/warmup';
 import type { ThemeSetting } from '../engine/theme';
@@ -126,8 +126,9 @@ export function resetRewrittenTopics(d: Data): Data {
 /** keepAllProgress: при импорте копии из файла ничего не сбрасываем — родитель сам выбрал эти данные. */
 export function merge(raw: Partial<Data> | null, keepAllProgress = false): Data {
   const d: Data = { ...initial, ...(raw ?? {}), settings: { ...initial.settings, ...(raw?.settings ?? {}) } };
-  if (raw && !keepAllProgress && (raw.contentRev ?? 0) < CONTENT_REV) return { ...resetRewrittenTopics(d), contentRev: CONTENT_REV };
-  return { ...d, contentRev: CONTENT_REV };
+  const r = raw && !keepAllProgress && (raw.contentRev ?? 0) < CONTENT_REV ? resetRewrittenTopics(d) : d;
+  // грамоты по прежним правилам удаляются (решение родителя, v1.10.0)
+  return { ...r, certificates: keepCertificates(r.certificates, r.topicResults, learnSubjects), contentRev: CONTENT_REV };
 }
 
 async function load(): Promise<Data> {
@@ -228,9 +229,11 @@ export const useApp = create<Store>((set, get) => {
     }
     // грамоты
     const s3 = get();
-    const certs = earnedCertificates(s3, learnSubjects, date).filter((c) => !s3.certificates[c.id]);
+    const kept = keepCertificates(s3.certificates, s3.topicResults, learnSubjects); // старые (с другого устройства) — не берём
+    if (Object.keys(kept).length !== Object.keys(s3.certificates).length) set({ certificates: kept });
+    const certs = earnedCertificates(s3, learnSubjects, date).filter((c) => !kept[c.id]);
     if (certs.length) {
-      set({ certificates: { ...s3.certificates, ...Object.fromEntries(certs.map((c) => [c.id, date])) } });
+      set({ certificates: { ...kept, ...Object.fromEntries(certs.map((c) => [c.id, date])) } });
       certs.forEach((c) => toasts.push({ icon: '📜', title: 'Новая грамота!', text: c.title }));
     }
     if (toasts.length) set({ toasts: [...get().toasts, ...toasts] });

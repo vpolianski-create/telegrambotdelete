@@ -20,9 +20,9 @@ const fmt = (d: string) => `${d.slice(8)}.${d.slice(5, 7)}.${d.slice(0, 4)}`;
 
 /** Грамоты: список заслуженных и красивый лист для печати (Ctrl+P или кнопка «Распечатать»). */
 export function Certificates({ onBack }: { onBack(): void }) {
-  const { certificates, settings } = useApp();
-  // все полученные грамоты, в том числе по прежним правилам
-  const earned = ownedCertificates(certificates, learnSubjects);
+  const { certificates, settings, topicResults } = useApp();
+  // полученные грамоты — только по нынешним правилам (старые удалены, v1.10.0)
+  const earned = ownedCertificates(certificates, learnSubjects, topicResults);
   const [openId, setOpenId] = useState<string>();
   const open = earned.find((c) => c.id === openId);
   // номер грамоты — по порядку получения; в списке новые сверху

@@ -69,4 +69,11 @@ describe('хранилище и синхронизация', () => {
     expect(st().points).toBe(300);
     expect(st().sync).toBeUndefined();
   });
+  it('старые грамоты (за тему, серию 7 и 14 дней) удаляются при загрузке и не возвращаются с другого устройства', async () => {
+    const mod = await import('../src/store/useApp');
+    const loaded = mod.merge({ certificates: { 't:math-t01': '2025-01-01', 'k:7': '2025-01-02', 'k:14': '2025-01-03', 'k:30': '2025-02-01' } });
+    expect(loaded.certificates).toEqual({ 'k:30': '2025-02-01' });
+    st().applySynced({ ...mod.merge(null), certificates: { 't:math-t02': '2025-01-05', 'k:100': '2025-05-01' } });
+    expect(st().certificates).toEqual({ 'k:100': '2025-05-01' });
+  });
 });
