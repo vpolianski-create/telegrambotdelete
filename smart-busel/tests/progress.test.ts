@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { earnedCertificates, ownedCertificates, STREAK_CERTS } from '../src/engine/certificates';
+import { earnedCertificates, keepCertificates, ownedCertificates, STREAK_CERTS } from '../src/engine/certificates';
 import { inProgramOrder, togglePlan, planFor } from '../src/engine/plan';
 import { weekReport } from '../src/engine/report';
 import { statusCounts, topicStatus } from '../src/engine/status';
@@ -59,11 +59,18 @@ describe('грамоты — редкие, за очень хорошую раб
     expect(earnedCertificates({ topicResults: {}, daily }, s, '2026-01-14').map((c) => c.id)).toEqual([]);
     expect(earnedCertificates({ topicResults: {}, daily }, s, '2026-01-30').map((c) => c.id)).toEqual(['k:30']);
   });
-  it('грамоты, полученные по прежним правилам, остаются в коллекции и узнаются по номеру', () => {
-    const owned = ownedCertificates({ 't:t1': '2025-01-01', 's:x-s1': '2025-01-02', 'j:x': '2025-01-03', 'k:7': '2025-01-04', 'k:14': '2025-01-05', 't:удалённая-тема': '2025-01-06' }, s);
-    expect(owned.map((c) => c.id)).toEqual(['t:t1', 's:x-s1', 'j:x', 'k:7', 'k:14']);
-    expect(owned[0]).toMatchObject({ kind: 'topic', title: 'Отличное знание темы «t1»' });
-    expect(owned[3]).toMatchObject({ kind: 'streak', title: '7 дней занятий подряд' });
+  it('в коллекции — только грамоты по новым правилам; полученные по старым удаляются (решение родителя, v1.10.0)', () => {
+    const saved = { 't:t1': '2025-01-01', 's:x-s1': '2025-01-02', 'j:x': '2025-01-03', 'k:7': '2025-01-04', 'k:14': '2025-01-05', 'k:30': '2025-02-01', 't:удалённая-тема': '2025-01-06' };
+    const weak = { t1: { done: true, stars: 3 }, t2: { done: true, stars: 1 } };
+    // за тему и за серию 7/14 дней — грамот больше нет; раздел, где тема ниже 2 звёзд, — не по новым правилам
+    expect(keepCertificates(saved, weak, s)).toEqual({ 'j:x': '2025-01-03', 'k:30': '2025-02-01' });
+    expect(ownedCertificates(saved, s, weak).map((c) => c.id)).toEqual(['j:x', 'k:30']);
+    // раздел, где каждая тема на 2+ звезды, — остаётся с прежней датой
+    const strong = { t1: { done: true, stars: 3 }, t2: { done: true, stars: 2 } };
+    expect(keepCertificates(saved, strong, s)).toEqual({ 's:x-s1': '2025-01-02', 'j:x': '2025-01-03', 'k:30': '2025-02-01' });
+    expect(ownedCertificates(saved, s, strong)[0]).toMatchObject({ kind: 'section', title: 'Раздел «Раздел» пройден' });
+    // грамота за предмет — только если все его темы пройдены
+    expect(keepCertificates({ 'j:x': '2025-01-03' }, { t1: { done: true, stars: 3 } }, s)).toEqual({});
   });
 });
 
@@ -108,7 +115,7 @@ describe('обновление: сброс тем переписанных пр�
       opened: ['history-t05', 'math-t03', 'art-t02'],
       albumCards: ['history-t05', 'math-t03'],
       mistakes: [{ subject: 'history', topicId: 'history-t05', question: 'q', date: '2025-01-01' }, { subject: 'math', topicId: 'math-t03', question: 'q2', date: '2025-01-01' }],
-      certificates: { 't:history-t05': '2025-01-01', 't:math-t03': '2025-01-02', 'j:history': '2025-01-03' },
+      certificates: { 't:history-t05': '2025-01-01', 'k:30': '2025-01-02', 'j:history': '2025-01-03' },
       leitner: { 'food-01': { box: 3, due: '2025-01-01' } },
       lastTopic: { subjectId: 'history', topicId: 'history-t05' },
     } as never;
@@ -118,7 +125,7 @@ describe('обновление: сброс тем переписанных пр�
     expect(d.opened).toEqual(['math-t03']);
     expect(d.albumCards).toEqual(['math-t03']);
     expect(d.mistakes.map((m) => m.topicId)).toEqual(['math-t03']);
-    expect(Object.keys(d.certificates)).toEqual(['t:math-t03']);
+    expect(Object.keys(d.certificates)).toEqual(['k:30']);
     expect(Object.keys(d.leitner)).toEqual(['food-01']);
     expect(d.lastTopic).toBeNull();
     expect(d.contentRev).toBe(CONTENT_REV);

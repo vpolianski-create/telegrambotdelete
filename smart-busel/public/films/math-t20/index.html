@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Угол — Умный Бусел</title>
+<link rel="stylesheet" href="lib/engine.css">
+<link rel="expect" href="#bar" blocking="render">
+<style>#bHome { display: none; }</style>
+</head>
+<body>
+<script src="lib/engine.js"></script>
+<script src="audio/ru/timings.js"></script>
+<script>
+'use strict';
+// Мультурок к теме 20 «Угол. Измерение и построение углов» приложения «Умный Бусел».
+// Стиль — films-src/STYLE.md (эталон math-t12). Без вопросов: задания остаются в приложении.
+// Цвета: угол и его дуга — фиолетовый, вторая часть угла, внешняя шкала и биссектриса — голубой, ответ и вершина — жёлтый,
+// не та шкала — розовый, подтверждение — мятный.
+const CHAPTER = { number: 20, title: 'Угол. Измерение и построение углов', minutes: 4, language: 'ru' };
+
+const ANG = '#a495ff', CY = '#45d7f2', GOLD = '#f6c453', REST = '#ff8c9c', OK = '#64ddb0', SOFT = '#c9c0ff';
+
+/* ---------- помощники (как в math-t12 / math-t13) ---------- */
+const bT = (p, s, x, y, t, { size = 32, fill = COL.chalk, anchor = 'start', weight = 500 } = {}) => {
+  const e = T(p, s, { x, y, size, fill, anchor, weight, o: 0 }); show(e, t); return e;
+};
+const bTitle = (p, s, sub) => { bT(p, s, 100, 125, .15, { size: 46, weight: 600 }); if (sub) bT(p, sub, 100, 178, .3, { size: 28, fill: COL.dim }); };
+// строка из кусков разного цвета: [['12 : ', null], ['3', SUM], …]
+function bRich(p, parts, x, y, t, { size = 44, anchor = 'start', weight = 600 } = {}) {
+  const e = mk('text', { 'font-size': size, 'font-family': UI, 'font-weight': weight, 'text-anchor': anchor, fill: COL.chalk }, p);
+  e.style.whiteSpace = 'pre';
+  parts.forEach(([s, c]) => { const ts = document.createElementNS(NS, 'tspan'); ts.textContent = s; if (c) ts.setAttribute('fill', c); e.appendChild(ts); });
+  put(e, { x, y, o: 0 }); show(e, t); return e;
+}
+function bChip(p, v, x, y, t, color, { w = 84, h = 64, size = 34 } = {}) {
+  const g = G(p, { x, y, o: 0 });
+  g._r = mk('rect', { x: -w / 2, y: -h / 2, width: w, height: h, rx: 14, fill: COL.board, stroke: color, 'stroke-width': 3 }, g);
+  g._t = T(g, String(v), { y: size * .36, size, fill: color, anchor: 'middle', weight: 600 });
+  show(g, t, .35); return g;
+}
+const bPaint = (g, c, t) => { tw(g._r, { c_stroke: c }, t, .4); tw(g._t, { c_fill: c }, t, .4); };
+function bBusel(p, pose, x, y, size, t) {
+  const g = G(p, { x, y, o: 0, s: .94 });
+  mk('image', { href: `img/busel-${pose}.webp`, x: -size / 2, y: -size / 2, width: size, height: size }, g);
+  tw(g, { o: 1, s: 1 }, t, .7, out); return g;
+}
+// карточка с числом и проверкой (как «Проверь себя» в math-t12)
+function bCard(p, x, y, w, h, t) {
+  const g = G(p, { x, y, o: 0 });
+  mk('rect', { x: -w / 2, y: -h / 2, width: w, height: h, rx: 24, fill: '#1b2540', stroke: COL.edge, 'stroke-width': 2 }, g);
+  tw(g, { o: 1 }, t, .5); return g;
+}
+// квадратик-единица (для «десяток = девять и ещё один»)
+function bCell(p, x, y, color, t, s = 40) {
+  const g = G(p, { x, y, o: 0 });
+  g._r = mk('rect', { x: -s / 2, y: -s / 2, width: s, height: s, rx: 7, fill: color }, g);
+  show(g, t, .3); return g;
+}
+
+function bDots(p, n, color, { cx, cy, cols, gap = 56, r = 15, t = .3 }) {
+  const rows = Math.ceil(n / cols);
+  return Array.from({ length: n }, (_, i) => {
+    const e = G(p, { x: cx + (i % cols - (cols - 1) / 2) * gap, y: cy + (Math.floor(i / cols) - (rows - 1) / 2) * gap, o: 0 });
+    e._c = mk('circle', { r, fill: color }, e);
+    mk('circle', { r: r * .3, cx: -r * .35, cy: -r * .35, fill: '#ffffff', 'fill-opacity': .55 }, e);
+    show(e, t + i * .03, .3); return e;
+  });
+}
+function bArrange(dots, cols, t, { cx, cy, gap = 56 }) {
+  const rows = Math.ceil(dots.length / cols);
+  dots.forEach((e, i) => tw(e, { x: cx + (i % cols - (cols - 1) / 2) * gap, y: cy + (Math.floor(i / cols) - (rows - 1) / 2) * gap }, t + i * .015, 1.1, io));
+}
+/* ---------- геометрия: углы отсчитываем от луча вправо против часовой стрелки ---------- */
+const RAD = Math.PI / 180;
+const PT = (cx, cy, r, a) => [cx + r * Math.cos(a * RAD), cy - r * Math.sin(a * RAD)];
+function bRay(p, cx, cy, a, len, t, { color = COL.chalk, w = 5, dur = .6 } = {}) {
+  const [x, y] = PT(cx, cy, len, a);
+  const e = path(p, `M${cx} ${cy}L${x} ${y}`, { stroke: color, 'stroke-width': w, 'stroke-linecap': 'round' }, { d: 0 });
+  draw(e, t, dur); return e;
+}
+function bArc(p, cx, cy, r, a1, a2, t, color, { w = 4, dur = .6 } = {}) {
+  const [x1, y1] = PT(cx, cy, r, a1), [x2, y2] = PT(cx, cy, r, a2);
+  const e = path(p, `M${x1} ${y1}A${r} ${r} 0 ${a2 - a1 > 180 ? 1 : 0} 0 ${x2} ${y2}`, { stroke: color, 'stroke-width': w, fill: 'none', 'stroke-linecap': 'round' }, { d: 0 });
+  draw(e, t, dur); return e;
+}
+// подпись у дуги, посередине угла
+const bArcLabel = (p, s, cx, cy, r, a1, a2, t, color = ANG, size = 32) => { const [x, y] = PT(cx, cy, r, (a1 + a2) / 2); return bT(p, s, x, y + size * .35, t, { size, fill: color, anchor: 'middle', weight: 600 }); };
+function bSquare(p, cx, cy, a, t, color = ANG, s = 34) {
+  const [x1, y1] = PT(cx, cy, s, a), [x2, y2] = PT(cx, cy, s, a + 90);
+  const e = path(p, `M${x1} ${y1}L${x1 + x2 - cx} ${y1 + y2 - cy}L${x2} ${y2}`, { stroke: color, 'stroke-width': 3, fill: 'none' }, { o: 0 });
+  show(e, t, .4); return e;
+}
+function bDot(p, x, y, t, color = GOLD, r = 9) { const e = mk('circle', { cx: x, cy: y, r, fill: color }, p); put(e, { o: 0 }); show(e, t, .3); return e; }
+// транспортир: полукруг, деления через 5°, внешняя шкала 0…180 слева направо против часовой, внутренняя — наоборот
+function bProt(p, cx, cy, t, { r = 300 } = {}) {
+  const g = G(p, { x: cx, y: cy, o: 0 });
+  mk('path', { d: `M${-r} 0A${r} ${r} 0 0 1 ${r} 0Z`, fill: SOFT, 'fill-opacity': .07, stroke: SOFT, 'stroke-width': 2 }, g);
+  for (let d = 0; d <= 180; d += 5) {
+    const L = d % 10 ? 12 : 22, [x1, y1] = PT(0, 0, r, d), [x2, y2] = PT(0, 0, r - L, d);
+    mk('path', { d: `M${x1} ${y1}L${x2} ${y2}`, stroke: SOFT, 'stroke-width': d % 10 ? 1 : 2 }, g);
+  }
+  g._out = {}; g._in = {};
+  for (let d = 0; d <= 180; d += 10) {
+    const [x, y] = PT(0, 0, r - 42, d), [x2, y2] = PT(0, 0, r - 74, d);
+    g._out[d] = T(g, String(d), { x, y: y + 7, size: 20, fill: CY, anchor: 'middle', weight: 600 });
+    g._in[d] = T(g, String(180 - d), { x: x2, y: y2 + 6, size: 17, fill: COL.dim, anchor: 'middle' });
+  }
+  mk('circle', { r: 6, fill: GOLD }, g);
+  show(g, t, .5); return g;
+}
+const bRing = (g, el, t, color = GOLD) => tw(el, { c_fill: color, s: 1.4 }, t, .4);
+
+/* ---------- такты: [id, заголовок, run(m), доп.] ---------- */
+const BEATS = [
+  ['intro', 'Начало', (m) => {
+    const p = panel(0);
+    bBusel(p, 'wave', 270, 470, 470, .3);
+    bT(p, 'МАТЕМАТИКА · ТЕМА 20', 580, 310, .2, { size: 26, fill: ANG, weight: 600 });
+    bT(p, 'Угол', 580, 420, .35, { size: 96, weight: 600, fill: GOLD });
+    bT(p, 'измерение и построение углов', 582, 500, .5, { size: 36, weight: 600 });
+    bT(p, 'транспортир, виды углов и даже часы', 582, 575, m('sub'), { size: 32, fill: COL.dim });
+  }],
+
+  ['what', 'Что такое угол', (m) => {
+    const p = panel(0); bTitle(p, 'Что такое угол', 'Два луча с общим началом');
+    const cx = 420, cy = 680;
+    bRay(p, cx, cy, 0, 560, m('rays')); bRay(p, cx, cy, 40, 560, m('rays', .5));
+    bArc(p, cx, cy, 90, 0, 40, m('angle'), ANG, { w: 5 });
+    bDot(p, cx, cy, m('o'), GOLD, 11);
+    bT(p, 'O', cx - 40, cy + 12, m('o'), { size: 40, fill: GOLD, weight: 700 });
+    const [ax, ay] = PT(cx, cy, 560, 0), [bx, by] = PT(cx, cy, 560, 40);
+    bT(p, 'A', ax + 20, ay + 12, m('name'), { size: 40, weight: 700 }); bT(p, 'B', bx + 16, by, m('name'), { size: 40, weight: 700 });
+    bT(p, 'вершина', cx, cy + 70, m('vertex'), { size: 32, fill: GOLD, anchor: 'middle', weight: 600 });
+    bT(p, 'сторона', cx + 330, cy + 50, m('sides'), { size: 30, fill: COL.dim, anchor: 'middle' });
+    bT(p, 'сторона', bx - 140, by + 40, m('sides', .3), { size: 30, fill: COL.dim, anchor: 'middle' });
+    bRich(p, [['∠A', null], ['O', GOLD], ['B', null]], 1150, 320, m('name', 1), { size: 72 });
+    bT(p, 'вершина — посередине', 1150, 390, m('name', 2.5), { size: 30, fill: COL.dim });
+  }],
+
+  ['degree', 'Градусы', (m) => {
+    const p = panel(0); bTitle(p, 'Углы измеряют в градусах');
+    const cx = 520, cy = 520, L = 250;
+    bRay(p, cx, cy, 0, L, .3, { color: COL.dim });
+    const arm = G(p, { x: cx, y: cy, o: 0 });
+    mk('path', { d: `M0 0H${L}`, stroke: CY, 'stroke-width': 6, 'stroke-linecap': 'round' }, arm);
+    show(arm, m('spin'), .3);
+    bDot(p, cx, cy, .3, GOLD, 10);
+    tw(arm, { r: -360 }, m('spin', .6), m('full') - m('spin'), io);
+    const f1 = bArc(p, cx, cy, 70, 0, 180, m('spin', .6), ANG, { dur: (m('full') - m('spin')) / 2 });
+    const f2 = bArc(p, cx, cy, 70, 180, 359.5, m('spin', .6) + (m('full') - m('spin')) / 2, ANG, { dur: (m('full') - m('spin')) / 2 });
+    bRich(p, [['360°', GOLD], [' — полный оборот', null]], 900, 340, m('full'), { size: 42 });
+    [f1, f2].forEach(e => hide(e, m('half'), .3));
+    tw(arm, { r: 0 }, m('half'), .01); tw(arm, { r: -180 }, m('half', .1), 1.2, io);
+    const h = bArc(p, cx, cy, 70, 0, 180, m('half', .1), ANG, { dur: 1.2 });
+    bRich(p, [['180°', GOLD], [' — развёрнутый', null]], 900, 460, m('half', 1.2), { size: 42 });
+    hide(h, m('quarter'), .3);
+    tw(arm, { r: -90 }, m('quarter'), 1, io);
+    bSquare(p, cx, cy, 0, m('quarter', 1));
+    bRich(p, [['90°', GOLD], [' — прямой', null]], 900, 580, m('quarter', 1), { size: 42 });
+  }],
+
+  ['types', 'Виды углов', (m) => {
+    const p = panel(0); bTitle(p, 'Виды углов');
+    [['острый', '< 90°', 45, 'acute'], ['прямой', '= 90°', 90, 'right'], ['тупой', 'от 90° до 180°', 130, 'obtuse'], ['развёрнутый', '= 180°', 180, 'straight']].forEach(([name, rule, a, k], i) => {
+      const cx = 250 + i * 370 - (a === 180 ? 0 : 60), cy = 560, t = m(k);
+      bRay(p, cx, cy, 0, 150, t); bRay(p, cx, cy, a, 150, t + .3);
+      if (a === 90) bSquare(p, cx, cy, 0, t + .8); else bArc(p, cx, cy, 44, 0, a, t + .8, ANG);
+      bDot(p, cx, cy, t, GOLD, 7);
+      bT(p, name, 250 + i * 370, 690, t + .4, { size: 38, anchor: 'middle', weight: 600, fill: ANG });
+      bT(p, rule, 250 + i * 370, 745, t + .6, { size: 30, anchor: 'middle', fill: COL.dim });
+    });
+  }],
+
+  ['protractor', 'Транспортир', (m) => {
+    const p = panel(0); bTitle(p, 'Измеряем транспортиром');
+    const cx = 640, cy = 700;
+    bRay(p, cx, cy, 0, 440, .3); bRay(p, cx, cy, 50, 440, .5);
+    const pr = bProt(p, cx, cy, m('center'));
+    put(pr, { y: cy - 120 }); tw(pr, { y: cy }, m('center'), .9, out);
+    bDot(p, cx, cy, m('center', .9), GOLD, 10);
+    bRing(pr, pr._out[0], m('zero'));
+    bRing(pr, pr._out[50], m('read'));
+    bArc(p, cx, cy, 90, 0, 50, m('read', .3), ANG, { w: 5 });
+    bT(p, '50°', 1300, 330, m('read', .6), { size: 80, fill: GOLD, weight: 700, anchor: 'middle' });
+  }],
+
+  ['scale', 'Две шкалы', (m) => {
+    const p = panel(0); bTitle(p, 'Какую шкалу читать?', 'Внешняя и внутренняя');
+    const cx = 640, cy = 700;
+    bRay(p, cx, cy, 0, 440, .2); bRay(p, cx, cy, 50, 440, .2);
+    const pr = bProt(p, cx, cy, .3);
+    bRing(pr, pr._out[50], m('trap'), GOLD); bRing(pr, pr._in[50], m('trap', 1.2), REST);
+    bRich(p, [['50', CY], ['  или  ', null], ['130', REST], [' ?', null]], 1080, 330, m('trap', .5), { size: 50 });
+    bRing(pr, pr._out[0], m('rule'), GOLD);
+    bT(p, 'ноль — на нашей стороне', 1080, 420, m('rule', .5), { size: 32, fill: CY, weight: 600 });
+    bRich(p, [['угол острый → ', null], ['50°', GOLD], ['  ✓', OK]], 1080, 510, m('check'), { size: 40 });
+  }],
+
+  ['build', 'Строим угол', (m) => {
+    const p = panel(0); bTitle(p, 'Строим угол 70°');
+    const cx = 640, cy = 700;
+    bRay(p, cx, cy, 0, 520, m('ray'));
+    bDot(p, cx, cy, m('ray'), GOLD, 10);
+    const pr = bProt(p, cx, cy, m('put'));
+    const [mx, my] = PT(cx, cy, 300, 70);
+    bRing(pr, pr._out[70], m('mark'));
+    bDot(p, mx, my, m('mark', .4), GOLD, 10);
+    tw(pr, { o: .15 }, m('join'), .5);
+    bRay(p, cx, cy, 70, 470, m('join', .3));
+    bArc(p, cx, cy, 90, 0, 70, m('join', 1), ANG, { w: 5 });
+    bT(p, '70°', 1250, 360, m('join', 1.2), { size: 80, fill: GOLD, weight: 700, anchor: 'middle' });
+  }],
+
+  ['sum', 'Луч внутри угла', (m) => {
+    const p = panel(0); bTitle(p, 'Луч внутри угла', 'Весь угол — сумма частей');
+    const cx = 420, cy = 720, L = 470;
+    bRay(p, cx, cy, 0, L, .3); bRay(p, cx, cy, 130, L, .5);
+    bDot(p, cx, cy, .3, GOLD, 9);
+    [['A', 0], ['C', 130]].forEach(([s, a]) => { const [x, y] = PT(cx, cy, L + 30, a); bT(p, s, x, y + 12, .6, { size: 36, weight: 700, anchor: 'middle' }); });
+    bT(p, 'O', cx - 10, cy + 50, .3, { size: 36, weight: 700, fill: GOLD, anchor: 'middle' });
+    bRay(p, cx, cy, 50, L, m('inside'), { color: CY });
+    const [bx, by] = PT(cx, cy, L + 30, 50); bT(p, 'B', bx, by + 12, m('inside', .4), { size: 36, weight: 700, fill: CY, anchor: 'middle' });
+    bArc(p, cx, cy, 90, 0, 50, m('parts'), CY, { w: 5 }); bArcLabel(p, '50°', cx, cy, 135, 0, 50, m('parts', .3), CY);
+    bArc(p, cx, cy, 90, 50, 130, m('parts', .6), ANG, { w: 5 }); bArcLabel(p, '80°', cx, cy, 135, 50, 130, m('parts', .9), ANG);
+    bArc(p, cx, cy, 190, 0, 130, m('whole'), GOLD, { w: 3 });
+    bRich(p, [['∠AOC = ', null], ['∠AOB', CY], [' + ', null], ['∠BOC', ANG]], 930, 330, m('whole'), { size: 40 });
+    bRich(p, [['50°', CY], [' + ', null], ['80°', ANG], [' = ', null], ['130°', GOLD]], 930, 410, m('whole', 1.5), { size: 48 });
+    bRich(p, [['∠BOC = 130° − 50° = ', null], ['80°', GOLD]], 930, 560, m('res'), { size: 42 });
+  }],
+
+  ['straight', 'Развёрнутый угол', (m) => {
+    const p = panel(0); bTitle(p, 'Развёрнутый угол разделили лучом');
+    const cx = 560, cy = 660;
+    bRay(p, cx, cy, 0, 400, m('ang')); bRay(p, cx, cy, 180, 400, m('ang'));
+    bDot(p, cx, cy, m('ang'), GOLD, 9);
+    bRay(p, cx, cy, 35, 380, m('one'), { color: CY });
+    bArc(p, cx, cy, 110, 0, 35, m('one', .4), CY, { w: 5 }); bArcLabel(p, '35°', cx, cy, 160, 0, 35, m('one', .7), CY);
+    bArc(p, cx, cy, 80, 35, 180, m('rule'), ANG, { w: 5 });
+    const q = bArcLabel(p, '?', cx, cy, 130, 35, 180, m('rule', .4), ANG, 40);
+    hide(q, m('res'), .3); bArcLabel(p, '145°', cx, cy, 130, 35, 180, m('res', .3), GOLD, 36);
+    bRich(p, [['вместе — ', null], ['180°', GOLD]], 1050, 330, m('rule', .6), { size: 42 });
+    bRich(p, [['180° − 35° = ', null], ['145°', GOLD]], 1050, 420, m('res'), { size: 46 });
+  }],
+
+  ['half', 'Биссектриса', (m) => {
+    const p = panel(0); bTitle(p, 'Биссектриса', 'Луч, который делит угол пополам');
+    const cx = 480, cy = 700;
+    bRay(p, cx, cy, 0, 440, .3); bRay(p, cx, cy, 120, 440, .5); bDot(p, cx, cy, .3, GOLD, 9);
+    bArc(p, cx, cy, 170, 0, 120, m('ex'), ANG, { w: 3 }); bArcLabel(p, '120°', cx, cy, 215, 70, 150, m('ex', .3), ANG);
+    bRay(p, cx, cy, 60, 470, m('bis'), { color: CY, w: 5 });
+    bArc(p, cx, cy, 90, 0, 60, m('res'), GOLD, { w: 5 }); bArc(p, cx, cy, 100, 60, 120, m('res', .3), GOLD, { w: 5 });
+    bArcLabel(p, '60°', cx, cy, 130, 0, 60, m('res', .5), GOLD, 28); bArcLabel(p, '60°', cx, cy, 130, 60, 120, m('res', .7), GOLD, 28);
+    bRich(p, [['120° : 2 = ', null], ['60°', GOLD]], 1000, 400, m('res', 1), { size: 50 });
+  }],
+
+  ['clock', 'Угол на часах', (m) => {
+    const p = panel(0); bTitle(p, 'Угол между стрелками часов');
+    const cx = 480, cy = 530, R = 240;
+    const face = G(p, { x: 0, y: 0, o: 0 });
+    mk('circle', { cx, cy, r: R, fill: '#1b2540', stroke: COL.dim, 'stroke-width': 4 }, face);
+    for (let k = 1; k <= 12; k++) { const [x, y] = PT(cx, cy, R - 45, 90 - 30 * k); T(face, String(k), { x, y: y + 12, size: 34, anchor: 'middle', weight: 600 }); }
+    show(face, m('face'), .5);
+    for (let k = 0; k < 12; k++) { const [x1, y1] = PT(cx, cy, R, 90 - 30 * k), [x2, y2] = PT(cx, cy, R - 18, 90 - 30 * k); show(path(p, `M${x1} ${y1}L${x2} ${y2}`, { stroke: CY, 'stroke-width': 4 }, { o: 0 }), m('step') + k * .08, .2); }
+    const a1 = bArc(p, cx, cy, R - 90, 60, 90, m('one'), GOLD, { w: 5 }); const l1 = bArcLabel(p, '30°', cx, cy, R - 125, 60, 90, m('one', .3), GOLD, 26);
+    hide(a1, m('three'), .3); hide(l1, m('three'), .3);
+    const minute = G(p, { x: cx, y: cy, o: 0 });
+    mk('path', { d: `M0 0V${-(R - 60)}`, stroke: COL.chalk, 'stroke-width': 6, 'stroke-linecap': 'round' }, minute);
+    const hour = G(p, { x: cx, y: cy, o: 0, r: 90 });
+    mk('path', { d: `M0 0V${-(R - 110)}`, stroke: CY, 'stroke-width': 9, 'stroke-linecap': 'round' }, hour);
+    show(minute, m('three'), .4); show(hour, m('three'), .4);
+    bDot(p, cx, cy, m('three'), GOLD, 10);
+    const sq = bSquare(p, cx, cy, 0, m('three', .6), ANG, 40);
+    bRich(p, [['360° : 12 = ', null], ['30°', GOLD]], 900, 330, m('one'), { size: 46 });
+    bRich(p, [['3:00 → ', null], ['90°', GOLD]], 900, 440, m('three', .6), { size: 46 });
+    hide(sq, m('four'), .3);
+    tw(hour, { r: 120 }, m('four'), .8, io);
+    bArc(p, cx, cy, 70, -30, 90, m('four', .8), ANG, { w: 5 });
+    bRich(p, [['4:00 → 4 · 30° = ', null], ['120°', GOLD]], 900, 550, m('four', .6), { size: 46 });
+  }],
+
+  ['wrap', 'Повторим', (m) => {
+    const p = panel(0); bTitle(p, 'Повторим');
+    [['Угол — два луча с общей вершиной', 'w1', ANG], ['Острый < 90°, прямой 90°, тупой > 90°, развёрнутый 180°', 'w2', GOLD], ['Транспортир: центр в вершину, ноль на сторону', 'w3', CY], ['Весь угол = сумма частей', 'w4', OK]].forEach(([s, k, c], i) => {
+      const g = G(p, { x: -16, y: 290 + i * 130, o: 0 });
+      mk('circle', { cx: 150, cy: -12, r: 28, fill: c }, g);
+      T(g, String(i + 1), { x: 150, y: 0, size: 32, fill: '#11152a', weight: 700, anchor: 'middle' });
+      T(g, s, { x: 210, size: 32, weight: 600 });
+      tw(g, { o: 1, x: 0 }, m(k), .6);
+    });
+    bBusel(p, 'cheer', 1430, 600, 320, m('end'));
+  }],
+].map(([id, title, run, extra]) => ({ id, title, run, ...extra }));
+
+boot();
+</script>
+</body>
+</html>

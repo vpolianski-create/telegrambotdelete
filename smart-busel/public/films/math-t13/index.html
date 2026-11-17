@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Признаки делимости — Умный Бусел</title>
+<link rel="stylesheet" href="lib/engine.css">
+<link rel="expect" href="#bar" blocking="render">
+<style>#bHome { display: none; }</style>
+</head>
+<body>
+<script src="lib/engine.js"></script>
+<script src="audio/ru/timings.js"></script>
+<script>
+'use strict';
+// Мультурок к теме 13 «Признаки делимости» приложения «Умный Бусел». Стиль — films-src/STYLE.md (эталон math-t12).
+// Без вопросов: задания остаются в приложении. Цвета: последняя цифра — голубой, сумма цифр — фиолетовый,
+// ответ «делится» — жёлтый, «не делится» и остаток — розовый, подтверждение — мятный.
+const CHAPTER = { number: 13, title: 'Признаки делимости', minutes: 4, language: 'ru' };
+
+const LAST = '#45d7f2', SUM = '#a495ff', GOLD = '#f6c453', REST = '#ff8c9c', OK = '#64ddb0', SOFT = '#c9c0ff', CANDY = '#d9d3ff';
+
+/* ---------- помощники (как в math-t12) ---------- */
+const bT = (p, s, x, y, t, { size = 32, fill = COL.chalk, anchor = 'start', weight = 500 } = {}) => {
+  const e = T(p, s, { x, y, size, fill, anchor, weight, o: 0 }); show(e, t); return e;
+};
+const bTitle = (p, s, sub) => { bT(p, s, 100, 125, .15, { size: 46, weight: 600 }); if (sub) bT(p, sub, 100, 178, .3, { size: 28, fill: COL.dim }); };
+// строка из кусков разного цвета: [['12 : ', null], ['3', SUM], …]
+function bRich(p, parts, x, y, t, { size = 44, anchor = 'start', weight = 600 } = {}) {
+  const e = mk('text', { 'font-size': size, 'font-family': UI, 'font-weight': weight, 'text-anchor': anchor, fill: COL.chalk }, p);
+  e.style.whiteSpace = 'pre';
+  parts.forEach(([s, c]) => { const ts = document.createElementNS(NS, 'tspan'); ts.textContent = s; if (c) ts.setAttribute('fill', c); e.appendChild(ts); });
+  put(e, { x, y, o: 0 }); show(e, t); return e;
+}
+function bChip(p, v, x, y, t, color, { w = 84, h = 64, size = 34 } = {}) {
+  const g = G(p, { x, y, o: 0 });
+  g._r = mk('rect', { x: -w / 2, y: -h / 2, width: w, height: h, rx: 14, fill: COL.board, stroke: color, 'stroke-width': 3 }, g);
+  g._t = T(g, String(v), { y: size * .36, size, fill: color, anchor: 'middle', weight: 600 });
+  show(g, t, .35); return g;
+}
+const bPaint = (g, c, t) => { tw(g._r, { c_stroke: c }, t, .4); tw(g._t, { c_fill: c }, t, .4); };
+function bBusel(p, pose, x, y, size, t) {
+  const g = G(p, { x, y, o: 0, s: .94 });
+  mk('image', { href: `img/busel-${pose}.webp`, x: -size / 2, y: -size / 2, width: size, height: size }, g);
+  tw(g, { o: 1, s: 1 }, t, .7, out); return g;
+}
+// карточка с числом и проверкой (как «Проверь себя» в math-t12)
+function bCard(p, x, y, w, h, t) {
+  const g = G(p, { x, y, o: 0 });
+  mk('rect', { x: -w / 2, y: -h / 2, width: w, height: h, rx: 24, fill: '#1b2540', stroke: COL.edge, 'stroke-width': 2 }, g);
+  tw(g, { o: 1 }, t, .5); return g;
+}
+// квадратик-единица (для «десяток = девять и ещё один»)
+function bCell(p, x, y, color, t, s = 40) {
+  const g = G(p, { x, y, o: 0 });
+  g._r = mk('rect', { x: -s / 2, y: -s / 2, width: s, height: s, rx: 7, fill: color }, g);
+  show(g, t, .3); return g;
+}
+
+/* ---------- такты: [id, заголовок, run(m), доп.] ---------- */
+const BEATS = [
+  ['intro', 'Начало', (m) => {
+    const p = panel(0);
+    bBusel(p, 'wave', 270, 470, 470, .3);
+    bT(p, 'МАТЕМАТИКА · ТЕМА 13', 580, 300, .2, { size: 26, fill: SUM, weight: 600 });
+    bT(p, 'Признаки', 580, 400, .35, { size: 76, weight: 600 });
+    bT(p, 'делимости', 580, 495, .5, { size: 76, weight: 600, fill: GOLD });
+    bT(p, 'делится или нет — без деления', 582, 580, m('sub'), { size: 34, fill: COL.dim });
+  }],
+
+  ['why', 'Зачем нужны признаки', (m) => {
+    const p = panel(0); bTitle(p, 'Делится ли 4 512 на 3?', 'Два пути к ответу');
+    // путь 1: деление столбиком — долго
+    const col = G(p, { x: 0, y: 0, o: 0 });
+    T(col, '4512', { x: 330, y: 380, size: 64, weight: 600, anchor: 'end' });
+    mk('path', { d: 'M350 330V500M350 400H470', stroke: COL.dim, 'stroke-width': 3, fill: 'none' }, col);
+    T(col, '3', { x: 375, y: 380, size: 64, weight: 600 });
+    [['−3', 440], ['15', 500], ['−15', 560], ['  1', 620]].forEach(([s, y]) => T(col, s, { x: 300, y, size: 40, fill: COL.dim, anchor: 'end' }));
+    tw(col, { o: 1 }, m('long'), .5);
+    draw(path(p, 'M170 300L560 650', { stroke: REST, 'stroke-width': 5, 'stroke-linecap': 'round' }, { d: 0 }), m('long', 1.6), .5);
+    bT(p, 'долго', 365, 720, m('long', 1.9), { size: 36, fill: REST, anchor: 'middle', weight: 600 });
+    // путь 2: посмотреть на цифры
+    [4, 5, 1, 2].forEach((v, i) => bChip(p, v, 860 + i * 110, 420, m('sign', .2 + i * .15), SUM, { w: 90, h: 100, size: 60 }));
+    bT(p, 'признак делимости', 1025, 540, m('sign', 1.6), { size: 38, fill: GOLD, anchor: 'middle', weight: 600 });
+    bT(p, 'пара секунд', 1025, 720, m('fast'), { size: 36, fill: OK, anchor: 'middle', weight: 600 });
+  }],
+
+  ['tens', 'Почему важна последняя цифра', (m) => {
+    const p = panel(0); bTitle(p, 'Почему важна последняя цифра', '137 конфет: коробки по 10 и остаток');
+    for (let i = 0; i < 13; i++) {
+      const g = G(p, { x: 150 + (i % 7) * 92, y: 320 + Math.floor(i / 7) * 110, o: 0, s: .8 });
+      mk('rect', { x: -38, y: -40, width: 76, height: 80, rx: 12, fill: '#1b2540', stroke: LAST, 'stroke-width': 3 }, g);
+      T(g, '10', { y: 12, size: 30, fill: LAST, anchor: 'middle', weight: 600 });
+      tw(g, { o: 1, s: 1 }, m('box') + i * .12, .35, back);
+    }
+    for (let i = 0; i < 7; i++) {
+      const e = G(p, { x: 150 + i * 60, y: 600, o: 0 });
+      mk('circle', { r: 18, fill: REST }, e); mk('circle', { r: 5, cx: -6, cy: -6, fill: '#ffffff', 'fill-opacity': .5 }, e);
+      show(e, m('rest') + i * .06, .3);
+    }
+    bT(p, '13 коробок по 10', 430, 515, m('box', 1.6), { size: 28, fill: COL.dim, anchor: 'middle' });
+    bT(p, 'и ещё 7', 330, 670, m('rest', .5), { size: 30, fill: REST, anchor: 'middle' });
+    bRich(p, [['137 = ', null], ['130', LAST], [' + ', null], ['7', REST]], 900, 330, m('rest', .8), { size: 56 });
+    bRich(p, [['130', LAST], [' : 2   ', null], ['✓', OK]], 900, 440, m('full'), { size: 40, weight: 500 });
+    bRich(p, [['130', LAST], [' : 5   ', null], ['✓', OK]], 900, 510, m('full', .5), { size: 40, weight: 500 });
+    bRich(p, [['130', LAST], [' : 10 ', null], ['✓', OK]], 900, 580, m('full', 1), { size: 40, weight: 500 });
+    bT(p, 'Всё решает последняя цифра', 800, 790, m('only'), { size: 42, fill: GOLD, anchor: 'middle', weight: 600 });
+  }],
+
+  ['last', 'На 2, 5 и 10', (m) => {
+    const p = panel(0); bTitle(p, 'На 2, 5 и 10 — последняя цифра');
+    const X = d => 400 + d * 100;
+    [['на 2', [0, 2, 4, 6, 8], 'two', 290, 'чётная'], ['на 5', [0, 5], 'five', 410, '0 или 5'], ['на 10', [0], 'ten', 530, 'только 0']].forEach(([lab, ds, k, y, note]) => {
+      bT(p, lab, 330, y + 14, m(k), { size: 40, weight: 600, anchor: 'end' });
+      ds.forEach((d, i) => bChip(p, d, X(d), y, m(k, .4 + i * .25), LAST));
+      bT(p, note, X(9) + 70, y + 12, m(k, 1.2), { size: 30, fill: COL.dim });
+    });
+    bRich(p, [['3 45', null], ['8', LAST]], 360, 720, m('ex'), { size: 64 });
+    bRich(p, [['на 2  ', null], ['✓', OK], ['      на 5  ', null], ['✗', REST]], 700, 715, m('ex', 2.2), { size: 44, weight: 500 });
+  }],
+
+  ['three', 'На 3 — сумма цифр', (m) => {
+    const p = panel(0); bTitle(p, 'На 3 — сумма цифр', 'Последняя цифра здесь не поможет');
+    const xs = [520, 640, 760, 880], ds = [4, 5, 1, 2];
+    const chips = ds.map((d, i) => bChip(p, d, xs[i], 330, .4 + i * .1, COL.dim, { w: 100, h: 110, size: 66 }));
+    bT(p, 'складываем все цифры', 700, 450, m('sum'), { size: 32, fill: SUM, anchor: 'middle', weight: 600 });
+    const parts = [['4', 470], ['+ 5', 590], ['+ 1', 720], ['+ 2', 850]];
+    parts.forEach(([s, x], i) => { const t = m('d' + (i + 1)); bPaint(chips[i], SUM, t); bT(p, s, x, 560, t, { size: 56, weight: 600, fill: SUM }); });
+    bRich(p, [['= ', null], ['12', GOLD]], 970, 560, m('res'), { size: 56 });
+    bRich(p, [['12 : 3 = 4   ', null], ['→  4 512 делится на 3', GOLD]], 800, 720, m('check'), { size: 42, anchor: 'middle', weight: 500 });
+  }],
+
+  ['why3', 'Почему работает сумма цифр', (m) => {
+    const p = panel(0); bTitle(p, 'Почему работает сумма цифр', '24 = два десятка и четыре единицы');
+    const S = 46, x0 = 180;
+    const rows = [0, 1].map(r => Array.from({ length: 10 }, (_, i) => bCell(p, x0 + i * S, 320 + r * 80, SUM, m('ten', r * .4 + i * .03))));
+    const ones = Array.from({ length: 4 }, (_, i) => bCell(p, x0 + i * S, 480 + 0, GOLD, .4 + i * .05));
+    bT(p, 'десяток = 9 + 1', 760, 340, m('ten', 1), { size: 34, fill: SUM, weight: 600 });
+    rows.forEach((r, k) => tw(r[9]._r, { c_fill: GOLD }, m('ten', 1.4 + k * .3), .4));
+    // девятки откладываем
+    const nineBox = (y, t) => draw(path(p, `M${x0 - 28} ${y - 30}H${x0 + 8 * S + 24}V${y + 30}H${x0 - 28}Z`, { stroke: SUM, 'stroke-width': 3, fill: 'none', 'stroke-dasharray': '9 8', 'stroke-linejoin': 'round' }, { d: 0 }), t, .5);
+    nineBox(320, m('take')); nineBox(400, m('take', .3));
+    bT(p, '9 делится и на 3, и на 9', 760, 420, m('take', .6), { size: 32, fill: COL.dim });
+    rows.forEach(r => r.slice(0, 9).forEach(c => tw(c, { o: .3 }, m('take', 1.6), .5)));
+    // единички собираем вместе
+    const gold = [rows[0][9], rows[1][9], ...ones];
+    gold.forEach((c, i) => tw(c, { x: 820 + i * 56, y: 580 }, m('left') + i * .12, .9, io));
+    bRich(p, [['2 + 4 = ', null], ['6', GOLD]], 880, 690, m('n24'), { size: 50 });
+    bRich(p, [['6 : 3 = 2   ', null], ['→  24 делится на 3', GOLD]], 800, 800, m('six', .8), { size: 40, anchor: 'middle', weight: 500 });
+  }],
+
+  ['nine', 'На 9', (m) => {
+    const p = panel(0); bTitle(p, 'На 9 — тоже сумма цифр');
+    bRich(p, [['2 358:  ', null], ['2 + 3 + 5 + 8', SUM], [' = ', null], ['18', GOLD]], 120, 300, m('sum'), { size: 50 });
+    bRich(p, [['18 : 9 = 2   ', null], ['→  2 358 делится на 9', GOLD]], 120, 390, m('yes'), { size: 40, weight: 500 });
+    bT(p, 'Осторожно!', 120, 520, m('care'), { size: 40, fill: REST, weight: 600 });
+    bRich(p, [['4 512:  сумма ', null], ['12', SUM], ['  →  на 3 ', null], ['✓', OK], ['   на 9 ', null], ['✗', REST]], 120, 600, m('twelve'), { size: 42, weight: 500 });
+    const g = G(p, { x: 800, y: 760, o: 0 });
+    mk('rect', { x: -480, y: -48, width: 960, height: 96, rx: 48, fill: 'none', stroke: GOLD, 'stroke-width': 3 }, g);
+    T(g, 'на 9 → значит, и на 3.  Наоборот — не всегда', { y: 13, size: 36, fill: GOLD, anchor: 'middle', weight: 600 });
+    show(g, m('rule'), .4);
+  }],
+
+  ['six', 'На 6', (m) => {
+    const p = panel(0); bTitle(p, 'На 6 — сразу два признака', '6 = 2 · 3');
+    const pill = (x, s, c, t) => { const g = G(p, { x, y: 270, o: 0 }); mk('rect', { x: -330, y: -38, width: 660, height: 76, rx: 38, fill: 'none', stroke: c, 'stroke-width': 3 }, g); T(g, s, { y: 12, size: 32, fill: c, anchor: 'middle', weight: 600 }); show(g, t, .4); };
+    pill(420, 'на 2: последняя цифра чётная', LAST, m('both'));
+    pill(1180, 'на 3: сумма цифр делится на 3', SUM, m('both', .5));
+    const card = (x, num, l1, l2, verdict, vc, t, tv) => {
+      const g = bCard(p, x, 560, 660, 380, t);
+      T(g, num, { y: -110, size: 64, weight: 600, anchor: 'middle' });
+      bRich(g, l1, 0, -20, t + .8, { size: 34, anchor: 'middle', weight: 500 });
+      bRich(g, l2, 0, 40, t + 1.4, { size: 34, anchor: 'middle', weight: 500 });
+      bT(g, verdict, 0, 130, tv, { size: 40, fill: vc, anchor: 'middle', weight: 700 });
+    };
+    card(420, '1 254', [['последняя ', null], ['4', LAST], [' — чётная  ', null], ['✓', OK]], [['сумма цифр ', null], ['12', SUM], ['  ', null], ['✓', OK]], 'делится на 6', GOLD, m('a'), m('ayes'));
+    card(1180, '1 251', [['последняя ', null], ['1', LAST], [' — нечётная  ', null], ['✗', REST]], [['сумма цифр ', null], ['9', SUM], ['  ', null], ['✓', OK]], 'не делится на 6', REST, m('b'), m('bno'));
+  }],
+
+  ['four', 'На 4', (m) => {
+    const p = panel(0); bTitle(p, 'На 4 — две последние цифры');
+    bRich(p, [['100 = 25 · 4', null], ['   — сотни всегда делятся на 4', COL.dim]], 120, 290, m('hund'), { size: 40, weight: 500 });
+    const row = (y, head, tail, res, ok, t, tv) => {
+      bRich(p, [[head, null], [tail, LAST]], 120, y, t, { size: 64 });
+      bRich(p, res, 640, y - 6, t + 1.2, { size: 42, weight: 500 });
+      bT(p, ok ? 'делится на 4' : 'не делится на 4', 1250, y - 6, tv, { size: 40, fill: ok ? GOLD : REST, weight: 700 });
+    };
+    row(470, '34 5', '28', [['28', LAST], [' : 4 = 7  ', null], ['✓', OK]], true, m('a'), m('ayes'));
+    row(640, '3 7', '54', [['54', LAST], [' : 4 — остаток 2  ', null], ['✗', REST]], false, m('b'), m('bno'));
+  }],
+
+  ['digit', 'Какую цифру поставить', (m) => {
+    const p = panel(0); bTitle(p, 'Какую цифру поставить?', 'Число 7 * 4 должно делиться на 3');
+    bChip(p, 7, 560, 350, m('task'), SUM, { w: 110, h: 120, size: 72 });
+    const star = bChip(p, '*', 690, 350, m('task', .2), SOFT, { w: 110, h: 120, size: 72 });
+    bChip(p, 4, 820, 350, m('task', .4), SUM, { w: 110, h: 120, size: 72 });
+    const d0 = T(star, '0', { y: 26, size: 72, fill: REST, anchor: 'middle', weight: 600, o: 0 });
+    const d1 = T(star, '1', { y: 26, size: 72, fill: GOLD, anchor: 'middle', weight: 600, o: 0 });
+    bRich(p, [['7 + 4 = ', null], ['11', SUM]], 120, 530, m('known'), { size: 48 });
+    hide(star._t, m('try0'), .2); show(d0, m('try0'), .3);
+    bRich(p, [['11 + 0 = 11  ', null], ['✗ не делится', REST]], 120, 620, m('try0', .3), { size: 42, weight: 500 });
+    hide(d0, m('try1'), .2); show(d1, m('try1'), .3); bPaint(star, GOLD, m('try1'));
+    bRich(p, [['11 + 1 = 12  ', null], ['✓ делится', OK]], 120, 700, m('try1', .3), { size: 42, weight: 500 });
+    bRich(p, [['Ответ: ', null], ['1', GOLD], ['   (714 : 3 = 238)', COL.dim]], 120, 800, m('res'), { size: 48 });
+    bBusel(p, 'think', 1330, 600, 330, m('task', 1));
+  }],
+
+  ['wrap', 'Повторим', (m) => {
+    const p = panel(0); bTitle(p, 'Повторим');
+    [['На 2, 5, 10 — последняя цифра', 'w1', LAST], ['На 3 и 9 — сумма цифр', 'w2', SUM], ['На 6 — и на 2, и на 3', 'w3', GOLD], ['На 4 — две последние цифры', 'w4', LAST]].forEach(([s, k, c], i) => {
+      const g = G(p, { x: -16, y: 290 + i * 130, o: 0 });
+      mk('circle', { cx: 150, cy: -12, r: 28, fill: c }, g);
+      T(g, String(i + 1), { x: 150, y: 0, size: 32, fill: '#11152a', weight: 700, anchor: 'middle' });
+      T(g, s, { x: 210, size: 40, weight: 600 });
+      tw(g, { o: 1, x: 0 }, m(k), .6);
+    });
+    bBusel(p, 'cheer', 1290, 520, 470, m('end'));
+  }],
+].map(([id, title, run, extra]) => ({ id, title, run, ...extra }));
+
+boot();
+</script>
+</body>
+</html>
