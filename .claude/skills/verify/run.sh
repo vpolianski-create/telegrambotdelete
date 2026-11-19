@@ -12,6 +12,11 @@ mkdir -p "$OUT"
 cd "$APP" || exit 1
 SUMMARY=()
 FAILED=0
+# Привязка к коммиту: проверка относится только к этому состоянию кода (статья: «проверка старого коммита ничего не значит»)
+SHA="$(git rev-parse --short HEAD)"; BRANCH="$(git rev-parse --abbrev-ref HEAD)"
+DIRTY="$(git status --porcelain | wc -l | tr -d ' ')"
+echo "Проверяется: коммит $SHA, ветка $BRANCH, незакоммиченных файлов: $DIRTY"
+git status --porcelain > "$OUT/dirty.txt"
 
 run() { # run <номер> <название> <команда…>
   local id="$1" name="$2"; shift 2
@@ -45,11 +50,24 @@ else
   npx wait-on -t 60000 tcp:$PORT >/dev/null 2>&1 || echo "    dev-сервер не поднялся за 60 с, см. $OUT/vite.log"
 fi
 run 5 "Сценарии пользователя (feature-map.md)" xvfb-run -a node "$SKILL/scenarios.cjs" "$OUT/scenarios"
+# 5b. Если изменение правит саму проверку — прогнать ещё и сценарии из origin/main: новый код должен проходить и старые проверки
+if git show origin/main:.claude/skills/verify/scenarios.cjs >/dev/null 2>&1 && ! git diff --quiet origin/main -- "$SKILL"; then
+  mkdir -p "$OUT/base-skill" && git show origin/main:.claude/skills/verify/scenarios.cjs > "$OUT/base-skill/scenarios.cjs"
+  run 5b "Сценарии из origin/main (проверка не ослаблена)" xvfb-run -a node "$OUT/base-skill/scenarios.cjs" "$OUT/scenarios-base"
+fi
 [ -n "$VITE_PID" ] && kill "$VITE_PID" 2>/dev/null; wait 2>/dev/null
+# 6. Чек-лист надёжности по изменённым файлам (checklist.md)
+run 6 "Чек-лист по изменениям (checklist.md)" node "$SKILL/checklist.cjs"
 
 echo
 echo "ШАГ | ПРОВЕРКА | ИТОГ | ВРЕМЯ | ЖУРНАЛ"
 printf '%s\n' "${SUMMARY[@]}"
 [ -f "$OUT/scenarios/report.json" ] && { echo; echo "Сценарии:"; grep -h -E '^(PASS|FAIL)' "$OUT/5.log"; }
+echo; echo "Чек-лист:"; sed 's/^/  /' "$OUT/6.log"
+PASSN=$(grep -c '^PASS' "$OUT/5.log" 2>/dev/null); ALLN=$(grep -cE '^(PASS|FAIL)' "$OUT/5.log" 2>/dev/null)
+echo; echo "Коммит $SHA, незакоммиченных файлов: $DIRTY (список: $OUT/dirty.txt)"
+if [ $FAILED = 0 ]; then echo "Строка для коммита:  Проверено: /verify — все шаги, сценарии $PASSN/$ALLN (на $SHA + правки)"
+else echo "Строка для коммита (если коммитить всё же нужно):  Проверено: нет — /verify не прошёл, см. отчёт"; fi
+printf '%s\n' "${SUMMARY[@]}" > "$OUT/summary.txt"
 echo; echo "Отчёт и снимки экрана: $OUT"
 exit $FAILED
