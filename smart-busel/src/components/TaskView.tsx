@@ -149,7 +149,7 @@ export function TaskView({ task, scored = true, speakWord, extraBonus = 0, repea
     : undefined), [status]);
 
   return (
-    <div data-task={task.type} {...(import.meta.env.DEV ? { 'data-answer': Array.isArray(task.answer) ? JSON.stringify(task.answer) : String(task.answer) } : {})}
+    <div data-task={task.type} {...(import.meta.env.DEV ? { 'data-answer': Array.isArray(task.answer) ? JSON.stringify(task.answer) : String(task.answer), 'data-status': status } : {})}
       className="mx-auto flex w-full max-w-2xl flex-col gap-5 rounded-xl3 bg-card p-6 shadow max-sm:gap-4 max-sm:p-5">
       {(label || note) && (
         <span className="text-sm font-extrabold text-accentink">

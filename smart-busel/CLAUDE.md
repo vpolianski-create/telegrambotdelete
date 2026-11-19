@@ -38,6 +38,7 @@ Android: Capacitor 8 (`@capacitor/core|android|filesystem|app|share|screen-orien
 - `npm install`, `npm run dev` — запуск в окне Electron
 - `npm run validate-content`, `npm test`, `npm run build`
 - `npm run dist` — установщик в `release/` (на Windows). Основной путь: GitHub Actions `build-busel.yml` → артефакт `umny-busel-installer`.
+- `/verify` (скилл `.claude/skills/verify/`, запуск `bash .claude/skills/verify/run.sh` из корня репозитория) — полная проверка перед коммитом/«сливай»: TypeScript и контент, тесты (до 3 кругов исправлений), сборка, запуск настоящего Electron и сценарии из `feature-map.md`; плюс чек-лист по изменённым файлам (`checklist.md`); итог ГОТОВО / НУЖЕН ЧЕЛОВЕК. Построен по статье команды Claude Code о верификации. Новый экран или функция → строка в `feature-map.md` и сценарий в `scenarios.cjs`; новый промах → пункт в `checklist.md`. В сообщении коммита — строка «Проверено: …» из вывода run.sh. У задания в dev-режиме есть `data-status` (idle/retry/right/wrong) — для сценариев.
 
 ## Порядок работы
 Этапы 1–6 из PLAN.md выполнены; дальше — добавление тем и уроков (см. CURRICULUM_REVIEW.md). Родителю: README_ДЛЯ_РОДИТЕЛЯ.md. После каждого: validate-content, test, build, коммит.
